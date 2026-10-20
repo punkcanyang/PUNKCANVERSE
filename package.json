@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test --test-isolation=none",
+    "verify": "node scripts/verify.mjs",
+    "deploy": "npx wrangler pages deploy dist --project-name fight-prompts"
+  }
+}
