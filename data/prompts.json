@@ -1475,7 +1475,9 @@
    "authorHandle": "Artedeingenio",
    "authorUrl": "https://x.com/Artedeingenio",
    "postUrl": "https://x.com/Artedeingenio/status/1949860456958398844",
-   "date": "2025-07-28"
+   "date": "2025-07-28",
+   "postStatus": "removed",
+   "postCheckedAt": "2026-10-21"
   },
   {
    "id": "1946702904896684040",
