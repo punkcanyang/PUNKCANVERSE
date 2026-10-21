@@ -2,7 +2,7 @@
 
 AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网址 https://punkcanverse.com。视觉采用「深夜片场 · 影印批注」：暗色片场海报、局部黑红黄剪字与网点；正文与长文使用实色背景，优先阅读。
 
-无框架、无 npm 依赖、无外部字体、无追踪脚本。Node 内建模块生成静态页面；唯一 Pages Function 是保留 path/query 的 301 middleware。站点脚本仅在用户点击播放后加载 X 官方 widgets.js，不播放或转存 mp4。
+无框架、无 npm 依赖、无外部字体。Node 内建模块生成静态页面；唯一 Pages Function 是保留 path/query 的 301 middleware。本版按补充需求加入 GA4 和 Consent Mode v2；X 官方 widgets.js 仍仅在用户点击播放后加载，不播放或转存 mp4，也不安装广告脚本。
 
 ## 页面结构
 
@@ -13,6 +13,7 @@ AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网
 - `/regions.html`：AI 工具各地区使用与申诉。
 - `/takedown.html`：下架申请，48 小时内处理，无需先证明身份。
 - `/essays/`、`/essays/<slug>/`：AI 工作论列表与文章。
+- `/about/`、`/contact/`、`/privacy/`、`/terms/`、`/affiliate-disclosure/`：英文站点说明与政策，统一标注 Last updated: 2026-10-21，进入 sitemap 并由每页页脚链接。唯一确认的联系邮箱为 hello@punkcanverse.com。
 
 所有页面输出 PUNKCANVERSE 标题、canonical、Open Graph 和 twitter:card。sitemap 精确列出首页、有内容的媒介列表、63 条详情、技术与资源、地区、下架与 AI 工作论；有文章时也加入文章。robots 允许抓取并指向正式 sitemap。
 
@@ -68,7 +69,17 @@ slug 可省略，使用文件名；仅接受小写英文、数字与短横线。
 
 本版仅启用已批准的 Higgsfield 与 Magnific 链接：Higgsfield 出现在其对应 4 条卡片及详情页；Magnific 放在技术与资源页的推荐工具区，不塞进视频卡片。平台有 code 字段时显示「推广码 xxx」，无 code 不输出；Magnific 的推广码为 GMRPOCT43296。其他平台网址保持空字符串。
 
-所有页尾保留揭露：「本站部分按钮为推广连结，通过它们注册或购买，本站可能获得佣金，不影响你的价格。」不添加推广追踪脚本。
+所有页尾保留揭露：「本站部分按钮为推广连结，通过它们注册或购买，本站可能获得佣金，不影响你的价格。」按钮旁标签及页尾揭露均链接到 `/affiliate-disclosure/`。不添加推广平台自己的追踪脚本。
+
+## Google Analytics 与 Cookie 选择
+
+每个 HTML 的 head 都加载指定 GA4 `G-NPK7CFCCT0`，先将 Consent Mode v2 的 analytics_storage、ad_storage、ad_user_data、ad_personalization 四项设为 denied，再按已保存的接受选择恢复 granted，最后执行 Google tag config。只有批准的两段内联模板与精确 Google tag 地址通过脚本白名单；Impact 验证保持不动。
+
+Cookie 横条提供「接受／拒绝」，选择保存为 `localStorage['pcv-consent']` 的 granted 或 denied，已选择时不再出现。底部条通过测量自身高度为 body 留出空间，宽度改变时重新测量，手机上不会压住页尾内容。所有操作为原生按钮，可键盘使用。
+
+页脚及 Privacy Policy 的「Cookie 设置」会清除选择、立即将四项更新为 denied，并重新打开横条。跨标签页修改会同步；存储被浏览器禁止时当前选择仍生效，但下次访问可能再次询问。Google tag 在 denied 状态也会加载，可能发送无 Cookie 的测量信号，不宣称拒绝后没有任何请求；浏览器可清理既有 Cookie。隐私说明另列 X 嵌入与推广方的独立处理、未来 AdSense 和 Resend 计划，未安装这些未来服务。
+
+实现依据：[Google Consent Mode 官方说明](https://developers.google.com/tag-platform/security/guides/consent)、[Google 合作网站信息使用说明](https://policies.google.com/technologies/partner-sites)。verify 与测试完全离线，不加载实际 Google 或 X 脚本。
 
 ## 隐藏栏目与订阅
 
@@ -97,7 +108,7 @@ node scripts/verify-v03.mjs
 
 测试覆盖假 X API 分批、syndication 解析和间隔、失败保留旧缓存、missing 与坏缓存占位、敏感内容、片长、三媒介分页、63 条详情与 sitemap、可选原创笔记、文章 fixture、推广属性、延迟加载 widgets 和图片失败回退。build/test/verify 不访问网络；只有手动运行 fetch-thumbs 会请求网络，不下载任何媒体文件。
 
-v0.2 有两项测试直接要求真实推广配置全空，与本版批准的推广链接存在冲突；旧 verify 还固定旧站名、3 页 sitemap 和 1 个预加载外部脚本。按开工卡这些断言保留，未经授权不改。v0.3 的完整独立校验已追加，仍需确认如何迁移这些旧版固定值，才能让全套命令全绿。
+v0.2 有两项测试直接要求真实推广配置全空，与本版批准的推广链接存在冲突；按开工卡要求未改这些测试，仍需授权将其迁移到空配置 fixture。verify 的站名、完整 sitemap 与脚本精确白名单现按 v0.3 及 GA4 补充需求校验，保留 Impact、内容、来源、媒体文件和推广安全检查。新增测试另覆盖 GA4 默认值顺序、已同意恢复、接受／拒绝／撤回、存储不可用、缺 ID 失败，以及五页 canonical、日期、sitemap、全站页脚入口与披露链接。
 
 部署由外部负责，在项目根目录运行：
 
