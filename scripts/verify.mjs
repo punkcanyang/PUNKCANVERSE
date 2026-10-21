@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { join, relative, extname } from 'node:path';
 import { getCopyText } from '../lib/prompts.mjs';
 import { escapeHtml } from '../lib/markdown.mjs';
+import { validatePostMetadata } from '../lib/posts.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
@@ -63,6 +64,7 @@ await check('每条必填字段完整，原帖只允许 X status 链接，无官
     for (const field of ['models', 'tags']) assert.ok(Array.isArray(entry[field]) && entry[field].length && entry[field].every(value => typeof value === 'string' && value.trim()), `${entry.id}: ${field}`);
     assert.match(entry.postUrl, postPattern);
     assert.match(entry.authorUrl, /^https:\/\/x\.com\/[A-Za-z0-9_]+\/?$/);
+    validatePostMetadata(entry);
   }
 });
 
@@ -128,19 +130,57 @@ await check('仅首页载入唯一允许的第三方脚本，全部嵌入使用�
   assert.equal(externalScripts, 1);
   const home = await read(join(dist, 'index.html'));
   assert.equal((home.match(/class="prompt-card"/g) || []).length, 63);
-  assert.equal((home.match(/<template class="tweet-template"><blockquote class="twitter-tweet" data-dnt="true"/g) || []).length, 63);
-  assert.equal((home.match(/class="watch-link"/g) || []).length, 63);
+  const availableCount = entries.filter(entry => entry.postStatus !== 'removed').length;
+  assert.equal((home.match(/<template class="tweet-template"><blockquote class="twitter-tweet" data-dnt="true"/g) || []).length, availableCount);
+  assert.equal((home.match(/class="watch-link"/g) || []).length, availableCount);
   assert.ok(!/<blockquote class="twitter-tweet"/.test(home.replace(/<template\b[^>]*>[\s\S]*?<\/template>/g, '')), 'Live blockquotes must start inside templates');
 });
 
-await check('下架入口与 issue 模板齐全，data/ 未修改', async () => {
+await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌入地址与来源说明', async () => {
+  const home = await read(join(dist, 'index.html'));
+  const cards = new Map([...home.matchAll(/<article\b[^>]*data-entry-id="([^"]+)"[^>]*>[\s\S]*?<\/article>/g)].map(match => [match[1], match[0]]));
+  assert.equal(cards.size, 63);
+  for (const entry of entries) {
+    const card = cards.get(entry.id);
+    assert.ok(card, `${entry.id}: missing card`);
+    assert.ok(card.includes(`data-copy-entry="${entry.id}"`), `${entry.id}: missing copy button`);
+    assert.ok(card.includes(`href="${escapeHtml(entry.authorUrl)}"`), `${entry.id}: missing author`);
+    const sourceLink = `<a href="${escapeHtml(entry.postUrl)}" target="_blank" rel="noopener noreferrer">`;
+    if (entry.postStatus === 'removed') {
+      assert.ok(!/tweet-template|twitter-tweet|tweet-mount|data-embed|watch-link/.test(card), `${entry.id}: removed post must never embed`);
+      assert.ok(card.includes(`<div class="post-unavailable"><p>原帖已删除或不可用（${entry.postCheckedAt} 检查），无法显示成片</p></div>`));
+      assert.ok(card.includes(`${sourceLink}原帖（已失效）</a>`));
+    } else {
+      assert.equal((card.match(/class="tweet-template"/g) || []).length, 1, `${entry.id}: missing/duplicate embed`);
+      assert.equal((card.match(/class="watch-link"/g) || []).length, 1, `${entry.id}: missing/duplicate watch link`);
+      const embedUrl = entry.embedId ? entry.postUrl.replace(/\/\d+$/, `/${entry.embedId}`) : entry.postUrl;
+      assert.ok(card.includes(`<blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="${escapeHtml(embedUrl)}"`));
+      assert.ok(card.includes(`<a href="${escapeHtml(embedUrl)}" target="_blank" rel="noopener noreferrer" class="watch-link">`));
+      assert.ok(card.includes(`${sourceLink}原帖 ↗</a>`));
+      if (entry.embedId) assert.ok(card.includes('<p class="embed-note">影片取自同作者的串首帖</p>'));
+      if (entry.replyNoVideo) assert.ok(card.includes('<p class="embed-note">此帖为回复，影片见原串</p>'));
+    }
+  }
+  const techie = entries.find(entry => entry.id === '2086124547376341346');
+  assert.equal(techie.embedId, '2086124536253043164');
+  assert.equal(techie.postUrl, 'https://x.com/TechieBySA/status/2086124547376341346');
+  assert.ok(getCopyText(techie).endsWith(`\n完整版：${techie.postUrl}`));
+});
+
+await check('下架入口与 issue 模板齐全，data/ 只允许批准的 TechieBySA embedId 更新', async () => {
   const html = await read(join(dist, 'takedown.html'));
   assert.match(html, /无需先证明身份/);
   assert.ok(html.includes('https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&amp;title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7'));
   const template = await read(join(root, '.github/ISSUE_TEMPLATE/takedown.md'));
   for (const field of ['原帖链接', '你的 X 账号', '说明']) assert.ok(template.includes(field));
-  const changes = await git(['diff', 'HEAD', '--', 'data/']);
-  assert.equal(changes, '', 'Read-only data/ was modified');
+  const changedPaths = (await git(['diff', '--name-only', 'HEAD', '--', 'data/'])).trim().split('\n').filter(Boolean);
+  assert.ok(changedPaths.every(path => path === 'data/prompts.json'), 'Read-only data files were modified');
+  const baseline = JSON.parse(await git(['show', 'HEAD:data/prompts.json']));
+  const techie = baseline.entries.find(entry => entry.id === '2086124547376341346');
+  assert.ok(techie, 'Missing TechieBySA baseline entry');
+  if (Object.hasOwn(techie, 'embedId')) assert.equal(techie.embedId, '2086124536253043164');
+  techie.embedId = '2086124536253043164';
+  assert.deepEqual(data, baseline, 'Only the approved TechieBySA embedId addition is allowed; all other data must match HEAD');
 });
 
 console.log(`\n${passed}/${passed} verification checks passed.`);

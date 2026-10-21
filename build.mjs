@@ -2,11 +2,14 @@ import { readFile, mkdir, rm, writeFile, copyFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { escapeHtml as e, externalLink, markdownToHtml } from './lib/markdown.mjs';
+import { renderCard } from './lib/cards.mjs';
+import { validatePostMetadata } from './lib/posts.mjs';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const out = join(root, 'dist');
 const data = JSON.parse(await readFile(join(root, 'data/prompts.json'), 'utf8'));
 const entries = data.entries;
+for (const entry of entries) validatePostMetadata(entry);
 const models = [...new Set(entries.flatMap(entry => entry.models))];
 const tags = [...new Set(entries.flatMap(entry => entry.tags))];
 const takedownUrl = 'https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7';
@@ -43,20 +46,6 @@ function filterOptions(values, kind) {
   return values.map(value => `<label class="filter-chip"><input type="checkbox" name="${kind}" value="${e(value)}"><span>${e(value)}</span></label>`).join('');
 }
 
-function card(entry, index) {
-  const prompt = entry.isLong ? entry.promptExcerpt : entry.prompt;
-  return `<article class="prompt-card" data-entry-id="${e(entry.id)}" aria-labelledby="title-${e(entry.id)}">
-  <div class="card-overline"><span class="card-number">${String(index + 1).padStart(2, '0')} /</span><span>${entry.featured ? '精选案例' : '动作档案'}</span><time datetime="${e(entry.date)}">${e(entry.date)}</time></div>
-  <div class="model-labels">${entry.models.map(model => `<span>${e(model)}</span>`).join('')}</div>
-  <h2 id="title-${e(entry.id)}">${e(entry.title)}</h2>
-  <p class="card-description">${e(entry.description)}</p>
-  <div class="card-meta"><span class="version">${e(entry.modelVersion || entry.models.join(' / '))}</span>${entry.method ? `<span>${e(entry.method)}</span>` : ''}${entry.format ? `<span>${e(entry.format)}</span>` : ''}</div>
-  <div class="tag-list">${entry.tags.map(tag => `<span># ${e(tag)}</span>`).join('')}</div>
-  <div class="prompt-box"><div class="prompt-toolbar"><span>${entry.isLong ? '提示词摘录' : '完整提示词'} <small>· ${e(entry.promptLength)} 字</small></span><button class="copy-button" type="button" data-copy-entry="${e(entry.id)}" aria-label="复制：${e(entry.title)}" disabled>复制</button></div><pre class="prompt-text" tabindex="0">${e(prompt)}</pre>${entry.isLong ? `<p class="excerpt-note">完整提示词约 ${e(entry.promptLength)} 字，请到原帖查看。${externalLink(entry.postUrl, '查看完整提示词 ↗')}</p>` : ''}</div>
-  <div class="card-source"><span>${externalLink(entry.authorUrl, e(entry.author))}${entry.authorHandle ? `<small>@${e(entry.authorHandle.replace(/^@/, ''))}</small>` : ''}</span>${externalLink(entry.postUrl, '原帖 ↗')}</div>
-  <div class="x-embed" data-embed><div class="embed-label"><span class="live-dot" aria-hidden="true"></span> 成片 · X 官方嵌入</div><div class="tweet-mount"></div><template class="tweet-template"><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><a href="${e(entry.postUrl)}" target="_blank" rel="noopener noreferrer">在 X 上观看</a></blockquote></template>${externalLink(entry.postUrl, '在 X 上观看 ↗', 'watch-link')}</div>
-</article>`;
-}
 
 const home = page({
   title: 'AI 视频提示词站 v0.1',
@@ -66,7 +55,7 @@ const home = page({
   <section class="library" aria-label="提示词库"><div class="library-heading"><h2>浏览提示词 <span>THE ARCHIVE</span></h2><p id="result-count" role="status" aria-live="polite">共 ${entries.length} 条</p></div>
   <noscript><p class="notice">全部提示词已显示。筛选、复制和成片嵌入需要启用 JavaScript；也可直接选取文字或点击原帖。</p></noscript>
   <details class="filter-panel" open><summary>筛选条件 <span>模型 / 标签</span><span class="filter-toggle" aria-hidden="true">＋</span></summary><form id="filters"><fieldset disabled><legend>模型</legend><div class="filter-options">${filterOptions(models, 'model')}</div></fieldset><fieldset disabled><legend>标签</legend><div class="filter-options">${filterOptions(tags, 'tag')}</div></fieldset><div class="filter-bottom"><p>同类多选取并集，模型与标签取交集。</p><button id="clear-filters" class="clear-button" type="button" disabled>清除筛选</button></div><p id="unknown-filters" class="notice" hidden></p></form></details>
-  <div id="prompt-grid" class="prompt-grid">${entries.map(card).join('\n')}</div><div id="empty-state" class="empty-state" hidden><span aria-hidden="true">∅</span><h3>暂时没有匹配的提示词</h3><p>试试减少筛选条件，或清除筛选重新浏览。</p><button type="button" class="primary-button" data-clear-filters>清除筛选</button></div>
+  <div id="prompt-grid" class="prompt-grid">${entries.map(renderCard).join('\n')}</div><div id="empty-state" class="empty-state" hidden><span aria-hidden="true">∅</span><h3>暂时没有匹配的提示词</h3><p>试试减少筛选条件，或清除筛选重新浏览。</p><button type="button" class="primary-button" data-clear-filters>清除筛选</button></div>
   </section>`,
 });
 

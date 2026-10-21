@@ -5,7 +5,8 @@ export function createEmbeds({ window = globalThis.window, document = globalThis
   const states = new WeakMap();
   let pollTimer;
   let deadline = 0;
-  const visible = card => !card.hidden;
+  // Removed posts have a visible notice instead of an embed mount/template.
+  const visible = card => !card.hidden && Boolean(card.querySelector('.tweet-template') && card.querySelector('.tweet-mount'));
   function flush() {
     const widgets = window.twttr?.widgets;
     if (!widgets?.load) return false;
@@ -79,7 +80,7 @@ export function createEmbeds({ window = globalThis.window, document = globalThis
   return {
     update(cards) {
       for (const card of cards) {
-        if (card.hidden) {
+        if (!visible(card)) {
           observer?.unobserve(card);
           pending.delete(card);
           fallbackCards.delete(card);
