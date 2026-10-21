@@ -42,7 +42,7 @@ const repoPaths = (await git(['ls-files', '--cached', '--others', '--exclude-sta
 const trackedPaths = (await git(['ls-files', '-z'])).split('\0').filter(Boolean);
 
 await check('发布文件齐全，Cloudflare 安全标头正确', async () => {
-  for (const file of ['index.html', 'tips.html', 'takedown.html', 'assets/site.css', 'assets/app.mjs', 'assets/prompts.mjs', 'assets/clipboard.mjs', 'assets/embeds.mjs', 'data.json', '_headers']) assert.ok((await stat(join(dist, file))).isFile(), file);
+  for (const file of ['index.html', 'tips.html', 'takedown.html', 'assets/site.css', 'assets/app.mjs', 'assets/prompts.mjs', 'assets/clipboard.mjs', 'assets/embeds.mjs', 'data.json', '_headers', 'sitemap.xml', 'robots.txt']) assert.ok((await stat(join(dist, file))).isFile(), file);
   const headers = await read(join(dist, '_headers'));
   assert.match(headers, /X-Content-Type-Options:\s*nosniff/);
   assert.match(headers, /Referrer-Policy:\s*strict-origin-when-cross-origin/);
@@ -181,6 +181,42 @@ await check('下架入口与 issue 模板齐全，data/ 只允许批准的 Techi
   if (Object.hasOwn(techie, 'embedId')) assert.equal(techie.embedId, '2086124536253043164');
   techie.embedId = '2086124536253043164';
   assert.deepEqual(data, baseline, 'Only the approved TechieBySA embedId addition is allowed; all other data must match HEAD');
+});
+
+await check('三页 canonical 与 Open Graph 使用正式网址且内容完整', async () => {
+  for (const [file, path] of [['index.html', '/'], ['tips.html', '/tips.html'], ['takedown.html', '/takedown.html']]) {
+    const html = await read(join(dist, file));
+    const expectedUrl = `https://punkcanverse.com${path}`;
+    const canonical = [...html.matchAll(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"[^>]*>/g)].map(match => match[1]);
+    assert.deepEqual(canonical, [expectedUrl], `${file}: canonical`);
+    const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
+    const description = html.match(/<meta name="description" content="([^"]+)">/)?.[1];
+    assert.ok(title && description, `${file}: title/description`);
+    const properties = [...html.matchAll(/<meta property="([^"]+)" content="([^"]*)">/g)];
+    for (const [property, expected] of [
+      ['og:url', expectedUrl], ['og:title', title], ['og:description', description],
+      ['og:type', 'website'], ['og:site_name', 'FIGHT/PROMPTS'],
+    ]) assert.deepEqual(properties.filter(match => match[1] === property).map(match => match[2]), [expected], `${file}: ${property}`);
+  }
+});
+
+await check('sitemap 精确列出三个正式页面，robots 允许抓取并指向正式 sitemap', async () => {
+  const sitemap = await read(join(dist, 'sitemap.xml'));
+  assert.match(sitemap, /^<\?xml version="1\.0" encoding="UTF-8"\?>/);
+  assert.match(sitemap, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+  assert.match(sitemap, /<\/urlset>\s*$/);
+  assert.equal((sitemap.match(/<url>/g) || []).length, 3);
+  assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), [
+    'https://punkcanverse.com/', 'https://punkcanverse.com/tips.html', 'https://punkcanverse.com/takedown.html',
+  ]);
+  assert.equal(await read(join(dist, 'robots.txt')), 'User-agent: *\nAllow: /\nSitemap: https://punkcanverse.com/sitemap.xml\n');
+});
+
+await check('dist 与 README 无旧 Pages 绝对网址，本次 data/ 完全未修改', async () => {
+  for (const file of [...distFiles, join(root, 'README.md')]) {
+    assert.ok(!/https?:\/\/fight-prompts\.pages\.dev\b/i.test(await read(file)), `Old Pages URL in ${relative(root, file)}`);
+  }
+  assert.equal(await git(['diff', 'HEAD', '--', 'data/']), '', 'This domain change must not modify data/');
 });
 
 console.log(`\n${passed}/${passed} verification checks passed.`);
