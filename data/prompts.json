@@ -114,6 +114,7 @@
    "authorHandle": "TechieBySA",
    "authorUrl": "https://x.com/TechieBySA",
    "postUrl": "https://x.com/TechieBySA/status/2086124547376341346",
+   "embedId": "2086124536253043164",
    "date": "2026-08-08"
   },
   {
@@ -1475,7 +1476,9 @@
    "authorHandle": "Artedeingenio",
    "authorUrl": "https://x.com/Artedeingenio",
    "postUrl": "https://x.com/Artedeingenio/status/1949860456958398844",
-   "date": "2025-07-28"
+   "date": "2025-07-28",
+   "postStatus": "removed",
+   "postCheckedAt": "2026-10-21"
   },
   {
    "id": "1946702904896684040",

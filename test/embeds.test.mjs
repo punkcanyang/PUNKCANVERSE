@@ -110,3 +110,22 @@ test('没有 IntersectionObserver 时也只加载附近卡片，滚动后加载�
   env.listeners.get('scroll')();
   assert.deepEqual(env.loads, [cards[0].host, cards[1].host]);
 });
+
+test('失效原帖没有模板时不观察、不排队；筛选后重现和 SDK 延迟也不会渲染', () => {
+  for (const observer of [true, false]) {
+    const env = environment({ sdk: false, observer });
+    const removed = card();
+    removed.querySelector = () => null;
+    env.embeds.update([removed]);
+    assert.ok(!env.observed.has(removed));
+    if (observer) env.intersect([removed]);
+    removed.hidden = true;
+    env.embeds.update([removed]);
+    removed.hidden = false;
+    env.embeds.update([removed]);
+    env.enableSdk();
+    env.scriptListeners.get('load')();
+    assert.equal(env.loads.length, 0);
+    assert.equal(env.tasks.size, 0);
+  }
+});
