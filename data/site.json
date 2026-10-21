@@ -1,0 +1,7 @@
+{
+  "newsletter": {
+    "enabled": false,
+    "provider": "beehiiv",
+    "embedUrl": ""
+  }
+}
