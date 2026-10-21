@@ -2,7 +2,7 @@
 
 老闆个人自用的打斗／械斗 AI 视频提示词收藏站 v0.1。收录 63 条案例，按模型与标签筛选，复制提示词，并通过 X 官方嵌入查看成片。界面使用简体中文，收录资料保持原文。
 
-纯静态 HTML、CSS 和 JavaScript，使用 Node 内建模块构建，无框架、无 npm 依赖、无登录、无数据库、无后端或 Functions。目标部署为 Cloudflare Pages 的 `*.pages.dev`。
+静态 HTML、CSS 和 JavaScript，使用 Node 内建模块构建，无框架、无 npm 依赖、无登录、无数据库。部署于 Cloudflare Pages，正式网址为 https://punkcanverse.com。只有一支处理 301 转址的 Pages Functions `_middleware`，无其他后端。
 
 ## 内容规则
 
@@ -14,7 +14,7 @@
 - 上层不是同一作者时，使用 `replyNoVideo: true`，显示「此帖为回复，影片见原串」，保留原帖嵌入，不替换上层，也不设置 `embedId`。维护者须核对同作者关系，站点不自动寻找或改用其他作者的视频。
 - 不收阿里云官方文档示例作为提示词条目；写法要点里的官方文档引用属于学习参考，保留资料原文与出处。
 - 提示词版权归原作者，本站只收录文字并附原帖，影片以 X 官方嵌入显示，不转存。
-- 作者如希望下架，无需先证明身份，我们会在 **48 小时内处理**。网站各页页尾都有[下架入口](https://fight-prompts.pages.dev/takedown.html)，也可直接[提交下架 issue](https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7)。
+- 作者如希望下架，无需先证明身份，我们会在 **48 小时内处理**。网站各页页尾都有[下架入口](https://punkcanverse.com/takedown.html)，也可直接[提交下架 issue](https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7)。
 
 ## 页面与使用
 
@@ -33,6 +33,8 @@
 `data/` 是内容来源，构建不会改写它。本次修复唯一批准的数据改动是为 TechieBySA 的 `2086124547376341346` 新增 `embedId: "2086124536253043164"`，其余资料须与 HEAD 一致。后续由内容维护者核对来源和版权、整理数据，再通过代码审查更新；当前 v0.1 的校验固定为 63 条，扩容时需同步调整数量规则、文档与测试。
 
 `build.mjs` 从数据生成三页 HTML 和 `dist/data.json`，将本地脚本、样式及 `_headers` 复制到 `dist/`。提示词正文在构建时 HTML escape；长提示词没有完整原文。Markdown 转换器支持标题、嵌套清单、表格、引用、围栏代码、行内代码、强调与链接；不允许原始 HTML，只接受 HTTP(S) 链接。不会抓取或下载任何原帖媒体。
+
+正式网址由 `build.mjs` 的 `SITE_URL` 常数设为 `https://punkcanverse.com`。三页输出对应的 canonical 与 Open Graph 信息；构建同时生成列出三页绝对网址的 `sitemap.xml`，以及允许全部抓取并指向该 sitemap 的 `robots.txt`。
 
 ## 本地构建与验证
 
@@ -54,6 +56,8 @@ npm run build && npm test && npm run verify
 
 `npm run verify` 检查 63 条数据、唯一 id、必填字段、X 原帖格式、复制长度、数据原样发布与上述数据变更限制、删除状态／检查日期／串首元数据、逐卡嵌入与失效说明、页面页尾、下架模板、安全标头、第三方脚本白名单，以及 `dist/` 与 Git 追踪／待追踪文件中没有图片、影片或禁止域名。
 
+新增转址测试覆盖正式来源域名、路径与 query 保留、HTTP 升级、apex 与预览域名不转址，以及 middleware 的 301／`next()` 行为。verify 也检查三页 canonical／Open Graph、sitemap、robots 与发布内容不再使用旧 Pages 绝对网址。
+
 本地可用任何静态 HTTP 服务器预览 `dist/`。不要直接用 `file://` 打开页面，浏览器模块与数据 fetch 需要 HTTP。
 
 ## 部署到 Cloudflare Pages
@@ -67,7 +71,9 @@ npm run build && npm test && npm run verify
 npx wrangler pages deploy dist --project-name fight-prompts
 ```
 
-也提供等价部署脚本 `npm run deploy`。Wrangler 是部署工具，不是项目依赖；凭据在部署环境配置，不写入仓库。
+也提供等价部署脚本 `npm run deploy`。请在项目根目录执行部署，Wrangler 会自动带上根目录的 `functions/`；该目录不复制进 `dist/`。Wrangler 是部署工具，不是项目依赖；凭据在部署环境配置，不写入仓库。
+
+`functions/_middleware.js` 只调用 `lib/redirect.mjs` 的纯函数：仅当 host 完全等于 `www.punkcanverse.com` 或旧正式 host `fight-prompts.pages.dev` 时，以 301 转到 HTTPS 的 `punkcanverse.com`，保留 path 与 query。apex 本身、hash／branch 的 Pages 预览子域名与其他 host 都调用 `next()` 提供静态内容。转址无需第三方服务，也不使用 `_redirects` 比对 host。
 
 网站唯一第三方脚本是 `https://platform.twitter.com/widgets.js`，没有 analytics 或其他第三方脚本。
 

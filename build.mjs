@@ -5,6 +5,7 @@ import { escapeHtml as e, externalLink, markdownToHtml } from './lib/markdown.mj
 import { renderCard } from './lib/cards.mjs';
 import { validatePostMetadata } from './lib/posts.mjs';
 
+const SITE_URL = 'https://punkcanverse.com';
 const root = fileURLToPath(new URL('.', import.meta.url));
 const out = join(root, 'dist');
 const data = JSON.parse(await readFile(join(root, 'data/prompts.json'), 'utf8'));
@@ -18,7 +19,9 @@ function footer() {
   return `<footer class="site-footer"><div class="footer-top"><a class="wordmark" href="index.html">FIGHT<span>/</span>PROMPTS<small>个人自用 · v0.1</small></a><div class="footer-links"><a href="takedown.html">下架申请 · 48 小时内处理</a>${externalLink('https://x.com/punkcan', '作者：@punkcan')}</div></div><p>提示词版权归原作者，本站只收录文字并附原帖，影片以 X 官方嵌入显示，不转存。</p></footer>`;
 }
 
-function page({ title, description, active, body, twitter = false }) {
+function page({ path, title, description, active, body, twitter = false }) {
+  const canonical = `${SITE_URL}${path}`;
+  const pageTitle = `${title} · FIGHT/PROMPTS`;
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -27,7 +30,13 @@ function page({ title, description, active, body, twitter = false }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="description" content="${e(description)}">
-  <title>${e(title)} · FIGHT/PROMPTS</title>
+  <title>${e(pageTitle)}</title>
+  <link rel="canonical" href="${e(canonical)}">
+  <meta property="og:url" content="${e(canonical)}">
+  <meta property="og:title" content="${e(pageTitle)}">
+  <meta property="og:description" content="${e(description)}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FIGHT/PROMPTS">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d94c2b'/%3E%3Ctext x='14' y='48' font-size='48' font-family='sans-serif' font-weight='bold' fill='white'%3EF%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/site.css">
   <script type="module" src="assets/app.mjs"></script>
@@ -49,6 +58,7 @@ function filterOptions(values, kind) {
 
 
 const home = page({
+  path: '/',
   title: 'AI 视频提示词站 v0.1',
   description: '63 条打斗与械斗 AI 视频提示词。按模型、标签筛选，复制提示词，查看 X 原帖成片。',
   active: 'home', twitter: true,
@@ -71,10 +81,12 @@ for (const tip of tipFiles) {
   tipSections.push(`<section id="${tip.id}" class="tip-section" aria-label="${e(tip.title)}"><p class="eyebrow">${e(tip.label)}</p>${markdownToHtml(markdown, { headingOffset: 1 })}<a class="back-top" href="#tips-top">回到目录 ↑</a></section>`);
 }
 const tips = page({
+  path: '/tips.html',
   title: '写法要点', description: '打斗与械斗、Wan 3.0、MiniMax H3 的提示词写法要点与示例。', active: 'tips',
   body: `<header class="page-intro" id="tips-top"><p class="eyebrow">FIELD NOTES / 创作笔记</p><h1>把动作写清楚。</h1><p>从动作、镜头到声音，整理下一次创作可以参考的写法。</p></header><nav class="tips-toc" aria-label="写法要点目录">${tipFiles.map(tip => `<a href="#${tip.id}"><small>${e(tip.label)}</small><strong>${e(tip.title)} <span aria-hidden="true">↘</span></strong></a>`).join('')}</nav><div class="tips-content">${tipSections.join('\n')}</div>`,
 });
 const takedown = page({
+  path: '/takedown.html',
   title: '下架申请', description: '作者如希望下架，请通过 GitHub issue 提出，我们会在 48 小时内处理，无需先证明身份。', active: '',
   body: `<section class="takedown-content"><p class="eyebrow">RESPECT THE CREATORS / 尊重创作</p><h1>你的作品，<br>由你决定。</h1><p class="takedown-lead">作者如希望下架，请通过 GitHub issue 提出，我们会在 48 小时内处理，无需先证明身份。</p><div class="takedown-steps"><span>01</span><p>附上需要下架的原帖链接、你的 X 账号与说明。</p><span>02</span><p>提交申请后，我们会在 48 小时内处理。</p></div>${externalLink(takedownUrl, '通过 GitHub 申请下架 ↗', 'primary-button')}<p class="takedown-note">提示词版权归原作者。感谢每一位分享创作过程的作者。</p><a class="text-link" href="index.html">← 返回提示词库</a></section>`,
 });
@@ -84,6 +96,12 @@ await mkdir(join(out, 'assets'), { recursive: true });
 await writeFile(join(out, 'index.html'), home);
 await writeFile(join(out, 'tips.html'), tips);
 await writeFile(join(out, 'takedown.html'), takedown);
+const sitemapUrls = ['/', '/tips.html', '/takedown.html'].map(path => `${SITE_URL}${path}`);
+await writeFile(join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls.map(url => `  <url><loc>${e(url)}</loc></url>`).join('\n')}
+</urlset>\n`);
+await writeFile(join(out, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 // Only publish entries, without the editorial source metadata.
 await writeFile(join(out, 'data.json'), JSON.stringify({ entries }));
 await copyFile(join(root, 'web/app.mjs'), join(out, 'assets/app.mjs'));
