@@ -12,6 +12,7 @@ import { validateSite, newsletterUrl } from '../lib/newsletter.mjs';
 import { validateMedia, availableMedia } from '../lib/media.mjs';
 import { validateRegions, validateRegionText, REGION_DISCLAIMER } from '../lib/regions.mjs';
 import { withMediumBaseline } from '../lib/data-migration.mjs';
+import { verifyV03 } from './verify-v03.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
@@ -52,6 +53,7 @@ async function walk(directory) {
 const distFiles = await walk(dist);
 const repoPaths = (await git(['ls-files', '--cached', '--others', '--exclude-standard', '-z'])).split('\0').filter(Boolean);
 const trackedPaths = (await git(['ls-files', '-z'])).split('\0').filter(Boolean);
+await verifyV03(root);
 
 await check('发布文件齐全，Cloudflare 安全标头正确', async () => {
   for (const file of ['index.html', 'tips.html', 'takedown.html', 'assets/site.css', 'assets/app.mjs', 'assets/prompts.mjs', 'assets/clipboard.mjs', 'assets/embeds.mjs', 'data.json', '_headers', 'sitemap.xml', 'robots.txt']) assert.ok((await stat(join(dist, file))).isFile(), file);
@@ -142,7 +144,7 @@ await check('仅首页载入唯一允许的第三方脚本，全部嵌入使用�
   assert.equal(externalScripts, 1);
   const home = await read(join(dist, 'index.html'));
   assert.equal((home.match(/class="prompt-card"/g) || []).length, 63);
-  const availableCount = entries.filter(entry => entry.postStatus !== 'removed').length;
+  const availableCount = entries.filter(entry => !['removed', 'sensitive'].includes(entry.postStatus)).length;
   assert.equal((home.match(/<template class="tweet-template"><blockquote class="twitter-tweet" data-dnt="true"/g) || []).length, availableCount);
   assert.equal((home.match(/class="watch-link"/g) || []).length, availableCount);
   assert.ok(!/<blockquote class="twitter-tweet"/.test(home.replace(/<template\b[^>]*>[\s\S]*?<\/template>/g, '')), 'Live blockquotes must start inside templates');
@@ -158,10 +160,16 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
     assert.ok(card.includes(`data-copy-entry="${entry.id}"`), `${entry.id}: missing copy button`);
     assert.ok(card.includes(`href="${escapeHtml(entry.authorUrl)}"`), `${entry.id}: missing author`);
     const sourceLink = `<a href="${escapeHtml(entry.postUrl)}" target="_blank" rel="noopener noreferrer">`;
-    if (entry.postStatus === 'removed') {
+    if (['removed', 'sensitive'].includes(entry.postStatus)) {
       assert.ok(!/tweet-template|twitter-tweet|tweet-mount|data-embed|watch-link/.test(card), `${entry.id}: removed post must never embed`);
-      assert.ok(card.includes(`<div class="post-unavailable"><p>原帖已删除或不可用（${entry.postCheckedAt} 检查），无法显示成片</p></div>`));
-      assert.ok(card.includes(`${sourceLink}原帖（已失效）</a>`));
+      if (entry.postStatus === 'removed') {
+        assert.ok(card.includes(`<div class="post-unavailable"><p>原帖已删除或不可用（${entry.postCheckedAt} 检查），无法显示成片</p></div>`));
+        assert.ok(card.includes(`${sourceLink}原帖（已失效）</a>`));
+      } else {
+        assert.ok(card.includes('原帖含敏感内容，请到 X 观看'));
+        assert.ok(card.includes(`${sourceLink}原帖 ↗</a>`));
+        assert.ok(!card.includes('已失效'));
+      }
     } else {
       assert.equal((card.match(/class="tweet-template"/g) || []).length, 1, `${entry.id}: missing/duplicate embed`);
       assert.equal((card.match(/class="watch-link"/g) || []).length, 1, `${entry.id}: missing/duplicate watch link`);
