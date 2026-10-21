@@ -1,7 +1,9 @@
 import { parseFilters, filterEntries, clearFilters, filtersToSearch, getCopyText } from './prompts.mjs';
 import { copyText } from './clipboard.mjs';
 import { bindClickEmbeds } from './embeds.mjs';
+import { initConsent } from './consent.mjs';
 
+initConsent();
 bindClickEmbeds();
 
 const toast = document.querySelector('#toast');

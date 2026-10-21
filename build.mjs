@@ -12,6 +12,8 @@ import { renderRegions, validateRegions, validateRegionText } from './lib/region
 import { readThumbs } from './lib/thumbs.mjs';
 import { renderMediaTabs, MEDIUM_NAMES, promptPath } from './lib/media-tabs.mjs';
 import { loadEssays, renderEssay, renderEssayList } from './lib/essays.mjs';
+import { renderAnalytics, renderConsentBanner } from './lib/analytics.mjs';
+import { SITE_PAGES, renderSiteLinks, renderSitePage } from './lib/site-pages.mjs';
 
 const SITE_URL = 'https://punkcanverse.com';
 export async function buildSite(options = {}) {
@@ -35,7 +37,7 @@ const tags = [...new Set(entries.flatMap(entry => entry.tags))];
 const takedownUrl = 'https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7';
 
 function footer() {
-  return `<footer class="site-footer"><div class="footer-top"><a class="wordmark" href="index.html">PUNKCANVERSE<small>DIRECTED & CURATED BY PUNKCAN</small></a><div class="footer-links"><a href="takedown.html">下架申请 · 48 小时内处理</a>${externalLink('https://x.com/punkcan', '作者：@punkcan')}</div></div><p>提示词版权归原作者，本站只收录文字并附原帖，影片以 X 官方嵌入显示，不转存。缩图同样直接引用 X 原图，不转存。</p><p class="affiliate-disclosure">${AFFILIATE_DISCLOSURE}</p></footer>`;
+  return `<footer class="site-footer"><div class="footer-top"><a class="wordmark" href="index.html">PUNKCANVERSE<small>DIRECTED & CURATED BY PUNKCAN</small></a><div class="footer-links"><a href="takedown.html">下架申请 · 48 小时内处理</a>${externalLink('https://x.com/punkcan', '作者：@punkcan')}</div></div>${renderSiteLinks()}<p>提示词版权归原作者，本站只收录文字并附原帖，影片以 X 官方嵌入显示，不转存。缩图同样直接引用 X 原图，不转存。</p><p class="affiliate-disclosure"><a href="/affiliate-disclosure/">${AFFILIATE_DISCLOSURE}</a></p></footer>`;
 }
 
 function page({ path, title, description, active, body, twitter = false }) {
@@ -45,6 +47,7 @@ function page({ path, title, description, active, body, twitter = false }) {
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  ${renderAnalytics()}
   <meta name='impact-site-verification' value='15021707-94fc-4527-ab33-87c6066da7fd'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
@@ -68,6 +71,7 @@ function page({ path, title, description, active, body, twitter = false }) {
   <header class="site-header"><div class="mast-top"><a class="wordmark" href="index.html">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav aria-label="主导航"><a href="/prompts/video/">提示词库 <small>VIDEO / IMAGE / MUSIC</small></a><a href="tips.html">技术与资源</a><a href="/essays/">AI 工作论 <small>BY PUNKCAN</small></a><a href="regions.html">地区与申诉</a></nav></header>
   <main id="main">${body}</main>
   ${renderNewsletter(site)}${footer()}
+  ${renderConsentBanner()}
   <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>\n`;
@@ -137,6 +141,10 @@ for (const essay of essays) {
   pages.set(path,page({path,title:essay.title,description:essay.summary,body:renderEssay(essay)}));
   publicPaths.push(path);
 }
+for (const info of SITE_PAGES) {
+  pages.set(info.path,page({path:info.path,title:info.title,description:info.summary,body:renderSitePage(info)}));
+  publicPaths.push(info.path);
+}
 await rm(out, { recursive:true,force:true });
 await mkdir(join(out,'assets'),{recursive:true});
 for (const [path, html] of pages) {
@@ -148,7 +156,7 @@ const sitemapUrls = publicPaths.map(path => `${SITE_URL}${path}`);
 await writeFile(join(out,'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(url => `  <url><loc>${e(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
 await writeFile(join(out,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 await writeFile(join(out,'data.json'),JSON.stringify({entries}));
-for (const file of ['app.mjs','clipboard.mjs','embeds.mjs','site.css']) await copyFile(join(root,'web',file),join(out,'assets',file));
+for (const file of ['app.mjs','clipboard.mjs','embeds.mjs','consent.mjs','site.css']) await copyFile(join(root,'web',file),join(out,'assets',file));
 await copyFile(join(root,'lib/prompts.mjs'),join(out,'assets/prompts.mjs'));
 await copyFile(join(root,'_headers'),join(out,'_headers'));
 return { pages: [...pages.keys()], sitemapUrls };
