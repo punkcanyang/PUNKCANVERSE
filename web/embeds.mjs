@@ -94,3 +94,65 @@ export function createEmbeds({ window = globalThis.window, document = globalThis
   };
 }
 
+const widgetPromises = new WeakMap();
+export function loadOfficialWidgets({ window = globalThis.window, document = globalThis.document, timeoutMs = 12000 } = {}) {
+  if (window.twttr?.widgets?.load) return Promise.resolve(window.twttr);
+  if (widgetPromises.has(document)) return widgetPromises.get(document);
+  const promise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.id = 'x-widgets';
+    script.src = 'https://platform.twitter.com/widgets.js';
+    script.async = true;
+    const timer = window.setTimeout(() => fail(), timeoutMs);
+    function fail() {
+      window.clearTimeout(timer);
+      script.remove();
+      reject(new Error('X embed unavailable'));
+    }
+    script.addEventListener('load', () => {
+      window.clearTimeout(timer);
+      if (window.twttr?.widgets?.load) resolve(window.twttr); else fail();
+    });
+    script.addEventListener('error', fail);
+    document.head.append(script);
+  });
+  widgetPromises.set(document, promise);
+  promise.catch(() => widgetPromises.delete(document));
+  return promise;
+}
+
+export function bindClickEmbeds({ window = globalThis.window, document = globalThis.document, loadWidgets = () => loadOfficialWidgets({ window, document }) } = {}) {
+  document.addEventListener('click', async event => {
+    const button = event.target.closest?.('[data-play-embed]');
+    if (!button || button.disabled) return;
+    const slot = button.closest('[data-embed]');
+    const mount = slot?.querySelector('.tweet-mount');
+    const template = slot?.querySelector('.tweet-template');
+    if (!mount || !template) return;
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+    try {
+      const twttr = await loadWidgets();
+      mount.replaceChildren(template.content.cloneNode(true));
+      mount.hidden = false;
+      button.hidden = true;
+      await twttr.widgets.load(mount);
+    } catch {
+      mount.hidden = true;
+      mount.replaceChildren();
+      button.hidden = false;
+      button.disabled = false;
+      let error = slot.querySelector('.embed-error');
+      if (!error) { error = document.createElement('p'); error.className = 'embed-error'; error.setAttribute('role', 'status'); slot.append(error); }
+      error.textContent = '嵌入暂时无法载入，请点击下方链接在 X 上观看。';
+    } finally { button.removeAttribute('aria-busy'); }
+  });
+  document.addEventListener('error', event => {
+    const img = event.target;
+    if (img.tagName === 'IMG' && img.closest('.thumbnail-button')) {
+      img.hidden = true;
+      img.closest('.thumbnail-button').classList.add('image-failed');
+    }
+  }, true);
+}
+

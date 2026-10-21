@@ -1,6 +1,8 @@
 import { parseFilters, filterEntries, clearFilters, filtersToSearch, getCopyText } from './prompts.mjs';
 import { copyText } from './clipboard.mjs';
-import { createEmbeds } from './embeds.mjs';
+import { bindClickEmbeds } from './embeds.mjs';
+
+bindClickEmbeds();
 
 const toast = document.querySelector('#toast');
 let toastTimer;
@@ -15,6 +17,18 @@ function showToast(message) {
 }
 
 let entryById = new Map();
+let entriesPromise;
+function loadEntries() {
+  return entriesPromise ??= fetch(new URL('../data.json', import.meta.url)).then(response => {
+    if (!response.ok) throw new Error('Data unavailable');
+    return response.json();
+  }).then(({ entries }) => {
+    entryById = new Map(entries.map(entry => [String(entry.id), entry]));
+    for (const button of document.querySelectorAll('[data-copy-entry]')) button.disabled = false;
+    return entries;
+  });
+}
+if (document.querySelector('[data-copy-entry]')) loadEntries().catch(() => showToast('资料加载失败，请刷新或手动选取'));
 document.addEventListener('click', async event => {
   const button = event.target.closest('[data-copy-entry], [data-copy-code]');
   if (!button || button.disabled) return;
@@ -37,12 +51,9 @@ async function initializeLibrary() {
   const form = document.querySelector('#filters');
   if (!form) return;
   const cards = [...document.querySelectorAll('[data-entry-id]')];
-  const { entries } = await fetch(new URL('../data.json', import.meta.url)).then(response => {
-    if (!response.ok) throw new Error('Data unavailable');
-    return response.json();
-  });
-  entryById = new Map(entries.map(entry => [String(entry.id), entry]));
-  const embeds = createEmbeds();
+  const entries = await loadEntries();
+  const defaultMedium = form.dataset.defaultMedium || '';
+  let displayed = window.matchMedia('(max-width: 650px)').matches ? 12 : Infinity;
   let filters = parseFilters(location.search);
   const inputs = [...form.querySelectorAll('input')];
   const known = {
@@ -51,9 +62,12 @@ async function initializeLibrary() {
     media: new Set(entries.map(entry => entry.medium)),
   };
   function render() {
-    const matches = filterEntries(entries, filters);
+    const matches = filterEntries(entries, { ...filters, medium: filters.medium || defaultMedium });
     const ids = new Set(matches.map(entry => String(entry.id)));
-    for (const card of cards) card.hidden = !ids.has(card.dataset.entryId);
+    let shown = 0;
+    for (const card of cards) card.hidden = !ids.has(card.dataset.entryId) || ++shown > displayed;
+    const more = document.querySelector('#show-more');
+    if (more) more.hidden = shown <= displayed;
     for (const input of inputs) input.checked = input.name === 'medium'
       ? (filters.medium || '') === input.value
       : filters[input.name === 'model' ? 'models' : 'tags'].includes(input.value);
@@ -64,9 +78,9 @@ async function initializeLibrary() {
     const notice = document.querySelector('#unknown-filters');
     notice.hidden = unknown.length === 0;
     notice.textContent = unknown.length ? `链接中包含未收录的筛选项：${unknown.join('、')}。可清除筛选重新浏览。` : '';
-    embeds.update(cards);
   }
   function update(next) {
+    displayed = window.matchMedia('(max-width: 650px)').matches ? 12 : Infinity;
     filters = next;
     const query = filtersToSearch(filters, location.search);
     if (query !== location.search) history.pushState(null, '', `${location.pathname}${query}${location.hash}`);
@@ -85,6 +99,7 @@ async function initializeLibrary() {
   });
   for (const button of document.querySelectorAll('#clear-filters, [data-clear-filters]')) button.addEventListener('click', () => update(clearFilters()));
   window.addEventListener('popstate', () => { filters = parseFilters(location.search); render(); });
+  document.querySelector('#show-more')?.addEventListener('click', () => { displayed += 12; render(); });
   for (const fieldset of form.querySelectorAll('fieldset')) fieldset.disabled = false;
   for (const button of document.querySelectorAll('[data-copy-entry]')) button.disabled = false;
   if (window.matchMedia('(max-width: 600px)').matches && !filters.models.length && !filters.tags.length && !filters.medium) document.querySelector('.filter-panel').open = false;
