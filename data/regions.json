@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "anthropic-supported-regions",
+      "title": "Anthropic 产品与服务的地区范围",
+      "vendor": "Anthropic",
+      "summary": "该政策列出 Anthropic 应用、开发平台及授权渠道的服务范围，未列出的国家或地区不受支持。限制同时涉及实际使用地点、组织注册或总部所在地，以及组织的所有权或控制关系。提供的页面标注生效日为 2026-11-12，具体适用请核对官方页面。",
+      "sourceUrl": "https://www.anthropic.com/legal/supported-regions",
+      "officialUrl": "https://www.anthropic.com/legal/supported-regions",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "claude-access",
+      "title": "Claude 可用地点清单",
+      "vendor": "Anthropic / Claude",
+      "summary": "Claude 帮助中心列出可以访问 Claude 的国家与地区。核对个人使用地点时，可直接对照这份官方清单。",
+      "sourceUrl": "https://support.claude.com/en/articles/8461763-where-can-i-access-claude",
+      "officialUrl": "https://support.claude.com/en/articles/8461763-where-can-i-access-claude",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "claude-appeals",
+      "title": "Claude 警告、停用与申诉",
+      "vendor": "Anthropic / Claude",
+      "summary": "官方说明，重复违反使用政策、从不受支持地点创建账户或违反服务条款，都可能导致账户停用。认为账户被错误停用时，需要先登录被停用的账户，再访问页面所列申诉表单。若是所属组织被暂停，可在受限账户页面对相应组织选择 Request a review。",
+      "sourceUrl": "https://support.claude.com/en/articles/8241253-safeguards-warnings-and-appeals",
+      "officialUrl": "https://support.claude.com/en/articles/8241253-safeguards-warnings-and-appeals",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "anthropic-usage-policy",
+      "title": "Anthropic 使用政策与执行措施",
+      "vendor": "Anthropic",
+      "summary": "使用政策适用于应用用户、开发者以及通过授权渠道使用 Claude 的用户。官方表示，涉嫌违反政策时，可能采取警告、限制或暂停访问等措施；单次输出被安全机制拦截本身不代表已经违反政策。提供的页面标注生效日为 2026-11-12，请核对官方现行版本。",
+      "sourceUrl": "https://www.anthropic.com/legal/aup",
+      "officialUrl": "https://www.anthropic.com/legal/aup",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "openai-api-regions",
+      "title": "OpenAI API 支持的国家与地区",
+      "vendor": "OpenAI",
+      "summary": "该文档列出支持使用 OpenAI API 的国家和地区。官方提醒，在清单范围以外访问服务或向他人提供服务，可能导致账户被封锁或暂停。",
+      "sourceUrl": "https://developers.openai.com/api/docs/supported-countries",
+      "officialUrl": "https://developers.openai.com/api/docs/supported-countries",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "gemini-web-regions",
+      "title": "Gemini 网页版的可用范围",
+      "vendor": "Google / Gemini",
+      "summary": "官方页面列出 Gemini 网页版支持的语言、国家与地区。页面特别说明，移动应用的可用范围可能与网页版不同，使用时需要分别核对相应产品要求。",
+      "sourceUrl": "https://support.google.com/gemini/answer/13575153",
+      "officialUrl": "https://support.google.com/gemini/answer/13575153",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "gemini-api-regions",
+      "title": "Google AI Studio 与 Gemini API 地区要求",
+      "vendor": "Google / Gemini",
+      "summary": "该页列出 Google AI Studio 与 Gemini API 可用的国家和地区。官方说明，无法进入 AI Studio 可能与地区要求、未达到十八岁或尚未完成年龄验证有关。",
+      "sourceUrl": "https://ai.google.dev/gemini-api/docs/available-regions",
+      "officialUrl": "https://ai.google.dev/gemini-api/docs/available-regions",
+      "checked": "2026-10-21"
+    }
+  ]
+}

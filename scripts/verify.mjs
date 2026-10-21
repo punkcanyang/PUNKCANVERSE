@@ -7,6 +7,11 @@ import { join, relative, extname } from 'node:path';
 import { getCopyText } from '../lib/prompts.mjs';
 import { escapeHtml } from '../lib/markdown.mjs';
 import { validatePostMetadata } from '../lib/posts.mjs';
+import { validateAffiliates, AFFILIATE_DISCLOSURE, renderAffiliates } from '../lib/affiliates.mjs';
+import { validateSite, newsletterUrl } from '../lib/newsletter.mjs';
+import { validateMedia, availableMedia } from '../lib/media.mjs';
+import { validateRegions, validateRegionText, REGION_DISCLAIMER } from '../lib/regions.mjs';
+import { withMediumBaseline } from '../lib/data-migration.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
@@ -16,6 +21,13 @@ const git = async args => (await run('git', args, { cwd: root, encoding: 'utf8' 
 const data = JSON.parse(await read(join(root, 'data/prompts.json')));
 const published = JSON.parse(await read(join(dist, 'data.json')));
 const entries = published.entries;
+const affiliates = JSON.parse(await read(join(root, 'data/affiliates.json')));
+const site = JSON.parse(await read(join(root, 'data/site.json')));
+const regionsRaw = await read(join(root, 'data/regions.json'));
+const regions = JSON.parse(regionsRaw);
+// The three new v0.2 files are validated below; the pre-existing data stays
+// protected by the original path checks and exact baseline comparison.
+const protectedDataPaths = ['data/', ':(exclude)data/affiliates.json', ':(exclude)data/regions.json', ':(exclude)data/site.json'];
 const forbiddenMedia = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.svg', '.ico', '.mp4', '.webm', '.mov']);
 const forbiddenDomains = ['so', 'site'].map(tld => ['notion', tld].join('.')).concat([['app', 'notion', 'com'].join('.')]);
 const postPattern = /^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+$/;
@@ -167,20 +179,20 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
   assert.ok(getCopyText(techie).endsWith(`\n完整版：${techie.postUrl}`));
 });
 
-await check('下架入口与 issue 模板齐全，data/ 只允许批准的 TechieBySA embedId 更新', async () => {
+await check('下架入口与 issue 模板齐全，原资料仅允许批准的 medium 迁移与嵌入信息', async () => {
   const html = await read(join(dist, 'takedown.html'));
   assert.match(html, /无需先证明身份/);
   assert.ok(html.includes('https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&amp;title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7'));
   const template = await read(join(root, '.github/ISSUE_TEMPLATE/takedown.md'));
   for (const field of ['原帖链接', '你的 X 账号', '说明']) assert.ok(template.includes(field));
-  const changedPaths = (await git(['diff', '--name-only', 'HEAD', '--', 'data/'])).trim().split('\n').filter(Boolean);
+  const changedPaths = (await git(['diff', '--name-only', 'HEAD', '--', ...protectedDataPaths])).trim().split('\n').filter(Boolean);
   assert.ok(changedPaths.every(path => path === 'data/prompts.json'), 'Read-only data files were modified');
-  const baseline = JSON.parse(await git(['show', 'HEAD:data/prompts.json']));
+  const baseline = withMediumBaseline(JSON.parse(await git(['show', 'HEAD:data/prompts.json'])));
   const techie = baseline.entries.find(entry => entry.id === '2086124547376341346');
   assert.ok(techie, 'Missing TechieBySA baseline entry');
   if (Object.hasOwn(techie, 'embedId')) assert.equal(techie.embedId, '2086124536253043164');
   techie.embedId = '2086124536253043164';
-  assert.deepEqual(data, baseline, 'Only the approved TechieBySA embedId addition is allowed; all other data must match HEAD');
+  assert.deepEqual(data, baseline, 'Only the approved medium migration and TechieBySA embedId are allowed; all original prompt fields must match HEAD');
 });
 
 await check('三页 canonical 与 Open Graph 使用正式网址且内容完整', async () => {
@@ -212,11 +224,11 @@ await check('sitemap 精确列出三个正式页面，robots 允许抓取并指�
   assert.equal(await read(join(dist, 'robots.txt')), 'User-agent: *\nAllow: /\nSitemap: https://punkcanverse.com/sitemap.xml\n');
 });
 
-await check('dist 与 README 无旧 Pages 绝对网址，本次 data/ 完全未修改', async () => {
+await check('dist 与 README 无旧 Pages 绝对网址，原资料在授权迁移范围之外未修改', async () => {
   for (const file of [...distFiles, join(root, 'README.md')]) {
     assert.ok(!/https?:\/\/fight-prompts\.pages\.dev\b/i.test(await read(file)), `Old Pages URL in ${relative(root, file)}`);
   }
-  assert.equal(await git(['diff', 'HEAD', '--', 'data/']), '', 'This domain change must not modify data/');
+  assert.equal(await git(['diff', 'HEAD', '--', ...protectedDataPaths, ':(exclude)data/prompts.json']), '', 'Pre-existing data outside the checked prompt migration must not change');
 });
 
 await check('发布页面只保留 Impact 站点验证标签（老板要求不能删），无其他第三方验证标签', async () => {
@@ -226,6 +238,66 @@ await check('发布页面只保留 Impact 站点验证标签（老板要求不�
   for (const file of distFiles.filter(path => extname(path) === '.html')) {
     const html = (await read(file)).replace(new RegExp(impact.source, 'gi'), '');
     assert.doesNotMatch(html, /<meta\b[^>]*\b(?:name|property)\s*=\s*["'][^"']*(?:site-verification|msvalidate\.01)[^"']*["']/i, `Unexpected verification tag in ${relative(root, file)}`);
+  }
+});
+
+await check('v0.2 数据与页面齐全，medium 必填且限定三种类别', async () => {
+  for (const file of ['regions.html']) assert.ok((await stat(join(dist, file))).isFile(), file);
+  validateMedia(entries);
+  assert.ok(entries.every(entry => entry.medium === 'video'), 'The current 63 entries must all remain video');
+  const home = await read(join(dist, 'index.html'));
+  if (availableMedia(entries).length <= 1) assert.ok(!home.includes('name="medium"'), 'Single-medium collection must not show a category switch');
+});
+
+await check('推广平台映射完整、空网址无按钮，所有页面包含推广揭露', async () => {
+  validateAffiliates(affiliates);
+  for (const key of ['hailuo', 'pixverse', 'higgsfield', 'magnific', 'kling']) assert.ok(affiliates[key], `Missing affiliate platform: ${key}`);
+  for (const model of new Set(entries.flatMap(entry => entry.models))) assert.ok(Object.values(affiliates).some(platform => platform.models.includes(model)), `Missing platform for ${model}`);
+  const home = await read(join(dist, 'index.html'));
+  for (const entry of entries) {
+    const expected = renderAffiliates(entry, affiliates);
+    if (expected) assert.ok(home.includes(expected), `${entry.id}: missing sponsored link`);
+  }
+  if (Object.values(affiliates).every(platform => !platform.url.trim())) assert.ok(!/class="affiliate-(?:links|item|button)"/.test(home), 'Empty affiliate URLs must leave no container or button');
+  for (const file of distFiles.filter(path => extname(path) === '.html')) {
+    const html = await read(file);
+    const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
+    assert.ok(footer?.includes(AFFILIATE_DISCLOSURE), `${file}: missing disclosure`);
+    assert.ok(footer.includes('48 小时内处理') && footer.includes('href="takedown.html"') && footer.includes('https://x.com/punkcan'));
+    assert.ok(html.includes('href="regions.html"'), `${file}: missing regions navigation`);
+    for (const link of html.matchAll(/<a\b[^>]*class="affiliate-button"[^>]*>/g)) {
+      assert.match(link[0], /rel="sponsored noopener noreferrer"/);
+      assert.match(link[0], /target="_blank"/);
+      assert.match(link[0], /href="https?:\/\//);
+    }
+  }
+});
+
+await check('地区数据及整页 HTML 通过官方来源、字段、日期与禁词校验', async () => {
+  validateRegions(regions, regionsRaw);
+  const html = await read(join(dist, 'regions.html'));
+  validateRegionText(html);
+  assert.ok(html.includes(REGION_DISCLAIMER));
+  assert.equal((html.match(/class="region-card"/g) || []).length, regions.entries.length);
+  for (const entry of regions.entries) {
+    assert.ok(html.includes(escapeHtml(entry.summary)));
+    assert.ok(html.includes(`href="${escapeHtml(entry.sourceUrl)}"`));
+    assert.ok(html.includes(`href="${escapeHtml(entry.officialUrl)}"`));
+  }
+  assert.ok(html.includes('<link rel="canonical" href="https://punkcanverse.com/regions.html">'));
+  assert.ok(html.includes('<meta property="og:url" content="https://punkcanverse.com/regions.html">'));
+});
+
+await check('beehiiv 周报关闭或地址无效时无区块，有效地址才允许嵌入', async () => {
+  validateSite(site);
+  const url = newsletterUrl(site);
+  for (const file of distFiles.filter(path => extname(path) === '.html')) {
+    const html = await read(file);
+    if (!url) assert.ok(!/class="newsletter"|id="newsletter-title"/.test(html), `${file}: hidden newsletter must leave no empty block`);
+    else {
+      assert.ok(html.includes(`src="${escapeHtml(url)}" title="订阅提示词周报"`));
+      assert.ok(html.indexOf('class="newsletter"') < html.indexOf('<footer'));
+    }
   }
 });
 

@@ -7,6 +7,7 @@
  "entries": [
   {
    "id": "2105260950920311071",
+   "medium": "video",
    "title": "長矛一人衝陣（燃燒戰場、10 秒）",
    "description": "長矛群戰的好範本。關鍵是『WEAPON LOCK』：只有一支矛、永遠在主角手上、不消失不複製不變形；以及『VISUAL RULES』：敵人數十人都要動、沒人站著看、每個動作直接引發下一個。這兩段可直接搬去寫『竹篙、鋤頭、鐮刀』的械鬥。",
    "prompt": null,
@@ -35,6 +36,7 @@
   },
   {
    "id": "2093988861496168653",
+   "medium": "video",
    "title": "李小龍風格庭院徒手戰（FPV 一鏡到底）",
    "description": "把『一鏡到底』寫到最嚴格的一條：明講不准倒放、不准淡出、只有揭曉時半秒慢動作；強調『GHOST CAMERA』隱形攝影機，避免畫面出現空拍機；鏡頭在『環繞』與『俯衝向拳頭』之間切換。最後的 Global style lock 把復古膠片質感、角色對應 @Image1/@Image2、『拳腳從鏡頭旁擦過而不是正對鏡頭』都鎖死。適合學怎麼讓 AI 長鏡頭打鬥不斷掉。",
    "prompt": null,
@@ -64,6 +66,7 @@
   },
   {
    "id": "2093199866906456471",
+   "medium": "video",
    "title": "師兄鬧小師妹：打鬥中偷親（一鏡到底失敗案例）",
    "description": "輕鬆打鬧型的武打，重點在失敗經驗：明明寫『one continuous shot』，模型仍硬切到女主反應鏡頭；第一次生成一直出慢動作，所以加了『No slowmotion』。拍一鏡到底時要知道：寫了不等於做得到，『smooth switching between mid-shots and close-up』這種詞反而會誘導剪接。",
    "prompt": "Scene & Style: A cinematic, high-end modern luxury apartment at night, large floor-to-ceiling windows showing a blurred Hong Kong city skyline with glowing bokeh lights. Moody lighting, cool tones, movie shot style, high detail, 4k.\nCharacters: [char_s2aj] & [Mia]\nAction & Camera: Fast-paced martial arts combat/playful fight scene. [Mia] throws punches and kicks at the man. [char_s2aj] nimbly dodges her attacks and swiftly sneaks a cheek kiss and a quick surprise kiss on her lips during the fight. [Mia] looks shocked and annoyed before continuing her strike. Looping this action pattern 3 times within 20secs. Shooting in one continuous shot, dynamic camera movement, smooth switching between mid-shots and close-up reactions, high action motion. No slowmotion.",
@@ -90,6 +93,7 @@
   },
   {
    "id": "2086124547376341346",
+   "medium": "video",
    "title": "市場大亂鬥：抓竹竿、木箱、梯子當武器",
    "description": "成龍式『隨手抓道具打架』：竹竿撐跳、木箱、托盤當盾、燈籠串盪過去、梯子轉圈格擋。每 2 秒一段並附 SFX。要拍閩客械鬥裡抄起竹篙、扁擔、畚箕的場面，這是最對味的參考。",
    "prompt": null,
@@ -119,6 +123,7 @@
   },
   {
    "id": "2068834853894664445",
+   "medium": "video",
    "title": "維京狂戰士血洗村落（一鏡到底）",
    "description": "一個人拿斧頭從村口一路砍到自家長屋，整段是一個不斷跟拍的長鏡頭。好用在三點：①用 [STYLE]/[IMAGE REFERENCES]/[TIMELINE] 分區，模型容易讀；②每 4 秒一段，每段都寫「Continuous Dynamic Tracking Shot」並交代鏡頭往哪移（後退跟拍、側向環繞、往前推），所以不會亂剪；③角色外型寫成一段固定描述並要求 throughout 不變。要做『一方衝進村子砍殺』的械鬥段落，可以直接借這個骨架，把維京村換成閩式土埆厝聚落。",
    "prompt": null,
@@ -146,6 +151,7 @@
   },
   {
    "id": "2060421985608597798",
+   "medium": "video",
    "title": "二郎神對孫悟空（神祇對打＋中文台詞）",
    "description": "兩位神祇各綁一張參考圖（[Image1]/[Image2]），寫明兵器（三尖兩刃刀、如意金箍棒）和外觀；中間插入中文台詞並要求英文字幕；最後單獨列 CAMERA / LIGHTING / COLOR GRADING，並寫 NO MUSIC 只留雨聲腳步兵器聲。要做神明對打又要角色說台語或客語，可以照這個方式放台詞。",
    "prompt": null,
@@ -173,6 +179,7 @@
   },
   {
    "id": "2041772197799236033",
+   "medium": "video",
    "title": "中國龍大戰巨蟒救城（神獸對打一鏡到底）",
    "description": "神獸對打的標竿寫法：反覆強調『無翅的東方龍』『真實生物、肌肉骨骼鱗片』『重量與慣性』，並用大量 not stylized / not cartoon 把風格往寫實拉。敘事是『巨蟒破壞→龍從天而降→纏鬥→咬住拖上天→市民仰望』，一鏡到底。要做原住民神靈或土地神出手的場面，可以借『先寫怪物肆虐、再寫神靈降臨』的兩段結構。",
    "prompt": null,
@@ -199,6 +206,7 @@
   },
   {
    "id": "2020862666290721268",
+   "medium": "video",
    "title": "港式復古武俠：古廟火把下三人對群刺客",
    "description": "時間軸寫法的範本：0–4 秒定場、4–8 秒爆發、8–13 秒 180 度環繞群戰、13–15 秒收在三人背靠背。每段都同時寫『鏡頭 + 動作 + 聲音（古箏、琵琶輪指、鼓）』，還寫了『重擊瞬間降到 60% 速度再回正常』這種具體節奏。火把光、丁達爾光柱都是夜戰火光的好詞。",
    "prompt": null,
@@ -227,6 +235,7 @@
   },
   {
    "id": "2009010940616769542",
+   "medium": "video",
    "title": "騎士策馬穿過燃燒村落",
    "description": "放火燒村的氣氛段：火焰吞噬木屋、灰燼飄、村民逃散、低角度從背後跟拍，光線是火光混黃昏。沒有打鬥動作，但當械鬥後『燒庄』的過場非常合適。",
    "prompt": "A battle-worn knight clad in dented silver armor and a tattered crimson cape rides a black warhorse through a burning medieval village; ashes drift in the air as flames consume wooden buildings around him, and villagers flee in panic; the camera follows him from behind in a low-angle tracking shot, emphasizing the weight of duty in his solemn posture; the lighting is a dramatic mix of firelight and dusk glow, with warm tones, high contrast, and medium focal length; stylized in a gritty historical epic tone, evoking the atmosphere of a war-torn legend.",
@@ -254,6 +263,7 @@
   },
   {
    "id": "2109502196824084591",
+   "medium": "video",
    "title": "便利商店外街頭格鬥（直式 9:16）",
    "description": "一對一街頭武打，指定直式 9:16，適合短影音。服裝描述很細（顏色、款式），讓兩人在快速動作中不容易換臉換衣。動作只列招式種類（高踢、迴旋踢、空翻、閃躲、格擋），交給模型自己編。",
    "prompt": "Create an ultra-realistic cinematic martial arts fight scene outside a modern Minimarket convenience store on a sunny day. A young East Asian woman with long black hair, wearing a white cropped jacket, a red top, loose dark gray jeans, and white sneakers, fights a young East Asian man with messy black hair, wearing a black tactical jacket, a dark green shirt, black cargo pants, and black combat boots. The fight features fast martial arts combinations, powerful high kicks, spinning kicks, acrobatic jumps, dodges, blocks, and realistic counterattacks. The woman demonstrates impressive fighting skills, knocking the man off balance and sending him crashing against a concrete wall. Bright blue sky, fluffy white clouds, green trees, colorful convenience store signage, wet reflective pavement, yellow road markings, realistic shadows, dynamic handheld camera movements, low-angle action shots, wide shots, close-up facial expressions, natural motion blur, dramatic impact moments, physically believable body movements, detailed clothing textures, realistic human anatomy, photorealistic skin, cinematic color grading, 4K resolution, vertical 9:16 aspect ratio, high-end action movie cinematography. No subtitles, no watermarks, no on-screen text.",
@@ -279,6 +289,7 @@
   },
   {
    "id": "2106931613427028260",
+   "medium": "video",
    "title": "水墨斗笠劍客：用角速度寫運鏡",
    "description": "特別之處是把運鏡寫成數字：『順時針 180°/秒旋轉』『270°/秒環繞』『15°/秒慢轉』。每段固定三欄：Camera / Visuals / Effects。水墨筆觸、墨雲、粒子都寫在 Effects 裡，風格不會被動作沖掉。",
    "prompt": null,
@@ -305,6 +316,7 @@
   },
   {
    "id": "2104802751435911223",
+   "medium": "video",
    "title": "火車車廂一打多（多人近身戰）",
    "description": "狹窄空間一人打多人。寫法偏『描述氛圍 + 一長串鏡頭與畫質詞』，沒有逐秒動作，但附了負面提示（不要重複的人、多餘肢體、過多血）。狹長走道本身限制了走位，所以多人也比較不會糊在一起——拍村落巷戰可以借這個『用空間限制人數混亂』的思路。",
    "prompt": "A cinematic action fight scene inside an old, crowded Pakistani passenger train compartment. A young woman with long brown hair, wearing a blue denim jacket and loose white pants, fights multiple men dressed in black. She performs fast, realistic martial-arts moves, dodging punches and delivering powerful kicks and strikes. The fight moves through the narrow aisle between old worn-out blue train seats. Dynamic handheld camera movement, low-angle shots, wide shots and close-ups, realistic body movement, natural motion blur, dramatic physical choreography, intense expressions, dusty vintage train interior, daylight coming through the windows, gritty realistic atmosphere, cinematic color grading, shallow depth of field, highly detailed, photorealistic, realistic skin texture, Hollywood-style action cinematography, 35mm lens, high contrast, 4K, smooth motion, no text, no subtitles, no watermark.”\nNegative Prompt\n“cartoon, anime, CGI look, unrealistic anatomy, extra fingers, extra limbs, distorted face, duplicate people, floating objects, unnatural movement, excessive blood, gore, blurry faces, low quality, oversaturated colors, text, subtitles, watermark, logo.”",
@@ -331,6 +343,7 @@
   },
   {
    "id": "2102973186984030688",
+   "medium": "video",
    "title": "雙人長矛高速對決（防角色融合寫法）",
    "description": "四張參考圖分別對應兩個人和兩支矛，並用『CHARACTER LOCK』『NO IDENTITY SWAP. NO CHARACTER MERGING.』防止兩人臉孔互換或融成一人——這是多人打鬥最常見的失敗。鏡頭寫得很主動：攔截、俯衝、側切，不只是跟在背後。",
    "prompt": null,
@@ -357,6 +370,7 @@
   },
   {
    "id": "2099006619988459985",
+   "medium": "video",
    "title": "黑衣劍客火焰橫掃暗影獸群",
    "description": "短而有效的一段式寫法：低角度動態跟拍 + 旋身揮火焰劍 + 獸群衝鋒 + 地面衝擊波 + 慢動作扛劍走出。沒有時間軸也能出效果，適合先試水溫。",
    "prompt": "Cinematic dark fantasy wuxia action scene, low angle dynamic tracking shot. A male warrior in black martial robes and arm guards stands in a tall grass field under an overcast gray sky. He spins dynamically, slashing a glowing fiery sword that leaves arc trails of bright orange fire and sparks. A massive swarm of black shadow beasts charges across the field. He triggers a powerful ground shockwave that blasts dirt, smoke, and embers into the air. A circular matrix of glowing red target reticles and energy lasers shoots outward into the monster swarm. The warrior then rests his blazing sword on his shoulder and walks forward in slow motion through floating embers, smoke, and dissolving black ash. Photorealistic VFX, motion blur, 8k resolution, hyper-detailed.",
@@ -383,6 +397,7 @@
   },
   {
    "id": "2096103896553001298",
+   "medium": "video",
    "title": "豪華宴會廳 20 秒長鏡頭近身肉搏",
    "description": "20 秒、7 段時間軸的長鏡頭肉搏：擋拳→被抓反摔→掃腿倒地翻身→撞穿玻璃→極速連招→柔道摔→整理衣服離開。每段都具體到招式名，並反覆強調重量、慣性、身體力學。",
    "prompt": null,
@@ -410,6 +425,7 @@
   },
   {
    "id": "2095175917412962628",
+   "medium": "video",
    "title": "紅髮女戰士中箭倒地（一鏡到底、毫秒時間碼）",
    "description": "MiniMax-H3 官方提示格式（integrated_multimodal_description / overall_soundscape / non_diegetic_music）。把『中箭』拆成：衝鋒→箭從右前方射入肩胸→不馬上倒、再硬撐一步半→雙刀脫手→分層倒下→落地揚塵。受擊與倒地寫得這麼細，是 AI 打鬥最難的部分的好示範。",
    "prompt": null,
@@ -437,6 +453,7 @@
   },
   {
    "id": "2092825704480329768",
+   "medium": "video",
    "title": "霓虹巷一鏡到底：反重力刀對三機器人",
    "description": "一鏡到底的『連續性條款』寫得最清楚：開頭先列『同一套衣服、同一把刀、同三個機器人、同一條巷子不變』，再列『不准瞬移、不准位置重置、不准跳剪』；每 3 秒寫鏡頭『從哪個方位繞到哪個方位』。拍一人對多人的長鏡頭可以照抄這些禁止條款。",
    "prompt": null,
@@ -463,6 +480,7 @@
   },
   {
    "id": "2092533822592036981",
+   "medium": "video",
    "title": "王城陷落：騎士救王儲穿越火海",
    "description": "短句羅列式：劇情一句、場景一串、配色四色、光（煙、火把跳動高光、冷光打在石與鋼上、灰燼）、鏡頭（大遠景、火焰特寫、快速交叉剪、慢動作衝鋒、窄處手持）、聲音。很適合當『燒庄夜』的蒙太奇。",
    "prompt": "Medieval war epic, montage. A young knight crosses fire on the night the royal city falls, finds the heir and escorts them out of the castle. Besieged stone castle, burning throne hall, walls under arrow fire, dark tunnels, forest edge before dawn. Armour, banners, stone bridges, warhorses. Iron grey, flame orange-red, dark gold, deep forest green. Thick smoke, torches and fire throwing jumping highlights, cold light on stone and steel, ash and dust in the air. Third-person on the hero, cross-cut with the wider battle. Big wides, fire close-ups, fast intercutting, slow-motion charge, tight handheld in cramped spaces. War drums, horns, metal impacts, fire, horses screaming, low choral voices.",
@@ -489,6 +507,7 @@
   },
   {
    "id": "2088369662295695610",
+   "medium": "video",
    "title": "雨夜倉庫 30 秒對打（無血版）",
    "description": "30 秒、每 5 秒一段，並在開頭和結尾都明講『不要受傷、不要血、不要武器』。這是審查較嚴平台的安全寫法：把衝擊感轉移到聲音（悶哼、喘氣、鞋底摩擦）和走位，而不是傷口。結局設計成『拳頭停在面前、雙方退開』，避開擊倒。",
    "prompt": null,
@@ -516,6 +535,7 @@
   },
   {
    "id": "2086494563347398669",
+   "medium": "video",
    "title": "燈籠街：白衣女劍客對紅眼將軍（三鏡硬切）",
    "description": "用『[HARD CUT TO SHOT 2: 4s-8s]』明確標硬切，三個鏡頭各做一件事；第三鏡寫明『三次交手：迴旋踢、棍刺、劍斬』，最後兵器卡住、臉對臉。想要多鏡頭剪接感（而非一鏡到底）時，這種標法最清楚。",
    "prompt": "A structured 15-second high-intensity action duel with explicit hard cuts. [SHOT 1: 0s-4s] Dissolving smoke on the lantern-lit street reveals the dark warlord unharmed, standing tall as his eyes glow with fierce red energy, raising his black dragon staff. [HARD CUT TO SHOT 2: 4s-8s] Dynamic low-angle tracking shot of the beautiful white-robed female swordswoman sprinting forward at lightning speed across the stone cobblestones, her glowing silver sword leaving a trail of blue light, white silk dress fluttering. [HARD CUT TO SHOT 3: 8s-15s] Intense close-quarters martial arts collision! The female swordswoman leaps and strikes her silver sword violently against the warlord's dragon staff, unleashing a blinding explosion of bright sparks and shockwaves. They rapidly exchange three furious parries—a spin kick, a staff thrust, and a sword slash—ending in a fierce weapon lock-up with intense face-to-face eye contact under floating red lanterns.",
@@ -543,6 +563,7 @@
   },
   {
    "id": "2085108054518067278",
+   "medium": "video",
    "title": "超市大媽抱小孩用高麗菜對武士刀（毫秒級時間軸）",
    "description": "極端精細：每 0.25 秒一個動作，還加了『武器歸屬鎖』（大媽只用道具、男方只拿刀、不准換手、刀不准變形）、前中後景分層、鏡頭快門角度。最值得抄的是『Strict single-character weapon ownership lock』這句——多人拿不同武器（刀、竹竿、鋤頭）時可以防止武器亂跳到別人手上。",
    "prompt": null,
@@ -570,6 +591,7 @@
   },
   {
    "id": "2082370698048414190",
+   "medium": "video",
    "title": "體育館太極女對軍裝男（借力摔）",
    "description": "用條列『Sequence』逐拍寫動作：飛撲→高踢被化解→伏地爬行→馬步→雙手推手→抓腳摔→再起身→收勢。每拍一個清楚動作，是 9 秒短片最穩的寫法。GoodCase 的 awesome-seedance『打鬥編排』模板也收錄了這位作者的案例。",
    "prompt": null,
@@ -597,6 +619,7 @@
   },
   {
    "id": "2082035898716389382",
+   "medium": "video",
    "title": "白髮雙劍女對黑甲武士（直式分鏡式提示）",
    "description": "把 15 秒切成 5 格『分鏡面板』：定場→交手→空中連擊→地面硬碰→收招定格。角色、場景、對手各一段先講清楚，再進時間軸。結尾寫『no blood, pure fantasy martial arts energy』降低審查風險。",
    "prompt": null,
@@ -623,6 +646,7 @@
   },
   {
    "id": "2073659391807803412",
+   "medium": "video",
    "title": "海怪夜襲木造艦隊（夜戰火光＋怪物）",
    "description": "寫法特色：顏色比例『60:30:10』（黑海灰天 / 青色生物光 / 橘色砲火）、單獨一段寫怪物的物理（水做的身體被砲彈穿過無效）、時間軸裡切換 24fps 與 120fps 慢動作、聲音在慢動作時『掉成水下悶響』，最後 FORBIDDEN 清單。夜戰火光、怪物登場都可直接借用。",
    "prompt": null,
@@ -649,6 +673,7 @@
   },
   {
    "id": "2069797803899965625",
+   "medium": "video",
    "title": "驅魔師長矛淨化滿寺妖怪（動畫）",
    "description": "0–4／4–10／10–15 秒三段式，人物 + 時間段用『+』接起來。寫了 MAPPA 式黑金衝擊格、環繞、甩鏡、撞擊時急推鏡等日式作畫語彙。『符咒纏繞的長矛』『金色聖光』很適合轉成台灣廟宇的符令、法器、香火光。",
    "prompt": "A dark anime exorcist with long black hair, golden prayer beads floating around his neck, spear wrapped in glowing talismans, focused eyes and calm deadly posture + 0–4s: stands inside an abandoned temple lit by daylight beams as shadow yokai crawl from walls and ceilings, camera slowly pushes through dust toward his spear; \n4–10s: he spins into combat, spear cutting arcs of golden fire, talismans exploding into sacred symbols, yokai disintegrating into black smoke, camera orbits through the fight, whip pans between enemies, crash zooms on spear impacts, MAPPA-style black-and-gold impact frames filling the screen; \n10–15s: he drives the spear into the floor, releasing a massive circular purification wave that vaporizes every monster, temple bells ring silently as dust clears, camera pulls back to show him alone in the restored sunlight\nAncient Japanese temple, broken statues, floating dust, black smoke, golden holy VFX, supernatural combat climax. epic anime",
@@ -676,6 +701,7 @@
   },
   {
    "id": "2067298200520896673",
+   "medium": "video",
    "title": "崎嶇地形邊跑邊打（6 秒連招）",
    "description": "一段式，列出招式清單（迴旋踢、飛膝、空翻、走牆、摔倒）+ 強調『重擊與動量的真實物理』+ 跟拍、環繞、低角度 + no cuts。Grok Imagine 片長短，寫一段連續動作就好。",
    "prompt": "Masterpiece quality, 6-second video of a highly skilled fighter traversing rough terrain while engaged in a brutal, high-intensity fight. The character performs fast, powerful martial arts combos including spinning kicks, flying knees, aerial flips, wall runs, and savage takedowns. Strong realistic physics with heavy impact and momentum. Dynamic camera work with tracking shots, circling camera, and dramatic low angles. Cinematic lighting, sharp motion clarity, intense and raw action, no cuts, smooth and powerful choreography, best quality, 6-second video.",
@@ -702,6 +728,7 @@
   },
   {
    "id": "2059760915025699022",
+   "medium": "video",
    "title": "武俠女拳師大戰城堡骷髏群",
    "description": "一人對一群怪物的徒手戰。每段結尾都重複『Maintain: 髮型、衣服、手套』防角色漂移；用 TIME REMAP 標出變速；每段都配聲音。最後的 STYLE NOTES『鏡頭追著她，不搶在她前面』是很好的運鏡原則。",
    "prompt": null,
@@ -730,6 +757,7 @@
   },
   {
    "id": "2056321432808767664",
+   "medium": "video",
    "title": "火焰劍戰士對怪物大軍",
    "description": "四行結構（人物／動作／環境／鏡頭），鏡頭那行寫成完整運鏡腳本：IMAX 大遠景揭露→慢推→突然變速進戰鬥→手持跟拍→甩鏡跟劍→慢動作火花→閃電照亮→站在怪物屍山上環繞收尾。",
    "prompt": "A battle-hardened medieval warrior with heavy scratched armor, cape torn, blood across his face, gripping a flaming sword with both hands\nCharges into a massive battlefield against monstrous creatures, blocking giant attacks and carving through enemies while catapults explode and fire spreads across the battlefield\nDark fantasy warzone under storm clouds with burning siege towers, mud, ash and thousands of soldiers fighting in the distance\nBegins with wide IMAX-style battlefield reveal, slow push-in on the warrior, sudden speed ramp into combat, handheld tracking through brutal clashes, whip pans following sword swings, slow-motion sparks and blood during impacts, lightning illuminating the battlefield, ending with the warrior standing atop a mountain of defeated monsters while rain extinguishes the surrounding flames, camera slowly orbiting his victorious silhouette",
@@ -757,6 +785,7 @@
   },
   {
    "id": "2051610377306116575",
+   "medium": "video",
    "title": "泥濘戰場：重甲騎士一打多",
    "description": "只有四行，卻把『人物→動作→環境→鏡頭』四件事各用一行講完。『weight emphasized in movement（強調動作的重量）』『whip pans connecting each clash（甩鏡串起每次交鋒）』是讓群戰不飄的關鍵詞。",
    "prompt": "A medieval knight in heavy armor, scratched and battle-worn, gripping a longsword with both hands, breathing heavy but steady\nClashes against multiple enemies, blocking blows with brute force, pushing forward with powerful strikes and shield bashes\nMuddy battlefield under stormy sky, rain falling, chaos all around\nLow-angle tracking shot pushing into combat, weight emphasized in movement, whip pans connecting each clash, slow motion sparks on sword impacts, dramatic lightning flashes",
@@ -784,6 +813,7 @@
   },
   {
    "id": "2049906568909684901",
+   "medium": "video",
    "title": "古戰場兩軍空降對砍（大場面群戰）",
    "description": "大場面群戰的順序：空拍定場→雙方落地→拔刀對衝→切近景刀劍火花→空中對撞慢動作→收在大遠景整片混戰。最後用 Style / Camera / Mood 三行收尾。把『降落傘』換成『從田埂兩頭衝出』，就是村落械鬥的開場。",
    "prompt": null,
@@ -810,6 +840,7 @@
   },
   {
    "id": "2048067032738930903",
+   "medium": "video",
    "title": "雨夜竹林忍者群戰",
    "description": "群戰關鍵詞：大批忍者、竹林、暴雨、濃霧、多把武士刀交擊。直式構圖。寫法簡單，可當 Grok Imagine 群戰的起點。",
    "prompt": "ultra realistic cinematic scene, large group of ninjas engaged in an intense battle inside a dense bamboo forest at night, heavy rain pouring, thick mist and fog drifting between tall bamboo stalks, dramatic samurai sword fight, multiple katana clash...",
@@ -836,6 +867,7 @@
   },
   {
    "id": "2045457317953667271",
+   "medium": "video",
    "title": "雨夜屋頂女劍士對重甲反派（三模型同題比較）",
    "description": "同一段提示詞丟三個模型，影片裡三版並排，最適合用來比較各模型在『雨、慢動作刀鋒相抵、360 度環繞』上的差異。提示詞本身是標準的一段式好萊塢寫法。",
    "prompt": "Live action cinematic action film. A breathtakingly beautiful female warrior in her late 20s, with long dark braided hair and battle-worn leather and steel armor, faces off against a massive armored villain on a rain-soaked rooftop at night. She moves with lightning speed — a flurry of precise sword strikes creating arcing trails of steel. Her eyes burn with fierce determination. Slow-motion close-up of their blades locking. Rain splatters dramatically off the metal. Shot in the style of a high-budget Hollywood action film — anamorphic lens flare, shallow depth of field, moody blue-orange color grade. Camera does a fast 360-degree orbit during the clash. 4K ultra-realistic.",
@@ -864,6 +896,7 @@
   },
   {
    "id": "2039728331826799101",
+   "medium": "video",
    "title": "虎戰士對龍魂戰士：刀戰後噴火",
    "description": "一長句寫完整個因果鏈：高速互砍→鍔迫（刀抵刀臉對臉）→龍魂張口噴火→虎戰士頭被衝擊後仰、毛皮焦黑、跪倒、刀臂垂下。把『受擊後的身體反應』寫成一串細節，是讓打擊看起來有力的關鍵。",
    "prompt": "Epic sword fight with tiger warrior vs dragon wraith warrior, both trading devastating blows at high speed, camera swinging low and fast as sparks explode on every clash,  both warriors locked blade to blade face to face, then the dragon wraith breaks, jaw opening wide, a massive torrent of crimson fire erupts from his mouth directly into the tiger warrior's face, his head snapping back from the impact, massive body convulsing under the heat, clawed hand grabbing his own face as the fur scorches black and skin cracks beneath the fire, knees buckling under the force, sword arm dropping",
@@ -890,6 +923,7 @@
   },
   {
    "id": "2034069165011833180",
+   "medium": "video",
    "title": "暴雨屋頂：女刺客雙匕首對男刺客（中文時間軸）",
    "description": "中文時間軸寫法：[00:00-00:03] 這種格式，每段一個鏡頭 + 一個動作。這是同一作者的第三版，前一版寫『吊臂急速拉高成全景』被模型理解成畫面裡真的出現一台吊臂車，所以改成『運鏡急速拉高成全景』。",
    "prompt": "港式武俠+好萊塢動作混合，電影感強烈，時長15秒，女刺客 及 男刺客 \n暴雨古代屋頂瓦片，遠處雷電城市天際線，女刺客，濕發貼臉，手持雙匕首 \n\n[00:00-00:03] 低角度仰拍，女刺客從屋簷躍下，慢鏡捕捉雨滴滑過匕首，落地瞬間瓦片碎裂，快速推鏡到中景 \n[00:03-00:10] 快速跟拍女刺客及男刺客交手，匕首與長劍激烈碰撞，火花四濺，360度環繞鏡頭捕捉高速移動，雨水甩出弧線\n [00:10-00:12] 女刺客迴旋踢命中對手胸口，慢動作表現衝擊波，衣服撕裂，男刺客倒退撞斷木柱\n [00:12-00:15] 運鏡急速拉高成全景，女刺客持匕俯視倒地男刺客，閃電照亮側臉，雨水流下 \n\n電影級光影，超現實粒子特效，物理真實，角色一致性，8K超清，無畸變",
@@ -917,6 +951,7 @@
   },
   {
    "id": "2033696362320240879",
+   "medium": "video",
    "title": "雨夜竹林：黑衣女劍客對白衣雙刀刺客（中文提示）",
    "description": "純中文、一整段關鍵詞式寫法：人物外型、招式、劍光、水花、布料濕透，再加一串運鏡（快速跟隨 + 吊臂升降 + 360 環繞 + 瞬間推鏡 + 擊中慢動作）。適合中文使用者直接改。",
    "prompt": "武俠動作片風格，雨夜竹林激戰，黑衣女劍客（長髮飛揚、紅色腰帶）對戰 白衣刺客（面罩、雙刀），快速劍招連擊，劍光軌跡，水花四濺，布料濕透貼身，電影級運鏡：快速跟隨鏡頭 + 吊臂升降 + 360環繞 + 瞬間極速推鏡 + 關鍵擊中慢動作，背景竹子隨風搖曳被劍氣削斷，8K寫實，極致物理模擬，電影光影，角色全程一致",
@@ -943,6 +978,7 @@
   },
   {
    "id": "2033495931514179601",
+   "medium": "video",
    "title": "千騎衝鋒（從草叢低機位到空拍大全景）",
    "description": "用『cut to / crash zoom / snap to』把一段騎兵衝鋒寫成四個鏡頭，還直接引用《神鬼戰士》《阿拉伯的勞倫斯》的鏡頭語法，用『手持微震』暗示大地震動。適合械鬥前雙方人馬集結的大場面。",
    "prompt": "Extreme wide shot — thousand cavalry on a fog-covered plain at dawn, camera positioned low in the grass, hooves thunder toward lens, slow motion as the first wave crests a hill and sunlight breaks behind them in blinding corona, cut to tracking shot riding alongside at full gallop, manes and armor catching light, crash zoom to general's raised sword, then snap to aerial crane pulling back to reveal the full impossible scale of the charge, earth trembling implied through handheld micro-vibration, Gladiator / Lawrence of Arabia grammar, 65mm film grain",
@@ -968,6 +1004,7 @@
   },
   {
    "id": "2023664996987924781",
+   "medium": "video",
    "title": "日本刀女劍士斬機械人（分場景寫法）",
    "description": "先寫品質與速度（2.5 倍速動作片、高速剪接、多角度含空拍），再用 Scene 1–4 寫四個動作節拍：死角偷襲被斬→背對鏡頭激戰→用刀擋雷射→斬碎爆炸。",
    "prompt": "Quality: Japanese full-color animation, high-speed cuts, numerous frames, 24fps, photorealistic, high-definition 2.5D. A 2.5x-speed action movie.\nCuts: Video created from a variety of camera angles, including overhead shots and drone footage.\nMusic: EDM\n\nScene 1:\nAn evil cyborg appears from a blind spot and is slashed at lightning speed with a Japanese sword.\n\nScene 2: With his back to the camera, he engages in a fierce battle with the cyborg, slashing with his sword at lightning speed.\nThe cyborg fires a laser beam, and the woman blocks the laser with her sword.\n\nScene 3: The woman slashes the cyborg at lightning speed, shredding it into scrap.\n\nScene 4: The resulting scrap explodes.",
@@ -994,6 +1031,7 @@
   },
   {
    "id": "2010908642804224203",
+   "medium": "video",
    "title": "功夫劍舞＋元素特效（固定正面全身）",
    "description": "明講『這是電影式武術表演，不是真實格鬥』，再要求『鏡頭固定在正前方、全身永遠入鏡』。鏡頭不動、身體全露，劍招就不容易被裁掉或變形；每一招換一種元素（火、雷、風、冰）讓畫面有變化。",
    "prompt": "Full-body kung fu sword performer moving at extreme speed.\nAction:\nThe character performs traditional kung fu sword forms using a single-edged Chinese-style or katana-inspired blade.\nMovements include slashing arcs, thrusting motions, blade deflections, spins, overhead and low sweeps, aerial movements, stance transitions, rotations, jumps, and sudden controlled stops.\nThe body and sword move in perfect harmony, with every step and turn synchronized to precise blade control.\nThis is a cinematic martial arts performance, not realistic combat.\nMotion Style:\nFluid yet powerful martial arts flow.\nSmooth transitions between stances and techniques.\nDynamic rhythm with bursts of speed and moments of stillness, showing master-level control.\nElemental Effects:\nEach sword movement is enhanced by changing elemental visual effects.\nElements include fire, lightning, wind, ice, glowing energy, and shockwave-like pulses.\nEvery motion briefly produces a different visual element — such as flaming trails, lightning streaks, wind pressure lines, ice patterns, or glowing energy flares.\nElements switch rapidly and unpredictably with each movement.\nVisual Style:\nStylized cinematic martial arts.\nMotion blur on sword trails, bright flashes on movement peaks, glowing arcs, and floating elemental particles.\nCamera fixed in front, full body always visible.\nDark or neutral background to highlight motion, light, and visual effects.",
@@ -1019,6 +1057,7 @@
   },
   {
    "id": "2001018030575509581",
+   "medium": "video",
    "title": "竹林雙武士對砍（Runway 4.5 vs Kling 2.6 同題）",
    "description": "用『秒數』排招：1 秒同時衝出、2 秒刀在畫面中央相碰、2.5–4 秒三連擊、4.5 秒錯身定格。黑白高反差＋只留紅色繩結，是黑澤明式寫法。短片（5 秒左右）用秒數比用段落穩。",
    "prompt": "\"The camera orbits around Two samurai in traditional armor face each other in bamboo forest. Shafts of morning light cut through mist. At 1s, both explode forward simultaneously. 2s: katanas meet in center frame, steel rings out, impact sends visible shockwave through mist. 2.5-4s: rapid exchange of three strikes, blades catching light with each swing. 4.5s: they pass each other, freeze in opposing stances. Kurosawa framing, high contrast black and white with selective color on blood-red cord details.\"",
@@ -1046,6 +1085,7 @@
   },
   {
    "id": "2000219951433486367",
+   "medium": "video",
    "title": "動畫：繞著巨獸脖子砍的空中戰",
    "description": "一句到底的關鍵詞串：沿脖子與肩膀螺旋往上、極速連斬、巨手抓空、誇張動作弧線、瞬間定格、環繞鏡頭強調體型差。對打巨大怪物時，『split-second impact freezes（瞬間打擊定格）』很好用。",
    "prompt": "Wild aerial anime fight against a giant monster, agile fighter spirals upward around the creature’s neck and shoulders, rapid slashes delivered at extreme speed, violent near-misses with grasping hands, exaggerated motion arcs, split-second impact freezes, cinematic camera orbiting the massive scale, brutal kinetic chaos",
@@ -1072,6 +1112,7 @@
   },
   {
    "id": "1999359728283983905",
+   "medium": "video",
    "title": "水做的武士對煙做的龍（Runway Gen-4.5 元素壓力測試）",
    "description": "分成 Prompt / Camera Settings / Lighting / Key Details 四塊，Key Details 用編號列出『必須達成』的三件事。神靈若是水、煙、火這類非實體，這是很好的測試題。",
    "prompt": "A cinematic, wide-angle slow-motion shot of a samurai made entirely of transparent, rushing crystal-clear water fighting a dragon made of thick, billowing black smoke. They are fighting on a wet rooftop in Tokyo at night.\n\nCamera Settings: Shot on Arri Alexa 65, Panavision C-Series Anamorphic lens, 24mm wide angle, f/1.8 aperture for shallow depth of field, high shutter speed to capture crisp water droplets.\n\nLighting: High-contrast neon-noir lighting. Strong volumetric backlighting from pink and blue neon signs to maximize light refraction through the water samurai's body. Dramatic rim lighting to outline the black smoke dragon against the dark sky. Ray-traced reflections on the wet rooftop.\n\nKey Details: 1. The neon city lights must refract and shine THROUGH the transparent water body. 2. The Smoke Dragon is volumetric and shifting. 3. Hyper-realistic fluid simulation, 8k resolution, epic scale.",
@@ -1097,6 +1138,7 @@
   },
   {
    "id": "1998039564829507631",
+   "medium": "video",
    "title": "雪夜維京村：戰士與狼對抗襲擊者",
    "description": "村落防衛戰：敵人從木屋之間湧出、刀斧相擊火花、狼跳進戰局、慢動作格擋。最後只寫『Add dynamic camera moves』交給 Veo 自由發揮。拍『庄頭被襲』可以直接改場景。",
    "prompt": "A fierce Viking warrior with fur-lined armor and a massive engraved sword charges into battle in a snowy medieval village. The sky is dark and stormy as snow swirls violently through the air. Enemy raiders rush toward him from between the wooden houses. The Viking swings his sword with power, sparks flying as blades collide. His wolf companion snarls and leaps into the fight, circling and darting between attackers. Cinematic slow-motion moments capture the warrior blocking an axe strike, fur cloak whipping in the wind, and snow exploding from the ground with every clash. Add dynamic camera moves.",
@@ -1123,6 +1165,7 @@
   },
   {
    "id": "1998136315343409451",
+   "medium": "video",
    "title": "道場：老師父單手擋學生連拳（含音效語法）",
    "description": "用 Scene / Element / Movement / Audio / Other 分欄。Audio 欄用 [Object][Action][Sound Effect] 方括號語法寫衣袖破風聲，再接一句台詞與語氣（Wise + Slow + Gentle）。適合 Kling 2.6 原生音效版本。",
    "prompt": "Scene: A traditional wooden dojo with sunlight streaming through rice paper windows. Dust motes dance in the light. Element: An old master with a long white beard and a young, eager student. Movement: The student attacks with a flurry of punches; the master blocks them all with one hand behind his back, barely moving his feet. Audio: [Object: Cloth Robes] sharply [Action: Snap] + [Sound Effect: Whipping Sound] + \"Focus your breathing, not your fists.\" + Wise + Slow + Gentle + [Master speaking]. Other: Martial Arts / Fluid Motion / Steady Cam.",
@@ -1148,6 +1191,7 @@
   },
   {
    "id": "1996925385184104893",
+   "medium": "video",
    "title": "早高峰版史密斯夫婦：甩咖啡開打",
    "description": "Scene / Action（分 The Coffee、The Fight、Clothes）/ Audio / Camera 四欄。音效寫成擬聲詞（Whoosh、Smack）加音樂類型；鏡頭寫『側面跟拍 + 打擊時手持晃動』。",
    "prompt": "Scene: Cinematic action movie, matrix style.\nAction:\nThe Coffee: The man and woman violently throw their coffee cups aside (out of frame). Brown liquid splashes in the air.\nThe Fight: Immediately, they turn to face each other aggressively. The woman throws a high kick towards the man, and the man raises his arm to block. They are engaging in fast martial arts combat.\nClothes: Their black suits move dynamically with the fight.\nAudio: Intense fighting sounds. \"Whoosh\" (kick), \"Smack\" (block), glass breaking sound. Fast-paced techno combat music.\nCamera: Side view tracking shot. The camera moves to the side to capture the profile of them fighting. Shaky cam for impact.",
@@ -1174,6 +1218,7 @@
   },
   {
    "id": "1981632619109601542",
+   "medium": "video",
    "title": "水墨武士破紙而出連斬（圖生影片）",
    "description": "圖生影片的分欄寫法：Action / Camera / Atmosphere / Style 各一句。圖已經給了外觀，所以只寫動作與鏡頭——符合各家官方『圖生影片只寫動作』的建議。",
    "prompt": "Action: The samurai bursts out of the paper, landing in the real world with a shockwave, then spins and slashes in a flurry of sword strikes.  Camera: Quick orbit shot followed by dynamic tracking as he moves forward with each attack.  Atmosphere: Ink splashes become 3D particles that fly off with each move, creating a surreal effect.  Style: Fast-paced, energetic with traditional sumi-e style mixed into the environment.",
@@ -1199,6 +1244,7 @@
   },
   {
    "id": "1980612333723611356",
+   "medium": "video",
    "title": "雨夜街頭武術對決（固定鏡頭）",
    "description": "反直覺的寫法：明講『Camera locked at medium distance』『zero camera motion』，只讓人動、鏡頭不動，再用『慢動作爆發』增加節奏。鏡頭固定時人物比較不容易變形，適合動作本身很複雜的段落。",
    "prompt": "intense martial arts duel on a rain-soaked urban street at night. Two fighters move with lightning speed, kicking up puddles and splashing rain. Neon signs reflect off wet pavement, and sparks fly from metal clashes. Camera locked at medium distance, capturing flips, strikes, and blocks in dramatic slow-motion bursts. Hyper-realistic textures, cinematic lighting, dynamic reflections, zero camera motion.",
@@ -1225,6 +1271,7 @@
   },
   {
    "id": "1973323214685085757",
+   "medium": "video",
    "title": "燃燒戰場騎士（Midjourney 影片版）",
    "description": "和 Luma Ray3 那條同一段提示詞，加上 --ar 1:1 --motion high --video 1 拿去 Midjourney 跑，原帖附兩個版本。可以看出 Midjourney 影片偏『會動的插畫』，鏡頭運動比 Luma 弱。",
    "prompt": "Low-angle tracking shot: A knight in battle-worn armor strides across a burning battlefield, sword dragging along the ground and sparking with each step. The camera pushes forward through smoke and falling ash, framing shattered catapults and silhouettes of clashing soldiers in the distance as the knight raises his blade to the sky. --ar 1:1 --motion high --video 1",
@@ -1251,6 +1298,7 @@
   },
   {
    "id": "1973119429576708138",
+   "medium": "video",
    "title": "燃燒戰場：騎士拖劍前行",
    "description": "低角度跟拍 + 劍拖地冒火花 + 鏡頭穿過煙與灰 + 遠景剪影廝殺 + 舉劍。同一提示詞也有人拿去 Midjourney 影片跑（見另一條），可對照。",
    "prompt": "Low-angle tracking shot: A knight in battle-worn armor strides across a burning battlefield, sword dragging along the ground and sparking with each step. The camera pushes forward through smoke and falling ash, framing shattered catapults and silhouettes of clashing soldiers in the distance as the knight raises his blade to the sky.",
@@ -1277,6 +1325,7 @@
   },
   {
    "id": "1973032611124556070",
+   "medium": "video",
    "title": "摩天樓破牆邊緣肉搏",
    "description": "用環境製造緊張：200 層高的破牆邊緣、玻璃碎片還在往下掉、每一拳都離邊緣很近。打鬥不一定要寫很多招，寫『危險的空間』也能出戲。",
    "prompt": "Tracking dolly shot: Two fighters brawl inside a skyscraper with shattered walls. The camera swings wide, capturing their silhouettes against a 200-story drop, shards of glass still falling into the city below. Every punch teeters dangerously close to the edge. Thrilling, cinematic, nerve-wracking.",
@@ -1301,6 +1350,7 @@
   },
   {
    "id": "1970484324282568930",
+   "medium": "video",
    "title": "掃堂腿與騰空閃避（雙人配合招式）",
    "description": "把一個雙人配合招式寫完整：紅衣蹲低轉身掃堂、揚起塵土；白衣同時騰空扭身躍過；鏡頭先低位推軌跟掃腿，再上搖跟躍起。『In perfect timing』寫出兩人的時間關係，很適合寫對打。",
    "prompt": "The red warrior drops low into a crouch, spinning gracefully into a wide leg sweep. Dust lifts as his leg cuts across the ground in a powerful arc. In perfect timing, the man in white leaps high, body twisting as he clears the sweep with a sharp airborne motion. The camera tracks the sweep in a low dolly shot before tilting up to follow the leap. Wide framing shows the full choreography against the looming stone guardian, emphasizing the precision and control of both fighters. Fluid, elegant, martial artistry.",
@@ -1326,6 +1376,7 @@
   },
   {
    "id": "1964422115416768614",
+   "medium": "video",
    "title": "黃昏戰場：浪人走過斷矛與燃燒旗幟",
    "description": "械鬥之後的『戰場餘燼』鏡頭：滿地斷矛、燃燒旗幟、雨、雷、灰燼被風捲起；先背後跟拍再切眼神特寫。光線寫『暖橘夕陽撞上冷藍暴雨雲』。",
    "prompt": "A lone samurai in a tattered black kimono walks slowly across a deserted battlefield at dusk, the ground littered with broken spears and burning banners; his sword drips with rain as thunder rumbles in the distance, and a sudden gust of wind sends ash swirling around him—camera tracks from behind in a steady dolly shot, then shifts to a close-up of his determined eyes under a straw hat, warm orange sunset light colliding with cold blue storm clouds, medium telephoto lens, cinematic contrast; the style is realistic historical drama with an epic, solemn mood.",
@@ -1352,6 +1403,7 @@
   },
   {
    "id": "1955250635529388309",
+   "medium": "video",
    "title": "古卷軸上的武士對決（水墨轉全彩）",
    "description": "創意轉場：武士每走一步卷軸就展開更多，最後打出紙面變成全彩動畫世界。適合用『廟壁畫、古地圖、族譜』當開場，帶出械鬥故事。",
    "prompt": "Two samurai duel on an ancient scroll — every step they take unrolls more of the battle scene — the camera follows the unfurling paper until the fight bursts out into a full-color anime world",
@@ -1377,6 +1429,7 @@
   },
   {
    "id": "1952004334478037226",
+   "medium": "video",
    "title": "道場雙忍者紅藍氣流對練",
    "description": "偏『美術說明書』的寫法：大量描述道場陳設、色調、紅藍能量軌跡，動作只寫『流暢的武術動作』。效果偏表演而非實打，適合神明附身、法術對練這類畫面。",
    "prompt": "Create an 8-second animated sequence featuring 2 mysterious Shinobi ninjas sparing using ninjatō swords in a traditional Shinobi dojo. The dojo should have a minimalist design with wooden floors, tatami mats, and wooden walls, maintaining an open structure to allow for extensive movement and sparring activities. The ninja characters are dressed in traditional attire with a hood.\n\nOne ninja should be surrounded by swirling red energy trails that emanate from his body as he performs fluid, martial arts movements. The energy effects should pulse and flow, emphasizing their power and agility.\n\nThe second ninja should be surrounded by swirling blue energy trails that emanate from his body as he performs fluid, martial arts movements. The energy effects should pulse and flow, emphasizing their power and agility.\n\nIn the background, include traditional training weapons such as shuriken, kunai, and possibly a kyoketsu-shoge, mounted on the walls or placed around the dojo. Add scrolls and a few calligraphy banners with Japanese characters, reflecting themes of stealth, endurance, and martial prowess, hanging on the wooden walls. The overall color palette should be dominated by natural wood tones, with the glowing red energy providing a stark contrast. Subtle smoke effects at the base of the dojo can enhance the mystical atmosphere, while the open design of the dojo ensures the focus remains on the ninja's dynamic movements and the glowing energy trails.",
@@ -1402,6 +1455,7 @@
   },
   {
    "id": "1951969117897928914",
+   "medium": "video",
    "title": "鴨子功夫對決（JSON 逐秒提示）",
    "description": "Veo 3 流行的 JSON 寫法：把時長、fps、風格、場景、兩個角色的外型與動作、0–7 秒每秒一件事、音樂與字幕都放進結構裡。8 秒的 Veo 剛好一秒一拍，動作不會塞爆。換成人類角色就是很好的對打骨架。",
    "prompt": null,
@@ -1428,6 +1482,7 @@
   },
   {
    "id": "1950836340263723466",
+   "medium": "video",
    "title": "功夫對決：空中迴旋踢特寫",
    "description": "只寫一個瞬間：矮個子凌空迴旋踢向高大對手頭部、對手後仰吃驚。5 秒片只做一個動作，是早期模型最穩的做法。",
    "prompt": "Intense close-up of a fierce Kung Fu duel — a striking, agile martial artist launches a powerful mid-air spinning kick toward the head of a towering opponent. Their expression is razor-focused, eyes locked, muscles coiled with explosive energy. The opponent, a disciplined Kung Fu master with weathered features and sweat-drenched robes, leans back in surprise, caught off guard. High contrast, dynamic motion blur, traditional Chinese setting, dramatic lighting, cinematic action shot.",
@@ -1454,6 +1509,7 @@
   },
   {
    "id": "1949860456958398844",
+   "medium": "video",
    "title": "漫畫頁風格：天使長矛刺穿巨獸（Midjourney 影片參數）",
    "description": "Midjourney 影片是先出圖再動起來，提示詞重點在畫面本身，最後加 --motion high（高動態）--raw --video 1。神與巨獸的構圖、配色（金、灰白、血紅）寫得很清楚。",
    "prompt": "A vertical American comic book page in the style of Simon Bisley, mixing divine iconography with brutal violence and anatomical exaggeration. A battle-scarred archangel in cracked golden armor plummets from the sky with a flaming spear, wings tattered and bleeding. Below, horned titans rise from storm clouds. One panel shows the angel roaring as he impales a beast through the mouth. Palette of radiant gold, ash white, and blood red. Glorious, apocalyptic, and sacredly violent. Dialogue and narration in illuminated manuscript-inspired English comic fonts. No real-world likenesses. --ar 9:19 --motion high --raw --video 1",
@@ -1482,6 +1538,7 @@
   },
   {
    "id": "1946702904896684040",
+   "medium": "video",
    "title": "動畫：廢棄工廠宿敵對決（手持跟著撞擊彈跳）",
    "description": "一句話寫法的代表：『鏡頭隨每次撞擊彈跳（手持感）＋火花＋木箱碎裂＋最後一擊震波穿牆』。海螺 02 在動作動態上口碑好，短句就能出效果。",
    "prompt": "Anime-style combat sequence: two rivals fight in an abandoned factory — the camera bounces with each impact, handheld-style — steel sparks, crates shatter, and their final clash sends a shockwave through the walls",
@@ -1507,6 +1564,7 @@
   },
   {
    "id": "1945890431801438546",
+   "medium": "video",
    "title": "動畫：窄巷對拆（鏡頭隨格擋左右移）",
    "description": "關鍵句『the camera moves side-to-side in sync with each parry（鏡頭隨每次格擋左右同步移動）』：把鏡頭節奏和招式節奏綁在一起，拍出一來一往的對拆感。",
    "prompt": "Anime-style fight scene: two characters exchange blows in a tight alleyway — the camera moves side-to-side in sync with each parry, every strike lighting up the walls with glowing energy trails",
@@ -1533,6 +1591,7 @@
   },
   {
    "id": "1935098801410158601",
+   "medium": "video",
    "title": "羅馬軍雪林衝鋒（火把、方括號關鍵詞）",
    "description": "每個概念放一組方括號：廣角、低角度、軍隊衝鋒、盔甲髒污、煙與火、火把金光對比暗影、動態模糊、Kodak 底片。群戰氣氛用關鍵詞堆疊也能成立。",
    "prompt": "[cinematic wide-angle footage], [low-angle perspective capturing the chaos of battle], [Roman soldiers charging through a snowy, forested battlefield], [gleaming armour with streaks of dirt], [background of smoke and fire against a muted gray sky], [golden tones from torches contrasting with dark shadows], [dynamic motion blur adding energy to the action], [shot on Kodak Vision3 250D for epic cinematic realism].",
@@ -1560,6 +1619,7 @@
   },
   {
    "id": "1931033884298547362",
+   "medium": "video",
    "title": "黃昏屋頂快剪打鬥（含旁白）",
    "description": "用 Opens on / Cut to / Snap to / Final shot 寫成五個鏡頭的快剪：空拍環繞→腳步特寫→手持過肩出拳→血滴特寫→剪影收尾，並加男聲旁白。Veo 3 支援原生聲音，旁白直接寫在提示詞裡。",
    "prompt": "A cinematic fast cut rooftop fight scene at dusk. Opens on a wide aerial shot circling two fighters. Cut to a low-angle close-up of feet pivoting on gravel. Snap to handheld over-the-shoulder punch impact. Cut to extreme macro on blood dripping onto concrete. Final shot: wide silhouette as one figure stands tall while the other falls. VO (male, gritty tone): \"Some battles are silent.\"",
@@ -1585,6 +1645,7 @@
   },
   {
    "id": "1920520421583036431",
+   "medium": "video",
    "title": "國王雪中策馬率軍衝鋒（四模型圖生影片比較）",
    "description": "圖生影片的極簡提示：一句動作＋『Dynamic dramatic motion』。各家官方都說圖生影片只要寫動作，這條就是實例。",
    "prompt": "“A king charges through snowfall on horseback, sword raised, leading his army into battle. Dynamic dramatic motion.”",
@@ -1612,6 +1673,7 @@
   },
   {
    "id": "1916533364024287363",
+   "medium": "video",
    "title": "星際遊俠對紅色蜘蛛機器人（Luma vs Pika 圖生影片）",
    "description": "同一張圖、同一段提示詞分別丟 Luma Ray2 與 Pika 2.2。對打怪物時要寫出『誰攻擊、誰閃避』，否則模型可能只動主角。",
    "prompt": "\"A Star Ranger engages in a vibrant battle against a deadly red spider robot, depicted in dynamic anime style. The scene unfolds under a dark, starry nighttime sky, illuminated by bursts of energy from their clash. Background movement highlights fluttering debris and sparks, while rich reds and glowing blues create a visually stunning contrast. Rapid motion emphasizes the intensity as the Ranger evades the robot's attacks with acrobatic grace.\"",
@@ -1638,6 +1700,7 @@
   },
   {
    "id": "1879696405440409618",
+   "medium": "video",
    "title": "水與熔岩元素戰士對決",
    "description": "最短的一條：兩個元素戰士 + 鏡頭繞著戰鬥移動 + 攻擊爆出光與能量。適合神靈法術對轟，作為快速試驗的起點。",
    "prompt": "Two elemental warriors clash in an open field, one wielding glowing water and the other molten lava. The camera moves dynamically around the battle as their attacks create explosions of light and energy",

@@ -1,6 +1,6 @@
-# AI 视频提示词站 v0.1
+# AI 提示词站 v0.2
 
-老闆个人自用的打斗／械斗 AI 视频提示词收藏站 v0.1。收录 63 条案例，按模型与标签筛选，复制提示词，并通过 X 官方嵌入查看成片。界面使用简体中文，收录资料保持原文。
+老闆个人自用的打斗／械斗 AI 提示词收藏站 v0.2。收录 63 条视频案例，按模型与标签筛选，复制提示词，并通过 X 官方嵌入查看成片。另有「AI 工具各地区使用与申诉」官方资料栏目。界面使用简体中文，收录资料保持原文。
 
 静态 HTML、CSS 和 JavaScript，使用 Node 内建模块构建，无框架、无 npm 依赖、无登录、无数据库。部署于 Cloudflare Pages，正式网址为 https://punkcanverse.com。只有一支处理 301 转址的 Pages Functions `_middleware`，无其他后端。
 
@@ -22,6 +22,7 @@
 - 筛选写入 query，例如 `?model=Seedance&tag=冷兵器`；多选用重复参数。支持分享、刷新和浏览器前进／后退。未知筛选会提示，可清除；零结果会显示空状态。
 - `tips.html`：打斗、Wan 3.0、MiniMax H3 三份写法要点，有页首目录、表格、代码示例与复制按钮。
 - `takedown.html`：下架说明与 GitHub issue 入口。
+- `regions.html`：AI 工具各地区使用与申诉，附官方来源、中文摘要和检查日期。
 - 360px 手机屏幕为单栏，筛选默认收合，可展开多选；桌面为双栏。仅使用系统字体和本地 CSS。
 - 复制优先使用 Clipboard API，失败时用 textarea + execCommand 退回，结果以约 1.5 秒 toast 提示。全部失败时可手动选取。
 - 禁用 JavaScript 时仍可阅读全部提示词与要点，并打开作者与原帖；交互筛选、复制与 X 成片嵌入需要 JavaScript。
@@ -30,11 +31,33 @@
 
 数据源是仓库中已经整理好的 `data/prompts.json` 与 `data/tips/fight.md`、`wan3.md`、`minimax-h3.md`。提示词来自作者公开的 X 原帖，各条保留作者与原帖链接；写法要点中的引用出处保留在原文中。
 
-`data/` 是内容来源，构建不会改写它。本次修复唯一批准的数据改动是为 TechieBySA 的 `2086124547376341346` 新增 `embedId: "2086124536253043164"`，其余资料须与 HEAD 一致。后续由内容维护者核对来源和版权、整理数据，再通过代码审查更新；当前 v0.1 的校验固定为 63 条，扩容时需同步调整数量规则、文档与测试。
+`data/` 是内容来源，构建不会改写它。v0.2 只为原有 63 条提示词新增 `medium: "video"`，并增加 `affiliates.json`、`regions.json`、`site.json`；原有提示词正文、来源、失效状态和串首嵌入信息仍与 HEAD 严格比对。后续由内容维护者核对来源和版权、整理数据，再通过代码审查更新；当前校验固定为 63 条提示词，扩容时需同步调整数量规则、文档与测试。
 
-`build.mjs` 从数据生成三页 HTML 和 `dist/data.json`，将本地脚本、样式及 `_headers` 复制到 `dist/`。提示词正文在构建时 HTML escape；长提示词没有完整原文。Markdown 转换器支持标题、嵌套清单、表格、引用、围栏代码、行内代码、强调与链接；不允许原始 HTML，只接受 HTTP(S) 链接。不会抓取或下载任何原帖媒体。
+`build.mjs` 从数据生成四页 HTML 和 `dist/data.json`，将本地脚本、样式及 `_headers` 复制到 `dist/`。提示词正文在构建时 HTML escape；长提示词没有完整原文。Markdown 转换器支持标题、嵌套清单、表格、引用、围栏代码、行内代码、强调与链接；不允许原始 HTML，只接受 HTTP(S) 链接。不会抓取或下载任何原帖媒体。
 
-正式网址由 `build.mjs` 的 `SITE_URL` 常数设为 `https://punkcanverse.com`。三页输出对应的 canonical 与 Open Graph 信息；构建同时生成列出三页绝对网址的 `sitemap.xml`，以及允许全部抓取并指向该 sitemap 的 `robots.txt`。
+正式网址由 `build.mjs` 的 `SITE_URL` 常数设为 `https://punkcanverse.com`。四页输出对应的 canonical 与 Open Graph 信息；构建保留原有三页的 `sitemap.xml` 与对应严格校验，并生成允许全部抓取的 `robots.txt`。地区页可从所有页面的导航入口访问。
+
+## medium 字段与类别切换
+
+`data/prompts.json` 每条必须包含 `medium`，仅允许 `video`、`image`、`music`，对应「视频／图像／音乐」。现有 63 条全部为 `video`。只有至少两种类别有资料时才显示类别切换；单一类别不输出切换控件。类别与模型、标签组合筛选，状态通过 `?medium=image` 等 query 保留，清除筛选会一起清除类别；首页路径保持不变。
+
+## 推广连结规则
+
+`data/affiliates.json` 以平台为键，每个平台填写 `name`、`url`、`models`；`models` 必须使用提示词资料中的原始模型名。当前网址全部为空字符串。日后只填写经核对的 HTTP(S) 推广网址，匹配到该模型的卡片才会出现「去 XX 试试」按钮与旁边的「推广连结」标签，使用 `target="_blank" rel="sponsored noopener noreferrer"`。空值或不安全的协议不输出按钮、容器或占位间距。同一平台匹配多个模型时只显示一次。
+
+所有页面页尾固定揭露：「本站部分按钮为推广连结，通过它们注册或购买，本站可能获得佣金，不影响你的价格。」站点不加载推广追踪脚本。
+
+## 地区栏目内容界线
+
+`data/regions.json` 的 `entries` 至少五条，每条包含唯一 `id`、`title`、`vendor`、2–4 句原创中文 `summary`、HTTPS `sourceUrl`／`officialUrl` 和检查日期 `checked`。本版七条摘要仅依据提供的官方页面文字，检查日期统一为 `2026-10-21`；原始文字档不放进仓库。政策页面如标注未来生效日，摘要会明确说明。与地区可用性或申诉无关的 FAQ 不收录。
+
+页首声明：「仅整理官方政策与申诉管道，不提供也不推荐任何绕过地区限制的方法。」只收官方政策与申诉入口，不发布个人账户资料、对话或其他使用渠道。`lib/regions.mjs` 的单一常数 `REGION_BANNED_TERMS` 管理禁词清单；构建与 verify 对完整 JSON 和地区整页 HTML 都执行检查，命中即失败。字段缺失、重复 id、非 HTTPS 或未列入批准清单的来源同样失败。verify 不发网络请求，链接状态由外部另行检查。
+
+## 周报开关（beehiiv）
+
+`data/site.json` 默认是 `newsletter: { enabled: false, provider: "beehiiv", embedUrl: "" }`。准备好官方嵌入表单地址后填写 `embedUrl`，再将 `enabled` 设为 `true`。只有 HTTPS 且域名精确为 `beehiiv.com` 或 `embeds.beehiiv.com` 的地址才输出 iframe；其他域名、非标准端口、带凭据的地址都隐藏。关闭、网址为空或无效时，整块不出现在 HTML，没有空框。
+
+启用后，周报说明与表单嵌入显示在各页页尾上方，采用延迟加载，不另加第三方脚本。本版不创建外部账户或订阅，不配置付费服务。
 
 ## 本地构建与验证
 
