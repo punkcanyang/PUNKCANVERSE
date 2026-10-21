@@ -219,4 +219,10 @@ await check('dist 与 README 无旧 Pages 绝对网址，本次 data/ 完全未�
   assert.equal(await git(['diff', 'HEAD', '--', 'data/']), '', 'This domain change must not modify data/');
 });
 
+await check('发布页面无第三方站点验证标签', async () => {
+  for (const file of distFiles.filter(path => extname(path) === '.html')) {
+    assert.doesNotMatch(await read(file), /<meta\b[^>]*\b(?:name|property)\s*=\s*["'][^"']*(?:site-verification|msvalidate\.01)[^"']*["']/i, `Unexpected verification tag in ${relative(root, file)}`);
+  }
+});
+
 console.log(`\n${passed}/${passed} verification checks passed.`);

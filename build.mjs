@@ -26,7 +26,6 @@ function page({ path, title, description, active, body, twitter = false }) {
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name='impact-site-verification' value='15021707-94fc-4527-ab33-87c6066da7fd'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="description" content="${e(description)}">
