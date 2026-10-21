@@ -219,9 +219,13 @@ await check('dist 与 README 无旧 Pages 绝对网址，本次 data/ 完全未�
   assert.equal(await git(['diff', 'HEAD', '--', 'data/']), '', 'This domain change must not modify data/');
 });
 
-await check('发布页面无第三方站点验证标签', async () => {
+await check('发布页面只保留 Impact 站点验证标签（老板要求不能删），无其他第三方验证标签', async () => {
+  const impact = /<meta\b[^>]*\bname\s*=\s*["']impact-site-verification["'][^>]*\b(?:value|content)\s*=\s*["']15021707-94fc-4527-ab33-87c6066da7fd["'][^>]*>/i;
+  const index = await read(join(dist, 'index.html'));
+  assert.match(index, impact, 'index.html must keep impact-site-verification meta');
   for (const file of distFiles.filter(path => extname(path) === '.html')) {
-    assert.doesNotMatch(await read(file), /<meta\b[^>]*\b(?:name|property)\s*=\s*["'][^"']*(?:site-verification|msvalidate\.01)[^"']*["']/i, `Unexpected verification tag in ${relative(root, file)}`);
+    const html = (await read(file)).replace(new RegExp(impact.source, 'gi'), '');
+    assert.doesNotMatch(html, /<meta\b[^>]*\b(?:name|property)\s*=\s*["'][^"']*(?:site-verification|msvalidate\.01)[^"']*["']/i, `Unexpected verification tag in ${relative(root, file)}`);
   }
 });
 
