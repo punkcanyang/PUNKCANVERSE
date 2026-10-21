@@ -1,0 +1,93 @@
+{
+  "hailuo": {
+    "name": "海螺 Hailuo",
+    "url": "",
+    "models": [
+      "海螺 Hailuo"
+    ]
+  },
+  "pixverse": {
+    "name": "PixVerse",
+    "url": "",
+    "models": [
+      "PixVerse"
+    ]
+  },
+  "higgsfield": {
+    "name": "Higgsfield",
+    "url": "",
+    "models": [
+      "Higgsfield（平台）"
+    ]
+  },
+  "magnific": {
+    "name": "Magnific",
+    "url": "",
+    "models": [
+      "Magnific"
+    ]
+  },
+  "kling": {
+    "name": "可灵 Kling",
+    "url": "",
+    "models": [
+      "可靈 Kling"
+    ]
+  },
+  "seedance": {
+    "name": "Seedance",
+    "url": "",
+    "models": [
+      "Seedance"
+    ]
+  },
+  "wan": {
+    "name": "Wan 万相",
+    "url": "",
+    "models": [
+      "Wan"
+    ]
+  },
+  "grok": {
+    "name": "Grok Imagine",
+    "url": "",
+    "models": [
+      "Grok Imagine"
+    ]
+  },
+  "runway": {
+    "name": "Runway",
+    "url": "",
+    "models": [
+      "Runway"
+    ]
+  },
+  "veo": {
+    "name": "Veo",
+    "url": "",
+    "models": [
+      "Veo"
+    ]
+  },
+  "midjourney": {
+    "name": "Midjourney",
+    "url": "",
+    "models": [
+      "Midjourney 影片"
+    ]
+  },
+  "luma": {
+    "name": "Luma",
+    "url": "",
+    "models": [
+      "Luma"
+    ]
+  },
+  "pika": {
+    "name": "Pika",
+    "url": "",
+    "models": [
+      "Pika"
+    ]
+  }
+}

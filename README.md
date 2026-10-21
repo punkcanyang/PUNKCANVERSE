@@ -108,7 +108,7 @@ node scripts/verify-v03.mjs
 
 测试覆盖假 X API 分批、syndication 解析和间隔、失败保留旧缓存、missing 与坏缓存占位、敏感内容、片长、三媒介分页、63 条详情与 sitemap、可选原创笔记、文章 fixture、推广属性、延迟加载 widgets 和图片失败回退。build/test/verify 不访问网络；只有手动运行 fetch-thumbs 会请求网络，不下载任何媒体文件。
 
-v0.2 有两项测试直接要求真实推广配置全空，与本版批准的推广链接存在冲突；按开工卡要求未改这些测试，仍需授权将其迁移到空配置 fixture。verify 的站名、完整 sitemap 与脚本精确白名单现按 v0.3 及 GA4 补充需求校验，保留 Impact、内容、来源、媒体文件和推广安全检查。新增测试另覆盖 GA4 默认值顺序、已同意恢复、接受／拒绝／撤回、存储不可用、缺 ID 失败，以及五页 canonical、日期、sitemap、全站页脚入口与披露链接。
+v0.2 的两段空推广配置测试已按复审要求使用 `test/fixtures/affiliates-empty.json`，原断言逐项保留；构建测试输出到临时目录，不改真实配置或正式 dist。真实 Higgsfield／Magnific 配置及 sponsored 属性单独验证，下架页与地区页仍严格断言零推广按钮。verify 的站名、完整 sitemap 与脚本精确白名单按 v0.3 及 GA4 补充需求校验，保留 Impact、内容、来源、媒体文件和推广安全检查。新增测试另覆盖 GA4 默认值顺序、已同意恢复、接受／拒绝／撤回、存储不可用、缺 ID 失败，以及五页 canonical、日期、sitemap、全站页脚入口与披露链接。
 
 部署由外部负责，在项目根目录运行：
 

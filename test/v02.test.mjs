@@ -1,10 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile, readdir } from 'node:fs/promises';
-import path from 'node:path';
-import { execFile } from 'node:child_process';
-import { promisify } from 'node:util';
-import { fileURLToPath } from 'node:url';
+import { readFile, mkdtemp, rm } from 'node:fs/promises';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { buildSite } from '../build.mjs';
 import { renderAffiliates, AFFILIATE_DISCLOSURE } from '../lib/affiliates.mjs';
 import { renderNewsletter, newsletterUrl } from '../lib/newsletter.mjs';
 import { renderMediumFilter, validateMedia } from '../lib/media.mjs';
@@ -14,58 +13,16 @@ import { withMediumBaseline } from '../lib/data-migration.mjs';
 import { validateRegions, validateRegionText, renderRegions, REGION_BANNED_TERMS, REGION_DISCLAIMER } from '../lib/regions.mjs';
 
 const read = path => readFile(new URL(path, import.meta.url), 'utf8');
-const affiliates = JSON.parse(await read('../data/affiliates.json'));
+const affiliates = JSON.parse(await read('fixtures/affiliates-empty.json'));
 const site = JSON.parse(await read('../data/site.json'));
 const prompts = JSON.parse(await read('../data/prompts.json'));
 const regions = JSON.parse(await read('../data/regions.json'));
 const seedance = prompts.entries.find(entry => entry.models.includes('Seedance'));
-function checkAffiliateButtons(html, page) {
-  assert.ok(!/<div class="affiliate-(?:links|item)">\s*<\/div>/.test(html), `empty affiliate container in ${page}`);
-  assert.ok(!/<section class="recommended-tools">(?:(?!affiliate-button)[\s\S])*?<\/section>/.test(html), `empty recommended-tools in ${page}`);
-  const buttons = html.match(/<a\b[^>]*class="affiliate-button"[^>]*>/g) || [];
-  for (const button of buttons) {
-    const href = (button.match(/href="([^"]*)"/) || [])[1];
-    assert.ok(liveAffiliateUrls.has(href), `unexpected affiliate href ${href} in ${page}`);
-    assert.match(button, /rel="sponsored noopener noreferrer"/, page);
-  }
-  assert.equal((html.match(/class="affiliate-item"/g) || []).length, buttons.length, `affiliate item without button in ${page}`);
-  return buttons.length;
-}
 const newsletterFixture = (enabled, embedUrl, provider = 'beehiiv') => ({ newsletter: { enabled, embedUrl, provider } });
 
-// 规格于 v0.3 变更：v0.2 时所有推广网址必须为空；v0.3 起 data/affiliates.json 填入 Higgsfield 与 Magnific 的真实推广网址。
-// 新规格：只匹配空网址平台的条目完全不输出（无按钮、无空容器）；有网址的平台输出带 sponsored 属性与“推广连结”标签的按钮。
-const liveAffiliateUrls = new Set(Object.values(affiliates).map(platform => platform.url).filter(url => url !== ''));
-const livePlatforms = Object.values(affiliates).filter(platform => platform.url !== '');
-const liveModels = new Set(livePlatforms.flatMap(platform => platform.models));
-
-test('空推广网址平台无按钮、空容器或占位；有网址的平台显示 sponsored 按钮与推广标签', () => {
-  assert.deepEqual([...liveAffiliateUrls].sort(), ['https://higgsfield.ai?fpr=tsungmin-dab6c3', 'https://referral.magnific.com/mzYHTuc']);
-  for (const platform of Object.values(affiliates)) assert.equal(typeof platform.url, 'string');
-  let emptyOnly = 0;
-  let withLive = 0;
-  for (const entry of prompts.entries) {
-    const html = renderAffiliates(entry, affiliates);
-    const expected = livePlatforms.filter(platform => platform.models.some(model => entry.models.includes(model)));
-    if (!expected.length) {
-      emptyOnly++;
-      assert.equal(html, '', entry.id);
-      assert.ok(!renderCard(entry, 0, affiliates).includes('class="affiliate-'), entry.id);
-      continue;
-    }
-    withLive++;
-    assert.ok(!/<div class="affiliate-links">\s*<\/div>/.test(html), entry.id);
-    const buttons = html.match(/<a class="affiliate-button"[^>]*>/g) || [];
-    assert.equal(buttons.length, expected.length, entry.id);
-    for (const platform of expected) {
-      assert.ok(html.includes(`href="${platform.url}" target="_blank" rel="sponsored noopener noreferrer"`), `${entry.id} ${platform.name}`);
-      assert.ok(html.includes(`去 ${platform.name} 试试`), `${entry.id} ${platform.name}`);
-    }
-    for (const button of buttons) assert.match(button, /rel="sponsored noopener noreferrer"/);
-    assert.equal((html.match(/<small>推广连结<\/small>/g) || []).length, expected.length, entry.id);
-  }
-  assert.ok(emptyOnly > 0 && withLive > 0, 'live data must cover both empty-only and live-platform entries');
-  assert.ok(!liveModels.has('Seedance'));
+test('推广网址全空时无按钮、空容器或占位', () => {
+  assert.ok(Object.values(affiliates).every(platform => platform.url === ''));
+  for (const entry of prompts.entries) assert.equal(renderAffiliates(entry, affiliates), '');
   assert.ok(!renderCard(seedance, 0, affiliates).includes('class="affiliate-'));
 });
 
@@ -200,26 +157,21 @@ test('地区资料不足五条、重复 id、缺字段、非 HTTPS 或未授权�
 });
 
 test('实际 build：四页均有揭露，空推广和关闭周报不留下容器，单类不显示切换', async () => {
-  const root = fileURLToPath(new URL('..', import.meta.url));
-  await promisify(execFile)(process.execPath, ['build.mjs'], { cwd: root });
-  for (const page of ['index', 'tips', 'takedown', 'regions']) {
-    const html = await read(`../dist/${page}.html`);
-    assert.ok(html.includes(AFFILIATE_DISCLOSURE));
-    // 规格于 v0.3 变更：按钮只能出现在有网址的平台，且仍不得留下空容器（见 checkAffiliateButtons）。
-    checkAffiliateButtons(html, page);
-    assert.ok(!/class="newsletter"|id="newsletter-title"/.test(html));
-    assert.ok(html.includes('href="regions.html"'));
-    assert.ok(html.includes('https://x.com/punkcan'));
-  }
-  const distRoot = fileURLToPath(new URL('../dist/', import.meta.url));
-  const pages = (await readdir(distRoot, { recursive: true })).filter(file => file.endsWith('.html'));
-  assert.ok(pages.length > 4);
-  let buttonCount = 0;
-  for (const file of pages) buttonCount += checkAffiliateButtons(await readFile(path.join(distRoot, file), 'utf8'), file);
-  assert.ok(buttonCount > 0, 'live affiliate URLs must render at least one button in dist');
-  const home = await read('../dist/index.html');
-  assert.ok(!home.includes('name="medium"'));
-  const regionsHtml = await read('../dist/regions.html');
-  assert.doesNotThrow(() => validateRegionText(regionsHtml));
-  assert.ok(regionsHtml.includes(REGION_DISCLAIMER));
+  const out = await mkdtemp(join(tmpdir(), 'pcv-empty-affiliates-'));
+  try {
+    await buildSite({out, affiliates});
+    for (const page of ['index', 'tips', 'takedown', 'regions']) {
+      const html = await readFile(join(out, `${page}.html`), 'utf8');
+      assert.ok(html.includes(AFFILIATE_DISCLOSURE));
+      assert.ok(!/class="affiliate-(?:links|item|button)"/.test(html));
+      assert.ok(!/class="newsletter"|id="newsletter-title"/.test(html));
+      assert.ok(html.includes('href="regions.html"'));
+      assert.ok(html.includes('https://x.com/punkcan'));
+    }
+    const home = await readFile(join(out, 'index.html'), 'utf8');
+    assert.ok(!home.includes('name="medium"'));
+    const regionsHtml = await readFile(join(out, 'regions.html'), 'utf8');
+    assert.doesNotThrow(() => validateRegionText(regionsHtml));
+    assert.ok(regionsHtml.includes(REGION_DISCLAIMER));
+  } finally { await rm(out, {recursive:true,force:true}); }
 });
