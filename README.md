@@ -45,7 +45,7 @@ canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions
 
 可在提示词记录增加可选 Markdown 字符串 `breakdown`（原创拆解）与 `notes`（实测心得）。有内容才渲染，署名 Punkcan；无内容不输出空标题。本版未为收录条目编造拆解或实测。
 
-作者可经[下架入口](https://punkcanverse.com/takedown.html)或[GitHub issue](https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7)申请下架。
+作者可经[下架入口](https://punkcanverse.com/takedown.html)或[GitHub issue](https://github.com/punkcanyang/PUNKCANVERSE/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7)申请下架。
 
 ## 缩图抓取与缓存
 
