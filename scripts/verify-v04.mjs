@@ -32,7 +32,7 @@ export function validateLocalizedHtml(html, locale, uiZh, entries, {essayFallbac
   visible=visible.replace(/中文/g,'');
   const chinese=Object.entries(uiZh).filter(([key,value])=>typeof value==='string' && /[\u3400-\u9fff]/u.test(value) && value.length>=4 && !['languageHint','copyright'].includes(key)).map(([,value])=>value);
   // Include short, unambiguous UI terms and complete source titles/notes.
-  chinese.push('清除筛选','提示词库','复制失败','查看提示词','原文提示词','推广码','原帖含敏感内容',...entries.map(x=>x.title));
+  chinese.push('清除筛选','提示词库','复制失败','查看提示词','原文提示词','推广码','原帖含敏感内容',...entries.map(x=>x.title),...entries.flatMap(x=>x.models).filter(model=>/[\u3400-\u9fff]/u.test(model)),'可靈','海螺');
   for (const value of chinese) assert.ok(!visible.includes(e(value)),`${locale}: Chinese interface residue: ${value}`);
 }
 

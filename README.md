@@ -19,9 +19,9 @@ AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网
 
 ## 三语与最终网址
 
-中文网址保持原样，英文与日文分别加 `/en`、`/ja` 前缀。`data/i18n/{zh,en,ja}.json` 存界面、法律页与技术资料译文；`data/i18n/content/{zh,en,ja}.json` 按 id 存标题、收藏笔记、工作流步骤说明、地区摘要与标签对照。提示词及工作流的 prompt/settings 原文不翻，放在标为原文的 pre 中。技术资料的译本为编辑整理版，中文原始 Markdown 保持只读。
+中文网址保持原样，英文与日文分别加 `/en`、`/ja` 前缀。`data/i18n/{zh,en,ja}.json` 存界面、法律页与技术资料译文；`data/i18n/content/{zh,en,ja}.json` 按 id 存标题、收藏笔记、工作流步骤说明、地区摘要与标签对照。提示词及工作流的 prompt/settings 原文不翻，放在标为原文的 pre 中。技术资料按中文逐段翻译，保留所有出处、数字、表格与原文范例；构建时检查段落结构与内容完整性，中文原始 Markdown 保持只读。
 
-同页语言切换无需 JavaScript；启用后只在 `pcv-lang` 储存偏好，永不自动转址。偏好不同于当前页面时显示可关闭提示。Cookie 同意仍共用 `pcv-consent`，每种语言都有完整 GA4 默认拒绝、同意与撤回控制。英文法律正文保留 v0.3 原文（其中旧栏目名、原推广标签和双语 Cookie 设置文字作为原文保留）。
+同页语言切换无需 JavaScript；启用后只在 `pcv-lang` 储存偏好，永不自动转址。偏好不同于当前页面时显示可关闭提示；关闭状态保存在当前分页的 sessionStorage，跨页有效，主动选择语言后重置。Cookie 同意仍共用 `pcv-consent`，每种语言都有完整 GA4 默认拒绝、同意与撤回控制。英文法律正文保留 v0.3 原文（其中旧栏目名、原推广标签和双语 Cookie 设置文字作为原文保留）。
 
 canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions`、`/takedown`，含所有语言对应网址；旧 `.html` 文件继续产出，导航仍可使用旧连结。其余目录路由不变，三语 hreflang 互指，x-default 指中文。构建 API 保留 `pages` 中文磁盘路由，并新增 `localizedPages` 完整三语描述清单，`sitemapUrls` 为全部最终网址。
 

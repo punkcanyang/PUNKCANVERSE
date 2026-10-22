@@ -23,7 +23,7 @@
 | 中文 | English | 日本語 |
 |---|---|---|
 | 创作，从这一帧开始。 | Your next idea starts with a frame. | この一コマから、次の作品へ。 |
-| AI 视频、图像、音乐的创作入口。收藏提示词，拆解镜头，留下制作笔记。 | A starting point for AI video, image and music. Save prompts, study shots and keep notes from the process. | AIの動画・画像・音楽制作の入り口です。プロンプトを集め、映像を読み解き、制作の記録を残します。 |
+| AI 视频、图像、音乐的创作入口。<br>收藏提示词，拆解镜头，留下制作笔记。 | A starting point for AI video, image and music. Save prompts, study shots and keep notes from the process. | AIの動画・画像・音楽制作の入り口です。プロンプトを集め、映像を読み解き、制作の記録を残します。 |
 | 从原作者公开的步骤出发，看工具如何接力完成一支影片。 | Follow the steps creators have shared and see how their tools work together. | 作者が公開した工程をたどり、複数の道具をどうつなぐかを見ていきます。 |
 | 作者未公开这一步的提示词 | The creator has not shared a prompt for this step. | この工程のプロンプトは公開されていません。 |
 | 从角色图到成片，逐步整理作者公开的制作过程。 | From character images to a finished clip, we document the steps creators have shared. | キャラクター画像から完成映像まで、作者が公開した工程を順にまとめます。 |
@@ -35,9 +35,17 @@
 
 ## 验收与限制
 
-`npm run build && npm test && npm run verify` 全绿：246 个 HTML 页面，94/94 测试，18/18 既有 verification checks，加 v0.3/v0.4 全页校验。外部商务 gate 同样通过：提示词缩图 63/63、工作流缩图 5/5、240 条 sitemap 网址，GATE OK。
+`npm run build && npm test && npm run verify` 全绿：246 个 HTML 页面，99/99 测试，18/18 既有 verification checks，加 v0.3/v0.4 全页校验。外部商务 gate 同样通过：提示词缩图 63/63、工作流缩图 5/5、240 条 sitemap 网址，GATE OK。
 
 - 自动 build/test/verify 全程离线。工作流 prompt/settings/sourcePost 以指定来源的 SHA-256 指纹精确锁定，五条均有公开缩图快取。
 - 实际执行了工作流 syndication 抓取；本环境五条请求均失败。已用指定来源文件的预览网址与片长建立可保留快取，source=provided-preview，重试失败后记录 stale，不伪称本次抓取成功，也没有下载媒体。
 - Chrome 启动被沙箱 setsockopt 权限挡住，尚未完成实际排版宽度量测。`node scripts/check-layout.mjs` 可在可启动 Chrome 的环境离线量测三语与三种宽度；本报告不把未完成的浏览器量测算作通过。
 - 老板亲手试：360／390 手机与 1440 桌面三语长标题、导航及 Cookie 条；同页语种切换、刷新偏好提示且不自动转址；五条工作流缩图、点图播放和缺图回退；逐步复制与原帖来源；Higgsfield 四条推广、Magnific 推荐区及各语揭露；真实 GA4 接受／拒绝／撤回。外部重新抓取或上线后检查 X 图片可达性。
+
+## 复审修正
+
+模型显示名与原资料键分离，英日模型筛选、卡片、详情与相关条目均使用本语言显示名，筛选 value 不变；短模型名纳入可见内容与无障碍标签扫描。三份技术资料已依中文逐段完整翻译，保留表格、错误码、价格、作者与所有出处，以及未改写的范例提示词；新增构建校验禁止删节。
+
+英日筛选帮助明确同组 OR／跨组 AND；补回英文字幕、台湾闽南语与客语、单镜头标题，以及中日文工作流的 @aimikoda Storyboard Skill 署名。中文首页恢复两行导语并继续安全跳脱，Cookie 标题恢复 COOKIE / YOUR CHOICE。样稿 H 编号恢复 003；关闭语言提示会在当前分页会话跨页保留，主动选择语言后重置。
+
+新增 test/v04-review.test.mjs 五项相关回归测试，既有断言不变。完整 build、99 项测试、verify 与外部 gate 已全部通过，未 commit、push 或部署。
