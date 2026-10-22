@@ -246,7 +246,8 @@ test('X 失败提示与 Markdown 工具列使用当前语言，保留手动观�
 
 test('五页英文法律标题、摘要、正文与 v0.3 指纹一致，输出只调整本语言连结',async()=>{
   const copy=SITE_PAGES.map(page=>i18n.ui.en.legal[page.path.slice(1,-1)]);
-  assert.equal(createHash('sha256').update(JSON.stringify(copy)).digest('hex'),'39fd339712e7e10465018e5fbf05e7ba8eddb5f13dcbac9be782030bfa4c2201');
+  // v0.4 spec change (商務拓展 2026-10-22): en legal text matches en UI labels
+  assert.equal(createHash('sha256').update(JSON.stringify(copy)).digest('hex'),'1aed3f6580fec000f1a62ea1d6bef62f5c8f30a90445d92bb2679a29ecf74434');
   const out=await mkdtemp(join(tmpdir(),'pcv-legal-languages-'));
   try {
     await buildSite({out});

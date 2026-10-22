@@ -17,15 +17,13 @@ export function validateSiteText(html) {
   for (const term of SITE_BANNED_TERMS) assert.ok(!term.test(html),`Forbidden site term: ${term}`);
 }
 // Japanese contains kanji, so match actual Chinese UI phrases rather than a
-// Unicode block. Exempt original prompts/settings, credited names and the three
-// historical quotes retained verbatim in v0.3's English legal prose.
+// Unicode block. Exempt original prompts/settings and credited names.
 export function validateLocalizedHtml(html, locale, uiZh, entries, {essayFallback=false}={}) {
   if (locale==='zh') return;
   let visible=html.replace(/<pre\b[^>]*>[\s\S]*?<\/pre>/gi,'')
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'')
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,'');
   if (essayFallback) visible=visible.replace(/<article class="essay-page">[\s\S]*?<\/article>/,'');
-  if(locale==='en' && html.includes('class="essay-page legal-page"')) visible=visible.replace(/(<div class="essay-body">)([\s\S]*?)(<\/div>)/,(_,open,body,close)=>open+body.replace(/AI 工作论|Cookie 设置 \/ Cookie Settings|推广连结/g,'')+close);
   const accessible=[...visible.matchAll(/\b(?:aria-label|alt|title|placeholder)="([^"]*)"/g)].map(match=>match[1]).join(' ');
   visible=visible.replace(/<[^>]+>/g,' ')+' '+accessible;
   for (const entry of entries) visible=visible.split(e(entry.author)).join('');

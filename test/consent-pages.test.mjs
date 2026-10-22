@@ -111,7 +111,8 @@ test('离线 build：每页 GA4、五页 canonical/日期/sitemap、全站页脚
     }
     // v0.4 spec change (boss 2026-10-22): assert the unchanged English prose at /en/privacy/.
     const privacy=await readFile(join(dir,'en/privacy/index.html'),'utf8');
-    for(const text of ['Consent Mode v2','Resend','AdSense','X embeds','partner-sites','Cookie Settings'])assert.ok(privacy.includes(text));
+    // v0.4 spec change (商務拓展 2026-10-22): en legal text matches en UI labels
+    for(const text of ['Consent Mode v2','Resend','AdSense','X embeds','partner-sites','Cookie settings'])assert.ok(privacy.includes(text));
     const contact=await readFile(join(dir,'contact/index.html'),'utf8');
     assert.ok(contact.includes('href="mailto:hello@punkcanverse.com"'));
   } finally { globalThis.fetch=oldFetch;await rm(dir,{recursive:true,force:true}); }
