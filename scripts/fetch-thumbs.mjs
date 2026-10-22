@@ -77,8 +77,10 @@ export async function runFetchThumbs({ root = new URL('../', import.meta.url), f
     let workflows = [];
     try {
       const parsed = JSON.parse(await readFile(new URL('data/workflows.json', root), 'utf8'));
-      const list = Array.isArray(parsed) ? parsed : parsed.workflows;
-      if (Array.isArray(list)) workflows = list.map(item => ({ id: item.id }));
+      // Published data uses entries; retain legacy fixture/input compatibility.
+      const list = Array.isArray(parsed) ? parsed : parsed.entries ?? parsed.workflows;
+      if (!Array.isArray(list)) throw new Error('Invalid workflow entries');
+      workflows = list.map(item => ({ id: item.id }));
     } catch (error) {
       if (error.code !== 'ENOENT') throw error;
     }

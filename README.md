@@ -1,4 +1,4 @@
-# PUNKCANVERSE v0.3
+# PUNKCANVERSE v0.4
 
 AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网址 https://punkcanverse.com。视觉采用「深夜片场 · 影印批注」：暗色片场海报、局部黑红黄剪字与网点；正文与长文使用实色背景，优先阅读。
 
@@ -13,9 +13,25 @@ AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网
 - `/regions.html`：AI 工具各地区使用与申诉。
 - `/takedown.html`：下架申请，48 小时内处理，无需先证明身份。
 - `/essays/`、`/essays/<slug>/`：AI 工作论列表与文章。
-- `/about/`、`/contact/`、`/privacy/`、`/terms/`、`/affiliate-disclosure/`：英文站点说明与政策，统一标注 Last updated: 2026-10-21，进入 sitemap 并由每页页脚链接。唯一确认的联系邮箱为 hello@punkcanverse.com。
+- `/about/`、`/contact/`、`/privacy/`、`/terms/`、`/affiliate-disclosure/`：中文说明与政策，英文原文在 `/en/`，日文在 `/ja/`，更新日期为 2026-10-22。五页均进入 sitemap，页脚连到当前语言。唯一确认的联系邮箱为 hello@punkcanverse.com。
 
 所有页面输出 PUNKCANVERSE 标题、canonical、Open Graph 和 twitter:card。sitemap 精确列出首页、有内容的媒介列表、63 条详情、技术与资源、地区、下架与 AI 工作论；有文章时也加入文章。robots 允许抓取并指向正式 sitemap。
+
+## 三语与最终网址
+
+中文网址保持原样，英文与日文分别加 `/en`、`/ja` 前缀。`data/i18n/{zh,en,ja}.json` 存界面、法律页与技术资料译文；`data/i18n/content/{zh,en,ja}.json` 按 id 存标题、收藏笔记、工作流步骤说明、地区摘要与标签对照。提示词及工作流的 prompt/settings 原文不翻，放在标为原文的 pre 中。技术资料的译本为编辑整理版，中文原始 Markdown 保持只读。
+
+同页语言切换无需 JavaScript；启用后只在 `pcv-lang` 储存偏好，永不自动转址。偏好不同于当前页面时显示可关闭提示。Cookie 同意仍共用 `pcv-consent`，每种语言都有完整 GA4 默认拒绝、同意与撤回控制。英文法律正文保留 v0.3 原文（其中旧栏目名、原推广标签和双语 Cookie 设置文字作为原文保留）。
+
+canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions`、`/takedown`，含所有语言对应网址；旧 `.html` 文件继续产出，导航仍可使用旧连结。其余目录路由不变，三语 hreflang 互指，x-default 指中文。构建 API 保留 `pages` 中文磁盘路由，并新增 `localizedPages` 完整三语描述清单，`sitemapUrls` 为全部最终网址。
+
+## 工作流
+
+第四个分页为 `/prompts/workflow/`，详情为 `/prompts/workflow/<id>/`，两者都有 en/ja 版本。`data/workflows.json` 使用 `{ "entries": [...] }` 外层结构，与提示词资料和外部 gate 的读取约定一致。只收指定的五条公开来源：作者、原帖、依序工具链、至少两个连续编号步骤、原文提示或设置、标签与收藏笔记。原文 prompt/settings 与 sourcePost 的来源指纹由测试锁定；不把工作流作为 medium 值，也不改旧类别筛选与 validateMedia。工作流一律无推广按钮。
+
+`validateWorkflows` 检查作者与网址对应、编号、工具链、内容完整性，以及中文、英文、日文禁词。缺公开提示的步骤明确说明，并保留作者的设置原文；原文块可复制。空资料 fixture 保留分页与零计数，并显示即将推出，不生成空详情页。
+
+缩图脚本现在合并提示词与工作流 id，仍使用同一套 250ms 间隔与失败保留旧值规则。五条初始缓存来自指定来源文件的公开预览地址与片长（source 为 provided-preview）；本环境实际请求失败，保留这些值并记录 stale。图片仍直接引用 pbs.twimg.com，不下载图片或影片。外部可再次运行抓取脚本更新快取。
 
 ## 提示词资料与版权
 
@@ -58,10 +74,13 @@ date: 2026-10-21
 summary: 一段中文摘要。
 slug: article-slug
 aiAssisted: false
+lang: zh
 ---
 ```
 
 slug 可省略，使用文件名；仅接受小写英文、数字与短横线。title、date、summary 必填，日期必须有效；正文用现有 Markdown 转换器，原始 HTML 转义、链接仅接受 HTTP(S)。署名为 Punkcan，只有 aiAssisted: true 才输出「AI 辅助整理，作者审校」。没有文章时，列表保留导航并显示「即将推出」及栏目说明，不生成不存在的文章页。测试文章只在 test/fixtures/essays/。
+
+原文文件为 `<slug>.md`，可标 `lang: zh`；译文用 `<slug>.en.md`、`<slug>.ja.md` 并沿用相同 slug，front matter 的标题与摘要写对应语言。缺译时仍生成该语言入口并明确标示显示原文，canonical 指原文页；hreflang 与 sitemap 仅列真实存在的译本。不会把译文算作额外文章，正式目录继续不放示例。
 
 ## 推广链接与推荐工具
 
@@ -89,7 +108,7 @@ newsletter 保持 enabled:false、provider:beehiiv、embedUrl:""，逻辑沿用 
 
 ## 地区与申诉栏目
 
-地区数据、官方来源、2026-10-21 检查日期、免责声明与禁词清单沿用 v0.2。仅整理官方政策与申诉管道，不提供也不推荐任何绕过地区限制的方法。`lib/regions.mjs` 的禁词常数对完整 JSON 和整页 HTML 执行校验；verify 不发网络请求。原始参考文字不进入仓库。
+地区数据、官方来源、2026-10-21 检查日期与中文免责声明沿用 v0.2。摘要与界面三语；原禁词清单不改，并新增英文与日文禁词。仅整理官方政策与申诉管道，不提供也不推荐任何绕过地区限制的方法。`lib/regions.mjs` 的禁词常数对完整 JSON 和整页 HTML 执行校验；verify 不发网络请求。原始参考文字不进入仓库。
 
 ## 构建、测试与部署
 
@@ -104,6 +123,8 @@ npm run build && npm test && npm run verify
 ```sh
 node --test --test-isolation=none test/v03.test.mjs
 node scripts/verify-v03.mjs
+node --test --test-isolation=none test/v04.test.mjs
+node scripts/verify-v04.mjs
 ```
 
 测试覆盖假 X API 分批、syndication 解析和间隔、失败保留旧缓存、missing 与坏缓存占位、敏感内容、片长、三媒介分页、63 条详情与 sitemap、可选原创笔记、文章 fixture、推广属性、延迟加载 widgets 和图片失败回退。build/test/verify 不访问网络；只有手动运行 fetch-thumbs 会请求网络，不下载任何媒体文件。
@@ -119,5 +140,13 @@ npx wrangler pages deploy dist --project-name fight-prompts
 Wrangler 会自动带上根目录 functions/。middleware 仅将 www.punkcanverse.com 与旧正式 Pages host 301 到 HTTPS apex，保留 path/query；预览子域名和 apex 调用 next()。旧 tips.html、regions.html、takedown.html 文件保留；安全标头与 Impact 站点验证保持不动。
 
 .env* 已忽略。密钥只从执行环境读取，不写入文件、不打印 token，不保存真实对话、未确认的联系方式或账户资料。所有实际 X 播放、图片加载、移动端视觉与推广落地页需要在浏览器中人工验收。
+
+可选离线排版检查（需要已有 Chrome，无需安装套件）：
+
+```sh
+node scripts/check-layout.mjs
+```
+
+它用本地 dist 去除远端资源，阻断 HTTP(S)，检查三语代表页在 360／390／1440 的 document 宽度，含后备字体与 Cookie 条。当前沙箱不允许 Chrome 的 setsockopt，自动排版测量无法完成；请在可启动 Chrome 的环境执行，并人工确认移动端导航、播放、语言选择与原文复制。交付记录与三语各十句抽样见 [v0.4 复核记录](docs/v04-review.md)。
 
 作者：[@punkcan](https://x.com/punkcan)

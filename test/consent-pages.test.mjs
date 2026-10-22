@@ -102,12 +102,15 @@ test('离线 build：每页 GA4、五页 canonical/日期/sitemap、全站页脚
       if(SITE_PAGES.some(info=>info.path===path)) {
         assert.ok(result.sitemapUrls.includes('https://punkcanverse.com'+path));
         assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${path}">`));
-        assert.match(html,/Last updated: <time datetime="2026-10-21">2026-10-21<\/time>/);
+        // v0.4 spec change (boss 2026-10-22): legal prose lives at /en/, updated on 2026-10-22.
+        const english = await readFile(join(dir,'en',path,'index.html'),'utf8');
+        assert.match(english,/Last updated: <time datetime="2026-10-22">2026-10-22<\/time>/);
         assert.ok(html.includes('class="essay-body"'));
       }
       for(const mail of html.matchAll(/mailto:([^"'<>\s]+)/gi))assert.equal(mail[1],'hello@punkcanverse.com');
     }
-    const privacy=await readFile(join(dir,'privacy/index.html'),'utf8');
+    // v0.4 spec change (boss 2026-10-22): assert the unchanged English prose at /en/privacy/.
+    const privacy=await readFile(join(dir,'en/privacy/index.html'),'utf8');
     for(const text of ['Consent Mode v2','Resend','AdSense','X embeds','partner-sites','Cookie Settings'])assert.ok(privacy.includes(text));
     const contact=await readFile(join(dir,'contact/index.html'),'utf8');
     assert.ok(contact.includes('href="mailto:hello@punkcanverse.com"'));
