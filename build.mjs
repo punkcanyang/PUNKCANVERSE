@@ -37,7 +37,7 @@ export async function buildSite(options = {}) {
   const models = [...new Set(entries.flatMap(x=>x.models))];
   const tags = [...new Set(entries.flatMap(x=>x.tags))];
   const pages = new Map();
-  const takedownUrl = 'https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7';
+  const takedownUrl = 'https://github.com/punkcanyang/PUNKCANVERSE/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7';
   for (const descriptor of descriptors) {
     const {locale,route,path} = descriptor;
     const u = i18n.ui[locale], content = i18n.content[locale];

@@ -206,7 +206,8 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
 await check('下架入口与 issue 模板齐全，原资料仅允许批准的 medium 迁移与嵌入信息', async () => {
   const html = await read(join(dist, 'takedown.html'));
   assert.match(html, /无需先证明身份/);
-  assert.ok(html.includes('https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&amp;title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7'));
+  // v0.4 spec change (boss 2026-10-22): repo renamed fight-prompts -> PUNKCANVERSE
+  assert.ok(html.includes('https://github.com/punkcanyang/PUNKCANVERSE/issues/new?template=takedown.md&amp;title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7'));
   const template = await read(join(root, '.github/ISSUE_TEMPLATE/takedown.md'));
   for (const field of ['原帖链接', '你的 X 账号', '说明']) assert.ok(template.includes(field));
   const changedPaths = (await git(['diff', '--name-only', 'HEAD', '--', ...protectedDataPaths])).trim().split('\n').filter(Boolean);
