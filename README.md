@@ -1,103 +1,123 @@
-# AI 提示词站 v0.2
+# PUNKCANVERSE v0.3
 
-老闆个人自用的打斗／械斗 AI 提示词收藏站 v0.2。收录 63 条视频案例，按模型与标签筛选，复制提示词，并通过 X 官方嵌入查看成片。另有「AI 工具各地区使用与申诉」官方资料栏目。界面使用简体中文，收录资料保持原文。
+AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网址 https://punkcanverse.com。视觉采用「深夜片场 · 影印批注」：暗色片场海报、局部黑红黄剪字与网点；正文与长文使用实色背景，优先阅读。
 
-静态 HTML、CSS 和 JavaScript，使用 Node 内建模块构建，无框架、无 npm 依赖、无登录、无数据库。部署于 Cloudflare Pages，正式网址为 https://punkcanverse.com。只有一支处理 301 转址的 Pages Functions `_middleware`，无其他后端。
+无框架、无 npm 依赖、无外部字体。Node 内建模块生成静态页面；唯一 Pages Function 是保留 path/query 的 301 middleware。本版按补充需求加入 GA4 和 Consent Mode v2；X 官方 widgets.js 仍仅在用户点击播放后加载，不播放或转存 mp4，也不安装广告脚本。
 
-## 内容规则
+## 页面结构
 
-- 提示词库只收录打斗／械斗，共 63 条；每条必附作者、作者主页与 X 原帖链接。
-- 提示词超过 1500 字元时，只放前约 300 字摘录及原帖链接；复制内容为摘录、换行与「完整版：原帖链接」。短提示词显示并复制全文。
-- 不放截图，不存任何视频或图片文件；成片只用 X 官方嵌入，接近视口时才加载。X 被屏蔽时仍保留「在 X 上观看」链接。
-- 原帖确认删除或不可用时标记 `postStatus: "removed"` 与 `postCheckedAt: "YYYY-MM-DD"`；保留卡片、提示词、作者及复制，原帖链接标为「原帖（已失效）」，成片区显示检查日期和不可用说明，不创建嵌入模板或空框。
-- 原帖是回复、影片在同作者串首时，可设置数字字符串 `embedId`；仅嵌入与观看链接改用该串首，显示「影片取自同作者的串首帖」。卡片原帖链接、完整提示词入口和复制内容仍指向原回复。没有 `embedId` 时沿用原帖。
-- 上层不是同一作者时，使用 `replyNoVideo: true`，显示「此帖为回复，影片见原串」，保留原帖嵌入，不替换上层，也不设置 `embedId`。维护者须核对同作者关系，站点不自动寻找或改用其他作者的视频。
-- 不收阿里云官方文档示例作为提示词条目；写法要点里的官方文档引用属于学习参考，保留资料原文与出处。
-- 提示词版权归原作者，本站只收录文字并附原帖，影片以 X 官方嵌入显示，不转存。
-- 作者如希望下架，无需先证明身份，我们会在 **48 小时内处理**。网站各页页尾都有[下架入口](https://punkcanverse.com/takedown.html)，也可直接[提交下架 issue](https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7)。
+- `/`：片场首页、63 条打斗与械斗提示词（栏目名 FIGHT/PROMPTS）、模型及标签筛选。手机启用 JavaScript 后先显示 12 条，点击「显示更多」继续；无 JavaScript 时全部卡片与独立页链接仍可访问。
+- `/prompts/video/`、`/prompts/image/`、`/prompts/music/`：独立媒介分页面。空分页有说明与视频入口；空分页不进入 sitemap。
+- `/prompts/<medium>/<id>/`：每条提示词的独立页，包括原作者、原帖、方法、模型版本、画幅、提示词、复制、推荐链接和 3 条相关提示词。
+- `/tips.html`：技术与资源，保留三份写法要点，以及推荐工具区。
+- `/regions.html`：AI 工具各地区使用与申诉。
+- `/takedown.html`：下架申请，48 小时内处理，无需先证明身份。
+- `/essays/`、`/essays/<slug>/`：AI 工作论列表与文章。
+- `/about/`、`/contact/`、`/privacy/`、`/terms/`、`/affiliate-disclosure/`：英文站点说明与政策，统一标注 Last updated: 2026-10-21，进入 sitemap 并由每页页脚链接。唯一确认的联系邮箱为 hello@punkcanverse.com。
 
-## 页面与使用
+所有页面输出 PUNKCANVERSE 标题、canonical、Open Graph 和 twitter:card。sitemap 精确列出首页、有内容的媒介列表、63 条详情、技术与资源、地区、下架与 AI 工作论；有文章时也加入文章。robots 允许抓取并指向正式 sitemap。
 
-- `index.html`：完整静态卡片、模型／标签筛选、提示词复制与惰性 X 嵌入。同类多选取并集，模型与标签取交集。筛选立即生效，显示「共 N 条」，可清除筛选。
-- 筛选写入 query，例如 `?model=Seedance&tag=冷兵器`；多选用重复参数。支持分享、刷新和浏览器前进／后退。未知筛选会提示，可清除；零结果会显示空状态。
-- `tips.html`：打斗、Wan 3.0、MiniMax H3 三份写法要点，有页首目录、表格、代码示例与复制按钮。
-- `takedown.html`：下架说明与 GitHub issue 入口。
-- `regions.html`：AI 工具各地区使用与申诉，附官方来源、中文摘要和检查日期。
-- 360px 手机屏幕为单栏，筛选默认收合，可展开多选；桌面为双栏。仅使用系统字体和本地 CSS。
-- 复制优先使用 Clipboard API，失败时用 textarea + execCommand 退回，结果以约 1.5 秒 toast 提示。全部失败时可手动选取。
-- 禁用 JavaScript 时仍可阅读全部提示词与要点，并打开作者与原帖；交互筛选、复制与 X 成片嵌入需要 JavaScript。
+## 提示词资料与版权
 
-## 数据来源与更新方式
+`data/prompts.json` 保持原有 63 条来源与正文，`medium` 必填且只允许 video／image／music，当前全部为 video。新媒介分页组件为 `lib/media-tabs.mjs`；v0.2 的 `renderMediumFilter` 保持不变，仍只在至少两类有内容时输出旧筛选控件。首页路径不变。
 
-数据源是仓库中已经整理好的 `data/prompts.json` 与 `data/tips/fight.md`、`wan3.md`、`minimax-h3.md`。提示词来自作者公开的 X 原帖，各条保留作者与原帖链接；写法要点中的引用出处保留在原文中。
+短提示词显示并复制全文；超过 1500 字符时，只显示前约 300 字摘录，复制内容为摘录、换行与「完整版：原帖链接」。提示词版权归原作者，每条必附作者与原帖；不收官方文档示例作为提示词条目。成片用 X 官方嵌入显示，缩图直接引用 X 原图，两者均不转存到仓库或 dist。
 
-`data/` 是内容来源，构建不会改写它。v0.2 只为原有 63 条提示词新增 `medium: "video"`，并增加 `affiliates.json`、`regions.json`、`site.json`；原有提示词正文、来源、失效状态和串首嵌入信息仍与 HEAD 严格比对。后续由内容维护者核对来源和版权、整理数据，再通过代码审查更新；当前校验固定为 63 条提示词，扩容时需同步调整数量规则、文档与测试。
+`postStatus: "removed"` 显示检查日期和失效说明，不创建嵌入。`postStatus: "sensitive"` 显示「原帖含敏感内容，请到 X 观看」，保留缓存缩图，点击外开原帖，不嵌入。1949860456958398844 已纠正为 sensitive。
 
-`build.mjs` 从数据生成四页 HTML 和 `dist/data.json`，将本地脚本、样式及 `_headers` 复制到 `dist/`。提示词正文在构建时 HTML escape；长提示词没有完整原文。Markdown 转换器支持标题、嵌套清单、表格、引用、围栏代码、行内代码、强调与链接；不允许原始 HTML，只接受 HTTP(S) 链接。不会抓取或下载任何原帖媒体。
+只有 `embedId` 存在时才用同作者串首嵌入，注明「影片取自同作者的串首帖」，原帖链接及复制内容仍指向原回复。上层不是同作者时标记 `replyNoVideo: true`，保留原回复并说明「此帖为回复，影片见原串」，不替换为其他作者的嵌入。
 
-正式网址由 `build.mjs` 的 `SITE_URL` 常数设为 `https://punkcanverse.com`。四页输出对应的 canonical 与 Open Graph 信息；构建保留原有三页的 `sitemap.xml` 与对应严格校验，并生成允许全部抓取的 `robots.txt`。地区页可从所有页面的导航入口访问。
+可在提示词记录增加可选 Markdown 字符串 `breakdown`（原创拆解）与 `notes`（实测心得）。有内容才渲染，署名 Punkcan；无内容不输出空标题。本版未为收录条目编造拆解或实测。
 
-## medium 字段与类别切换
+作者可经[下架入口](https://punkcanverse.com/takedown.html)或[GitHub issue](https://github.com/punkcanyang/fight-prompts/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7)申请下架。
 
-`data/prompts.json` 每条必须包含 `medium`，仅允许 `video`、`image`、`music`，对应「视频／图像／音乐」。现有 63 条全部为 `video`。只有至少两种类别有资料时才显示类别切换；单一类别不输出切换控件。类别与模型、标签组合筛选，状态通过 `?medium=image` 等 query 保留，清除筛选会一起清除类别；首页路径保持不变。
+## 缩图抓取与缓存
 
-## 推广连结规则
+`data/thumbs.json` 只保存公开图片地址、媒体类型、片长、尺寸与抓取状态，不含作者账户字段或密钥。初始 63 条记录来自已核对的旧缓存；敏感条目依赖这份缓存，不能因再次抓取失败而清掉。
 
-`data/affiliates.json` 以平台为键，每个平台填写 `name`、`url`、`models`；`models` 必须使用提示词资料中的原始模型名。当前网址全部为空字符串。日后只填写经核对的 HTTP(S) 推广网址，匹配到该模型的卡片才会出现「去 XX 试试」按钮与旁边的「推广连结」标签，使用 `target="_blank" rel="sponsored noopener noreferrer"`。空值或不安全的协议不输出按钮、容器或占位间距。同一平台匹配多个模型时只显示一次。
-
-所有页面页尾固定揭露：「本站部分按钮为推广连结，通过它们注册或购买，本站可能获得佣金，不影响你的价格。」站点不加载推广追踪脚本。
-
-## 地区栏目内容界线
-
-`data/regions.json` 的 `entries` 至少五条，每条包含唯一 `id`、`title`、`vendor`、2–4 句原创中文 `summary`、HTTPS `sourceUrl`／`officialUrl` 和检查日期 `checked`。本版七条摘要仅依据提供的官方页面文字，检查日期统一为 `2026-10-21`；原始文字档不放进仓库。政策页面如标注未来生效日，摘要会明确说明。与地区可用性或申诉无关的 FAQ 不收录。
-
-页首声明：「仅整理官方政策与申诉管道，不提供也不推荐任何绕过地区限制的方法。」只收官方政策与申诉入口，不发布个人账户资料、对话或其他使用渠道。`lib/regions.mjs` 的单一常数 `REGION_BANNED_TERMS` 管理禁词清单；构建与 verify 对完整 JSON 和地区整页 HTML 都执行检查，命中即失败。字段缺失、重复 id、非 HTTPS 或未列入批准清单的来源同样失败。verify 不发网络请求，链接状态由外部另行检查。
-
-## 周报开关（beehiiv）
-
-`data/site.json` 默认是 `newsletter: { enabled: false, provider: "beehiiv", embedUrl: "" }`。准备好官方嵌入表单地址后填写 `embedUrl`，再将 `enabled` 设为 `true`。只有 HTTPS 且域名精确为 `beehiiv.com` 或 `embeds.beehiiv.com` 的地址才输出 iframe；其他域名、非标准端口、带凭据的地址都隐藏。关闭、网址为空或无效时，整块不出现在 HTML，没有空框。
-
-启用后，周报说明与表单嵌入显示在各页页尾上方，采用延迟加载，不另加第三方脚本。本版不创建外部账户或订阅，不配置付费服务。
-
-## 本地构建与验证
-
-使用 Node.js 22.8 或更新版本，无需 `npm install`。
+手动或在构建前单独运行：
 
 ```sh
-npm run build
-npm test
-npm run verify
+node scripts/fetch-thumbs.mjs
 ```
 
-或一次运行全部检查：
+未设置 token 时使用公共 syndication 接口，token 参数为 a，请求间隔至少 250ms。已在执行环境安全配置 `X_BEARER_TOKEN` 时使用 X API v2，单批不超过 100 个 id；读取视频 preview_image_url、照片 url 以及尺寸与片长。请求 id 为 `embedId || id`。本版没有开通或调用付费 X API；测试只用假 fetch。
+
+每条失败（网络、非 200、tombstone、无媒体）都沿用该条旧 thumb、状态、尺寸与片长，增加过期标记；没有旧值才记 missing。全部失败仍正常结束并打印统计，不写入空缓存。旧缓存损坏时保留原文件，不冒险覆盖。更新通过临时文件和 rename 写入，避免半写入。
+
+build 只读缓存，不抓网络。缓存缺失、损坏或缺某条时，页面输出片场场记板占位。浏览器图片加载失败也回到相同占位。图片使用 pbs.twimg.com 公共原址、固定比例及 width/height，配合 lazy/async 加载；片长以 m:ss 显示。
+
+## AI 工作论：新增文章
+
+在 `content/essays/` 放一个 Markdown 文件即可，当前正式目录只有 .gitkeep，没有示例文章。支持以下单行 front matter（示例仅说明字段，不是上线文章）：
+
+```yaml
+---
+title: 文章标题
+date: 2026-10-21
+summary: 一段中文摘要。
+slug: article-slug
+aiAssisted: false
+---
+```
+
+slug 可省略，使用文件名；仅接受小写英文、数字与短横线。title、date、summary 必填，日期必须有效；正文用现有 Markdown 转换器，原始 HTML 转义、链接仅接受 HTTP(S)。署名为 Punkcan，只有 aiAssisted: true 才输出「AI 辅助整理，作者审校」。没有文章时，列表保留导航并显示「即将推出」及栏目说明，不生成不存在的文章页。测试文章只在 test/fixtures/essays/。
+
+## 推广链接与推荐工具
+
+`data/affiliates.json` 按平台配置 name、url、models，models 使用原始模型名。空网址或非 HTTP(S) 不输出按钮或空容器。对应模型出现「去 XX 试试」及「推广连结」标签；所有推广链接均使用 target="_blank" rel="sponsored noopener noreferrer"。
+
+本版仅启用已批准的 Higgsfield 与 Magnific 链接：Higgsfield 出现在其对应 4 条卡片及详情页；Magnific 放在技术与资源页的推荐工具区，不塞进视频卡片。平台有 code 字段时显示「推广码 xxx」，无 code 不输出；Magnific 的推广码为 GMRPOCT43296。其他平台网址保持空字符串。
+
+所有页尾保留揭露：「本站部分按钮为推广连结，通过它们注册或购买，本站可能获得佣金，不影响你的价格。」按钮旁标签及页尾揭露均链接到 `/affiliate-disclosure/`。不添加推广平台自己的追踪脚本。
+
+## Google Analytics 与 Cookie 选择
+
+每个 HTML 的 head 都加载指定 GA4 `G-NPK7CFCCT0`，先将 Consent Mode v2 的 analytics_storage、ad_storage、ad_user_data、ad_personalization 四项设为 denied，再按已保存的接受选择恢复 granted，最后执行 Google tag config。只有批准的两段内联模板与精确 Google tag 地址通过脚本白名单；Impact 验证保持不动。
+
+Cookie 横条提供「接受／拒绝」，选择保存为 `localStorage['pcv-consent']` 的 granted 或 denied，已选择时不再出现。底部条通过测量自身高度为 body 留出空间，宽度改变时重新测量，手机上不会压住页尾内容。所有操作为原生按钮，可键盘使用。
+
+页脚及 Privacy Policy 的「Cookie 设置」会清除选择、立即将四项更新为 denied，并重新打开横条。跨标签页修改会同步；存储被浏览器禁止时当前选择仍生效，但下次访问可能再次询问。Google tag 在 denied 状态也会加载，可能发送无 Cookie 的测量信号，不宣称拒绝后没有任何请求；浏览器可清理既有 Cookie。隐私说明另列 X 嵌入与推广方的独立处理、未来 AdSense 和 Resend 计划，未安装这些未来服务。
+
+实现依据：[Google Consent Mode 官方说明](https://developers.google.com/tag-platform/security/guides/consent)、[Google 合作网站信息使用说明](https://policies.google.com/technologies/partner-sites)。verify 与测试完全离线，不加载实际 Google 或 X 脚本。
+
+## 隐藏栏目与订阅
+
+`data/site.json` 的 models.enabled 为 false。所有对外 HTML、导航与 sitemap 都不出现该资源入口；verify 检查相关路径和文字。
+
+newsletter 保持 enabled:false、provider:beehiiv、embedUrl:""，逻辑沿用 v0.2，整块隐藏，导航不加电子报入口。将来启用仅接受 HTTPS 且精确域名为 beehiiv.com 或 embeds.beehiiv.com 的嵌入地址；为空、无效或关闭时均不输出空框。本版不创建账户或订阅。
+
+## 地区与申诉栏目
+
+地区数据、官方来源、2026-10-21 检查日期、免责声明与禁词清单沿用 v0.2。仅整理官方政策与申诉管道，不提供也不推荐任何绕过地区限制的方法。`lib/regions.mjs` 的禁词常数对完整 JSON 和整页 HTML 执行校验；verify 不发网络请求。原始参考文字不进入仓库。
+
+## 构建、测试与部署
+
+Node.js 22.8 或更新版本，无需 npm install。
 
 ```sh
 npm run build && npm test && npm run verify
 ```
 
-`npm test` 使用 `node --test --test-isolation=none`，在同一进程执行测试，覆盖模型／标签／组合／清除与 URL 状态、短／长提示词复制内容、Clipboard API 回退及失败、Markdown 安全转义、表格、代码区块和安全链接，以及 X 嵌入的视口触发、筛选后重现、SDK 延迟／屏蔽与旧浏览器回退。
-
-`npm run verify` 检查 63 条数据、唯一 id、必填字段、X 原帖格式、复制长度、数据原样发布与上述数据变更限制、删除状态／检查日期／串首元数据、逐卡嵌入与失效说明、页面页尾、下架模板、安全标头、第三方脚本白名单，以及 `dist/` 与 Git 追踪／待追踪文件中没有图片、影片或禁止域名。
-
-新增转址测试覆盖正式来源域名、路径与 query 保留、HTTP 升级、apex 与预览域名不转址，以及 middleware 的 301／`next()` 行为。verify 也检查三页 canonical／Open Graph、sitemap、robots 与发布内容不再使用旧 Pages 绝对网址。
-
-本地可用任何静态 HTTP 服务器预览 `dist/`。不要直接用 `file://` 打开页面，浏览器模块与数据 fetch 需要 HTTP。
-
-## 部署到 Cloudflare Pages
-
-Cloudflare Pages 的 Git 构建设置：构建命令 `npm run build`，输出目录 `dist`，Node.js 22.8 或更新版本，无框架预设。仓库中的 `_headers` 会随构建发布，设置 `nosniff` 与 `strict-origin-when-cross-origin`，不额外设置 CSP。
-
-已有 Wrangler 使用环境时，部署命令为：
+本版新增离线测试可单独运行：
 
 ```sh
-npm run build && npm test && npm run verify
+node --test --test-isolation=none test/v03.test.mjs
+node scripts/verify-v03.mjs
+```
+
+测试覆盖假 X API 分批、syndication 解析和间隔、失败保留旧缓存、missing 与坏缓存占位、敏感内容、片长、三媒介分页、63 条详情与 sitemap、可选原创笔记、文章 fixture、推广属性、延迟加载 widgets 和图片失败回退。build/test/verify 不访问网络；只有手动运行 fetch-thumbs 会请求网络，不下载任何媒体文件。
+
+v0.2 的两段空推广配置测试已按复审要求使用 `test/fixtures/affiliates-empty.json`，原断言逐项保留；构建测试输出到临时目录，不改真实配置或正式 dist。真实 Higgsfield／Magnific 配置及 sponsored 属性单独验证，下架页与地区页仍严格断言零推广按钮。verify 的站名、完整 sitemap 与脚本精确白名单按 v0.3 及 GA4 补充需求校验，保留 Impact、内容、来源、媒体文件和推广安全检查。新增测试另覆盖 GA4 默认值顺序、已同意恢复、接受／拒绝／撤回、存储不可用、缺 ID 失败，以及五页 canonical、日期、sitemap、全站页脚入口与披露链接。
+
+部署由外部负责，在项目根目录运行：
+
+```sh
 npx wrangler pages deploy dist --project-name fight-prompts
 ```
 
-也提供等价部署脚本 `npm run deploy`。请在项目根目录执行部署，Wrangler 会自动带上根目录的 `functions/`；该目录不复制进 `dist/`。Wrangler 是部署工具，不是项目依赖；凭据在部署环境配置，不写入仓库。
+Wrangler 会自动带上根目录 functions/。middleware 仅将 www.punkcanverse.com 与旧正式 Pages host 301 到 HTTPS apex，保留 path/query；预览子域名和 apex 调用 next()。旧 tips.html、regions.html、takedown.html 文件保留；安全标头与 Impact 站点验证保持不动。
 
-`functions/_middleware.js` 只调用 `lib/redirect.mjs` 的纯函数：仅当 host 完全等于 `www.punkcanverse.com` 或旧正式 host `fight-prompts.pages.dev` 时，以 301 转到 HTTPS 的 `punkcanverse.com`，保留 path 与 query。apex 本身、hash／branch 的 Pages 预览子域名与其他 host 都调用 `next()` 提供静态内容。转址无需第三方服务，也不使用 `_redirects` 比对 host。
-
-网站唯一第三方脚本是 `https://platform.twitter.com/widgets.js`，没有 analytics 或其他第三方脚本。
+.env* 已忽略。密钥只从执行环境读取，不写入文件、不打印 token，不保存真实对话、未确认的联系方式或账户资料。所有实际 X 播放、图片加载、移动端视觉与推广落地页需要在浏览器中人工验收。
 
 作者：[@punkcan](https://x.com/punkcan)

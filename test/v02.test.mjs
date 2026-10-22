@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
-import { execFile } from 'node:child_process';
-import { promisify } from 'node:util';
-import { fileURLToPath } from 'node:url';
+import { readFile, mkdtemp, rm } from 'node:fs/promises';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { buildSite } from '../build.mjs';
 import { renderAffiliates, AFFILIATE_DISCLOSURE } from '../lib/affiliates.mjs';
 import { renderNewsletter, newsletterUrl } from '../lib/newsletter.mjs';
 import { renderMediumFilter, validateMedia } from '../lib/media.mjs';
@@ -13,7 +13,7 @@ import { withMediumBaseline } from '../lib/data-migration.mjs';
 import { validateRegions, validateRegionText, renderRegions, REGION_BANNED_TERMS, REGION_DISCLAIMER } from '../lib/regions.mjs';
 
 const read = path => readFile(new URL(path, import.meta.url), 'utf8');
-const affiliates = JSON.parse(await read('../data/affiliates.json'));
+const affiliates = JSON.parse(await read('fixtures/affiliates-empty.json'));
 const site = JSON.parse(await read('../data/site.json'));
 const prompts = JSON.parse(await read('../data/prompts.json'));
 const regions = JSON.parse(await read('../data/regions.json'));
@@ -157,19 +157,21 @@ test('地区资料不足五条、重复 id、缺字段、非 HTTPS 或未授权�
 });
 
 test('实际 build：四页均有揭露，空推广和关闭周报不留下容器，单类不显示切换', async () => {
-  const root = fileURLToPath(new URL('..', import.meta.url));
-  await promisify(execFile)(process.execPath, ['build.mjs'], { cwd: root });
-  for (const page of ['index', 'tips', 'takedown', 'regions']) {
-    const html = await read(`../dist/${page}.html`);
-    assert.ok(html.includes(AFFILIATE_DISCLOSURE));
-    assert.ok(!/class="affiliate-(?:links|item|button)"/.test(html));
-    assert.ok(!/class="newsletter"|id="newsletter-title"/.test(html));
-    assert.ok(html.includes('href="regions.html"'));
-    assert.ok(html.includes('https://x.com/punkcan'));
-  }
-  const home = await read('../dist/index.html');
-  assert.ok(!home.includes('name="medium"'));
-  const regionsHtml = await read('../dist/regions.html');
-  assert.doesNotThrow(() => validateRegionText(regionsHtml));
-  assert.ok(regionsHtml.includes(REGION_DISCLAIMER));
+  const out = await mkdtemp(join(tmpdir(), 'pcv-empty-affiliates-'));
+  try {
+    await buildSite({out, affiliates});
+    for (const page of ['index', 'tips', 'takedown', 'regions']) {
+      const html = await readFile(join(out, `${page}.html`), 'utf8');
+      assert.ok(html.includes(AFFILIATE_DISCLOSURE));
+      assert.ok(!/class="affiliate-(?:links|item|button)"/.test(html));
+      assert.ok(!/class="newsletter"|id="newsletter-title"/.test(html));
+      assert.ok(html.includes('href="regions.html"'));
+      assert.ok(html.includes('https://x.com/punkcan'));
+    }
+    const home = await readFile(join(out, 'index.html'), 'utf8');
+    assert.ok(!home.includes('name="medium"'));
+    const regionsHtml = await readFile(join(out, 'regions.html'), 'utf8');
+    assert.doesNotThrow(() => validateRegionText(regionsHtml));
+    assert.ok(regionsHtml.includes(REGION_DISCLAIMER));
+  } finally { await rm(out, {recursive:true,force:true}); }
 });

@@ -12,6 +12,12 @@ import { validateSite, newsletterUrl } from '../lib/newsletter.mjs';
 import { validateMedia, availableMedia } from '../lib/media.mjs';
 import { validateRegions, validateRegionText, REGION_DISCLAIMER } from '../lib/regions.mjs';
 import { withMediumBaseline } from '../lib/data-migration.mjs';
+import { verifyV03 } from './verify-v03.mjs';
+import { GA_SCRIPT_URL, CONSENT_BOOTSTRAP, GA_CONFIG, verifyAnalyticsHtml } from '../lib/analytics.mjs';
+import { loadEssays } from '../lib/essays.mjs';
+import { SITE_PAGES } from '../lib/site-pages.mjs';
+import { promptPath, MEDIUM_NAMES } from '../lib/media-tabs.mjs';
+import { pathToFileURL } from 'node:url';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
@@ -52,6 +58,10 @@ async function walk(directory) {
 const distFiles = await walk(dist);
 const repoPaths = (await git(['ls-files', '--cached', '--others', '--exclude-standard', '-z'])).split('\0').filter(Boolean);
 const trackedPaths = (await git(['ls-files', '-z'])).split('\0').filter(Boolean);
+await check('每个 HTML 都含指定 GA4 ID、先行 denied 默认值与 Cookie 设置入口', async () => {
+  for (const file of distFiles.filter(path => extname(path) === '.html')) verifyAnalyticsHtml(await read(file));
+});
+await verifyV03(root);
 
 await check('发布文件齐全，Cloudflare 安全标头正确', async () => {
   for (const file of ['index.html', 'tips.html', 'takedown.html', 'assets/site.css', 'assets/app.mjs', 'assets/prompts.mjs', 'assets/clipboard.mjs', 'assets/embeds.mjs', 'data.json', '_headers', 'sitemap.xml', 'robots.txt']) assert.ok((await stat(join(dist, file))).isFile(), file);
@@ -123,26 +133,30 @@ await check('三个页面的页尾均含下架入口、48 小时、作者与版�
   }
 });
 
-await check('仅首页载入唯一允许的第三方脚本，全部嵌入使用惰性模板与永久观看链接', async () => {
+await check('每页仅预载指定 GA4，内联脚本严格匹配同意模板，X 嵌入按需载入', async () => {
   let externalScripts = 0;
   for (const file of distFiles) {
     if (extname(file) !== '.html') continue;
     const html = await read(file);
     for (const script of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
       const src = script[1].match(/\bsrc="([^"]+)"/)?.[1];
+      if (!src) {
+        assert.ok([CONSENT_BOOTSTRAP, GA_CONFIG].includes(script[2]), `${file}: unapproved inline script`);
+        continue;
+      }
       assert.ok(src, `${file}: inline script`);
       if (/^(?:https?:)?\/\//i.test(src)) {
-        assert.equal(src, 'https://platform.twitter.com/widgets.js');
+        assert.equal(src, GA_SCRIPT_URL);
         assert.match(script[1], /\basync\b/);
         externalScripts++;
       } else assert.ok((await stat(join(dist, src))).isFile(), src);
     }
     assert.ok(!/\son\w+\s*=/i.test(html), `${file}: inline event handler`);
   }
-  assert.equal(externalScripts, 1);
+  assert.equal(externalScripts, distFiles.filter(path => extname(path) === '.html').length);
   const home = await read(join(dist, 'index.html'));
   assert.equal((home.match(/class="prompt-card"/g) || []).length, 63);
-  const availableCount = entries.filter(entry => entry.postStatus !== 'removed').length;
+  const availableCount = entries.filter(entry => !['removed', 'sensitive'].includes(entry.postStatus)).length;
   assert.equal((home.match(/<template class="tweet-template"><blockquote class="twitter-tweet" data-dnt="true"/g) || []).length, availableCount);
   assert.equal((home.match(/class="watch-link"/g) || []).length, availableCount);
   assert.ok(!/<blockquote class="twitter-tweet"/.test(home.replace(/<template\b[^>]*>[\s\S]*?<\/template>/g, '')), 'Live blockquotes must start inside templates');
@@ -158,10 +172,16 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
     assert.ok(card.includes(`data-copy-entry="${entry.id}"`), `${entry.id}: missing copy button`);
     assert.ok(card.includes(`href="${escapeHtml(entry.authorUrl)}"`), `${entry.id}: missing author`);
     const sourceLink = `<a href="${escapeHtml(entry.postUrl)}" target="_blank" rel="noopener noreferrer">`;
-    if (entry.postStatus === 'removed') {
+    if (['removed', 'sensitive'].includes(entry.postStatus)) {
       assert.ok(!/tweet-template|twitter-tweet|tweet-mount|data-embed|watch-link/.test(card), `${entry.id}: removed post must never embed`);
-      assert.ok(card.includes(`<div class="post-unavailable"><p>原帖已删除或不可用（${entry.postCheckedAt} 检查），无法显示成片</p></div>`));
-      assert.ok(card.includes(`${sourceLink}原帖（已失效）</a>`));
+      if (entry.postStatus === 'removed') {
+        assert.ok(card.includes(`<div class="post-unavailable"><p>原帖已删除或不可用（${entry.postCheckedAt} 检查），无法显示成片</p></div>`));
+        assert.ok(card.includes(`${sourceLink}原帖（已失效）</a>`));
+      } else {
+        assert.ok(card.includes('原帖含敏感内容，请到 X 观看'));
+        assert.ok(card.includes(`${sourceLink}原帖 ↗</a>`));
+        assert.ok(!card.includes('已失效'));
+      }
     } else {
       assert.equal((card.match(/class="tweet-template"/g) || []).length, 1, `${entry.id}: missing/duplicate embed`);
       assert.equal((card.match(/class="watch-link"/g) || []).length, 1, `${entry.id}: missing/duplicate watch link`);
@@ -207,20 +227,20 @@ await check('三页 canonical 与 Open Graph 使用正式网址且内容完整',
     const properties = [...html.matchAll(/<meta property="([^"]+)" content="([^"]*)">/g)];
     for (const [property, expected] of [
       ['og:url', expectedUrl], ['og:title', title], ['og:description', description],
-      ['og:type', 'website'], ['og:site_name', 'FIGHT/PROMPTS'],
+      ['og:type', 'website'], ['og:site_name', 'PUNKCANVERSE'],
     ]) assert.deepEqual(properties.filter(match => match[1] === property).map(match => match[2]), [expected], `${file}: ${property}`);
   }
 });
 
-await check('sitemap 精确列出三个正式页面，robots 允许抓取并指向正式 sitemap', async () => {
+await check('sitemap 精确列出全部正式页面，robots 允许抓取并指向正式 sitemap', async () => {
   const sitemap = await read(join(dist, 'sitemap.xml'));
   assert.match(sitemap, /^<\?xml version="1\.0" encoding="UTF-8"\?>/);
   assert.match(sitemap, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
   assert.match(sitemap, /<\/urlset>\s*$/);
-  assert.equal((sitemap.match(/<url>/g) || []).length, 3);
-  assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), [
-    'https://punkcanverse.com/', 'https://punkcanverse.com/tips.html', 'https://punkcanverse.com/takedown.html',
-  ]);
+  const essays = await loadEssays(pathToFileURL(join(root, 'content/essays') + '/'));
+  const expectedPaths = ['/', '/tips.html', '/takedown.html', '/regions.html', ...Object.keys(MEDIUM_NAMES).filter(medium => entries.some(entry => entry.medium === medium)).map(medium => `/prompts/${medium}/`), ...entries.map(promptPath), '/essays/', ...essays.map(essay => `/essays/${essay.slug}/`), ...SITE_PAGES.map(page => page.path)];
+  assert.equal((sitemap.match(/<url>/g) || []).length, expectedPaths.length);
+  assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), expectedPaths.map(path => `https://punkcanverse.com${path}`));
   assert.equal(await read(join(dist, 'robots.txt')), 'User-agent: *\nAllow: /\nSitemap: https://punkcanverse.com/sitemap.xml\n');
 });
 

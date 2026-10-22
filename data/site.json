@@ -3,5 +3,8 @@
     "enabled": false,
     "provider": "beehiiv",
     "embedUrl": ""
+  },
+  "models": {
+    "enabled": false
   }
 }

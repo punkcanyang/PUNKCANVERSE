@@ -7,7 +7,7 @@ import { escapeHtml } from '../lib/markdown.mjs';
 import { getEmbedUrl, validatePostMetadata } from '../lib/posts.mjs';
 
 const { entries } = JSON.parse(await readFile(new URL('../data/prompts.json', import.meta.url), 'utf8'));
-const removed = entries.find(entry => entry.id === '1949860456958398844');
+const removed = { ...entries.find(entry => entry.id === '1949860456958398844'), postStatus: 'removed' };
 const techie = entries.find(entry => entry.id === '2086124547376341346');
 
 test('已删除原帖保留完整卡片、提示词、作者、复制和失效原帖链接，无嵌入空框', () => {
