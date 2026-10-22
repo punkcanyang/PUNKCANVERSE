@@ -10,3 +10,5 @@ body{padding-bottom:var(--consent-space,0px)}.site-info-links{display:flex;align
 
 /* Mobile scroll hint stays inside the header and never intercepts navigation. */
 @media(max-width:650px){.site-header{position:relative}.site-header>.primary-nav{padding-right:28px}.site-header::after{content:"";position:absolute;right:20px;bottom:1px;width:28px;height:58px;background:linear-gradient(to right,transparent,var(--paper));pointer-events:none}}
+/* Text-only official examples never suggest playable or locally stored media. */
+.official-preview{aspect-ratio:16/9;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;overflow:hidden;padding:28px;background:repeating-radial-gradient(circle at 30% 40%,#ede74d08 0 1px,transparent 1px 4px),#151510;border:1px solid var(--line);text-align:center}.official-preview>strong{font:900 clamp(20px,3vw,40px)/1.1 var(--mono);color:var(--yellow);transform:rotate(-2deg)}.official-preview>p{color:var(--accent);font:18px var(--mono)}.official-preview>small{font-size:11px;color:var(--muted)}.featured-badge{display:inline-block;color:var(--yellow);font:12px var(--mono);margin-top:12px}

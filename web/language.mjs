@@ -31,5 +31,5 @@ export function workflowCopyText(scope) {
   return scope.querySelector('pre').textContent;
 }
 export function localizedCopyText(entry, fullVersion) {
-  return entry.isLong ? `${entry.promptExcerpt}\n${fullVersion}${entry.postUrl}` : entry.prompt;
+  return entry.isLong ? `${entry.promptExcerpt}\n${fullVersion}${entry.postUrl || entry.officialUrl}` : entry.prompt;
 }

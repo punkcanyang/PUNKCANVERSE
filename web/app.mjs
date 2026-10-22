@@ -26,7 +26,7 @@ function showToast(message) {
 let entryById = new Map();
 let entriesPromise;
 function loadEntries() {
-  return entriesPromise ??= fetch(new URL('../data.json', import.meta.url)).then(response => {
+  return entriesPromise ??= fetch(new URL('../catalog.json', import.meta.url)).then(response => {
     if (!response.ok) throw new Error('Data unavailable');
     return response.json();
   }).then(({ entries }) => {
@@ -60,7 +60,9 @@ async function initializeLibrary() {
   const form = document.querySelector('#filters');
   if (!form) return;
   const cards = [...document.querySelectorAll('[data-entry-id]')];
-  const entries = await loadEntries();
+  const allEntries = await loadEntries();
+  const cardIds=new Set(cards.map(card=>card.dataset.entryId));
+  const entries=form.dataset.collection==='fight'?allEntries.filter(entry=>cardIds.has(entry.id)):allEntries;
   const defaultMedium = form.dataset.defaultMedium || '';
   let displayed = window.matchMedia('(max-width: 650px)').matches ? 12 : Infinity;
   let filters = parseFilters(location.search);

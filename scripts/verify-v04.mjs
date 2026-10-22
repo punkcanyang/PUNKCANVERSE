@@ -1,3 +1,4 @@
+import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -36,7 +37,8 @@ export function validateLocalizedHtml(html, locale, uiZh, entries, {essayFallbac
 
 export async function verifyV04(root=fileURLToPath(new URL('..',import.meta.url))) {
   const read=path=>readFile(join(root,path),'utf8');
-  const {entries}=JSON.parse(await read('data/prompts.json'));
+  // v0.5 spec change (boss 2026-10-22): translation coverage and exact pages extend from 63 to all 192 video entries.
+  const {entries}=await loadCatalog(root);
   const {entries:workflows}=JSON.parse(await read('data/workflows.json'));
   const regions=JSON.parse(await read('data/regions.json'));
   const thumbs=JSON.parse(await read('data/thumbs.json'));

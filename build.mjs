@@ -1,3 +1,4 @@
+import {loadCatalog} from './lib/catalog.mjs';
 import { readFile, mkdir, rm, writeFile, copyFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { join, dirname } from 'node:path';
@@ -22,7 +23,7 @@ export async function buildSite(options = {}) {
   const root = options.root || fileURLToPath(new URL('.', import.meta.url));
   const out = options.out || join(root,'dist');
   const readJSON = async path => JSON.parse(await readFile(join(root,path),'utf8'));
-  const {entries} = await readJSON('data/prompts.json');
+  const {original,imported,entries} = await loadCatalog(root);
   const affiliates = options.affiliates || await readJSON('data/affiliates.json');
   const workflows = options.workflows ?? (await readJSON('data/workflows.json')).entries;
   const thumbs = await readThumbs(options.thumbPath || join(root,'data/thumbs.json'),readFile);
@@ -53,10 +54,11 @@ export async function buildSite(options = {}) {
     const tabs = current => renderMediaTabs(entries,current,{names,ariaLabel:u.mediaAria,mediumHref:medium=>href(`/prompts/${medium}/`),workflow:{href:href('/prompts/workflow/'),label:u.workflow,count:workflows.length}});
     const markdown = text => markdownToHtml(text,{headingOffset:1,copyLabel:u.copy,codeLabel:u.codeExample,tableLabel:u.tableAria}).replace(/>复制<\/button>/g,`>${e(u.copy)}</button>`);
     function library(collection,medium='video',collectionPage=false) {
-      const tabBar = tabs(collectionPage ? href(`/prompts/${medium}/`) : href('/'));
+      const tabBar = tabs(collectionPage ? href(route==='/prompts/fight/'?route:`/prompts/${medium}/`) : href('/'));
       if (!collection.length) return `${tabBar}<section class="empty-state"><h2>${e(t('mediaEmpty',{medium:names[medium]}))}</h2><p>${e(u.mediaEmptyBody)}</p><a href="${href('/prompts/video/')}">${e(u.browseVideo)}</a></section>`;
-      const choices = (values,kind) => values.map(value=>`<label class="filter-chip"><input type="checkbox" name="${kind}" value="${e(value)}"><span>${e(kind==='tag' ? translateTag(value,locale,content) : translateModelName(value,locale))}</span></label>`).join('');
-      return `<section class="library" id="library"><div class="library-heading"><span class="eyebrow">01 / PROMPT ARCHIVE</span><h2>${e(u.navPrompts)}</h2><p id="result-count" role="status" aria-live="polite">${e(t('count',{n:collection.length}))}</p></div>${tabBar}<div class="collection-line"><strong>FIGHT/PROMPTS</strong><span>${e(u.collection)} / ${e(names[medium])}</span><span>${e(u.thumbHint)}</span></div><details class="filter-panel"><summary>${e(u.filter)} <span>${e(u.modelLabel)} / ${e(u.tagLabel)}</span></summary><form id="filters"${collectionPage?` data-default-medium="${medium}"`:''}>${renderMediumFilter(entries)}<fieldset disabled><legend>${e(u.modelLabel)}</legend><div class="filter-options">${choices(models,'model')}</div></fieldset><fieldset disabled><legend>${e(u.tagLabel)}</legend><div class="filter-options">${choices(tags,'tag')}</div></fieldset><div class="filter-bottom"><p>${e(u.filterHelp)}</p><button id="clear-filters" class="clear-button" type="button" disabled>${e(u.clear)}</button></div><p id="unknown-filters" class="notice" hidden></p></form></details><noscript><p class="notice">${e(u.noscript)}</p></noscript><div id="prompt-grid" class="prompt-grid">${collection.map((entry,index)=>renderCard(localized(entry),index,affiliates,thumbs.entries?.[entry.id],renderUI)).join('\n')}</div><button type="button" id="show-more" class="primary-button" hidden>${e(u.showMore)}</button><div id="empty-state" class="empty-state" hidden><h3>${e(u.emptyTitle)}</h3><p>${e(u.emptyBody)}</p><button type="button" class="primary-button" data-clear-filters>${e(u.clear)}</button></div></section>`;
+      const modelLabel = value => value==='Wan' ? 'Wan / Wan 3.0' : value==='MiniMax' ? 'MiniMax H3' : translateModelName(value,locale);
+      const choices = (values,kind) => values.map(value=>`<label class="filter-chip"><input type="checkbox" name="${kind}" value="${e(value)}"><span>${e(kind==='tag' ? translateTag(value,locale,content) : modelLabel(value))}</span></label>`).join('');
+      return `<section class="library" id="library"><div class="library-heading"><span class="eyebrow">01 / PROMPT ARCHIVE</span><h2>${e(u.navPrompts)}</h2><p id="result-count" role="status" aria-live="polite">${e(t('count',{n:collection.length}))}</p></div>${tabBar}<div class="collection-line"><a href="${href('/prompts/fight/')}"><strong>FIGHT/PROMPTS</strong> · ${e(u.collection)} (63)</a><span>${e(route==='/prompts/fight/'?u.collection:u.allVideos)} / ${e(names[medium])}</span><span>${e(u.thumbHint)}</span></div><details class="filter-panel"><summary>${e(u.filter)} <span>${e(u.modelLabel)} / ${e(u.tagLabel)}</span></summary><form id="filters"${collectionPage?` data-default-medium="${medium}"${route==='/prompts/fight/'?' data-collection="fight"':''}`:''}>${renderMediumFilter(entries)}<fieldset disabled><legend>${e(u.modelLabel)}</legend><div class="filter-options">${choices(models,'model')}</div></fieldset><fieldset disabled><legend>${e(u.tagLabel)}</legend><div class="filter-options">${choices(tags,'tag')}</div></fieldset><div class="filter-bottom"><p>${e(u.filterHelp)}</p><button id="clear-filters" class="clear-button" type="button" disabled>${e(u.clear)}</button></div><p id="unknown-filters" class="notice" hidden></p></form></details><noscript><p class="notice">${e(u.noscript)}</p></noscript><div id="prompt-grid" class="prompt-grid">${collection.map((entry,index)=>renderCard(localized(entry),index,affiliates,thumbs.entries?.[entry.id],entry.collection==='wan-minimax'?cUI:renderUI)).join('\n')}</div><button type="button" id="show-more" class="primary-button" hidden>${e(u.showMore)}</button><div id="empty-state" class="empty-state" hidden><h3>${e(u.emptyTitle)}</h3><p>${e(u.emptyBody)}</p><button type="button" class="primary-button" data-clear-filters>${e(u.clear)}</button></div></section>`;
     }
     let title,description,body;
     if (route==='/') {
@@ -83,12 +85,14 @@ export async function buildSite(options = {}) {
     } else if (route.startsWith('/prompts/workflow/')) {
       const w=workflows.find(x=>route===`/prompts/workflow/${x.id}/`);const copy=workflowText(w);
       title=copy.title;description=copy.fieldNote;body=renderWorkflowDetail(w,workflows,copy,thumbs.entries?.[w.id],cUI,workflowText);
+    } else if (route==='/prompts/fight/') {
+      title=u.collection;description=u.fightDescription;body=library(original.entries,'video',true);
     } else if (/^\/prompts\/(video|image|music)\/$/.test(route)) {
       const medium=route.split('/')[2];title=`${names[medium]} / ${u.navPrompts}`;description=u.homeDescription;
       body=library(entries.filter(x=>(x.medium||'video')===medium),medium,true);
     } else if (route.startsWith('/prompts/')) {
       const entry=entries.find(x=>promptPath(x)===route);title=localized(entry).title;description=localized(entry).description;
-      body=renderPromptDetail(localized(entry),entries,affiliates,thumbs.entries?.[entry.id],renderUI);
+      body=renderPromptDetail(localized(entry),entries,affiliates,thumbs.entries?.[entry.id],entry.collection==='wan-minimax'?cUI:renderUI);
     } else if (route==='/essays/') {
       title=u.navEssays;description=u.essayIntro;
       const collection=essays.map(x=>x.lang===locale?x:x.translations?.[locale]||x);
@@ -152,7 +156,8 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
   const sitemapUrls=descriptors.filter(x=>x.sitemap).map(x=>SITE_URL+x.path);
   await writeFile(join(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(url=>`  <url><loc>${e(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
   await writeFile(join(out,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-  await writeFile(join(out,'data.json'),JSON.stringify({entries}));
+  await writeFile(join(out,'data.json'),JSON.stringify({entries:original.entries}));
+  await writeFile(join(out,'catalog.json'),JSON.stringify({entries}));
   for (const file of ['app.mjs','language.mjs','clipboard.mjs','embeds.mjs','consent.mjs','site.css']) await copyFile(join(root,'web',file),join(out,'assets',file));
   await copyFile(join(root,'lib/prompts.mjs'),join(out,'assets/prompts.mjs'));await copyFile(join(root,'_headers'),join(out,'_headers'));
   // Existing build consumers use Chinese disk routes. All language descriptors are

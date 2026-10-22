@@ -1,3 +1,4 @@
+import {loadCatalog} from '../lib/catalog.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, writeFile, mkdir, mkdtemp, rm, readdir } from 'node:fs/promises';
@@ -19,7 +20,8 @@ import { SITE_PAGES } from '../lib/site-pages.mjs';
 import { escapeHtml } from '../lib/markdown.mjs';
 const root=fileURLToPath(new URL('..',import.meta.url));
 const json=async file=>JSON.parse(await readFile(join(root,file),'utf8'));
-const {entries}=await json('data/prompts.json');
+// v0.5 spec change (boss 2026-10-22): existing translation coverage includes every one of the 192 entries.
+const {entries}=await loadCatalog(root);
 const {entries:workflows}=await json('data/workflows.json');
 const regions=await json('data/regions.json');
 const i18n=await loadI18n(root);
@@ -113,8 +115,12 @@ test('离线三语 build：246 页、五工作流有图/VIDEO/片长/原文复�
   const out=await mkdtemp(join(tmpdir(),'pcv-v04-'));const originalFetch=globalThis.fetch;
   globalThis.fetch=()=>assert.fail('No network in build/test');
   try {
-    const result=await buildSite({out});assert.equal(result.localizedPages.length,246);
-    const files=await readdir(out,{recursive:true});assert.equal(files.filter(x=>x.endsWith('.html')).length,246);
+    const result=await buildSite({out});
+    // v0.5 spec change (boss 2026-10-22): 129 details plus a fight list in each locale add 390 pages.
+    assert.equal(result.localizedPages.length,636);
+    const files=await readdir(out,{recursive:true});
+    // v0.5 spec change (boss 2026-10-22): exact multilingual HTML file count is 636.
+    assert.equal(files.filter(x=>x.endsWith('.html')).length,636);
     for(const page of result.localizedPages) {
       const html=await readFile(join(out,page.file),'utf8');
       assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${page.canonical}">`));

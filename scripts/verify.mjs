@@ -1,3 +1,4 @@
+import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
@@ -18,6 +19,7 @@ import { loadEssays } from '../lib/essays.mjs';
 import { listPages } from '../lib/routes.mjs';
 import { loadI18n } from '../lib/i18n.mjs';
 import { verifyV04 } from './verify-v04.mjs';
+import { verifyV05 } from './verify-v05.mjs';
 import { SITE_PAGES } from '../lib/site-pages.mjs';
 import { promptPath, MEDIUM_NAMES } from '../lib/media-tabs.mjs';
 import { pathToFileURL } from 'node:url';
@@ -30,6 +32,7 @@ const git = async args => (await run('git', args, { cwd: root, encoding: 'utf8' 
 const data = JSON.parse(await read(join(root, 'data/prompts.json')));
 const published = JSON.parse(await read(join(dist, 'data.json')));
 const entries = published.entries;
+const {entries:catalogEntries}=await loadCatalog(root);
 const affiliates = JSON.parse(await read(join(root, 'data/affiliates.json')));
 const site = JSON.parse(await read(join(root, 'data/site.json')));
 const regionsRaw = await read(join(root, 'data/regions.json'));
@@ -66,6 +69,7 @@ await check('每个 HTML 都含指定 GA4 ID、先行 denied 默认值与 Cookie
 });
 await verifyV03(root);
 await verifyV04(root);
+await verifyV05(root);
 
 await check('发布文件齐全，Cloudflare 安全标头正确', async () => {
   for (const file of ['index.html', 'tips.html', 'takedown.html', 'assets/site.css', 'assets/app.mjs', 'assets/prompts.mjs', 'assets/clipboard.mjs', 'assets/embeds.mjs', 'data.json', '_headers', 'sitemap.xml', 'robots.txt']) assert.ok((await stat(join(dist, file))).isFile(), file);
@@ -159,8 +163,10 @@ await check('每页仅预载指定 GA4，内联脚本严格匹配同意模板，
   }
   assert.equal(externalScripts, distFiles.filter(path => extname(path) === '.html').length);
   const home = await read(join(dist, 'index.html'));
-  assert.equal((home.match(/class="prompt-card"/g) || []).length, 63);
-  const availableCount = entries.filter(entry => !['removed', 'sensitive'].includes(entry.postStatus)).length;
+  // v0.5 spec change (boss 2026-10-22): merged video home has exactly 192 cards.
+  assert.equal((home.match(/class="prompt-card"/g) || []).length, 192);
+  // v0.5 spec change (boss 2026-10-22): count X templates across both video datasets; official examples never embed.
+  const availableCount = 168;
   assert.equal((home.match(/<template class="tweet-template"><blockquote class="twitter-tweet" data-dnt="true"/g) || []).length, availableCount);
   assert.equal((home.match(/class="watch-link"/g) || []).length, availableCount);
   assert.ok(!/<blockquote class="twitter-tweet"/.test(home.replace(/<template\b[^>]*>[\s\S]*?<\/template>/g, '')), 'Live blockquotes must start inside templates');
@@ -169,7 +175,8 @@ await check('每页仅预载指定 GA4，内联脚本严格匹配同意模板，
 await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌入地址与来源说明', async () => {
   const home = await read(join(dist, 'index.html'));
   const cards = new Map([...home.matchAll(/<article\b[^>]*data-entry-id="([^"]+)"[^>]*>[\s\S]*?<\/article>/g)].map(match => [match[1], match[0]]));
-  assert.equal(cards.size, 63);
+  // v0.5 spec change (boss 2026-10-22): original and imported cards are all present.
+  assert.equal(cards.size, 192);
   for (const entry of entries) {
     const card = cards.get(entry.id);
     assert.ok(card, `${entry.id}: missing card`);
@@ -249,7 +256,8 @@ await check('sitemap 精确列出全部正式页面，robots 允许抓取并指�
   const essays = await loadEssays(pathToFileURL(join(root, 'content/essays') + '/'));
   // v0.4 spec change (boss 2026-10-22): final URLs for every locale and workflow.
   const workflows=JSON.parse(await read(join(root,'data/workflows.json'))).entries;
-  const expectedPaths=listPages({entries,workflows,essays,sitePages:SITE_PAGES}).filter(page=>page.sitemap).map(page=>page.path);
+  // v0.5 spec change (boss 2026-10-22): exact sitemap adds imported details and the original fight collection.
+  const expectedPaths=listPages({entries:catalogEntries,workflows,essays,sitePages:SITE_PAGES}).filter(page=>page.sitemap).map(page=>page.path);
   assert.equal((sitemap.match(/<url>/g) || []).length, expectedPaths.length);
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), expectedPaths.map(path => `https://punkcanverse.com${path}`));
   assert.equal(await read(join(dist, 'robots.txt')), 'User-agent: *\nAllow: /\nSitemap: https://punkcanverse.com/sitemap.xml\n');

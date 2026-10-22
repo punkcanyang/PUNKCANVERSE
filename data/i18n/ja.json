@@ -154,5 +154,14 @@
   "embedFailed": "埋め込みを読み込めませんでした。下のリンクからXでご覧ください。",
   "codeExample": "プロンプトの例",
   "tableAria": "書き方の比較表",
-  "fullVersion": "全文："
+  "fullVersion": "全文：",
+  "allVideos": "動画プロンプト",
+  "fightDescription": "最初の63件の格闘・武器アクションを、独立したコレクションとして残しています。",
+  "officialAuthor": "Alibaba Cloud 公式サンプル",
+  "officialLink": "公式の原文 ↗",
+  "officialPlaceholder": "Wan 3.0の公式テキストサンプル",
+  "officialNoVideo": "公式の文章サンプルです。Xの動画はありません",
+  "officialExcerptNote": "全文は約{n}文字です。公式の原文をご覧ください。",
+  "importFeaturedMark": " / 注目",
+  "segmentNote": "同じ投稿の動画を参照する、別の区間のプロンプトです"
 }

@@ -6,6 +6,7 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { pathToFileURL } from 'node:url';
 import assert from 'node:assert/strict';
+import { loadCatalog } from '../lib/catalog.mjs';
 const temporary=await mkdtemp(join(tmpdir(),'pcv-layout-'));
 let chrome;
 try {
@@ -13,6 +14,10 @@ try {
   const {entries:workflows}=JSON.parse(await readFile('data/workflows.json','utf8'));
   const {entries}=JSON.parse(await readFile('data/prompts.json','utf8'));
   const samples=['index.html','tips.html','regions.html','privacy/index.html','essays/index.html','prompts/workflow/index.html',`prompts/workflow/${workflows[0].id}/index.html`,`prompts/video/${entries[0].id}/index.html`];
+  const { imported } = await loadCatalog(process.cwd());
+  samples.push('prompts/fight/index.html',
+    `prompts/video/${imported.entries.find(entry=>entry.source==='official').id}/index.html`,
+    `prompts/video/${imported.entries.find(entry=>entry.source==='x'&&entry.isLong).id}/index.html`);
   chrome=spawn(process.env.CHROME_BIN||'google-chrome',['--headless','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-component-update','--disable-extensions','--disable-sync','--no-first-run',`--user-data-dir=${join(temporary,'profile')}`,'--remote-debugging-pipe','about:blank'],{stdio:['ignore','ignore','pipe','pipe','pipe']});
   let id=0,buffer='',exitError;const pending=new Map();const events=new Map();let stderr='';
   chrome.stderr.on('data',chunk=>{stderr=(stderr+chunk.toString()).slice(-2000);});

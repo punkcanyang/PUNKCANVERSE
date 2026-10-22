@@ -1,3 +1,4 @@
+import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { join, relative } from 'node:path';
@@ -23,7 +24,9 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
   const workflows=JSON.parse(await read(join(root,'data/workflows.json'))).entries;
   const translations=await loadI18n(root);
   // v0.4 spec change (boss 2026-10-22): exact final URLs, all three locales and workflows.
-  const descriptors=listPages({entries,workflows,essays,sitePages:SITE_PAGES});
+  // v0.5 spec change (boss 2026-10-22): page/sitemap counts cover the full 192-entry catalog; old data checks still cover the original 63.
+  const {entries:catalogEntries}=await loadCatalog(root);
+  const descriptors=listPages({entries:catalogEntries,workflows,essays,sitePages:SITE_PAGES});
   const expected=descriptors.filter(page=>page.sitemap).map(page=>page.path);
   const urls = [...(await read(join(dist,'sitemap.xml'))).matchAll(/<loc>([^<]+)<\/loc>/g)].map(match=>match[1]);
   assert.deepEqual(urls,expected.map(path=>'https://punkcanverse.com'+path),'Sitemap must list every real public page exactly once');
