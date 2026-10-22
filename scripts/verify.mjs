@@ -15,6 +15,9 @@ import { withMediumBaseline } from '../lib/data-migration.mjs';
 import { verifyV03 } from './verify-v03.mjs';
 import { GA_SCRIPT_URL, CONSENT_BOOTSTRAP, GA_CONFIG, verifyAnalyticsHtml } from '../lib/analytics.mjs';
 import { loadEssays } from '../lib/essays.mjs';
+import { listPages } from '../lib/routes.mjs';
+import { loadI18n } from '../lib/i18n.mjs';
+import { verifyV04 } from './verify-v04.mjs';
 import { SITE_PAGES } from '../lib/site-pages.mjs';
 import { promptPath, MEDIUM_NAMES } from '../lib/media-tabs.mjs';
 import { pathToFileURL } from 'node:url';
@@ -31,9 +34,9 @@ const affiliates = JSON.parse(await read(join(root, 'data/affiliates.json')));
 const site = JSON.parse(await read(join(root, 'data/site.json')));
 const regionsRaw = await read(join(root, 'data/regions.json'));
 const regions = JSON.parse(regionsRaw);
-// The three new v0.2 files are validated below; the pre-existing data stays
-// protected by the original path checks and exact baseline comparison.
-const protectedDataPaths = ['data/', ':(exclude)data/affiliates.json', ':(exclude)data/regions.json', ':(exclude)data/site.json'];
+// New datasets have their own strict validators. Existing prompt and tip data
+// retain the original baseline/path assertions; old thumbnails are checked below.
+const protectedDataPaths = ['data/', ':(exclude)data/workflows.json', ':(exclude)data/i18n/', ':(exclude)data/thumbs.json', ':(exclude)data/affiliates.json', ':(exclude)data/regions.json', ':(exclude)data/site.json'];
 const forbiddenMedia = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.svg', '.ico', '.mp4', '.webm', '.mov']);
 const forbiddenDomains = ['so', 'site'].map(tld => ['notion', tld].join('.')).concat([['app', 'notion', 'com'].join('.')]);
 const postPattern = /^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+$/;
@@ -62,6 +65,7 @@ await check('每个 HTML 都含指定 GA4 ID、先行 denied 默认值与 Cookie
   for (const file of distFiles.filter(path => extname(path) === '.html')) verifyAnalyticsHtml(await read(file));
 });
 await verifyV03(root);
+await verifyV04(root);
 
 await check('发布文件齐全，Cloudflare 安全标头正确', async () => {
   for (const file of ['index.html', 'tips.html', 'takedown.html', 'assets/site.css', 'assets/app.mjs', 'assets/prompts.mjs', 'assets/clipboard.mjs', 'assets/embeds.mjs', 'data.json', '_headers', 'sitemap.xml', 'robots.txt']) assert.ok((await stat(join(dist, file))).isFile(), file);
@@ -213,10 +217,14 @@ await check('下架入口与 issue 模板齐全，原资料仅允许批准的 me
   if (Object.hasOwn(techie, 'embedId')) assert.equal(techie.embedId, '2086124536253043164');
   techie.embedId = '2086124536253043164';
   assert.deepEqual(data, baseline, 'Only the approved medium migration and TechieBySA embedId are allowed; all original prompt fields must match HEAD');
+  const baselineThumbs=JSON.parse(await git(['show','HEAD:data/thumbs.json']));
+  const currentThumbs=JSON.parse(await read(join(root,'data/thumbs.json')));
+  for(const entry of entries)assert.deepEqual(currentThumbs.entries[entry.id],baselineThumbs.entries[entry.id],`${entry.id}: existing thumbnail changed`);
 });
 
 await check('三页 canonical 与 Open Graph 使用正式网址且内容完整', async () => {
-  for (const [file, path] of [['index.html', '/'], ['tips.html', '/tips.html'], ['takedown.html', '/takedown.html']]) {
+  // v0.4 spec change (boss 2026-10-22): canonical/og use the final extensionless paths.
+  for (const [file, path] of [['index.html', '/'], ['tips.html', '/tips'], ['takedown.html', '/takedown']]) {
     const html = await read(join(dist, file));
     const expectedUrl = `https://punkcanverse.com${path}`;
     const canonical = [...html.matchAll(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"[^>]*>/g)].map(match => match[1]);
@@ -238,7 +246,9 @@ await check('sitemap 精确列出全部正式页面，robots 允许抓取并指�
   assert.match(sitemap, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
   assert.match(sitemap, /<\/urlset>\s*$/);
   const essays = await loadEssays(pathToFileURL(join(root, 'content/essays') + '/'));
-  const expectedPaths = ['/', '/tips.html', '/takedown.html', '/regions.html', ...Object.keys(MEDIUM_NAMES).filter(medium => entries.some(entry => entry.medium === medium)).map(medium => `/prompts/${medium}/`), ...entries.map(promptPath), '/essays/', ...essays.map(essay => `/essays/${essay.slug}/`), ...SITE_PAGES.map(page => page.path)];
+  // v0.4 spec change (boss 2026-10-22): final URLs for every locale and workflow.
+  const workflows=JSON.parse(await read(join(root,'data/workflows.json'))).entries;
+  const expectedPaths=listPages({entries,workflows,essays,sitePages:SITE_PAGES}).filter(page=>page.sitemap).map(page=>page.path);
   assert.equal((sitemap.match(/<url>/g) || []).length, expectedPaths.length);
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), expectedPaths.map(path => `https://punkcanverse.com${path}`));
   assert.equal(await read(join(dist, 'robots.txt')), 'User-agent: *\nAllow: /\nSitemap: https://punkcanverse.com/sitemap.xml\n');
@@ -279,12 +289,21 @@ await check('推广平台映射完整、空网址无按钮，所有页面包含�
     if (expected) assert.ok(home.includes(expected), `${entry.id}: missing sponsored link`);
   }
   if (Object.values(affiliates).every(platform => !platform.url.trim())) assert.ok(!/class="affiliate-(?:links|item|button)"/.test(home), 'Empty affiliate URLs must leave no container or button');
+  const translated=await loadI18n(root);
   for (const file of distFiles.filter(path => extname(path) === '.html')) {
+    const locale=relative(dist,file).startsWith('en/')?'en':relative(dist,file).startsWith('ja/')?'ja':'zh';
     const html = await read(file);
     const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
+    if(locale==='zh') {
     assert.ok(footer?.includes(AFFILIATE_DISCLOSURE), `${file}: missing disclosure`);
     assert.ok(footer.includes('48 小时内处理') && footer.includes('href="takedown.html"') && footer.includes('https://x.com/punkcan'));
     assert.ok(html.includes('href="regions.html"'), `${file}: missing regions navigation`);
+    } else {
+      const ui=translated.ui[locale];
+      assert.ok(footer?.includes(escapeHtml(ui.affiliateDisclosure)), `${file}: missing localized disclosure`);
+      assert.ok(footer.includes(escapeHtml(ui.takedownFooter)) && footer.includes(`href="/${locale}/takedown.html"`) && footer.includes('https://x.com/punkcan'));
+      assert.ok(html.includes(`href="/${locale}/regions.html"`), `${file}: missing localized regions navigation`);
+    }
     for (const link of html.matchAll(/<a\b[^>]*class="affiliate-button"[^>]*>/g)) {
       assert.match(link[0], /rel="sponsored noopener noreferrer"/);
       assert.match(link[0], /target="_blank"/);
@@ -304,8 +323,9 @@ await check('地区数据及整页 HTML 通过官方来源、字段、日期与�
     assert.ok(html.includes(`href="${escapeHtml(entry.sourceUrl)}"`));
     assert.ok(html.includes(`href="${escapeHtml(entry.officialUrl)}"`));
   }
-  assert.ok(html.includes('<link rel="canonical" href="https://punkcanverse.com/regions.html">'));
-  assert.ok(html.includes('<meta property="og:url" content="https://punkcanverse.com/regions.html">'));
+  // v0.4 spec change (boss 2026-10-22): final region canonical/og URL has no extension.
+  assert.ok(html.includes('<link rel="canonical" href="https://punkcanverse.com/regions">'));
+  assert.ok(html.includes('<meta property="og:url" content="https://punkcanverse.com/regions">'));
 });
 
 await check('beehiiv 周报关闭或地址无效时无区块，有效地址才允许嵌入', async () => {

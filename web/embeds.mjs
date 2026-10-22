@@ -121,7 +121,7 @@ export function loadOfficialWidgets({ window = globalThis.window, document = glo
   return promise;
 }
 
-export function bindClickEmbeds({ window = globalThis.window, document = globalThis.document, loadWidgets = () => loadOfficialWidgets({ window, document }) } = {}) {
+export function bindClickEmbeds({ window = globalThis.window, document = globalThis.document, loadWidgets = () => loadOfficialWidgets({ window, document }), errorText = '嵌入暂时无法载入，请点击下方链接在 X 上观看。' } = {}) {
   document.addEventListener('click', async event => {
     const button = event.target.closest?.('[data-play-embed]');
     if (!button || button.disabled) return;
@@ -144,7 +144,7 @@ export function bindClickEmbeds({ window = globalThis.window, document = globalT
       button.disabled = false;
       let error = slot.querySelector('.embed-error');
       if (!error) { error = document.createElement('p'); error.className = 'embed-error'; error.setAttribute('role', 'status'); slot.append(error); }
-      error.textContent = '嵌入暂时无法载入，请点击下方链接在 X 上观看。';
+      error.textContent = errorText;
     } finally { button.removeAttribute('aria-busy'); }
   });
   document.addEventListener('error', event => {

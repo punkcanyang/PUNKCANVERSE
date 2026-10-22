@@ -1,0 +1,225 @@
+{
+  "entries": [
+    {
+      "id": "2083839617237757960",
+      "date": "2026-08-02",
+      "steps": [
+        {
+          "n": 1,
+          "tool": "Midjourney + GPT Image 2",
+          "role": "角色图与铅笔动作分镜（16格、16:9）",
+          "prompt": "Create two original East Asian fantasy fighters who were once two halves of the same soul. Keep a similar facial structure, but give them opposite visual identities.\n\nCharacter A:\nElegant and controlled, amber eyes, long dark hair with one braid, layered teal and gray-blue robes, aged bronze ring weapons releasing thin cyan-gold fate threads.\n\nCharacter B:\nSharp and rebellious, red eyes, short black wolf-cut hair with one braid, asymmetrical cinnabar-red and bone-white battle robes, a black-gold curved chain blade.\n\nCreate detailed full-body character sheets with front, side and back views, facial close-ups, costume materials and weapon details.\n\nThen create a 16:9 pencil action storyboard with 16 tightly arranged panels and minimal gaps.\n\nShow close-ups, vertical drops, wrist kicks, knockbacks, chain-assisted re-entry, leg traps, curtain impacts, corridor chases, weapon locks, roof crashes and a final wide shot.\n\nUse extreme perspective, low angles, weapon POV, over-the-shoulder tracking and partial-body framing.\n\nClear attack → reaction → recoil → re-entry.\n\nMonochrome graphite pencil sketches, rough animation keyframes, motion lines, impact marks and English labels only.",
+          "sourcePost": "https://x.com/MrLarus/status/2083840118008262715",
+          "settings": null
+        },
+        {
+          "n": 2,
+          "tool": "Seedance 2.0",
+          "role": "参考角色图和分镜生成15秒16:9影片",
+          "prompt": "15-second, 16:9, high-energy hand-drawn anime fight with fluid Sakuga-style motion.\n\nUse the character sheets to lock both fighters’ faces, costumes, proportions and weapons. Use the storyboard to guide key poses, combat flow, screen direction and camera movement.\n\nMotion Phrase 1\nThe red fighter cuts the main fate thread. The teal fighter drops from the upper beams and kicks her weapon hand, sending her sliding across the wooden stage.\n\nMotion Phrase 2\nThe red fighter anchors her chain blade into a beam and pulls herself back like a projectile. She traps the teal fighter’s leg and throws her through several hanging curtains.\n\nMotion Phrase 3\nA fast chase through a narrow corridor. The teal fighter releases one anchored thread and uses the remaining tension to change direction. The incoming strike misses, followed by a counterattack from behind and a close-range weapon lock.\n\nMotion Phrase 4\nBoth fighters pull against the chain and fate threads until the force explodes. They are launched in opposite directions, crash onto the wet roof and immediately re-enter the fight. End with a glowing soul-thread revealed between them as the opera house collapses into the storm.\n\nThe camera follows the current attacker’s momentum through extreme close-ups, low tracking, weapon POV, whip pans, falling follow shots and short 90–120° orbits during close contact.\n\nAvoid static two-shots, repeated symmetrical compositions, stationary spellcasting, random cuts and long 360° camera orbits.",
+          "sourcePost": "https://x.com/MrLarus/status/2083840399886467544",
+          "settings": null
+        }
+      ],
+      "author": {
+        "handle": "MrLarus",
+        "name": "Larus Canus",
+        "url": "https://x.com/MrLarus"
+      },
+      "postUrl": "https://x.com/MrLarus/status/2083839617237757960",
+      "tools": [
+        "Midjourney + GPT Image 2",
+        "Seedance 2.0"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "title": "歌剧院动漫决斗：从角色与分镜到成片",
+      "fieldNote": "先用角色图与16格分镜组织动作，再作为15秒影片的参考；作者公开了参考图与成片步骤。"
+    },
+    {
+      "id": "2064046116656586888",
+      "date": "2026-06-08",
+      "steps": [
+        {
+          "n": 1,
+          "tool": "Midjourney",
+          "role": "基础角色概念",
+          "prompt": null,
+          "settings": "Built the base character concept in Midjourney."
+        },
+        {
+          "n": 2,
+          "tool": "GPT Image 2",
+          "role": "完整角色参考图",
+          "prompt": null,
+          "settings": "Expanded the design into a full character reference sheet with GPT Image 2, including costume, helmet, katana, materials and key visual details."
+        },
+        {
+          "n": 3,
+          "tool": "GPT Image 2",
+          "role": "蜘蛛机甲参考与16:9分镜（结构来自 @aimikoda Storyboard Skill）",
+          "prompt": "Create a 16:9 image.\n[PROJECT CARD]\nCreate a compact designed masthead, not a table.\nTITLE: KUROSHI VS ARACHNEX: BLITZ\nMETA LINE: relentless explosive / futuristic samurai vs spider-mech / max-dynamism one-take action\nPRIORITY: constant motion readability, one-take camera continuity, leg-cut and core-kill clarity, massive scale contrast\nMICRO BRIEF: Build a compact rough-sketch storyboard sheet for a 15-second Seedance BLITZ sequence where KUROSHI destroys ARACHNEX with uninterrupted high-speed katana choreography.\n[CONTINUITY HEADER]\nSEQUENCE ID: KUR-ARX-BLITZ-15S-STB\nREFERENCE PRIORITY: @image1 controls C1 KUROSHI identity, wardrobe, armor, helmet, cables, katana, proportions; @image2 controls C2 ARACHNEX identity, weapon layout, eight-leg structure, scale, armor; @image3 controls P01 starting-frame composition exactly; storyboard controls staging, camera sampling, movement, geography, damage continuity.\n[SCENE PACKET]\nPREMISE: KUROSHI erupts from a cold starting-frame profile into a relentless one-take fight, sprinting through ARACHNEX's attacks, climbing the machine, and killing it through the sensor core.\nLOCATION: open Japanese mountain field at blue hour, ankle-high wind-blown grass, wet earth, ground mist, distant pine ridges, layered mountain silhouettes, wide sky, no buildings, no roads, no extra fighters.\nSTART -> END: exact supplied profile start with C1 from behind/side and helmet edge glowing -> wide same-field ending with C1 crouched/rising in foreground, glowing blade extended behind, C2 collapsed dark in the mist.\nACTION CHAIN: head snap + blade ignition -> snap-zoom reveal of charging C2 -> low sprint and cannon slide-dodge -> diagonal leg-tip sever -> under-body roll through stabbing legs -> upward thrust shears hydraulic joint -> body slam miss -> missile run up fallen leg -> vertical climb and gash through armor -> slow-motion launch above core -> downward core plunge and shockwave -> full-speed collapse and wide hold.\nPROP / EFFECT STATE: C1 katana edge glows molten yellow-white like a thin plasma blade and cuts hard steel cleanly; C2 sensor eye, particle cannon, missile pods, hydraulic plasma-cutter legs, lights, cables, armor plates, and core damage progress visibly from active charge to severed leg, joint failure, torn plate, pierced core, dead lights, collapsed body.\nMUST READ: the samurai never stops moving; he turns ARACHNEX's own charge, legs, and body mass into a path upward to the killing strike.\n[CHARACTER SANITIZATION]\nC1: KUROSHI, adult athletic 1.85m futuristic samurai, sleek matte-black composite armor, black micro-plated lamellar shapes, smooth black helmet with pink edge-line, neon-yellow cables down nape, red accent stripe, yellow glyphs, energized katana, low explosive iaijutsu movement, compact controlled posture.\nC2: ARACHNEX, giant 7.6m yellow-and-black tactical spider-mech, eight hydraulic plasma-cutter legs, glowing yellow sensor-eye core, front particle cannon, micro-missile pods, heavy armored carapace, claw feet, fast aggressive mechanical movement.\nRemove contradictory traits, invisible psychology, excessive costume detail, and backstory that cannot appear in a panel.\n[IDENTITY CONSISTENCY]\nIdentity references control face/body/wardrobe/proportions/form; storyboard controls staging only. Keep C1's helmet edge-line, black armor, yellow cables, red stripe, yellow glyphs, katana, and 1.85m scale stable. Keep C2's yellow-black spider silhouette, eight legs, sensor core, cannon, missile pods, and 7.6m scale stable. Do not redesign, merge, recolor, age-shift, beautify, caricature, or simplify beyond clean rough-sketch readability.\n[STORYBOARD PURITY]\nPanel images are visual-only low-detail monochrome light-gray rough sketches. Put panel numbers, beat names, and lens tags in the header strip outside each panel image. No color, labels, arrows, captions, subtitles, logos, watermarks, timing marks, diagrams, UI, ghost poses, duplicate bodies, or technical overlays inside panels.\n[MASTER SHOT RULE]\nP02 is the combat geography master created by the snap-zoom reveal: C1 near right/lower foreground facing screen-left into the field, C2 charging from center-left/midground, mountains and horizon behind, grass and wet earth as the playable path. P01 still opens exactly on the supplied starting frame before the reveal.\n[EMOTIONAL ARC]\ninstant alert -> violent commitment -> collision pressure -> evasive control -> under-body danger -> vertical escalation -> suspended dominance -> killing impact -> released destruction. Show it through C1's compact posture, blade angle, low sprint, pivots, crouches, launch height, C2's mass, damage, and collapsing silhouette.\n[STYLE LOCKS]\nSTYLE LOCK: panel interiors stay clean low-detail monochrome rough sketch on off-white paper, pale graphite line, simplified poses, readable silhouettes, minimal shading; outside panel art use compact teal/yellow accent chips only in masthead/header/director strip. Final-video style target: teal-and-amber cinematic grade, cool blue ambient key, high contrast, wet grass, ground mist, crisp metal, violent handheld energy, speed ramps, debris and mud.\nEFFECT LOCK: katana is a thin molten yellow-white edge with a narrow blade-shaped trail; cannon bolt is a simple directional blast; missile blooms, sparks, molten spray, shockwave ring, smoke, embers, mud curtain, and dying lights are drawn as simple pale graphic shapes inside panels, never colored fills.\nENVIRONMENT LOCK: same open Japanese mountain field across all panels; lock horizon, pine ridge silhouettes, grass direction, fog layer, wet earth texture, and open sky; no city, temple, forest interior, snow, rainstorm, crowd, extra enemies, or new set pieces.\n[SPATIAL CONTINUITY LOCK]\nP01-P11 are sampled phases of one continuous evolving take. Use one primary 35mm anamorphic camera path with a deliberate snap-zoom pullback in P02 only; all other scale changes come from dolly, whip-pan, side track, low orbit, camera rise, crash-down, and continuous pullback. C1 starts right foreground facing left, travels toward C2, rolls under the body, climbs upward, launches above the core, then lands foreground. C2 starts center-left/midground in charge, advances into frame, becomes the overhead mass during under-body beats, then collapses behind C1. P11 is the same field pulled wider, not a new establishing shot. Allowed changes: camera distance/height/orbit, C1 pose, C2 attack state, damage state, blade glow intensity, fog, mud, sparks, missiles, debris, smoke.\n[DIRECTOR STRIP]\nBottom animatic track board aligned to panel columns. Tracks: BEAT LINE, CAMERA PATH, ACTION PATH, RHYTHM TRACK, ESCALATION MAP, STATE TRACK, STYLE TRACK. Use shot chips, thin lines, rhythm blocks, small intensity bars, one-to-three-word labels. No seconds or timestamps.\nRHYTHM TRACK format: `RHY P##: [hold|slow reveal|build|burst|impact|pause|recover|final hit] / [short block|medium block|long block] / [clean beat|match beat|smash beat|held beat|whip beat]`.\nESCALATION MAP format: `ESC P##: [L1 calm|L2 tension|L3 rise|L4 surge|L5 peak] / [flat|rise|spike|drop|release|unresolved]`.\nPANEL HEADERS: P01 / 35mm anamorphic / Instant ignition -> P02 / 35mm snap-zoom / Charging reveal -> P03 / 35mm low dolly / Cannon dodge -> P04 / 35mm side track / Leg-tip sever -> P05 / 35mm whip-pan / Under-body roll -> P06 / 35mm handheld / Joint shear -> P07 / 35mm orbit / Body slam miss -> P08 / 35mm low angle / Missile run -> P09 / 35mm rising orbit / Armor gash -> P10 / 35mm sky hold / Core plunge -> P11 / 35mm wide pullback / Fallen titan\nCAMERA + LENS PLAN: P01 exact close profile hold -> P02 head-turn whip into snap-zoom wide reveal -> P03 low dolly forward with sprint -> P04 side track leg-height through slash -> P05 whip-pan under C2 shadow -> P06 handheld close under-body impact -> P07 low orbit keeps C1 centered through slam -> P08 camera rides up fallen leg, low angle -> P09 rising orbit along armor plates -> P10 upward sky hold then crash-down to core, closest point -> P11 continuous pullback to final wide hold\nACTION PATH: P01 C1 head snaps, blade begins draw -> P02 C2 mid-charge, sensor blazing, legs hammer earth -> P03 C1 slide-dodges right past cannon bolt, earth scorched behind -> P04 C1 weaves and severs stabbing leg tip diagonally -> P05 C1 rolls under body between two stabbing legs -> P06 C1 thrusts upward from back, shears hydraulic joint -> P07 C1 springs clear as C2 body slams mud where he was -> P08 C1 sprints along fallen leg through missile blooms -> P09 C1 climbs plates and rips glowing gash downward -> P10 C1 hangs above core then plunges blade through sensor eye -> P11 C2 lights die and collapses, C1 lands low foreground\nRHYTHM TRACK: P01 RHY P01: burst / short block / whip beat -> P02 RHY P02: build / medium block / clean beat -> P03 RHY P03: burst / short block / whip beat -> P04 RHY P04: impact / short block / smash beat -> P05 RHY P05: burst / short block / whip beat -> P06 RHY P06: impact / short block / smash beat -> P07 RHY P07: burst / short block / whip beat -> P08 RHY P08: build / medium block / match beat -> P09 RHY P09: impact / short block / smash beat -> P10 RHY P10: pause / medium block / held beat -> P11 RHY P11: recover / long block / held beat\nESCALATION MAP: P01 ESC P01: L3 rise / spike -> P02 ESC P02: L4 surge / rise -> P03 ESC P03: L4 surge / spike -> P04 ESC P04: L4 surge / spike -> P05 ESC P05: L5 peak / spike -> P06 ESC P06: L5 peak / spike -> P07 ESC P07: L5 peak / flat -> P08 ESC P08: L5 peak / rise -> P09 ESC P09: L5 peak / spike -> P10 ESC P10: L5 peak / release -> P11 ESC P11: L2 tension / drop\nSTATE TRACK: P01 @image3 exact start, C1 right FG, blade unsheathing -> P02 master locked, C2 center-left charge, sensor on -> P03 cannon scorch behind C1, blade fully glowing -> P04 leg tip severed, molten spray, C1 right-to-left -> P05 two legs stabbing, C1 under belly, C2 overhead -> P06 joint sheared, sparks rain, limb buckles -> P07 body slam mud burst, C1 clear, orbit continues -> P08 missile pods active, fallen leg path, orange fog blooms -> P09 armor gash open, loose cables, rising route -> P10 C1 above core, blade brightest, shockwave begins -> P11 C2 dark collapsed, C1 crouch/rise, blade trailing glow\nSTYLE TRACK: P01 ignition snap -> P02 scale rush -> P03 grass streak -> P04 molten spray -> P05 shadow blur -> P06 spark rain -> P07 mud burst -> P08 fog blooms -> P09 cable whip -> P10 white flash -> P11 smoke wide\n[SEQUENCE]\nGrid: 11 panels in a compact cinematic storyboard sheet, arranged as a fast 6-over-5 layout; all panels sample one continuous BLITZ take with snap-zoom reveal, dolly sprint, whip-pan under-body exchange, orbiting vertical climb, slow-motion core plunge, and final pullback to the same mountain field.",
+          "sourcePost": "https://x.com/neural_aperture/status/2064048487583424581",
+          "settings": null
+        },
+        {
+          "n": 4,
+          "tool": "Seedance 2.0 (on OpenArt)",
+          "role": "以分镜为蓝图制作动态",
+          "prompt": null,
+          "settings": "Used the storyboard as the visual blueprint for the Seedance 2.0 motion pass. Author tip: test the idea in 480p first before going higher-res."
+        }
+      ],
+      "author": {
+        "handle": "neural_aperture",
+        "name": "neural.aperture | Vladyslav Popov",
+        "url": "https://x.com/neural_aperture"
+      },
+      "postUrl": "https://x.com/neural_aperture/status/2064046116656586888",
+      "tools": [
+        "Midjourney",
+        "GPT Image 2",
+        "GPT Image 2",
+        "Seedance 2.0 (on OpenArt)"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "title": "KUROSHI 对 ARACHNEX：角色、分镜与动态",
+      "fieldNote": "从 Midjourney 角色概念出发，用 GPT Image 2 扩充设定与分镜，再交给 Seedance 2.0 做动态；作者建议先用480p测试。"
+    },
+    {
+      "id": "2079886296953008156",
+      "date": "2026-07-22",
+      "steps": [
+        {
+          "n": 1,
+          "tool": "Midjourney 8.2 preview",
+          "role": "单张角色参考图",
+          "prompt": null,
+          "settings": "The single character reference made in MJ used for the short.",
+          "sourcePost": "https://x.com/gen_ericai/status/2079886300388151564"
+        },
+        {
+          "n": 2,
+          "tool": "Seedance 2.0 (via Dreamina)",
+          "role": "由单张参考图生成影片",
+          "prompt": null,
+          "settings": "Main subject description, Location description, Visual Style description, Camera Style, Music style description, + Time coded prompt (with camera movements, framing, and action)."
+        },
+        {
+          "n": 3,
+          "tool": "Magnific",
+          "role": "影片放大",
+          "prompt": null,
+          "settings": "Video upscale in Magnific, 48fps 4K."
+        }
+      ],
+      "author": {
+        "handle": "gen_ericai",
+        "name": "gen.ericai",
+        "url": "https://x.com/gen_ericai"
+      },
+      "postUrl": "https://x.com/gen_ericai/status/2079886296953008156",
+      "tools": [
+        "Midjourney 8.2 preview",
+        "Seedance 2.0 (via Dreamina)",
+        "Magnific"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "title": "一张参考图完成15秒短片",
+      "fieldNote": "角色图、分时提示与影片放大分为三步；原作者写明 Magnific 放大至48fps、4K，各步未公开独立提示词。"
+    },
+    {
+      "id": "2079916857403048097",
+      "date": "2026-07-22",
+      "steps": [
+        {
+          "n": 1,
+          "tool": "Claude",
+          "role": "撰写提示词",
+          "prompt": null,
+          "settings": "Paste a reference character sheet into Claude/GPT and ask it to recreate it with your own concept/name/pfp; then ask Claude/GPT to turn your character into a 15s action video prompt."
+        },
+        {
+          "n": 2,
+          "tool": "GPT (image)",
+          "role": "生成角色表",
+          "prompt": null,
+          "settings": "Generate the character sheet with GPT (author suggests GPT rather than Nano Banana)."
+        },
+        {
+          "n": 3,
+          "tool": "Seedance 2.0 mini (on Higgsfield)",
+          "role": "生成15秒影片",
+          "prompt": null,
+          "settings": "Upload the character sheet on Higgsfield and choose Seedance 2.0 mini (cheap, fast, good enough for drafts; 64 credits ≈ $3.33, 720p) or Seedance 2.0 for 1080p and better consistency."
+        }
+      ],
+      "author": {
+        "handle": "ice_bearcute",
+        "name": "icey",
+        "url": "https://x.com/ice_bearcute"
+      },
+      "postUrl": "https://x.com/ice_bearcute/status/2079916857403048097",
+      "tools": [
+        "Claude",
+        "GPT (image)",
+        "Seedance 2.0 mini (on Higgsfield)"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "title": "动漫战斗预告：从角色表到 Higgsfield",
+      "fieldNote": "Claude 写提示、GPT 做角色表，再把角色表交给 Seedance 2.0 mini；这里保留作者对草稿与高画质版本的设置说明。"
+    },
+    {
+      "id": "2062650742180114644",
+      "date": "2026-06-04",
+      "steps": [
+        {
+          "n": 1,
+          "tool": "Midjourney",
+          "role": "角色图（回复中分享四位反英雄）",
+          "prompt": null,
+          "settings": "Midjourney + GPT Image 2 used for the characters.",
+          "sourcePost": "https://x.com/hedo_ist/status/2062650745296724008"
+        },
+        {
+          "n": 2,
+          "tool": "GPT Image 2",
+          "role": "角色细化",
+          "prompt": null,
+          "settings": "(author lists GPT Image 2 in the tool chain; no separate prompt published)"
+        },
+        {
+          "n": 3,
+          "tool": "Seedance 2.0",
+          "role": "FPV 一镜到底动作影片",
+          "prompt": "First-person view (FPV) drone shot using a high-speed, single-take cinematic technique.\n\nA small superhero flies in first-person view toward the castle and destroys it by crashing through it. The large red giant appears and tries to grab him in a rage. The blue superhero dodges, laughing, and spins back, punching him in the face and knocking the giant down, sending him tumbling backward.\n\nPhotorealistic, cinematic, fast-paced action scene.",
+          "sourcePost": "https://x.com/hedo_ist/status/2062650745296724008",
+          "settings": null
+        }
+      ],
+      "author": {
+        "handle": "hedo_ist",
+        "name": "hedoήist",
+        "url": "https://x.com/hedo_ist"
+      },
+      "postUrl": "https://x.com/hedo_ist/status/2062650742180114644",
+      "tools": [
+        "Midjourney",
+        "GPT Image 2",
+        "Seedance 2.0"
+      ],
+      "tags": [
+        "workflow"
+      ],
+      "title": "FPV 超级英雄对巨人：角色图到一镜到底",
+      "fieldNote": "Midjourney 与 GPT Image 2 准备人物，Seedance 2.0 制作 FPV 动作；作者公开了影片提示词，角色阶段保留设置说明。"
+    }
+  ]
+}

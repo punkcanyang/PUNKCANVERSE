@@ -9,6 +9,8 @@ import { AFFILIATE_DISCLOSURE } from '../lib/affiliates.mjs';
 import { escapeHtml } from '../lib/markdown.mjs';
 import { validateRegions, validateRegionText } from '../lib/regions.mjs';
 import { GA_SCRIPT_URL, verifyAnalyticsHtml } from '../lib/analytics.mjs';
+import { listPages, fileForPublic } from '../lib/routes.mjs';
+import { loadI18n } from '../lib/i18n.mjs';
 import { SITE_PAGES } from '../lib/site-pages.mjs';
 
 export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.url))) {
@@ -18,10 +20,14 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
   const affiliates = JSON.parse(await read(join(root,'data/affiliates.json')));
   const site = JSON.parse(await read(join(root,'data/site.json')));
   const essays = await loadEssays(pathToFileURL(join(root,'content/essays')+'/'));
-  const expected = ['/', '/tips.html', '/takedown.html', '/regions.html', ...Object.keys(MEDIUM_NAMES).filter(medium=>entries.some(entry=>(entry.medium||'video')===medium)).map(medium=>`/prompts/${medium}/`), ...entries.map(promptPath), '/essays/', ...essays.map(essay=>`/essays/${essay.slug}/`), ...SITE_PAGES.map(page=>page.path)];
+  const workflows=JSON.parse(await read(join(root,'data/workflows.json'))).entries;
+  const translations=await loadI18n(root);
+  // v0.4 spec change (boss 2026-10-22): exact final URLs, all three locales and workflows.
+  const descriptors=listPages({entries,workflows,essays,sitePages:SITE_PAGES});
+  const expected=descriptors.filter(page=>page.sitemap).map(page=>page.path);
   const urls = [...(await read(join(dist,'sitemap.xml'))).matchAll(/<loc>([^<]+)<\/loc>/g)].map(match=>match[1]);
   assert.deepEqual(urls,expected.map(path=>'https://punkcanverse.com'+path),'Sitemap must list every real public page exactly once');
-  const paths = [...expected, ...Object.keys(MEDIUM_NAMES).filter(medium=>!entries.some(entry=>(entry.medium||'video')===medium)).map(medium=>`/prompts/${medium}/`)];
+  const paths=descriptors.map(page=>page.path);
   const affiliateUrls = new Set(Object.values(affiliates).map(platform=>platform.url).filter(Boolean).map(escapeHtml));
   const htmlFiles=[];
   async function walk(dir) {
@@ -33,23 +39,34 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
   await walk(dist);
   assert.equal(htmlFiles.length,paths.length,'No unexpected HTML pages');
   for (const path of paths) {
-    const file=join(dist,path.endsWith('.html')?path.slice(1):path.slice(1)+'index.html');
+    const file=join(dist,fileForPublic(path));
+    const locale=descriptors.find(page=>page.path===path).locale;
+    const ui=translations.ui[locale];
+    // v0.4 spec change (boss 2026-10-22): untranslated essays point to their original.
+    const canonicalPath=descriptors.find(page=>page.path===path).canonical;
     assert.ok((await stat(file)).isFile());
     const html=await read(file);
-    assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${path}">`),path);
-    assert.ok(html.includes(`<meta property="og:url" content="https://punkcanverse.com${path}">`),path);
+    assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${canonicalPath}">`),path);
+    assert.ok(html.includes(`<meta property="og:url" content="https://punkcanverse.com${canonicalPath}">`),path);
     assert.match(html,/<title>[^<]+ · PUNKCANVERSE<\/title>/);
     assert.ok(html.includes('<meta property="og:site_name" content="PUNKCANVERSE">'));
     assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'));
-    assert.ok(html.includes('https://x.com/punkcan') && html.includes(AFFILIATE_DISCLOSURE));
-    assert.ok(html.includes('缩图同样直接引用 X 原图，不转存。'));
+    if(locale==='zh') {
+      assert.ok(html.includes('https://x.com/punkcan') && html.includes(AFFILIATE_DISCLOSURE));
+      assert.ok(html.includes('缩图同样直接引用 X 原图，不转存。'));
+    } else {
+      assert.ok(html.includes('https://x.com/punkcan') && html.includes(escapeHtml(ui.affiliateDisclosure)));
+      assert.ok(html.includes(escapeHtml(ui.copyright)));
+    }
     verifyAnalyticsHtml(html);
     const external=[...html.matchAll(/<script\b[^>]*src="(https?:\/\/[^"]+)"[^>]*>/gi)].map(match=>match[1]);
     assert.deepEqual(external,[GA_SCRIPT_URL],'Only the approved Google tag may be preloaded; X remains interaction-only');
     assert.ok(!/<video\b|<source\b|\sonerror\s*=/i.test(html));
     for(const mail of html.matchAll(/mailto:([^"'<>\s]+)/gi))assert.equal(mail[1],'hello@punkcanverse.com');
     const footer=html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
-    for(const info of SITE_PAGES)assert.ok(footer?.includes(`href="${info.path}"`));
+    if(locale==='zh') {
+      for(const info of SITE_PAGES)assert.ok(footer?.includes(`href="${info.path}"`));
+    } else for(const info of SITE_PAGES)assert.ok(footer?.includes(`href="/${locale}${info.path}"`));
     if(site.models?.enabled===false)assert.ok(!/白模|\/models\//.test(html),path);
     if(!site.newsletter.enabled)assert.ok(!/class="newsletter"|href="[^"]*newsletter/.test(html));
     for (const match of html.matchAll(/<img\b[^>]*>/g)) {
@@ -64,7 +81,9 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
         assert.match(match[0],/rel="sponsored noopener noreferrer"/);
       }
     }
-    if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),'tips.html','Magnific belongs only in recommended tools');
+    if(locale==='zh') {
+      if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),'tips.html','Magnific belongs only in recommended tools');
+    } else if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),`${locale}/tips.html`,'Magnific belongs only in localized recommended tools');
   }
   for(const entry of entries) {
     const html=await read(join(dist,promptPath(entry),'index.html'));

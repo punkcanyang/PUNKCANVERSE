@@ -1,0 +1,377 @@
+{
+  "prompts": {
+    "2105260950920311071": {
+      "title": "Lone spearman charges a burning battlefield (10s)",
+      "description": "Keep one spear in the hero’s hands: no duplicates, disappearing weapons or shape changes. Requiring every enemy to move and each action to cause the next makes this a useful starting point for pole-and-tool fights."
+    },
+    "2093988861496168653": {
+      "title": "Bruce Lee-style courtyard fight: FPV single take",
+      "description": "Strict continuity rules ban reversals and fades, with just half a second of slow motion for the reveal. The invisible “ghost camera,” reference-image locks and near-camera strikes help keep the long take coherent."
+    },
+    "2093199866906456471": {
+      "title": "A playful martial-arts kiss: a failed single take",
+      "description": "The model cut to a reaction even though the prompt requested one continuous shot. “Smooth switching” between shot sizes can encourage editing; adding “No slowmotion” addressed a separate repeated failure."
+    },
+    "2086124547376341346": {
+      "title": "Market brawl with bamboo poles, crates and ladders",
+      "description": "Jackie Chan-style prop action breaks the fight into two-second beats with sound effects. Poles, trays, lantern strings and ladders make this a useful reference for improvised-weapon choreography."
+    },
+    "2068834853894664445": {
+      "title": "Viking berserker raids a village in one take",
+      "description": "Separate style, references and timeline sections make the prompt easy to follow. Repeating the tracking direction every four seconds and locking the character’s appearance helps sustain the village raid."
+    },
+    "2060421985608597798": {
+      "title": "Erlang Shen vs Sun Wukong, with Chinese dialogue",
+      "description": "Each deity is tied to a separate reference image ([Image1]/[Image2]), with a defined appearance and weapon: Erlang Shen’s three-pointed, double-edged blade and Sun Wukong’s Ruyi Jingu Bang. Chinese dialogue is inserted with an explicit request for English subtitles. CAMERA, LIGHTING and COLOR GRADING are separate sections; NO MUSIC leaves rain, footsteps and weapon sounds. Use the same dialogue structure for divine combat with Taiwanese Hokkien or Hakka lines."
+    },
+    "2041772197799236033": {
+      "title": "Eastern dragon saves a city from a giant serpent (single take)",
+      "description": "A wingless, biological dragon is defined through muscle, scales, weight and inertia. Destruction, arrival, struggle and rescue form a continuous story that can also inform mythic-spirit scenes."
+    },
+    "2020862666290721268": {
+      "title": "Torchlit temple battle in retro Hong Kong wuxia style",
+      "description": "Four timed beats combine camera, action and traditional instruments. The 180-degree orbit and brief drops to 60% speed give the group fight a clear rhythm under torchlight."
+    },
+    "2009010940616769542": {
+      "title": "Knight rides through a burning village",
+      "description": "Fire, drifting ash and fleeing villagers carry the scene rather than combat moves. A low rear tracking shot mixes firelight with dusk, making this a useful aftermath transition."
+    },
+    "2109502196824084591": {
+      "title": "Vertical street fight outside a convenience store",
+      "description": "A 9:16 duel uses detailed clothing descriptions to hold the two identities steady. It names categories of moves rather than scripting every strike, leaving choreography to the model."
+    },
+    "2106931613427028260": {
+      "title": "Ink-wash swordsman: camera moves in degrees per second",
+      "description": "Numeric angular speeds distinguish fast rotations from slow orbits. Camera, visuals and effects stay in separate columns so ink textures and particles survive the action."
+    },
+    "2104802751435911223": {
+      "title": "One against many in a train carriage",
+      "description": "Atmosphere and camera terms do most of the work, with negative prompts for duplicate people and extra limbs. The narrow aisle itself constrains blocking and reduces crowd confusion."
+    },
+    "2102973186984030688": {
+      "title": "High-speed spear duel with identity locks",
+      "description": "Four reference images separate two fighters and two spears. Explicit identity and weapon locks address merging and swapping, while the camera intercepts and dives rather than merely following."
+    },
+    "2099006619988459985": {
+      "title": "Flaming sword sweeps through shadow beasts",
+      "description": "A compact paragraph combines low tracking, a spinning strike, charging creatures and a shockwave. It is a quick way to test an action idea without a full timeline."
+    },
+    "2096103896553001298": {
+      "title": "Twenty-second ballroom brawl in one take",
+      "description": "Seven beats connect blocks, throws, a sweep, broken glass and a final exit. Named moves and repeated weight, inertia and biomechanics cues make the close combat concrete."
+    },
+    "2095175917412962628": {
+      "title": "Red-haired warrior struck by an arrow (single take, millisecond timecodes)",
+      "description": "MiniMax-H3’s structured format separates action and sound. The hit is broken into entry direction, a delayed collapse, dropped blades and dust, showing how to describe a convincing reaction."
+    },
+    "2092825704480329768": {
+      "title": "Neon-alley single take: one blade, three robots",
+      "description": "The opening locks clothes, blade, opponents and location, then forbids teleporting, resets and jump cuts. Each three-second segment gives the camera’s starting and ending direction."
+    },
+    "2092533822592036981": {
+      "title": "Fallen capital: a knight rescues the heir through fire",
+      "description": "Short lists cover story, setting, palette, light, camera and sound. Wide views, close fire shots and tight handheld passages make this useful for a burning-village montage."
+    },
+    "2088369662295695610": {
+      "title": "Thirty-second rainy warehouse duel without blood",
+      "description": "Five-second beats repeat no blood, injuries or weapons at both ends. Sound and footwork provide impact; a fist stopping short ends the scene without a knockout."
+    },
+    "2086494563347398669": {
+      "title": "Lantern street duel in three hard cuts",
+      "description": "Explicit shot labels assign one task to each of three shots. The final exchange names three moves before the weapons lock, making the intended editing easy to follow."
+    },
+    "2085108054518067278": {
+      "title": "Supermarket cabbage vs katana: quarter-second beats",
+      "description": "Very fine timing is paired with foreground layers and shutter cues. The strongest reusable idea is strict weapon ownership: each fighter keeps their own prop or blade throughout."
+    },
+    "2082370698048414190": {
+      "title": "Tai chi redirection and throw in a gym",
+      "description": "A list of distinct beats moves from a flying attack through redirection, a throw and recovery. One clear action per beat keeps the nine-second sequence readable."
+    },
+    "2082035898716389382": {
+      "title": "White-haired dual-sword fighter vs armored samurai",
+      "description": "Five storyboard panels organize a vertical fifteen-second duel. Separate character and setting descriptions precede the action, which ends as bloodless fantasy martial arts."
+    },
+    "2073659391807803412": {
+      "title": "Sea monster attacks a wooden fleet at night",
+      "description": "A 60:30:10 color ratio anchors darkness, bioluminescence and cannon fire. Monster physics, changing frame rates and muffled slow-motion sound shape the night battle."
+    },
+    "2069797803899965625": {
+      "title": "Animated exorcist clears a temple with a sacred spear",
+      "description": "Three timed sections mix characters and actions with anime camera language. Talisman-wrapped weapons and golden light offer a visual bridge to Taiwanese temple imagery."
+    },
+    "2067298200520896673": {
+      "title": "Six-second running fight over rough terrain",
+      "description": "A single paragraph lists kicks, knees, flips and falls while emphasizing momentum. For a short Grok Imagine clip, one continuous action chain is enough."
+    },
+    "2059760915025699022": {
+      "title": "Wuxia fighter takes on a castle’s skeleton army",
+      "description": "Hair, clothes and gloves are restated after each segment. Speed changes and matching sound support the fight; the camera is told to follow her rather than get ahead."
+    },
+    "2056321432808767664": {
+      "title": "Flaming-sword warrior against an army of monsters",
+      "description": "Four lines separate character, action, environment and camera. The camera line becomes a complete sequence, from a wide reveal to speed changes, handheld clashes and a final orbit."
+    },
+    "2051610377306116575": {
+      "title": "Armored knight fights a crowd in the mud",
+      "description": "Four short lines cover the essentials. Emphasizing weight and connecting clashes with whip pans are the key cues that keep the melee grounded."
+    },
+    "2049906568909684901": {
+      "title": "Two armies descend into an ancient battlefield",
+      "description": "The sequence moves from aerial geography to landing, charging, close clashes and a final wide melee. Style, camera and mood close the prompt; the structure can be adapted to village factions."
+    },
+    "2048067032738930903": {
+      "title": "Ninja melee in a rain-soaked bamboo grove",
+      "description": "A concise vertical prompt combines many fighters, bamboo, heavy rain, fog and clashing blades. It is a straightforward starting point for Grok Imagine crowd action."
+    },
+    "2045457317953667271": {
+      "title": "Rainy rooftop sword duel: three models, one prompt",
+      "description": "The same prompt is shown side by side in three models. Rain, blade contact in slow motion and a full orbit make useful comparison points."
+    },
+    "2039728331826799101": {
+      "title": "Tiger warrior vs dragon spirit: blades, then fire",
+      "description": "One sentence links the clash, a blade lock, fire and the tiger’s physical reaction. Scorched fur, a backward head movement and a dropping arm make impact feel tangible."
+    },
+    "2034069165011833180": {
+      "title": "Rooftop assassins in heavy rain: Chinese timecodes",
+      "description": "Each timecoded beat pairs one shot with one action. The author revised a crane instruction after an earlier version made a literal crane appear in the frame."
+    },
+    "2033696362320240879": {
+      "title": "Black-clad swordswoman vs dual blades in bamboo rain",
+      "description": "One Chinese keyword paragraph combines appearance, sword light, splashes and soaked fabric. Tracking, crane moves, orbiting and impact slow motion are layered onto the duel."
+    },
+    "2033495931514179601": {
+      "title": "A thousand riders: grass-level tracking to aerial wide",
+      "description": "Four shots are linked with cuts, crash zooms and snaps. Film references and slight handheld vibration give the cavalry charge scale and a sense of shaking ground."
+    },
+    "2023664996987924781": {
+      "title": "Katana fighter cuts down robots in four scenes",
+      "description": "Quality and speed instructions come first, followed by four action beats. Multiple angles cover ambushes, laser blocks and a final explosive cut."
+    },
+    "2010908642804224203": {
+      "title": "Elemental sword performance in a fixed full-body shot",
+      "description": "The prompt explicitly frames this as cinematic martial-arts performance. A fixed front view keeps every move in frame while fire, lightning, wind and ice add variety."
+    },
+    "2001018030575509581": {
+      "title": "Bamboo-grove samurai duel: Runway 4.5 vs Kling 2.6",
+      "description": "Exact seconds organize a brief exchange and final pose. High-contrast black and white with a single red accent creates a Kurosawa-inspired visual plan."
+    },
+    "2000219951433486367": {
+      "title": "Animated aerial fight around a giant’s neck",
+      "description": "Spiraling movement, rapid slashes and missed grabs establish scale. Split-second impact freezes and an orbiting camera help sell the fight against a much larger opponent."
+    },
+    "1999359728283983905": {
+      "title": "Water samurai vs smoke dragon: an elemental stress test",
+      "description": "Prompt, camera, light and key details are separated. Three numbered requirements make the expected interaction between non-solid characters explicit."
+    },
+    "1998039564829507631": {
+      "title": "Warrior and wolf defend a snowy Viking village",
+      "description": "Raiders emerge between houses as weapons spark and a wolf joins the fight. A broad request for dynamic camera movement leaves Veo room to interpret the defense."
+    },
+    "1998136315343409451": {
+      "title": "Dojo master blocks a student one-handed, with sound cues",
+      "description": "Scene, element, movement, audio and other notes have separate fields. Bracketed object-action-sound cues and a spoken line suit Kling 2.6’s native audio."
+    },
+    "1996925385184104893": {
+      "title": "Morning-rush couple fight with flying coffee",
+      "description": "Scene, action, audio and camera are clearly separated. Onomatopoeic hits, music style and side tracking with handheld impact shake organize the everyday-action setup."
+    },
+    "1981632619109601542": {
+      "title": "Ink samurai breaks through paper: image to video",
+      "description": "Action, camera, atmosphere and style each get one sentence. Since the reference already supplies appearance, the text focuses on movement and camera work."
+    },
+    "1980612333723611356": {
+      "title": "Rainy street martial arts with a locked camera",
+      "description": "A fixed medium-distance camera lets the fighters move while the frame stays still. Short slow-motion bursts add rhythm without complicating the camera path."
+    },
+    "1973323214685085757": {
+      "title": "Knight on a burning battlefield: Midjourney video",
+      "description": "The same scene used for Luma is run with Midjourney video parameters and a square frame. The original shows two versions for comparing animated-illustration movement and camera behavior."
+    },
+    "1973119429576708138": {
+      "title": "Knight drags a sword across a burning battlefield",
+      "description": "Low tracking follows sparks, smoke and distant fighting before the sword is raised. Another entry uses the same prompt in Midjourney, giving a direct point of comparison."
+    },
+    "1973032611124556070": {
+      "title": "Hand-to-hand fight at a broken skyscraper edge",
+      "description": "A shattered wall two hundred floors up supplies the danger. Falling glass and punches close to the edge show how setting can create tension without a long list of moves."
+    },
+    "1970484324282568930": {
+      "title": "Sweep kick and airborne dodge in perfect timing",
+      "description": "The sweep and leap happen together, with dust marking the first move. A low dolly follows the leg before tilting up to the jump, tying camera rhythm to the pair’s timing."
+    },
+    "1964422115416768614": {
+      "title": "Ronin walks through broken spears at dusk",
+      "description": "Broken weapons, burning banners, rain and ash create a battlefield aftermath. Rear tracking gives way to an eye close-up, with warm sunset against cold storm clouds."
+    },
+    "1955250635529388309": {
+      "title": "Samurai duel escapes an ancient scroll into color",
+      "description": "The scroll unfolds with each step before the fighters leave the paper for full-color animation. Murals, maps or family records could use the same transition structure."
+    },
+    "1952004334478037226": {
+      "title": "Two ninjas train in a dojo with red and blue energy",
+      "description": "The prompt reads like art direction, emphasizing decor, palette and energy trails. General martial-arts movement favors performance over a detailed fight."
+    },
+    "1951969117897928914": {
+      "title": "Kung fu ducks: second-by-second JSON",
+      "description": "Duration, frame rate, characters, sound and one action per second are structured as JSON. Eight seconds of Veo can follow this clean beat-by-beat framework without overcrowding."
+    },
+    "1950836340263723466": {
+      "title": "Kung fu spinning kick: one close-up moment",
+      "description": "A short fighter spins in the air toward a taller opponent’s head, followed by a startled recoil. One action in five seconds is a restrained starting point for earlier models."
+    },
+    "1949860456958398844": {
+      "title": "Comic-panel angel vs beast: Midjourney video parameters",
+      "description": "Image-first composition carries the prompt, followed by high-motion and raw video parameters. Gold, grey-white and red define the clash between the angel and the creature."
+    },
+    "1946702904896684040": {
+      "title": "Animated factory rivals: handheld impact bounce",
+      "description": "A single sentence asks the camera to bounce with each hit, amid sparks and smashed crates. Hailuo 02 makes this a concise example of selling motion through camera reaction."
+    },
+    "1945890431801438546": {
+      "title": "Animated alley duel: camera follows each parry",
+      "description": "Side-to-side camera movement is synchronized with every block. Linking the camera’s rhythm to the exchange gives the fight a clear back-and-forth pattern."
+    },
+    "1935098801410158601": {
+      "title": "Roman army charges through snow and torchlight",
+      "description": "Bracketed concepts build the shot from wide angle and low camera to dirty armor, smoke and film texture. Keyword layering is enough to establish the charge’s atmosphere."
+    },
+    "1931033884298547362": {
+      "title": "Fast-cut rooftop fight at dusk, with narration",
+      "description": "Five shot cues move from an aerial view to feet, an over-shoulder punch, a detail and a silhouette. Male narration is written directly into the Veo 3 prompt."
+    },
+    "1920520421583036431": {
+      "title": "King leads a snowy cavalry charge: four image-to-video models",
+      "description": "One action sentence plus “Dynamic dramatic motion” leaves appearance to the reference image. The four-model comparison illustrates how little text an image-to-video task may need."
+    },
+    "1916533364024287363": {
+      "title": "Space ranger vs red spider robot: Luma and Pika",
+      "description": "The same reference and prompt are used for Luma Ray2 and Pika 2.2. Explicitly assigning attacker and defender helps keep both sides active in a monster fight."
+    },
+    "1879696405440409618": {
+      "title": "Water and lava warriors clash",
+      "description": "Two elemental fighters, an orbiting camera and bursts of light make up the shortest entry. It is a quick starting point for testing magical combat."
+    }
+  },
+  "workflows": {
+    "2083839617237757960": {
+      "title": "Opera-house anime duel: references to final cut",
+      "fieldNote": "Character sheets and a sixteen-panel storyboard organize the action before the fifteen-second video pass. The creator shared both reference planning and the video step.",
+      "steps": {
+        "1": {
+          "role": "Character sheets + pencil action storyboard (16 panels, 16:9)"
+        },
+        "2": {
+          "role": "15-second 16:9 video using character sheets + storyboard as references"
+        }
+      }
+    },
+    "2064046116656586888": {
+      "title": "KUROSHI vs ARACHNEX: character, storyboard, motion",
+      "fieldNote": "A Midjourney concept becomes character references and a storyboard in GPT Image 2, then a Seedance 2.0 motion pass. The creator recommends trying the idea at 480p first.",
+      "steps": {
+        "1": {
+          "role": "Base character concept"
+        },
+        "2": {
+          "role": "Full character reference sheet"
+        },
+        "3": {
+          "role": "Spider-mech reference + 16:9 storyboard (structure from @aimikoda Storyboard Skill)"
+        },
+        "4": {
+          "role": "Motion pass using the storyboard as blueprint"
+        }
+      }
+    },
+    "2079886296953008156": {
+      "title": "One reference image to a fifteen-second short",
+      "fieldNote": "The process separates the character image, a timecoded video prompt and upscaling. The creator specifies Magnific at 48fps and 4K, without publishing a separate prompt for each step.",
+      "steps": {
+        "1": {
+          "role": "Single character reference image"
+        },
+        "2": {
+          "role": "Video from one reference image"
+        },
+        "3": {
+          "role": "Video upscale"
+        }
+      }
+    },
+    "2079916857403048097": {
+      "title": "Anime battle trailer: character sheet to Higgsfield",
+      "fieldNote": "Claude handles the writing, GPT makes the character sheet, and Seedance 2.0 mini makes the clip. The creator’s notes distinguish draft settings from the higher-quality option.",
+      "steps": {
+        "1": {
+          "role": "Write prompts"
+        },
+        "2": {
+          "role": "Character sheet"
+        },
+        "3": {
+          "role": "15s video"
+        }
+      }
+    },
+    "2062650742180114644": {
+      "title": "FPV superhero vs giant: references to a single take",
+      "fieldNote": "Midjourney and GPT Image 2 prepare the characters before Seedance 2.0 handles the FPV action. The video prompt is public; the character stages retain the creator’s settings notes.",
+      "steps": {
+        "1": {
+          "role": "Character images (author shared 4 anti-hero images in replies)"
+        },
+        "2": {
+          "role": "Character refinement"
+        },
+        "3": {
+          "role": "FPV single-take action video"
+        }
+      }
+    }
+  },
+  "regions": {
+    "anthropic-supported-regions": {
+      "title": "Anthropic’s service regions",
+      "summary": "The policy lists where Anthropic apps, the developer platform and authorized channels are supported; unlisted countries and regions are not supported. It covers use location, organizational registration or headquarters, and ownership or control. The supplied page states an effective date of 2026-11-12; check the official page for applicability."
+    },
+    "claude-access": {
+      "title": "Where Claude is available",
+      "summary": "Claude’s help center lists the countries and regions where Claude is available. Use this official list to check your own location."
+    },
+    "claude-appeals": {
+      "title": "Claude warnings, suspensions and appeals",
+      "summary": "The official page lists repeated policy violations, account creation in unsupported locations and terms violations as possible reasons for suspension. If you believe an account was disabled in error, sign in to that account before opening the appeal form. For a suspended organization, select Request a review for that organization on the restricted-account page."
+    },
+    "anthropic-usage-policy": {
+      "title": "Anthropic’s usage policy and enforcement",
+      "summary": "The usage policy covers app users, developers and people using Claude through authorized channels. Suspected violations may result in warnings, restrictions or suspension; a single output stopped by a safeguard does not itself establish a violation. The supplied page states an effective date of 2026-11-12; consult the current official version."
+    },
+    "openai-api-regions": {
+      "title": "OpenAI API supported countries and regions",
+      "summary": "This documentation lists the countries and regions supported by the OpenAI API. Accessing or offering access outside that list may lead to an account being blocked or suspended."
+    },
+    "gemini-web-regions": {
+      "title": "Gemini web app availability",
+      "summary": "The official page lists languages, countries and regions supported by the Gemini web app. Mobile app availability may differ, so check the requirements for the product you intend to use."
+    },
+    "gemini-api-regions": {
+      "title": "Google AI Studio and Gemini API regions",
+      "summary": "This page lists countries and regions where Google AI Studio and the Gemini API are available. Access issues with AI Studio may relate to region requirements, being under eighteen or incomplete age verification."
+    }
+  },
+  "tags": {
+    "一鏡到底": "Single take",
+    "冷兵器": "Melee weapons",
+    "功夫武打": "Kung fu",
+    "動作編排": "Choreography",
+    "動畫風": "Animation",
+    "夜戰火光": "Night & firelight",
+    "寫實": "Realistic",
+    "徒手格鬥": "Hand-to-hand",
+    "怪物／神靈": "Creatures & spirits",
+    "放火燒屋": "Burning buildings",
+    "群戰／村落": "Crowds & villages",
+    "workflow": "Workflows"
+  }
+}

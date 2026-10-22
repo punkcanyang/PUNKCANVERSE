@@ -1,10 +1,15 @@
-import { parseFilters, filterEntries, clearFilters, filtersToSearch, getCopyText } from './prompts.mjs';
+import { parseFilters, filterEntries, clearFilters, filtersToSearch } from './prompts.mjs';
 import { copyText } from './clipboard.mjs';
 import { bindClickEmbeds } from './embeds.mjs';
 import { initConsent } from './consent.mjs';
+import { initLanguage, workflowCopyText, localizedCopyText } from './language.mjs';
+
+initLanguage();
+const messages = JSON.parse(document.body.dataset.messages || '{}');
+const message = (key, values={}) => (messages[key] || key).replace(/\{(\w+)\}/g, (_, name) => values[name] ?? '');
 
 initConsent();
-bindClickEmbeds();
+bindClickEmbeds({errorText:message('embedFailed')});
 
 const toast = document.querySelector('#toast');
 let toastTimer;
@@ -30,19 +35,21 @@ function loadEntries() {
     return entries;
   });
 }
-if (document.querySelector('[data-copy-entry]')) loadEntries().catch(() => showToast('资料加载失败，请刷新或手动选取'));
+if (document.querySelector('[data-copy-entry]')) loadEntries().catch(() => showToast(message('dataFailed')));
 document.addEventListener('click', async event => {
-  const button = event.target.closest('[data-copy-entry], [data-copy-code]');
+  const button = event.target.closest('[data-copy-entry], [data-copy-code], [data-copy-block]');
   if (!button || button.disabled) return;
   const entry = entryById.get(button.dataset.copyEntry);
-  const text = button.hasAttribute('data-copy-code')
+  const text = button.hasAttribute('data-copy-block')
+    ? workflowCopyText(button.closest('[data-copy-scope]'))
+    : button.hasAttribute('data-copy-code')
     ? button.closest('.code-frame').querySelector('pre code').textContent
-    : entry ? getCopyText(entry) : null;
+    : entry ? localizedCopyText(entry,messages.fullVersion) : null;
   if (text === null) return;
   button.disabled = true;
   try {
     const success = await copyText(text);
-    showToast(success ? '已复制' : '复制失败，请手动选取');
+    showToast(message(success ? 'toastCopied' : 'toastFailed'));
   } finally {
     button.disabled = false;
   }
@@ -73,13 +80,13 @@ async function initializeLibrary() {
     for (const input of inputs) input.checked = input.name === 'medium'
       ? (filters.medium || '') === input.value
       : filters[input.name === 'model' ? 'models' : 'tags'].includes(input.value);
-    document.querySelector('#result-count').textContent = `共 ${matches.length} 条`;
+    document.querySelector('#result-count').textContent = message('count', {n:matches.length});
     document.querySelector('#empty-state').hidden = matches.length > 0;
     document.querySelector('#clear-filters').disabled = !filters.models.length && !filters.tags.length && !filters.medium;
     const unknown = [...filters.models.filter(value => !known.models.has(value)), ...filters.tags.filter(value => !known.tags.has(value)), ...(filters.medium && !known.media.has(filters.medium) ? [filters.medium] : [])];
     const notice = document.querySelector('#unknown-filters');
     notice.hidden = unknown.length === 0;
-    notice.textContent = unknown.length ? `链接中包含未收录的筛选项：${unknown.join('、')}。可清除筛选重新浏览。` : '';
+    notice.textContent = unknown.length ? message('unknownFilters',{items:unknown.join(', ')}) : '';
   }
   function update(next) {
     displayed = window.matchMedia('(max-width: 650px)').matches ? 12 : Infinity;
@@ -112,6 +119,6 @@ initializeLibrary().catch(() => {
   // Server-rendered cards and permanent original-post links remain available.
   const notice = document.createElement('p');
   notice.className = 'notice';
-  notice.textContent = '筛选数据加载失败，请刷新重试。你仍可阅读全部提示词、手动选取文字或打开原帖。';
+  notice.textContent = message('filterFailed');
   document.querySelector('.filter-panel')?.before(notice);
 });

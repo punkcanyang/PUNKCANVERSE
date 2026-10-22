@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-21T09:59:36.880Z",
+  "fetchedAt": "2026-10-22T02:34:19.703Z",
   "entries": {
     "2105260950920311071": {
       "postId": "2105260950920311071",
@@ -630,6 +630,66 @@
       "height": 720,
       "durationMs": 5166,
       "source": "syndication"
+    },
+    "2083839617237757960": {
+      "postId": "2083839617237757960",
+      "status": "ok",
+      "source": "provided-preview",
+      "mediaType": "video",
+      "thumb": "https://pbs.twimg.com/amplify_video_thumb/2083834361556705280/img/gmLOX-yiQJl77ZQ_.jpg",
+      "width": null,
+      "height": null,
+      "durationMs": 15069,
+      "lastError": "fetch-unavailable",
+      "staleSince": "2026-10-22T02:34:19.703Z"
+    },
+    "2064046116656586888": {
+      "postId": "2064046116656586888",
+      "status": "ok",
+      "source": "provided-preview",
+      "mediaType": "video",
+      "thumb": "https://pbs.twimg.com/amplify_video_thumb/2064043482830737408/img/PeIm6dj4cVxYNPtZ.jpg",
+      "width": null,
+      "height": null,
+      "durationMs": 15066,
+      "lastError": "fetch-unavailable",
+      "staleSince": "2026-10-22T02:34:19.703Z"
+    },
+    "2079886296953008156": {
+      "postId": "2079886296953008156",
+      "status": "ok",
+      "source": "provided-preview",
+      "mediaType": "video",
+      "thumb": "https://pbs.twimg.com/amplify_video_thumb/2079883585444511744/img/9YfbRGAyelD3QYT2.jpg",
+      "width": null,
+      "height": null,
+      "durationMs": 15046,
+      "lastError": "fetch-unavailable",
+      "staleSince": "2026-10-22T02:34:19.703Z"
+    },
+    "2079916857403048097": {
+      "postId": "2079916857403048097",
+      "status": "ok",
+      "source": "provided-preview",
+      "mediaType": "video",
+      "thumb": "https://pbs.twimg.com/amplify_video_thumb/2079915978352467968/img/wbpKKuiVUnkuEFVd.jpg",
+      "width": null,
+      "height": null,
+      "durationMs": 17366,
+      "lastError": "fetch-unavailable",
+      "staleSince": "2026-10-22T02:34:19.703Z"
+    },
+    "2062650742180114644": {
+      "postId": "2062650742180114644",
+      "status": "ok",
+      "source": "provided-preview",
+      "mediaType": "video",
+      "thumb": "https://pbs.twimg.com/amplify_video_thumb/2062648331247976448/img/CNhtdOLP-Sty9A7u.jpg",
+      "width": null,
+      "height": null,
+      "durationMs": 30083,
+      "lastError": "fetch-unavailable",
+      "staleSince": "2026-10-22T02:34:19.703Z"
     }
   }
 }
