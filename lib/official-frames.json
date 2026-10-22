@@ -1,0 +1,223 @@
+{
+  "aliyun-wan3-example-01": {
+    "width": 640,
+    "height": 372,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/ihbbqc/%E8%87%AA%E7%84%B6%E7%8E%AF%E5%A2%83.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-01.webp",
+    "sha256": "200b2f4eadc41889d5998bcab25a3ec91057f2dc296dd6330c796b10c73cc61d",
+    "bytes": 25972
+  },
+  "aliyun-wan3-example-02": {
+    "width": 640,
+    "height": 372,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/ershzi/%E5%94%B1%E6%AD%8C-1.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-02.webp",
+    "sha256": "4a958b1134657856b25453d457854fec24f5cc69b5b840483e071eb401c6d12c",
+    "bytes": 19166
+  },
+  "aliyun-wan3-example-03": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f9d1a.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+    "src": "/img/official/aliyun-wan3-example-03.webp",
+    "sha256": "6654c91cbe73cea3cda6a9a3d4d0c7c0ba6a3fd93b91011cb7da8066d88ac82b",
+    "bytes": 20182
+  },
+  "aliyun-wan3-example-04": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f92a8.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+    "src": "/img/official/aliyun-wan3-example-04.webp",
+    "sha256": "8fb16347df1d780275022d3af7313e69ab633a15f5cc0c3dee266790b790cfd1",
+    "bytes": 32460
+  },
+  "aliyun-wan3-example-05": {
+    "width": 640,
+    "height": 382,
+    "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f92a1.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+    "src": "/img/official/aliyun-wan3-example-05.webp",
+    "sha256": "df1db6bd47c98109b9c4bc9261bc146a629faeaf864540b12999185a994517ee",
+    "bytes": 29834
+  },
+  "aliyun-wan3-example-06": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/bsaqim/%E9%BB%91%E7%99%BD%E5%8A%A8%E7%94%BB.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-06.webp",
+    "sha256": "0251af864d9213e00491fd425ab6cc21b4dd8807d2f7ce6577ee9a92dc45f10d",
+    "bytes": 34756
+  },
+  "aliyun-wan3-example-07": {
+    "width": 640,
+    "height": 372,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/ckgcxt/%E5%8D%95%E4%BA%BA%E8%AF%B4%E8%AF%9D-1.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-07.webp",
+    "sha256": "b94170817d7e386f1f33b51484f2c45fafc2238c5a954436553c9eb39ba9501d",
+    "bytes": 23158
+  },
+  "aliyun-wan3-example-08": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/mgnldl/%E9%95%9C%E5%A4%B4%E5%90%91%E5%B7%A6%E7%A7%BB%E5%8A%A8.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-08.webp",
+    "sha256": "640135d7ccdc96c1b13bdfcdb5f7a2c052ffc01313c96ae5f0b248eb173dc9df",
+    "bytes": 24016
+  },
+  "aliyun-wan3-example-09": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/xgtiuf/%E6%9A%96%E8%89%B2%E8%B0%83.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-09.webp",
+    "sha256": "135ed43af38befd9b25a39def1e524c2b4293c008e306fc3499050bfb4e3aeba",
+    "bytes": 16832
+  },
+  "aliyun-wan3-example-10": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/acdauh/%E4%BE%A7%E5%85%89.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-10.webp",
+    "sha256": "309fce87ad88400076b1576427c3ef0e98bc55f6dca894292e8baa5507a09189",
+    "bytes": 21262
+  },
+  "aliyun-wan3-example-11": {
+    "width": 640,
+    "height": 372,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/whlmdk/%E5%A4%9A%E4%BA%BA%E5%AF%B9%E8%AF%9D-1.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-11.webp",
+    "sha256": "d800e318efb20e8e2f9fb71cbc8c54a0eef786f6a3ae8c1ffefe257888c36199",
+    "bytes": 13058
+  },
+  "aliyun-wan3-example-12": {
+    "width": 640,
+    "height": 372,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/cjouqm/%E9%9F%B3%E8%89%B2-1.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-12.webp",
+    "sha256": "497ca100e4a602a45862c66cf41924bcea9a69c67f53e161eef0b8f8f0b679d0",
+    "bytes": 13090
+  },
+  "aliyun-wan3-example-13": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/ajpuzi/%E6%83%8A%E8%AE%B6.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-13.webp",
+    "sha256": "2b2243861a42dcb7a40c78cb32e7fe608684dd4465e2df458399c461756a3681",
+    "bytes": 8494
+  },
+  "aliyun-wan3-example-14": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/vnvnvv/%E9%AB%98%E5%AF%B9%E6%AF%94%E5%BA%A6.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-14.webp",
+    "sha256": "b3983998af23ce7731e73cb9462590d362b923cea41f87c491fb002acdc2a760",
+    "bytes": 22366
+  },
+  "aliyun-wan3-example-15": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/bzfnzt/%E9%AB%98%E5%85%B4.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+    "src": "/img/official/aliyun-wan3-example-15.webp",
+    "sha256": "e1c78877d03a4f6a68c6a8bf5c8ed2ab8b1a3370f3244d90d03b1a9b26dd7fec",
+    "bytes": 40132
+  },
+  "aliyun-wan3-example-16": {
+    "width": 640,
+    "height": 372,
+    "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f92ae.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+    "src": "/img/official/aliyun-wan3-example-16.webp",
+    "sha256": "eb732372972774f73677375b7dba11b203b4b03c7ae7a4017f5fea0e5fdeac06",
+    "bytes": 24130
+  },
+  "aliyun-wan3-example-17": null,
+  "aliyun-wan3-example-18": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f9294.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+    "src": "/img/official/aliyun-wan3-example-18.webp",
+    "sha256": "0c9f480414b703a10d58ea1f039b67682f1f0d298735837899fb701ce9f36da4",
+    "bytes": 12566
+  },
+  "aliyun-wan3-example-19": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/czlphm/Wan_First%26LastFrame.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+    "src": "/img/official/aliyun-wan3-example-19.webp",
+    "sha256": "c86e722cea7ece70159bfdf9e813ce92def104c493efa086c9f9a86e35738dbf",
+    "bytes": 22642
+  },
+  "aliyun-wan3-example-20": {
+    "width": 640,
+    "height": 1138,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/wabhqm/Wan_Video_first_frame.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+    "src": "/img/official/aliyun-wan3-example-20.webp",
+    "sha256": "fdb7642f17664caa65019b976a3976728dc4cbb3858b80a76b4af84aa445baa4",
+    "bytes": 73350
+  },
+  "aliyun-wan3-example-21": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/lphabk/rl-t2v-20260728-142016-428deae3.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+    "src": "/img/official/aliyun-wan3-example-21.webp",
+    "sha256": "e615077ca356a1754811bcf6b7a8ed9fc460dd1877c9c0dd88c816cdda6c0b9a",
+    "bytes": 16154
+  },
+  "aliyun-wan3-example-22": {
+    "width": 640,
+    "height": 358,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/qwevyf/danjun_workspace_refiner_blind_eval_evaluate_goodcase_v3_1_0805_video_ema_demo_allclear_720p_24fps_1080_t2av_wan30_case_xuanfa_final_085__peer_api_wan3.0_0_20260801_raw-720p-prompt.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+    "src": "/img/official/aliyun-wan3-example-22.webp",
+    "sha256": "de424937a52a6bf818da1b1d90fe4ffc8b9e660a2cc2b7eb93de43cc998f4993",
+    "bytes": 21200
+  },
+  "aliyun-wan3-example-23": {
+    "width": 640,
+    "height": 360,
+    "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/getoun/wan_aio_t3.mp4",
+    "sourceKind": "video-frame",
+    "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+    "src": "/img/official/aliyun-wan3-example-23.webp",
+    "sha256": "2b17d02105f1ece4981247c514a9074c9b0f1ce5aaa557ebf2de5a5a29ba1f38",
+    "bytes": 27152
+  }
+}
