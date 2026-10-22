@@ -1,4 +1,5 @@
 import { promptHtml } from '../lib/cards.mjs';
+import { OFFICIAL_FRAMES } from '../lib/official-frames.mjs';
 import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
@@ -74,7 +75,9 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
     if(site.models?.enabled===false)assert.ok(!/白模|\/models\//.test(html),path);
     if(!site.newsletter.enabled)assert.ok(!/class="newsletter"|href="[^"]*newsletter/.test(html));
     for (const match of html.matchAll(/<img\b[^>]*>/g)) {
-      assert.match(match[0],/src="https:\/\/pbs\.twimg\.com\//);
+      // v0.5.2 spec change (boss 2026-10-22): real official sample frames
+      const src=match[0].match(/\bsrc="([^"]+)"/)?.[1];
+      assert.ok(/^https:\/\/pbs\.twimg\.com\//.test(src) || Object.values(OFFICIAL_FRAMES).some(frame=>frame && frame.src===src), 'Images must use X originals or one of the 22 approved local frames');
       for(const attribute of ['width="','height="','alt="','loading="lazy"','decoding="async"'])assert.ok(match[0].includes(attribute));
     }
     for(const match of html.matchAll(/<a\b[^>]*>/g)) {

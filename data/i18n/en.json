@@ -163,5 +163,6 @@
   "officialNoVideo": "Official text example; no X video is provided",
   "officialExcerptNote": "The full prompt is about {n} characters. Read it in the official source.",
   "importFeaturedMark": " / Featured",
-  "segmentNote": "A separate prompt segment sharing the same source video"
+  "segmentNote": "A separate prompt segment sharing the same source video",
+  "officialFrameCredit": "Sample frame: Alibaba Cloud Model Studio documentation (video still)"
 }

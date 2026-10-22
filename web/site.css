@@ -14,3 +14,8 @@ body{padding-bottom:var(--consent-space,0px)}.site-info-links{display:flex;align
 .official-preview{aspect-ratio:16/9;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;overflow:hidden;padding:28px;background:repeating-radial-gradient(circle at 30% 40%,#ede74d08 0 1px,transparent 1px 4px),#151510;border:1px solid var(--line);text-align:center}.official-preview>strong{font:900 clamp(20px,3vw,40px)/1.1 var(--mono);color:var(--yellow);transform:rotate(-2deg)}.official-preview>p{color:var(--accent);font:18px var(--mono)}.official-preview>small{font-size:11px;color:var(--muted)}.featured-badge{display:inline-block;color:var(--yellow);font:12px var(--mono);margin-top:12px}
 /* Every detail page keeps its complete source text visible without JavaScript. */
 .full-prompt .prompt-text{max-block-size:min(68vh,48rem);overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-inline-size:100%;min-inline-size:0;scrollbar-gutter:stable}.prompt-source{padding:8px 14px;margin:0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+
+/* Approved official video stills share the 16:9 X preview frame. */
+.official-frame{display:block;position:relative;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:#161616}
+.official-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.official-frame-credit{overflow-wrap:anywhere}

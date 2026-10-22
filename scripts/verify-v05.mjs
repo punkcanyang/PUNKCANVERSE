@@ -67,8 +67,13 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
       if(entry.source==='official') {
         assert.ok(!Object.hasOwn(thumbs.entries,entry.id),'Official examples never enter thumbnail cache');
         for(const html of [card,detail]) {
-          assert.ok(!/twitter-tweet|tweet-template|tweet-mount|data-play-embed|platform\.twitter\.com|widgets\.js|pbs\.twimg\.com|<img\b/.test(html),`${entry.id}: official examples must not have X media`);
-          assert.ok(html.includes('class="official-preview"'));
+          // v0.5.2 spec change (boss 2026-10-22): real official sample frames
+          assert.ok(!/twitter-tweet|tweet-template|tweet-mount|data-play-embed|platform\.twitter\.com|widgets\.js|pbs\.twimg\.com/.test(html),`${entry.id}: official examples must not have X media`);
+          if(entry.officialThumb) {
+            assert.equal((html.match(/<img\b/g)||[]).length,1);
+            assert.ok(html.includes(`<img src="${e(entry.officialThumb.src)}"`));
+            assert.ok(!html.includes('class="official-preview"'));
+          } else {assert.ok(html.includes('class="official-preview"'));assert.ok(!/<img\b/.test(html));}
           assert.ok(html.includes(e(i18n.ui[locale].officialAuthor)));
           assert.ok(html.includes(`href="${e(entry.officialUrl)}" target="_blank" rel="noopener noreferrer"`));
         }

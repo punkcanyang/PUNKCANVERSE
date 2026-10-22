@@ -1,4 +1,4 @@
-# PUNKCANVERSE v0.5.1
+# PUNKCANVERSE v0.5.2
 
 AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网址 https://punkcanverse.com。视觉采用「深夜片场 · 影印批注」：暗色片场海报、局部黑红黄剪字与网点；正文与长文使用实色背景，优先阅读。
 
@@ -54,7 +54,9 @@ canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions
 
 模型筛选使用 `Wan` / `MiniMax` 原始键，显示 Wan / Wan 3.0、MiniMax H3，Prime 的版本文字仍单独保留。新条目有三语标题、收藏笔记、标签及独立网址；原始提示不翻译；v0.5.1 起每条均完整发布，取消摘录限制。三语共 636 个 HTML、630 个最终 sitemap 网址，不含空图像／音乐分页面。
 
-X 来源严格检查作者 handle、原帖 ID 和网址对应。Kangaikroto 两段使用 `2104507931337400770` / `2104507931337400770-2`，`embedId` 和 postUrl 都指同一帖；仅允许数字后接合法段号（从 2 起，无前导零），并要求存在同作者的第一段。官方资料走独立分支：`source: "official"`、`aliyun-wan3-<slug>`、固定署名、HTTPS `help.aliyun.com`；不得带 postUrl、authorHandle 或 embedId。官方卡片与详情为纯 CSS 文字占位，不请求 X 嵌入或图片；长文与复制链接指官方原文。
+X 来源严格检查作者 handle、原帖 ID 和网址对应。Kangaikroto 两段使用 `2104507931337400770` / `2104507931337400770-2`，`embedId` 和 postUrl 都指同一帖；仅允许数字后接合法段号（从 2 起，无前导零），并要求存在同作者的第一段。官方资料走独立分支：`source: "official"`、`aliyun-wan3-<slug>`、固定署名、HTTPS `help.aliyun.com`；不得带 postUrl、authorHandle 或 embedId。官方卡片与详情不请求 X 嵌入或 X 图片；原文链接指官方文档。
+
+v0.5.2 为其中 22 条官方范例加入已核对的示例影片画面，原始 WebP 保存在 `web/img/official/`，build 原样复制到 `dist/img/official/`。每条 `officialThumb` 包含本地路径、原始尺寸及来源影片 URL；`lib/official-frames.json` 固定对应文档、尺寸、路径、字节数与 SHA-256，校验不允许其他图片或影片混入。三语列表与详情均使用固定 16:9 框、lazy/async 图片及官方文档来源链接；第 20 条直式画面置中裁切，第 17 条没有示例媒体，继续使用文字占位。仅这 22 张经批准的官方影片截图随站发布，X 图片与任何影片仍不转存；`data/thumbs.json` 不变。
 
 指定来源的 featured / featuredLive 合并为 featured，26 条新收录显示三语精选标记。所有新条目明确禁止推广按钮，原 Higgsfield 四条与 Magnific 推荐工具区不变。来源快照仅保存来源指纹和必要出处，用于离线测试核对完整原文、日期与作者；不收来源页面附件。
 
