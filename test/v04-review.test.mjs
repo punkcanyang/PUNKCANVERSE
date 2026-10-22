@@ -54,8 +54,8 @@ test('三份技术译文逐段保留结构、所有出处、数字与原文范�
 });
 
 test('英日筛选说明明确 OR/AND，译文保留字幕、台客语、单镜头与工作流署名',()=>{
-  assert.equal(i18n.ui.en.filterHelp,'Within each group, selections use OR; the model and tag groups are combined with AND.');
-  assert.equal(i18n.ui.ja.filterHelp,'同じ項目内はOR（いずれかに一致）、モデルとタグの項目間はAND（両方に一致）で絞り込みます。');
+  assert.equal(i18n.ui.en.filterHelp,'Pick several in one group to match any of them; choosing a model and a tag shows prompts that match both.');
+  assert.equal(i18n.ui.ja.filterHelp,'同じ項目で複数選ぶといずれかに一致するもの、モデルとタグを組み合わせると両方に一致するものに絞り込みます。');
   for(const locale of ['en','ja']) {
     const p=i18n.content[locale].prompts;
     for(const id of ['2041772197799236033','2095175917412962628'])assert.ok(p[id].title.includes(locale==='en'?'single take':'ワンカット'));
