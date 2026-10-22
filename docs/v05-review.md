@@ -1,6 +1,6 @@
 # v0.5 复核记录（2026-10-22）
 
-初次交付的关卡记录见下文。本轮复审已恢复完整 protectedDataPaths，并完成泰迪熊关系、标题限定词及英日语法修正。当前 build 与 117 项测试通过，v0.5 专项验证及外部 gate OK；主 verify 按恢复的只读规则拒绝本轮对已追踪资料档的三处修改，须待外部提交后重跑，不能宣称当前完整命令链全绿。缩图快取完全未动。
+本轮复审已恢复完整 protectedDataPaths，并完成泰迪熊关系、标题限定词及英日语法修正。外部已将修正提交为 WIP 279ec4e，本轮确认工作树中的资料与 HEAD 一致，保留全部只读断言后重跑完整命令链：build 636 页、117/117 测试、verify 18/18、商務 gate OK，退出码 0。缩图快取完全未动。
 
 ## 文件与行为
 
@@ -95,4 +95,4 @@
 - P1：日文快剪改为「テンポよくつなぐカット編集」，撤离桥改为「撤退路の橋を守る無線通信員」。五处英文改为 fifteen-/thirty-second vertical/square-format video，画幅不再修饰秒数。
 - 新增 `test/v05-review.test.mjs` 四项回归测试；原测试断言无修改，新增资料正文与缩图缓存未动。
 
-当前主 verify 的阻碍是 `Read-only data files were modified`：HEAD b19f96d 已追踪新资料档，本轮三处获要求的修正会被恢复后的完整保护规则检测到。未排除该档、未绕过 git diff、未 commit。外部提交修正后再跑完整链，或由规格负责人明确核准精确修正基准后才能调整这项限制。商務 gate 单独执行为 GATE OK。
+先前 `Read-only data files were modified` 的原因是三处复审修正尚未进入 HEAD。外部 WIP 279ec4e 已纳入这些修正，本轮 git log / git diff 确认新资料档无未提交差异，原完整 protectedDataPaths 与两处只读断言保持不动，完整命令链现已通过。没有新增排除项、跳过 git diff 或改动 gate。保留 `test/v05-review.test.mjs` 四项回归测试；该新增文件目前未追踪，外部最终提交时须一并加入。本轮仅更新此记录并建置、验证，未 commit、push 或部署。
