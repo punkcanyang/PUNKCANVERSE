@@ -39,7 +39,7 @@ const regionsRaw = await read(join(root, 'data/regions.json'));
 const regions = JSON.parse(regionsRaw);
 // New datasets have their own strict validators. Existing prompt and tip data
 // retain the original baseline/path assertions; old thumbnails are checked below.
-const protectedDataPaths = ['data/', ':(exclude)data/prompts-wan-minimax.json', ':(exclude)data/workflows.json', ':(exclude)data/i18n/', ':(exclude)data/thumbs.json', ':(exclude)data/affiliates.json', ':(exclude)data/regions.json', ':(exclude)data/site.json'];
+const protectedDataPaths = ['data/', ':(exclude)data/workflows.json', ':(exclude)data/i18n/', ':(exclude)data/thumbs.json', ':(exclude)data/affiliates.json', ':(exclude)data/regions.json', ':(exclude)data/site.json'];
 const forbiddenMedia = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.svg', '.ico', '.mp4', '.webm', '.mov']);
 const forbiddenDomains = ['so', 'site'].map(tld => ['notion', tld].join('.')).concat([['app', 'notion', 'com'].join('.')]);
 const postPattern = /^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+$/;

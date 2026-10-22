@@ -308,8 +308,8 @@
       "format": "Two-person medium shot"
     },
     "aliyun-wan3-example-12": {
-      "title": "Parent and child: I’ll protect you",
-      "description": "Moonlight and a bedside lamp establish cool and warm layers before protective dialogue and actions carry the scene.",
+      "title": "Don’t be afraid: I’ll protect you",
+      "description": "Cool moonlight and a warm bedside lamp frame a little girl hugging a teddy bear and whispering that she will protect it.",
       "format": "Medium shot"
     },
     "aliyun-wan3-example-13": {
@@ -444,7 +444,7 @@
     },
     "2097613778796126569": {
       "title": "A live-action fighting game on a neon stage",
-      "description": "Realistic performers and a neon stage combine with fighting-game aesthetics; the prompt requests fifteen vertical seconds.",
+      "description": "Realistic performers and a neon stage combine with fighting-game aesthetics; the prompt requests a fifteen-second vertical video.",
       "format": "Source clip 15s / 16:9"
     },
     "2103433315458097320": {
@@ -749,7 +749,7 @@
     },
     "2092476498125226127": {
       "title": "A friend’s phone-shot night out: UGC",
-      "description": "Thirty vertical seconds use shake, exposure changes and casual talk to retain the imperfections of a friend’s phone footage.",
+      "description": "A thirty-second vertical video uses camera shake, exposure changes and casual talk to retain the imperfections of a friend’s phone footage.",
       "format": "Source clip 30s / 16:9"
     },
     "2088550973585379394": {
@@ -769,12 +769,12 @@
     },
     "2099558680979005770": {
       "title": "A surreal fashion film",
-      "description": "Thirty square-framed seconds establish a fashion look through exaggerated couture shapes, slow camera moves and grain.",
+      "description": "A thirty-second square-format video establishes a fashion look through exaggerated couture shapes, slow camera moves and film grain.",
       "format": "Source clip 30s / 1:1"
     },
     "2111358417730240961": {
       "title": "Ziad Nakad silver-sequin runway look",
-      "description": "Thirty vertical seconds stage walking, poses, sheer fabric and sequin reflections under consistent studio light, ending with the brand mark.",
+      "description": "A thirty-second vertical video stages walking, poses, sheer fabric and sequin reflections under consistent studio light, ending with the brand mark.",
       "format": "Source clip 30s / 9:16"
     },
     "2101303256173650396": {
@@ -889,7 +889,7 @@
     },
     "2082776032042783085": {
       "title": "An ultra-premium perfume film",
-      "description": "Fifteen vertical seconds reveal the product through bottle caustics, transformed spray and a final pedestal hero shot.",
+      "description": "A fifteen-second vertical video reveals the product through bottle caustics, transformed spray and a final pedestal hero shot.",
       "format": "15s / 16:9"
     },
     "2083064417798025721": {
