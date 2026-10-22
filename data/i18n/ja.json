@@ -163,5 +163,6 @@
   "officialNoVideo": "公式の文章サンプルです。Xの動画はありません",
   "officialExcerptNote": "全文は約{n}文字です。公式の原文をご覧ください。",
   "importFeaturedMark": " / 注目",
-  "segmentNote": "同じ投稿の動画を参照する、別の区間のプロンプトです"
+  "segmentNote": "同じ投稿の動画を参照する、別の区間のプロンプトです",
+  "officialFrameCredit": "サンプル画像：Alibaba Cloud Model Studio 公式ドキュメント（動画のスチル）"
 }

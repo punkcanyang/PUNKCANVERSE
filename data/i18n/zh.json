@@ -163,5 +163,6 @@
   "officialNoVideo": "官方文字範例，未提供 X 成片",
   "officialExcerptNote": "提示詞全文約 {n} 字，請到官方原文查看。",
   "importFeaturedMark": " / 精選",
-  "segmentNote": "同帖不同段提示詞，共用原帖成片"
+  "segmentNote": "同帖不同段提示詞，共用原帖成片",
+  "officialFrameCredit": "示例畫面：阿里雲 Model Studio 官方文檔（影片截圖）"
 }

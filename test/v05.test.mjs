@@ -125,10 +125,16 @@ test('v0.5 三语官方占位无图片／X 模板／推广；原文保留，长�
       const card=renderCard(localized,0,{},undefined,ui);
       const detail=renderPromptDetail(localized,[],{},undefined,ui);
       for(const html of [card,detail]) {
-        assert.ok(html.includes('class="official-preview"'));
+        // v0.5.2 spec change (boss 2026-10-22): real official sample frames
+        if(entry.officialThumb) {
+          assert.equal((html.match(/<img\b/g)||[]).length,1);
+          assert.ok(html.includes(`<img src="${entry.officialThumb.src}"`));
+          assert.ok(!html.includes('class="official-preview"'));
+        } else {assert.ok(html.includes('class="official-preview"'));assert.ok(!/<img\b/.test(html));}
         assert.ok(html.includes(e(i18n.ui[locale].officialAuthor)));
         assert.ok(html.includes(`href="${entry.officialUrl}" target="_blank" rel="noopener noreferrer"`));
-        assert.ok(!/twitter-tweet|tweet-template|tweet-mount|data-play-embed|<img\b|pbs\.twimg\.com|widgets\.js|platform\.twitter\.com|class="affiliate-button"/.test(html));
+        // v0.5.2 spec change (boss 2026-10-22): real official sample frames
+        assert.ok(!/twitter-tweet|tweet-template|tweet-mount|data-play-embed|pbs\.twimg\.com|widgets\.js|platform\.twitter\.com|class="affiliate-button"/.test(html));
         // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
         assert.ok(html.includes(promptHtml(entry)));
       }

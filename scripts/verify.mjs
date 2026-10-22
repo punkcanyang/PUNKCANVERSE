@@ -1,4 +1,6 @@
 import { promptHtml } from '../lib/cards.mjs';
+import { isOfficialFramePath, withOfficialFrameBaseline } from '../lib/official-frames.mjs';
+import { verifyV052 } from './verify-v052.mjs';
 import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
@@ -76,6 +78,7 @@ await verifyV03(root);
 await verifyV04(root);
 await verifyV05(root);
 await verifyV051(root);
+await verifyV052(root);
 
 await check('发布文件齐全，Cloudflare 安全标头正确', async () => {
   for (const file of ['index.html', 'tips.html', 'takedown.html', 'assets/site.css', 'assets/app.mjs', 'assets/prompts.mjs', 'assets/clipboard.mjs', 'assets/embeds.mjs', 'data.json', '_headers', 'sitemap.xml', 'robots.txt']) assert.ok((await stat(join(dist, file))).isFile(), file);
@@ -127,7 +130,9 @@ await check('全部提示词有完整原文、精确长度与来源指纹，页�
 
 await check('dist 与 Git 追踪／待追踪文件中无图片、影片或禁止域名', async () => {
   for (const path of new Set([...distFiles, ...repoPaths.map(path => join(root, path)), ...trackedPaths.map(path => join(root, path))])) {
-    assert.ok(!forbiddenMedia.has(extname(path).toLowerCase()), `Forbidden media: ${relative(root, path)}`);
+    // v0.5.2 spec change (boss 2026-10-22): real official sample frames
+    // Only the 22 pinned paths/bytes checked by verifyV052 are permitted.
+    assert.ok(!forbiddenMedia.has(extname(path).toLowerCase()) || isOfficialFramePath(relative(root,path)), `Forbidden media: ${relative(root, path)}`);
     const content = (await read(path)).toLowerCase();
     for (const domain of forbiddenDomains) assert.ok(!content.includes(domain), `Forbidden domain in ${relative(root, path)}`);
   }
@@ -231,7 +236,8 @@ await check('下架入口与 issue 模板齐全，原资料仅允许批准的 me
   assert.ok(changedPaths.every(path => path === 'data/prompts.json' || path === 'data/prompts-wan-minimax.json'), 'Read-only data files were modified');
   // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
   const baseline = withFullPromptBaseline(withMediumBaseline(JSON.parse(await git(['show', 'HEAD:data/prompts.json']))), entries, fulltextManifest);
-  const importedBaseline = withFullPromptBaseline(JSON.parse(await git(['show','HEAD:data/prompts-wan-minimax.json'])), importedData.entries, fulltextManifest);
+  // v0.5.2 spec change (boss 2026-10-22): real official sample frames
+  const importedBaseline = withOfficialFrameBaseline(withFullPromptBaseline(JSON.parse(await git(['show','HEAD:data/prompts-wan-minimax.json'])), importedData.entries, fulltextManifest));
   assert.deepEqual(importedData, importedBaseline, 'Only source-verified prompt/promptExcerpt migration is allowed in imported data');
   const techie = baseline.entries.find(entry => entry.id === '2086124547376341346');
   assert.ok(techie, 'Missing TechieBySA baseline entry');
@@ -284,7 +290,8 @@ await check('dist 与 README 无旧 Pages 绝对网址，原资料在授权迁�
   // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
   const changed = (await git(['diff', '--name-only', 'HEAD', '--', ...protectedDataPaths, ':(exclude)data/prompts.json'])).trim().split('\n').filter(Boolean);
   assert.deepEqual(changed, changed.includes('data/prompts-wan-minimax.json') ? ['data/prompts-wan-minimax.json'] : [], 'Pre-existing data outside the checked prompt migration must not change');
-  const expected = withFullPromptBaseline(JSON.parse(await git(['show','HEAD:data/prompts-wan-minimax.json'])), importedData.entries, fulltextManifest);
+  // v0.5.2 spec change (boss 2026-10-22): real official sample frames
+  const expected = withOfficialFrameBaseline(withFullPromptBaseline(JSON.parse(await git(['show','HEAD:data/prompts-wan-minimax.json'])), importedData.entries, fulltextManifest));
   assert.deepEqual(importedData, expected, 'Every imported field outside source-verified full-text migration must match HEAD');
 });
 

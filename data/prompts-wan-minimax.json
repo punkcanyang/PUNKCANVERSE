@@ -29,7 +29,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-01.webp",
+        "width": 640,
+        "height": 372,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/ihbbqc/%E8%87%AA%E7%84%B6%E7%8E%AF%E5%A2%83.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-02",
@@ -55,7 +61,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-02.webp",
+        "width": 640,
+        "height": 372,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/ershzi/%E5%94%B1%E6%AD%8C-1.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-03",
@@ -81,7 +93,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-03.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f9d1a.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-04",
@@ -107,7 +125,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-04.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f92a8.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-05",
@@ -133,7 +157,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-05.webp",
+        "width": 640,
+        "height": 382,
+        "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f92a1.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-06",
@@ -159,7 +189,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-06.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/bsaqim/%E9%BB%91%E7%99%BD%E5%8A%A8%E7%94%BB.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-07",
@@ -185,7 +221,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-07.webp",
+        "width": 640,
+        "height": 372,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/ckgcxt/%E5%8D%95%E4%BA%BA%E8%AF%B4%E8%AF%9D-1.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-08",
@@ -211,7 +253,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-08.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/mgnldl/%E9%95%9C%E5%A4%B4%E5%90%91%E5%B7%A6%E7%A7%BB%E5%8A%A8.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-09",
@@ -237,7 +285,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-09.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/xgtiuf/%E6%9A%96%E8%89%B2%E8%B0%83.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-10",
@@ -263,7 +317,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-10.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/acdauh/%E4%BE%A7%E5%85%89.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-11",
@@ -289,7 +349,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-11.webp",
+        "width": 640,
+        "height": 372,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/whlmdk/%E5%A4%9A%E4%BA%BA%E5%AF%B9%E8%AF%9D-1.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-12",
@@ -315,7 +381,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-12.webp",
+        "width": 640,
+        "height": 372,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/cjouqm/%E9%9F%B3%E8%89%B2-1.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-13",
@@ -341,7 +413,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-13.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/ajpuzi/%E6%83%8A%E8%AE%B6.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-14",
@@ -367,7 +445,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-14.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/vnvnvv/%E9%AB%98%E5%AF%B9%E6%AF%94%E5%BA%A6.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-15",
@@ -393,7 +477,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-15.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20251111/bzfnzt/%E9%AB%98%E5%85%B4.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-16",
@@ -419,7 +509,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-16.webp",
+        "width": 640,
+        "height": 372,
+        "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f92ae.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-17",
@@ -471,7 +567,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-18.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://g-adoc.alcasset.com/media/maas_docs/sfm/common/videos/6a4b3c2d1e0f9294.mp4"
+      }
     },
     {
       "id": "2109902576367947891",
@@ -1794,7 +1896,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-19.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/czlphm/Wan_First%26LastFrame.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-20",
@@ -1821,7 +1929,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-20.webp",
+        "width": 640,
+        "height": 1138,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/wabhqm/Wan_Video_first_frame.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-21",
@@ -1848,7 +1962,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-21.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/lphabk/rl-t2v-20260728-142016-428deae3.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-22",
@@ -1875,7 +1995,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-22.webp",
+        "width": 640,
+        "height": 358,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/qwevyf/danjun_workspace_refiner_blind_eval_evaluate_goodcase_v3_1_0805_video_ema_demo_allclear_720p_24fps_1080_t2av_wan30_case_xuanfa_final_085__peer_api_wan3.0_0_20260801_raw-720p-prompt.mp4"
+      }
     },
     {
       "id": "aliyun-wan3-example-23",
@@ -1901,7 +2027,13 @@
       "author": "阿里雲官方範例",
       "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
       "date": "2026-08-25",
-      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "officialThumb": {
+        "src": "/img/official/aliyun-wan3-example-23.webp",
+        "width": 640,
+        "height": 360,
+        "sourceMedia": "https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20260825/getoun/wan_aio_t3.mp4"
+      }
     },
     {
       "id": "2111266713278783922",

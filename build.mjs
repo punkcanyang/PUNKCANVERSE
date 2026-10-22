@@ -160,6 +160,11 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
   await writeFile(join(out,'catalog.json'),JSON.stringify({entries}));
   for (const file of ['app.mjs','language.mjs','clipboard.mjs','embeds.mjs','consent.mjs','site.css']) await copyFile(join(root,'web',file),join(out,'assets',file));
   await copyFile(join(root,'lib/prompts.mjs'),join(out,'assets/prompts.mjs'));await copyFile(join(root,'_headers'),join(out,'_headers'));
+  for (const entry of entries.filter(entry=>entry.source==='official' && entry.officialThumb)) {
+    const file=entry.officialThumb.src.slice(1);
+    await mkdir(dirname(join(out,file)),{recursive:true});
+    await copyFile(join(root,'web',file),join(out,file));
+  }
   // Existing build consumers use Chinese disk routes. All language descriptors are
   // exposed separately so they can inspect exact final URLs and fallback canonicals.
   return {pages:descriptors.filter(x=>x.locale==='zh').map(x=>x.disk),localizedPages:descriptors,sitemapUrls};

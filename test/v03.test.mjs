@@ -160,7 +160,11 @@ test('thumbs 缺失、损坏、missing 记录都不阻止构建且输出占位�
     for (const value of [null,'broken',JSON.stringify({entries:{[sample.id]:{status:'missing'}}})]) {
       if (value!==null) await writeFile(cache,value);
       await buildSite({out,thumbPath:cache});
-      const html=await readFile(join(out,'index.html'),'utf8');assert.ok(!html.includes('<img'));assert.ok(html.includes('thumbnail-placeholder'));
+      const html=await readFile(join(out,'index.html'),'utf8');
+      // v0.5.2 spec change (boss 2026-10-22): real official sample frames
+      const images=[...html.matchAll(/<img\b[^>]*src="([^"]+)"/g)].map(match=>match[1]);
+      assert.deepEqual(images,Array.from({length:23},(_,i)=>i+1).filter(n=>n!==17).map(n=>`/img/official/aliyun-wan3-example-${String(n).padStart(2,'0')}.webp`));
+      assert.ok(html.includes('thumbnail-placeholder'));
     }
     const result=await buildSite({out,essayDirectory:fileURLToPath(new URL('fixtures/essays/',import.meta.url))});
     assert.ok(result.pages.includes('/essays/production-notes/'));
