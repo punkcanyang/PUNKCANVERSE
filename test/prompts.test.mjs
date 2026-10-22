@@ -59,16 +59,20 @@ test('短提示词复制原文，不转码、不增删换行', () => {
   assert.equal(getCopyText({ isLong: false, prompt }), prompt);
 });
 
-test('长提示词只复制摘录、换行与完整版原帖链接', () => {
-  const entry = { isLong: true, prompt: null, promptExcerpt: 'Shot 1：前 300 字摘錄…', postUrl: 'https://x.com/example/status/123' };
-  assert.equal(getCopyText(entry), 'Shot 1：前 300 字摘錄…\n完整版：https://x.com/example/status/123');
+test('长提示词复制完整原文，不附加链接或改写', () => {
+  const prompt = 'Full prompt 原文\n' + 'camera '.repeat(300);
+  const entry = { isLong: true, prompt, promptExcerpt: null, postUrl: 'https://x.com/example/status/123' };
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+  assert.equal(getCopyText(entry), prompt);
 });
 
-test('真实 63 条资料的复制内容符合 1500 字门槛和摘录规则', async () => {
+test('真实 63 条资料的复制内容逐字等于完整原文', async () => {
   const data = JSON.parse(await readFile(new URL('../data/prompts.json', import.meta.url), 'utf8'));
   assert.equal(data.entries.length, 63);
   for (const entry of data.entries) {
-    assert.ok(getCopyText(entry).length <= data.lengthThreshold, entry.id);
-    assert.equal(getCopyText(entry), entry.isLong ? `${entry.promptExcerpt}\n完整版：${entry.postUrl}` : entry.prompt);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.equal(getCopyText(entry).length, entry.promptLength, entry.id);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.equal(getCopyText(entry), entry.prompt);
   }
 });

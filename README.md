@@ -1,4 +1,4 @@
-# PUNKCANVERSE v0.5
+# PUNKCANVERSE v0.5.1
 
 AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网址 https://punkcanverse.com。视觉采用「深夜片场 · 影印批注」：暗色片场海报、局部黑红黄剪字与网点；正文与长文使用实色背景，优先阅读。
 
@@ -36,9 +36,9 @@ canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions
 
 ## 提示词资料与版权
 
-`data/prompts.json` 保持原有 63 条来源与正文，`medium` 必填且只允许 video／image／music，当前全部为 video。新媒介分页组件为 `lib/media-tabs.mjs`；v0.2 的 `renderMediumFilter` 保持不变，仍只在至少两类有内容时输出旧筛选控件。首页路径不变。
+`data/prompts.json` 保持原有 63 条来源，v0.5.1 仅恢复其中 20 条的全文与清空摘录字段；其他字段及另外 43 条保持原样。`medium` 必填且只允许 video／image／music，当前全部为 video。新媒介分页组件为 `lib/media-tabs.mjs`；v0.2 的 `renderMediumFilter` 保持不变，仍只在至少两类有内容时输出旧筛选控件。首页路径不变。
 
-短提示词显示并复制全文；超过 1500 字符时，只显示前约 300 字摘录，复制内容为摘录、换行与「完整版：原帖链接」。提示词版权归原作者，每条必附作者与原帖；v0.5 另收 23 条经核对的阿里云官方文字范例，独立标示出处，不冒充 X 帖或生成假影片。成片用 X 官方嵌入显示，缩图直接引用 X 原图，两者均不转存到仓库或 dist。
+192 条提示词均保存并复制完整原文；每条三语独立页的 HTML 都包含完整 `<pre>`，无 JavaScript 也能阅读。长文使用可聚焦的垂直滚动区域和强制换行，复制不附加原帖网址。列表保留原有 details 外观，展开后同样能阅读、复制全文。提示词版权归原作者，每条必附作者与原帖；v0.5 另收 23 条经核对的阿里云官方文字范例，独立标示出处，不冒充 X 帖或生成假影片。成片用 X 官方嵌入显示，缩图直接引用 X 原图，两者均不转存到仓库或 dist。
 
 `postStatus: "removed"` 显示检查日期和失效说明，不创建嵌入。`postStatus: "sensitive"` 显示「原帖含敏感内容，请到 X 观看」，保留缓存缩图，点击外开原帖，不嵌入。1949860456958398844 已纠正为 sensitive。
 
@@ -50,15 +50,25 @@ canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions
 
 ## v0.5 Wan 3.0 / MiniMax H3 收录
 
-新增 `data/prompts-wan-minimax.json`，独立保存指定来源的 129 条：Wan 3.0 系 113 条（含 5 条 Prime）、MiniMax H3 16 条；其中 106 条来自 X，23 条为阿里云官方范例。原 `data/prompts.json` 的 63 条逐字不动，工作流仍为 5 条。构建按「原 63 条 → 新 129 条」稳定合并；`dist/catalog.json` 供前端筛选与复制，`dist/data.json` 保留原 63 条兼容资料。
+新增 `data/prompts-wan-minimax.json`，独立保存指定来源的 129 条：Wan 3.0 系 113 条（含 5 条 Prime）、MiniMax H3 16 条；其中 106 条来自 X，23 条为阿里云官方范例。原库的 20 条长提示词在 v0.5.1 补回全文，另外 43 条及全部原有元数据不变，工作流仍为 5 条。构建按「原 63 条 → 新 129 条」稳定合并；`dist/catalog.json` 供前端筛选与复制，`dist/data.json` 保留原 63 条兼容资料。
 
-模型筛选使用 `Wan` / `MiniMax` 原始键，显示 Wan / Wan 3.0、MiniMax H3，Prime 的版本文字仍单独保留。新条目有三语标题、收藏笔记、标签及独立网址；原始提示不翻译，超过 1500 字符只发布前 300 字摘录。三语共 636 个 HTML、630 个最终 sitemap 网址，不含空图像／音乐分页面。
+模型筛选使用 `Wan` / `MiniMax` 原始键，显示 Wan / Wan 3.0、MiniMax H3，Prime 的版本文字仍单独保留。新条目有三语标题、收藏笔记、标签及独立网址；原始提示不翻译；v0.5.1 起每条均完整发布，取消摘录限制。三语共 636 个 HTML、630 个最终 sitemap 网址，不含空图像／音乐分页面。
 
 X 来源严格检查作者 handle、原帖 ID 和网址对应。Kangaikroto 两段使用 `2104507931337400770` / `2104507931337400770-2`，`embedId` 和 postUrl 都指同一帖；仅允许数字后接合法段号（从 2 起，无前导零），并要求存在同作者的第一段。官方资料走独立分支：`source: "official"`、`aliyun-wan3-<slug>`、固定署名、HTTPS `help.aliyun.com`；不得带 postUrl、authorHandle 或 embedId。官方卡片与详情为纯 CSS 文字占位，不请求 X 嵌入或图片；长文与复制链接指官方原文。
 
-指定来源的 featured / featuredLive 合并为 featured，26 条新收录显示三语精选标记。所有新条目明确禁止推广按钮，原 Higgsfield 四条与 Magnific 推荐工具区不变。来源快照仅保存来源指纹和必要出处，用于离线测试核对原文、摘录、日期与作者；不收来源页面附件或长文全文。
+指定来源的 featured / featuredLive 合并为 featured，26 条新收录显示三语精选标记。所有新条目明确禁止推广按钮，原 Higgsfield 四条与 Magnific 推荐工具区不变。来源快照仅保存来源指纹和必要出处，用于离线测试核对完整原文、日期与作者；不收来源页面附件。
 
 缩图脚本合并两档的 X 条目与工作流，官方范例完全排除。PixelAigc 的 `2110747397441917172` 主帖无媒体，显示现有占位；其他抓取失败也安全回到占位，保留既有快取，不使用别帖缩图。实际网络抓取与人工验收状态见复核记录；build/test/verify 始终离线。
+
+## v0.5.1 全文保存
+
+按已核对的本地全文来源，恢复原库 20 条及 Wan / MiniMax 库 74 条长提示词。所有记录的 `prompt` 为完整非空原文、`promptLength === prompt.length`、`promptExcerpt: null`；`isLong` 只保留 `>1500` 的版面标记，不再限制显示或复制。两档旧的 lengthThreshold / excerptLength 元数据为兼容而保留，没有截断功能。
+
+`test/fixtures/v051-source-manifest.json` 保存全部 192 条来源全文与原元数据的 SHA256，正文未改写。短条目原文保持不变。`withFullPromptBaseline` 以 HEAD 构造精确的授权迁移预期，只允许原本 null 的长条目补回匹配来源的全文并清空摘录；其他字段继续深度比较。protectedDataPaths 完整保留，不排除任何新增资料。缩图缓存、工作流、推广配置与 middleware 均未改。
+
+长文 HTML 按文本节点安全转义 `&` / `<` / `>`，引号保持文字；短提示原有 HTML 表示不变。页面不再提示到原帖才能读全文，作者和来源连结仍保留。三语页面原文一致，未新增翻译或外部脚本。
+
+新增 `test/v051.test.mjs` 七项离线测试及 `scripts/verify-v051.mjs`：核对 192 条来源、576 个详情页、最长三条三语 HTML、全文复制、无 JS 可读、HTML 安全与精确迁移的负面 fixture。第 4 节每处旧断言变更及验证结果见 [v0.5.1 复核记录](docs/v051-review.md)。
 
 ## 缩图抓取与缓存
 

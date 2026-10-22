@@ -1,3 +1,4 @@
+import { promptHtml } from '../lib/cards.mjs';
 import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
@@ -12,7 +13,8 @@ import { validateAffiliates, AFFILIATE_DISCLOSURE, renderAffiliates } from '../l
 import { validateSite, newsletterUrl } from '../lib/newsletter.mjs';
 import { validateMedia, availableMedia } from '../lib/media.mjs';
 import { validateRegions, validateRegionText, REGION_DISCLAIMER } from '../lib/regions.mjs';
-import { withMediumBaseline } from '../lib/data-migration.mjs';
+import { withMediumBaseline, withFullPromptBaseline } from '../lib/data-migration.mjs';
+import { validateFullPromptSources, textSha256 } from '../lib/fulltext.mjs';
 import { verifyV03 } from './verify-v03.mjs';
 import { GA_SCRIPT_URL, CONSENT_BOOTSTRAP, GA_CONFIG, verifyAnalyticsHtml } from '../lib/analytics.mjs';
 import { loadEssays } from '../lib/essays.mjs';
@@ -20,6 +22,7 @@ import { listPages } from '../lib/routes.mjs';
 import { loadI18n } from '../lib/i18n.mjs';
 import { verifyV04 } from './verify-v04.mjs';
 import { verifyV05 } from './verify-v05.mjs';
+import { verifyV051 } from './verify-v051.mjs';
 import { SITE_PAGES } from '../lib/site-pages.mjs';
 import { promptPath, MEDIUM_NAMES } from '../lib/media-tabs.mjs';
 import { pathToFileURL } from 'node:url';
@@ -32,7 +35,9 @@ const git = async args => (await run('git', args, { cwd: root, encoding: 'utf8' 
 const data = JSON.parse(await read(join(root, 'data/prompts.json')));
 const published = JSON.parse(await read(join(dist, 'data.json')));
 const entries = published.entries;
-const {entries:catalogEntries}=await loadCatalog(root);
+const {entries:catalogEntries,imported:importedData}=await loadCatalog(root);
+const fulltextManifest=JSON.parse(await read(join(root,'test/fixtures/v051-source-manifest.json')));
+validateFullPromptSources(catalogEntries,fulltextManifest);
 const affiliates = JSON.parse(await read(join(root, 'data/affiliates.json')));
 const site = JSON.parse(await read(join(root, 'data/site.json')));
 const regionsRaw = await read(join(root, 'data/regions.json'));
@@ -70,6 +75,7 @@ await check('每个 HTML 都含指定 GA4 ID、先行 denied 默认值与 Cookie
 await verifyV03(root);
 await verifyV04(root);
 await verifyV05(root);
+await verifyV051(root);
 
 await check('发布文件齐全，Cloudflare 安全标头正确', async () => {
   for (const file of ['index.html', 'tips.html', 'takedown.html', 'assets/site.css', 'assets/app.mjs', 'assets/prompts.mjs', 'assets/clipboard.mjs', 'assets/embeds.mjs', 'data.json', '_headers', 'sitemap.xml', 'robots.txt']) assert.ok((await stat(join(dist, file))).isFile(), file);
@@ -98,21 +104,23 @@ await check('每条必填字段完整，原帖只允许 X status 链接，无官
   }
 });
 
-await check('短提示词不超过 1500 字，长提示词只含最多 300 字摘录，实际复制内容也不超过门槛', async () => {
+// v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+await check('全部提示词有完整原文、精确长度与来源指纹，页面及复制均为全文', async () => {
   const home = await read(join(dist, 'index.html'));
   for (const entry of entries) {
     assert.ok(Number.isInteger(entry.promptLength) && entry.promptLength > 0, entry.id);
     assert.equal(entry.isLong, entry.promptLength > 1500, entry.id);
-    if (entry.isLong) {
-      assert.equal(entry.prompt, null, entry.id);
-      assert.ok(typeof entry.promptExcerpt === 'string' && entry.promptExcerpt.length > 0 && entry.promptExcerpt.length <= 300, entry.id);
-      assert.match(getCopyText(entry), /\n完整版：https:\/\/x\.com\//);
-    } else {
-      assert.ok(typeof entry.prompt === 'string' && entry.prompt.length > 0 && entry.prompt.length <= 1500, entry.id);
-      assert.equal(entry.promptExcerpt, null, entry.id);
-    }
-    assert.ok(getCopyText(entry).length <= 1500, entry.id);
-    const visibleText = escapeHtml(entry.isLong ? entry.promptExcerpt : entry.prompt);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.ok(typeof entry.prompt === 'string' && entry.prompt.length > 0, entry.id);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.equal(entry.promptExcerpt, null, entry.id);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.equal(entry.promptLength, entry.prompt.length, entry.id);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.equal(getCopyText(entry), entry.prompt, entry.id);
+    const source=fulltextManifest.entries.find(row=>row.id===entry.id);
+    assert.equal(textSha256(entry.prompt),source.sha256,entry.id);
+    const visibleText = promptHtml(entry);
     assert.ok(home.includes(`<pre class="prompt-text" tabindex="0">${visibleText}</pre>`), `${entry.id}: visible prompt differs`);
   }
 });
@@ -207,7 +215,8 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
   const techie = entries.find(entry => entry.id === '2086124547376341346');
   assert.equal(techie.embedId, '2086124536253043164');
   assert.equal(techie.postUrl, 'https://x.com/TechieBySA/status/2086124547376341346');
-  assert.ok(getCopyText(techie).endsWith(`\n完整版：${techie.postUrl}`));
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+  assert.equal(getCopyText(techie), techie.prompt);
 });
 
 await check('下架入口与 issue 模板齐全，原资料仅允许批准的 medium 迁移与嵌入信息', async () => {
@@ -218,13 +227,18 @@ await check('下架入口与 issue 模板齐全，原资料仅允许批准的 me
   const template = await read(join(root, '.github/ISSUE_TEMPLATE/takedown.md'));
   for (const field of ['原帖链接', '你的 X 账号', '说明']) assert.ok(template.includes(field));
   const changedPaths = (await git(['diff', '--name-only', 'HEAD', '--', ...protectedDataPaths])).trim().split('\n').filter(Boolean);
-  assert.ok(changedPaths.every(path => path === 'data/prompts.json'), 'Read-only data files were modified');
-  const baseline = withMediumBaseline(JSON.parse(await git(['show', 'HEAD:data/prompts.json'])));
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+  assert.ok(changedPaths.every(path => path === 'data/prompts.json' || path === 'data/prompts-wan-minimax.json'), 'Read-only data files were modified');
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+  const baseline = withFullPromptBaseline(withMediumBaseline(JSON.parse(await git(['show', 'HEAD:data/prompts.json']))), entries, fulltextManifest);
+  const importedBaseline = withFullPromptBaseline(JSON.parse(await git(['show','HEAD:data/prompts-wan-minimax.json'])), importedData.entries, fulltextManifest);
+  assert.deepEqual(importedData, importedBaseline, 'Only source-verified prompt/promptExcerpt migration is allowed in imported data');
   const techie = baseline.entries.find(entry => entry.id === '2086124547376341346');
   assert.ok(techie, 'Missing TechieBySA baseline entry');
   if (Object.hasOwn(techie, 'embedId')) assert.equal(techie.embedId, '2086124536253043164');
   techie.embedId = '2086124536253043164';
-  assert.deepEqual(data, baseline, 'Only the approved medium migration and TechieBySA embedId are allowed; all original prompt fields must match HEAD');
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+  assert.deepEqual(data, baseline, 'Only the approved medium migration and TechieBySA embedId plus source-verified full-text fields are allowed; every other original field must match HEAD');
   const baselineThumbs=JSON.parse(await git(['show','HEAD:data/thumbs.json']));
   const currentThumbs=JSON.parse(await read(join(root,'data/thumbs.json')));
   for(const entry of entries)assert.deepEqual(currentThumbs.entries[entry.id],baselineThumbs.entries[entry.id],`${entry.id}: existing thumbnail changed`);
@@ -267,7 +281,11 @@ await check('dist 与 README 无旧 Pages 绝对网址，原资料在授权迁�
   for (const file of [...distFiles, join(root, 'README.md')]) {
     assert.ok(!/https?:\/\/fight-prompts\.pages\.dev\b/i.test(await read(file)), `Old Pages URL in ${relative(root, file)}`);
   }
-  assert.equal(await git(['diff', 'HEAD', '--', ...protectedDataPaths, ':(exclude)data/prompts.json']), '', 'Pre-existing data outside the checked prompt migration must not change');
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+  const changed = (await git(['diff', '--name-only', 'HEAD', '--', ...protectedDataPaths, ':(exclude)data/prompts.json'])).trim().split('\n').filter(Boolean);
+  assert.deepEqual(changed, changed.includes('data/prompts-wan-minimax.json') ? ['data/prompts-wan-minimax.json'] : [], 'Pre-existing data outside the checked prompt migration must not change');
+  const expected = withFullPromptBaseline(JSON.parse(await git(['show','HEAD:data/prompts-wan-minimax.json'])), importedData.entries, fulltextManifest);
+  assert.deepEqual(importedData, expected, 'Every imported field outside source-verified full-text migration must match HEAD');
 });
 
 await check('发布页面只保留 Impact 站点验证标签（老板要求不能删），无其他第三方验证标签', async () => {

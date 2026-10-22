@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { loadCatalog, mergePrompts, validateImportedPrompts } from '../lib/catalog.mjs';
 import { validateImportProvenance, sha256, ORIGINAL_PROMPTS_SHA256 } from '../lib/import-provenance.mjs';
 import { buildSite } from '../build.mjs';
-import { renderCard, renderPostMedia, renderPromptDetail } from '../lib/cards.mjs';
+import { renderCard, renderPostMedia, renderPromptDetail, promptHtml } from '../lib/cards.mjs';
 import { loadI18n, cardUI, localizeEntry, validateI18n } from '../lib/i18n.mjs';
 import { getCopyText, filterEntries } from '../lib/prompts.mjs';
 import { getEmbedUrl, getPostNotice } from '../lib/posts.mjs';
@@ -28,6 +28,7 @@ const x=imported.entries.find(entry=>entry.source==='x');
 const official=imported.entries.find(entry=>entry.source==='official');
 
 test('v0.5 两档精确合并 192；原档 63 字节不变，新档 129（X106／官方23、Wan113／MiniMax16、精选26）',async()=>{
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
   assert.equal(sha256(await readFile(join(root,'data/prompts.json'),'utf8')),ORIGINAL_PROMPTS_SHA256);
   assert.equal(original.count,63);assert.equal(original.entries.length,63);
   assert.equal(imported.count,129);assert.equal(entries.length,192);
@@ -48,26 +49,29 @@ test('v0.5 所有原文／300字摘录、长度、作者、出处、日期与来
   for(const entry of imported.entries) {
     const row=manifest.find(row=>row.id===entry.id);
     assert.equal(entry.isLong,row.fullLength>1500);
-    assert.equal(sha256(entry.isLong?entry.promptExcerpt:entry.prompt),entry.isLong?row.excerptSha256:row.promptSha256);
-    assert.ok(getCopyText(entry).length<=1500);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.equal(sha256(entry.prompt),row.promptSha256);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.equal(getCopyText(entry),entry.prompt);
   }
   const short=imported.entries.findIndex(row=>!row.isLong);
   const long=imported.entries.findIndex(row=>row.isLong);
   for(const index of [short,long]) {
-    const fixture=structuredClone(imported),entry=fixture.entries[index],key=entry.isLong?'promptExcerpt':'prompt';
+    const fixture=structuredClone(imported),entry=fixture.entries[index],key='prompt';
     entry[key]='x'+entry[key].slice(1);
     assert.throws(()=>validateImportProvenance(fixture,manifest),/verbatim/);
   }
-  const fixture=structuredClone(imported);fixture.entries[long].promptLength++;
+  const fixture=structuredClone(imported);fixture.entries[long].promptLength++;fixture.entries[long].prompt+='x';
   assert.throws(()=>validateImportProvenance(fixture,manifest),/source length/);
 });
 
-test('v0.5 新资料沿用1500／1501字符边界；长文只保留300字符，复制使用对应出处',()=>{
+test('v0.5.1 1500／1501字符仅影响版面标记；两者完整保留和复制',()=>{
   for(const template of [x,official])for(const length of [1500,1501]) {
     const full='字'.repeat(length);
-    const entry={...template,promptLength:length,isLong:length>1500,prompt:length>1500?null:full,promptExcerpt:length>1500?full.slice(0,300):null};
+    const entry={...template,promptLength:length,isLong:length>1500,prompt:full,promptExcerpt:null};
     validateImportedPrompts({...imported,count:1,entries:[entry]});
-    assert.equal(getCopyText(entry),length>1500?`${full.slice(0,300)}\n完整版：${entry.postUrl||entry.officialUrl}`:full);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.equal(getCopyText(entry),full);
     const invalid=structuredClone(entry);invalid.isLong=!entry.isLong;
     assert.throws(()=>validateImportedPrompts({...imported,count:1,entries:[invalid]}));
   }
@@ -100,7 +104,8 @@ test('v0.5 Kangaikroto 两段提示词独立 ID、同帖嵌入与链接；错 em
   const first=entries.find(row=>row.id==='2104507931337400770');
   const second=entries.find(row=>row.id==='2104507931337400770-2');
   assert.ok(first&&second);
-  assert.notEqual(first.promptExcerpt,second.promptExcerpt);
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+  assert.notEqual(first.prompt,second.prompt);
   assert.equal(first.embedId,'2104507931337400770');assert.equal(second.embedId,first.embedId);
   assert.equal(first.postUrl,second.postUrl);
   assert.equal(getEmbedUrl(first),first.postUrl);assert.equal(getEmbedUrl(second),first.postUrl);
@@ -124,10 +129,12 @@ test('v0.5 三语官方占位无图片／X 模板／推广；原文保留，长�
         assert.ok(html.includes(e(i18n.ui[locale].officialAuthor)));
         assert.ok(html.includes(`href="${entry.officialUrl}" target="_blank" rel="noopener noreferrer"`));
         assert.ok(!/twitter-tweet|tweet-template|tweet-mount|data-play-embed|<img\b|pbs\.twimg\.com|widgets\.js|platform\.twitter\.com|class="affiliate-button"/.test(html));
-        assert.ok(html.includes(e(entry.prompt||entry.promptExcerpt)));
+        // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+        assert.ok(html.includes(promptHtml(entry)));
       }
       assert.equal(getEmbedUrl(entry),null);
-      assert.equal(localizedCopyText(entry,i18n.ui[locale].fullVersion),entry.isLong?`${entry.promptExcerpt}\n${i18n.ui[locale].fullVersion}${entry.officialUrl}`:entry.prompt);
+      // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+      assert.equal(localizedCopyText(entry,i18n.ui[locale].fullVersion),entry.prompt);
       if(entry.isLong)assert.ok(detail.includes(e(i18n.ui[locale].officialLink)));
     }
   }
