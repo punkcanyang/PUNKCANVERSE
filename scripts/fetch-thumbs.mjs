@@ -74,13 +74,22 @@ export async function runFetchThumbs({ root = new URL('../', import.meta.url), f
   }
   try {
     const { entries } = JSON.parse(await readFile(new URL('data/prompts.json', root), 'utf8'));
-    const result = await fetchThumbs({ entries, previous, fetchImpl, wait, bearerToken });
+    let workflows = [];
+    try {
+      const parsed = JSON.parse(await readFile(new URL('data/workflows.json', root), 'utf8'));
+      const list = Array.isArray(parsed) ? parsed : parsed.workflows;
+      if (Array.isArray(list)) workflows = list.map(item => ({ id: item.id }));
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+    }
+    const targets = [...entries, ...workflows];
+    const result = await fetchThumbs({ entries: targets, previous, fetchImpl, wait, bearerToken });
     if (!Object.keys(result.entries).length) { console.log('无可写入的记录，保留旧文件。'); return; }
     const temporary = new URL('data/thumbs.json.tmp', root);
     await writeFile(temporary, JSON.stringify(result, null, 2) + '\n');
     await rename(temporary, path);
-    const stats = { total: entries.length, ok: 0, missing: 0, stale: 0 };
-    for (const entry of entries) {
+    const stats = { total: targets.length, ok: 0, missing: 0, stale: 0 };
+    for (const entry of targets) {
       const record = result.entries[entry.id];
       if (record.status === 'ok') stats.ok++; else stats.missing++;
       if (record.lastError) stats.stale++;
