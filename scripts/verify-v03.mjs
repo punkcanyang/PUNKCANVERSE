@@ -1,3 +1,4 @@
+import { promptHtml } from '../lib/cards.mjs';
 import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
@@ -91,7 +92,8 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
   for(const entry of entries) {
     const html=await read(join(dist,promptPath(entry),'index.html'));
     assert.ok(html.includes(`data-copy-entry="${entry.id}"`));
-    assert.ok(html.includes(escapeHtml(entry.isLong?entry.promptExcerpt:entry.prompt)));
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.ok(html.includes(promptHtml(entry)));
     if(['removed','sensitive'].includes(entry.postStatus))assert.ok(!/tweet-template|twitter-tweet|tweet-mount|data-embed|watch-link/.test(html));
     if(entry.postStatus==='sensitive')assert.ok(html.includes('原帖含敏感内容，请到 X 观看')&&!html.includes('已失效'));
     assert.equal(html.includes('去 Higgsfield 试试'),entry.models.includes('Higgsfield（平台）'));

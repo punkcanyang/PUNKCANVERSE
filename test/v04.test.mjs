@@ -230,7 +230,8 @@ test('步骤和代码复制原文；短/长提示词仅在链接前缀使用本�
   const short=entries.find(x=>!x.isLong),long=entries.find(x=>x.isLong);
   for(const locale of ['zh','en','ja']) {
     assert.equal(localizedCopyText(short,i18n.ui[locale].fullVersion),short.prompt);
-    assert.equal(localizedCopyText(long,i18n.ui[locale].fullVersion),`${long.promptExcerpt}\n${i18n.ui[locale].fullVersion}${long.postUrl}`);
+    // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+    assert.equal(localizedCopyText(long,i18n.ui[locale].fullVersion),long.prompt);
   }
 });
 

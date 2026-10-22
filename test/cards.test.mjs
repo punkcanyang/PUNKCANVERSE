@@ -35,7 +35,8 @@ test('TechieBySA 嵌入使用同作者串首，原帖、全文入口和复制仍
   assert.ok(html.includes('<p class="embed-note">影片取自同作者的串首帖</p>'));
   assert.ok(html.includes(`href="${techie.postUrl}" target="_blank" rel="noopener noreferrer">原帖 ↗</a>`));
   assert.ok(html.includes(`href="${techie.postUrl}" target="_blank" rel="noopener noreferrer">查看完整提示词 ↗</a>`));
-  assert.equal(getCopyText(techie), `${techie.promptExcerpt}\n完整版：${techie.postUrl}`);
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+  assert.equal(getCopyText(techie), techie.prompt);
 });
 
 test('未指定 embedId 时沿用原帖，不出现串首说明', () => {

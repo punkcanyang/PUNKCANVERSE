@@ -1,3 +1,4 @@
+import { promptHtml } from '../lib/cards.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -17,6 +18,7 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
   const json=async path=>JSON.parse(await read(path));
   const {original,imported,entries}=await loadCatalog(root);
   const manifest=await json('test/fixtures/v05-source-manifest.json');
+  // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
   assert.equal(sha256(await read('data/prompts.json')),ORIGINAL_PROMPTS_SHA256,'Original 63-entry file must stay byte-for-byte unchanged');
   assert.equal(original.entries.length,63);
   assert.equal(entries.length,192);
@@ -51,8 +53,10 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
       const url=`https://punkcanverse.com${urlPrefix}/prompts/video/${entry.id}/`;
       assert.ok(locs.includes(url));
       assert.ok(detail.includes(`<link rel="canonical" href="${url}">`));
-      assert.ok(card.includes(`<pre class="prompt-text" tabindex="0">${e(entry.isLong?entry.promptExcerpt:entry.prompt)}</pre>`));
-      assert.ok(getCopyText(entry).length<=1500);
+      // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+      assert.ok(card.includes(`<pre class="prompt-text" tabindex="0">${promptHtml(entry)}</pre>`));
+      // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
+      assert.equal(getCopyText(entry),entry.prompt);
       for(const html of [card,detail]) {
         assert.ok(!/class="affiliate-(?:links|item|button)"/.test(html),`${entry.id}: imported entries cannot promote tools`);
         assert.ok(html.includes('>VIDEO<')||html.includes('>VIDEO / '));
