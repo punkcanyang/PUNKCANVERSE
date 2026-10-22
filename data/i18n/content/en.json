@@ -251,6 +251,651 @@
     "1879696405440409618": {
       "title": "Water and lava warriors clash",
       "description": "Two elemental fighters, an orbiting camera and bursts of light make up the shortest entry. It is a quick starting point for testing magical combat."
+    },
+    "aliyun-wan3-example-01": {
+      "title": "Picking flowers: quiet concentration",
+      "description": "Downcast eyes, trembling fingertips and close framing express concentration, with ambient sound carrying the quiet mood.",
+      "format": "Close-up"
+    },
+    "aliyun-wan3-example-02": {
+      "title": "From singing to a relaxed smile",
+      "description": "The emotional change unfolds through finishing the song, removing headphones and smiling, rather than an adjective alone.",
+      "format": "Short shot"
+    },
+    "aliyun-wan3-example-03": {
+      "title": "Mood direction: a lone, defiant stand",
+      "description": "Four shots over fifteen seconds build from restraint to an outburst, with references fixing the general, spear and qilin.",
+      "format": "15s / four shots"
+    },
+    "aliyun-wan3-example-04": {
+      "title": "A ballroom smile: extending the opening",
+      "description": "The fifteen-second opening extension restates both outfits and the shared smile to connect new footage with the existing clip.",
+      "format": "Extend by 15s"
+    },
+    "aliyun-wan3-example-05": {
+      "title": "Wong Kar-wai-inspired garden and rain-streaked window",
+      "description": "Four timed shots and endpoint frames connect a garden memory to a rainy car window, specifying film texture, light and mood.",
+      "format": "About 30s / four shots"
+    },
+    "aliyun-wan3-example-06": {
+      "title": "Black-and-white wedding: joy turns to shock",
+      "description": "A change of events within a train-carriage wedding gives the shift from joy to shock a visible trigger.",
+      "format": "Short shot"
+    },
+    "aliyun-wan3-example-07": {
+      "title": "Panic on the Huarong Road",
+      "description": "A reporter runs toward the camera while handheld movement and background chaos make panic visible.",
+      "format": "Handheld tracking"
+    },
+    "aliyun-wan3-example-08": {
+      "title": "From a luxury window to a homeless man",
+      "description": "A single leftward move reveals the person beside a luxury window, using spatial contrast to change the mood.",
+      "format": "Leftward camera move"
+    },
+    "aliyun-wan3-example-09": {
+      "title": "Warm light and a growing smile",
+      "description": "A medium close-up holds the small change at the mouth, pairing expression with clothing and sunset light.",
+      "format": "Medium close-up"
+    },
+    "aliyun-wan3-example-10": {
+      "title": "Stained-glass sidelight and a trace of sadness",
+      "description": "Stained-glass sidelight and a small change in the eyes convey sadness without broad gestures.",
+      "format": "Medium close-up"
+    },
+    "aliyun-wan3-example-11": {
+      "title": "Lovers’ dialogue: this moment feels like a dream",
+      "description": "A two-person medium shot combines shared looks, dialogue and warm stage light so emotion comes through interaction.",
+      "format": "Two-person medium shot"
+    },
+    "aliyun-wan3-example-12": {
+      "title": "Parent and child: I’ll protect you",
+      "description": "Moonlight and a bedside lamp establish cool and warm layers before protective dialogue and actions carry the scene.",
+      "format": "Medium shot"
+    },
+    "aliyun-wan3-example-13": {
+      "title": "A surprised look at the door",
+      "description": "The short prompt pairs opening a door with the reaction to an unexpected sight, isolating one emotion.",
+      "format": "Short shot"
+    },
+    "aliyun-wan3-example-14": {
+      "title": "Speaking through tears in high contrast",
+      "description": "Lighting and composition are specified alongside tearful speech, giving the close-up a defined visual setting.",
+      "format": "Medium close-up"
+    },
+    "aliyun-wan3-example-15": {
+      "title": "Joy over a ripe tomato",
+      "description": "A ripe tomato in hand and bright eyes make happiness visible in a very short prompt.",
+      "format": "Short shot"
+    },
+    "aliyun-wan3-example-16": {
+      "title": "A snowflake smile: extending both ends",
+      "description": "Two seconds before and three after the existing clip extend the approach, upward glance and snowflake interaction.",
+      "format": "Extend by a few seconds / medium-long shot"
+    },
+    "aliyun-wan3-example-17": {
+      "title": "Multiple shots: tears and reassurance",
+      "description": "Roughly ten seconds of shot blocks move from discouragement toward hope, tying expression to events.",
+      "format": "About 10s / multiple shots"
+    },
+    "aliyun-wan3-example-18": {
+      "title": "A phone call by the window, with microexpressions",
+      "description": "Separate character replacement, voice reference and lip sync, then match blinking, breathing and small nods to dialogue.",
+      "format": "15s / long take"
+    },
+    "2109902576367947891": {
+      "title": "A mermaid wonders why humans wear shoes",
+      "description": "A ten-second vertical close-up builds the question through curious looks and microexpressions rather than large movements.",
+      "format": "10s / 9:16"
+    },
+    "2109404676466626802": {
+      "title": "The last ocean: shielding water from missiles",
+      "description": "Fifteen seconds of sci-fi action connect a choice to protect the last water source with the impact sequence.",
+      "format": "15s / 16:9"
+    },
+    "2104507931337400770-2": {
+      "title": "Seoul convenience store: strength in an embrace (part 2)",
+      "description": "Part two uses a twenty-second embrace and interaction to continue the emotional arc; both parts share one source video.",
+      "format": "Finished clip about 50s / assembled segments"
+    },
+    "2104507931337400770": {
+      "title": "Seoul convenience store: tears and loneliness (part 1)",
+      "description": "Part one establishes loneliness through thirty seconds of performance details; the two prompts remain separate entries.",
+      "format": "Finished clip about 50s / assembled segments"
+    },
+    "2104269342275698713": {
+      "title": "My player 2: a farewell high-five that never lands",
+      "description": "The setting is a couch co-op game at home at night; a thirty-second unbroken move and a missed high-five express farewell.",
+      "format": "Short drama, multiple scenes / vertical or landscape"
+    },
+    "2109845973124210929": {
+      "title": "Bon Voyage: fashion travel through world landmarks",
+      "description": "A fifteen-second square film moves from a collage poster through landmarks, using reference locks and four-panel match cuts; the post compares three models.",
+      "format": "Source clip 51s / 1:1 (three-model compilation; Wan first)"
+    },
+    "2089002238488576059": {
+      "title": "Hoichi the Earless: a live-action ghost story",
+      "description": "The thirty-second 16:9 ghost story establishes the old temple and spectral stage before character and light carry the narrative.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2092106222128574802": {
+      "title": "A woman’s tearful close-up: five seconds of emotion",
+      "description": "A fixed close-up specifies eyes, nose and facial muscle reactions, while excluding smoothing, facial drift and staged acting.",
+      "format": "Source clip 5s / 16:9"
+    },
+    "2092662562538352910": {
+      "title": "A Japanese Stand by Me-style 8mm home movie",
+      "description": "One thirty-second take uses imperfect handheld framing, gate weave and faded warm color for a boys’ railway adventure.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2110856254306541796": {
+      "title": "A couple after dark in London’s Soho",
+      "description": "The opening photo fixes both identities, keeps the couple together in every scene and calls for natural skin in night light.",
+      "format": "Source clip 16s / 3:4"
+    },
+    "2111461046317715519": {
+      "title": "Morning tour of Almaty",
+      "description": "Six hard-cut scenes over twenty-two seconds lock the first three seconds to the original stairs and background, with no flashes, teleporting or music.",
+      "format": "Source clip 22s / 16:9"
+    },
+    "2094056291618676857": {
+      "title": "A breathing megacity after the rain",
+      "description": "A fifteen-second vertical shot builds scale through ground-level movement and a rising road before revealing an opening black-glass structure.",
+      "format": "Source clip 15s / 9:16"
+    },
+    "2095088320753893689": {
+      "title": "Tokyo day-trip montage with a Korean idol look",
+      "description": "Thirty seconds are divided into two-second scenes, with REFERENCE LOCK, OUTFIT LOCK and scene-specific night exposure.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2093509473277006226": {
+      "title": "An experimental racer attempts Mach 1 on land",
+      "description": "Escalating speed leads to shockwaves, lift and shedding parts, shown through aerial views and ground-level tire shots.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2091825720657883530": {
+      "title": "Seoul summer home movie (compared with Seedance 2.5)",
+      "description": "Stray hair, tired eyes and imperfect framing create an observed everyday feel; the same prompt is compared with Seedance 2.5.",
+      "format": "Source clip 27s / 16:9"
+    },
+    "2102711627972001923": {
+      "title": "One against many on a skyscraper roof",
+      "description": "Separate action choreography from CAMERA CHOREOGRAPHY, using a reference for identity and exclusions for continuity.",
+      "format": "Source clip 10s / 16:9"
+    },
+    "2102976373606510839": {
+      "title": "LENS ONE mirrorless-camera commercial",
+      "description": "A thirty-second ad moves from camera-body macro shots into daily life, alternating product detail and human emotion.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2091876549985288529": {
+      "title": "IN RED: a red-dress fashion film",
+      "description": "References and an ARRI Alexa look anchor the red-dress film, with repeated natural-skin and shallow-focus cues.",
+      "format": "Source clip 20s / 16:9"
+    },
+    "2102993287359484057": {
+      "title": "A university chemistry demonstration",
+      "description": "The thirty-second teaching scene pairs experiment steps with explanation and camera positions.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2092093843458187735": {
+      "title": "A solo hiker’s expansive journey",
+      "description": "A reference fixes the hiker’s identity while broad landscapes and a travel montage shape the camera rhythm.",
+      "format": "Source clip 14s / 16:9"
+    },
+    "2097613778796126569": {
+      "title": "A live-action fighting game on a neon stage",
+      "description": "Realistic performers and a neon stage combine with fighting-game aesthetics; the prompt requests fifteen vertical seconds.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2103433315458097320": {
+      "title": "The last battle under a torii at sunset",
+      "description": "A fifteen-second 16:9 samurai fight combines sunset, practical-looking materials and physical contact.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2091885042293190818": {
+      "title": "Burgundy silk haute couture",
+      "description": "Character references and realistic silk reflections support the couture ad, with explicit fabric and lighting direction.",
+      "format": "Source clip 20s / 16:9"
+    },
+    "2095390683100074467": {
+      "title": "Clifftop riding with an immense silk train",
+      "description": "Clifftop riding and an immense train create a surreal fashion contrast, with camera motion following the fabric.",
+      "format": "Source clip 29s / 9:16"
+    },
+    "2089899857733616124": {
+      "title": "A cinema hand-holding attempt goes wrong",
+      "description": "The thirty-second vertical scene fixes three rows of seating and left/right relationships before the hand-holding gag.",
+      "format": "Source clip 30s / 9:16"
+    },
+    "2100078872440324298": {
+      "title": "A creator is pulled into an open-world game",
+      "description": "A fifteen-second UGC clip connects a real person with a game-world transition while retaining a casual filming feel.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2103863934109512115": {
+      "title": "LUMEN smart-water-bottle commercial",
+      "description": "The thirty-second product film defines the fictional brand and bottle before staging use cases and product coverage.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2093988944392175714": {
+      "title": "Wireless-earbud UGC commercial",
+      "description": "A twenty-second vertical ad locks face shape, hairline and clothes before natural product interactions.",
+      "format": "Source clip 20s / 9:16"
+    },
+    "2092737850034753768": {
+      "title": "One sentence: a tearful smiling goodbye (three-model comparison)",
+      "description": "One sentence combines crying, smiling and saying goodbye for a three-model comparison.",
+      "format": "Source clip 10s / 9:16"
+    },
+    "2105317512422547606": {
+      "title": "VOLTIS electric-scooter brand commercial",
+      "description": "A fictional scooter brand-film structure connects product presentation with riding scenes.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2101311302841078204": {
+      "title": "A luxury lifestyle product commercial",
+      "description": "A fifteen-second ad organizes the product and lifestyle setting through cinematic shots within a fixed duration.",
+      "format": "Source clip 15s / 1:1"
+    },
+    "2106346419363700976": {
+      "title": "A day-at-the-zoo vlog",
+      "description": "The thirty-second vlog uses handheld filming, real skin texture and environmental details instead of polished perfection.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2096108779402355129": {
+      "title": "City travel vlog: snacks and scenic stops",
+      "description": "Four beats over twenty seconds give walking, tasting and sightseeing their own actions and lines.",
+      "format": "Source clip 20s / 16:9"
+    },
+    "2099137778386633073": {
+      "title": "Street fight in a narrow rainy alley",
+      "description": "Timed punches, breathing and impact reactions fill fifteen seconds, with wet asphalt, neon and identity exclusions.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2106723741602546165": {
+      "title": "Photo-editing tools invade a real street",
+      "description": "Cursors and selection boxes become physical objects with perspective, shadows and occlusion, supported by consistent light and spatial axes.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2097332722091860172": {
+      "title": "Alexa Grey: behind the scenes of a juice ad",
+      "description": "Identity references outrank storyboard references; thirty seconds retain a spontaneous laugh, an off-camera director and one consistent drink can.",
+      "format": "Source clip 38s / 1:1"
+    },
+    "2103426808008057247": {
+      "title": "SIPPO cherry-juice Japanese fashion ad",
+      "description": "The package and four characters are locked separately, while WHIP CUT and MATCH CUT connect surreal Tokyo sets.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2110675197112266833": {
+      "title": "A teal nail-polish beauty ad",
+      "description": "Eighteen short shots over ten seconds lock the model, nails and bottle before macro moves, focus changes and match cuts.",
+      "format": "Source clip 10s / 3:4"
+    },
+    "2109161910176485732": {
+      "title": "An FPV flight through Disneyland",
+      "description": "A short prompt chains low passes, dives and tunnels, with material reflections and moving shadows supporting realism.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2100809690850664865": {
+      "title": "Realistic open-world gang gameplay",
+      "description": "Beyond thirty seconds of third-person combat, the prompt separately positions portraits, health bars, objectives and the minimap.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2109516673635999856": {
+      "title": "A smartphone travel vlog in Istanbul",
+      "description": "Selfies, a market visit and a rooftop sunset use handheld drift, autofocus and exposure shifts for a phone-shot feel.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2099352294940709075": {
+      "title": "A dash to an eighties rooftop party",
+      "description": "CHARACTER CONTINUITY fixes the look before the rush across town, with modern vehicles and architecture excluded.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2097253589647310851": {
+      "title": "GTA 6 leak? A beach backflip",
+      "description": "A ten-second single take fixes the hero and bottom-left minimap, explicitly allowing only one backflip.",
+      "format": "Source clip 10s / 16:9"
+    },
+    "2110665600166932521": {
+      "title": "A red handbag on a New York fashion shoot",
+      "description": "Boots, a walking medium shot and bag close-ups structure thirty seconds, layered with golden-hour streets and foreground taxis.",
+      "format": "Source clip 30s / 9:16"
+    },
+    "2107039981453582568": {
+      "title": "A spy team’s stakeout is won over by fried chicken",
+      "description": "Strict character and storyboard references guide thirteen shots in seventeen seconds, timed to tenths, from tense surveillance to fried chicken.",
+      "format": "Source clip 17s / 16:9"
+    },
+    "aliyun-wan3-example-19": {
+      "title": "The goddess of West Lake (first and last frames)",
+      "description": "A fifteen-second single take turns a drop into a goddess, constrained by mineral-pigment texture, blue-gold color and endpoint frames.",
+      "format": "15s / 16:9"
+    },
+    "aliyun-wan3-example-20": {
+      "title": "Ink-wash swordsman in bamboo (opening frame)",
+      "description": "An ink-wash opening frame leads into five action beats over twenty seconds, with white ink-like blade trails and final text.",
+      "format": "20s / 9:16"
+    },
+    "aliyun-wan3-example-21": {
+      "title": "Director and actor in a single take",
+      "description": "One thirty-second shot uses fast pans between director and actor, specifying an expression change within a second.",
+      "format": "30s / 16:9"
+    },
+    "aliyun-wan3-example-22": {
+      "title": "A cowgirl at a wasteland gas station",
+      "description": "A synopsis precedes timed beats from 0–6 to 24–30 seconds, setting up the gag of filling a horse with grass.",
+      "format": "30s / 16:9"
+    },
+    "aliyun-wan3-example-23": {
+      "title": "A plush-textured space adventure",
+      "description": "Twenty seconds make cloth, buttons and zippers part of both material and escape choreography, with FPV moves emphasizing scale.",
+      "format": "20s / 16:9"
+    },
+    "2111266713278783922": {
+      "title": "A comforting child’s bedroom",
+      "description": "Four beats over ten seconds use a night-light, gentle effects and a lullaby to turn a small creature’s fear into comfort.",
+      "format": "Source clip 10s / 9:16"
+    },
+    "2111277894508900413": {
+      "title": "The bell",
+      "description": "A bell beneath the sea sets up a rising sunken city over fifteen seconds, revealing it through light and scale.",
+      "format": "Source clip 15s / 3:4"
+    },
+    "2108961723222749479": {
+      "title": "That door",
+      "description": "Three beats over fifteen seconds connect an alley and gallery through a drawn door, grounded in a 35mm live-action look.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2094874714724618277": {
+      "title": "A parkour chase through the city",
+      "description": "A thirty-second descending chase emphasizes weight and gravity to ground the vaults and jumps.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2092407345179721890": {
+      "title": "A solitary archivist’s architectural odyssey",
+      "description": "Character and rhythm references are separated; only pacing and camera language are borrowed, with the original prompt credited to @rovvmut_.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2095170058469392391": {
+      "title": "High-speed mecha flight through a megacity",
+      "description": "Dense city geometry supplies scale and speed over thirty seconds, with toy-like miniatures and cartoon physics excluded.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2108306440855101555": {
+      "title": "BMX Juice: a comic TV commercial",
+      "description": "A thirty-second 16:9 commercial combines the brand line, character comedy and realistic filming, with a separate negative list.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2106659177904963655": {
+      "title": "Slapstick comedy compared across three models",
+      "description": "The same fifteen-second 9:16 handheld comedy is compared in Seedance 2.5, Wan 3.0 and MiniMax H3.",
+      "format": "Prompt: 15s / 9:16 (source compares three models side by side)"
+    },
+    "2100161820988440853": {
+      "title": "Dragon pursuit and a cliff dive (failed attempt)",
+      "description": "Atmosphere, shots and sound are separate; the same references and prompt are compared with Seedance 2.5, retaining the failed attempt.",
+      "format": "Source clip 30s / 4:3"
+    },
+    "2087009789960429646": {
+      "title": "Three concert-band girls (compared with Seedance 2.5)",
+      "description": "Three images assign each performer and instrument for a thirty-second ensemble scene, also compared with Seedance 2.5.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2099230588729491683": {
+      "title": "Heian-kyo’s night parade of spirits (compared with Seedance 2.5)",
+      "description": "References fix creature designs while individual cuts direct the night parade, with Japanese audio, effects and no BGM.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2110962188664107171": {
+      "title": "Becoming a werebunny",
+      "description": "The opening-frame person continuously becomes an anthropomorphic rabbit against an unchanged background.",
+      "format": "Source clip 37s / 3:4"
+    },
+    "2092975257737199963": {
+      "title": "An encounter on the train",
+      "description": "A continuous shot reveals a connection through a red umbrella and a line about twenty years ago, with quiet dialogue and no music.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2092125204780925038": {
+      "title": "Finding a landmark with a paper map (stylized animation)",
+      "description": "A thirty-second 16:9 animation locks character and style to a reference, leaving only one Hey so actions tell the story.",
+      "format": "Source clip 27s / 16:9"
+    },
+    "2107374846531231824": {
+      "title": "The living mass beneath a floating city",
+      "description": "Thirty seconds establish a city above a black sea before revealing the living being carrying it.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2106018058209030442": {
+      "title": "An older man takes a beating from an AI heroine",
+      "description": "Two images lock the lead and opponent for a moving fight ending in a fast kiss; the creator credits an M7 reference.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2111205105626234902": {
+      "title": "Three camera moves: push-in, orbit and crane",
+      "description": "Push-in, orbit and crane prompts are collected in order to study the camera directions in different scenes.",
+      "format": "Source clip 10s / 16:9"
+    },
+    "2107393923941609543": {
+      "title": "Cutting the cake becomes a sword duel",
+      "description": "Image 1/2 assign roles in a fifteen-second synchronized-audio sword-comedy wedding, without canned laughter.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2090578228226527704": {
+      "title": "J-pop idol music video (one thirty-second generation)",
+      "description": "Fine micro-cut timecodes align two adult idols’ movements and shots with high-tempo pop music.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2092478569884909593": {
+      "title": "A cosmic plasma spectacle",
+      "description": "Ten continuous 16:9 seconds show nebulae and a ship, with low rumbles and crystalline bursts adding scale.",
+      "format": "Source clip 10s / 16:9"
+    },
+    "2111141912891531711": {
+      "title": "A date in Glasgow after the rain",
+      "description": "An opening photo fixes the couple for a fifteen-second walk from afternoon into evening lights, with ambience and brief dialogue only.",
+      "format": "Source clip 15s / 3:4"
+    },
+    "2111163035545112758": {
+      "title": "Morning light on Miami’s Ocean Drive",
+      "description": "Six hard-cut scenes over fifteen seconds combine sunlight and natural skin with greetings and ambience, without music.",
+      "format": "Source clip 15s / 3:4"
+    },
+    "2085428669716332646": {
+      "title": "A premium camera concept ad (compared with Seedance 2.5)",
+      "description": "A fifteen-second 16:9 continuous visual move combines camera disassembly and image-card transitions, also compared with Seedance 2.5.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2102744803481997372": {
+      "title": "A near-future social commentary short",
+      "description": "Thirty seconds connect deliveries, empty offices and unsold goods into one world, building unease through calm scenes.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2101186383889215879": {
+      "title": "Origami heroine vs umbrella fighter: anime action",
+      "description": "A reference video guides pursuit and counterattack rhythm while Image 1/2 fix both designs, separating reference roles.",
+      "format": "Source clip 29s / 16:9"
+    },
+    "2096114524919345435": {
+      "title": "The umbrella thief: Pixar-style animation",
+      "description": "A dialogue-free fifteen-second theft reveals the crow’s purpose of sheltering a stray dog, with music rising at the end.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2102339127123550354": {
+      "title": "Anime sunset in a coastal town",
+      "description": "Thirty seconds combine a cliffside run and light particles, using push-ins, orbits and tracking for the sunset atmosphere.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2092656215721656772": {
+      "title": "Cooking-show finale in JSON",
+      "description": "JSON fields define the characters, shots and sound of a thirty-second finale, ending on a judge’s slight smile.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2092952141677646264": {
+      "title": "Street racing",
+      "description": "Fifteen seconds use low shots, acceleration and drifting for speed, while locking car design and excluding text and logos.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2092940900729286749": {
+      "title": "Tokyo nightlife vlog (compared with MiniMax H3)",
+      "description": "A fifteen-second multi-shot phone vlog alternates neon streets and food, with the same prompt compared in MiniMax H3.",
+      "format": "Source clip 15s / 1:1"
+    },
+    "2098355894723453388": {
+      "title": "Grandma’s GTA-style robbery",
+      "description": "Thirty seconds lock grandma to a reference across robbery, driving and pursuit, retaining one game character and voice.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2092476498125226127": {
+      "title": "A friend’s phone-shot night out: UGC",
+      "description": "Thirty vertical seconds use shake, exposure changes and casual talk to retain the imperfections of a friend’s phone footage.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2088550973585379394": {
+      "title": "A SASUKE-style obstacle challenge",
+      "description": "One challenger reference supports a thirty-second sports-show arc of progress, danger and a narrow final failure.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2097936515087376606": {
+      "title": "A fisherman chased by a giant crab",
+      "description": "Five-second beats across thirty seconds connect hauling the net to a chase, grounded in a 35mm documentary look.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2095836832575713582": {
+      "title": "Famous paintings step into a photo studio",
+      "description": "A sixteen-second 4K vertical piece brings painted figures into a studio, assigning one camera position per beat and hard cuts between.",
+      "format": "Source clip 16s / 9:16"
+    },
+    "2099558680979005770": {
+      "title": "A surreal fashion film",
+      "description": "Thirty square-framed seconds establish a fashion look through exaggerated couture shapes, slow camera moves and grain.",
+      "format": "Source clip 30s / 1:1"
+    },
+    "2111358417730240961": {
+      "title": "Ziad Nakad silver-sequin runway look",
+      "description": "Thirty vertical seconds stage walking, poses, sheer fabric and sequin reflections under consistent studio light, ending with the brand mark.",
+      "format": "Source clip 30s / 9:16"
+    },
+    "2101303256173650396": {
+      "title": "Anime short: rapid combat and emotion",
+      "description": "REFERENCE PRIORITY establishes reference precedence before shot-by-shot combat and sound, retaining both characters’ identities and clothes.",
+      "format": "Source clip 111s / 16:9"
+    },
+    "2092617578338504970": {
+      "title": "Shadow-theater heroine with giant scissors",
+      "description": "A character reference fixes the red-clad heroine as giant scissors and puppet crowds combine shadow-theater light with realistic CG.",
+      "format": "Source clip 15s / 16:9"
+    },
+    "2111150964983898453": {
+      "title": "GTA 6 gameplay look",
+      "description": "Thirty seconds preserve the first frame and gameplay flow while explicitly excluding generated UI; the creator added the HUD in Figma.",
+      "format": "Source clip 23s / 16:9"
+    },
+    "2095007196258124056": {
+      "title": "A circus rider through rings of fire",
+      "description": "A short prompt combines firelight, smoke, cheers and riding for a live-stunt atmosphere and sense of danger.",
+      "format": "Source clip 10s / 9:16"
+    },
+    "2111024524313706753": {
+      "title": "A cinema audience member is pulled into a zombie film",
+      "description": "Thirty seconds of timed scenes connect the theater, the zombie film and a return to the seat, closing with popcorn sound.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2100854831837782439": {
+      "title": "Rem and Ram’s after-work desktop wallpaper",
+      "description": "A twenty-four-second fixed camera animates the sisters and Japanese dialogue while desktop icons, menus and Dock stay still.",
+      "format": "Source clip 23s / 16:9"
+    },
+    "2102075541205782644": {
+      "title": "Beatrice sneezes in a desktop wallpaper",
+      "description": "A ten-second 16:9 fixed single take uses a sneeze, denial and tidying for a bashful performance, keeping the wallpaper and macOS UI still.",
+      "format": "Source clip 9s / 16:9"
+    },
+    "2092548780658708526": {
+      "title": "Shizuku vs a giant yokai (thirty-second single take)",
+      "description": "A thirty-second single take details exchanges, hits, recovery and resolution with fixed identity and weapon; the creator warns of low reproducibility.",
+      "format": "Source clip 30s / 16:9"
+    },
+    "2109976697156378914": {
+      "title": "The retreating tide reveals motionless figures",
+      "description": "Fifteen seconds reveal figures through an unnaturally retreating tide, with one lead and a cool 35mm film look fixed first.",
+      "format": "15s / aspect ratio not stated"
+    },
+    "2082830892209221921": {
+      "title": "An ice-blue cyberpunk awakening",
+      "description": "The first frame locks the cybernetic character and white composition; a nearly still lead contrasts with microexpressions and moving blue mechanical serpents.",
+      "format": "15s / 16:9"
+    },
+    "2105346237038043532": {
+      "title": "By the lake: don’t turn that page",
+      "description": "Fixed left/right blocking and a strict book-state progression connect reading, the dog’s interruption and closing the book within one boat.",
+      "format": "15s / 16:9"
+    },
+    "2085622021812039920": {
+      "title": "Lake droplets spell MORNING",
+      "description": "Changes in the lake surface and droplets lead to the word MORNING, making its reveal the action’s endpoint.",
+      "format": "15s / 16:9"
+    },
+    "2104920100675649557": {
+      "title": "Azure dragon and white tiger loom overhead",
+      "description": "A slow push and orbit connect the white tiger’s reaching paw, a red-robed woman and mist, ending in a tense close-up without captions or watermarks.",
+      "format": "8s / 9:16"
+    },
+    "2082782535252410508": {
+      "title": "A sci-fi explorer approaches a dark gate",
+      "description": "Multiple keyframes preserve the hooded explorer’s identity while a slow approach connects the movement toward the gate.",
+      "format": "15s / 16:9"
+    },
+    "2084441225667735905": {
+      "title": "A stealth fighter’s optical camouflage flyby",
+      "description": "The flyby connects aircraft and background through optical camouflage, focusing on visibility during motion.",
+      "format": "10s / 16:9"
+    },
+    "2082770042630943156": {
+      "title": "A radio operator holds the evacuation bridge",
+      "description": "Separate images lock character and setting; timed beats, radio audio and a clear route build urgency before the bridge closes.",
+      "format": "15s / 16:9"
+    },
+    "2102426880016253191": {
+      "title": "Four Peking opera dan roles on stage",
+      "description": "The video prompt focuses on opera movement, costume, flags and a slow push-in, leaving out the post’s image-generation prompt.",
+      "format": "About 18s / 16:9"
+    },
+    "2083555537912729607": {
+      "title": "A whale breaches a stormy clay sea",
+      "description": "Ten seconds combine clay texture and a slow-motion breaching arc, maintaining the material style through motion.",
+      "format": "10s / 16:9"
+    },
+    "2083020024340693185": {
+      "title": "An eighties open-source family sitcom",
+      "description": "The opening frame locks cast and composition while a physical robot, group reactions and dialogue follow strict continuity.",
+      "format": "12s / 16:9"
+    },
+    "2083132770650571041": {
+      "title": "A wuxia mystery in a bamboo grove",
+      "description": "A 16:9 scene uses cold blue, ink green and mist for a nocturnal martial-arts mystery, with foreground leaves suggesting observation.",
+      "format": "15s / 16:9"
+    },
+    "2110747397441917172": {
+      "title": "A 360-degree orbit with identical endpoint images",
+      "description": "Identical endpoint images accompany a short boat-and-360-degree-orbit prompt; the main post has no media, so no substitute image is used.",
+      "format": "Duration and aspect ratio not stated"
+    },
+    "2082790356983447606": {
+      "title": "A reunion in rainy Korean noir",
+      "description": "A 16:9 fifteen-second Korean-noir teaser combines a rain-soaked character, lighting and reunion tension.",
+      "format": "19s / 16:9"
+    },
+    "2082776032042783085": {
+      "title": "An ultra-premium perfume film",
+      "description": "Fifteen vertical seconds reveal the product through bottle caustics, transformed spray and a final pedestal hero shot.",
+      "format": "15s / 16:9"
+    },
+    "2083064417798025721": {
+      "title": "Modern-war FPS gameplay",
+      "description": "The first-person prompt defines movement, weapon handling, battlefield and HUD together so interface and action share one scene.",
+      "format": "15s / 16:9"
     }
   },
   "workflows": {
@@ -372,6 +1017,24 @@
     "怪物／神靈": "Creatures & spirits",
     "放火燒屋": "Burning buildings",
     "群戰／村落": "Crowds & villages",
-    "workflow": "Workflows"
+    "workflow": "Workflows",
+    "情緒表演": "Emotion & performance",
+    "廣告／產品": "Ads & products",
+    "時尚": "Fashion",
+    "旅行／城市": "Travel & cities",
+    "科幻／奇觀": "Sci-fi & spectacle",
+    "喜劇": "Comedy",
+    "生活紀錄": "Everyday documentary",
+    "遊戲風": "Game aesthetics",
+    "鏡頭設計": "Camera design",
+    "恐怖／懸疑": "Horror & suspense",
+    "動物": "Animals",
+    "料理": "Food & cooking",
+    "音樂／表演": "Music & performance",
+    "藝術／風格": "Art & style",
+    "運動": "Sports",
+    "結構化提示": "Structured prompts",
+    "模型比較": "Model comparisons",
+    "桌布動畫": "Animated wallpaper"
   }
 }

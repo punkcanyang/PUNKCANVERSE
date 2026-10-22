@@ -1,6 +1,6 @@
 import { readFile, writeFile, rename } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
-import { validThumb } from '../lib/thumbs.mjs';
+import { validThumb, normalizeThumb } from '../lib/thumbs.mjs';
 
 function mediaRecord(postId, media, source) {
   const thumb = source === 'x-api'
@@ -63,7 +63,7 @@ export async function fetchThumbs({ entries, previous = { entries: {} }, bearerT
   return result;
 }
 
-export async function runFetchThumbs({ root = new URL('../', import.meta.url), fetchImpl, wait, bearerToken = process.env.X_BEARER_TOKEN || '' } = {}) {
+export async function runFetchThumbs({ root = new URL('../', import.meta.url), fetchImpl, wait, bearerToken = process.env.X_BEARER_TOKEN || '', missingOnly = false } = {}) {
   const path = new URL('data/thumbs.json', root);
   let previous = { entries: {} };
   try {
@@ -74,6 +74,8 @@ export async function runFetchThumbs({ root = new URL('../', import.meta.url), f
   }
   try {
     const { entries } = JSON.parse(await readFile(new URL('data/prompts.json', root), 'utf8'));
+    let imported = [];
+    try {imported=JSON.parse(await readFile(new URL('data/prompts-wan-minimax.json',root),'utf8')).entries.filter(entry=>entry.source!=='official');} catch(error) {if(error.code!=='ENOENT')throw error;}
     let workflows = [];
     try {
       const parsed = JSON.parse(await readFile(new URL('data/workflows.json', root), 'utf8'));
@@ -84,7 +86,7 @@ export async function runFetchThumbs({ root = new URL('../', import.meta.url), f
     } catch (error) {
       if (error.code !== 'ENOENT') throw error;
     }
-    const targets = [...entries, ...workflows];
+    const targets = [...entries,...imported,...workflows].filter(entry=>!missingOnly || !normalizeThumb(previous.entries[entry.id]));
     const result = await fetchThumbs({ entries: targets, previous, fetchImpl, wait, bearerToken });
     if (!Object.keys(result.entries).length) { console.log('无可写入的记录，保留旧文件。'); return; }
     const temporary = new URL('data/thumbs.json.tmp', root);
@@ -100,4 +102,4 @@ export async function runFetchThumbs({ root = new URL('../', import.meta.url), f
   } catch { console.log('缩图更新未完成，保留旧文件。'); }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await runFetchThumbs();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await runFetchThumbs({missingOnly:process.argv.includes('--missing-only')});

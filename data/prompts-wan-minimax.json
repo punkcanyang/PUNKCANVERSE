@@ -1,0 +1,3602 @@
+{
+  "version": 1,
+  "source": "Public creator posts and Alibaba Cloud official documentation; curated 2026-10-22",
+  "lengthThreshold": 1500,
+  "excerptLength": 300,
+  "count": 129,
+  "entries": [
+    {
+      "id": "aliyun-wan3-example-01",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "花園摘花：寧靜專注",
+      "description": "用低垂眼神與指尖輕顫表達專注，環境音與手部特寫一起支撐寧靜感。",
+      "prompt": "日光，暖色调，侧光，特写镜头，居中构图。一位拥有波浪形栗色长发的年轻女子，身穿浅蓝色吊带连衣裙，裙边饰有精致的蕾丝花边，亭亭玉立于阳光普照的花园中。她纤细的指尖轻轻捏住一片粉色玫瑰花瓣的边缘，以流畅而从容的动作，慢慢将其从花朵上摘下。摄像机紧密聚焦于她的手和花朵，捕捉到每一个细微的动作——指尖的轻微颤抖，花瓣从花茎上柔和地脱离。她的脸部在柔和的虚焦中若隐若现，双眼低垂，神情宁静而专注，嘴唇微启。她身后，一片繁盛的盛开花田——牡丹、雏菊和薰衣草——模糊成绿意与柔和色彩交织的渐变。阳光在她皮肤和连衣裙的面料上投下柔和的高光，营造出自然的容光。没有对白或人声；环境音包括树叶轻柔的沙沙声、远处鸟儿的鸣叫，以及微风拂过花瓣的声音。",
+      "promptExcerpt": null,
+      "promptLength": 314,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "特寫",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-02",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "演唱到放鬆微笑",
+      "description": "把情緒變化放在唱完、摘耳機到微笑的連續動作，不只寫放鬆這個形容詞。",
+      "prompt": "视频展示了一位身穿黑色丝绸衬衫、长发披肩的女子在现代录音棚中。她戴着带有蓝色灯光的耳机，眼神专注地闭着眼睛，深情地对着一个专业电容麦克风演唱着中文歌曲。演唱结束后，她摘下耳机，脸上露出轻松愉悦的笑容。背景透过玻璃窗可见录音控制室。整个视频捕捉了她从专注的演唱状态到放松微笑的瞬间，充满艺术气息。",
+      "promptExcerpt": null,
+      "promptLength": 147,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "短鏡頭",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-03",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "風格情緒：悲壯孤峙",
+      "description": "15 秒四鏡頭由壓抑走向爆發，人物參考與長槍、麒麟的設定先固定。",
+      "prompt": "东方史诗仙侠，霸气雄浑。身披重甲的将军手持长枪，独骑一只金色麒麟，镇守两山之间的雄关关前，远处敌军黑潮压境。15 秒，节奏由沉稳压抑转为爆发。将军形象参考图1，面部神态参考图2，坐骑参考图3，音色参考音频1。\n分镜1（00:00-00:03）：大远景建立镜头，24mm 广角，极低角度仰拍，摄影机静止。巍峨石拱门矗立于两山之间，门侧各立一尊风化巨型武将石雕；将军独骑金色麒麟立于门前，身形渺小却孤峙不退；远处敌军黑潮铺满旷野缓缓逼近，阴云压顶，狂风卷起漫天沙尘，残破战旗猎猎作响。\n分镜2（00:03-00:06）：近景特写，85mm 长焦，浅景深。将军半张脸，额角血与尘，眼神坚定；插入握枪的手，指节发白。麒麟低吼喷出白气，金鳞泛起流动反光。将军低沉开口：\"此关，我守了十年。\"\n分镜3（00:06-00:10）：中近景略仰视，摄影机极缓推进。将军抬眼，眼底杀意翻涌，沉声道：\"今日，一个都别想过去。\"话音落，麒麟前蹄高高扬起重重砸地。\n分镜4（00:10-00:15）：摄影机沿将军 120 度弧线环绕并下沉至极低角度，转大远景。三头六臂金色法相自身后升腾而起，高过拱门，与将军动作同步；长枪顿地处炸裂出放射状裂纹，环形尘浪冲击波外扩，敌军黑潮齐齐停滞，将军与麒麟剪影立于金光之中。\n风格情绪：东方史诗，IMAX 感大场面，变形宽银幕，电影感，胶片颗粒，高动态范围；悲壮、孤峙、一夫当关的压倒性威势。\n负向清单：无现代元素、无字幕水印、无多余人物、避免面部畸变与穿帮、避免画面模糊与低分辨率。",
+      "promptExcerpt": null,
+      "promptLength": 648,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "參考圖生影片",
+      "format": "15 秒／四鏡頭",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+    },
+    {
+      "id": "aliyun-wan3-example-04",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "舞會相視一笑（向前延長）",
+      "description": "向前延長 15 秒時重述兩人的服裝與相視微笑，讓新增段落接回原影片。",
+      "prompt": "将视频 1 向前延长 15s。角色 A 为穿黑色燕尾服、白色衬衫、黑色领结及米色马甲的深棕色短发男性，角色 B 为穿米色泡泡袖复古长裙、裙身带黑色蕾丝花边、佩戴深色水滴耳环的棕色盘发女性。舞厅内水晶吊灯光芒映照大理石地面，宾客们三两交谈持杯低语，一段悠扬的华尔兹弦乐前奏缓缓响起，人群的谈话声逐渐安静。角色 B 从舞厅一侧缓步走来，裙摆轻拂过大理石地面，目光环顾四周。角色 A 从人群中走出，穿过宾客径直来到角色 B 面前，微微欠身伸出右手，目光温柔注视着她。角色 B 垂眸浅笑，将右手轻轻搭上角色 A 的掌心，两人相视一笑，角色 A 引领角色 B 步入舞池中央，周围宾客自然后退让出空间，目光齐聚二人。角色 A 左手握住角色 B 右手举起，右手轻扶她的腰后，两人摆好华尔兹舞姿，随弦乐正拍踏出第一步，开始旋转。19 世纪宫廷舞会的典雅氛围，暖金色调。",
+      "promptExcerpt": null,
+      "promptLength": 376,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "參考圖生影片",
+      "format": "延長 15 秒",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+    },
+    {
+      "id": "aliyun-wan3-example-05",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "王家衛風：花園到車窗雨滴",
+      "description": "用四段時間軸與首尾幀串起花園回憶和雨滴車窗，膠片、光線與情緒分段交代。",
+      "prompt": "镜头1（00:00-00:08）美好的过往：\n35mm 电影胶片，复古阳光花园，一位戴草帽、黑色项链和白色衣裙的优雅女子，站在盛开的玫瑰花墙前。风吹拂着她的发丝，她轻触帽檐，眼神温柔而带有一丝沉思。镜头缓慢拉近，自然光斑，柔和暖色调，浅景深，极其细腻的动态，4K 高画质。\n镜头2（00:08-00:15）情绪的转折：\n电影特写镜头，女子缓缓摘下头上的草帽，低下头，表情带有淡淡的怅惘与眷恋。柔和的风掠过，画面光影微变化，呈现出故事感与叙事氛围，35mm 胶片质感，深沉优雅，电影感光线。\n镜头3（00:15-00:23）回归现实·车内：\n行驶的车内后座视角，同一个女子侧颜，手枕在车门上，凝视着挂满雨滴的车窗外。窗外模糊的绿植与光影迅速退后，车内光线阴沉而温暖，侧面轮廓精致，极具电影情绪感，真实胶片颗粒，慢速摄影，优雅忧郁。\n镜头4（00:23-00:30）最后的凝望：\n极近面部特写，女子在车窗旁缓缓闭上双眼，流露出沉静而释怀的表情。雨滴在车窗玻璃上缓缓滑落，焦距逐渐转移到玻璃雨滴上，背景人物虚化，画面逐渐淡出黑屏，王家卫风格电影感，深情且流畅。",
+      "promptExcerpt": null,
+      "promptLength": 477,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "首尾幀生影片",
+      "format": "約 30 秒／四鏡頭",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+    },
+    {
+      "id": "aliyun-wan3-example-06",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "黑白婚禮：喜悅瞬間轉驚愕",
+      "description": "在列車婚禮中安排表情與事件的反差，讓喜悅轉成驚愕有清楚的觸發點。",
+      "prompt": "这是一个充满复古气息的黑白动画片段。场景设定在一节行驶的火车车厢内，一场婚礼正在进行。车厢中央，一对新人幸福地依偎在一起，他们面前的桌上摆放着一个漂亮的三层婚礼蛋糕。两侧的宾客们面带微笑，气氛温馨而欢乐。突然，火车似乎猛烈地晃动了一下。桌布瞬间被抽离，蛋糕和花束随之坠落。这突如其来的变故打破了宁静，所有人的表情从喜悦瞬间变为夸张的惊愕，身体也因惯性而摇摆，营造出一种充满戏剧性和喜剧效果的混乱场面。",
+      "promptExcerpt": null,
+      "promptLength": 200,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "短鏡頭",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-07",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "華容道驚慌逃竄",
+      "description": "讓前景記者朝鏡頭奔跑，混亂背景與手持跟拍一起製造驚慌，而不是只貼情緒標籤。",
+      "prompt": "这段视频展示了公元 208年华容道的一个混乱场景。在白天的自然光线下，一位脸庞沾满泥污、身穿现代黑色外套的年轻女记者位于前景中央，她正朝着镜头惊慌失措地奔跑，神情紧张，气喘吁吁。她的表情和动作显示出极度的恐慌与不安。在她身后，大批身着深色盔甲、神色狼狈的魏军士兵也一同在泥泞的峡谷小道中仓皇逃窜，他们的动作显得凌乱而急促。随着她的奔跑，她用急促、恐慌的普通话说道：“我现在只能跟随溃败的魏军一起逃跑。”背景中的峡谷小道两旁是高耸的山壁，山壁上覆盖着稀疏的植被，被雨水冲刷得斑驳陆离。天空呈现出湛蓝色，但云层厚重，光线柔和，为整个场景增添了一丝压抑感。镜头采用低角度手持拍摄，剧烈的晃动感让观众仿佛身临其境，直面溃败的军队。画面中的每一个细节都清晰可见，从艾米沾满泥污的脸庞到魏军士兵狼狈不堪的表情，再到泥泞的小道和飞溅的泥水。整体视觉风格写实、粗粝且色调阴暗，营造出战争纪录片般的现场感；而音频则通过急促的脚步声、泥水飞溅声以及主角紧张的旁白，成功渲染出一种紧迫、绝望的氛围。在这段视频中，艾米的奔跑动作连贯而有力，每一步都显得格外艰难。她的身体微微前倾，双臂快速摆动，脚步沉重而急促。与此同时，魏军士兵们也在泥泞的小道中奋力前行，他们的盔甲在阳光下反射出微弱的光芒，但更多的是被泥土和汗水所掩盖",
+      "promptExcerpt": null,
+      "promptLength": 548,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "手持跟拍",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-08",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "櫥窗到流浪漢的情緒對比",
+      "description": "同一個左移鏡頭從精品櫥窗揭露巷內人物，靠空間對比轉換情緒。",
+      "prompt": "繁华都市的商业街橱窗。镜头向左移动，缓慢地扫过一个奢侈品店的橱窗，里面是光鲜亮丽的模特和昂贵的商品。镜头继续向左，离开橱窗，揭示出旁边小巷里一个衣衫褴褛、正在角落里瑟瑟发抖的流浪汉",
+      "promptExcerpt": null,
+      "promptLength": 90,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "鏡頭左移",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-09",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "暖色調：嘴角由淺笑上揚",
+      "description": "中近景保留嘴角細微上揚，把服裝、夕陽與表情放在同一個安靜鏡頭。",
+      "prompt": "左侧重构图，日落时分，柔光，暖色调，中近景，一位外国女性身穿剪裁精致的深棕色毛呢大衣，毛皮领子勾勒出她的面部轮廓，金色长发盘成复古发髻。她坐在木质长椅上，身体微微倾向另一位模糊的女性角色，两人手握热饮，轻声交谈。随着对话展开，她的嘴角由浅笑逐渐上扬，眼角微眯，神情洋溢着真挚的喜悦。背景中模糊的人群缓慢走动，营造出温馨私密的氛围，夕阳余晖洒在她的侧脸上，柔和的光线强化了她表情的变化与情感的流动。",
+      "promptExcerpt": null,
+      "promptLength": 198,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "中近景",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-10",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "彩窗側光：眼中一絲憂傷",
+      "description": "用彩窗側光與眼神的微小變化寫憂傷，避免靠誇張的肢體表演。",
+      "prompt": "边缘光，侧光，柔光，中近景，黄昏，日落，中心构图，暖色调低饱和度，长焦镜头，一位拥有一头蓬松棕色卷发的女子优雅地站在一扇宏伟的彩色玻璃窗前。她身穿一袭飘逸的白色长裙，头发整齐地向后梳理，柔和的面部轮廓被窗外透进的斑斓光线轻轻照亮。女子正与画面外的某人交谈，然而眼中却闪现一丝忧伤，为她的神秘气质增添了一层深度。背景昏暗，光影对比强烈，进一步突出了人物情绪的张力。彩色玻璃在夕阳余晖的映照下投射出斑斓光影，增强了整体画面的艺术感和氛围感。",
+      "promptExcerpt": null,
+      "promptLength": 218,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "中近景",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-11",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "戀人對白：這一刻像夢一樣",
+      "description": "雙人中景把相視、台詞與暖色舞台光一起安排，讓情緒透過互動發生。",
+      "prompt": "双人对话，暖色调，日光，柔光，侧光，中景，中心构图，全景。红色背景的舞台铺着光滑的木质地板，两束聚光灯从上方斜射而下，照亮一对恋人。男人比女人略高，身穿剪裁合体的深灰色西装，面容清晰，眼神专注；女人身着酒红色长裙，发丝乌黑柔顺，随微风轻轻飘动。他双手轻捧她的脸颊，拇指缓缓摩挲她颧骨，她微微仰头，双眸含光，与他深情对视。她的长发被他的指尖轻轻拂过，发丝在光线中泛出细腻光泽。两人呼吸轻缓，身体随着无声的旋律微微贴近又分离，仿佛在静默中共舞。背景隐约传来柔和的钢琴前奏，音符如水流动。她轻启唇瓣，低声呢喃：“这一刻，像梦一样。” 他凝视着她，回应道：“但它是真的。",
+      "promptExcerpt": null,
+      "promptLength": 281,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "中景雙人",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-12",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "親子：別怕，我會保護你",
+      "description": "月光與床頭燈分出冷暖層次，再以保護孩子的台詞與動作承接氣氛。",
+      "prompt": "月光透过儿童卧室的窗户斜射入内，形成柔和的侧光，冷色调中带一丝暖黄的实用光点缀，来自床头一盏小夜灯。中景镜头，中心构图，低角度拍摄，展现整个房间的静谧氛围。蓝色天空隐约可见于窗外，薄云轻移。小女孩约五岁，亚裔，齐肩黑发，脸颊圆润，穿着印有小兔子图案的粉色睡衣，赤脚蜷坐在地板上，双臂紧紧环抱着一只比她还高的棕色泰迪熊，脸深深埋进熊胸前的绒毛里。她缓缓抬头，眼睛微闭，嘴角轻动，用童音低声说道：“别怕，我会保护你的。” 背景中，风轻轻吹动白色窗帘，玩具箱半开，毛绒动物散落一旁。音频包含柔和的夜间虫鸣、远处猫头鹰叫声，以及女孩说话时细微的呼吸声。",
+      "promptExcerpt": null,
+      "promptLength": 272,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "中景",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-13",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "人物情緒·驚訝（推門）",
+      "description": "短句只交代推門與看見意外場景後的反應，適合觀察單一情緒指令。",
+      "prompt": "一个年轻的女孩推开门，脸上是惊讶的表情，她看到了完全出乎意料的场景。",
+      "promptExcerpt": null,
+      "promptLength": 34,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "短鏡頭",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-14",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "高對比含淚說話",
+      "description": "光線、構圖與含淚說話並寫，讓近景表情有明確的視覺條件。",
+      "prompt": "高对比度，高饱和度，短边构图，日落，中焦距，柔光，背光，暖色调，边缘光，中近景，日光，晴天光，一位外国白人女性的近景，她身穿黄色格子连衣裙，戴着耳环。随着仰拍镜头的上升，女子抬起头来，眼睛里含着泪水，看着前方说着话。虚化的背景中是白色的砖墙，墙上挂着一幅画，下面是一个木质柜子，上面放着花瓶和台灯，旁边是一把椅子。左侧是一个棕色的柜子，上面放着一个台灯，后面是一扇打开的门，阳光从外面照射进来。",
+      "promptExcerpt": null,
+      "promptLength": 197,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "中近景",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-15",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "人物情緒·高興（西紅柿）",
+      "description": "用手中的成熟番茄與眼裡的亮光表現喜悅，示範短句也能寫可見細節。",
+      "prompt": "一位面容慈祥的老人，戴着草帽，穿着工装裤，站在阳光明媚的菜园里。他手里拿着一个熟透了的西红柿，十分高兴，眼睛里闪烁着纯粹的幸福。",
+      "promptExcerpt": null,
+      "promptLength": 64,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "短鏡頭",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/text-to-video-prompt"
+    },
+    {
+      "id": "aliyun-wan3-example-16",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "接雪花微笑（向前向後延長）",
+      "description": "以前後延長兩秒、三秒接續原片，分別安排走近、抬頭與接雪花的動作。",
+      "prompt": "以视频为中间段向前续写两秒：镜头平滑跟随，女孩向镜头缓缓走来，停下脚步，温柔地微微抬头，在冷空气中深吸一口气，嘴唇微张；以视频为中间段向后续写三秒：女孩搓完手，直视镜头，绽放出温暖灿烂的笑容。她缓缓抬起一只戴着手套的手，去接一片轻轻飘落的雪花，镜头缓慢后拉成中远景，展现阳光雪林小路，黄金时刻逆光，镜头光晕，浅景深，温暖治愈氛围。",
+      "promptExcerpt": null,
+      "promptLength": 165,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "參考圖生影片",
+      "format": "延長數秒／中遠景",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+    },
+    {
+      "id": "aliyun-wan3-example-17",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "多鏡頭：淚光與安慰",
+      "description": "把失落到重拾希望拆成約 10 秒的分鏡，讓表情變化跟隨事件推進。",
+      "prompt": "这个故事以第三人称视角，讲述一个关于放弃与重拾希望的短剧。\n第1个镜头[0-3秒] 一个男孩在操场角落独自坐着，低头望着手中的信纸，随后轻轻叹气，眼神迷茫。\n第2个镜头[4-6秒] 硬切转场，固定机位，聚焦男孩的眼睛，泪光闪烁，带着失落和无助。\n第3个镜头[7-10秒] 硬切转场，场景转至一间简朴的教室，一个女孩神情温和坚定，走到男孩身边安慰他。",
+      "promptExcerpt": null,
+      "promptLength": 174,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "文生影片",
+      "format": "約 10 秒／多鏡頭",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+    },
+    {
+      "id": "aliyun-wan3-example-18",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "窗邊電話「我好想你」＋微表情",
+      "description": "角色替換、音色參考與口型同步分清楚，再用眨眼、呼吸和小幅點頭配合台詞。",
+      "prompt": "将图 1的男性角色无缝替换至视频 1的女生。角色坐在窗边，手持手机贴耳说话。【音色与台词】提取音频 1中的音色特征，并让角色说出以下台词：\"真的吗？听起来很棒！你什么时候回来啊。我好想你啊。\"【口型与神态】生成的语音需精准驱动角色的口型自然开合。说话时伴随自然的眨眼、轻微的头部点动和呼吸感，面部微表情需与台词中的关怀、回忆情绪完美契合。【光影与场景】人物面部需自然接收室内暖光与窗外霓虹冷光的混合照明。背景窗外雨滴持续缓慢滑落，桌上咖啡有轻微热气升腾，人物与场景边缘融合自然，无抠图痕迹。【镜头与画质】15 秒长镜头，镜头极缓慢向前推进，画面极度稳定，电影级光影，8K 分辨率，照片级真实感。",
+      "promptExcerpt": null,
+      "promptLength": 297,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演"
+      ],
+      "method": "參考圖生影片",
+      "format": "15 秒／長鏡頭",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-prompt-guide"
+    },
+    {
+      "id": "2109902576367947891",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "人魚微表情：人類天天穿鞋？",
+      "description": "10 秒直式近景以好奇眼神和微表情推進提問，重點是表演細節而非大動作。",
+      "prompt": null,
+      "promptExcerpt": "FORMAT\nDuration: 10 seconds\nAspect Ratio: 9:16 vertical\nStyle: cinematic photorealism, high-end fantasy beauty film, realistic skin and water physics, elegant and delicate\nCamera: intimate close-up / medium close-up, subtle handheld movement, shallow depth of field\nCHARACTER\nAn adult mermaid princes",
+      "promptLength": 3061,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演",
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "10 秒／9:16",
+      "featured": false,
+      "author": "Riley Morgan ai",
+      "authorUrl": "https://x.com/veynmotion",
+      "date": "2026-10-13",
+      "authorHandle": "veynmotion",
+      "postUrl": "https://x.com/veynmotion/status/2109902576367947891"
+    },
+    {
+      "id": "2109404676466626802",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "最後一洋：為水擋導彈的史詩情感科幻",
+      "description": "15 秒科幻動作把保護最後水源的選擇與衝擊場面連起來，讓動作帶著情感目的。",
+      "prompt": "15-second cinematic photorealistic sci-fi action film, 16:9.\nEarth is completely dry and abandoned.\nA gigantic spacecraft carries the LAST OCEAN inside a transparent spherical containment field.\nThe enormous blue ocean floats inside the ship like a miniature planet.\nA hostile fleet suddenly attacks.\nHuman defense ships race around the ocean carrier, protecting it.\nEnemy fighters fire missiles.\nThe carrier takes a direct hit.\nThe containment field cracks.\nA colossal wave of water bursts into space.\nHuman fighters immediately fly around the escaping water, using their ships to protect the floating ocean from enemy weapons.\nThe water forms a gigantic blue sphere against the stars.\nThe carrier's containment system activates again and captures the ocean just before it is lost.\nThe fleet accelerates toward a distant green planet.\nEpic emotional science fiction, crystal-clear premise, spectacular water physics in space, intense fighter combat, huge scale, dynamic camera movement, photorealistic spacecraft, dramatic lighting, no text, no logos, no anime, no cartoon.",
+      "promptExcerpt": null,
+      "promptLength": 1074,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演",
+        "寫實",
+        "科幻／奇觀"
+      ],
+      "method": "文生影片",
+      "format": "15 秒／16:9",
+      "featured": false,
+      "author": "Alexandra Aisling",
+      "authorUrl": "https://x.com/AllaAisling",
+      "date": "2026-10-12",
+      "authorHandle": "AllaAisling",
+      "postUrl": "https://x.com/AllaAisling/status/2109404676466626802"
+    },
+    {
+      "id": "2104507931337400770-2",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "首爾便利店：擁抱帶來力量（段二）",
+      "description": "第二段用 20 秒的擁抱與互動延續情緒，成片與段一共用同一則原帖。",
+      "prompt": null,
+      "promptExcerpt": "Prompt video 2 :\n\nSCENE CONTEXT\nCreate a 20-second, 1080p ultra-realistic personal home video outside a small convenience store in Seoul. A hungry young Korean woman holding partially eaten bread breaks down while speaking to the young man beside her. His quiet reassurance makes her finally reach fo",
+      "promptLength": 5051,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演",
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "成片約 50 秒／多段拼接",
+      "featured": false,
+      "author": "Kang Ai",
+      "authorUrl": "https://x.com/Kangaikroto",
+      "date": "2026-09-28",
+      "authorHandle": "Kangaikroto",
+      "postUrl": "https://x.com/Kangaikroto/status/2104507931337400770",
+      "embedId": "2104507931337400770"
+    },
+    {
+      "id": "2104507931337400770",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "首爾便利店：淚水與孤獨（段一）",
+      "description": "第一段以 30 秒的人物動作與情緒細節建立孤獨感，不把兩段提示詞合成一條。",
+      "prompt": null,
+      "promptExcerpt": "Prompt video 1 :\n\nSCENE CONTEXT\nCreate a 30-second, 1080p ultra-realistic personal home video capturing a quiet, heartbreaking encounter in an older Seoul neighborhood. A beautiful young Korean woman, exhausted and hungry, sits outside a small convenience store. A young Korean man notices her and sh",
+      "promptLength": 5408,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演",
+        "寫實",
+        "鏡頭設計"
+      ],
+      "method": "文生影片",
+      "format": "成片約 50 秒／多段拼接",
+      "featured": false,
+      "author": "Kang Ai",
+      "authorUrl": "https://x.com/Kangaikroto",
+      "date": "2026-09-28",
+      "authorHandle": "Kangaikroto",
+      "postUrl": "https://x.com/Kangaikroto/status/2104507931337400770",
+      "embedId": "2104507931337400770"
+    },
+    {
+      "id": "2104269342275698713",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "迷你悲傷短劇 My player 2：離別空擊掌",
+      "description": "場景是夜晚客廳沙發上的雙人打電動，以 30 秒不間斷運鏡和碰不到的擊掌表達離別。",
+      "prompt": null,
+      "promptExcerpt": "Photoreal cinematic short, 30 seconds, one unbroken camera move, 24–30fps, natural indoor lighting mixed with TV glow. No cuts, no gore, no blood, no logos. No burned-in subtitles. All lines are spoken, not written on screen.\n\nSetting: a small lived-in apartment at night. Couch facing a large TV. Tw",
+      "promptLength": 2983,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "情緒表演",
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "約 短劇多段／豎或橫屏",
+      "featured": false,
+      "author": "Aymducking │ Ai creator",
+      "authorUrl": "https://x.com/aymducking",
+      "date": "2026-09-28",
+      "authorHandle": "aymducking",
+      "postUrl": "https://x.com/aymducking/status/2104269342275698713"
+    },
+    {
+      "id": "2109845973124210929",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "Bon Voyage 世界地標時尚旅行片",
+      "description": "15 秒正方形片從拼貼海報進入地標，四格匹配剪接與角色參考分區寫；原帖另有三模型比較。",
+      "prompt": null,
+      "promptExcerpt": "[DECLARATION]\n15秒・1:1スクエア。\nHIGH-END CINEMATIC FASHION TRAVEL FILM。完成済みのヴィンテージ・コラージュポスターから現実世界へ入り、世界の名所を巡り、途中でパリにいる女性のファッション・マッチカットを挟み、最後に元のポスターへ帰還する映像。\n\n[REFERENCE]\n<image1> は完成済みVOYAGEポスター。冒頭と終盤の完成ポスター全体、人物、文字、建築コラージュ、配色、世界観の参照とする。\n<image2> は全身人物アンカー。現実世界に登場する女性の顔、髪型、髪色、体型、黒いハイネック寄りのノースリーブトップス、腹部の肌",
+      "promptLength": 3529,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "時尚",
+        "旅行／城市"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 51 秒／1:1（三模型對比合輯，WAN 在第一段）",
+      "featured": false,
+      "author": "AIライフハック",
+      "authorUrl": "https://x.com/ai_lifehack55",
+      "date": "2026-10-13",
+      "authorHandle": "ai_lifehack55",
+      "postUrl": "https://x.com/ai_lifehack55/status/2109845973124210929"
+    },
+    {
+      "id": "2089002238488576059",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "耳無芳一：怪談真人短劇",
+      "description": "30 秒 16:9 怪談先固定古寺與幽靈舞台，再讓人物和光影承接敘事。",
+      "prompt": "30秒短劇，16:9，電影感，12世紀末鎌倉時代日本古風，電影級光影。\n\n場景： 鎌倉時代日本古寺、極其華麗的平家幽靈舞台（金箔、華麗燈籠、精美屏風、在蓮花池邊）、深夜山寺，氛圍先奇幻曖昧再轉恐怖。\n\n角色：  \nほういち（芳一）：年輕英俊盲眼僧人，精瘦結實身材、兩眼皆盲角膜泛灰白、光頭。穿素色僧衣（後轉只穿白色兜襠布）。  \n白衣女鬼：蒼白長黑髮，穿華麗12世紀日本女官和服（層層鮮豔顏色、精美刺繡、華麗髮飾）。  \n黑盔甲女鬼將軍與貴族女鬼：黑甲與極其華麗的平家貴族女官和服。  \n老和尚：年長僧人，長白眉、長白鬍鬚，穿深色僧衣。\n\n風格： 電影級打光，淺景深，先奇幻浪漫再陰森恐怖，膠片質感，節奏極快。\n\n第一段（0-15秒）：  \n0-1s：夜晚古寺內，ほういち彈奏琵琶，村民們滿足聆聽。  \n1-2s：末排一位華麗女官和服白衣女鬼(身上冒著淡淡的黑色煙霧)滿意點頭。  \n2-3s：當晚寺廟寢室，ほういち躺下，準備睡覺。  \n3-4s：白衣女鬼跪在寢室的門外請求：「Please play for us.」  \n4-5s：白衣女鬼拉著ほういち的手，走上蓮花池邊極其華麗的平家舞台。  \n5-7s：ほういち高速彈奏古曲，台下的黑盔甲女鬼將軍與華麗貴族女鬼們驚嘆。  \n7-9s：貴族女鬼們曖昧挑逗ほういち——輕摸他光頭、長舌輕舔他唇、在他耳邊吹氣。  \n9-11s：ほういち生氣拒絕：「Stop! Send me back please.」  \n11-13s：ほういち睡在寢室夜夜惡夢，窗外華麗女鬼呼喊「ほういち…」。  \n13-14s：老和尚（長白眉白鬚）經過走廊撞見寢室內ほういち說夢話的痛苦模樣。  \n14-15s：早晨，老和尚在ほういち全身（除耳朵）寫滿紅色經文。\n15-16s：夜晚，全身(雙耳除外)寫滿紅色經文的ほういち只穿兜襠布在寺廟寢室內打坐。  \n16-18s：華麗女鬼們湧入，紛紛淒厲呼喚：「ほういち…ほういち…」  \n18-19s：ほういち心跳加速，胸口劇烈起伏。  \n19-21s：ほういち全身冒汗，紅色經文被汗水稍微溶解。  \n21-22s：女鬼們靠近，然而——房間裡完全看不到芳一的身體。只有一對「孤零零、漂浮在黑暗中的耳朵」。女鬼們愣住。鏡頭快速推近漂浮的雙耳。紅色經文在其他身體部位完全隱形，只有耳朵暴露。\n22-23s：數名女鬼同時撲向漂浮的雙耳。黑色長髮瘋狂飛舞。\n帶頭女鬼伸出冰冷的手，說“Found you.” 她猛然抓住雙耳。\n畫面只看到漂浮的雙耳被強行扯下。鮮血在黑暗中濺開。\n23-24s：帶頭女鬼拎著血淋淋的雙耳，發出詭異的笑聲，與其他女鬼們一起快速飛走。\n24-26s：早晨，老和尚滿臉擔憂，快步衝進寢室。  \n26-28s：老和尚發現只穿兜襠布且沒有耳朵的ほういち正痛苦跪著掙扎，失去雙耳的周圍臉部皮膚血淋淋。  老和尚擔憂地問：「ほういち…You okay? 」 \n28-30s：鏡頭定格在ほういち那失去雙耳的痛苦蒼白臉孔，以及他的痛苦喘息聲，畫面fade into black。",
+      "promptExcerpt": null,
+      "promptLength": 1272,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "恐怖／懸疑"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "The Anxious Mind",
+      "authorUrl": "https://x.com/drjoetw",
+      "date": "2026-08-16",
+      "authorHandle": "drjoetw",
+      "postUrl": "https://x.com/drjoetw/status/2089002238488576059"
+    },
+    {
+      "id": "2092106222128574802",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "中年女性哭訴特寫：5 秒情緒戲",
+      "description": "固定近景細寫眼眶、鼻尖與面部肌肉反應，並限制磨皮、臉漂移和舞台感。",
+      "prompt": "生成5秒写实剧情短片，16:9，24fps，轻微胶片颗粒，室内昏暗房间，柔和侧逆光，氛围感压抑悲伤。\n人物：中年中国女性，黑长发，朴素日常上衣，胸部以上近景，固定机位，镜头几乎不动。全程连续说话，不停哭诉，眼泪不断顺着脸颊往下流，眼眶红肿，鼻尖泛红，嘴唇不停开合，伴随哽咽、细微肩膀抖动，面部肌肉真实抽搐，委屈痛苦，口型和中文语音严格同步，5秒全程铺满台词，没有空白。\n\n【时间轴 0.0‑5.0秒】\n0‑5秒全程持续哭诉，不停讲话，泪珠持续滑落，呼吸断断续续带哽咽\n女人带着哭腔持续说道：“我到底做错了什么，为什么要这么对我……”\n\n声音设计：原生中文人声，带哭腔哽咽，有抽泣换气，无背景音乐，只有极轻室内环境底噪。\n硬性禁止：字幕、水印、logo、夸张嘶吼、舞台表演感、美颜磨皮、面部漂移变形、口型错位、黑屏淡出。5秒结束直接截断画面。",
+      "promptExcerpt": null,
+      "promptLength": 370,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 5 秒／16:9",
+      "featured": false,
+      "author": "PixelAIGC",
+      "authorUrl": "https://x.com/PixelAigc",
+      "date": "2026-08-25",
+      "authorHandle": "PixelAigc",
+      "postUrl": "https://x.com/PixelAigc/status/2092106222128574802"
+    },
+    {
+      "id": "2092662562538352910",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "和製《站在我這邊》8mm 家庭錄影",
+      "description": "30 秒一鏡用不完美手持、片門晃動與褪色暖調，串起少年鐵道探險。",
+      "prompt": null,
+      "promptExcerpt": "Unplanned handheld 8mm home-movie recording, shot by an older teenage brother moving with the group, imperfect framing, warm faded film colors, visible fine grain, slight gate weave, occasional motion blur, natural summer daylight, realistic deep focus.\n\nCharacters:\n\nThe hero is a thirteen-year-old ",
+      "promptLength": 5422,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "一鏡到底"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "いにしえ@高信頼AIニュース\"NeuralWire.org\"運営｜Will Oldgram",
+      "authorUrl": "https://x.com/old_pgmrs_will",
+      "date": "2026-08-27",
+      "authorHandle": "old_pgmrs_will",
+      "postUrl": "https://x.com/old_pgmrs_will/status/2092662562538352910"
+    },
+    {
+      "id": "2110856254306541796",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "倫敦蘇活區夜遊情侶",
+      "description": "以照片鎖定兩人的外觀，要求每場同時在畫面內，夜景下也保持自然膚質。",
+      "prompt": null,
+      "promptExcerpt": "LONDON AFTER DARK | 15-Second Cinematic City Tour | WAN 3\n\nCharacter & Visual Continuity\nBegin with the exact supplied Soho couple reference image as the opening frame. Preserve both characters’ facial identities, hairstyles, natural skin texture, proportions, and outfits throughout. The man wears a",
+      "promptLength": 4370,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "旅行／城市",
+        "情緒表演",
+        "夜戰火光"
+      ],
+      "method": "圖生影片",
+      "format": "原帖影片 16 秒／3:4",
+      "featured": false,
+      "author": "Promethean",
+      "authorUrl": "https://x.com/PrometheanAIX",
+      "date": "2026-10-16",
+      "authorHandle": "PrometheanAIX",
+      "postUrl": "https://x.com/PrometheanAIX/status/2110856254306541796"
+    },
+    {
+      "id": "2111461046317715519",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "阿拉木圖晨間城市導覽",
+      "description": "22 秒六場硬切中，首三秒鎖死原圖樓梯與背景，並排除閃白、瞬移和音樂。",
+      "prompt": null,
+      "promptExcerpt": "ALMATY, KAZAKHSTAN — MORNING CITY TOUR V3\n\n22 seconds, 16:9, WAN 3. \n\nSix scenes, HARD CUTS ONLY. No flashes, fades or dissolves. Hyper-realistic morning in Almaty. Preserve the reference man's exact face, beard, brown beanie, tan jacket, gray hoodie, jeans and sneakers. Natural crowds, motion and l",
+      "promptLength": 3541,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "旅行／城市",
+        "生活紀錄"
+      ],
+      "method": "圖生影片",
+      "format": "原帖影片 22 秒／16:9",
+      "featured": false,
+      "author": "Promethean",
+      "authorUrl": "https://x.com/PrometheanAIX",
+      "date": "2026-10-17",
+      "authorHandle": "PrometheanAIX",
+      "postUrl": "https://x.com/PrometheanAIX/status/2111461046317715519"
+    },
+    {
+      "id": "2094056291618676857",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "會呼吸的雨夜巨城",
+      "description": "15 秒直式從貼地運鏡與路面起伏累積尺度感，再揭露開啟的巨型黑玻璃構造。",
+      "prompt": null,
+      "promptExcerpt": "Format: 9:16 vertical, 15 seconds, cinematic, ultra-realistic, massive subjects, high-detail, no text, no logos.\n0–3 sec: Nighttime futuristic city street after heavy rain. Camera starts extremely low at street level, reflections of skyscrapers stretching across the wet pavement. Everything feels en",
+      "promptLength": 2564,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "科幻／奇觀",
+        "夜戰火光"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／9:16",
+      "featured": false,
+      "author": "mini singh AI world",
+      "authorUrl": "https://x.com/KaminiKamini222",
+      "date": "2026-08-30",
+      "authorHandle": "KaminiKamini222",
+      "postUrl": "https://x.com/KaminiKamini222/status/2094056291618676857"
+    },
+    {
+      "id": "2095088320753893689",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "韓系女孩東京一日快剪",
+      "description": "30 秒逐兩秒分場，用 REFERENCE LOCK 與 OUTFIT LOCK 固定人物，並逐場寫夜景曝光。",
+      "prompt": null,
+      "promptExcerpt": "WAN 3.0 PRIME / 30 seconds / 16:9 / 1080p\n\nUse @Image 1 as the character reference.\n\nREFERENCE LOCK:\nPreserve the exact overall look and identity inspired by @Image 1:\nadult woman in her early 20s, Korean-idol-style beauty, long straight black hair with soft natural volume, fair porcelain-like skin,",
+      "promptLength": 5686,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0 Prime",
+      "tags": [
+        "寫實",
+        "旅行／城市",
+        "鏡頭設計"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "AI_poruru(world)",
+      "authorUrl": "https://x.com/poruru_ai",
+      "date": "2026-09-02",
+      "authorHandle": "poruru_ai",
+      "postUrl": "https://x.com/poruru_ai/status/2095088320753893689"
+    },
+    {
+      "id": "2093509473277006226",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "實驗車挑戰陸地一馬赫",
+      "description": "由速度攀升到震波、離地與零件剝落，用空拍和貼地輪胎視角表達高速物理。",
+      "prompt": "A futuristic experimental racing vehicle attempts to become the first ground vehicle to maintain Mach 1 across open terrain. Dawn. Engines ignite. The camera follows close behind as the vehicle accelerates across a vast desert. 200 mph. 400 mph. 600 mph. The landscape becomes a blur. Shockwaves begin forming around the body. Warning messages appear throughout the cockpit. The vehicle starts lifting slightly from the ground. Control surfaces struggle to stabilize it. The camera alternates between wide aerial shots and terrifyingly close wheel-level views. 700 mph. 750 mph. Small components begin tearing away from the chassis. The driver refuses to slow down. Mountains ahead approach far too quickly. The speed reaches the critical threshold. A massive sonic boom erupts across the desert. The vehicle becomes unstable. It drifts sideways at incredible speed. The driver fights for control. For several seconds disaster seems inevitable. Then the vehicle stabilizes and continues accelerating. Final shot: the machine races beyond the horizon while the sonic shockwave rolls across the desert behind it. Ultra-realistic cinematic speed record attempt, realistic aerodynamics, overwhelming speed sensation, shockwaves, intense tension, detailed cockpit, IMAX quality, dramatic scale.",
+      "promptExcerpt": null,
+      "promptLength": 1289,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "科幻／奇觀"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Alexandra Aisling",
+      "authorUrl": "https://x.com/AllaAisling",
+      "date": "2026-08-29",
+      "authorHandle": "AllaAisling",
+      "postUrl": "https://x.com/AllaAisling/status/2093509473277006226"
+    },
+    {
+      "id": "2091825720657883530",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "首爾夏日紀錄片風家庭錄影（對比 Seedance 2.5）",
+      "description": "以亂髮、疲憊眼神與不完美構圖寫生活感，同一提示詞另與 Seedance 2.5 比較。",
+      "prompt": null,
+      "promptExcerpt": "Seoul Summer Day - Video Prompt\n\nCreate a 30-second, 1080p ultra-realistic documentary-style personal home video showing an ordinary summer day in the life of a young Korean man. The footage should feel spontaneous, intimate, imperfect, and genuinely observed rather than performed.\n\nMAIN SUBJECT\n\nTh",
+      "promptLength": 6897,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "生活紀錄",
+        "旅行／城市",
+        "模型比較"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 27 秒／16:9",
+      "featured": false,
+      "author": "Stav Zilbershtein",
+      "authorUrl": "https://x.com/mightyking",
+      "date": "2026-08-24",
+      "authorHandle": "mightyking",
+      "postUrl": "https://x.com/mightyking/status/2091825720657883530"
+    },
+    {
+      "id": "2102711627972001923",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "摩天樓頂一打多武打",
+      "description": "把人物動作編排與 CAMERA CHOREOGRAPHY 分開寫，參考圖固定主角，負向清單維持連續性。",
+      "prompt": null,
+      "promptExcerpt": "Use IMAGE 1 as the exact main character reference. Preserve the exact face, identity, hairstyle, clothing and body proportions.\n\nCreate a spectacular live-action martial-arts fight on the rooftop of a skyscraper. IMAGE 1 fights many attackers using extremely agile, playful and inventive martial-arts",
+      "promptLength": 1866,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "功夫武打",
+        "動作編排"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 10 秒／16:9",
+      "featured": false,
+      "author": "Ahmad hassan",
+      "authorUrl": "https://x.com/ahmadmalik375",
+      "date": "2026-09-23",
+      "authorHandle": "ahmadmalik375",
+      "postUrl": "https://x.com/ahmadmalik375/status/2102711627972001923"
+    },
+    {
+      "id": "2102976373606510839",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "LENS ONE 無反相機廣告",
+      "description": "30 秒從機身微距進入生活片段，讓產品細節與人物情緒交錯，而非只列商品外觀。",
+      "prompt": null,
+      "promptExcerpt": "Create a 30-second, ultra-realistic cinematic product commercial for a fictional premium mirrorless digital camera called LENS ONE. Make it feel like a high-end global camera campaign with cinematic storytelling, beautiful photography, premium product cinematography and emotional everyday moments.\nF",
+      "promptLength": 3040,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "廣告／產品"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Synthia",
+      "authorUrl": "https://x.com/AIwithSynthia",
+      "date": "2026-09-24",
+      "authorHandle": "AIwithSynthia",
+      "postUrl": "https://x.com/AIwithSynthia/status/2102976373606510839"
+    },
+    {
+      "id": "2091876549985288529",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "IN RED 紅裙時裝廣告",
+      "description": "以參考圖和 ARRI Alexa 質感固定紅裙時裝片的視覺，反覆要求真實皮膚與淺景深。",
+      "prompt": "【风格】高端时装广告片（Luxury Fashion Film / High-End Commercial），真实摄影质感（Photorealistic），ARRI Alexa 拍摄感，浅景深，8K超清，达芬奇高级调色，暗调低饱和背景衬托纯正正红，无塑料感、无AI油光\n【画幅】16:9 横屏\n【时长】20秒\n【场景】高层酒店套房，落地窗外是黄昏城市天际线，白色纱帘被穿堂风吹起，室内是米色木饰面墙与黑色大理石台面，全场唯一的高饱和色是那条红裙\n【角色】女模特@图1（保持面部特征、发型、肤质一致，气质冷静克制，不笑或极轻微微笑）\n【服装】她身穿@图2的红色真丝缎面吊带短裙（胸前羽翼状立体编织、腰侧手工绳编镂空、不规则手帕式裙摆），保持款式、颜色、工艺细节完全一致\n\n[00:00-00:04] 镜头1：布料起手（Macro / Slider）\n微距横移：红色真丝缎面在深色背景中缓缓滑过，光沿着布料的褶皱流动，能看清纱线织纹和缎面反光的高光线。\n镜头缓缓推向胸前的羽翼状立体编织，一根根绳线的编织结构清晰可见。\n音效：布料摩擦的细微沙沙声，低频弦乐单音进入。\n\n[00:04-00:09] 镜头2：人影入画（Backlit Tracking）\n中远景侧逆光：她穿着红裙从纱帘后走过，黄昏侧逆光穿透纱帘，在地面拉出长影。\n裙摆随步伐扬起又落下，不规则手帕摆的尖角在空气中划出弧线，穿堂风让纱帘和裙摆同时飘动。\n镜头低角度水平跟移，人物始终保持在画面右三分之一。\n\n[00:09-00:14] 镜头3：工艺特写（Detail Insert）\n特写：她的手指轻轻捏住胸前系带的缎面蝴蝶结末端，缎带垂落。\n切特写：腰侧手工绳编镂空在光下形成一排细密的阴影格。\n切特写：裙摆边缘在空中甩动，慢速升格（Slow-mo），缎面翻转时从深酒红过渡到亮正红。\n\n[00:14-00:18] 镜头4：回眸中景（Medium Shot / Push-in）\n中景：她背对镜头站在窗前，肩背线条与红色系带带子形成干净的构图，缓缓转身回头看向镜头。\n面部毛孔与皮肤质感真实，眼神平静直视镜头，下巴微抬，长发在风中轻微晃动。\n镜头极缓推进（Slow Push-in），焦点始终锁在她的眼睛。\n\n[00:18-00:20] 镜头5：定格收尾（Freeze / Title Card）\n全景定格：她站在落地窗前，红裙是画面中唯一的亮色，背景城市天际线虚化成散景光点。\n画面缓缓变暗，屏幕中央淡入白色细体英文字幕：\"IN RED.\"\n音效：弦乐收在一个长音上，尾部留 0.5 秒静音。",
+      "promptExcerpt": null,
+      "promptLength": 1077,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "時尚",
+        "廣告／產品"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 20 秒／16:9",
+      "featured": false,
+      "author": "John",
+      "authorUrl": "https://x.com/johnAGI168",
+      "date": "2026-08-24",
+      "authorHandle": "johnAGI168",
+      "postUrl": "https://x.com/johnAGI168/status/2091876549985288529"
+    },
+    {
+      "id": "2102993287359484057",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "大學化學課實驗示範",
+      "description": "30 秒教學場景按步驟交代實驗動作、講解與鏡位，讓操作和說話互相對應。",
+      "prompt": null,
+      "promptExcerpt": "Create a 30-second ultra-realistic cinematic educational video set inside a modern university chemistry laboratory and lecture classroom. A confident male chemistry professor enters the room carrying a coffee cup and teaching materials while students prepare for class. Show the professor explaining ",
+      "promptLength": 1828,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Ahmad hassan",
+      "authorUrl": "https://x.com/ahmadmalik375",
+      "date": "2026-09-24",
+      "authorHandle": "ahmadmalik375",
+      "postUrl": "https://x.com/ahmadmalik375/status/2102993287359484057"
+    },
+    {
+      "id": "2092093843458187735",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "獨行女登山客壯闊旅程",
+      "description": "參考圖固定登山客，使用壯闊景觀與旅行蒙太奇安排鏡頭節奏。",
+      "prompt": null,
+      "promptExcerpt": "A cinematic travel montage of a solitary young female hiker exploring vast dramatic natural landscapes. Photorealistic, ultra-high detail, filmic color science, anamorphic lens feel, subtle film grain, rich natural contrast. Exact same cinematography as the reference: contemplative wide frames, slow",
+      "promptLength": 4496,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "旅行／城市"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 14 秒／16:9",
+      "featured": false,
+      "author": "Heisenberg",
+      "authorUrl": "https://x.com/rovvmut_",
+      "date": "2026-08-25",
+      "authorHandle": "rovvmut_",
+      "postUrl": "https://x.com/rovvmut_/status/2092093843458187735"
+    },
+    {
+      "id": "2097613778796126569",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "霓虹舞台格鬥遊戲真人版",
+      "description": "用寫實人物與霓虹舞台結合格鬥遊戲美學，提示詞要求 15 秒直式動作。",
+      "prompt": null,
+      "promptExcerpt": "Create a 15-second vertical 9:16 ultra-realistic cinematic action sequence set on a massive outdoor stage in a futuristic neon city, inspired by a high-budget fighting game.\n\nA huge muscular male fighter with spiky golden hair, wearing loose white martial-arts pants, a red waist sash, golden wristba",
+      "promptLength": 2123,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "功夫武打",
+        "遊戲風"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "Ai Arainz",
+      "authorUrl": "https://x.com/iam_mian7",
+      "date": "2026-09-09",
+      "authorHandle": "iam_mian7",
+      "postUrl": "https://x.com/iam_mian7/status/2097613778796126569"
+    },
+    {
+      "id": "2103433315458097320",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "夕陽鳥居下的最後一戰",
+      "description": "15 秒 16:9 武士戰把夕陽、實景材質與動作接觸一起寫，保持真人電影感。",
+      "prompt": null,
+      "promptExcerpt": "Create a 15-second live-action cinematic samurai battle, 16:9, ultra-realistic movie quality, practical-looking effects, natural human movement, detailed costumes, realistic physics, and dramatic handheld camera work. Avoid an obvious AI or cartoon appearance.\n\nStory: After protecting a sacred villa",
+      "promptLength": 2375,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "功夫武打",
+        "冷兵器",
+        "動作編排"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "Ahmad hassan",
+      "authorUrl": "https://x.com/ahmadmalik375",
+      "date": "2026-09-25",
+      "authorHandle": "ahmadmalik375",
+      "postUrl": "https://x.com/ahmadmalik375/status/2103433315458097320"
+    },
+    {
+      "id": "2091885042293190818",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "酒紅真絲高定時裝大片",
+      "description": "以人物參考和真實布料反光支撐高定廣告，將服裝質感與光線明確拆出來。",
+      "prompt": null,
+      "promptExcerpt": "【风格】顶级奢侈品牌大片（Ultra-Luxury Fashion Haute Couture Film），Vogue国际时尚大片质感，电影级摄影（Photorealistic），8K超清画质，16:9宽画幅，阿莱电影机调色（ARRI Alexa Color Science），光影粒子（Cinematic Dust & Flare），顶级柔焦布光\n【时长】20秒\n【比例】16:9\n【场景】极简高级灰调水泥立柱影棚 ➔ 落地窗暮色光影露台，冷暖光影交织\n【角色】时尚超模@图片2 穿着高定真丝礼服@图片1（五官立体冷艳、身姿修长的东方超模，身穿酒红色真丝挂脖睡裙，胸前为立体镂空蝴蝶纹理与流苏系带，",
+      "promptLength": 1758,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "時尚",
+        "鏡頭設計"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 20 秒／16:9",
+      "featured": false,
+      "author": "John",
+      "authorUrl": "https://x.com/johnAGI168",
+      "date": "2026-08-24",
+      "authorHandle": "johnAGI168",
+      "postUrl": "https://x.com/johnAGI168/status/2091885042293190818"
+    },
+    {
+      "id": "2095390683100074467",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "懸崖騎馬與萬尺絲綢裙襬",
+      "description": "用懸崖騎行與超長裙襬的尺度反差製造超現實時裝畫面，運鏡追隨布料。",
+      "prompt": "A cinematic, surreal AI-generated video featuring a regal woman in an elegant gown mounted on a horse atop the precipice of a towering mountain cliff, overlooking expansive valleys beneath dramatic sky formations. Attached to her dress is an extraordinarily long, translucent silk train that billows dynamically in high-altitude wind, sweeping up toward the sun and blending into voluminous, fluffy clouds. The visual sequence transitions through majestic landscapes—from jagged ridges at golden hour to misty volcanic peaks—while the sweeping fabric shifts in vivid hues of crimson, cobalt blue, warm gold, and pure white, creating an ethereal, dreamlike atmosphere with cinematic lighting and hyper-realistic detail.",
+      "promptExcerpt": null,
+      "promptLength": 718,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "時尚"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 29 秒／9:16",
+      "featured": false,
+      "author": "Talia",
+      "authorUrl": "https://x.com/TaliaAariz",
+      "date": "2026-09-03",
+      "authorHandle": "TaliaAariz",
+      "postUrl": "https://x.com/TaliaAariz/status/2095390683100074467"
+    },
+    {
+      "id": "2089899857733616124",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "霸總電影院偷牽手被大嬸教訓",
+      "description": "30 秒直式先寫三排座位的左右關係，再安排偷牽手與反應，避免多人位置混亂。",
+      "prompt": "30秒短劇，9:16，電影感，現代都市黑色喜劇風格，電影級光影。\n\n場景：現代都市夜晚高級電影院內，昏暗燈光，大螢幕播放《白衣女鬼從電視爬出》的恐怖片。三排座位中間區域，空間邏輯清晰：霸總坐左側、女秘書坐右側（兩人中間扶手）、女秘書更右側是正在大口吃爆米花的中年胖大嬸。銀幕藍白冷光與座椅暖黃微光對比，氛圍從恐怖逐漸轉為曖昧，最後徹底搞笑崩壞。\n\n角色：\n英俊蓄鬍霸總<<<Image1>>>  ：35歲，英俊成熟，短髮蓄鬍、精緻五官、氣場強大，穿淺灰色合身西裝，眼神色瞇瞇又帶玩味。\n女秘書<<<Image2>>>  ：25歲，清純美麗、長黑直髮、精緻五官，穿簡約職業套裝（白襯衫+黑窄裙），氣質專業卻容易害羞緊張。\n中年胖大嬸<<<Image3>>>  ：50歲左右，俗氣的及肩捲髮，臉頰上明顯雀斑，誇張的藍色眼影，整形過度的浮腫鮮豔雙唇，圓潤體型、穿廉價平底鞋與寬鬆花色衣服，表情先是專心看電影，後轉為忍無可忍的正義感。\n\n風格：電影級寫實光影，冷藍銀幕光與暖黃座椅燈對比，柔焦側臉與突兀喜劇節奏，整體從恐怖張力→曖昧輕挑→爆笑崩壞。\n\n分鏡（0-30秒）：\n0-3s：大螢幕特寫白衣女鬼從老舊電視爬出，陰森音樂響起，全場觀眾屏息。女秘書坐在右側座位，眉毛深鎖、眼睛緊盯銀幕，專注又害怕。\n3-5s：霸總坐在她左側，色瞇瞇地側頭望著女秘書美麗側臉，嘴角微揚，偷偷將手伸過去，握住她擱在兩人之間扶手上的左手。\n5-7s：女秘書被嚇到，身體微顫，下意識想抽回左手，卻被霸總輕輕扣住。\n7-10s：霸總湊近她耳邊，用低沉曖昧的聲音輕聲挑逗（中文）：「害怕的話……就靠過來一點啊。」同時用拇指輕撫她手背，另一手悄悄搭上她肩膀。\n10-13s：女秘書臉頰微紅、呼吸急促，又羞又慌地想推開，霸總卻越靠越近，準備吻她。\n13-15s：右側中年胖大嬸終於忍無可忍，怒目圓睜，把手中整桶爆米花「嘩」地全部撒在霸總頭上。\n15-17s：女秘書嚇得尖叫，急忙拍掉自己身上與頭髮上的爆米花，表情又驚又窘。\n17-20s：中年胖大嬸的廉價平底鞋踩到地上散落的爆米花，重心瞬間不穩，整個人往前撲倒，直接摔進霸總懷裡。\n20-23s：霸總愣了一秒，隨即雙手抱住胖大嬸，深情又熱情地吻了上去（臉貼臉深吻）。\n23-26s：女秘書氣得滿臉通紅，猛地起身轉身離去，高跟鞋踩得響亮。\n26-30s：現場其他觀眾哄堂大笑，連大螢幕上的白衣女鬼也突然轉頭看向鏡頭，跟著張大嘴巴大笑，畫面fade into black。",
+      "promptExcerpt": null,
+      "promptLength": 1041,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "喜劇"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／9:16",
+      "featured": false,
+      "author": "The Anxious Mind",
+      "authorUrl": "https://x.com/drjoetw",
+      "date": "2026-08-19",
+      "authorHandle": "drjoetw",
+      "postUrl": "https://x.com/drjoetw/status/2089899857733616124"
+    },
+    {
+      "id": "2100078872440324298",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "創作者被吸進開放世界遊戲",
+      "description": "15 秒 UGC 短片將真實人物與遊戲世界轉換連起來，保留手機拍攝的自然感。",
+      "prompt": null,
+      "promptExcerpt": "Create a 15-second ultra-realistic cinematic UGC-style video where a young female creator suddenly finds herself physically inside a fictional open-world video game. She is a real, live-action human character interacting naturally with the game's world, not a gamer watching a screen.\n\nCHARACTER CONS",
+      "promptLength": 2775,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "遊戲風",
+        "生活紀錄"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "Ai Girllie",
+      "authorUrl": "https://x.com/Inshrah_ali_",
+      "date": "2026-09-16",
+      "authorHandle": "Inshrah_ali_",
+      "postUrl": "https://x.com/Inshrah_ali_/status/2100078872440324298"
+    },
+    {
+      "id": "2103863934109512115",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "LUMEN 智慧水瓶廣告",
+      "description": "30 秒產品片先定義虛構品牌與瓶身，再安排使用情境及產品鏡頭。",
+      "prompt": null,
+      "promptExcerpt": "Create a 30-second, 1080p ultra-realistic cinematic product commercial for fictional premium smart water bottle LUMEN. The bottle should be the hero product while the woman remains visible and naturally interacts with it throughout the film.\n\nCharacter consistency: Same stylish young woman, early 20",
+      "promptLength": 2350,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "廣告／產品",
+        "生活紀錄"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Synthia",
+      "authorUrl": "https://x.com/AIwithSynthia",
+      "date": "2026-09-26",
+      "authorHandle": "AIwithSynthia",
+      "postUrl": "https://x.com/AIwithSynthia/status/2103863934109512115"
+    },
+    {
+      "id": "2093988944392175714",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "無線耳機 UGC 廣告",
+      "description": "20 秒直式以身份鎖定段保留臉型、髮際線與服裝，再拍自然的產品互動。",
+      "prompt": null,
+      "promptExcerpt": "Create a 20-second ultra-realistic cinematic UGC advertisement, vertical 9:16, featuring the EXACT SAME male character from Reference Image 1. Strictly preserve his facial identity, face structure, skin tone, hairstyle, hairline, eyes, nose, lips, jawline, beard/stubble and overall appearance. No id",
+      "promptLength": 2493,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "生活紀錄",
+        "廣告／產品"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 20 秒／9:16",
+      "featured": false,
+      "author": "Zar⭕on",
+      "authorUrl": "https://x.com/Xaroon_x",
+      "date": "2026-08-30",
+      "authorHandle": "Xaroon_x",
+      "postUrl": "https://x.com/Xaroon_x/status/2093988944392175714"
+    },
+    {
+      "id": "2092737850034753768",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "一句話提示詞：含淚微笑道別（三模型對比）",
+      "description": "只用一句話同時指定哭泣、微笑與道別，作為三模型同題比較。",
+      "prompt": "A young girl crying and smiling through tears while saying goodbye.",
+      "promptExcerpt": null,
+      "promptLength": 67,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "模型比較"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 10 秒／9:16",
+      "featured": false,
+      "author": "Ridark",
+      "authorUrl": "https://x.com/ridark_eth",
+      "date": "2026-08-27",
+      "authorHandle": "ridark_eth",
+      "postUrl": "https://x.com/ridark_eth/status/2092737850034753768"
+    },
+    {
+      "id": "2105317512422547606",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "VOLTIS 電動滑板車品牌廣告",
+      "description": "以虛構電動滑板車的品牌片結構，連接產品展示與實際騎行場景。",
+      "prompt": null,
+      "promptExcerpt": "Create a ultra-realistic cinematic brand commercial for a fictional premium electric scooter brand called VOLTIS. The film follows a young woman moving through a modern city, showing how VOLTIS turns an ordinary commute into an effortless urban adventure.\nCharacter: Same young woman throughout, long",
+      "promptLength": 3727,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "廣告／產品",
+        "旅行／城市"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Smiling Khan",
+      "authorUrl": "https://x.com/AIwithkhan",
+      "date": "2026-09-30",
+      "authorHandle": "AIwithkhan",
+      "postUrl": "https://x.com/AIwithkhan/status/2105317512422547606"
+    },
+    {
+      "id": "2101311302841078204",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "奢華生活品牌產品廣告",
+      "description": "15 秒短廣告以電影感鏡頭組織產品與生活情境，明確限定整體長度。",
+      "prompt": "Create a premium 15-second cinematic commercial for a global lifestyle brand. Start with a dramatic close-up of the product in a dark, luxurious environment, with soft cinematic lighting and subtle atmospheric particles. At 3 seconds, smoothly transition into dynamic macro shots showing the product’s premium design and details. From 7–11 seconds, show a stylish young professional confidently using the product in a modern international city environment, with elegant camera movement and shallow depth of field. At 11–15 seconds, return to a hero product shot with a clean background, dramatic rim lighting, and space for the brand logo and tagline. Ultra-realistic, high-end commercial cinematography, premium color grading, smooth transitions, realistic reflections, 4K detail, sophisticated international advertising aesthetic, no extra text, no watermark.",
+      "promptExcerpt": null,
+      "promptLength": 861,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "廣告／產品"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／1:1",
+      "featured": false,
+      "author": "𝐍𝐚𝐯𝐞𝐞 𝐀𝐢",
+      "authorUrl": "https://x.com/navi_Ai2",
+      "date": "2026-09-19",
+      "authorHandle": "navi_Ai2",
+      "postUrl": "https://x.com/navi_Ai2/status/2101311302841078204"
+    },
+    {
+      "id": "2106346419363700976",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "動物園一日 Vlog",
+      "description": "30 秒 Vlog 用手持拍攝、真實膚質與環境細節降低過度完美的攝影感。",
+      "prompt": null,
+      "promptExcerpt": "Create a 30-second ultra-realistic professional vlog video, filmed like authentic footage from a real travel/content creator visiting a modern wildlife zoo. 16:9 horizontal, 4K, natural daylight, realistic skin texture, real-world physics, authentic animal behavior, natural camera movement, realisti",
+      "promptLength": 3847,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "旅行／城市",
+        "動物",
+        "生活紀錄"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Ai Girllie",
+      "authorUrl": "https://x.com/Inshrah_ali_",
+      "date": "2026-10-03",
+      "authorHandle": "Inshrah_ali_",
+      "postUrl": "https://x.com/Inshrah_ali_/status/2106346419363700976"
+    },
+    {
+      "id": "2096108779402355129",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "城市旅遊 Vlog：吃小吃、看風景",
+      "description": "20 秒分成四段，逛街、試吃與看風景各有動作和一句對白，避免同時塞太多事。",
+      "prompt": "Create a realistic 20-second cinematic travel vlog featuring one young female travel vlogger exploring a beautiful city. 0–5 sec: She walks through a lively street, holding a phone/camera and says, “Hey guys, today I’m exploring this beautiful place!” 5–10 sec: She stops at a small local food stall, smiles at the camera, tries a local snack and says, “Wow, this is really good!” 10–15 sec: She continues walking through a colorful market, showing the surroundings and briefly talking to the camera. 15–20 sec: She reaches a scenic viewpoint, looks around happily and says, “What an amazing day!” then walks forward toward the next destination. Natural handheld camera movement, authentic vlog style, realistic facial expressions, natural lighting, smooth transitions, ambient city sounds, consistent character and outfit throughout, highly realistic 4K video.",
+      "promptExcerpt": null,
+      "promptLength": 861,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "旅行／城市",
+        "料理"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 20 秒／16:9",
+      "featured": false,
+      "author": "Noor",
+      "authorUrl": "https://x.com/noorlewisx",
+      "date": "2026-09-05",
+      "authorHandle": "noorlewisx",
+      "postUrl": "https://x.com/noorlewisx/status/2096108779402355129"
+    },
+    {
+      "id": "2099137778386633073",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "雨夜窄巷街頭格鬥",
+      "description": "15 秒逐段寫出拳、喘息與受擊反應，濕柏油與霓虹交代場景，負向清單保留角色。",
+      "prompt": null,
+      "promptExcerpt": "Create a 15-second ultra-realistic cinematic fight scene, shot like a high-budget action movie. The scene takes place at night in a narrow urban street after light rain. The wet asphalt reflects streetlights and neon signs, creating realistic cinematic reflections. Two adult male fighters face each ",
+      "promptLength": 3252,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "功夫武打",
+        "動作編排",
+        "夜戰火光"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "𝐍𝐚𝐯𝐞𝐞 𝐀𝐢",
+      "authorUrl": "https://x.com/navi_Ai2",
+      "date": "2026-09-13",
+      "authorHandle": "navi_Ai2",
+      "postUrl": "https://x.com/navi_Ai2/status/2099137778386633073"
+    },
+    {
+      "id": "2106723741602546165",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "修圖工具闖進真實街頭的追逐喜劇",
+      "description": "把光標與選框當有透視、投影和遮擋的實物，另用光源與空間軸線維持寫實追逐。",
+      "prompt": null,
+      "promptExcerpt": "Duration：30秒\n\nAspect ratio：16:9横屏\n\nOverall style：电影实拍质感的都市白天喜剧。真人演员，真实街道，手持跟拍的能量感。图像编辑软件的工具和界面元素以实物形态出现在真实街道上，包括光标、虚线选框、变换框、白色方形把手和灰白透明格子，它们有透视、有遮挡，地面上有淡淡的投影。所有编辑都瞬间完成，干净利落，滑稽无害。动作物理动量连续，严禁静止发呆，严禁塑料CG感。\n\nSUBJECT / 角色与道具绑定：\n\n图片1 命名为【Iaro】，容貌、发型、服装、配饰全部以参考图为准，全片保持一致；\n\n（@只在此处声明一次，正文严禁再出现@）\n\n道具【光标】：巨型电脑",
+      "promptLength": 6237,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "喜劇"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "John",
+      "authorUrl": "https://x.com/johnAGI168",
+      "date": "2026-10-04",
+      "authorHandle": "johnAGI168",
+      "postUrl": "https://x.com/johnAGI168/status/2106723741602546165"
+    },
+    {
+      "id": "2097332722091860172",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "Alexa Grey 果汁廣告幕後花絮",
+      "description": "身份圖優先於分鏡圖，30 秒中保留笑場與畫外導演台詞，並鎖定同一罐飲料。",
+      "prompt": null,
+      "promptExcerpt": "WAN 3.0 IMAGE-TO-VIDEO | ALEXA GREY | 30-SECOND BTS COMMERCIAL\n\nREFERENCE:\nUse the attached Alexa Grey Character Sheet as PRIMARY identity reference and storyboard as SECONDARY visual reference. Preserve Alexa’s exact face, facial proportions, warm deep-brown skin, dark brown eyes, long wavy black h",
+      "promptLength": 4644,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "廣告／產品",
+        "喜劇"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 38 秒／1:1",
+      "featured": false,
+      "author": "LAPTOP LIFESTYLE BLOGGER",
+      "authorUrl": "https://x.com/MonetizationDon",
+      "date": "2026-09-08",
+      "authorHandle": "MonetizationDon",
+      "postUrl": "https://x.com/MonetizationDon/status/2097332722091860172"
+    },
+    {
+      "id": "2103426808008057247",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "SIPPO 櫻桃汁日系時裝廣告",
+      "description": "包裝參考與四位人物分開固定，用 WHIP CUT 和 MATCH CUT 串接超現實東京場景。",
+      "prompt": null,
+      "promptExcerpt": "SCENE CONTEXT\nPremium 30-second Japanese cherry juice commercial: playful, surreal, fashion-forward, photorealistic and highly polished. Energetic pacing, Japanese fashion-ad aesthetics, creative HARD CUTS, MATCH CUTS and WHIP CUTS.\n\nACTIVE REFERENCE\n<<<image_1>>> is the exact SIPPO Cherry carton re",
+      "promptLength": 3292,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "廣告／產品",
+        "時尚",
+        "鏡頭設計"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "ÀBDŪLLÂH",
+      "authorUrl": "https://x.com/itxabdullaa",
+      "date": "2026-09-25",
+      "authorHandle": "itxabdullaa",
+      "postUrl": "https://x.com/itxabdullaa/status/2103426808008057247"
+    },
+    {
+      "id": "2110675197112266833",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "藍綠指甲油美妝廣告",
+      "description": "10 秒安排 18 個短鏡頭，先固定人物、指甲與瓶身，再用微距、焦點轉移與匹配剪接。",
+      "prompt": null,
+      "promptExcerpt": "Create a 10-second vertical 9:16 ultra-photorealistic luxury beauty commercial following all 18 storyboard shots in order. Keep one identical blonde model with messy tied hair, blue-gray eyes, freckles, glossy lips, natural skin and an off-shoulder Tiffany Blue dress. All nails are glossy turquoise,",
+      "promptLength": 2249,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "廣告／產品",
+        "鏡頭設計"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 10 秒／3:4",
+      "featured": true,
+      "author": "Calira",
+      "authorUrl": "https://x.com/CaliraVal",
+      "date": "2026-10-15",
+      "authorHandle": "CaliraVal",
+      "postUrl": "https://x.com/CaliraVal/status/2110675197112266833"
+    },
+    {
+      "id": "2109161910176485732",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "FPV 穿越迪士尼樂園",
+      "description": "短提示詞串起低空掠過、俯衝與穿隧道，材質反射和動態陰影用來維持寫實。",
+      "prompt": "Extremely fast paced, realistic, cinematic FPV flying through Disneyland. Low altitude over Sleeping Beauty Castle, parade streets, and fantasy villages. Sharp dives past rollercoasters, spinning teacups, and fireworks launch zones. Gliding above rivers with boats, glowing lights, and crowded themed lands. Realistic textures, reflections, dynamic shadows, steam, and smooth fluid movement. Close passes through tunnels, animatronic sets, and neon-lit rides.",
+      "promptExcerpt": null,
+      "promptLength": 459,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "旅行／城市"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": true,
+      "author": "Zara",
+      "authorUrl": "https://x.com/ZaraIrahh",
+      "date": "2026-10-11",
+      "authorHandle": "ZaraIrahh",
+      "postUrl": "https://x.com/ZaraIrahh/status/2109161910176485732"
+    },
+    {
+      "id": "2100809690850664865",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "寫實幫派開放世界實機",
+      "description": "30 秒第三人稱戰鬥之外，另外明列頭像、血條、任務欄與小地圖的位置。",
+      "prompt": null,
+      "promptExcerpt": "Create a 30-second ultra-realistic open-world GANGSTER gameplay cinematic featuring two rival street gangs fighting in a gritty modern city at night. Make the entire video feel like a trending AAA gameplay recording, as if a player is actively controlling the main character.\n\nGAMEPLAY SCREEN / HUD —",
+      "promptLength": 3449,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "遊戲風",
+        "動作編排",
+        "夜戰火光"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": true,
+      "author": "Ai Girllie",
+      "authorUrl": "https://x.com/Inshrah_ali_",
+      "date": "2026-09-18",
+      "authorHandle": "Inshrah_ali_",
+      "postUrl": "https://x.com/Inshrah_ali_/status/2100809690850664865"
+    },
+    {
+      "id": "2109516673635999856",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "伊斯坦堡手機旅遊 Vlog",
+      "description": "以自拍、逛市集與屋頂夕陽分段，手持晃動、自動對焦和曝光變化共同建立手機感。",
+      "prompt": null,
+      "promptExcerpt": "Create a 30-second photorealistic smartphone travel vlog featuring a young Turkish woman exploring Istanbul on a warm summer evening. She wears a cute, elegant cream-colored linen dress with delicate embroidered details, a light patterned scarf loosely tied around her hair, small gold earrings, and ",
+      "promptLength": 2203,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "旅行／城市"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": true,
+      "author": "H A J R A",
+      "authorUrl": "https://x.com/codewithhajra",
+      "date": "2026-10-12",
+      "authorHandle": "codewithhajra",
+      "postUrl": "https://x.com/codewithhajra/status/2109516673635999856"
+    },
+    {
+      "id": "2099352294940709075",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "八〇年代屋頂派對衝刺",
+      "description": "先用 CHARACTER CONTINUITY 鎖定造型，再排趕路場景，並排除現代車輛與建築。",
+      "prompt": null,
+      "promptExcerpt": "Create a cinematic, ultra-realistic 1980s lifestyle story about a stylish young woman who has one goal: make it to a legendary rooftop dance party before the final song begins. The entire 30-second video follows her race through the city, building anticipation until she finally reaches the party.\n\nC",
+      "promptLength": 3208,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "鏡頭設計",
+        "旅行／城市"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": true,
+      "author": "Ai Girllie",
+      "authorUrl": "https://x.com/Inshrah_ali_",
+      "date": "2026-09-14",
+      "authorHandle": "Inshrah_ali_",
+      "postUrl": "https://x.com/Inshrah_ali_/status/2099352294940709075"
+    },
+    {
+      "id": "2097253589647310851",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "GTA 6 外流？海灘後空翻",
+      "description": "10 秒一鏡固定主角與左下小地圖，明講只翻一圈，避免模型重複後空翻。",
+      "prompt": null,
+      "promptExcerpt": "STYLE REFERENCE: Photoreal, vibrant open-world action-game aesthetic — naturalistic sun-drenched color grading, dynamic third-person gameplay camera, cinematic framing typical of open-world exploration moments DURATION: 10 seconds, single continuous take, no cuts ASPECT: 9:16 vertical SETTING: A sun",
+      "promptLength": 2925,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "遊戲風",
+        "一鏡到底"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 10 秒／16:9",
+      "featured": true,
+      "author": "Aymducking │ Ai creator",
+      "authorUrl": "https://x.com/aymducking",
+      "date": "2026-09-08",
+      "authorHandle": "aymducking",
+      "postUrl": "https://x.com/aymducking/status/2097253589647310851"
+    },
+    {
+      "id": "2110665600166932521",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "紐約街頭紅包包時裝廣告",
+      "description": "30 秒以靴子、走路中景和包包特寫排鏡，黃金時段的街景與前景計程車增加層次。",
+      "prompt": "Cinematic fashion commercial, 30 seconds, New York City streets at golden hour. A young woman with short platinum blonde hair, fair skin, walking confidently and stylishly through busy NYC crosswalks and sidewalks. She wears a shiny metallic silver cropped jacket with high collar, matching mini skirt, and knee-high silver metallic boots. She carries a structured red leather Prada handbag with the triangular Prada logo clearly visible.\n\nCamera shots sequence:\n- Low-angle close-up of her silver boots stepping on white crosswalk lines\n- Medium shot of her walking forward, holding the red bag, slight smile\n- Close-up beauty shots of the red Prada bag with logo and gold hardware, warm sunlight flare\n- Wide cinematic shot of her walking down a sunny NYC avenue with yellow taxis, tall buildings, scaffolding, and traffic lights\n- Overhead shot of her crossing the street\n- She walks past luxury store windows\n- Low-angle dramatic shot of her holding the bag with the text “SET THE PACE” overlay\n- Side profile walking past yellow taxis\n- Final confident pose in the middle of the street with taxis and people in background\n- Ends with black screen and white text: “NEW YORK OWN THE STREETS”\n\nStyle: High-fashion luxury advertisement, glossy metallic textures, warm golden sunlight, cinematic color grading, shallow depth of field on bag close-ups, dynamic yet elegant movement, premium Prada campaign aesthetic. Realistic, high detail, 4K.",
+      "promptExcerpt": null,
+      "promptLength": 1443,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "時尚",
+        "廣告／產品",
+        "旅行／城市"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／9:16",
+      "featured": true,
+      "author": "Noor",
+      "authorUrl": "https://x.com/noorlewisx",
+      "date": "2026-10-15",
+      "authorHandle": "noorlewisx",
+      "postUrl": "https://x.com/noorlewisx/status/2110665600166932521"
+    },
+    {
+      "id": "2107039981453582568",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "特工小隊盯梢卻被炸雞收買",
+      "description": "角色圖與總分鏡嚴格綁定，17 秒 13 鏡精確到 0.1 秒，從緊張盯梢轉向吃炸雞。",
+      "prompt": null,
+      "promptExcerpt": "Create a 17-second cinematic photorealistic video using the provided character reference and the provided master storyboard as strict visual references. Recreate the storyboard sequence accurately without changing the characters, environment, props, wardrobe, or story.\n\nShot 1 — 0.0–1.3s: A woman st",
+      "promptLength": 2758,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "喜劇",
+        "鏡頭設計"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 17 秒／16:9",
+      "featured": true,
+      "author": "Ai Arainz",
+      "authorUrl": "https://x.com/iam_mian7",
+      "date": "2026-10-05",
+      "authorHandle": "iam_mian7",
+      "postUrl": "https://x.com/iam_mian7/status/2107039981453582568"
+    },
+    {
+      "id": "aliyun-wan3-example-19",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "西湖神女（首尾幀）",
+      "description": "15 秒一鏡從水滴變神女，岩彩質感、青金配色與首尾幀共同限定變化方向。",
+      "prompt": "【一镜到底，慢速唯美运镜，无剪辑，15秒长镜头，岩彩画矿物颜料质感与3D渲染碰撞，青蓝×鎏金撞色】\n全局设定：国风岩彩画质感，矿物颜料颗粒肌理，金箔质感，青蓝与鎏金强烈撞色。场景为清晨薄雾中的西湖：湖面呈哑光青蓝晕染，金色晨光穿透云层形成丁达尔光柱，远处三潭印月的石塔与雷峰塔在雾中若隐若现，近处有荷叶与荷花。画面主体是西湖水神\"西子\"：岩彩画质感，鹅蛋脸，柳叶眉，丹凤眼，眉心一点朱砂花钿，肌肤如羊脂白玉泛着柔光，头后悬浮一轮淡金色圆光；高挽发髻插一支鎏金荷花发簪，她的裙摆与披帛由流动的湖水构成，青蓝色渐变，表面水光粼粼。\n配音与音效：背景为轻柔的古筝与竹笛，环境音有细微的水波声与清晨鸟鸣。第8秒起，一位空灵温柔的女声缓慢吟诵：\"欲把西湖比西子——\"；回眸段接下半句：\"淡妆浓抹，总相宜。\"语速缓慢，带轻微回响，余韵悠长。\n[0-3秒：一滴水]极近微距，清晨的荷叶边缘，一颗水珠凝聚饱满，映着金色晨光，缓缓坠落。镜头跟随水珠下摇（Tilt down），水珠滴入湖中，激起一圈金蓝色涟漪，涟漪层层扩散。\n[3-7秒：水聚成形]涟漪中心，湖水缓缓隆起，凝聚成神女\"西子\"的身形：湖水化作她的青蓝色裙摆与半透明披帛，细小水流在她周身环绕流动。她从湖心缓缓升起，双眸轻闭又缓缓睁开，鎏金荷花簪亮起微光。镜头缓慢环绕（Orbit）她半垂的眼眸与流水织成的裙摆。\n[7-11秒：一步一莲]她赤足踏在湖面上缓缓前行，每一步脚下都漾开一圈金色涟漪，涟漪中荷花次第绽放。镜头后撤拉远成中全景：薄雾散开，远处三潭印月的三座石塔亮起温暖灯光，雷峰塔在晨光中显现，岸边垂柳拂水。第8秒，女声旁白起：\"欲把西湖比西子——\"她的披帛在身后拖出长长的金蓝色水光。\n[11-15秒：回眸·总相宜]她停下脚步，回眸看向镜头，镜头缓缓推近至半身特写：晨光洒在她的脸上，湖水披帛在身侧轻轻飘动，几滴发光的水珠从发梢滴落，在空中化作细碎光点。旁白接下半句：\"淡妆浓抹，总相宜。\"她浅浅微笑，身后是晨光中的雷峰塔与朦胧的三潭印月。最后一秒画面完全定格在她的回眸特写，定格为完美的电影海报构图。",
+      "promptExcerpt": null,
+      "promptLength": 878,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "藝術／風格",
+        "一鏡到底"
+      ],
+      "method": "首尾幀生影片",
+      "format": "15 秒／16:9",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+    },
+    {
+      "id": "aliyun-wan3-example-20",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "水墨竹林刀客（首幀）",
+      "description": "水墨首幀接 20 秒五段動作，白色墨痕刀光與最後文字一起寫進節奏。",
+      "prompt": "(0:00 - 0:03) 运镜：中景。画面：沿用 图片1 的水墨竹林场景。头戴斗笠、身着墨色长袍的刀客，其剪影伫立在浓雾环绕、竹影婆娑的中心。动作：刀客左手轻按刀柄，竹叶随风飘落。氛围：寂静，压抑，水墨晕染的颗粒感清晰可见。\n(0:03 - 0:08) 剧情引入，运镜：特写。剧情：刀客察觉杀气。画面：镜头快速推进到刀客斗笠下的特写。细节：斗笠边缘露出一双凌厉、决绝的眼睛，眼神如刀。水墨晕染的“汗珠”从额头滑落。动作：刀客右手缓缓握紧刀柄，指关节泛白。竹叶飘落的速度加快。\n(0:08 - 0:13) 运镜：快速环绕。画面：镜头以刀客为中心快速环绕。剧情：两名同样是水墨剪影的刺客从竹林深处杀出，手持双钩和短刃。细节：刺客的动作也是水墨笔触构成的，如墨迹流动。镜头快速掠过刺客的身影，强调速度感。\n(0:13 - 0:18) 运镜：手持感，高速捕捉。打斗：刀客猛然拔刀，刀光是一道纯白色的水墨裂痕。刺客双钩攻来。细节：一击：刀客回身一斩，刀刃与刺客双钩碰撞，迸发出无数黑白相间、带有书法感的火花和墨点。二击：刀客虚晃一枪，利用竹竿弹射，从高处劈下。刺客翻滚躲避。竹竿被打断，化作飞散的墨痕。三击：刀客刀尖直指另一刺客咽喉，刺客以短刃格挡，镜头捕捉刀刃与短刃摩擦时细微的墨迹崩裂细节。\n(0:18 - 0:20) 运镜：慢镜头至定格。* 画面： 刀客的刀停在刺客颈侧，刺客凝固。* 细节： 刀客的斗笠在打斗中略微倾斜。竹林归于平静，更多竹叶飞舞。* 氛围： 镜头慢慢拉远，回到中景，定格在刀客收刀、刺客倒地的画面。* 文字（可选）： 画面下方显现水墨风文字：“江湖，不过一笔勾销。”风格说明： 整个过程保持 图片1 的高度黑白、水墨画风格，动作必须有毛笔触感，速度要快，细节要足（墨滴、火花、墨痕裂口）。",
+      "promptExcerpt": null,
+      "promptLength": 753,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "藝術／風格",
+        "功夫武打"
+      ],
+      "method": "圖生影片",
+      "format": "20 秒／9:16",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+    },
+    {
+      "id": "aliyun-wan3-example-21",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "導演與演員一鏡到底",
+      "description": "30 秒單鏡以快速搖鏡連接導演和演員，並具體描寫一秒內的表情落差。",
+      "prompt": "镜头1 [0秒-30秒]\n近景，平视视角，连续快速摇镜，一镜到底（单镜头连续无缝运镜）：\n画面左侧是身穿黑色潮流导演马甲、戴着高档专业工作耳麦的导演，其左下方放置着一台巨大的专业电影摄像机。右侧是妆容精致、留着时尚韩式逗号刘海、身穿高定制西装的关系户小鲜肉。背景是宽敞的专业影棚拍摄现场，可见巨大的绿色幕布、数个高耸的影视级C型灯架、缠绕的电线，以及在背景中穿梭忙碌的灯光师和化妆师等工作人员。\n专业影棚人工光。柔和的LED柔光箱光源从右侧洒入，将三位主角的面部均匀照亮，场景色彩饱满。背景的摄影器材与绿幕在充足的影棚灯光下投射出淡淡的阴影，呈现出真实而忙碌的现代化大制作片场质感。\n镜头手持拍摄一镜到底，近景，镜头一开始，拍摄导演，导演无所谓的表情，瞥了一眼画面右侧斜前方画外的一眼关系户小鲜肉，对他下达指令，说道：“媒体故意黑你，做个表情看看”。说完后镜头快速右摇到关系户面部近景，镜头不要切镜，关系户小鲜肉，面部朝向画面左侧斜前方画外导演方向，神色自若，眼神真挚而自信。他嘴唇微动，神情专业地向对方阐述到““就这种事情来说，情绪可以有好几种”，说话时，头部伴有极其轻微的自然晃动，说完后镜头快速左摇到导演面部近景，镜头不要切镜，导演思索了一下，一边挑衅似地歪了歪头，向关系户小鲜肉说到““狗仔爆料你深夜幽会”，导演说完台词后，镜头迅速右摇到小鲜肉面部近景，不要切镜，关系户小鲜肉，面部朝向画面左侧斜前方画外导演方向，并快速进入表演状态，他眉头紧锁，眼神慌乱、焦急地快速游移，随后他狠狠地咬紧下唇，闭上双眼，整张脸（虽带着精致妆容）因极度的焦虑而紧绷，完美呈现出面对偶像生涯毁灭时，内心惊恐、紧张交织的挣扎状态。表演完后， 镜头再次迅速左摇到导演近景，不要切镜，导演面部表情微变，语速加快，说到““媒体又帮你洗白了，说那是你亲姐！”导演说完后，镜头再次迅速右摇到小鲜肉近景，镜头不要切镜，镜头中，关系户小鲜肉，面部朝向画面左侧斜前方画外导演方向，他的表情在千分之一秒内完成神级转换。他先是面部一滞，随后双眼猛地眯起，嘴角极大程度地咧开，露出一排白皙的牙齿，展露出一个极其夸张、甚至有些变形的狂喜笑容。这种“星途尽毁的绝望”与“彻底摆脱束缚”交织的疯魔情绪在他脸上扭曲呈现。角色表演完后，镜头再次迅速左摇到导演近景，镜头不要切镜，导演说到“你亲姐向媒体透露，你是领养的”，导演说完后，镜头再次迅速右摇到小鲜肉近景。镜头不要切镜，镜头内，关系户小鲜肉面部朝向画面左侧斜前方画外导演方向，只见他双眼暴睁，眼球凸出，精心修剪的眉毛高高扬起，嘴巴震惊地张成“O”形。紧接着，他的嘴角再次无法克制地向上拉扯，露出一副不可思议、惊魂未定却的复杂神态。 角色表演完后，镜头再次快速左摇到导演近景，镜头不要切镜，紧接着导演露出有点惊讶的表情说到“其实你是千亿豪门真少爷”。导演说完，镜头再次随即迅速右摇到小鲜肉近景，镜头不要切镜，镜头内，关系户小鲜肉面部朝向画面左侧斜前方画外导演方向，他瞬间爆发出极度魔性的狂喜。他整个人激动得微微颤抖，双眼笑得眯成了一条缝，双手甚至抬起至胸前，双手小幅度快速连续鼓掌，身体前倾摇晃，将一夜暴富、无法自持的癫狂喜悦演绎得淋漓尽致。 角色表演完后，镜头再次快速左摇到导演近景，镜头不要切镜，导演说到“你姐卷款跑路”导演说完，镜头再次迅速右摇到小鲜肉近景。小鲜肉面部朝向画面左侧斜前方画外导演方向，只见他的双眼再次瞪大，瞳孔颤抖，嘴角向下耷拉，神情在一秒钟之内从天堂坠入地狱，写满了惊愕、痛苦与不知所措。画面最后定格在这个表情上。",
+      "promptExcerpt": null,
+      "promptLength": 1473,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "一鏡到底",
+        "音樂／表演"
+      ],
+      "method": "文生影片",
+      "format": "30 秒／16:9",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+    },
+    {
+      "id": "aliyun-wan3-example-22",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "廢土加油站女牛仔",
+      "description": "先給梗概，再按 0–6 到 24–30 秒拆解給馬加草的笑點，讓反轉有前後鋪陳。",
+      "prompt": null,
+      "promptExcerpt": "内容梗概\n这是一场发生在色彩明亮的未来废土上、充满了冷幽默与荒诞感的“加油”事件。在一个被遗忘的、类似66号公路的加油站，百无聊赖的工作人员迎来了一位奇特的客人——一个骑着真马的酷酷女牛仔。就在工作人员以为这只是个路过的疯子时，女牛仔却径直走向加油机，拿起油枪，为她的马“加满”了新鲜的青草。这超现实的一幕，让见多识广的工作人员彻底陷入了认知失调的呆滞状态。\n场景描述与光影美学\n视觉风格: 写实风格，色彩处理上采用高饱和度、高亮度的电影调色，营造出一种“晴朗”感，让荒诞的故事发生在一个无比正常、甚至有点美好的环境里。\n色彩美学: 严格遵循明亮的“青橙配色”体系。\n青色（Teal）: 万里无云的天",
+      "promptLength": 1684,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "喜劇",
+        "鏡頭設計"
+      ],
+      "method": "文生影片",
+      "format": "30 秒／16:9",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+    },
+    {
+      "id": "aliyun-wan3-example-23",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "official",
+      "title": "毛絨宇宙冒險",
+      "description": "20 秒讓布、紐扣與拉鏈同時參與材質和逃生動作，FPV 運鏡強調尺度。",
+      "prompt": "20秒超宽银幕毛绒宇宙冒险片段，整体采用超精细毛绒材质、电影级太空尺度、可爱外形与强烈动作反差、夸张FPV运镜和真实软体物理。一艘由毛绒布、纽扣、拉链与填充棉制成的宇宙飞船，载着兔子、狐狸和乌鸦三只小型毛绒动物，在由巨大毛线行星、绒毛星云和布偶巨兽组成的宇宙中高速逃亡。一只覆盖深蓝长绒毛、眼睛像两枚玻璃纽扣的巨大星际鲸兽从星云中追赶飞船。动态包括拉链飞船弹射起航、贴着毛线行星高速绕行、巨鲸从后方冲出、穿越纽扣小行星带、被鲸兽吞入体内、沿金色拉链从背部逃出、巨鲸如泄掉填充棉般缓慢变扁、最终穿越粉紫色绒毛星云向彩色纽扣太阳飞去。",
+      "promptExcerpt": null,
+      "promptLength": 265,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "科幻／奇觀"
+      ],
+      "method": "文生影片",
+      "format": "20 秒／16:9",
+      "featured": false,
+      "author": "阿里雲官方範例",
+      "authorUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide",
+      "date": "2026-08-25",
+      "officialUrl": "https://help.aliyun.com/zh/model-studio/wan3-video-generation-guide"
+    },
+    {
+      "id": "2111266713278783922",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "溫馨兒童房",
+      "description": "10 秒四段以夜燈安撫怕黑的小怪獸，柔和音效與搖籃曲配合表情轉變。",
+      "prompt": "Heartwarming Pixar-style 3D animated scene, 10 seconds, vertical 9:16. A child's cozy bedroom at night, moonlight through the curtains, toys scattered on the rug. Under the bed hides a big fluffy purple monster with round glowing eyes, tiny horns, floppy ears, and soft teddy-bear fur, trembling and hugging a small stuffed bunny.\n\n0–3s: Slow push-in under the bed. The monster peeks out nervously as the hallway light clicks off, plunging the room into darkness. It gasps and pulls its blanket over its head, eyes wide with fear.\n3–6s: Creaky floorboards and a ticking clock. A shadow from the closet makes the monster squeak and shiver, its fur puffing up. It whimpers softly.\n6–8s: A small hand reaches down from the bed holding a glowing star-shaped night-light. The monster blinks, then slowly smiles as warm golden light fills the space beneath the bed.\n8–10s: The monster happily cuddles its bunny and the night-light, sighing in relief, and gives a sleepy yawn as the child's hand pats its fuzzy head. Twinkling music box melody.\n\nSoft cinematic lighting, cozy and funny, expressive character animation, smooth motion, gentle sound effects and soothing lullaby score.",
+      "promptExcerpt": null,
+      "promptLength": 1175,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0 Prime",
+      "tags": [
+        "動畫風"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 10 秒／9:16",
+      "featured": false,
+      "author": "Jason Heaton",
+      "authorUrl": "https://x.com/JasonHeatony7",
+      "date": "2026-10-17",
+      "authorHandle": "JasonHeatony7",
+      "postUrl": "https://x.com/JasonHeatony7/status/2111266713278783922"
+    },
+    {
+      "id": "2111277894508900413",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "鐘",
+      "description": "15 秒由海底鐘聲引出沉城升起，先用聲音鋪陳，再以光和尺度揭曉。",
+      "prompt": "Photorealistic cinematic live action, night photography, low-key lighting, deep teal and black water, warm practical lantern glow, film grain.\nOne old fisherman sits alone in one small wooden rowboat on a perfectly still black sea under a starless sky. One oil lantern hangs from the boat.\n\n0-5s: The fisherman sits in silence, holding a line in the water. The sea is flat like glass, reflecting the lantern. The viewer is wide and low across the water. Sound: total quiet, a faint creak of wood.\n\n5-10s: A deep church bell rings from somewhere far below the water. Ripples spread out from beneath the boat. The fisherman slowly leans over the edge and looks down. The viewer looks down past him into the water, where hundreds of faint golden lights glow in the depths.\n\n10-15s: An entire sunken city rises around the boat, stone towers and rooftops breaking the surface on all sides with water pouring off them, every window lit with lanterns. The boat now floats in a flooded city street. The fisherman stands, staring up at the glowing bell tower directly in front of him as the bell rings again. Sound: the bell, rushing water, then stillness.\n\nNegative prompt: cartoon, 3D animation, stylized, CGI look, extra people, extra boats, distorted hands, text, watermark, slow motion, flickering, warped buildings",
+      "promptExcerpt": null,
+      "promptLength": 1311,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "夜戰火光",
+        "寫實",
+        "恐怖／懸疑"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／3:4",
+      "featured": false,
+      "author": "DeCat",
+      "authorUrl": "https://x.com/DeCat2025",
+      "date": "2026-10-17",
+      "authorHandle": "DeCat2025",
+      "postUrl": "https://x.com/DeCat2025/status/2111277894508900413"
+    },
+    {
+      "id": "2108961723222749479",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "那扇門",
+      "description": "15 秒三段用畫出的門連接小巷與美術館，35mm 質感保持魔幻場景的實拍基礎。",
+      "prompt": "Style: cinematic magical realism, soft overcast daylight, rich color, 35mm film look, shallow depth of field.\n\n0-5s: One woman in paint-stained overalls paints a bright red wooden door onto a plain brick wall in an empty alley, the brush strokes thick and wet, the viewer behind her shoulder.\n\n5-10s: She finishes the brass doorknob with a final stroke, sets down her brush, reaches out, and the painted knob turns in her hand, the painted door swings open into warm golden light, the viewer following her as she steps through.\n\n10-15s: She steps out of a large framed painting hanging on the wall of a quiet art museum, landing on the polished floor, two visitors holding brochures freeze and stare at her, she nods politely and walks past them.\n\nNegative prompt: more than one woman, more than two visitors, duplicate people, cartoon style, graffiti, text, watermark, slow motion",
+      "promptExcerpt": null,
+      "promptLength": 881,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "DeCat",
+      "authorUrl": "https://x.com/DeCat2025",
+      "date": "2026-10-11",
+      "authorHandle": "DeCat2025",
+      "postUrl": "https://x.com/DeCat2025/status/2108961723222749479"
+    },
+    {
+      "id": "2094874714724618277",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "城市跑酷追逐",
+      "description": "30 秒追逐由高處向下移動，反覆強調重量與重力，讓翻越動作有落地感。",
+      "prompt": null,
+      "promptExcerpt": "A dramatic 30-second cinematic parkour chase following one elite male athlete descending through an ancient Italian seaside town built vertically into a steep mountain. Every cut places him farther downhill toward the sea. Keep the same bell tower, roofs, cliffs and harbor visible from progressively",
+      "promptLength": 4844,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "運動",
+        "動作編排",
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Just Me",
+      "authorUrl": "https://x.com/redwooddesigns",
+      "date": "2026-09-02",
+      "authorHandle": "redwooddesigns",
+      "postUrl": "https://x.com/redwooddesigns/status/2094874714724618277"
+    },
+    {
+      "id": "2092407345179721890",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "孤獨的檔案管理員建築奇幻之旅",
+      "description": "角色參考與節奏參考分開處理，只借素材的鏡頭節奏；原作者提示出自 @rovvmut_。",
+      "prompt": null,
+      "promptExcerpt": "A cinematic architectural odyssey following a solitary older female archivist through an immense abandoned coastal city. Photorealistic, ultra-high detail, sophisticated filmic color science, anamorphic lens character, subtle film grain, deep atmospheric perspective, rich natural contrast. Match the",
+      "promptLength": 6271,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "Just Me",
+      "authorUrl": "https://x.com/redwooddesigns",
+      "date": "2026-08-26",
+      "authorHandle": "redwooddesigns",
+      "postUrl": "https://x.com/redwooddesigns/status/2092407345179721890"
+    },
+    {
+      "id": "2095170058469392391",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "機甲高速穿越巨型都市",
+      "description": "30 秒飛行以密集都市製造速度與尺度，負向詞排除模型玩具感和卡通物理。",
+      "prompt": null,
+      "promptExcerpt": "30-second cinematic high-speed mecha flight sequence through a dense futuristic megacity.\n\nA single sleek advanced humanoid mecha in compact high-speed flight configuration, dark metallic armor with subtle white panels, small glowing blue thrusters, aerodynamic silhouette, consistent design througho",
+      "promptLength": 6473,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "科幻／奇觀"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "いにしえ@高信頼AIニュース\"NeuralWire.org\"運営｜Will Oldgram",
+      "authorUrl": "https://x.com/old_pgmrs_will",
+      "date": "2026-09-02",
+      "authorHandle": "old_pgmrs_will",
+      "postUrl": "https://x.com/old_pgmrs_will/status/2095170058469392391"
+    },
+    {
+      "id": "2108306440855101555",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "BMX Juice 搞笑電視廣告",
+      "description": "30 秒 16:9 廣告把品牌口號、人物笑點與寫實攝影結合，另附負向清單。",
+      "prompt": "30 second TV commercial for BMX Juice. 16:9, 1080p, 24fps, live-action cinematic comedy, bright sunny suburban cul de sac. Star: a heavyset 40 year old man with a sweaty mustache and beer belly, wearing a too-tight neon green spandex bodysuit, orange fanny pack, tiny red helmet, one pink knee pad.\n\n0–5s: Drone shot: high aerial over the street, then fast dive down to the man. He straddles the tiny BMX bike, sniffs a bottle of BMX Juice, looks at camera.\n\n5–10s: Low angle tracking shot. He chugs BMX Juice, throws the bottle, pedals furiously. Bike squeaks. He hits a plywood ramp. \n\n10–15s: Drone orbit shot, mid-air. Slow motion 120fps. His face goes from confident to panic. Spandex rips. Juice droplets float. \n\n15–22s: Extreme slow motion. The bike separates from him. He flails like a starfish. A pigeon flies past, also slow motion, looking disappointed.\n\n22–27s: Real-time crash into a giant pile of leaves. Leaves explode. He sits up, dazed, leaf on his face, holds up a fresh BMX Juice bottle. \n\n27–30s: Product shot: BMX Juice bottle on the tiny BMX bike. Text overlay: \"BMX JUICE.\" Tagline: \"Get Juiced. Get Wrecked.\" Audio: funny ukulele, whoosh, squeak, slow-mo rip, thud, upbeat jingle.\n\nNegative prompt: no watermark, no distorted face, no extra limbs, no cartoon, no low quality, no subtitles unless specified.",
+      "promptExcerpt": null,
+      "promptLength": 1331,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "廣告／產品",
+        "喜劇",
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "BMX",
+      "authorUrl": "https://x.com/bmx_ai13",
+      "date": "2026-10-09",
+      "authorHandle": "bmx_ai13",
+      "postUrl": "https://x.com/bmx_ai13/status/2108306440855101555"
+    },
+    {
+      "id": "2106659177904963655",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "鬧劇喜劇三模型對比",
+      "description": "15 秒 9:16 手機手持風同題比較 Seedance 2.5、Wan 3.0 和 MiniMax H3。",
+      "prompt": "A 15-second high-energy slapstick comedy video with a handheld smartphone aesthetic, 9:16 vertical frame.\n\n[0-4s] In a cozy living room,  AhKit sits on the sofa rubbing his sore neck.  Mia stands behind him, smiling angelically at the camera while playfully rubbing her small fists together. Subtitle: \"When she offers a massage...\"\n\n[4-9s] Snap zoom. Mia cheerfully taps her small fist onto AhKit's shoulder. Sudden dynamic shockwave impact: AhKit's eyes bulge out in dramatic exaggerated horror, his body recoils violently, and he collapses off the sofa onto the floor in hilarious defeat. Subtitle: \"CRITICAL HIT! -9999\"\n\n[9-15s] Low-angle tracking shot. Mia's sweet face turns into a sinister, villainous mischievous smirk. She grabs AhKit by one ankle with one hand and effortlessly drags him across the wooden floor toward a bedroom doorway. AhKit lies face down, frantically clawing the wooden floor with both hands like a terrified cat refusing to go into the room, legs sliding helplessly. Subtitle: \"Ah Kit: Help... ...!\"",
+      "promptExcerpt": null,
+      "promptLength": 1031,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "喜劇",
+        "模型比較"
+      ],
+      "method": "文生影片",
+      "format": "提示詞 15 秒／9:16（原帖為三模型並排對比片）",
+      "featured": false,
+      "author": "新手老兵🇭🇰的AI世界",
+      "authorUrl": "https://x.com/Langby2",
+      "date": "2026-10-04",
+      "authorHandle": "Langby2",
+      "postUrl": "https://x.com/Langby2/status/2106659177904963655"
+    },
+    {
+      "id": "2100161820988440853",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "懸崖被龍追擊跳水（失敗案例）",
+      "description": "氛圍、分鏡與音效分區寫，同一人物參考和提示另比 Seedance 2.5；這條保留失敗經驗。",
+      "prompt": "整體拍攝氛圍與色澤設定 (Global Atmosphere & Color Palette)\n整體氛圍： 好萊塢極限動作災難片質感、IMAX 史詩級電影畫幅、極度逼真且帶有沉浸感的手持跟拍、高緊張感與強烈生死壓迫感、自然運動模糊（Motion Blur）與真實底片顆粒感。\n色澤與光影： 採用強烈的冷暖色調對比（Teal & Orange Dynamic Grading）。背景以冰冷暗藍色、深灰冷霧為主，交替黑龍吐息噴出的熾熱亮橙色火光；自然體積光（Volumetric Lighting）穿透煙塵，高動態範圍（HDR），微距捕捉角色皮膚汗水、濕髮與冰屑的細節反射。\n鏡頭 1：寒潭驚魂（0-8 秒）\n時間： 00:00 - 00:08\n動作： 一男一女寶藏獵人在冰冷漆黑的洞穴寒潭中極速涉水狂奔，表情極度恐懼、喘著白霧。身後巨龍猛然撞碎洞壁衝出，張開巨口咬向鏡頭。女子滑倒，男子猛力拉起她繼續向前狂奔。\n運鏡： 低角度極速倒退手持跟拍（Low-Angle Tracking Shot），鏡頭緊貼水面微幅震動；巨龍衝出時碎石與水花直接砸向鏡頭，形成極強臨場感。\n音效： 刺骨的水花潑踐聲、兩人急促粗重的喘息與尖叫、洞穴深處震撼胸腔的龍吼、巨石崩塌砸入水中的沉悶撞擊聲。\n鏡頭 2：雪坡極速滑降（8-16 秒）\n時間： 00:08 - 00:16\n動作： 兩人衝出洞口踏上陡峭雪坡，順勢高速向下滑降與跳躍，避開巨石與枯木。巨龍從空中俯衝，身後火球炸裂，冰塊與火碳飛濺。男子側身撲倒女子，剛好閃過巨龍的巨爪撕裂。\n運鏡： 正面俯角高速倒退跟拍（High-Speed Backward Tracking），伴隨強烈搖晃與動態模糊；火球爆炸時畫面出現劇烈 Lens Flare（鏡頭光暈）與煙霧衝擊。\n音效： 冰雪極速摩擦的沙沙聲、火球呼嘯而過的空氣撕裂聲、巨幅爆炸轟鳴、刺耳的風聲與龍翼撲空的高頻風噪。\n鏡頭 3：生死密林穿梭（16-24 秒）\n時間： 00:16 - 00:24\n動作： 兩人衝入濃霧密林，在巨木間急轉彎穿梭，彎腰躲避藤蔓。飛鳥與鹿群驚慌散飛。巨龍直接撞碎兩側大樹追擊，木屑與燃燒的樹枝旋轉砸向鏡頭。\n運鏡： 中特寫主觀跟隨鏡頭（Dynamic Medium Tracking），在樹木間快速穿堂掠影；當木屑飛向鏡頭時，畫面順勢產生瞬時模糊。\n音效： 樹幹被暴力撞碎的巨響、狂暴的木材折斷聲、受驚鳥群急速拍翅離去的嘈雜聲、火焰燃燒樹冠的烈火呼呼聲。\n鏡頭 4：峽谷懸崖絕命一跳（24-30 秒）\n時間： 00:24 - 00:30\n動作： 兩人衝出森林進入絕壁峽谷，兩側岩石崩落。面對盡頭的萬丈懸崖與下方急流，巨龍張口撲來，男子緊握女子的手毅然跳下懸崖，砸入湍急河流中；隨後兩人在水面浮起，仰望崖邊咆哮的巨龍。\n運鏡： 鏡頭先平行跟拍，在兩人跳崖瞬間轉為高速下搖（Tilt Down）跟隨重力俯衝，隨後入水（Submerge）並迅速出水，最後定格為低角度仰拍（Low-Angle Shot）兩人濕透的面部特寫。\n音效： 碎石落山的滾動聲、兩人縱身一躍的短暫風聲停頓（無聲片刻）、落水時巨響的入水聲與水下悶音、出水後湍急的水流聲與崖頂傳來的遙遠龍吼。",
+      "promptExcerpt": null,
+      "promptLength": 1332,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "動作編排",
+        "怪物／神靈",
+        "模型比較"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／4:3",
+      "featured": false,
+      "author": "新手老兵🇭🇰的AI世界",
+      "authorUrl": "https://x.com/Langby2",
+      "date": "2026-09-16",
+      "authorHandle": "Langby2",
+      "postUrl": "https://x.com/Langby2/status/2100161820988440853"
+    },
+    {
+      "id": "2087009789960429646",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "吹奏樂部三人動畫（對比 Seedance 2.5）",
+      "description": "三張圖分別固定人物與樂器，30 秒合奏要求對應不混亂，另與 Seedance 2.5 比較。",
+      "prompt": null,
+      "promptExcerpt": "<<<Image1>>> は Girl A の顔、黒髪の肩上ボブ、青い瞳、体格、制服デザインを定義する。Girl A は標準語を話す真面目な吹奏楽部員で、担当楽器はクラリネット。白背景や元のポーズは継承しない。\n\n<<<Image2>>> は Girl B の顔、茶髪ポニーテール、体格、制服デザインを定義する。Girl B は関西弁を話す明るい吹奏楽部員で、担当楽器はトランペット。白背景や元のポーズは継承しない。\n\n<<<Image3>>> は Girl C の顔、ダークブラウンのボブヘア、体格、カーディガンを含む制服デザインを定義する。Girl C は博多弁を話すおっとりした吹奏楽部員で、担",
+      "promptLength": 3182,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "動畫風",
+        "音樂／表演"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "SSSS.CRYPTOMAN⚡️AI",
+      "authorUrl": "https://x.com/SSSS_CRYPTOMAN",
+      "date": "2026-08-11",
+      "authorHandle": "SSSS_CRYPTOMAN",
+      "postUrl": "https://x.com/SSSS_CRYPTOMAN/status/2087009789960429646"
+    },
+    {
+      "id": "2099230588729491683",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "平安京百鬼夜行（對比 Seedance 2.5）",
+      "description": "參考圖固定妖怪造型，逐 Cut 寫夜間行進，日語音效與無 BGM 的設定保持氣氛。",
+      "prompt": null,
+      "promptExcerpt": "【映像仕様】\n超高品質な実写。平安時代の日本。夜の平安京。日本妖怪による本物の百鬼夜行。\nBGMなし。日本語音声。SEあり。字幕、テロップ、ロゴ、透かし、読める文字なし。\n参照画像の妖怪、ぬらりひょん、建築、色、質感、体格を全Cutで正確に維持。水平反転禁止。\n中国仙侠、西洋モンスター軍団、ゾンビ軍団、ゲームCG、普通の人間の仮装行列にしない。\n百鬼夜行は暴走や襲撃ではない。何百もの妖怪が巨大な一つの行列として、整然と同じ方向へ進む。\n妖怪を一体ずつ見せる紹介PVにしない。どのCutでも、近景・中景・遠景に複数種類の妖怪を同時に入れ、「数百体いる」ことを一目で理解させる。\n地上・屋根・空の三層",
+      "promptLength": 2872,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "恐怖／懸疑",
+        "怪物／神靈",
+        "寫實"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Shim",
+      "authorUrl": "https://x.com/os_shim",
+      "date": "2026-09-14",
+      "authorHandle": "os_shim",
+      "postUrl": "https://x.com/os_shim/status/2099230588729491683"
+    },
+    {
+      "id": "2110962188664107171",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "變身兔人",
+      "description": "以首幀人物連續變成擬人兔，背景不變，重點是變形過程的合理銜接。",
+      "prompt": "[Goal]\nMorphing from <<<Image1>>> to a werebunny (a anthropomorphic bunny) keeping background .\n\n[Prompt]\nThe woman seems in great joy, she shakes her head smiling and seductive, her face starts to stretch like bubbling, she makes funny sounds and we see little front tooths. A muzzle starts to stretch  as she continues to move left and right. woman transmorphs into the werebunny, 1990 pratical effects, bunny ears growing , white fur growing , teeths becoming like bunny teeths  : metamorphing into werebunny. Her eyes start glowing red as she transforms her trasformation then suddently turn into kawai eyes. The werebunny cleans her muzzle with her two paws .\n\n[Audio Style] \nlive sounds include organic transformation, smoothe funny sounds  .\n\n[Camera & Core Constraints]\nContinuous shot filmed hand held with a sony handicam. Camera corrections, focus hunting and minizoom ins and outs, subject always facing camera. Some chromatic artefacts on edges. no magical appear and no alpha blending. do not change the identity of the characters throughout the entire video. Make the transitions smooth and logically plausible.",
+      "promptExcerpt": null,
+      "promptLength": 1126,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "恐怖／懸疑"
+      ],
+      "method": "圖生影片",
+      "format": "原帖影片 37 秒／3:4",
+      "featured": false,
+      "author": "SoftRender AI",
+      "authorUrl": "https://x.com/SoftRenderAi",
+      "date": "2026-10-16",
+      "authorHandle": "SoftRenderAi",
+      "postUrl": "https://x.com/SoftRenderAi/status/2110962188664107171"
+    },
+    {
+      "id": "2092975257737199963",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "火車上的邂逅",
+      "description": "連續鏡頭靠紅傘與二十年前的台詞揭露關係，低聲對話與無音樂維持克制。",
+      "prompt": "Generate a single continuous shot focused on natural human performance. Nearly empty commuter train at 2:00 a.m., moving through a rain-soaked city. A tired Black woman in her early forties sits opposite an older Asian man holding a familiar red umbrella. Reflections from passing streetlights move realistically across the windows and their faces. The camera begins in a wide symmetrical composition, then slowly dollies toward the woman as she recognizes the umbrella. Her expression changes subtly from fatigue to uncertainty and finally quiet recognition. Without looking directly at him, she asks softly, “Where did you get that umbrella?” The man studies her for a moment and replies, “You gave it to me twenty years ago.” Hold on her restrained reaction rather than exaggerated shock. Grounded contemporary drama, realistic commuter lighting, wet glass, muted blue-gray palette with red as the only strong accent, natural micro-expressions and body language. Audio: train wheels, rain against glass, distant station announcements without intelligible words, quiet American English dialogue. No music.",
+      "promptExcerpt": null,
+      "promptLength": 1107,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "音樂／表演",
+        "一鏡到底"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Heather Cooper",
+      "authorUrl": "https://x.com/HBCoop_",
+      "date": "2026-08-27",
+      "authorHandle": "HBCoop_",
+      "postUrl": "https://x.com/HBCoop_/status/2092975257737199963"
+    },
+    {
+      "id": "2092125204780925038",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "紙地圖找地標（風格化動畫）",
+      "description": "30 秒 16:9 以圖片鎖定角色與畫風，全片只留一聲 Hey，讓動作負責敘事。",
+      "prompt": null,
+      "promptExcerpt": "Generate a 30-second, 16:9 animated short: a young woman searches a hill town for a landmark with a paper map.\n\nART STYLE — hold this exactly in every frame, it is the contract: painterly 3D concept art. Sculpted readable silhouette. Planar cheek structure and wedge-shaped hands. Directional hand-pa",
+      "promptLength": 3359,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "動畫風",
+        "藝術／風格"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 27 秒／16:9",
+      "featured": false,
+      "author": "Leti Liu",
+      "authorUrl": "https://x.com/letidotae",
+      "date": "2026-08-25",
+      "authorHandle": "letidotae",
+      "postUrl": "https://x.com/letidotae/status/2092125204780925038"
+    },
+    {
+      "id": "2107374846531231824",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "漂浮城市下的巨物",
+      "description": "30 秒先建立黑海上的漂浮城市，最後才揭露承載整座城的活體巨物。",
+      "prompt": null,
+      "promptExcerpt": "Create a 30-second cinematic sci-fi short set in a mysterious floating city above a dark, endless ocean during a violent nighttime storm. Build the story around escalating anticipation, visual clues, and a shocking final reveal.0-5 seconds: Begin with an enormous wide shot of the floating city barel",
+      "promptLength": 2622,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "科幻／奇觀"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Brie AI",
+      "authorUrl": "https://x.com/briepretty_728",
+      "date": "2026-10-06",
+      "authorHandle": "briepretty_728",
+      "postUrl": "https://x.com/briepretty_728/status/2107374846531231824"
+    },
+    {
+      "id": "2106018058209030442",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "爺爺被 AI 美女痛打",
+      "description": "兩張圖分別鎖定主角與對手，跟拍移動戰鬥並以高速親吻收尾；作者註明參考 M7。",
+      "prompt": null,
+      "promptExcerpt": "参照画像は2人分ある。\n参照画像1は主人公の20代前半の女性。\n参照画像2は対戦相手の成人男性。\n\n主人公は必ず参照画像1の女性にする。\n対戦相手は必ず参照画像2の男性にする。\n\n2人とも、顔立ち、髪型、髪色、体格、身長バランス、年齢感、肌の質感、雰囲気を参照画像どおりにできるだけ忠実に維持する。別人化しない。過度に美化しない。顔や体格をランダム化しない。2人の同一性を最優先する。\n\n15秒、16:9、実写フォトリアル。日本を舞台にしたシネマティックで真剣な高速格闘シーン。コミカルな演技やバラエティ的な演出にはしない。本気の映画アクションとして描く。ただし、戦闘技として突然「高速キッス」が何度",
+      "promptLength": 5205,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "功夫武打",
+        "喜劇"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "ミサキ",
+      "authorUrl": "https://x.com/misakin883",
+      "date": "2026-10-02",
+      "authorHandle": "misakin883",
+      "postUrl": "https://x.com/misakin883/status/2106018058209030442"
+    },
+    {
+      "id": "2111205105626234902",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "三種運鏡示範：推進／環繞／升降",
+      "description": "依序收錄推進、環繞與升降三段，將相同運鏡意圖放在不同場景觀察。",
+      "prompt": null,
+      "promptExcerpt": "Cinematic slow forward dolly shot moving past rugged rocks and weathered foliage toward a lone man standing tall on a jagged mountain peak. In the foreground, an weathered wooden suspension rope bridge with worn timber planks sways gently in the breeze, bridging an alpine cliff trail to the mountain",
+      "promptLength": 1528,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "鏡頭設計"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 10 秒／16:9",
+      "featured": false,
+      "author": "Wilzap",
+      "authorUrl": "https://x.com/wilzap",
+      "date": "2026-10-17",
+      "authorHandle": "wilzap",
+      "postUrl": "https://x.com/wilzap/status/2111205105626234902"
+    },
+    {
+      "id": "2107393923941609543",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "認真切蛋糕＝拔劍對決",
+      "description": "Image 1/2 分配角色，15 秒同步音訊把婚禮切蛋糕拍成拔劍喜劇，並排除罐頭笑聲。",
+      "prompt": null,
+      "promptExcerpt": "Wan 3.0 Prompt\nCreate a 15-second action-comedy video with synchronized audio. Use the selected aspect ratio. Serious sword-action buildup, one spectacular stroke, an ordinary cake-cutting reveal, then A's familiar stunned face.\n\nREFERENCES\nA = the black-haired heroine in Image 1.\nB = the white-hair",
+      "promptLength": 4963,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "喜劇",
+        "動作編排"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "とすくん",
+      "authorUrl": "https://x.com/tokyo_Valentine",
+      "date": "2026-10-06",
+      "authorHandle": "tokyo_Valentine",
+      "postUrl": "https://x.com/tokyo_Valentine/status/2107393923941609543"
+    },
+    {
+      "id": "2090578228226527704",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "J-pop 偶像 MV（30 秒一次生成）",
+      "description": "以細密 micro-cut 時間碼對齊高節奏流行樂，兩位成年偶像的動作和鏡頭一起排。",
+      "prompt": null,
+      "promptExcerpt": "Create a 30-second  cinematic Japanese idol pop music video featuring two adult female idols. Use energetic micro-cuts, rapid visual variation, and frequent transitions synchronized precisely to an uplifting, high-tempo idol pop beat.\n\nIdol A: adult Japanese female idol, long glossy black hair, brig",
+      "promptLength": 4337,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "音樂／表演",
+        "鏡頭設計"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "いにしえ@高信頼AIニュース\"NeuralWire.org\"運営｜Will Oldgram",
+      "authorUrl": "https://x.com/old_pgmrs_will",
+      "date": "2026-08-21",
+      "authorHandle": "old_pgmrs_will",
+      "postUrl": "https://x.com/old_pgmrs_will/status/2090578228226527704"
+    },
+    {
+      "id": "2092478569884909593",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "宇宙等離子奇觀",
+      "description": "10 秒 16:9 用無剪接移動呈現星雲與飛船，低頻嗡鳴和晶體爆裂聲補充尺度。",
+      "prompt": null,
+      "promptExcerpt": "Original Wan 3.0 Text-to-Video Prompt (10-second duration)Duration: 10 seconds\nAspect ratio: 16:9\nStyle: Hyper-realistic cinematic sci-fi, photorealistic space photography mixed with ethereal cosmic fantasy, ultra-detailed 1080p, smooth continuous motion, no cutsStep-by-step structured prompt (copy-",
+      "promptLength": 3960,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "科幻／奇觀"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 10 秒／16:9",
+      "featured": false,
+      "author": "mini singh AI world",
+      "authorUrl": "https://x.com/KaminiKamini222",
+      "date": "2026-08-26",
+      "authorHandle": "KaminiKamini222",
+      "postUrl": "https://x.com/KaminiKamini222/status/2092478569884909593"
+    },
+    {
+      "id": "2111141912891531711",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "格拉斯哥雨後約會",
+      "description": "首幀照片固定情侶，15 秒從午後走向燈亮，只留環境聲和簡短對話。",
+      "prompt": null,
+      "promptExcerpt": "GLASGOW — AFTER THE RAIN | 15-Second Cinematic City Tour | WAN 3.0 Video\n\nCreate a hyper-realistic 15-second cinematic fashion and city-tour film set in Glasgow, Scotland, progressing from overcast late afternoon into early evening. Use the supplied image as the opening frame and the definitive refe",
+      "promptLength": 4260,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "旅行／城市",
+        "情緒表演",
+        "生活紀錄"
+      ],
+      "method": "圖生影片",
+      "format": "原帖影片 15 秒／3:4",
+      "featured": false,
+      "author": "Promethean",
+      "authorUrl": "https://x.com/PrometheanAIX",
+      "date": "2026-10-17",
+      "authorHandle": "PrometheanAIX",
+      "postUrl": "https://x.com/PrometheanAIX/status/2111141912891531711"
+    },
+    {
+      "id": "2111163035545112758",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "邁阿密 Ocean Drive 晨光",
+      "description": "15 秒六個硬切場景以陽光和真實膚質串起生活時裝，無音樂、只有招呼與環境聲。",
+      "prompt": null,
+      "promptExcerpt": "15-second cinematic lifestyle and fashion film. Six scenes, clean hard cuts, photorealistic cinematography, natural human performances. WAN 3.0 video.\n\nCharacter & Visual Continuity\n\nBegin with the exact supplied reference image as the opening frame. Preserve the man's facial identity, athletic phys",
+      "promptLength": 4330,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "旅行／城市",
+        "生活紀錄",
+        "時尚"
+      ],
+      "method": "圖生影片",
+      "format": "原帖影片 15 秒／3:4",
+      "featured": false,
+      "author": "Promethean",
+      "authorUrl": "https://x.com/PrometheanAIX",
+      "date": "2026-10-17",
+      "authorHandle": "PrometheanAIX",
+      "postUrl": "https://x.com/PrometheanAIX/status/2111163035545112758"
+    },
+    {
+      "id": "2085428669716332646",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "精品相機概念廣告（對比 Seedance 2.5）",
+      "description": "15 秒 16:9 以一個連續視覺動作完成機身拆解與卡片轉場，另做 Seedance 2.5 比較。",
+      "prompt": null,
+      "promptExcerpt": "Create a 15-second, 16:9, 30fps premium compact-camera concept ad as one continuous visual narrative around a single unbranded portable camera. Product design: horizontally elongated rounded rectangle, about 2.1:1; large circular lens on the left, about 68% of body height; narrow pure-black display ",
+      "promptLength": 4461,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "廣告／產品",
+        "一鏡到底"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "Dheepan Ratnam",
+      "authorUrl": "https://x.com/Dheepanratnam",
+      "date": "2026-08-07",
+      "authorHandle": "Dheepanratnam",
+      "postUrl": "https://x.com/Dheepanratnam/status/2085428669716332646"
+    },
+    {
+      "id": "2102744803481997372",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "近未來社會評論短片",
+      "description": "30 秒把配送、無人辦公室與賣不出的商品連成同一世界，用冷靜場面累積不安。",
+      "prompt": null,
+      "promptExcerpt": "Create a 30-second cinematic near-future social commentary film with one coherent visual language: sleek photorealistic megacity, cool cyan and steel-blue light, restrained camera movement, subtle electronic ambience, realistic human behavior, no logos, no readable brand names, no on-screen captions",
+      "promptLength": 1732,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "科幻／奇觀",
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Amy G",
+      "authorUrl": "https://x.com/amynys",
+      "date": "2026-09-23",
+      "authorHandle": "amynys",
+      "postUrl": "https://x.com/amynys/status/2102744803481997372"
+    },
+    {
+      "id": "2101186383889215879",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "摺紙少女 VS 雨傘少女動漫對打",
+      "description": "參考影片控制追逐與反擊節奏，Image 1/2 固定雙方造型，分清動作和參考的角色。",
+      "prompt": null,
+      "promptExcerpt": "The attached video guides dynamic framing, pursuit, counterattacks and impact rhythm.\nImage 1 defines the orange-haired origami heroine.\nImage 2 defines the black-haired umbrella heroine.\nPreserve their exact character designs, stylized proportions, costumes, colors and signature props across every ",
+      "promptLength": 4691,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "動畫風",
+        "功夫武打"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 29 秒／16:9",
+      "featured": false,
+      "author": "Kiki",
+      "authorUrl": "https://x.com/Mayz1169",
+      "date": "2026-09-19",
+      "authorHandle": "Mayz1169",
+      "postUrl": "https://x.com/Mayz1169/status/2101186383889215879"
+    },
+    {
+      "id": "2096114524919345435",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "偷傘賊",
+      "description": "15 秒無對白先讓烏鴉偷傘，再揭露替流浪狗遮雨的目的，音樂在結尾漸強。",
+      "prompt": "Style: Pixar-style 3D animation, warm rainy-day palette, soft cinematic lighting.\n\nA rainy city street at dusk, neon reflections shimmering on wet pavement. A small child walks holding a bright red umbrella. A sleek black crow swoops down, camera following in a quick tracking shot, snatches the umbrella handle in its beak, and flies off with it — child gasps, reaching up in surprise. Cut to the crow flying low over rooftops, umbrella flapping behind it like a cape, rain streaking past camera. It dives under a rusty bridge where a small shivering stray dog huddles against the cold. The crow drops the umbrella, angling it with its beak to shield the dog from the rain. Close-up on the dog’s grateful eyes, tail thumping. Final wide shot: crow perched on the umbrella’s edge, both animals dry together as rain falls softly around them. Sound: gentle rain patter, distant city hum, soft orchestral swell on the final shot, no dialogue.",
+      "promptExcerpt": null,
+      "promptLength": 939,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "動畫風"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "Snow",
+      "authorUrl": "https://x.com/iamrealsnow",
+      "date": "2026-09-05",
+      "authorHandle": "iamrealsnow",
+      "postUrl": "https://x.com/iamrealsnow/status/2096114524919345435"
+    },
+    {
+      "id": "2102339127123550354",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "海邊小鎮動漫夕陽",
+      "description": "30 秒把少女沿崖奔跑與光粒子結合，推進、環繞、跟拍分別支撐魔幻夕陽。",
+      "prompt": null,
+      "promptExcerpt": "Create a stunning cinematic anime sequence set in a magical Japanese-inspired coastal town at sunset.\n\nA young anime girl with long flowing dark hair, expressive eyes, and a beautiful white dress stands on a quiet seaside cliff overlooking the ocean. Her hair and dress move naturally in the warm eve",
+      "promptLength": 1797,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "動畫風"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Mr Das",
+      "authorUrl": "https://x.com/MrDasCreates",
+      "date": "2026-09-22",
+      "authorHandle": "MrDasCreates",
+      "postUrl": "https://x.com/MrDasCreates/status/2102339127123550354"
+    },
+    {
+      "id": "2092656215721656772",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "料理對決決賽（JSON 格式）",
+      "description": "JSON 分欄列出 30 秒節目的人物、分鏡、鏡頭與音效，最後停在評審嘴角微笑。",
+      "prompt": null,
+      "promptExcerpt": "{\n  \"archetype\": \"Competitive cooking show finale\",\n  \"duration\": \"30s\",\n  \"prompt\": {\n    \"concept\": {\n      \"title\": \"The Judge Who Never Speaks\",\n      \"description\": \"A legendary, feared food critic known for never speaking during judging takes one bite of a nervous contestant's dish. His face g",
+      "promptLength": 4181,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "結構化提示",
+        "料理",
+        "運動"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "M-studioAi",
+      "authorUrl": "https://x.com/Strength04_X",
+      "date": "2026-08-27",
+      "authorHandle": "Strength04_X",
+      "postUrl": "https://x.com/Strength04_X/status/2092656215721656772"
+    },
+    {
+      "id": "2092952141677646264",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "街頭飆車",
+      "description": "15 秒用低機位、加速和甩尾寫速度，同時鎖定車型並排除文字與 logo。",
+      "prompt": null,
+      "promptExcerpt": "Create a 15-second ultra-cinematic street racing sequence with the adrenaline and intensity of a modern arcade racing game.\n\n0–3 sec — Launch:\nMidnight in a neon-lit city. A modified supercar sits at a red light, engine vibrating aggressively. Close-up of glowing headlights, spinning rims, driver gr",
+      "promptLength": 1943,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0 Prime",
+      "tags": [
+        "寫實",
+        "動作編排"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": false,
+      "author": "Rosey Watson",
+      "authorUrl": "https://x.com/Rosey_watson",
+      "date": "2026-08-27",
+      "authorHandle": "Rosey_watson",
+      "postUrl": "https://x.com/Rosey_watson/status/2092952141677646264"
+    },
+    {
+      "id": "2092940900729286749",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "東京夜遊 Vlog（對比 MiniMax H3）",
+      "description": "15 秒多鏡頭手機片在霓虹街頭與吃東西之間切換，同一提示另比 MiniMax H3。",
+      "prompt": null,
+      "promptExcerpt": "Create a fast-paced 15-second multi-shot smartphone nightlife vlog featuring TWO young adult Japanese women enjoying a wild, energetic night out in Tokyo.\n\nThe concept is: “two stylish girls eating and drinking their way through Tokyo at night.”\n\nThe tone is loud, playful, chaotic, glamorous, and fu",
+      "promptLength": 6398,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "旅行／城市",
+        "寫實",
+        "料理",
+        "模型比較"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 15 秒／1:1",
+      "featured": false,
+      "author": "iX",
+      "authorUrl": "https://x.com/iX00AI",
+      "date": "2026-08-27",
+      "authorHandle": "iX00AI",
+      "postUrl": "https://x.com/iX00AI/status/2092940900729286749"
+    },
+    {
+      "id": "2098355894723453388",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "奶奶 GTA 搶劫",
+      "description": "30 秒用角色參考鎖住奶奶，讓搶劫、飆車和追擊保持同一遊戲角色與嗓音。",
+      "prompt": null,
+      "promptExcerpt": "STYLE REFERENCE: A high-fidelity, next-gen open-world video game\nvisual style — rendered like modern AAA game-engine graphics rather\nthan live-action footage. Semi-realistic character models, real-time\ndynamic lighting, physically-based textures, in-game animation\nquality, gameplay-capture camera be",
+      "promptLength": 4404,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "遊戲風",
+        "喜劇"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "Aymducking │ Ai creator",
+      "authorUrl": "https://x.com/aymducking",
+      "date": "2026-09-11",
+      "authorHandle": "aymducking",
+      "postUrl": "https://x.com/aymducking/status/2098355894723453388"
+    },
+    {
+      "id": "2092476498125226127",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "朋友手機實拍夜遊 UGC",
+      "description": "30 秒直式以晃動、曝光變化與自然對話寫朋友隨手拍，刻意保留不完美。",
+      "prompt": null,
+      "promptExcerpt": "Unplanned vertical smartphone recording, shot by a friend moving with the group, imperfect handheld framing, natural night exposure, occasional motion blur, wide phone lens, realistic deep focus.\n\nCharacters\n\nThe hero is a young woman with long dark brown hair wearing a fitted emerald-green dress wi",
+      "promptLength": 3873,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "生活紀錄"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "M-studioAi",
+      "authorUrl": "https://x.com/Strength04_X",
+      "date": "2026-08-26",
+      "authorHandle": "Strength04_X",
+      "postUrl": "https://x.com/Strength04_X/status/2092476498125226127"
+    },
+    {
+      "id": "2088550973585379394",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "SASUKE 風極限障礙挑戰",
+      "description": "以一張挑戰者圖固定身份，30 秒依突破、危機、最後惜敗三段安排運動綜藝。",
+      "prompt": null,
+      "promptExcerpt": "映像コンセプト\n2000年代〜2010年代の日本の大型スポーツエンターテインメント特番を思わせる、本格的な障害物競技のテレビ中継映像。\n舞台は夜間に開催されている巨大な屋外障害物競技会場。水上に設置された大規模なアスレチックコースを、1人の挑戦者が制限時間内で次々と攻略していく。\n映像は実際の地上波スポーツ特番を撮影しているようなリアルな放送スタイル。ENGカメラ、クレーンカメラ、ワイヤーカメラ、レールカメラ、望遠カメラ、水面付近の低位置カメラを障害物ごとに自然に切り替える。\n自然なパン、ズーム、フォーカス送り、走る人物への追従撮影、わずかな手持ち揺れを含む。\nHD放送初期を思わせる少し柔らか",
+      "promptLength": 4337,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "運動"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": true,
+      "author": "聖星あい＠AI愛好家",
+      "authorUrl": "https://x.com/seisei_ai_1st",
+      "date": "2026-08-15",
+      "authorHandle": "seisei_ai_1st",
+      "postUrl": "https://x.com/seisei_ai_1st/status/2088550973585379394"
+    },
+    {
+      "id": "2097936515087376606",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "漁夫被巨蟹追著跑",
+      "description": "30 秒每五秒一段，拉網到被追的因果清楚，35mm 紀錄片風維持喜劇的寫實基礎。",
+      "prompt": "0–5s: Wide shot of a sunny seaside fishing pier. A fisherman pulls up his fishing net and discovers a huge crab tangled inside. The crab suddenly escapes and starts running across the wooden pier.\n5–10s: The fisherman drops the net and runs after it, trying to catch the crab before it reaches the edge of the pier.\n10–15s: Handheld chase shot follows the crab moving sideways at surprising speed, weaving between fishing buckets, ropes, coolers, and tourists.\n15–20s: The fisherman tries to block its path with a fishing net, but the crab quickly changes direction and races underneath a wooden bench.\n20–25s: The fisherman crawls under the bench after it, gets tangled in his own fishing rope, falls backward, then quickly gets back up as the crab continues toward the water.\n25–30s: The fisherman finally corners the crab near the pier edge. He reaches down carefully, but the crab suddenly grabs his fishing hat and runs away wearing it.\nStyle: ultra-realistic, cinematic action-comedy, natural seaside daylight, realistic ocean and fishing pier, lifelike crab movement, realistic human reactions, dynamic handheld chase camera, subtle camera shake, shallow depth of field, 35mm lens look, natural colors, documentary realism.",
+      "promptExcerpt": null,
+      "promptLength": 1230,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "喜劇",
+        "動物"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": false,
+      "author": "M-studioAi",
+      "authorUrl": "https://x.com/Strength04_X",
+      "date": "2026-09-10",
+      "authorHandle": "Strength04_X",
+      "postUrl": "https://x.com/Strength04_X/status/2097936515087376606"
+    },
+    {
+      "id": "2095836832575713582",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "名畫人物走進攝影棚",
+      "description": "16 秒 4K 直式讓名畫人物走入棚拍，每拍只放一個機位，段落間明確硬切。",
+      "prompt": null,
+      "promptExcerpt": "Style: classical oil-painting warmth blended with modern commercial studio photoshoot - visible softboxes, C-stands, backdrops, crew edges. Filmic grade, rich browns, natural contrast.\nLighting: studio softbox key per shot, matching each painting's original lighting mood.\n\nBEAT 1 - EXPRESSIONIST FIG",
+      "promptLength": 2640,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "藝術／風格"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 16 秒／9:16",
+      "featured": true,
+      "author": "Vini",
+      "authorUrl": "https://x.com/Viniai_",
+      "date": "2026-09-04",
+      "authorHandle": "Viniai_",
+      "postUrl": "https://x.com/Viniai_/status/2095836832575713582"
+    },
+    {
+      "id": "2099558680979005770",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "超現實時尚大片",
+      "description": "30 秒正方形用誇張高定輪廓、緩慢運鏡與膠片顆粒建立統一的時裝美學。",
+      "prompt": "A surreal high-fashion cinematic scene featuring a pale blonde woman in a luxurious oversized white fur coat, beginning with an extreme close-up as she holds a vintage brass saxophone near her face, then staring intensely into the camera and slowly reaching her hand toward the lens, creating dramatic depth and motion blur; the scene transitions to a wide minimalist white architectural interior where she stands and moves forward with both hands extended toward the camera, followed by elegant shots of two versions of the woman seated in sculptural white lounge chairs, maintaining a mysterious editorial mood, soft diffused lighting, clean monochromatic white palette, realistic skin texture, shallow depth of field, smooth cinematic camera movement, subtle film grain, and high-end fashion campaign aesthetics.",
+      "promptExcerpt": null,
+      "promptLength": 815,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0 Prime",
+      "tags": [
+        "時尚"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／1:1",
+      "featured": false,
+      "author": "Talia",
+      "authorUrl": "https://x.com/TaliaAariz",
+      "date": "2026-09-15",
+      "authorHandle": "TaliaAariz",
+      "postUrl": "https://x.com/TaliaAariz/status/2099558680979005770"
+    },
+    {
+      "id": "2111358417730240961",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "Ziad Nakad 銀色亮片禮服走秀",
+      "description": "30 秒直式把走秀、擺姿、透紗與亮片反光放在同一影棚光線下，末尾收品牌標誌。",
+      "prompt": "A model with long light-brown hair walks and poses in a luxurious studio setting against a soft beige wall and a towering arrangement of white peonies. She wears a dramatic one-shoulder evening gown in muted gray: a heavily embellished bodice and sheer skirt densely covered in silver sequins and crystal beads, cinched by a slim black belt with a floral buckle, and finished with a long flowing sheer cape that trails behind her. Close-ups highlight the intricate beading, her large sculptural earrings, and bracelet, while full shots show her elegant stance, platform heels, and the gown’s movement as she turns to reveal the back. The clip ends with the Ziad Nakad logo over a soft-focus view of the dress from behind.",
+      "promptExcerpt": null,
+      "promptLength": 721,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "時尚"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／9:16",
+      "featured": false,
+      "author": "Talia",
+      "authorUrl": "https://x.com/TaliaAariz",
+      "date": "2026-10-17",
+      "authorHandle": "TaliaAariz",
+      "postUrl": "https://x.com/TaliaAariz/status/2111358417730240961"
+    },
+    {
+      "id": "2101303256173650396",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "動漫短片：快速格鬥與情緒",
+      "description": "REFERENCE PRIORITY 先定參考優先級，再逐鏡寫格鬥與音效，保持兩位人物的身份和服裝。",
+      "prompt": null,
+      "promptExcerpt": "REFERENCE PRIORITY\n@ image1 and @ image2 exclusively control character identities, costume details, proportions and weapons. Never reproduce the original video's characters or display the character sheets themselves.\n\nCHARACTERS AND FIGHTING STYLES\nFighter A, @ image1: deep-purple hair in one long t",
+      "promptLength": 7252,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "動畫風",
+        "功夫武打",
+        "鏡頭設計"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 111 秒／16:9",
+      "featured": true,
+      "author": "Kiki",
+      "authorUrl": "https://x.com/Mayz1169",
+      "date": "2026-09-19",
+      "authorHandle": "Mayz1169",
+      "postUrl": "https://x.com/Mayz1169/status/2101303256173650396"
+    },
+    {
+      "id": "2092617578338504970",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "皮影戲剪刀女俠大戰",
+      "description": "角色圖固定紅衣女俠，以巨大剪刀與木偶群戰結合皮影光影和寫實 CG。",
+      "prompt": null,
+      "promptExcerpt": "Style\nHyper-realistic CG cinematography with detailed facial features, realistic skin and hair, cinematic lighting, soft shadows, physically accurate reflections, SSS, global illumination, RTX ray tracing, 4K HDR quality, and realistic cloth and rigid-body physics.\n\nScene\n\nAn ancient theater stage i",
+      "promptLength": 2292,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "藝術／風格",
+        "功夫武打"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 15 秒／16:9",
+      "featured": true,
+      "author": "FELIX",
+      "authorUrl": "https://x.com/FellMentKE",
+      "date": "2026-08-26",
+      "authorHandle": "FellMentKE",
+      "postUrl": "https://x.com/FellMentKE/status/2092617578338504970"
+    },
+    {
+      "id": "2111150964983898453",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "GTA 6 遊戲實機風",
+      "description": "30 秒固定首幀與遊戲流程，明講不生成 UI；HUD 是作者另以 Figma 後製。",
+      "prompt": null,
+      "promptExcerpt": "**FORMAT:** 30 seconds, 16:9, high-end real-time video game graphics, GTA VI gameplay style.\n\n### ABSOLUTE RULE: NO HUD OR UI\n\nThis is third-person gameplay footage with ALL interface elements disabled. Absolutely NO HUD, minimap, radar, icons, menus, text, subtitles, interaction prompts, button ind",
+      "promptLength": 6770,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "遊戲風"
+      ],
+      "method": "圖生影片",
+      "format": "原帖影片 23 秒／16:9",
+      "featured": true,
+      "author": "Dawin",
+      "authorUrl": "https://x.com/guylookaround",
+      "date": "2026-10-17",
+      "authorHandle": "guylookaround",
+      "postUrl": "https://x.com/guylookaround/status/2111150964983898453"
+    },
+    {
+      "id": "2095007196258124056",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "火圈馬戲特技",
+      "description": "短提示詞以火光、煙塵、歡呼和騎乘動作製造現場感，重點集中在危險尺度。",
+      "prompt": "A cinematic live circus performance inside a massive dark arena packed with an excited audience. A highly skilled female acrobat with long blonde hair, wearing a vivid red athletic costume and white shoes, stands on a tall metal platform beside a huge circular ring engulfed in roaring flames. Warm firelight illuminates her face and body against the deep black background.\n\nShe takes a moment, gathers momentum, then launches herself dramatically through the center of the flaming ring. Capture her in a powerful backward aerial flip, body fully extended and rotating gracefully in mid-air. As she exits the ring, a majestic white horse gallops beneath her, wearing a dark navy saddle and bridle. She completes the rotation and lands safely onto the moving horse in one fluid, perfectly timed motion.\n\nCamera: vertical 9:16, cinematic telephoto lens, dynamic tracking, slow-motion during the jump, subtle camera shake from the live performance, smooth motion tracking.\nLighting: intense orange firelight, dramatic spotlights, deep shadows, realistic flame illumination, atmospheric smoke and sparks.\nStyle: photorealistic, high-end cinematic sports footage, realistic anatomy and physics, detailed horse movement, natural crowd reactions, dramatic contrast, shallow depth of field, 4K, ultra-detailed.\nMood: thrilling, dangerous, spectacular, heart-pounding live circus spectacle.",
+      "promptExcerpt": null,
+      "promptLength": 1381,
+      "isLong": false,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0 Prime",
+      "tags": [
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 10 秒／9:16",
+      "featured": true,
+      "author": "Ai Arainz",
+      "authorUrl": "https://x.com/iam_mian7",
+      "date": "2026-09-02",
+      "authorHandle": "iam_mian7",
+      "postUrl": "https://x.com/iam_mian7/status/2095007196258124056"
+    },
+    {
+      "id": "2111024524313706753",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "看電影被吸進殭屍片",
+      "description": "30 秒分段把現實、銀幕殭屍世界與座位連成反轉，爆米花聲在結尾收束。",
+      "prompt": null,
+      "promptExcerpt": "Generate a 30-second photorealistic supernatural comedy in 16:9landscape format, beginning from the supplied opening frame.\n\n0–4 SECONDS — THE DISTURBANCE:\nContinue directly from the opening frame. Dax shifts his sneakers on Lena’s seat back, causing a small jolt. Lena closes her eyes briefly, then ",
+      "promptLength": 3800,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "寫實",
+        "喜劇",
+        "動作編排"
+      ],
+      "method": "文生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": true,
+      "author": "Ai Arainz",
+      "authorUrl": "https://x.com/iam_mian7",
+      "date": "2026-10-16",
+      "authorHandle": "iam_mian7",
+      "postUrl": "https://x.com/iam_mian7/status/2111024524313706753"
+    },
+    {
+      "id": "2100854831837782439",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "雷姆＆拉姆下班桌布",
+      "description": "24 秒固定鏡頭只動角色，姐妹互動與日語台詞之外，桌面圖示、選單和 Dock 全程不動。",
+      "prompt": null,
+      "promptExcerpt": "Use the provided Mac desktop image featuring Rem and Ram as the first frame. Create a 24-second, 16:9 video with a locked-off camera. Preserve the original anime art style: Ram has pink hair, and Rem has blue hair. Keep their faces, hair accessories, and body proportions consistent throughout.\n\nThe ",
+      "promptLength": 3872,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "動畫風",
+        "桌布動畫"
+      ],
+      "method": "圖生影片",
+      "format": "原帖影片 23 秒／16:9",
+      "featured": true,
+      "author": "Kiki",
+      "authorUrl": "https://x.com/Mayz1169",
+      "date": "2026-09-18",
+      "authorHandle": "Mayz1169",
+      "postUrl": "https://x.com/Mayz1169/status/2100854831837782439"
+    },
+    {
+      "id": "2102075541205782644",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "碧翠絲桌布打噴嚏",
+      "description": "10 秒 16:9 固定一鏡用打噴嚏、否認與整理寫傲嬌節奏，桌布和 macOS 介面保持不動。",
+      "prompt": null,
+      "promptExcerpt": "Create a 10-second horizontal 16:9 video using the provided Beatrice macOS desktop image as the exact first frame.\n\nScene and character:\nFixed front-facing camera, one continuous shot, no camera movement or cuts. Preserve the rose-pink and champagne wallpaper, English macOS menu bar, left-side appli",
+      "promptLength": 3284,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "動畫風",
+        "桌布動畫",
+        "喜劇"
+      ],
+      "method": "圖生影片",
+      "format": "原帖影片 9 秒／16:9",
+      "featured": true,
+      "author": "Kiki",
+      "authorUrl": "https://x.com/Mayz1169",
+      "date": "2026-09-22",
+      "authorHandle": "Mayz1169",
+      "postUrl": "https://x.com/Mayz1169/status/2102075541205782644"
+    },
+    {
+      "id": "2092548780658708526",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "雫 VS 巨大妖怪",
+      "description": "30 秒一鏡逐段寫攻防、被彈、反擊與決勝，人物與武器固定；作者提醒重現性偏低。",
+      "prompt": null,
+      "promptExcerpt": "Pollo AI Wan 3.0｜雫 VS 巨大妖怪 ニコガサネ｜30秒ワンカット\n\nCreate a 30-second, 16:9, full-screen cinematic Japanese anime battle with synchronized Japanese dialogue, sound effects, music, and environmental audio.\n\nThe physical world camera remains ONE CONTINUOUS UNBROKEN SHOT. No hard cuts, montage, split screen, o",
+      "promptLength": 16535,
+      "isLong": true,
+      "models": [
+        "Wan"
+      ],
+      "modelVersion": "Wan 3.0",
+      "tags": [
+        "功夫武打",
+        "怪物／神靈",
+        "一鏡到底",
+        "動畫風"
+      ],
+      "method": "參考圖生影片",
+      "format": "原帖影片 30 秒／16:9",
+      "featured": true,
+      "author": "うきよ 🎴",
+      "authorUrl": "https://x.com/Ukiyo_il",
+      "date": "2026-08-26",
+      "authorHandle": "Ukiyo_il",
+      "postUrl": "https://x.com/Ukiyo_il/status/2092548780658708526"
+    },
+    {
+      "id": "2109976697156378914",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "退潮露出靜立人影",
+      "description": "15 秒以海水異常退去逐步揭露人影，先固定唯一主角與 35mm 冷色膠片感。",
+      "prompt": "15-second realistic cinematic horror sequence, shot on 35mm film, grey overcast beach at dusk, cold blue-grey colors, wet sand, subtle film grain.  Exactly one person: a woman in a yellow raincoat standing on the shore.  \n\n[0-5s] Wide shot of a calm beach. The woman stands at the water's edge looking out at the sea. Suddenly the water starts pulling back fast, far faster than any normal tide, exposing wet sand and rocks for hundreds of meters.  \n\n[5-10s] The viewer rises high above her. As the sea drains away, the exposed seabed reveals rows and rows of pale human figures standing perfectly still on the sand, dozens of them, all facing the ocean, their backs to the woman. \n\n[10-15s] Close-up on the woman's face as she steps back in horror. Cut to wide shot: all the figures on the seabed turn around at the exact same moment and face the viewer. In the far distance, a massive wave is rising.  \n\nNegative prompt: cartoon, anime, 3D render, sunny weather, bright colors, swimmers, figures moving out of sync, static scene, nothing happening, distorted faces, extra limbs, morphing, flickering, slow motion, watermark",
+      "promptExcerpt": null,
+      "promptLength": 1125,
+      "isLong": false,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "恐怖／懸疑"
+      ],
+      "method": "文生影片",
+      "format": "15秒／未註明",
+      "featured": false,
+      "author": "Molyin",
+      "authorUrl": "https://x.com/molyin_com",
+      "date": "2026-10-13",
+      "authorHandle": "molyin_com",
+      "postUrl": "https://x.com/molyin_com/status/2109976697156378914"
+    },
+    {
+      "id": "2082830892209221921",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "賽博朋克冰蓝角色覺醒",
+      "description": "以首幀鎖定機械角色與白底構圖，人物近乎靜止，只讓微表情與藍色機械蛇形成動態。",
+      "prompt": null,
+      "promptExcerpt": "Use the uploaded image as the exact source image and first frame. Preserve the original character design, composition, face, pale skin, glowing icy blue eyes, braided black hair, cybernetic head implants, exposed mechanical neck and chest structure, white and cobalt-blue jacket, blue serpentine mech",
+      "promptLength": 6975,
+      "isLong": true,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "恐怖／懸疑"
+      ],
+      "method": "文生影片",
+      "format": "15s／16:9",
+      "featured": false,
+      "author": "astro",
+      "authorUrl": "https://x.com/ainextastro",
+      "date": "2026-07-30",
+      "authorHandle": "ainextastro",
+      "postUrl": "https://x.com/ainextastro/status/2082830892209221921"
+    },
+    {
+      "id": "2105346237038043532",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "湖畔別翻那一頁",
+      "description": "固定小船中的左右位置與書本狀態，讓翻頁、狗的打斷與闔書在同一空間逐步發生。",
+      "prompt": null,
+      "promptExcerpt": "15-second, 16:9, cinematic realistic fantasy short developed strictly from <Picture 1>. Lock the whole sequence inside the same small lake boat space only: the same yellow-blue old wooden boat, the same dark lake water, the same orange-cyan umbrella, the same reeds and purple flowers, and the same w",
+      "promptLength": 9570,
+      "isLong": true,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "寫實"
+      ],
+      "method": "參考圖生影片",
+      "format": "15s／16:9",
+      "featured": false,
+      "author": "Loriel.AI",
+      "authorUrl": "https://x.com/ou_zhen599",
+      "date": "2026-09-30",
+      "authorHandle": "ou_zhen599",
+      "postUrl": "https://x.com/ou_zhen599/status/2105346237038043532"
+    },
+    {
+      "id": "2085622021812039920",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "湖面水珠拼出 MORNING",
+      "description": "水面與水珠的變化導向 MORNING 字樣，讓字形揭曉成為動作的收尾。",
+      "prompt": "Ultra cinematic macro shot: A calm mountain lake at dawn reflects the first golden rays of sunlight. Tiny ripples spread across the mirror-like surface as morning mist drifts gracefully above the water. Billions of sparkling droplets slowly rise into the air, suspended as if gravity has stopped. They spiral together with incredible fluid realism, naturally sculpting the word \"MORNING\" entirely from crystal-clear water. The liquid letters shimmer with golden reflections before gently collapsing into a spectacular explosion of droplets illuminated by the sunrise. Hollywood title sequence, ultra-realistic fluid simulation, volumetric lighting, IMAX quality.",
+      "promptExcerpt": null,
+      "promptLength": 662,
+      "isLong": false,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "15s／16:9",
+      "featured": false,
+      "author": "Pierrick Chevallier | IA",
+      "authorUrl": "https://x.com/CharaspowerAI",
+      "date": "2026-08-07",
+      "authorHandle": "CharaspowerAI",
+      "postUrl": "https://x.com/CharaspowerAI/status/2085622021812039920"
+    },
+    {
+      "id": "2104920100675649557",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "青龍白虎壓境",
+      "description": "慢推結合緩慢環繞，把白虎伸爪、紅衣女子與霧氣連成緊張近景，並排除字幕和浮水印。",
+      "prompt": "Slow push-in with slow orbital camera movement. A colossal white tiger lowers its head and slowly extends its right front paw toward a woman in a flowing red robe. Mist swirls around the tiger and drifts across the woman, her red garments billowing in the wind. Ends on a tense close-up standoff between the woman and the white tiger. Cinematic dark fantasy, Chinese temple silhouettes, warm orange lantern glow against cold blue-grey mist, high detail fur. No subtitles, no on-screen text, no watermarks.",
+      "promptExcerpt": null,
+      "promptLength": 505,
+      "isLong": false,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "鏡頭設計"
+      ],
+      "method": "圖生影片",
+      "format": "8秒／9:16",
+      "featured": false,
+      "author": "PixelAIGC",
+      "authorUrl": "https://x.com/PixelAigc",
+      "date": "2026-09-29",
+      "authorHandle": "PixelAigc",
+      "postUrl": "https://x.com/PixelAigc/status/2104920100675649557"
+    },
+    {
+      "id": "2082782535252410508",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "科幻探險者逼近黑暗之門",
+      "description": "多關鍵幀之間保持戴兜帽人物的身份連續，緩步逼近巨門而不突然換景。",
+      "prompt": null,
+      "promptExcerpt": "Create a 15-second, 16:9 photoreal cinematic sci-fi mystery sequence with native stereo audio.\n\nUse Image 1 as the strict anchor reference for the explorer’s identity, face, short dark hair, charcoal hooded coat, black tactical clothing, boots, gateway design, wet obsidian landscape, jagged rock for",
+      "promptLength": 3416,
+      "isLong": true,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "科幻／奇觀"
+      ],
+      "method": "參考圖生影片",
+      "format": "15s／16:9",
+      "featured": false,
+      "author": "Beginnersblog",
+      "authorUrl": "https://x.com/beginnersblog1",
+      "date": "2026-07-30",
+      "authorHandle": "beginnersblog1",
+      "postUrl": "https://x.com/beginnersblog1/status/2082782535252410508"
+    },
+    {
+      "id": "2084441225667735905",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "隱形戰機光學迷彩飛掠",
+      "description": "以飛掠動作與光學迷彩變化連接飛機和背景，重點在可見性與速度的關係。",
+      "prompt": null,
+      "promptExcerpt": "[FORMAT]\nCreate a 10-second, 16:9 photoreal cinematic wide-shot flyby of a stealth aircraft activating optical camouflage at extreme speed.\n\n[IDENTITY]\nPreserve a wide tailless delta wing, sharp faceted edges, flat wedge-shaped nose, recessed dark cockpit, matte charcoal surface, twin buried exhaust",
+      "promptLength": 2642,
+      "isLong": true,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "動作編排"
+      ],
+      "method": "文生影片",
+      "format": "10s／16:9",
+      "featured": false,
+      "author": "Jin.B",
+      "authorUrl": "https://x.com/opener_ai",
+      "date": "2026-08-04",
+      "authorHandle": "opener_ai",
+      "postUrl": "https://x.com/opener_ai/status/2084441225667735905"
+    },
+    {
+      "id": "2082770042630943156",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "無線電員守住撤離橋",
+      "description": "人物與環境分別用圖片鎖定，再以時段、無線電聲和移動路線安排橋梁關閉前的緊迫感。",
+      "prompt": null,
+      "promptExcerpt": "FORMAT\n15 seconds | 16:9 | photoreal live-action war thriller\nFictional Sahelian city at blue-hour dawn.\nUrgent, human, suspenseful, non-graphic.\n\nREFERENCE CONTROL\nImage 1 = locked AMINA identity and wardrobe.\nPreserve face, close-cropped hair, deep-brown skin, navy field jacket, silver earpiece, c",
+      "promptLength": 3526,
+      "isLong": true,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "寫實"
+      ],
+      "method": "參考圖生影片",
+      "format": "15s／16:9",
+      "featured": true,
+      "author": "ᴍᴜʀᴘʜʏ",
+      "authorUrl": "https://x.com/Diplomeme",
+      "date": "2026-07-30",
+      "authorHandle": "Diplomeme",
+      "postUrl": "https://x.com/Diplomeme/status/2082770042630943156"
+    },
+    {
+      "id": "2102426880016253191",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "京剧四大名旦梨园春色",
+      "description": "影片提示只寫戲曲動作、服裝與靠旗飄動、鏡頭慢推，不混入同帖的生圖提示。",
+      "prompt": "演员做着京剧传统戏曲动作，表现京剧艺术，服装和靠旗飘动，人物双手戏剧性地挥舞，镜头慢慢推进。",
+      "promptExcerpt": null,
+      "promptLength": 46,
+      "isLong": false,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "時尚"
+      ],
+      "method": "圖生影片",
+      "format": "约18秒／16:9",
+      "featured": true,
+      "author": "PixelAIGC",
+      "authorUrl": "https://x.com/PixelAigc",
+      "date": "2026-09-22",
+      "authorHandle": "PixelAigc",
+      "postUrl": "https://x.com/PixelAigc/status/2102426880016253191"
+    },
+    {
+      "id": "2083555537912729607",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "暴風雨黏土動畫鯨躍",
+      "description": "10 秒以黏土材質和慢動作躍出弧線寫鯨躍，讓材質風格貫穿動態。",
+      "prompt": "Claymation. A whale breaches from a stormy clay sea and rises in a slow-motion arc above the waves, body fully extended, water sheeting off its flanks. At the top of the arc it rolls onto one flank, hangs for a beat, then falls back toward the surface. Midair, the camera sweeps beneath its belly in a bold dynamic move, revealing the vast churning ocean far below and the full stretch of its clay body against the sky, then holds as it crashes down and white clay foam bursts outward across the frame. Visible fingerprints, tool marks, and material imperfections in the clay. Slightly stepped, handmade movement. The sea is sculpted clay with rolling modelled waves and white clay foam. Audio: a deep rush of water, wind, the dull slap of clay on clay, distant gulls. Composition: subject centered, action contained within the central third of the frame.",
+      "promptExcerpt": null,
+      "promptLength": 855,
+      "isLong": false,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "動畫風"
+      ],
+      "method": "參考圖生影片",
+      "format": "10s／16:9",
+      "featured": false,
+      "author": "Marco \"Shikoba\" Riccetti",
+      "authorUrl": "https://x.com/shikoba_86",
+      "date": "2026-08-01",
+      "authorHandle": "shikoba_86",
+      "postUrl": "https://x.com/shikoba_86/status/2083555537912729607"
+    },
+    {
+      "id": "2083020024340693185",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "1980 年代開源家庭喜劇",
+      "description": "以首幀鎖定人物和構圖，實體機器人、群體反應與台詞在嚴格連續性下展開。",
+      "prompt": null,
+      "promptExcerpt": "Use the supplied image as the exact opening frame. Create a hilarious, high-budget 1980s live-action family comedy movie scene, photographed on a real soundstage with practical robot costumes, animatronics, handmade props, vintage wardrobe, and authentic 35mm film color.\n\nThe entire group suddenly h",
+      "promptLength": 1925,
+      "isLong": true,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "喜劇"
+      ],
+      "method": "圖生影片",
+      "format": "12s／16:9",
+      "featured": true,
+      "author": "Brent Lynch",
+      "authorUrl": "https://x.com/BrentLynch",
+      "date": "2026-07-31",
+      "authorHandle": "BrentLynch",
+      "postUrl": "https://x.com/BrentLynch/status/2083020024340693185"
+    },
+    {
+      "id": "2083132770650571041",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "竹林武俠謎案",
+      "description": "16:9 以冷藍、墨綠與薄霧建立夜間門派查案氣氛，前景竹葉增加窺視感。",
+      "prompt": "A 16:9 cinematic wuxia mystery set in a bamboo forest at night. Use a low-saturation palette of cold blue, ink green, charcoal, and gray. Thin mist fills the forest and fine snow drifts through the air. The mood is austere, lethal, and controlled, with the tension of a martial-arts sect investigating a case and exchanging secret intelligence.\n\nDeep in the forest, dense vertical bamboo fills the background while cold white mist-light glows in the distance. Soft, out-of-focus leaves partially obscure the foreground, creating the sense of watching from within the grove. A cool, soft front-side key lights the actors’ faces; backlight keeps the foreground dark and the distance luminous. Use shallow depth of field so leaves, snow, and bamboo dissolve into soft bokeh.\nPrioritize facial close-ups and measured shot/reverse-shot coverage. Keep the rhythm restrained but tense. Photoreal period-drama production value, cinematic lighting, and no modern elements. No subtitles, on-screen text, watermarks, modern clothing or architecture, animation styling, over-smoothed skin, bright daylight, or comic performance.",
+      "promptExcerpt": null,
+      "promptLength": 1116,
+      "isLong": false,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "功夫武打"
+      ],
+      "method": "文生影片",
+      "format": "15s／16:9",
+      "featured": true,
+      "author": "kold Coffee",
+      "authorUrl": "https://x.com/sipteaandcoffee",
+      "date": "2026-07-31",
+      "authorHandle": "sipteaandcoffee",
+      "postUrl": "https://x.com/sipteaandcoffee/status/2083132770650571041"
+    },
+    {
+      "id": "2110747397441917172",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "首尾同圖 360 度環繞運鏡",
+      "description": "首尾輸入同圖，短提示只寫坐船人物與鏡頭環繞 360 度；主帖沒有媒體，不補假圖。",
+      "prompt": "男子坐船镜头环绕360度",
+      "promptExcerpt": null,
+      "promptLength": 12,
+      "isLong": false,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "鏡頭設計"
+      ],
+      "method": "首尾幀生影片",
+      "format": "未註明／未註明",
+      "featured": true,
+      "author": "PixelAIGC",
+      "authorUrl": "https://x.com/PixelAigc",
+      "date": "2026-10-15",
+      "authorHandle": "PixelAigc",
+      "postUrl": "https://x.com/PixelAigc/status/2110747397441917172"
+    },
+    {
+      "id": "2082790356983447606",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "雨夜韓國黑色電影重逢",
+      "description": "以 16:9、15 秒的韓國黑色電影預告語法，將雨夜人物、光線與重逢張力並寫。",
+      "prompt": "16:9, 15s, hyper-realistic Korean noir crime teaser.\n\nA rain-soaked Korean woman (late 20s, trench coat) enters an abandoned underground nightclub searching for her missing sister. A scarred crime boss (40s), presumed dead for years, emerges from the shadows with a lit cigarette. Atmosphere: 90s Korean noir, practical neon, rain, smoke, film grain, tactile realism, no CGI gloss.\n\nShots:\n\n1. She enters: \"언니... 여기 있어?\"\n2. Lighter ignites, revealing his scar. \"오랜만이네.\"\n3. She freezes: \"당신... 죽은 줄 알았는데.\"\n4. Slow push-in. He smiles: \"네 언니가 날 죽였다고 생각했겠지.\"\n5. They lock eyes. Thunder. Cut to black.\n\nAudio: Rain, thunder, jazz crackle, lighter click, intimate silence during dialogue.",
+      "promptExcerpt": null,
+      "promptLength": 682,
+      "isLong": false,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "寫實"
+      ],
+      "method": "文生影片",
+      "format": "19s／16:9",
+      "featured": true,
+      "author": "WasifAI",
+      "authorUrl": "https://x.com/doctorwasif",
+      "date": "2026-07-30",
+      "authorHandle": "doctorwasif",
+      "postUrl": "https://x.com/doctorwasif/status/2082790356983447606"
+    },
+    {
+      "id": "2082776032042783085",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "超高端香水電影級廣告",
+      "description": "15 秒直式從瓶身焦散微距、噴霧幻化走到基座英雄鏡頭，產品依序揭露。",
+      "prompt": null,
+      "promptExcerpt": "Create a 15-second ultra-premium cinematic luxury perfume commercial designed to fully showcase MiniMax H3's multimodal capabilities.\n\nOutput Settings:\n• Duration: 15 seconds\n• Resolution: 2K (1440p)\n• Frame Rate: 24 FPS\n• Aspect Ratio: 9:16 Vertical\n• Native Stereo Audio\n• Commercial-grade quality\n",
+      "promptLength": 2450,
+      "isLong": true,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "廣告／產品",
+        "時尚"
+      ],
+      "method": "文生影片",
+      "format": "15s／16:9",
+      "featured": true,
+      "author": "Sadia",
+      "authorUrl": "https://x.com/SadiaMalik182",
+      "date": "2026-07-30",
+      "authorHandle": "SadiaMalik182",
+      "postUrl": "https://x.com/SadiaMalik182/status/2082776032042783085"
+    },
+    {
+      "id": "2083064417798025721",
+      "medium": "video",
+      "collection": "wan-minimax",
+      "source": "x",
+      "title": "現代戰爭 FPS 實機畫面",
+      "description": "第一人稱同時定義玩家移動、武器操作、戰場與 HUD，讓介面和動作屬於同一場景。",
+      "prompt": null,
+      "promptExcerpt": "Camera: First-person perspective at eye level with authentic handheld player movement, as if recorded directly from a modern AAA military shooter. The player carries a highly detailed assault rifle with realistic animations, visible hands, tactical gloves, dynamic reload mechanics, and weapon sway. ",
+      "promptLength": 3303,
+      "isLong": true,
+      "models": [
+        "MiniMax"
+      ],
+      "modelVersion": "MiniMax H3",
+      "tags": [
+        "遊戲風",
+        "動作編排"
+      ],
+      "method": "文生影片",
+      "format": "15s／16:9",
+      "featured": true,
+      "author": "Sharon Riley",
+      "authorUrl": "https://x.com/Just_sharon7",
+      "date": "2026-07-31",
+      "authorHandle": "Just_sharon7",
+      "postUrl": "https://x.com/Just_sharon7/status/2083064417798025721"
+    }
+  ]
+}

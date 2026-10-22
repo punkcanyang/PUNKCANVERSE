@@ -154,5 +154,14 @@
   "embedFailed": "The embed could not load. Use the link below to watch on X.",
   "codeExample": "Prompt example",
   "tableAria": "Technique comparison",
-  "fullVersion": "Full version: "
+  "fullVersion": "Full version: ",
+  "allVideos": "Video prompts",
+  "fightDescription": "The original 63 fight and armed-clash prompts, kept as a separate collection.",
+  "officialAuthor": "Alibaba Cloud official example",
+  "officialLink": "Official source ↗",
+  "officialPlaceholder": "Official text example / Wan 3.0",
+  "officialNoVideo": "Official text example; no X video is provided",
+  "officialExcerptNote": "The full prompt is about {n} characters. Read it in the official source.",
+  "importFeaturedMark": " / Featured",
+  "segmentNote": "A separate prompt segment sharing the same source video"
 }

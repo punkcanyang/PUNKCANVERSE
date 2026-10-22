@@ -1,4 +1,4 @@
-# PUNKCANVERSE v0.4
+# PUNKCANVERSE v0.5
 
 AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网址 https://punkcanverse.com。视觉采用「深夜片场 · 影印批注」：暗色片场海报、局部黑红黄剪字与网点；正文与长文使用实色背景，优先阅读。
 
@@ -6,7 +6,8 @@ AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网
 
 ## 页面结构
 
-- `/`：片场首页、63 条打斗与械斗提示词（栏目名 FIGHT/PROMPTS）、模型及标签筛选。手机启用 JavaScript 后先显示 12 条，点击「显示更多」继续；无 JavaScript 时全部卡片与独立页链接仍可访问。
+- `/`：片场首页、192 条影片提示词、模型及标签筛选。手机启用 JavaScript 后先显示 12 条，点击「显示更多」继续；无 JavaScript 时全部卡片与独立页链接仍可访问。
+- `/prompts/fight/`：FIGHT/PROMPTS 打斗与械斗专栏，严格只列原来的 63 条；新收录不进入这个专栏。
 - `/prompts/video/`、`/prompts/image/`、`/prompts/music/`：独立媒介分页面。空分页有说明与视频入口；空分页不进入 sitemap。
 - `/prompts/<medium>/<id>/`：每条提示词的独立页，包括原作者、原帖、方法、模型版本、画幅、提示词、复制、推荐链接和 3 条相关提示词。
 - `/tips.html`：技术与资源，保留三份写法要点，以及推荐工具区。
@@ -15,13 +16,13 @@ AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网
 - `/essays/`、`/essays/<slug>/`：AI 工作论列表与文章。
 - `/about/`、`/contact/`、`/privacy/`、`/terms/`、`/affiliate-disclosure/`：中文说明与政策，英文原文在 `/en/`，日文在 `/ja/`，更新日期为 2026-10-22。五页均进入 sitemap，页脚连到当前语言。唯一确认的联系邮箱为 hello@punkcanverse.com。
 
-所有页面输出 PUNKCANVERSE 标题、canonical、Open Graph 和 twitter:card。sitemap 精确列出首页、有内容的媒介列表、63 条详情、技术与资源、地区、下架与 AI 工作论；有文章时也加入文章。robots 允许抓取并指向正式 sitemap。
+所有页面输出 PUNKCANVERSE 标题、canonical、Open Graph 和 twitter:card。sitemap 精确列出首页、有内容的媒介列表、192 条详情、原 63 条专栏、技术与资源、地区、下架与 AI 工作论；有文章时也加入文章。robots 允许抓取并指向正式 sitemap。
 
 ## 三语与最终网址
 
 中文网址保持原样，英文与日文分别加 `/en`、`/ja` 前缀。`data/i18n/{zh,en,ja}.json` 存界面、法律页与技术资料译文；`data/i18n/content/{zh,en,ja}.json` 按 id 存标题、收藏笔记、工作流步骤说明、地区摘要与标签对照。提示词及工作流的 prompt/settings 原文不翻，放在标为原文的 pre 中。技术资料按中文逐段翻译，保留所有出处、数字、表格与原文范例；构建时检查段落结构与内容完整性，中文原始 Markdown 保持只读。
 
-同页语言切换无需 JavaScript；启用后只在 `pcv-lang` 储存偏好，永不自动转址。偏好不同于当前页面时显示可关闭提示；关闭状态保存在当前分页的 sessionStorage，跨页有效，主动选择语言后重置。Cookie 同意仍共用 `pcv-consent`，每种语言都有完整 GA4 默认拒绝、同意与撤回控制。英文法律正文保留 v0.3 原文（其中旧栏目名、原推广标签和双语 Cookie 设置文字作为原文保留）。
+同页语言切换无需 JavaScript；启用后只在 `pcv-lang` 储存偏好，永不自动转址。偏好不同于当前页面时显示可关闭提示；关闭状态保存在当前分页的 sessionStorage，跨页有效，主动选择语言后重置。Cookie 同意仍共用 `pcv-consent`，每种语言都有完整 GA4 默认拒绝、同意与撤回控制。英文法律正文沿用 v0.3，并保留 v0.4 核准的三处英文界面引用修正。
 
 canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions`、`/takedown`，含所有语言对应网址；旧 `.html` 文件继续产出，导航仍可使用旧连结。其余目录路由不变，三语 hreflang 互指，x-default 指中文。构建 API 保留 `pages` 中文磁盘路由，并新增 `localizedPages` 完整三语描述清单，`sitemapUrls` 为全部最终网址。
 
@@ -37,7 +38,7 @@ canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions
 
 `data/prompts.json` 保持原有 63 条来源与正文，`medium` 必填且只允许 video／image／music，当前全部为 video。新媒介分页组件为 `lib/media-tabs.mjs`；v0.2 的 `renderMediumFilter` 保持不变，仍只在至少两类有内容时输出旧筛选控件。首页路径不变。
 
-短提示词显示并复制全文；超过 1500 字符时，只显示前约 300 字摘录，复制内容为摘录、换行与「完整版：原帖链接」。提示词版权归原作者，每条必附作者与原帖；不收官方文档示例作为提示词条目。成片用 X 官方嵌入显示，缩图直接引用 X 原图，两者均不转存到仓库或 dist。
+短提示词显示并复制全文；超过 1500 字符时，只显示前约 300 字摘录，复制内容为摘录、换行与「完整版：原帖链接」。提示词版权归原作者，每条必附作者与原帖；v0.5 另收 23 条经核对的阿里云官方文字范例，独立标示出处，不冒充 X 帖或生成假影片。成片用 X 官方嵌入显示，缩图直接引用 X 原图，两者均不转存到仓库或 dist。
 
 `postStatus: "removed"` 显示检查日期和失效说明，不创建嵌入。`postStatus: "sensitive"` 显示「原帖含敏感内容，请到 X 观看」，保留缓存缩图，点击外开原帖，不嵌入。1949860456958398844 已纠正为 sensitive。
 
@@ -47,6 +48,18 @@ canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions
 
 作者可经[下架入口](https://punkcanverse.com/takedown.html)或[GitHub issue](https://github.com/punkcanyang/PUNKCANVERSE/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7)申请下架。
 
+## v0.5 Wan 3.0 / MiniMax H3 收录
+
+新增 `data/prompts-wan-minimax.json`，独立保存指定来源的 129 条：Wan 3.0 系 113 条（含 5 条 Prime）、MiniMax H3 16 条；其中 106 条来自 X，23 条为阿里云官方范例。原 `data/prompts.json` 的 63 条逐字不动，工作流仍为 5 条。构建按「原 63 条 → 新 129 条」稳定合并；`dist/catalog.json` 供前端筛选与复制，`dist/data.json` 保留原 63 条兼容资料。
+
+模型筛选使用 `Wan` / `MiniMax` 原始键，显示 Wan / Wan 3.0、MiniMax H3，Prime 的版本文字仍单独保留。新条目有三语标题、收藏笔记、标签及独立网址；原始提示不翻译，超过 1500 字符只发布前 300 字摘录。三语共 636 个 HTML、630 个最终 sitemap 网址，不含空图像／音乐分页面。
+
+X 来源严格检查作者 handle、原帖 ID 和网址对应。Kangaikroto 两段使用 `2104507931337400770` / `2104507931337400770-2`，`embedId` 和 postUrl 都指同一帖；仅允许数字后接合法段号（从 2 起，无前导零），并要求存在同作者的第一段。官方资料走独立分支：`source: "official"`、`aliyun-wan3-<slug>`、固定署名、HTTPS `help.aliyun.com`；不得带 postUrl、authorHandle 或 embedId。官方卡片与详情为纯 CSS 文字占位，不请求 X 嵌入或图片；长文与复制链接指官方原文。
+
+指定来源的 featured / featuredLive 合并为 featured，26 条新收录显示三语精选标记。所有新条目明确禁止推广按钮，原 Higgsfield 四条与 Magnific 推荐工具区不变。来源快照仅保存来源指纹和必要出处，用于离线测试核对原文、摘录、日期与作者；不收来源页面附件或长文全文。
+
+缩图脚本合并两档的 X 条目与工作流，官方范例完全排除。PixelAigc 的 `2110747397441917172` 主帖无媒体，显示现有占位；其他抓取失败也安全回到占位，保留既有快取，不使用别帖缩图。实际网络抓取与人工验收状态见复核记录；build/test/verify 始终离线。
+
 ## 缩图抓取与缓存
 
 `data/thumbs.json` 只保存公开图片地址、媒体类型、片长、尺寸与抓取状态，不含作者账户字段或密钥。初始 63 条记录来自已核对的旧缓存；敏感条目依赖这份缓存，不能因再次抓取失败而清掉。
@@ -55,6 +68,8 @@ canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions
 
 ```sh
 node scripts/fetch-thumbs.mjs
+# 仅补缺图，保留已有有效快取（包含工作流）
+node scripts/fetch-thumbs.mjs --missing-only
 ```
 
 未设置 token 时使用公共 syndication 接口，token 参数为 a，请求间隔至少 250ms。已在执行环境安全配置 `X_BEARER_TOKEN` 时使用 X API v2，单批不超过 100 个 id；读取视频 preview_image_url、照片 url 以及尺寸与片长。请求 id 为 `embedId || id`。本版没有开通或调用付费 X API；测试只用假 fetch。
@@ -127,7 +142,14 @@ node --test --test-isolation=none test/v04.test.mjs
 node scripts/verify-v04.mjs
 ```
 
-测试覆盖假 X API 分批、syndication 解析和间隔、失败保留旧缓存、missing 与坏缓存占位、敏感内容、片长、三媒介分页、63 条详情与 sitemap、可选原创笔记、文章 fixture、推广属性、延迟加载 widgets 和图片失败回退。build/test/verify 不访问网络；只有手动运行 fetch-thumbs 会请求网络，不下载任何媒体文件。
+v0.5 专项测试：
+
+```sh
+node --test --test-isolation=none test/v05.test.mjs
+node scripts/verify-v05.mjs
+```
+
+测试覆盖假 X API 分批、syndication 解析和间隔、失败保留旧缓存、missing 与坏缓存占位、敏感内容、片长、三媒介分页、192 条详情与 sitemap、原 63 条专栏、23 条官方范例与 26 条新精选、可选原创笔记、文章 fixture、推广属性、延迟加载 widgets 和图片失败回退。build/test/verify 不访问网络；只有手动运行 fetch-thumbs 会请求网络，不下载任何媒体文件。
 
 v0.2 的两段空推广配置测试已按复审要求使用 `test/fixtures/affiliates-empty.json`，原断言逐项保留；构建测试输出到临时目录，不改真实配置或正式 dist。真实 Higgsfield／Magnific 配置及 sponsored 属性单独验证，下架页与地区页仍严格断言零推广按钮。verify 的站名、完整 sitemap 与脚本精确白名单按 v0.3 及 GA4 补充需求校验，保留 Impact、内容、来源、媒体文件和推广安全检查。新增测试另覆盖 GA4 默认值顺序、已同意恢复、接受／拒绝／撤回、存储不可用、缺 ID 失败，以及五页 canonical、日期、sitemap、全站页脚入口与披露链接。
 
@@ -147,6 +169,6 @@ Wrangler 会自动带上根目录 functions/。middleware 仅将 www.punkcanvers
 node scripts/check-layout.mjs
 ```
 
-它用本地 dist 去除远端资源，阻断 HTTP(S)，检查三语代表页在 360／390／1440 的 document 宽度，含后备字体与 Cookie 条。当前沙箱不允许 Chrome 的 setsockopt，自动排版测量无法完成；请在可启动 Chrome 的环境执行，并人工确认移动端导航、播放、语言选择与原文复制。交付记录与三语各十句抽样见 [v0.4 复核记录](docs/v04-review.md)。
+它用本地 dist 去除远端资源，阻断 HTTP(S)，检查三语代表页在 360／390／1440 的 document 宽度，含后备字体与 Cookie 条。当前沙箱不允许 Chrome 的 setsockopt，自动排版测量无法完成；请在可启动 Chrome 的环境执行，并人工确认移动端导航、播放、语言选择与原文复制。v0.5 交付记录、精确数量断言变更与三语各十句抽样见 [v0.5 复核记录](docs/v05-review.md)。历史记录见 [v0.4 复核记录](docs/v04-review.md)。
 
 作者：[@punkcan](https://x.com/punkcan)
