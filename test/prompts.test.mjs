@@ -76,3 +76,33 @@ test('真实 63 条资料的复制内容逐字等于完整原文', async () => {
     assert.equal(getCopyText(entry), entry.prompt);
   }
 });
+
+test('搜索支持多词、大小写和全角字符，并与模型标签取交集', () => {
+  const samples = [
+    {id:'a',title:'Night fight',author:'Alice',prompt:'镜头 tracking shot',models:['Wan'],tags:['夜战']},
+    {id:'b',title:'Day fight',author:'Bob',prompt:'wide shot',models:['Veo'],tags:['徒手']},
+  ];
+  assert.deepEqual(ids(filterEntries(samples,{q:'ＡＬＩＣＥ tracking'})),['a']);
+  assert.deepEqual(ids(filterEntries(samples,{q:'镜头',models:['Wan'],tags:['夜战']})),['a']);
+  assert.deepEqual(filterEntries(samples,{q:'Alice',models:['Veo']}),[]);
+  assert.deepEqual(filterEntries(samples,{q:'not found'}),[]);
+  const state={models:['Wan'],tags:['夜战'],q:'镜头 tracking',sort:'latest'};
+  assert.deepEqual(parseFilters(filtersToSearch(state,'?ref=share')),state);
+  assert.equal(filtersToSearch(clearFilters(),'?q=old&sort=featured&ref=share'),'?ref=share');
+  assert.equal(parseFilters('?sort=unexpected').sort,undefined);
+});
+
+test('排序稳定，不修改数据；首页精选覆盖不同模型且排除敏感或失效帖', async () => {
+  const {sortEntries,selectHomeEntries}=await import('../lib/prompts.mjs');
+  const samples=[
+    {id:'a',featured:false,date:'2026-01-02',models:['A']},
+    {id:'b',featured:true,date:'2026-01-03',models:['B']},
+    {id:'c',featured:true,date:'2026-01-03',models:['C']},
+    {id:'d',featured:true,date:'2026-01-04',models:['D'],postStatus:'sensitive'},
+  ];
+  const before=structuredClone(samples);
+  assert.deepEqual(ids(sortEntries(samples,'latest')),['d','b','c','a']);
+  assert.deepEqual(ids(sortEntries(samples,'featured')),['b','c','d','a']);
+  assert.deepEqual(ids(selectHomeEntries(samples)),['b','c']);
+  assert.deepEqual(samples,before);
+});

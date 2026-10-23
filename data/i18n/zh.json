@@ -160,10 +160,10 @@
   "importFeaturedMark": " / 精選",
   "segmentNote": "同帖不同段提示詞，共用原帖成片",
   "officialFrameCredit": "示例畫面：阿里雲 Model Studio 官方文檔（影片截圖）",
-  "navTools": "工具清單",
+  "navTools": "工具清单",
   "aboutTool": "了解這個工具",
   "tools": {
-    "title": "工具清單",
+    "title": "工具清单",
     "intro": "先了解平台能做什麼、何時推出，以及目前可核對的價格，再決定是否適合你的創作流程。清單中的部分連結為推廣連結，透過它們購買，本站可能獲得佣金，不影響你的價格。",
     "disclosure": "閱讀推廣揭露",
     "launch": "成立／推出時間",
@@ -182,8 +182,8 @@
     "bestFor": "適合誰",
     "checked": "價格查於 {date}，以官網為準",
     "pricingLink": "官方定價頁",
-    "viewTool": "看工具清單 →",
-    "viewAll": "查看完整工具清單"
+    "viewTool": "看工具清单 →",
+    "viewAll": "查看完整工具清单"
   },
   "works": {
     "eyebrow": "个人创作 / PUNKCAN",
@@ -197,5 +197,27 @@
     "back": "全部作品",
     "openMedia": "打开视频",
     "linksTitle": "相关链接"
-  }
+  },
+  "searchLabel": "搜索提示词",
+  "searchPlaceholder": "标题、作者、模型或提示词关键词",
+  "searchButton": "搜索",
+  "sortLabel": "排序",
+  "sortDefault": "收录顺序",
+  "sortFeatured": "精选优先",
+  "sortLatest": "最新发布",
+  "activeFilters": "已选条件",
+  "removeFilter": "移除：{value}",
+  "featuredTitle": "从这些精选开始",
+  "featuredIntro": "不同模型与创作方法，找到下一次尝试的起点。",
+  "browseAll": "浏览全部 {n} 条提示词",
+  "expandPrompt": "展开全文",
+  "collapsePrompt": "收起全文",
+  "copyDone": "已复制",
+  "copyRetry": "复制失败，请重试",
+  "scrollTable": "左右滑动查看完整表格",
+  "inProgress": "筹备中",
+  "quickNav": "快速跳转",
+  "homeSearchHint": "搜索完整提示词库",
+  "moreCount": "显示更多（剩余 {n} 条）",
+  "archiveIntro": "按模型、主题或关键词查找提示词，查看完整原文与作者来源。"
 }

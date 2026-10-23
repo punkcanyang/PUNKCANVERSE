@@ -15,7 +15,7 @@ test('仅当前媒介列表的链接标记 aria-current，计数与其他链接�
     const path = `/prompts/${medium}/`;
     const html = renderMediaTabs(entries,path);
     assert.equal((html.match(/aria-current="page"/g) || []).length,1);
-    assert.ok(html.includes(`<a href="${path}" aria-current="page">`));
+    assert.ok(html.includes(`<a href="${path}"${medium==='music'?' class="is-empty"':''} aria-current="page">`));
     assert.ok(html.includes('视频 <b>1</b>'));
     assert.ok(html.includes('图像 <b>1</b>'));
     assert.ok(html.includes('音乐 <b>0</b>'));

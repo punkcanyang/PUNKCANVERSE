@@ -64,7 +64,7 @@ test('v0.5.2 旧元数据指纹与192条全文不变，新增字段单独精确�
   }
 });
 
-test('v0.5.2 离线构建：22张在三语首页/视频列表/详情都有本地原图与来源，17保持占位，官方无X',async()=>{
+test('v0.5.2 离线构建：22张在三语视频列表/详情都有本地原图与来源，17保持占位，官方无X',async()=>{
   const out=await mkdtemp(join(tmpdir(),'pcv-frames-'));const saved=globalThis.fetch;
   globalThis.fetch=()=>{throw Error('Network forbidden');};
   try {

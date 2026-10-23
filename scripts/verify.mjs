@@ -112,7 +112,7 @@ await check('每条必填字段完整，原帖只允许 X status 链接，无官
 
 // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
 await check('全部提示词有完整原文、精确长度与来源指纹，页面及复制均为全文', async () => {
-  const home = await read(join(dist, 'index.html'));
+  const home = await read(join(dist, 'prompts/video/index.html'));
   for (const entry of entries) {
     assert.ok(Number.isInteger(entry.promptLength) && entry.promptLength > 0, entry.id);
     assert.equal(entry.isLong, entry.promptLength > 1500, entry.id);
@@ -131,11 +131,11 @@ await check('全部提示词有完整原文、精确长度与来源指纹，页�
   }
 });
 
-await check('dist 与 Git 追踪／待追踪文件中无图片、影片或禁止域名', async () => {
+await check('媒体仅限批准缩图与原创品牌分享图，无影片或禁止域名', async () => {
   for (const path of new Set([...distFiles, ...repoPaths.map(path => join(root, path)), ...trackedPaths.map(path => join(root, path))])) {
     // v0.5.2 spec change (boss 2026-10-22): real official sample frames
     // Only the 22 pinned paths/bytes checked by verifyV052 are permitted.
-    assert.ok(!forbiddenMedia.has(extname(path).toLowerCase()) || isOfficialFramePath(relative(root,path)), `Forbidden media: ${relative(root, path)}`);
+    assert.ok(!forbiddenMedia.has(extname(path).toLowerCase()) || isOfficialFramePath(relative(root,path)) || ['web/img/site/share.png','dist/img/site/share.png'].includes(relative(root,path)), `Forbidden media: ${relative(root, path)}`);
     const content = (await read(path)).toLowerCase();
     for (const domain of forbiddenDomains) assert.ok(!content.includes(domain), `Forbidden domain in ${relative(root, path)}`);
   }
@@ -178,8 +178,8 @@ await check('每页仅预载指定 GA4，内联脚本严格匹配同意模板，
     assert.ok(!/\son\w+\s*=/i.test(html), `${file}: inline event handler`);
   }
   assert.equal(externalScripts, distFiles.filter(path => extname(path) === '.html').length);
-  const home = await read(join(dist, 'index.html'));
-  // v0.5 spec change (boss 2026-10-22): merged video home has exactly 192 cards.
+  const home = await read(join(dist, 'prompts/video/index.html'));
+  // v0.5 spec change (boss 2026-10-22): complete video archive has exactly 192 cards.
   assert.equal((home.match(/class="prompt-card"/g) || []).length, 192);
   // v0.5 spec change (boss 2026-10-22): count X templates across both video datasets; official examples never embed.
   const availableCount = 168;
@@ -189,7 +189,7 @@ await check('每页仅预载指定 GA4，内联脚本严格匹配同意模板，
 });
 
 await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌入地址与来源说明', async () => {
-  const home = await read(join(dist, 'index.html'));
+  const home = await read(join(dist, 'prompts/video/index.html'));
   const cards = new Map([...home.matchAll(/<article\b[^>]*data-entry-id="([^"]+)"[^>]*>[\s\S]*?<\/article>/g)].map(match => [match[1], match[0]]));
   // v0.5 spec change (boss 2026-10-22): original and imported cards are all present.
   assert.equal(cards.size, 192);
@@ -312,7 +312,7 @@ await check('v0.2 数据与页面齐全，medium 必填且限定三种类别', a
   for (const file of ['regions.html']) assert.ok((await stat(join(dist, file))).isFile(), file);
   validateMedia(entries);
   assert.ok(entries.every(entry => entry.medium === 'video'), 'The current 63 entries must all remain video');
-  const home = await read(join(dist, 'index.html'));
+  const home = await read(join(dist, 'prompts/video/index.html'));
   if (availableMedia(entries).length <= 1) assert.ok(!home.includes('name="medium"'), 'Single-medium collection must not show a category switch');
 });
 
@@ -320,7 +320,7 @@ await check('推广平台映射完整、空网址无按钮，所有页面包含�
   validateAffiliates(affiliates);
   for (const key of ['hailuo', 'pixverse', 'higgsfield', 'magnific', 'kling']) assert.ok(affiliates[key], `Missing affiliate platform: ${key}`);
   for (const model of new Set(entries.flatMap(entry => entry.models))) assert.ok(Object.values(affiliates).some(platform => platform.models.includes(model)), `Missing platform for ${model}`);
-  const home = await read(join(dist, 'index.html'));
+  const home = await read(join(dist, 'prompts/video/index.html'));
   for (const entry of entries) {
     const expected = renderAffiliates(entry, affiliates);
     if (expected) assert.ok(home.includes(expected), `${entry.id}: missing sponsored link`);

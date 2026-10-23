@@ -230,7 +230,7 @@ test('v0.5 192卡不批量渲染：官方／敏感卡不观察，仅接近画面
   }
 });
 
-test('v0.5 离线 build：636页／630 sitemap，首页与视频192、FIGHT原63，129条三语详情通过专用 verify',async()=>{
+test('v0.5 离线 build：636页／630 sitemap，首页精选6条与视频192、FIGHT原63，129条三语详情通过专用 verify',async()=>{
   const out=await mkdtemp(join(tmpdir(),'pcv-v05-build-'));
   const fixtureRoot=await mkdtemp(join(tmpdir(),'pcv-v05-verify-'));
   const originalFetch=globalThis.fetch;
