@@ -89,8 +89,12 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
       }
     }
     if(locale==='zh') {
-      if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),'tips.html','Magnific belongs only in recommended tools');
-    } else if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),`${locale}/tips.html`,'Magnific belongs only in localized recommended tools');
+      // v0.5.3 spec change (boss 2026-10-23): tool list page
+      if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),'tools.html','Magnific belongs only in its tool card');
+    } else {
+      // v0.5.3 spec change (boss 2026-10-23): tool list page
+      if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),`${locale}/tools.html`,'Magnific belongs only in its localized tool card');
+    }
   }
   for(const entry of entries) {
     const html=await read(join(dist,promptPath(entry),'index.html'));

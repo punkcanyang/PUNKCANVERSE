@@ -117,10 +117,12 @@ test('离线三语 build：246 页、五工作流有图/VIDEO/片长/原文复�
   try {
     const result=await buildSite({out});
     // v0.5 spec change (boss 2026-10-22): 129 details plus a fight list in each locale add 390 pages.
-    assert.equal(result.localizedPages.length,636);
+    // v0.5.3 spec change (boss 2026-10-23): tool list page
+    assert.equal(result.localizedPages.length,639);
     const files=await readdir(out,{recursive:true});
     // v0.5 spec change (boss 2026-10-22): exact multilingual HTML file count is 636.
-    assert.equal(files.filter(x=>x.endsWith('.html')).length,636);
+    // v0.5.3 spec change (boss 2026-10-23): tool list page
+    assert.equal(files.filter(x=>x.endsWith('.html')).length,639);
     for(const page of result.localizedPages) {
       const html=await readFile(join(out,page.file),'utf8');
       assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${page.canonical}">`));
@@ -144,8 +146,10 @@ test('离线三语 build：246 页、五工作流有图/VIDEO/片长/原文复�
       }
       const about=await readFile(join(out,prefix,'about/index.html'),'utf8');assert.ok(about.includes(ui.legal.about.title));
       assert.ok(about.includes('2026-10-22'));
-      const tips=await readFile(join(out,prefix,'tips.html'),'utf8');assert.ok(tips.includes('GMRPOCT43296'));
-      assert.ok(tips.includes(`href="/${prefix}affiliate-disclosure/" class="affiliate-label"`));
+      // v0.5.3 spec change (boss 2026-10-23): tool list page
+      const tools=await readFile(join(out,prefix,'tools.html'),'utf8');assert.equal(tools.split('GMRPOCT43296').length-1,1);
+      assert.ok(tools.includes(`href="/${prefix}affiliate-disclosure/" class="affiliate-label"`));
+      const tips=await readFile(join(out,prefix,'tips.html'),'utf8');assert.ok(!tips.includes('GMRPOCT43296'));assert.ok(!tips.includes('class="affiliate-button"'));
     }
     const english=await readFile(join(out,'en/about/index.html'),'utf8');assert.ok(english.includes(i18n.ui.en.legal.about.body));
     assert.ok(result.sitemapUrls.every(url=>!url.endsWith('.html')));

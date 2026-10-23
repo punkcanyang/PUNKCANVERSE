@@ -15,7 +15,12 @@ const liveModels = new Set(livePlatforms.flatMap(platform => platform.models));
 
 function checkAffiliateButtons(html, page) {
   assert.ok(!/<div class="affiliate-(?:links|item)">\s*<\/div>/.test(html), `empty affiliate container in ${page}`);
-  assert.ok(!/<section class="recommended-tools">(?:(?!affiliate-button)[\s\S])*?<\/section>/.test(html), `empty recommended-tools in ${page}`);
+  // v0.5.3 spec change (boss 2026-10-23): tool list page
+  for(const section of html.matchAll(/<section class="recommended-tools">[\s\S]*?<\/section>/g)) {
+    assert.equal((section[0].match(/class="affiliate-button"/g)||[]).length,0);
+    const prefix=html.includes('<html lang="en"')?'/en':html.includes('<html lang="ja"')?'/ja':'';
+    assert.deepEqual([...section[0].matchAll(/<a href="([^"]+)"/g)].map(m=>m[1]),[`${prefix}/tools#higgsfield`,`${prefix}/tools#magnific`,`${prefix}/tools#pixverse`,`${prefix}/tools`]);
+  }
   const buttons = html.match(/<a\b[^>]*class="affiliate-button"[^>]*>/g) || [];
   for (const button of buttons) {
     const href = (button.match(/href="([^"]*)"/) || [])[1];

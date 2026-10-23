@@ -8,11 +8,12 @@ import { loadCatalog } from '../lib/catalog.mjs';
 import { renderAffiliates, renderRecommendedTools } from '../lib/affiliates.mjs';
 import { loadI18n, cardUI, formatText } from '../lib/i18n.mjs';
 import { buildSite } from '../build.mjs';
-import { PIXVERSE_URL, verifyV053, verifyRecommendedToolsHtml } from '../scripts/verify-v053.mjs';
+import { PIXVERSE_URL, verifyV053, verifyToolCardHtml } from '../scripts/verify-v053.mjs';
 
 const root=fileURLToPath(new URL('..',import.meta.url));
 const affiliates=JSON.parse(await readFile(join(root,'data/affiliates.json'),'utf8'));
 const {entries}=await loadCatalog(root),i18n=await loadI18n(root);
+const toolsData=JSON.parse(await readFile(join(root,'data/tools.json'),'utf8'));
 
 test('v0.5.3 PixVerse配置逐字正确，192条无匹配模型故零按钮，Higgsfield仍仅原4条',()=>{
   assert.deepEqual(affiliates.pixverse,{name:'PixVerse',url:'https://motivaiprivatelimited.sjv.io/qW3aLn',models:['PixVerse']});
@@ -60,14 +61,15 @@ test('v0.5.3 推荐工具按Magnific、PixVerse排序，共用既有样式，空
   assert.ok(renderRecommendedTools({pixverse:affiliates.pixverse}).includes(PIXVERSE_URL));
 });
 
-test('v0.5.3 离线构建三语tips各一链接、其余所有页面零链接，错顺序/属性/标示/推广码fixture会失败',async()=>{
+test('v0.5.3 离线构建三语工具卡各一推广、tips零推广，错属性/标示/推广码fixture会失败',async()=>{
   const out=await mkdtemp(join(tmpdir(),'pcv-pixverse-'));const previous=globalThis.fetch;
   globalThis.fetch=()=>{throw Error('Network forbidden');};
   try {
     await buildSite({out});await verifyV053(root,out);
     for(const locale of ['zh','en','ja']) {
       const prefix=locale==='zh'?'':`${locale}/`;
-      const html=(await readFile(join(out,prefix,'tips.html'),'utf8')).match(/<section class="recommended-tools">[\s\S]*?<\/section>/)[0];
+      // v0.5.3 spec change (boss 2026-10-23): tool list page
+      const html=(await readFile(join(out,prefix,'tools.html'),'utf8')).match(/<article class="tool-card" id="pixverse">[\s\S]*?<\/article>/)[0];
       for(const invalid of [
         html.replace('rel="sponsored noopener noreferrer"','rel="noopener noreferrer"'),
         html.replace('target="_blank"','target="_self"'),
@@ -75,10 +77,14 @@ test('v0.5.3 离线构建三语tips各一链接、其余所有页面零链接，
         html.replace(PIXVERSE_URL,affiliates.magnific.url),
         html.replace(`>${i18n.ui[locale].promoLabel}<`,'>wrong label<'),
         html.replace('</small></a></div>','</small></a><small class="affiliate-code">FAKE</small></div>'),
-      ])assert.throws(()=>verifyRecommendedToolsHtml(invalid,affiliates,i18n.ui[locale],locale));
+      ]) {
+        // v0.5.3 spec change (boss 2026-10-23): tool list page
+        assert.throws(()=>verifyToolCardHtml(invalid,'pixverse',toolsData,affiliates,i18n.ui[locale],locale));
+      }
     }
     const detail=join(out,`prompts/video/${entries[0].id}/index.html`);
     await writeFile(detail,(await readFile(detail,'utf8'))+PIXVERSE_URL);
-    await assert.rejects(()=>verifyV053(root,out),/PixVerse must appear only on the three tips pages/);
+    // v0.5.3 spec change (boss 2026-10-23): tool list page
+    await assert.rejects(()=>verifyV053(root,out),/PixVerse must appear only on the three tools pages/);
   }finally{globalThis.fetch=previous;await rm(out,{recursive:true,force:true});}
 });
