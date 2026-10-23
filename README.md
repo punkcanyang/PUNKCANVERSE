@@ -113,7 +113,7 @@ slug 可省略，使用文件名；仅接受小写英文、数字与短横线。
 
 `data/affiliates.json` 按平台配置 name、url、models，models 使用原始模型名。空网址或非 HTTP(S) 不输出按钮或空容器。对应模型出现「去 XX 试试」及「推广连结」标签；所有推广链接均使用 target="_blank" rel="sponsored noopener noreferrer"。
 
-本版仅启用已批准的 Higgsfield 与 Magnific 链接：Higgsfield 出现在其对应 4 条卡片及详情页；Magnific 放在技术与资源页的推荐工具区，不塞进视频卡片。平台有 code 字段时显示「推广码 xxx」，无 code 不输出；Magnific 的推广码为 GMRPOCT43296。其他平台网址保持空字符串。
+本版仅启用已批准的 Higgsfield、Magnific 与 PixVerse 链接：Higgsfield 出现在其对应 4 条卡片及详情页；三语技术与资源页的推荐工具区依序放 Magnific、PixVerse。当前 192 条提示词没有 PixVerse 模型，因此卡片与详情都不显示 PixVerse 按钮；不修改模型标签来增加推广。平台有 code 字段时显示「推广码 xxx」，无 code 不输出；Magnific 的推广码为 GMRPOCT43296，PixVerse 没有推广码。其他平台网址保持空字符串。
 
 所有页尾保留揭露：「本站部分按钮为推广连结，通过它们注册或购买，本站可能获得佣金，不影响你的价格。」按钮旁标签及页尾揭露均链接到 `/affiliate-disclosure/`。不添加推广平台自己的追踪脚本。
 

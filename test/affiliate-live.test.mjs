@@ -26,7 +26,8 @@ function checkAffiliateButtons(html, page) {
   return buttons.length;
 }
 test('真实推广配置只启用指定平台，按模型输出 sponsored 按钮', () => {
-  assert.deepEqual([...liveAffiliateUrls].sort(), ['https://higgsfield.ai?fpr=tsungmin-dab6c3', 'https://referral.magnific.com/mzYHTuc']);
+  // v0.5.3 spec change (boss 2026-10-23): PixVerse affiliate approved
+  assert.deepEqual([...liveAffiliateUrls].sort(), ['https://higgsfield.ai?fpr=tsungmin-dab6c3', 'https://motivaiprivatelimited.sjv.io/qW3aLn', 'https://referral.magnific.com/mzYHTuc']);
   for (const platform of Object.values(affiliates)) assert.equal(typeof platform.url, 'string');
   let emptyOnly = 0;
   let withLive = 0;

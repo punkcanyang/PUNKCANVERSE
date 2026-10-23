@@ -70,7 +70,7 @@ export async function buildSite(options = {}) {
       const tips = ['fight','wan3','minimax-h3'];
       const titles = [u.collection,'Wan 3.0','MiniMax H3'];
       const sections = tips.map((id,i)=>`<section id="${id}" class="tip-section" aria-label="${e(titles[i])}">${markdown(u.tipArticles[id])}<a class="back-top" href="${href('/tips')}#tips-top">${e(u.backTop)}</a></section>`).join('');
-      const tools = locale==='zh' ? renderRecommendedTools(affiliates) : renderRecommendedTools(affiliates,{render:platform=>`<section class="recommended-tools"><p class="eyebrow">TOOLS / RESOURCES</p><h2>${e(u.recommended)}</h2>${/* Reuse the platform renderer without inventing a workflow promotion. */renderCardTool(platform,cUI.affiliate)}</section>`});
+      const tools = locale==='zh' ? renderRecommendedTools(affiliates) : renderRecommendedTools(affiliates,{render:platforms=>`<section class="recommended-tools"><p class="eyebrow">TOOLS / RESOURCES</p><h2>${e(u.recommended)}</h2>${/* Reuse the platform renderer without inventing a workflow promotion. */platforms.map(platform=>renderCardTool(platform,cUI.affiliate)).join('')}</section>`});
       body=`<header class="page-intro" id="tips-top"><p class="eyebrow">FIELD NOTES</p><h1>${e(u.tipsHeading)}</h1><p>${e(u.tipsIntro)}</p></header><nav class="tips-toc" aria-label="${e(u.tipsToc)}">${tips.map((id,i)=>`<a href="${href('/tips')}#${id}"><small>0${i+1}</small><strong>${e(titles[i])} ↘</strong></a>`).join('')}</nav><div class="tips-content">${sections}</div>${tools}`;
     } else if (route==='/takedown') {
       title=u.takedownTitle;description=u.takedownLead;
