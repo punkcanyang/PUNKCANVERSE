@@ -237,7 +237,8 @@ test('v0.5 离线 build：636页／630 sitemap，首页与视频192、FIGHT原63
   globalThis.fetch=()=>assert.fail('Build and verify must not make network requests');
   try {
     const result=await buildSite({out});
-    assert.equal(result.localizedPages.length,636);assert.equal(result.sitemapUrls.length,630);
+    // v0.5.3 spec change (boss 2026-10-23): tool list page
+    assert.equal(result.localizedPages.length,639);assert.equal(result.sitemapUrls.length,633);
     const {symlink}=await import('node:fs/promises');
     await symlink(out,join(fixtureRoot,'dist'));
     await symlink(join(root,'data'),join(fixtureRoot,'data'));

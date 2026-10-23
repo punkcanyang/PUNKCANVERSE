@@ -1,6 +1,7 @@
 import { promptHtml } from '../lib/cards.mjs';
 import { isOfficialFramePath, withOfficialFrameBaseline } from '../lib/official-frames.mjs';
 import { verifyV052 } from './verify-v052.mjs';
+import { verifyV053 } from './verify-v053.mjs';
 import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir, stat } from 'node:fs/promises';
@@ -79,6 +80,7 @@ await verifyV04(root);
 await verifyV05(root);
 await verifyV051(root);
 await verifyV052(root);
+await verifyV053(root);
 
 await check('发布文件齐全，Cloudflare 安全标头正确', async () => {
   for (const file of ['index.html', 'tips.html', 'takedown.html', 'assets/site.css', 'assets/app.mjs', 'assets/prompts.mjs', 'assets/clipboard.mjs', 'assets/embeds.mjs', 'data.json', '_headers', 'sitemap.xml', 'robots.txt']) assert.ok((await stat(join(dist, file))).isFile(), file);

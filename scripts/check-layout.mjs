@@ -13,7 +13,7 @@ try {
   const css=await readFile('dist/assets/site.css','utf8');
   const {entries:workflows}=JSON.parse(await readFile('data/workflows.json','utf8'));
   const {entries}=JSON.parse(await readFile('data/prompts.json','utf8'));
-  const samples=['index.html','tips.html','regions.html','privacy/index.html','essays/index.html','prompts/workflow/index.html',`prompts/workflow/${workflows[0].id}/index.html`,`prompts/video/${entries[0].id}/index.html`];
+  const samples=['index.html','tips.html','tools.html','regions.html','privacy/index.html','essays/index.html','prompts/workflow/index.html',`prompts/workflow/${workflows[0].id}/index.html`,`prompts/video/${entries[0].id}/index.html`];
   const { imported } = await loadCatalog(process.cwd());
   samples.push('prompts/fight/index.html',
     `prompts/video/${imported.entries.find(entry=>entry.source==='official').id}/index.html`,

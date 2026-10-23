@@ -164,5 +164,30 @@
   "officialExcerptNote": "提示詞全文約 {n} 字，請到官方原文查看。",
   "importFeaturedMark": " / 精選",
   "segmentNote": "同帖不同段提示詞，共用原帖成片",
-  "officialFrameCredit": "示例畫面：阿里雲 Model Studio 官方文檔（影片截圖）"
+  "officialFrameCredit": "示例畫面：阿里雲 Model Studio 官方文檔（影片截圖）",
+  "navTools": "工具清單",
+  "aboutTool": "了解這個工具",
+  "tools": {
+    "title": "工具清單",
+    "intro": "先了解平台能做什麼、何時推出，以及目前可核對的價格，再決定是否適合你的創作流程。清單中的部分連結為推廣連結，透過它們購買，本站可能獲得佣金，不影響你的價格。",
+    "disclosure": "閱讀推廣揭露",
+    "launch": "成立／推出時間",
+    "features": "特色",
+    "pricing": "價格與方案",
+    "freeTier": "免費額度",
+    "plan": "方案",
+    "billing": "計費方式",
+    "monthlyPrice": "月費（美元）",
+    "credits": "點數額度",
+    "monthly": "月繳",
+    "annual": "年繳，折算月費",
+    "custom": "客製方案",
+    "undisclosed": "未公開",
+    "unit": "美元／月",
+    "bestFor": "適合誰",
+    "checked": "價格查於 {date}，以官網為準",
+    "pricingLink": "官方定價頁",
+    "viewTool": "看工具清單 →",
+    "viewAll": "查看完整工具清單"
+  }
 }

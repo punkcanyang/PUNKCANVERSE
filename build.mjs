@@ -5,7 +5,8 @@ import { join, dirname } from 'node:path';
 import { escapeHtml as e, externalLink, markdownToHtml } from './lib/markdown.mjs';
 import { renderCard, renderPromptDetail } from './lib/cards.mjs';
 import { validatePostMetadata } from './lib/posts.mjs';
-import { validateAffiliates, renderRecommendedTools } from './lib/affiliates.mjs';
+import { validateAffiliates } from './lib/affiliates.mjs';
+import { validateTools, renderToolsPage, renderToolTeasers } from './lib/tools.mjs';
 import { renderNewsletter, validateSite } from './lib/newsletter.mjs';
 import { renderMediumFilter, validateMedia } from './lib/media.mjs';
 import { renderRegions, validateRegions, validateRegionText } from './lib/regions.mjs';
@@ -31,6 +32,8 @@ export async function buildSite(options = {}) {
   const site = await readJSON('data/site.json');
   const regionData = await readJSON('data/regions.json');
   const i18n = options.i18n || await loadI18n(root);
+  const toolsData = await readJSON('data/tools.json');
+  validateTools(toolsData,i18n.ui);
   validateMedia(entries); entries.forEach(validatePostMetadata);
   validateAffiliates(affiliates); validateSite(site); validateRegions(regionData); validateWorkflows(workflows);
   validateI18n(i18n,entries,workflows,regionData);
@@ -70,8 +73,11 @@ export async function buildSite(options = {}) {
       const tips = ['fight','wan3','minimax-h3'];
       const titles = [u.collection,'Wan 3.0','MiniMax H3'];
       const sections = tips.map((id,i)=>`<section id="${id}" class="tip-section" aria-label="${e(titles[i])}">${markdown(u.tipArticles[id])}<a class="back-top" href="${href('/tips')}#tips-top">${e(u.backTop)}</a></section>`).join('');
-      const tools = locale==='zh' ? renderRecommendedTools(affiliates) : renderRecommendedTools(affiliates,{render:platform=>`<section class="recommended-tools"><p class="eyebrow">TOOLS / RESOURCES</p><h2>${e(u.recommended)}</h2>${/* Reuse the platform renderer without inventing a workflow promotion. */renderCardTool(platform,cUI.affiliate)}</section>`});
+      const tools = renderToolTeasers(toolsData,locale,{...u.tools,title:u.recommended});
       body=`<header class="page-intro" id="tips-top"><p class="eyebrow">FIELD NOTES</p><h1>${e(u.tipsHeading)}</h1><p>${e(u.tipsIntro)}</p></header><nav class="tips-toc" aria-label="${e(u.tipsToc)}">${tips.map((id,i)=>`<a href="${href('/tips')}#${id}"><small>0${i+1}</small><strong>${e(titles[i])} ↘</strong></a>`).join('')}</nav><div class="tips-content">${sections}</div>${tools}`;
+    } else if (route==='/tools') {
+      title=u.tools.title;description=u.tools.intro;
+      body=renderToolsPage(toolsData,affiliates,locale,u.tools,cUI.affiliate);
     } else if (route==='/takedown') {
       title=u.takedownTitle;description=u.takedownLead;
       body=`<section class="takedown-content"><p class="eyebrow">RESPECT THE CREATORS</p><h1>${e(u.takedownHeading)}</h1><p class="takedown-lead">${e(u.takedownLead)}</p><div class="takedown-steps"><span>01</span><p>${e(u.takedownStep)}</p><span>02</span><p>${e(u.takedownFooter)}</p></div>${externalLink(takedownUrl,e(u.takedownButton),'primary-button')}<p class="takedown-note">${e(u.takedownThanks)}</p><a class="text-link" href="${href('/')}">${e(u.backArchive)}</a></section>`;
@@ -140,7 +146,7 @@ ${alternate}
 </head>
 <body data-locale="${locale}" data-messages="${e(JSON.stringify(client))}">
 <a class="skip-link" href="${e(path)}#main">${e(u.skip)}</a>
-<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"><a href="${href('/prompts/video/')}">${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${locale==='zh'?'tips.html':href('/tips')}">${e(u.navTips)}</a><a href="${href('/essays/')}">${e(u.navEssays)} <small>BY PUNKCAN</small></a><a href="${locale==='zh'?'regions.html':href('/regions')}">${e(u.navRegions)}</a></nav></header>
+<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"><a href="${href('/prompts/video/')}">${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${locale==='zh'?'tips.html':href('/tips')}">${e(u.navTips)}</a><a href="${publicHref('/tools')}">${e(u.navTools)}</a><a href="${href('/essays/')}">${e(u.navEssays)} <small>BY PUNKCAN</small></a><a href="${locale==='zh'?'regions.html':href('/regions')}">${e(u.navRegions)}</a></nav></header>
 <aside id="language-hint" class="language-hint" hidden><a data-preferred-language></a><button type="button" data-dismiss-language aria-label="${e(u.dismiss)}">×</button></aside>
 <main id="main">${body}</main>
 ${renderNewsletter(site)}${footer}
@@ -169,9 +175,6 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
   // exposed separately so they can inspect exact final URLs and fallback canonicals.
   return {pages:descriptors.filter(x=>x.locale==='zh').map(x=>x.disk),localizedPages:descriptors,sitemapUrls};
 }
-// renderAffiliates is shared with cards so codes and sponsored attributes stay identical.
-import { renderAffiliates } from './lib/affiliates.mjs';
-function renderCardTool(platform,ui) {return renderAffiliates({models:['recommended']},{recommended:{...platform,models:['recommended']}},ui);}
 if (process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href) {
   const result=await buildSite();console.log(`Built ${result.localizedPages.length} PUNKCANVERSE pages → dist/`);
 }

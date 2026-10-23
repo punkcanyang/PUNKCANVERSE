@@ -164,5 +164,30 @@
   "officialExcerptNote": "全文は約{n}文字です。公式の原文をご覧ください。",
   "importFeaturedMark": " / 注目",
   "segmentNote": "同じ投稿の動画を参照する、別の区間のプロンプトです",
-  "officialFrameCredit": "サンプル画像：Alibaba Cloud Model Studio 公式ドキュメント（動画のスチル）"
+  "officialFrameCredit": "サンプル画像：Alibaba Cloud Model Studio 公式ドキュメント（動画のスチル）",
+  "navTools": "ツール一覧",
+  "aboutTool": "このツールについて",
+  "tools": {
+    "title": "ツール一覧",
+    "intro": "各サービスの特徴、設立・公開時期、確認できた料金をまとめています。制作に合うかを検討する際の参考にしてください。一部はアフィリエイトリンクで、リンク先で購入すると当サイトが紹介料を受け取る場合がありますが、利用者の価格は変わりません。",
+    "disclosure": "アフィリエイトの方針を読む",
+    "launch": "設立・公開時期",
+    "features": "主な機能",
+    "pricing": "プランと料金",
+    "freeTier": "無料で使える範囲",
+    "plan": "プラン名",
+    "billing": "支払い方法",
+    "monthlyPrice": "月額（米ドル）",
+    "credits": "クレジット枠",
+    "monthly": "月払い",
+    "annual": "年払いの月額換算",
+    "custom": "個別契約",
+    "undisclosed": "非公開",
+    "unit": "米ドル／月",
+    "bestFor": "こんな方に",
+    "checked": "価格は{date}時点の確認です。最新情報は公式サイトをご確認ください。",
+    "pricingLink": "公式の料金ページ",
+    "viewTool": "ツールの紹介を見る →",
+    "viewAll": "ツール一覧をすべて見る"
+  }
 }

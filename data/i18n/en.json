@@ -164,5 +164,30 @@
   "officialExcerptNote": "The full prompt is about {n} characters. Read it in the official source.",
   "importFeaturedMark": " / Featured",
   "segmentNote": "A separate prompt segment sharing the same source video",
-  "officialFrameCredit": "Sample frame: Alibaba Cloud Model Studio documentation (video still)"
+  "officialFrameCredit": "Sample frame: Alibaba Cloud Model Studio documentation (video still)",
+  "navTools": "Tools",
+  "aboutTool": "About this tool",
+  "tools": {
+    "title": "Tool list",
+    "intro": "A closer look at what each platform offers, when it started and the prices we could verify. Some links are affiliate links: purchases through them may earn this site a commission at no extra cost to you.",
+    "disclosure": "Read the affiliate disclosure",
+    "launch": "Founded or launched",
+    "features": "Features",
+    "pricing": "Plans and pricing",
+    "freeTier": "Free allowance",
+    "plan": "Plan",
+    "billing": "Billing",
+    "monthlyPrice": "Monthly price (USD)",
+    "credits": "Credit allowance",
+    "monthly": "Monthly billing",
+    "annual": "Billed annually; monthly equivalent",
+    "custom": "Custom plan",
+    "undisclosed": "Not disclosed",
+    "unit": "USD / month",
+    "bestFor": "Who it suits",
+    "checked": "Prices checked on {date}; see the official site for current pricing.",
+    "pricingLink": "Official pricing page",
+    "viewTool": "About this tool →",
+    "viewAll": "View the full tool list"
+  }
 }

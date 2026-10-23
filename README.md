@@ -113,7 +113,7 @@ slug 可省略，使用文件名；仅接受小写英文、数字与短横线。
 
 `data/affiliates.json` 按平台配置 name、url、models，models 使用原始模型名。空网址或非 HTTP(S) 不输出按钮或空容器。对应模型出现「去 XX 试试」及「推广连结」标签；所有推广链接均使用 target="_blank" rel="sponsored noopener noreferrer"。
 
-本版仅启用已批准的 Higgsfield 与 Magnific 链接：Higgsfield 出现在其对应 4 条卡片及详情页；Magnific 放在技术与资源页的推荐工具区，不塞进视频卡片。平台有 code 字段时显示「推广码 xxx」，无 code 不输出；Magnific 的推广码为 GMRPOCT43296。其他平台网址保持空字符串。
+本版仅启用已批准的 Higgsfield、Magnific 与 PixVerse 链接：Higgsfield 出现在其对应 4 条卡片及详情页；三语工具清单 `/tools`、`/en/tools`、`/ja/tools` 依序介绍 Higgsfield、Magnific、PixVerse，说明与价格之后才放推广按钮。技术与资源页只保留介绍及工具清单入口，不含推广网址或推广码。当前 192 条提示词没有 PixVerse 模型，因此卡片与详情都不显示 PixVerse 按钮；不修改模型标签来增加推广。平台有 code 字段时显示「推广码 xxx」，无 code 不输出；Magnific 的推广码为 GMRPOCT43296，PixVerse 没有推广码。其他平台网址保持空字符串。
 
 所有页尾保留揭露：「本站部分按钮为推广连结，通过它们注册或购买，本站可能获得佣金，不影响你的价格。」按钮旁标签及页尾揭露均链接到 `/affiliate-disclosure/`。不添加推广平台自己的追踪脚本。
 
@@ -184,3 +184,9 @@ node scripts/check-layout.mjs
 它用本地 dist 去除远端资源，阻断 HTTP(S)，检查三语代表页在 360／390／1440 的 document 宽度，含后备字体与 Cookie 条。当前沙箱不允许 Chrome 的 setsockopt，自动排版测量无法完成；请在可启动 Chrome 的环境执行，并人工确认移动端导航、播放、语言选择与原文复制。v0.5 交付记录、精确数量断言变更与三语各十句抽样见 [v0.5 复核记录](docs/v05-review.md)。历史记录见 [v0.4 复核记录](docs/v04-review.md)。
 
 作者：[@punkcan](https://x.com/punkcan)
+
+## 工具清单与资料来源
+
+`data/tools.json` 保留 2026-10-23 核准 facts 的全部值与 source，以及逐项附 fact 路径和 source 的三语文案。建置会校验原始资料指纹与译文数字来源，价格直接取 facts，未公开的值明确显示「未公開／Not disclosed／非公開」。2023 年对 Higgsfield、PixVerse 表示公司成立，Magnific 为 2023 年 11 月产品推出；年缴折算月费、点数发放周期与每席计价独立标示，不补推测价格。
+
+三语输出 `tools.html`，canonical 与 sitemap 使用不带 .html 的最终网址。官方定价页是普通外连，只有三个推广按钮使用 sponsored；Magnific 的推广码仅在工具清单出现。原四条 Higgsfield 提示词的按钮不变，旁边新增本语言的工具介绍入口。新增功能与逐项断言变更见 [v0.5.3 工具清单交付记录](docs/v053-tools-review.md)。

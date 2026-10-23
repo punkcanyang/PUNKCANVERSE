@@ -34,7 +34,8 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
   validateImportedThumbnails(imported.entries,thumbs);
   const sitemap=await read('dist/sitemap.xml');
   const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(row=>row[1]);
-  assert.equal(locs.length,630);
+  // v0.5.3 spec change (boss 2026-10-23): tool list page
+  assert.equal(locs.length,633);
   for(const locale of ['zh','en','ja']) {
     const prefix=locale==='zh'?'':locale+'/';
     const urlPrefix=locale==='zh'?'':`/${locale}`;
