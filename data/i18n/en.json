@@ -1,7 +1,6 @@
 {
   "navPrompts": "Prompt archive",
   "navTips": "Techniques & resources",
-  "navEssays": "Working with AI",
   "navRegions": "Regions & appeals",
   "mainNav": "Main navigation",
   "skip": "Skip to content",
@@ -13,7 +12,6 @@
   "heroTitle": "Your next idea starts with a frame.",
   "heroBody": "A starting point for AI video, image and music. Save prompts, study shots and keep notes from the process.",
   "enterArchive": "Explore the archive / {n} prompts ↗",
-  "essayIntro": "Long-running notes on creative work, tools and the way I work.",
   "count": "{n} entries",
   "collection": "Fights & armed clashes",
   "thumbHint": "Thumbnail from the original post · click to load the X embed",
@@ -88,9 +86,6 @@
   "workflowEmptyTitle": "Workflows are on the way",
   "workflowEmptyBody": "From character images to a finished clip, we document the steps creators have shared.",
   "workflowIntro": "Follow the steps creators have shared and see how their tools work together.",
-  "essayEmptyTitle": "Start with the tools. Come back to the work.",
-  "essayEmptyBody": "Notes on where AI fits in the creative process, and how we choose, judge and work. Essays will appear after the author’s review.",
-  "essayBack": "Working with AI / ESSAYS",
   "aiDisclosure": "Prepared with AI assistance, reviewed by the author",
   "untranslated": "This essay hasn't been translated yet — showing the original (Chinese).",
   "regionTitle": "AI tools: regional access & appeals",
@@ -118,12 +113,12 @@
   "unknownFilters": "This link includes unknown filters: {items}. Clear filters to browse again.",
   "languageHint": "Read this page in English →",
   "dismiss": "Dismiss",
-  "homeDescription": "PUNKCANVERSE: a creative archive of AI video, image and music prompts, production notes and essays on working with AI.",
+  "homeDescription": "PUNKCANVERSE: a creative archive of AI video, image and music prompts, production notes and personal work by Punkcan.",
   "legal": {
     "about": {
       "title": "About",
       "summary": "About Punkcan and PUNKCANVERSE.",
-      "body": "<h2>A personal creative archive</h2><p>PUNKCANVERSE is Punkcan’s personal site. It collects selected AI video, image and music prompts, credits their original creators, and provides a place for creative breakdowns, technical resources and Working with AI essays.</p><p>Notes and essays reflect the author’s observations. Original breakdowns and first-hand test notes are published when available; an empty field is not presented as a completed review.</p><h2>Creators and sources</h2><p>Prompt copyright belongs to the original creators. Entries link to their authors and source posts. Videos appear through official X embeds. Thumbnails reference public X image URLs directly; we do not host copies of these videos or images.</p><p>Find Punkcan on X: <a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a>.</p>"
+      "body": "<h2>A personal creative archive</h2><p>PUNKCANVERSE is Punkcan’s personal site. It collects selected AI video, image and music prompts, credits their original creators, and provides a place for creative breakdowns, technical resources and Punkcan’s personal work.</p><p>The portfolio presents Punkcan’s work; collected prompts are credited separately to their original creators. Original breakdowns and first-hand test notes are published when available; an empty field is not presented as a completed review.</p><h2>Creators and sources</h2><p>Prompt copyright belongs to the original creators. Entries link to their authors and source posts. Videos appear through official X embeds. Thumbnails reference public X image URLs directly; we do not host copies of these videos or images.</p><p>Find Punkcan on X: <a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a>.</p>"
     },
     "contact": {
       "title": "Contact",
@@ -189,5 +184,18 @@
     "pricingLink": "Official pricing page",
     "viewTool": "About this tool →",
     "viewAll": "View the full tool list"
+  },
+  "works": {
+    "eyebrow": "CREATIVE WORK / PUNKCAN",
+    "title": "Personal work",
+    "intro": "Films, images and creative projects by Punkcan.",
+    "emptyLabel": "COLLECTION IN PROGRESS",
+    "emptyTitle": "A place for my work.",
+    "emptyBody": "No work has been published here yet. Once available, each project will include media, a short introduction and related links.",
+    "browsePrompts": "Explore the prompt archive",
+    "viewWork": "View project",
+    "back": "All projects",
+    "openMedia": "Open video",
+    "linksTitle": "Related links"
   }
 }

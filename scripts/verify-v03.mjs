@@ -1,3 +1,4 @@
+import { loadWorks } from '../lib/works.mjs';
 import { promptHtml } from '../lib/cards.mjs';
 import { OFFICIAL_FRAMES } from '../lib/official-frames.mjs';
 import {loadCatalog} from '../lib/catalog.mjs';
@@ -23,12 +24,13 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
   const affiliates = JSON.parse(await read(join(root,'data/affiliates.json')));
   const site = JSON.parse(await read(join(root,'data/site.json')));
   const essays = await loadEssays(pathToFileURL(join(root,'content/essays')+'/'));
+  const works = await loadWorks(root);
   const workflows=JSON.parse(await read(join(root,'data/workflows.json'))).entries;
   const translations=await loadI18n(root);
   // v0.4 spec change (boss 2026-10-22): exact final URLs, all three locales and workflows.
   // v0.5 spec change (boss 2026-10-22): page/sitemap counts cover the full 192-entry catalog; old data checks still cover the original 63.
   const {entries:catalogEntries}=await loadCatalog(root);
-  const descriptors=listPages({entries:catalogEntries,workflows,essays,sitePages:SITE_PAGES});
+  const descriptors=listPages({entries:catalogEntries,workflows,essays,works,sitePages:SITE_PAGES});
   const expected=descriptors.filter(page=>page.sitemap).map(page=>page.path);
   const urls = [...(await read(join(dist,'sitemap.xml'))).matchAll(/<loc>([^<]+)<\/loc>/g)].map(match=>match[1]);
   assert.deepEqual(urls,expected.map(path=>'https://punkcanverse.com'+path),'Sitemap must list every real public page exactly once');
@@ -45,7 +47,8 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
   assert.equal(htmlFiles.length,paths.length,'No unexpected HTML pages');
   for (const path of paths) {
     const file=join(dist,fileForPublic(path));
-    const locale=descriptors.find(page=>page.path===path).locale;
+    const descriptor=descriptors.find(page=>page.path===path);
+    const locale=descriptor.locale;
     const ui=translations.ui[locale];
     // v0.4 spec change (boss 2026-10-22): untranslated essays point to their original.
     const canonicalPath=descriptors.find(page=>page.path===path).canonical;
@@ -66,7 +69,16 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
     verifyAnalyticsHtml(html);
     const external=[...html.matchAll(/<script\b[^>]*src="(https?:\/\/[^"]+)"[^>]*>/gi)].map(match=>match[1]);
     assert.deepEqual(external,[GA_SCRIPT_URL],'Only the approved Google tag may be preloaded; X remains interaction-only');
-    assert.ok(!/<video\b|<source\b|\sonerror\s*=/i.test(html));
+    assert.ok(!/<source\b|\sonerror\s*=/i.test(html));
+    // Portfolio videos are opt-in, declared media; prompt pages retain their no-video rule.
+    const videos=[...html.matchAll(/<video\b[^>]*>/g)].map(match=>match[0]);
+    const expectedVideos=descriptor.work?.media.filter(media=>media.type==='video') || [];
+    assert.equal(videos.length,expectedVideos.length);
+    videos.forEach((video,index)=>{
+      assert.ok(video.includes(`src="${escapeHtml(expectedVideos[index].src)}"`));
+      assert.ok(video.includes('controls playsinline preload="none"'));
+      assert.ok(!video.includes('autoplay'));
+    });
     for(const mail of html.matchAll(/mailto:([^"'<>\s]+)/gi))assert.equal(mail[1],'hello@punkcanverse.com');
     const footer=html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
     if(locale==='zh') {
@@ -77,7 +89,9 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
     for (const match of html.matchAll(/<img\b[^>]*>/g)) {
       // v0.5.2 spec change (boss 2026-10-22): real official sample frames
       const src=match[0].match(/\bsrc="([^"]+)"/)?.[1];
-      assert.ok(/^https:\/\/pbs\.twimg\.com\//.test(src) || Object.values(OFFICIAL_FRAMES).some(frame=>frame && frame.src===src), 'Images must use X originals or one of the 22 approved local frames');
+      const pageWorks=descriptor.work?[descriptor.work]:descriptor.route==='/works/'?works:[];
+      const workImages=pageWorks.flatMap(work=>work.media.flatMap(media=>media.type==='image'?[media.src]:media.poster?[media.poster]:[]));
+      assert.ok(/^https:\/\/pbs\.twimg\.com\//.test(src) || Object.values(OFFICIAL_FRAMES).some(frame=>frame && frame.src===src) || workImages.map(escapeHtml).includes(src), 'Images must be declared portfolio media, X originals or approved local frames');
       for(const attribute of ['width="','height="','alt="','loading="lazy"','decoding="async"'])assert.ok(match[0].includes(attribute));
     }
     for(const match of html.matchAll(/<a\b[^>]*>/g)) {
@@ -117,7 +131,7 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
   }
   const regionData=JSON.parse(await read(join(root,'data/regions.json')));
   validateRegions(regionData);validateRegionText(await read(join(dist,'regions.html')));
-  if(!essays.length)assert.ok((await read(join(dist,'essays/index.html'))).includes('即将推出'));
+  if(!works.length)assert.ok((await read(join(dist,'essays/index.html'))).includes('作品整理中'));
   const script=await read(join(dist,'assets/embeds.mjs'));
   assert.ok(script.includes("script.src = 'https://platform.twitter.com/widgets.js'"));
   console.log(`✓ v0.3：${paths.length} 页、63 条详情、缩图、延迟嵌入、推广属性、sitemap 与内容边界校验通过`);

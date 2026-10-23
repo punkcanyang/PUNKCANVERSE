@@ -1,3 +1,4 @@
+import { loadWorks } from '../lib/works.mjs';
 import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -45,7 +46,7 @@ export async function verifyV04(root=fileURLToPath(new URL('..',import.meta.url)
   const i18n=await loadI18n(root);
   validateI18n(i18n,entries,workflows,regions);validateWorkflows(workflows);
   const essays=await loadEssays(pathToFileURL(join(root,'content/essays')+'/'));
-  const pages=listPages({entries,workflows,essays,sitePages:SITE_PAGES});
+  const pages=listPages({entries,workflows,essays,works:await loadWorks(root),sitePages:SITE_PAGES});
   const allFiles=await readdir(join(root,'dist'),{recursive:true});
   assert.deepEqual(allFiles.filter(x=>x.endsWith('.html')).sort(),pages.map(x=>x.file).sort(),'Exact multilingual HTML files');
   for (const page of pages) {

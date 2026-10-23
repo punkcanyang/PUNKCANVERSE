@@ -118,11 +118,11 @@ test('离线三语 build：246 页、五工作流有图/VIDEO/片长/原文复�
     const result=await buildSite({out});
     // v0.5 spec change (boss 2026-10-22): 129 details plus a fight list in each locale add 390 pages.
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    assert.equal(result.localizedPages.length,639);
+    assert.equal(result.localizedPages.length,642);
     const files=await readdir(out,{recursive:true});
     // v0.5 spec change (boss 2026-10-22): exact multilingual HTML file count is 636.
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    assert.equal(files.filter(x=>x.endsWith('.html')).length,639);
+    assert.equal(files.filter(x=>x.endsWith('.html')).length,642);
     for(const page of result.localizedPages) {
       const html=await readFile(join(out,page.file),'utf8');
       assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${page.canonical}">`));
@@ -255,8 +255,12 @@ test('X 失败提示与 Markdown 工具列使用当前语言，保留手动观�
   }
 });
 
-test('五页英文法律标题、摘要、正文与 v0.3 指纹一致，输出只调整本语言连结',async()=>{
-  const copy=SITE_PAGES.map(page=>i18n.ui.en.legal[page.path.slice(1,-1)]);
+test('英文说明页只允许作品介绍迁移，其余法律正文保留原指纹',async()=>{
+  const copy=structuredClone(SITE_PAGES.map(page=>i18n.ui.en.legal[page.path.slice(1,-1)]));
+  // User-requested portfolio migration: reverse only the two approved About phrases.
+  assert.ok(copy[0].body.includes('technical resources and Punkcan’s personal work'));
+  copy[0].body=copy[0].body.replace('technical resources and Punkcan’s personal work','technical resources and Working with AI essays')
+    .replace('The portfolio presents Punkcan’s work; collected prompts are credited separately to their original creators.','Notes and essays reflect the author’s observations.');
   // v0.4 spec change (商務拓展 2026-10-22): en legal text matches en UI labels
   assert.equal(createHash('sha256').update(JSON.stringify(copy)).digest('hex'),'1aed3f6580fec000f1a62ea1d6bef62f5c8f30a90445d92bb2679a29ecf74434');
   const out=await mkdtemp(join(tmpdir(),'pcv-legal-languages-'));
