@@ -1,10 +1,9 @@
 // Optional, fully offline browser check. Requires an already-installed Chrome.
 // No package install, HTTP server, analytics, image request or network connection.
 import { spawn } from 'node:child_process';
-import { mkdtemp, readFile, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { pathToFileURL } from 'node:url';
 import assert from 'node:assert/strict';
 import { loadCatalog } from '../lib/catalog.mjs';
 const temporary=await mkdtemp(join(tmpdir(),'pcv-layout-'));
@@ -13,7 +12,7 @@ try {
   const css=await readFile('dist/assets/site.css','utf8');
   const {entries:workflows}=JSON.parse(await readFile('data/workflows.json','utf8'));
   const {entries}=JSON.parse(await readFile('data/prompts.json','utf8'));
-  const samples=['index.html','tips.html','tools.html','regions.html','privacy/index.html','essays/index.html','prompts/workflow/index.html',`prompts/workflow/${workflows[0].id}/index.html`,`prompts/video/${entries[0].id}/index.html`];
+  const samples=['index.html','tips.html','tools.html','regions.html','privacy/index.html','works/index.html','essays/index.html','prompts/workflow/index.html',`prompts/workflow/${workflows[0].id}/index.html`,`prompts/video/${entries[0].id}/index.html`];
   const { imported } = await loadCatalog(process.cwd());
   samples.push('prompts/fight/index.html',
     `prompts/video/${imported.entries.find(entry=>entry.source==='official').id}/index.html`,
@@ -44,12 +43,11 @@ try {
     const prefix=locale==='zh'?'':`${locale}/`;
     const raw=await readFile(join('dist',prefix,file),'utf8');
     const html=raw.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'').replace(/<img\b[^>]*>/gi,'').replace(/<base\b[^>]*>/gi,'').replace('</head>',`<style>${css}\nh1{font-family:"DejaVu Sans",sans-serif!important}</style></head>`);
-    const fixture=join(temporary,'page.html');await writeFile(fixture,html);
     for(const width of [360,390,1440]) {
       await cmd('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<500});
-      const loadedEvent=new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Page load timeout')),8000);events.set('Page.loadEventFired',()=>{clearTimeout(timer);resolve();});});
-      await cmd('Page.navigate',{url:pathToFileURL(fixture).href});
-      await loadedEvent;
+      // Send the document over CDP, also supported by browsers isolated from local /tmp.
+      const {frameTree}=await cmd('Page.getFrameTree');
+      await cmd('Page.setDocumentContent',{frameId:frameTree.frame.id,html});
       let loaded=false;
       for(let attempt=0;attempt<100;attempt++) {const r=await cmd('Runtime.evaluate',{expression:'document.readyState',returnByValue:true});if(r.result.value==='complete'){loaded=true;break;}await new Promise(resolve=>setTimeout(resolve,20));}
       assert.ok(loaded,'Page must finish loading');
@@ -58,4 +56,10 @@ try {
     }
   }
   console.log(`${checks} offline layout checks passed (zh/en/ja × 360/390/1440).`);
-} finally {chrome?.kill();await rm(temporary,{recursive:true,force:true});}
+} finally {
+  if(chrome && chrome.exitCode===null && chrome.signalCode===null) {
+    const stopped=new Promise(resolve=>chrome.once('exit',resolve));
+    chrome.kill();await stopped;
+  }
+  await rm(temporary,{recursive:true,force:true,maxRetries:5,retryDelay:100});
+}

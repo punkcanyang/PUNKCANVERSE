@@ -13,10 +13,10 @@ AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网
 - `/tips.html`：技术与资源，保留三份写法要点，以及推荐工具区。
 - `/regions.html`：AI 工具各地区使用与申诉。
 - `/takedown.html`：下架申请，48 小时内处理，无需先证明身份。
-- `/essays/`、`/essays/<slug>/`：AI 工作论列表与文章。
+- `/works/`、`/works/<slug>/`：个人作品列表与详情，支持图片、视频、简介及外链，三语同构。当前没有公开作品，显示空状态。旧 `/essays/` 三语入口保留为作品列表别名。
 - `/about/`、`/contact/`、`/privacy/`、`/terms/`、`/affiliate-disclosure/`：中文说明与政策，英文原文在 `/en/`，日文在 `/ja/`，更新日期为 2026-10-22。五页均进入 sitemap，页脚连到当前语言。唯一确认的联系邮箱为 hello@punkcanverse.com。
 
-所有页面输出 PUNKCANVERSE 标题、canonical、Open Graph 和 twitter:card。sitemap 精确列出首页、有内容的媒介列表、192 条详情、原 63 条专栏、技术与资源、地区、下架与 AI 工作论；有文章时也加入文章。robots 允许抓取并指向正式 sitemap。
+所有页面输出 PUNKCANVERSE 标题、canonical、Open Graph 和 twitter:card。sitemap 精确列出首页、有内容的媒介列表、192 条详情、原 63 条专栏、技术与资源、地区、下架与个人作品；有公开作品时加入详情，旧文章详情仍兼容。robots 允许抓取并指向正式 sitemap。
 
 ## 三语与最终网址
 
@@ -90,24 +90,13 @@ node scripts/fetch-thumbs.mjs --missing-only
 
 build 只读缓存，不抓网络。缓存缺失、损坏或缺某条时，页面输出片场场记板占位。浏览器图片加载失败也回到相同占位。图片使用 pbs.twimg.com 公共原址、固定比例及 width/height，配合 lazy/async 加载；片长以 m:ss 显示。
 
-## AI 工作论：新增文章
+## 个人作品
 
-在 `content/essays/` 放一个 Markdown 文件即可，当前正式目录只有 .gitkeep，没有示例文章。支持以下单行 front matter（示例仅说明字段，不是上线文章）：
+作品数据在 `content/works.json`，当前为 `{ "entries": [] }`。主入口 `/works/`，三语导航、首页与介绍文案同步更新。旧 `/essays/` 三语入口继续可读，canonical 与语言切换指向 `/works/`，别名不进入 sitemap；保留既有文章详情读取以兼容历史链接。
 
-```yaml
----
-title: 文章标题
-date: 2026-10-21
-summary: 一段中文摘要。
-slug: article-slug
-aiAssisted: false
-lang: zh
----
-```
+作品支持三语标题、简介、说明、图片／视频直链及外链，只有明确 `published: true` 的条目进入输出。无封面不造图，无作品不生成假卡片或详情。媒体不随构建下载，不新增服务或费用。字段说明与发布步骤见 [个人作品维护](docs/works.md)。
 
-slug 可省略，使用文件名；仅接受小写英文、数字与短横线。title、date、summary 必填，日期必须有效；正文用现有 Markdown 转换器，原始 HTML 转义、链接仅接受 HTTP(S)。署名为 Punkcan，只有 aiAssisted: true 才输出「AI 辅助整理，作者审校」。没有文章时，列表保留导航并显示「即将推出」及栏目说明，不生成不存在的文章页。测试文章只在 test/fixtures/essays/。
-
-原文文件为 `<slug>.md`，可标 `lang: zh`；译文用 `<slug>.en.md`、`<slug>.ja.md` 并沿用相同 slug，front matter 的标题与摘要写对应语言。缺译时仍生成该语言入口并明确标示显示原文，canonical 指原文页；hreflang 与 sitemap 仅列真实存在的译本。不会把译文算作额外文章，正式目录继续不放示例。
+当前空数据输出 642 个 HTML、633 个最终 sitemap URL；每件公开作品增加三语详情。旧版交付数量见历史复核记录。
 
 ## 推广链接与推荐工具
 

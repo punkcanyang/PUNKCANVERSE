@@ -1,7 +1,6 @@
 {
   "navPrompts": "プロンプト集",
   "navTips": "制作のヒントと資料",
-  "navEssays": "AIと働く",
   "navRegions": "利用地域と申し立て",
   "mainNav": "メインナビゲーション",
   "skip": "本文へ移動",
@@ -13,7 +12,6 @@
   "heroTitle": "この一コマから、次の作品へ。",
   "heroBody": "AIの動画・画像・音楽制作の入り口です。プロンプトを集め、映像を読み解き、制作の記録を残します。",
   "enterArchive": "プロンプト集を見る / {n}件 ↗",
-  "essayIntro": "制作や道具の選び方、仕事の進め方を考える、継続的な記録です。",
   "count": "全{n}件",
   "collection": "格闘と武器アクション",
   "thumbHint": "元投稿の画像です。クリックするとXを読み込みます",
@@ -88,9 +86,6 @@
   "workflowEmptyTitle": "ワークフローを準備しています",
   "workflowEmptyBody": "キャラクター画像から完成映像まで、作者が公開した工程を順にまとめます。",
   "workflowIntro": "作者が公開した手順をたどりながら、ツールをどうつないで一本の動画に仕上げているかを見ていきます。",
-  "essayEmptyTitle": "道具を入り口に、制作そのものを考えます。",
-  "essayEmptyBody": "制作の中でAIをどう使い、どう選び、どう判断するかを記録します。記事は著者の確認後に公開します。",
-  "essayBack": "AIと働く / ESSAYS",
   "aiDisclosure": "AIの補助で整理し、著者が確認しています",
   "untranslated": "この記事はまだ翻訳されていないため、原文（中国語）を表示しています。",
   "regionTitle": "AIツールの利用地域と申し立て",
@@ -118,12 +113,12 @@
   "unknownFilters": "未登録の条件がリンクに含まれています：{items}。絞り込みを解除してご覧ください。",
   "languageHint": "日本語版で見る →",
   "dismiss": "閉じる",
-  "homeDescription": "PUNKCANVERSEはAIによる動画・画像・音楽制作の記録です。プロンプト、制作メモ、AIとの働き方を集めています。",
+  "homeDescription": "PUNKCANVERSEはAIによる動画・画像・音楽制作の記録です。プロンプトや制作メモ、Punkcanの個人作品を紹介します。",
   "legal": {
     "about": {
       "title": "このサイトについて",
       "summary": "PunkcanとPUNKCANVERSEについて。",
-      "body": "<h2>個人の制作アーカイブ</h2><p>PUNKCANVERSEはPunkcanの個人サイトです。AIによる動画・画像・音楽のプロンプトを選び、元の作者を明記して、制作の解説、技術資料、「AIと働く」の記事を掲載します。</p><p>メモや記事は著者の観察に基づきます。独自の解説や実際に試した記録は内容がある場合に公開し、空欄を完成済みのレビューとして扱いません。</p><h2>作者と出典</h2><p>プロンプトの著作権は元の作者に帰属します。各項目に作者と元投稿へのリンクを付けています。動画はXの公式埋め込みで表示し、画像はXの公開URLを直接参照します。動画や画像のコピーは保存しません。</p><p>PunkcanのXアカウント：<a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a>。</p>"
+      "body": "<h2>個人の制作アーカイブ</h2><p>PUNKCANVERSEはPunkcanの個人サイトです。AIによる動画・画像・音楽のプロンプトを選び、元の作者を明記して、制作の解説、技術資料、個人作品の展示スペースを用意しています。</p><p>作品ページはPunkcan自身の制作を紹介し、収集したプロンプトは元の作者を別途明記します。独自の解説や実際に試した記録は内容がある場合に公開し、空欄を完成済みのレビューとして扱いません。</p><h2>作者と出典</h2><p>プロンプトの著作権は元の作者に帰属します。各項目に作者と元投稿へのリンクを付けています。動画はXの公式埋め込みで表示し、画像はXの公開URLを直接参照します。動画や画像のコピーは保存しません。</p><p>PunkcanのXアカウント：<a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a>。</p>"
     },
     "contact": {
       "title": "お問い合わせ",
@@ -189,5 +184,18 @@
     "pricingLink": "公式の料金ページ",
     "viewTool": "ツールの紹介を見る →",
     "viewAll": "ツール一覧をすべて見る"
+  },
+  "works": {
+    "eyebrow": "個人の制作 / PUNKCAN",
+    "title": "個人作品",
+    "intro": "Punkcan の映像、画像、制作プロジェクト。",
+    "emptyLabel": "作品を整理中",
+    "emptyTitle": "ここに自分の作品をまとめます。",
+    "emptyBody": "現在、公開中の作品はありません。公開後は映像や画像、短い紹介、関連リンクをご覧いただけます。",
+    "browsePrompts": "プロンプト集を見る",
+    "viewWork": "作品を見る",
+    "back": "作品一覧",
+    "openMedia": "動画を開く",
+    "linksTitle": "関連リンク"
   }
 }

@@ -1,4 +1,5 @@
 import { promptHtml } from '../lib/cards.mjs';
+import { loadWorks } from '../lib/works.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -35,7 +36,7 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
   const sitemap=await read('dist/sitemap.xml');
   const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(row=>row[1]);
   // v0.5.3 spec change (boss 2026-10-23): tool list page
-  assert.equal(locs.length,633);
+  assert.equal(locs.length,633 + 3 * (await loadWorks(root)).length);
   for(const locale of ['zh','en','ja']) {
     const prefix=locale==='zh'?'':locale+'/';
     const urlPrefix=locale==='zh'?'':`/${locale}`;

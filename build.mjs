@@ -12,12 +12,14 @@ import { renderMediumFilter, validateMedia } from './lib/media.mjs';
 import { renderRegions, validateRegions, validateRegionText } from './lib/regions.mjs';
 import { readThumbs } from './lib/thumbs.mjs';
 import { renderMediaTabs, promptPath } from './lib/media-tabs.mjs';
-import { loadEssays, renderEssay, renderEssayList } from './lib/essays.mjs';
+import { loadEssays, renderEssay } from './lib/essays.mjs';
 import { renderAnalytics, renderConsentBanner } from './lib/analytics.mjs';
 import { SITE_PAGES, renderSiteLinks, renderLegalPage } from './lib/site-pages.mjs';
 import { loadI18n, validateI18n, formatText, localizeEntry, translateTag, translateModelName, cardUI, workflowCopy } from './lib/i18n.mjs';
 import { listPages, publicPath, switchHref, HTML_LANG, OG_LOCALE } from './lib/routes.mjs';
 import { validateWorkflows, renderWorkflowCard, renderWorkflowDetail, renderWorkflowEmpty } from './lib/workflows.mjs';
+
+import { loadWorks, publishedWorks, renderWorks, renderWork } from './lib/works.mjs';
 
 export const SITE_URL = 'https://punkcanverse.com';
 export async function buildSite(options = {}) {
@@ -29,6 +31,7 @@ export async function buildSite(options = {}) {
   const workflows = options.workflows ?? (await readJSON('data/workflows.json')).entries;
   const thumbs = await readThumbs(options.thumbPath || join(root,'data/thumbs.json'),readFile);
   const essays = await loadEssays(pathToFileURL((options.essayDirectory || join(root,'content/essays'))+'/'));
+  const works = options.works === undefined ? await loadWorks(root) : publishedWorks({entries: options.works});
   const site = await readJSON('data/site.json');
   const regionData = await readJSON('data/regions.json');
   const i18n = options.i18n || await loadI18n(root);
@@ -37,7 +40,7 @@ export async function buildSite(options = {}) {
   validateMedia(entries); entries.forEach(validatePostMetadata);
   validateAffiliates(affiliates); validateSite(site); validateRegions(regionData); validateWorkflows(workflows);
   validateI18n(i18n,entries,workflows,regionData);
-  const descriptors = listPages({entries,workflows,essays,sitePages:SITE_PAGES});
+  const descriptors = listPages({entries,workflows,essays,works,sitePages:SITE_PAGES});
   const models = [...new Set(entries.flatMap(x=>x.models))];
   const tags = [...new Set(entries.flatMap(x=>x.tags))];
   const pages = new Map();
@@ -67,7 +70,7 @@ export async function buildSite(options = {}) {
     if (route==='/') {
       title='AI VIDEO / IMAGE / MUSIC';description=u.homeDescription;
       // The H film-slate artwork keeps its original 003 edition number.
-      body=`<section class="cinema-hero"><div class="hero-topline"><span>AI VIDEO / IMAGE / MUSIC</span><span>PRODUCTION No. 003 — OCT. 2026</span></div><div class="cinema-title"><h1 aria-label="PUNKCANVERSE"><span>PUNKCAN</span><span><b class="cut-letter">V</b>ERSE<span class="title-dot">.</span></span></h1><aside class="copy-mark"><span>NIGHT SHIFT</span><strong>COPY<br>003</strong><svg class="safety-pin" viewBox="0 0 180 60" fill="none" aria-hidden="true"><path d="M33 16C10-1 0 32 19 42c10 6 19 1 20-9L145 8c18-4 27 7 20 20L53 49 33 16Z" stroke="currentColor" stroke-width="4"/></svg><small>notes from the set</small></aside><span class="vertical-caption">NOTES FROM BEHIND THE CAMERA</span></div><div class="cinema-bottom"><div><h2>${e(u.heroTitle)}</h2><p>${e(u.heroBody).replace(/\n/g,'<br>')}</p><a class="primary-button" href="${href('/')}#library">${e(t('enterArchive',{n:entries.length}))}</a></div><div class="hero-slate"><small>DIRECTED & CURATED BY</small><strong>PUNKCAN</strong><span>ARCHIVE ${entries.length} / EDITION 03</span></div><div class="hero-take"><span>TAKE</span><strong>03</strong></div></div><div class="film-strip" aria-hidden="true"></div><div class="reel-notes"><span>ORIGINAL POSTS / REAL PROMPTS</span><a href="${href('/essays/')}">${e(u.navEssays)} / Punkcan ↗</a></div></section>${library(entries)}<section class="home-essays"><p class="eyebrow">02 / ESSAYS</p><h2><a href="${href('/essays/')}">${e(u.navEssays)} ↗</a></h2><p>${e(u.essayIntro)}</p></section>`;
+      body=`<section class="cinema-hero"><div class="hero-topline"><span>AI VIDEO / IMAGE / MUSIC</span><span>PRODUCTION No. 003 — OCT. 2026</span></div><div class="cinema-title"><h1 aria-label="PUNKCANVERSE"><span>PUNKCAN</span><span><b class="cut-letter">V</b>ERSE<span class="title-dot">.</span></span></h1><aside class="copy-mark"><span>NIGHT SHIFT</span><strong>COPY<br>003</strong><svg class="safety-pin" viewBox="0 0 180 60" fill="none" aria-hidden="true"><path d="M33 16C10-1 0 32 19 42c10 6 19 1 20-9L145 8c18-4 27 7 20 20L53 49 33 16Z" stroke="currentColor" stroke-width="4"/></svg><small>notes from the set</small></aside><span class="vertical-caption">NOTES FROM BEHIND THE CAMERA</span></div><div class="cinema-bottom"><div><h2>${e(u.heroTitle)}</h2><p>${e(u.heroBody).replace(/\n/g,'<br>')}</p><a class="primary-button" href="${href('/')}#library">${e(t('enterArchive',{n:entries.length}))}</a></div><div class="hero-slate"><small>DIRECTED & CURATED BY</small><strong>PUNKCAN</strong><span>ARCHIVE ${entries.length} / EDITION 03</span></div><div class="hero-take"><span>TAKE</span><strong>03</strong></div></div><div class="film-strip" aria-hidden="true"></div><div class="reel-notes"><span>ORIGINAL POSTS / REAL PROMPTS</span><a href="${href('/works/')}">${e(u.works.title)} / Punkcan ↗</a></div></section>${library(entries)}<section class="home-works"><p class="eyebrow">02 / WORKS</p><h2><a href="${href('/works/')}">${e(u.works.title)} ↗</a></h2><p>${e(u.works.intro)}</p></section>`;
     } else if (route==='/tips') {
       title=u.tipsTitle;description=u.tipsIntro;
       const tips = ['fight','wan3','minimax-h3'];
@@ -99,14 +102,16 @@ export async function buildSite(options = {}) {
     } else if (route.startsWith('/prompts/')) {
       const entry=entries.find(x=>promptPath(x)===route);title=localized(entry).title;description=localized(entry).description;
       body=renderPromptDetail(localized(entry),entries,affiliates,thumbs.entries?.[entry.id],entry.collection==='wan-minimax'?cUI:renderUI);
-    } else if (route==='/essays/') {
-      title=u.navEssays;description=u.essayIntro;
-      const collection=essays.map(x=>x.lang===locale?x:x.translations?.[locale]||x);
-      body=renderEssayList(collection,{title,intro:description,comingSoon:u.comingSoon,emptyTitle:u.essayEmptyTitle,emptyBody:u.essayEmptyBody,byline:u.byline,essayHref:slug=>href(`/essays/${slug}/`)});
+    } else if (route==='/works/') {
+      title=u.works.title;description=u.works.intro;
+      body=renderWorks(works,locale,u.works,href);
+    } else if (descriptor.work) {
+      title=descriptor.work.copy[locale].title;description=descriptor.work.copy[locale].summary;
+      body=renderWork(descriptor.work,locale,u.works,href);
     } else if (descriptor.essay) {
       const original=descriptor.essay;const essay=original.lang===locale?original:original.translations?.[locale]||original;
       title=essay.title;description=essay.summary;
-      body=renderEssay(essay,{listHref:href('/essays/'),backLabel:u.essayBack,aiDisclosure:u.aiDisclosure,...(essay===original&&locale!==original.lang?{untranslatedNotice:u.untranslated}:{})});
+      body=renderEssay(essay,{listHref:href('/works/'),backLabel:u.works.back,aiDisclosure:u.aiDisclosure,...(essay===original&&locale!==original.lang?{untranslatedNotice:u.untranslated}:{})});
     } else {
       const legal=u.legal[route.slice(1,-1)];title=legal.title;description=legal.summary;
       // English legal prose is carried over verbatim, with only local links scoped.
@@ -146,7 +151,7 @@ ${alternate}
 </head>
 <body data-locale="${locale}" data-messages="${e(JSON.stringify(client))}">
 <a class="skip-link" href="${e(path)}#main">${e(u.skip)}</a>
-<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"><a href="${href('/prompts/video/')}">${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${locale==='zh'?'tips.html':href('/tips')}">${e(u.navTips)}</a><a href="${publicHref('/tools')}">${e(u.navTools)}</a><a href="${href('/essays/')}">${e(u.navEssays)} <small>BY PUNKCAN</small></a><a href="${locale==='zh'?'regions.html':href('/regions')}">${e(u.navRegions)}</a></nav></header>
+<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}><a href="${href('/prompts/video/')}">${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${locale==='zh'?'tips.html':href('/tips')}">${e(u.navTips)}</a><a href="${publicHref('/tools')}">${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${locale==='zh'?'regions.html':href('/regions')}">${e(u.navRegions)}</a></nav></header>
 <aside id="language-hint" class="language-hint" hidden><a data-preferred-language></a><button type="button" data-dismiss-language aria-label="${e(u.dismiss)}">×</button></aside>
 <main id="main">${body}</main>
 ${renderNewsletter(site)}${footer}

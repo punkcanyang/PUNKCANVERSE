@@ -146,7 +146,7 @@ test('离线 build：63 条独立页、完整 sitemap、无示例文章或模型
       assert.ok(!/白模|\/models\//.test(html));
       assert.ok(html.includes('PUNKCANVERSE'));assert.ok(!html.includes('src="https://platform.twitter.com/widgets.js"'));
     }
-    assert.ok((await readFile(join(dir,'essays/index.html'),'utf8')).includes('即将推出'));
+    assert.ok((await readFile(join(dir,'essays/index.html'),'utf8')).includes('作品整理中'));
     assert.equal(result.pages.filter(path=>path.startsWith('/essays/')).length,1);
     assert.ok((await readFile(join(dir,'prompts/image/index.html'),'utf8')).includes('图像提示词整理中'));
     assert.ok(!result.sitemapUrls.some(url=>/\/models\/|\/prompts\/(image|music)\/$/.test(url)));

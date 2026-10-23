@@ -1,7 +1,6 @@
 {
   "navPrompts": "提示词库",
   "navTips": "技术与资源",
-  "navEssays": "AI 工作论",
   "navRegions": "地区与申诉",
   "mainNav": "主导航",
   "skip": "跳到主要内容",
@@ -13,7 +12,6 @@
   "heroTitle": "创作，从这一帧开始。",
   "heroBody": "AI 视频、图像、音乐的创作入口。\n收藏提示词，拆解镜头，留下制作笔记。",
   "enterArchive": "进入提示词库 / {n} 条 ↗",
-  "essayIntro": "关于创作、工具与工作方式的长期笔记。",
   "count": "共 {n} 条",
   "collection": "打斗与械斗",
   "thumbHint": "原帖缩图 · 点击后载入 X",
@@ -88,9 +86,6 @@
   "workflowEmptyTitle": "工作流整理中",
   "workflowEmptyBody": "从角色图到成片，逐步整理作者公开的制作过程。",
   "workflowIntro": "从原作者公开的步骤出发，看工具如何接力完成一支影片。",
-  "essayEmptyTitle": "从工具出发，回到创作。",
-  "essayEmptyBody": "这里将记录 AI 如何进入创作过程，以及我们如何选择、判断和工作。文章将在作者审校后发布。",
-  "essayBack": "AI 工作论 / ESSAYS",
   "aiDisclosure": "AI 辅助整理，作者审校",
   "untranslated": "本文尚未翻译，以下显示原文（中文）。",
   "regionTitle": "AI 工具各地区使用与申诉",
@@ -118,12 +113,12 @@
   "unknownFilters": "链接中包含未收录的筛选项：{items}。可清除筛选重新浏览。",
   "languageHint": "查看中文版 →",
   "dismiss": "关闭提示",
-  "homeDescription": "PUNKCANVERSE：AI 视频、图像与音乐创作的入口。收藏真实提示词、制作笔记与 AI 工作论。",
+  "homeDescription": "PUNKCANVERSE：AI 视频、图像与音乐创作的入口。收藏真实提示词、制作笔记，展示 Punkcan 的个人作品。",
   "legal": {
     "about": {
       "title": "关于本站",
       "summary": "关于 Punkcan 与 PUNKCANVERSE。",
-      "body": "<h2>个人创作收藏</h2><p>PUNKCANVERSE 是 Punkcan 的个人站，收录精选 AI 视频、图像与音乐提示词，标明原作者与出处，并记录创作拆解、技术资源与 AI 工作论。</p><p>笔记与文章是作者的观察。有内容时才发布原创拆解与实测心得，不把空白字段当成完成的评测。</p><h2>作者与来源</h2><p>提示词版权归原作者。每条资料附作者与原帖连结。影片使用 X 官方嵌入；缩图直接引用 X 公开图片网址，不转存影片或图片。</p><p>在 X 找 Punkcan：<a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a>。</p>"
+      "body": "<h2>个人创作收藏</h2><p>PUNKCANVERSE 是 Punkcan 的个人站，收录精选 AI 视频、图像与音乐提示词，标明原作者与出处，提供创作拆解、技术资源与个人作品展示区。</p><p>作品区展示 Punkcan 的创作，提示词收藏另列原作者与出处。有内容时才发布原创拆解与实测心得，不把空白字段当成完成的评测。</p><h2>作者与来源</h2><p>提示词版权归原作者。每条资料附作者与原帖连结。影片使用 X 官方嵌入；缩图直接引用 X 公开图片网址，不转存影片或图片。</p><p>在 X 找 Punkcan：<a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a>。</p>"
     },
     "contact": {
       "title": "联系本站",
@@ -189,5 +184,18 @@
     "pricingLink": "官方定價頁",
     "viewTool": "看工具清單 →",
     "viewAll": "查看完整工具清單"
+  },
+  "works": {
+    "eyebrow": "个人创作 / PUNKCAN",
+    "title": "个人作品",
+    "intro": "Punkcan 的影像、图像与创作项目。",
+    "emptyLabel": "作品整理中",
+    "emptyTitle": "这里将展示我的作品。",
+    "emptyBody": "目前暂无公开作品。作品发布后，可在这里查看影像、图片、简短介绍与相关链接。",
+    "browsePrompts": "先逛逛提示词库",
+    "viewWork": "查看作品",
+    "back": "全部作品",
+    "openMedia": "打开视频",
+    "linksTitle": "相关链接"
   }
 }

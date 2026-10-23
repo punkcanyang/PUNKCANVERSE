@@ -238,11 +238,12 @@ test('v0.5 离线 build：636页／630 sitemap，首页与视频192、FIGHT原63
   try {
     const result=await buildSite({out});
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    assert.equal(result.localizedPages.length,639);assert.equal(result.sitemapUrls.length,633);
+    assert.equal(result.localizedPages.length,642);assert.equal(result.sitemapUrls.length,633);
     const {symlink}=await import('node:fs/promises');
     await symlink(out,join(fixtureRoot,'dist'));
     await symlink(join(root,'data'),join(fixtureRoot,'data'));
     await symlink(join(root,'test'),join(fixtureRoot,'test'));
+    await symlink(join(root,'content'),join(fixtureRoot,'content'));
     await verifyV05(fixtureRoot);
   } finally {globalThis.fetch=originalFetch;await rm(fixtureRoot,{recursive:true,force:true});await rm(out,{recursive:true,force:true});}
 });

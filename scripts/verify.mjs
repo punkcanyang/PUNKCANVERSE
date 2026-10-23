@@ -1,3 +1,4 @@
+import { loadWorks } from '../lib/works.mjs';
 import { promptHtml } from '../lib/cards.mjs';
 import { isOfficialFramePath, withOfficialFrameBaseline } from '../lib/official-frames.mjs';
 import { verifyV052 } from './verify-v052.mjs';
@@ -279,7 +280,7 @@ await check('sitemap 精确列出全部正式页面，robots 允许抓取并指�
   // v0.4 spec change (boss 2026-10-22): final URLs for every locale and workflow.
   const workflows=JSON.parse(await read(join(root,'data/workflows.json'))).entries;
   // v0.5 spec change (boss 2026-10-22): exact sitemap adds imported details and the original fight collection.
-  const expectedPaths=listPages({entries:catalogEntries,workflows,essays,sitePages:SITE_PAGES}).filter(page=>page.sitemap).map(page=>page.path);
+  const expectedPaths=listPages({entries:catalogEntries,workflows,essays,works:await loadWorks(root),sitePages:SITE_PAGES}).filter(page=>page.sitemap).map(page=>page.path);
   assert.equal((sitemap.match(/<url>/g) || []).length, expectedPaths.length);
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), expectedPaths.map(path => `https://punkcanverse.com${path}`));
   assert.equal(await read(join(dist, 'robots.txt')), 'User-agent: *\nAllow: /\nSitemap: https://punkcanverse.com/sitemap.xml\n');
