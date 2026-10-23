@@ -6,7 +6,7 @@ AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网
 
 ## 页面结构
 
-- `/`：片场首页、192 条影片提示词、模型及标签筛选。手机启用 JavaScript 后先显示 12 条，点击「显示更多」继续；无 JavaScript 时全部卡片与独立页链接仍可访问。
+- `/`：片场首页、六条跨模型精选、全库搜索入口与工作流／作品入口。完整 192 条内容在 `/prompts/video/`；启用 JavaScript 后桌面与手机均先显示 12 条，点击「显示更多」继续。完整库无 JavaScript 时全部卡片与原文仍可访问。
 - `/prompts/fight/`：FIGHT/PROMPTS 打斗与械斗专栏，严格只列原来的 63 条；新收录不进入这个专栏。
 - `/prompts/video/`、`/prompts/image/`、`/prompts/music/`：独立媒介分页面。空分页有说明与视频入口；空分页不进入 sitemap。
 - `/prompts/<medium>/<id>/`：每条提示词的独立页，包括原作者、原帖、方法、模型版本、画幅、提示词、复制、推荐链接和 3 条相关提示词。
@@ -50,7 +50,7 @@ canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions
 
 ## v0.5 Wan 3.0 / MiniMax H3 收录
 
-新增 `data/prompts-wan-minimax.json`，独立保存指定来源的 129 条：Wan 3.0 系 113 条（含 5 条 Prime）、MiniMax H3 16 条；其中 106 条来自 X，23 条为阿里云官方范例。原库的 20 条长提示词在 v0.5.1 补回全文，另外 43 条及全部原有元数据不变，工作流仍为 5 条。构建按「原 63 条 → 新 129 条」稳定合并；`dist/catalog.json` 供前端筛选与复制，`dist/data.json` 保留原 63 条兼容资料。
+新增 `data/prompts-wan-minimax.json`，独立保存指定来源的 129 条：Wan 3.0 系 113 条（含 5 条 Prime）、MiniMax H3 16 条；其中 106 条来自 X，23 条为阿里云官方范例。原库的 20 条长提示词在 v0.5.1 补回全文，另外 43 条及全部原有元数据不变，工作流仍为 5 条。构建按「原 63 条 → 新 129 条」稳定合并；`dist/catalog.json` 和 `dist/data.json` 保留完整库与原 63 条兼容资料。浏览器直接使用页面中的筛选元数据、可见译文及完整提示词，不再请求 catalog.json；复制直接读取原文 pre。
 
 模型筛选使用 `Wan` / `MiniMax` 原始键，显示 Wan / Wan 3.0、MiniMax H3，Prime 的版本文字仍单独保留。新条目有三语标题、收藏笔记、标签及独立网址；原始提示不翻译；v0.5.1 起每条均完整发布，取消摘录限制。三语共 636 个 HTML、630 个最终 sitemap 网址，不含空图像／音乐分页面。
 
@@ -170,7 +170,7 @@ Wrangler 会自动带上根目录 functions/。middleware 仅将 www.punkcanvers
 node scripts/check-layout.mjs
 ```
 
-它用本地 dist 去除远端资源，阻断 HTTP(S)，检查三语代表页在 360／390／1440 的 document 宽度，含后备字体与 Cookie 条。当前沙箱不允许 Chrome 的 setsockopt，自动排版测量无法完成；请在可启动 Chrome 的环境执行，并人工确认移动端导航、播放、语言选择与原文复制。v0.5 交付记录、精确数量断言变更与三语各十句抽样见 [v0.5 复核记录](docs/v05-review.md)。历史记录见 [v0.4 复核记录](docs/v04-review.md)。
+它用本地 dist 去除远端资源，阻断 HTTP(S)，检查三语代表页在 360／390／1440 的 document 宽度，含后备字体与 Cookie 条。本轮在允许启动 Chromium 的环境通过 144 项离线宽度检查，另新增 `CHROME_BIN=/usr/bin/chromium node scripts/check-reading-ux.mjs` 验证真实模块的三语搜索、复制、排序、历史与显示更多。此脚本通过请求拦截加载 dist，所有外部请求均阻断；真实 X 播放与外链仍需联网验收。v0.5 交付记录、精确数量断言变更与三语各十句抽样见 [v0.5 复核记录](docs/v05-review.md)。历史记录见 [v0.4 复核记录](docs/v04-review.md)。
 
 作者：[@punkcan](https://x.com/punkcan)
 
@@ -179,3 +179,14 @@ node scripts/check-layout.mjs
 `data/tools.json` 保留 2026-10-23 核准 facts 的全部值与 source，以及逐项附 fact 路径和 source 的三语文案。建置会校验原始资料指纹与译文数字来源，价格直接取 facts，未公开的值明确显示「未公開／Not disclosed／非公開」。2023 年对 Higgsfield、PixVerse 表示公司成立，Magnific 为 2023 年 11 月产品推出；年缴折算月费、点数发放周期与每席计价独立标示，不补推测价格。
 
 三语输出 `tools.html`，canonical 与 sitemap 使用不带 .html 的最终网址。官方定价页是普通外连，只有三个推广按钮使用 sponsored；Magnific 的推广码仅在工具清单出现。原四条 Higgsfield 提示词的按钮不变，旁边新增本语言的工具介绍入口。新增功能与逐项断言变更见 [v0.5.3 工具清单交付记录](docs/v053-tools-review.md)。
+
+
+## 阅读与查找体验更新（2026-10-23）
+
+沿用现有黑／橙／黄视觉。功能元数据提升至 12–13px，原文与操作约 14px，主要正文 16px；手机导航换行，各栏目按路由高亮。列表页有独立一级标题，长原文提供展开／收起，复制状态同时显示在按钮旁与 Cookie 条上方。
+
+提示词库搜索标题、作者、模型、标签、笔记及原文；多关键词取交集，支持全角规范化与大小写不敏感。模型／标签仍保留原有同类 OR、跨类 AND 规则。排序支持收录顺序、精选优先、最新发布；同值保持原顺序。URL 使用 `q`、`sort`、`model`、`tag`，清除时保留无关参数，旧首页筛选 URL 转到同语言完整库。排序移动现有卡片节点，不重建提示词或已加载的嵌入。
+
+首页使用已有 featured 标记选择六条，优先覆盖不同模型，不新增精选事实，也不展示敏感／失效帖。首页中文 HTML 由约 1.10 MB 降到约 47 KB（未压缩）；完整库仍保留服务端输出全部 192 条原文，以支持无 JS 阅读和原文搜索，尚未改成服务端分页。
+
+分享封面为本站原创品牌图 `web/img/site/share.png`，构建复制到 `/img/site/share.png`；它与作者媒体无关，来源和推广资料不变。新增验证见 `test/reading-ux.test.mjs`、`scripts/check-reading-ux.mjs`，历史断言迁移原因见 [阅读体验复核](docs/reading-ux.md)。

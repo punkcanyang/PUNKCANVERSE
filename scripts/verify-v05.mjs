@@ -1,3 +1,4 @@
+import { selectHomeEntries } from '../lib/prompts.mjs';
 import { promptHtml } from '../lib/cards.mjs';
 import { loadWorks } from '../lib/works.mjs';
 import assert from 'node:assert/strict';
@@ -44,7 +45,8 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
     const listing=await read(`dist/${prefix}prompts/video/index.html`);
     const fight=await read(`dist/${prefix}prompts/fight/index.html`);
     const getCards=html=>new Map([...html.matchAll(/<article class="prompt-card" data-entry-id="([^"]+)"[\s\S]*?<\/article>/g)].map(row=>[row[1],row[0]]));
-    const cards=getCards(home);
+    const cards=getCards(listing);
+    assert.deepEqual([...getCards(home).keys()],selectHomeEntries(entries).map(entry=>entry.id));
     assert.equal(cards.size,192);
     assert.deepEqual([...getCards(listing).keys()],entries.map(entry=>entry.id));
     assert.deepEqual([...getCards(fight).keys()],original.entries.map(entry=>entry.id));

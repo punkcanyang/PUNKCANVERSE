@@ -197,5 +197,27 @@
     "back": "作品一覧",
     "openMedia": "動画を開く",
     "linksTitle": "関連リンク"
-  }
+  },
+  "searchLabel": "プロンプトを検索",
+  "searchPlaceholder": "タイトル・作者・モデル・プロンプトのキーワード",
+  "searchButton": "検索",
+  "sortLabel": "並び順",
+  "sortDefault": "収録順",
+  "sortFeatured": "おすすめ順",
+  "sortLatest": "公開日の新しい順",
+  "activeFilters": "選択中の条件",
+  "removeFilter": "解除：{value}",
+  "featuredTitle": "まずは、この作品から",
+  "featuredIntro": "さまざまなモデルと制作手法から、次の制作のヒントを見つけましょう。",
+  "browseAll": "全{n}件のプロンプトを見る",
+  "expandPrompt": "全文を展開",
+  "collapsePrompt": "全文を折りたたむ",
+  "copyDone": "コピーしました",
+  "copyRetry": "コピーに失敗しました。再試行",
+  "scrollTable": "左右にスクロールして表全体を表示",
+  "inProgress": "準備中",
+  "quickNav": "項目へ移動",
+  "homeSearchHint": "プロンプト集全体を検索",
+  "moreCount": "もっと見る（残り{n}件）",
+  "archiveIntro": "モデル・テーマ・キーワードで検索。プロンプトの全文と作者の出典を確認できます。"
 }

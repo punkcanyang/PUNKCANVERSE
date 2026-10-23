@@ -1,3 +1,4 @@
+import { selectHomeEntries } from '../lib/prompts.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import { join, relative } from 'node:path';
@@ -77,9 +78,10 @@ export async function verifyV053(root=fileURLToPath(new URL('..',import.meta.url
       const nav=html.match(/<nav class="primary-nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
       assert.ok(nav?.includes(`href="/${prefix}tools"`),'Localized tools navigation');
       assert.equal((nav.match(/<a\b/g)||[]).length,5);
-      const isListing=['index.html','prompts/video/index.html','prompts/fight/index.html'].some(p=>file===prefix+p);
+      const isListing=['prompts/video/index.html','prompts/fight/index.html'].some(p=>file===prefix+p);
       const isHiggsDetail=higgsIds.some(id=>file===`${prefix}prompts/video/${id}/index.html`);
-      const higgsCount=TOOL_FILES.includes(file)?1:isListing?4:isHiggsDetail?1:0;
+      const homeCount=selectHomeEntries(entries).filter(entry=>higgsIds.includes(entry.id)).length;
+      const higgsCount=TOOL_FILES.includes(file)?1:file===prefix+'index.html'?homeCount:isListing?4:isHiggsDetail?1:0;
       assert.equal(html.split(affiliates.higgsfield.url).length-1,higgsCount,`${file}: original Higgsfield distribution plus one per tools page`);
       if(!TOOL_FILES.includes(file))assert.equal((html.match(/class="tool-about"/g)||[]).length,higgsCount);
       if(TIP_FILES.includes(file)) {

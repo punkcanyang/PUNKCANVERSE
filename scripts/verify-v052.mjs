@@ -48,7 +48,7 @@ export async function verifyV052(root=fileURLToPath(new URL('..',import.meta.url
   const i18n=await loadI18n(root);
   for(const locale of ['zh','en','ja']) {
     const prefix=locale==='zh'?'':`${locale}/`;
-    const listings=await Promise.all(['index.html','prompts/video/index.html'].map(file=>readFile(join(dist,prefix,file),'utf8')));
+    const listings=await Promise.all(['prompts/video/index.html'].map(file=>readFile(join(dist,prefix,file),'utf8')));
     for(const entry of entries) {
       const detail=await readFile(join(dist,prefix,'prompts/video',entry.id,'index.html'),'utf8');
       const cards=listings.map(html=>html.match(new RegExp(`<article class="prompt-card" data-entry-id="${entry.id}"[^>]*>[\\s\\S]*?</article>`))?.[0]);

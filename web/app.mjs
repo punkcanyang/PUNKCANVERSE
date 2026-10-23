@@ -1,126 +1,181 @@
-import { parseFilters, filterEntries, clearFilters, filtersToSearch } from './prompts.mjs';
+import { parseFilters, filterEntries, sortEntries, clearFilters, filtersToSearch } from './prompts.mjs';
 import { copyText } from './clipboard.mjs';
 import { bindClickEmbeds } from './embeds.mjs';
 import { initConsent } from './consent.mjs';
-import { initLanguage, workflowCopyText, localizedCopyText } from './language.mjs';
+import { initLanguage, workflowCopyText } from './language.mjs';
 
 initLanguage();
 const messages = JSON.parse(document.body.dataset.messages || '{}');
 const message = (key, values={}) => (messages[key] || key).replace(/\{(\w+)\}/g, (_, name) => values[name] ?? '');
-
 initConsent();
 bindClickEmbeds({errorText:message('embedFailed')});
 
 const toast = document.querySelector('#toast');
 let toastTimer;
-function showToast(message) {
+function showToast(text) {
   clearTimeout(toastTimer);
-  toast.textContent = message;
+  toast.textContent = text;
   toast.classList.add('is-visible');
   toastTimer = setTimeout(() => {
     toast.classList.remove('is-visible');
     toast.textContent = '';
-  }, 1500);
+  }, 4000);
 }
 
-let entryById = new Map();
-let entriesPromise;
-function loadEntries() {
-  return entriesPromise ??= fetch(new URL('../catalog.json', import.meta.url)).then(response => {
-    if (!response.ok) throw new Error('Data unavailable');
-    return response.json();
-  }).then(({ entries }) => {
-    entryById = new Map(entries.map(entry => [String(entry.id), entry]));
-    for (const button of document.querySelectorAll('[data-copy-entry]')) button.disabled = false;
-    return entries;
-  });
-}
-if (document.querySelector('[data-copy-entry]')) loadEntries().catch(() => showToast(message('dataFailed')));
+// Copy the exact source already present in the page. No catalog request is needed.
+for (const button of document.querySelectorAll('[data-copy-entry]')) button.disabled = false;
+const copyTimers = new WeakMap();
 document.addEventListener('click', async event => {
   const button = event.target.closest('[data-copy-entry], [data-copy-code], [data-copy-block]');
   if (!button || button.disabled) return;
-  const entry = entryById.get(button.dataset.copyEntry);
   const text = button.hasAttribute('data-copy-block')
     ? workflowCopyText(button.closest('[data-copy-scope]'))
     : button.hasAttribute('data-copy-code')
     ? button.closest('.code-frame').querySelector('pre code').textContent
-    : entry ? localizedCopyText(entry,messages.fullVersion) : null;
-  if (text === null) return;
+    : button.closest('.prompt-box')?.querySelector('pre')?.textContent;
+  if (typeof text !== 'string') return;
+  clearTimeout(copyTimers.get(button));
+  const label = button.dataset.copyLabel ||= button.textContent;
   button.disabled = true;
+  button.setAttribute('aria-busy', 'true');
   try {
     const success = await copyText(text);
+    button.textContent = message(success ? 'copyDone' : 'copyRetry');
     showToast(message(success ? 'toastCopied' : 'toastFailed'));
+    copyTimers.set(button, setTimeout(() => { button.textContent = label; }, 4000));
   } finally {
     button.disabled = false;
+    button.removeAttribute('aria-busy');
   }
 });
 
+for (const pre of document.querySelectorAll('.full-prompt .prompt-text, .workflow-step .prompt-text')) {
+  if (pre.textContent.length < 1000) continue;
+  const button = document.createElement('button');
+  button.type = 'button'; button.className = 'expand-prompt';
+  pre.id ||= `prompt-text-${document.querySelectorAll('.expand-prompt').length}`;
+  button.setAttribute('aria-controls', pre.id);
+  button.setAttribute('aria-expanded', 'false');
+  button.textContent = message('expandPrompt');
+  button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') !== 'true';
+    pre.classList.toggle('is-expanded', expanded);
+    button.setAttribute('aria-expanded', String(expanded));
+    button.textContent = message(expanded ? 'collapsePrompt' : 'expandPrompt');
+  });
+  pre.after(button);
+}
 
-async function initializeLibrary() {
+// Tables stay semantic and become focusable, named scroll regions on small screens.
+for (const table of document.querySelectorAll('.table-scroll')) {
+  table.tabIndex = 0;
+  table.setAttribute('role', 'region');
+  table.setAttribute('aria-label', message('scrollTable'));
+  const hint = document.createElement('p');
+  hint.className = 'table-scroll-hint'; hint.textContent = message('scrollTable');
+  table.before(hint);
+}
+
+function initializeLibrary() {
   const form = document.querySelector('#filters');
   if (!form) return;
-  const cards = [...document.querySelectorAll('[data-entry-id]')];
-  const allEntries = await loadEntries();
-  const cardIds=new Set(cards.map(card=>card.dataset.entryId));
-  const entries=form.dataset.collection==='fight'?allEntries.filter(entry=>cardIds.has(entry.id)):allEntries;
+  const grid = document.querySelector('#prompt-grid');
+  const cards = [...grid.querySelectorAll('[data-filter-entry]')];
+  const byId = new Map(cards.map(card => [card.dataset.entryId, card]));
+  const entries = cards.map(card => ({ ...JSON.parse(card.dataset.filterEntry), id:card.dataset.entryId, searchText:card.textContent }));
   const defaultMedium = form.dataset.defaultMedium || '';
-  let displayed = window.matchMedia('(max-width: 650px)').matches ? 12 : Infinity;
-  let filters = parseFilters(location.search);
-  const inputs = [...form.querySelectorAll('input')];
+  const search = document.querySelector('#prompt-search');
+  const sort = document.querySelector('#prompt-sort');
+  const chips = document.querySelector('#active-filters');
+  const inputs = [...form.querySelectorAll('input[type="checkbox"], input[type="radio"]')];
+  const pageSize = 12;
+  let displayed = pageSize, filters = parseFilters(location.search), searchTimer;
   const known = {
     models: new Set(inputs.filter(input => input.name === 'model').map(input => input.value)),
     tags: new Set(inputs.filter(input => input.name === 'tag').map(input => input.value)),
     media: new Set(entries.map(entry => entry.medium)),
   };
-  function render() {
-    const matches = filterEntries(entries, { ...filters, medium: filters.medium || defaultMedium });
-    const ids = new Set(matches.map(entry => String(entry.id)));
-    let shown = 0;
-    for (const card of cards) card.hidden = !ids.has(card.dataset.entryId) || ++shown > displayed;
+  const labels = new Map(inputs.map(input => [`${input.name}:${input.value}`, input.nextElementSibling?.textContent || input.value]));
+  function render(syncSearch = true) {
+    const matches = sortEntries(filterEntries(entries, { ...filters, medium:filters.medium || defaultMedium }), filters.sort);
+    for (const card of cards) card.hidden = true;
+    // Move existing nodes; expanded text and loaded embeds survive sorting.
+    for (const [index, entry] of matches.entries()) {
+      const card = byId.get(entry.id); card.hidden = index >= displayed; grid.append(card);
+    }
     const more = document.querySelector('#show-more');
-    if (more) more.hidden = shown <= displayed;
+    more.hidden = matches.length <= displayed;
+    more.textContent = message('moreCount', {n:Math.max(0, matches.length-displayed)});
     for (const input of inputs) input.checked = input.name === 'medium'
       ? (filters.medium || '') === input.value
       : filters[input.name === 'model' ? 'models' : 'tags'].includes(input.value);
+    if (syncSearch) search.value = filters.q || ''; sort.value = filters.sort || '';
     document.querySelector('#result-count').textContent = message('count', {n:matches.length});
     document.querySelector('#empty-state').hidden = matches.length > 0;
-    document.querySelector('#clear-filters').disabled = !filters.models.length && !filters.tags.length && !filters.medium;
-    const unknown = [...filters.models.filter(value => !known.models.has(value)), ...filters.tags.filter(value => !known.tags.has(value)), ...(filters.medium && !known.media.has(filters.medium) ? [filters.medium] : [])];
-    const notice = document.querySelector('#unknown-filters');
-    notice.hidden = unknown.length === 0;
-    notice.textContent = unknown.length ? message('unknownFilters',{items:unknown.join(', ')}) : '';
+    document.querySelector('#clear-filters').disabled = !filters.models.length && !filters.tags.length && !filters.medium && !filters.q && !filters.sort;
+    chips.replaceChildren();
+    const selected = [...filters.models.map(value => ['model',value]), ...filters.tags.map(value => ['tag',value]), ...(filters.q ? [['q',filters.q]] : []), ...(filters.medium ? [['medium',filters.medium]] : [])];
+    for (const [kind,value] of selected) {
+      const button = document.createElement('button'); button.type = 'button';
+      const label = labels.get(`${kind}:${value}`) || value;
+      button.textContent = `${label} ×`; button.setAttribute('aria-label', message('removeFilter',{value:label}));
+      button.addEventListener('click', () => {
+        const next = {...filters};
+        if (kind === 'model' || kind === 'tag') { const key=kind==='model'?'models':'tags'; next[key]=filters[key].filter(item=>item!==value); }
+        else delete next[kind];
+        update(next); search.focus({preventScroll:true});
+      });
+      chips.append(button);
+    }
+    chips.hidden = selected.length === 0;
+    const unknown = [...filters.models.filter(value=>!known.models.has(value)), ...filters.tags.filter(value=>!known.tags.has(value)), ...(filters.medium && !known.media.has(filters.medium)?[filters.medium]:[])];
+    const notice=document.querySelector('#unknown-filters'); notice.hidden=unknown.length===0;
+    notice.textContent=unknown.length?message('unknownFilters',{items:unknown.join(', ')}):'';
   }
-  function update(next) {
-    displayed = window.matchMedia('(max-width: 650px)').matches ? 12 : Infinity;
-    filters = next;
-    const query = filtersToSearch(filters, location.search);
-    if (query !== location.search) history.pushState(null, '', `${location.pathname}${query}${location.hash}`);
-    render();
+  function update(next, replace=false) {
+    clearTimeout(searchTimer); displayed=pageSize; filters=next;
+    const query=filtersToSearch(filters,location.search);
+    if(query!==location.search) history[replace?'replaceState':'pushState'](null,'',`${location.pathname}${query}${location.hash}`);
+    render(!replace);
   }
-  form.addEventListener('submit', event => event.preventDefault());
-  form.addEventListener('change', () => {
-    const mediumInput = inputs.find(input => input.name === 'medium' && input.checked);
-    const medium = mediumInput ? mediumInput.value : filters.medium;
-    // Retain unknown shared URL values until the user explicitly clears them.
-    update({
-      models: [...filters.models.filter(value => !known.models.has(value)), ...inputs.filter(input => input.name === 'model' && input.checked).map(input => input.value)],
-      tags: [...filters.tags.filter(value => !known.tags.has(value)), ...inputs.filter(input => input.name === 'tag' && input.checked).map(input => input.value)],
-      ...(medium ? { medium } : {}),
-    });
+  form.addEventListener('submit', event=>{event.preventDefault();update({...filters,q:search.value.trim(),sort:sort.value});});
+  search.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>update({...filters,q:search.value.trim()},true),180);});
+  sort.addEventListener('change',()=>update({...filters,q:search.value.trim(),sort:sort.value}));
+  form.addEventListener('change',event=>{
+    if (!inputs.includes(event.target)) return;
+    update({...filters,q:search.value.trim(),
+      models:[...filters.models.filter(value=>!known.models.has(value)),...inputs.filter(input=>input.name==='model'&&input.checked).map(input=>input.value)],
+      tags:[...filters.tags.filter(value=>!known.tags.has(value)),...inputs.filter(input=>input.name==='tag'&&input.checked).map(input=>input.value)],
+      ...(inputs.some(input=>input.name==='medium'&&input.checked)?{medium:inputs.find(input=>input.name==='medium'&&input.checked).value}:{})});
   });
-  for (const button of document.querySelectorAll('#clear-filters, [data-clear-filters]')) button.addEventListener('click', () => update(clearFilters()));
-  window.addEventListener('popstate', () => { filters = parseFilters(location.search); render(); });
-  document.querySelector('#show-more')?.addEventListener('click', () => { displayed += 12; render(); });
-  for (const fieldset of form.querySelectorAll('fieldset')) fieldset.disabled = false;
-  for (const button of document.querySelectorAll('[data-copy-entry]')) button.disabled = false;
-  if (window.matchMedia('(max-width: 600px)').matches && !filters.models.length && !filters.tags.length && !filters.medium) document.querySelector('.filter-panel').open = false;
+  document.addEventListener('click', event=>{
+    const link=event.target.closest('[data-filter-tag]'); if(!link)return;
+    event.preventDefault();update({...filters,tags:[...new Set([...filters.tags,link.dataset.filterTag])]});
+    search.focus();
+  });
+  for(const button of document.querySelectorAll('#clear-filters, [data-clear-filters]')) button.addEventListener('click',()=>{update(clearFilters());search.focus({preventScroll:true});});
+  window.addEventListener('popstate',()=>{clearTimeout(searchTimer);displayed=pageSize;filters=parseFilters(location.search);render();});
+  document.querySelector('#show-more').addEventListener('click',()=>{
+    const previous=displayed;displayed+=pageSize;render();
+    const visible=[...grid.children].filter(card=>!card.hidden);
+    visible[previous]?.querySelector('h2 a')?.focus({preventScroll:true});
+  });
+  for(const fieldset of form.querySelectorAll('fieldset')) fieldset.disabled=false;
+  search.disabled=false;sort.disabled=false;
+  document.querySelector('#search-submit').disabled=false;
   render();
 }
 
-initializeLibrary().catch(() => {
-  // Server-rendered cards and permanent original-post links remain available.
-  const notice = document.createElement('p');
-  notice.className = 'notice';
-  notice.textContent = message('filterFailed');
+// Preserve previously shared homepage filter URLs after moving the full archive.
+const homeArchive = document.querySelector('[data-archive-url]');
+const shared = parseFilters(location.search);
+if (homeArchive && (shared.models.length || shared.tags.length || shared.medium || shared.q || shared.sort)) {
+  location.replace(`${homeArchive.dataset.archiveUrl}${location.search}#library`);
+}
+
+try { initializeLibrary(); } catch {
+  // On enhancement failure, every source card stays accessible.
+  for(const card of document.querySelectorAll('[data-filter-entry]'))card.hidden=false;
+  const notice=document.createElement('p');notice.className='notice';notice.textContent=message('filterFailed');
   document.querySelector('.filter-panel')?.before(notice);
-});
+}

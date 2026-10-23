@@ -197,5 +197,27 @@
     "back": "All projects",
     "openMedia": "Open video",
     "linksTitle": "Related links"
-  }
+  },
+  "searchLabel": "Search prompts",
+  "searchPlaceholder": "Title, creator, model or prompt keywords",
+  "searchButton": "Search",
+  "sortLabel": "Sort by",
+  "sortDefault": "Archive order",
+  "sortFeatured": "Featured first",
+  "sortLatest": "Newest published",
+  "activeFilters": "Active filters",
+  "removeFilter": "Remove: {value}",
+  "featuredTitle": "Start with these picks",
+  "featuredIntro": "Explore different models and approaches for your next experiment.",
+  "browseAll": "Browse all {n} prompts",
+  "expandPrompt": "Expand full text",
+  "collapsePrompt": "Collapse text",
+  "copyDone": "Copied",
+  "copyRetry": "Copy failed. Try again",
+  "scrollTable": "Scroll sideways to view the full table",
+  "inProgress": "Coming soon",
+  "quickNav": "Jump to",
+  "homeSearchHint": "Search the full prompt archive",
+  "moreCount": "Show more ({n} remaining)",
+  "archiveIntro": "Find prompts by model, topic or keyword. Read the complete original and its source."
 }

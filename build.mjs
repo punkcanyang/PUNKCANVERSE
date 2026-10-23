@@ -1,3 +1,4 @@
+import { selectHomeEntries } from './lib/prompts.mjs';
 import {loadCatalog} from './lib/catalog.mjs';
 import { readFile, mkdir, rm, writeFile, copyFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -60,17 +61,33 @@ export async function buildSite(options = {}) {
     const tabs = current => renderMediaTabs(entries,current,{names,ariaLabel:u.mediaAria,mediumHref:medium=>href(`/prompts/${medium}/`),workflow:{href:href('/prompts/workflow/'),label:u.workflow,count:workflows.length}});
     const markdown = text => markdownToHtml(text,{headingOffset:1,copyLabel:u.copy,codeLabel:u.codeExample,tableLabel:u.tableAria}).replace(/>复制<\/button>/g,`>${e(u.copy)}</button>`);
     function library(collection,medium='video',collectionPage=false) {
-      const tabBar = tabs(collectionPage ? href(route==='/prompts/fight/'?route:`/prompts/${medium}/`) : href('/'));
-      if (!collection.length) return `${tabBar}<section class="empty-state"><h2>${e(t('mediaEmpty',{medium:names[medium]}))}</h2><p>${e(u.mediaEmptyBody)}</p><a href="${href('/prompts/video/')}">${e(u.browseVideo)}</a></section>`;
+      const tabBar = tabs(href(`/prompts/${medium}/`));
+      const heading = route==='/prompts/fight/' ? u.collection : `${names[medium]} / ${u.navPrompts}`;
+      const intro = `<header class="page-intro library-intro"><h1>${e(heading)}</h1><p>${e(u.archiveIntro)}</p></header>`;
+      if (!collection.length) return `${intro}${tabBar}<section class="empty-state"><h2>${e(t('mediaEmpty',{medium:names[medium]}))}</h2><p>${e(u.mediaEmptyBody)}</p><a class="text-link" href="${href('/prompts/video/')}">${e(u.browseVideo)}</a></section>`;
+      const collectionModels = [...new Set(collection.flatMap(entry=>entry.models))];
+      const collectionTags = [...new Set(collection.flatMap(entry=>entry.tags))];
       const modelLabel = value => value==='Wan' ? 'Wan / Wan 3.0' : value==='MiniMax' ? 'MiniMax H3' : translateModelName(value,locale);
       const choices = (values,kind) => values.map(value=>`<label class="filter-chip"><input type="checkbox" name="${kind}" value="${e(value)}"><span>${e(kind==='tag' ? translateTag(value,locale,content) : modelLabel(value))}</span></label>`).join('');
-      return `<section class="library" id="library"><div class="library-heading"><span class="eyebrow">01 / PROMPT ARCHIVE</span><h2>${e(u.navPrompts)}</h2><p id="result-count" role="status" aria-live="polite">${e(t('count',{n:collection.length}))}</p></div>${tabBar}<div class="collection-line"><a href="${href('/prompts/fight/')}"><strong>FIGHT/PROMPTS</strong> · ${e(u.collection)} (63)</a><span>${e(route==='/prompts/fight/'?u.collection:u.allVideos)} / ${e(names[medium])}</span><span>${e(u.thumbHint)}</span></div><details class="filter-panel"><summary>${e(u.filter)} <span>${e(u.modelLabel)} / ${e(u.tagLabel)}</span></summary><form id="filters"${collectionPage?` data-default-medium="${medium}"${route==='/prompts/fight/'?' data-collection="fight"':''}`:''}>${renderMediumFilter(entries)}<fieldset disabled><legend>${e(u.modelLabel)}</legend><div class="filter-options">${choices(models,'model')}</div></fieldset><fieldset disabled><legend>${e(u.tagLabel)}</legend><div class="filter-options">${choices(tags,'tag')}</div></fieldset><div class="filter-bottom"><p>${e(u.filterHelp)}</p><button id="clear-filters" class="clear-button" type="button" disabled>${e(u.clear)}</button></div><p id="unknown-filters" class="notice" hidden></p></form></details><noscript><p class="notice">${e(u.noscript)}</p></noscript><div id="prompt-grid" class="prompt-grid">${collection.map((entry,index)=>renderCard(localized(entry),index,affiliates,thumbs.entries?.[entry.id],entry.collection==='wan-minimax'?cUI:renderUI)).join('\n')}</div><button type="button" id="show-more" class="primary-button" hidden>${e(u.showMore)}</button><div id="empty-state" class="empty-state" hidden><h3>${e(u.emptyTitle)}</h3><p>${e(u.emptyBody)}</p><button type="button" class="primary-button" data-clear-filters>${e(u.clear)}</button></div></section>`;
+      return `${intro}<section class="library" id="library">${tabBar}<div class="collection-line"><a href="${href('/prompts/fight/')}"><strong>FIGHT/PROMPTS</strong> · ${e(u.collection)} (63)</a><span>${e(route==='/prompts/fight/'?u.collection:u.allVideos)} / ${e(names[medium])}</span></div>
+      <form id="filters" data-default-medium="${medium}"${route==='/prompts/fight/'?' data-collection="fight"':''}>
+        <div class="search-toolbar"><div class="search-field"><label for="prompt-search">${e(u.searchLabel)}</label><div class="search-input-row"><input id="prompt-search" type="search" name="q" placeholder="${e(u.searchPlaceholder)}" disabled><button id="search-submit" type="submit" class="primary-button" disabled>${e(u.searchButton)}</button></div></div><div class="sort-field"><label for="prompt-sort">${e(u.sortLabel)}</label><select id="prompt-sort" name="sort" disabled><option value="">${e(u.sortDefault)}</option><option value="featured">${e(u.sortFeatured)}</option><option value="latest">${e(u.sortLatest)}</option></select></div></div>
+        <details class="filter-panel"><summary>${e(u.filter)} <span>${e(u.modelLabel)} / ${e(u.tagLabel)}</span></summary>${renderMediumFilter(entries)}<fieldset disabled><legend>${e(u.modelLabel)}</legend><div class="filter-options">${choices(collectionModels,'model')}</div></fieldset><fieldset disabled><legend>${e(u.tagLabel)}</legend><div class="filter-options">${choices(collectionTags,'tag')}</div></fieldset><p class="filter-help">${e(u.filterHelp)}</p></details>
+        <div class="filter-bottom"><p id="result-count" role="status" aria-live="polite">${e(t('count',{n:collection.length}))}</p><button id="clear-filters" class="clear-button" type="button" disabled>${e(u.clear)}</button></div><div id="active-filters" class="active-filters" role="group" aria-label="${e(u.activeFilters)}" hidden></div><p id="unknown-filters" class="notice" hidden></p>
+      </form><noscript><p class="notice">${e(u.noscript)}</p></noscript><div id="prompt-grid" class="prompt-grid">${collection.map((entry,index)=>renderCard(localized(entry),index,affiliates,thumbs.entries?.[entry.id],entry.collection==='wan-minimax'?cUI:renderUI)).join('\n')}</div><button type="button" id="show-more" class="primary-button" hidden>${e(u.showMore)}</button><div id="empty-state" class="empty-state" hidden><h2>${e(u.emptyTitle)}</h2><p>${e(u.emptyBody)}</p><button type="button" class="primary-button" data-clear-filters>${e(u.clear)}</button></div></section>`;
+    }
+    function homeSearch() {
+      return `<form class="home-search" action="${href('/prompts/video/')}" method="get" role="search"><label for="home-search">${e(u.searchLabel)}</label><div class="search-input-row"><input id="home-search" name="q" type="search" placeholder="${e(u.searchPlaceholder)}"><button class="primary-button" type="submit">${e(u.searchButton)}</button></div><p>${e(u.homeSearchHint)}</p></form>`;
+    }
+    function homePicks() {
+      const picks=selectHomeEntries(entries);
+      return `<section class="home-picks" id="library" data-archive-url="${href('/prompts/video/')}"><div class="section-heading"><div><p class="eyebrow">01 / SELECTED PROMPTS</p><h2>${e(u.featuredTitle)}</h2><p>${e(u.featuredIntro)}</p></div><a class="text-link" href="${href('/prompts/workflow/')}">${e(u.workflow)} (${workflows.length}) ↗</a></div><div class="prompt-grid">${picks.map((entry,index)=>renderCard(localized(entry),index,affiliates,thumbs.entries?.[entry.id],entry.collection==='wan-minimax'?cUI:renderUI)).join('')}</div><a class="primary-button browse-all" href="${href('/prompts/video/')}">${e(t('browseAll',{n:entries.length}))} ↗</a></section>`;
     }
     let title,description,body;
     if (route==='/') {
       title='AI VIDEO / IMAGE / MUSIC';description=u.homeDescription;
       // The H film-slate artwork keeps its original 003 edition number.
-      body=`<section class="cinema-hero"><div class="hero-topline"><span>AI VIDEO / IMAGE / MUSIC</span><span>PRODUCTION No. 003 — OCT. 2026</span></div><div class="cinema-title"><h1 aria-label="PUNKCANVERSE"><span>PUNKCAN</span><span><b class="cut-letter">V</b>ERSE<span class="title-dot">.</span></span></h1><aside class="copy-mark"><span>NIGHT SHIFT</span><strong>COPY<br>003</strong><svg class="safety-pin" viewBox="0 0 180 60" fill="none" aria-hidden="true"><path d="M33 16C10-1 0 32 19 42c10 6 19 1 20-9L145 8c18-4 27 7 20 20L53 49 33 16Z" stroke="currentColor" stroke-width="4"/></svg><small>notes from the set</small></aside><span class="vertical-caption">NOTES FROM BEHIND THE CAMERA</span></div><div class="cinema-bottom"><div><h2>${e(u.heroTitle)}</h2><p>${e(u.heroBody).replace(/\n/g,'<br>')}</p><a class="primary-button" href="${href('/')}#library">${e(t('enterArchive',{n:entries.length}))}</a></div><div class="hero-slate"><small>DIRECTED & CURATED BY</small><strong>PUNKCAN</strong><span>ARCHIVE ${entries.length} / EDITION 03</span></div><div class="hero-take"><span>TAKE</span><strong>03</strong></div></div><div class="film-strip" aria-hidden="true"></div><div class="reel-notes"><span>ORIGINAL POSTS / REAL PROMPTS</span><a href="${href('/works/')}">${e(u.works.title)} / Punkcan ↗</a></div></section>${library(entries)}<section class="home-works"><p class="eyebrow">02 / WORKS</p><h2><a href="${href('/works/')}">${e(u.works.title)} ↗</a></h2><p>${e(u.works.intro)}</p></section>`;
+      body=`<section class="cinema-hero"><div class="hero-topline"><span>AI VIDEO / IMAGE / MUSIC</span><span>PRODUCTION No. 003 — OCT. 2026</span></div><div class="cinema-title"><h1 aria-label="PUNKCANVERSE"><span>PUNKCAN</span><span><b class="cut-letter">V</b>ERSE<span class="title-dot">.</span></span></h1><aside class="copy-mark"><span>NIGHT SHIFT</span><strong>COPY<br>003</strong><svg class="safety-pin" viewBox="0 0 180 60" fill="none" aria-hidden="true"><path d="M33 16C10-1 0 32 19 42c10 6 19 1 20-9L145 8c18-4 27 7 20 20L53 49 33 16Z" stroke="currentColor" stroke-width="4"/></svg><small>notes from the set</small></aside><span class="vertical-caption">NOTES FROM BEHIND THE CAMERA</span></div><div class="cinema-bottom"><div><h2>${e(u.heroTitle)}</h2><p>${e(u.heroBody).replace(/\n/g,'<br>')}</p>${homeSearch()}<a class="text-link" href="${href('/prompts/video/')}">${e(t('browseAll',{n:entries.length}))} ↗</a></div><div class="hero-slate"><small>DIRECTED & CURATED BY</small><strong>PUNKCAN</strong><span>ARCHIVE ${entries.length} / EDITION 03</span></div><div class="hero-take"><span>TAKE</span><strong>03</strong></div></div><div class="film-strip" aria-hidden="true"></div><div class="reel-notes"><span>ORIGINAL POSTS / REAL PROMPTS</span><a href="${href('/works/')}">${e(u.works.title)} / Punkcan ↗</a></div></section>${homePicks()}<section class="home-works"><p class="eyebrow">02 / WORKS</p><h2><a href="${href('/works/')}">${e(u.works.title)} ↗</a></h2><p>${e(u.works.intro)}</p></section>`;
     } else if (route==='/tips') {
       title=u.tipsTitle;description=u.tipsIntro;
       const tips = ['fight','wan3','minimax-h3'];
@@ -80,7 +97,7 @@ export async function buildSite(options = {}) {
       body=`<header class="page-intro" id="tips-top"><p class="eyebrow">FIELD NOTES</p><h1>${e(u.tipsHeading)}</h1><p>${e(u.tipsIntro)}</p></header><nav class="tips-toc" aria-label="${e(u.tipsToc)}">${tips.map((id,i)=>`<a href="${href('/tips')}#${id}"><small>0${i+1}</small><strong>${e(titles[i])} ↘</strong></a>`).join('')}</nav><div class="tips-content">${sections}</div>${tools}`;
     } else if (route==='/tools') {
       title=u.tools.title;description=u.tools.intro;
-      body=renderToolsPage(toolsData,affiliates,locale,u.tools,cUI.affiliate);
+      body=renderToolsPage(toolsData,affiliates,locale,{...u.tools,quickNav:u.quickNav},cUI.affiliate);
     } else if (route==='/takedown') {
       title=u.takedownTitle;description=u.takedownLead;
       body=`<section class="takedown-content"><p class="eyebrow">RESPECT THE CREATORS</p><h1>${e(u.takedownHeading)}</h1><p class="takedown-lead">${e(u.takedownLead)}</p><div class="takedown-steps"><span>01</span><p>${e(u.takedownStep)}</p><span>02</span><p>${e(u.takedownFooter)}</p></div>${externalLink(takedownUrl,e(u.takedownButton),'primary-button')}<p class="takedown-note">${e(u.takedownThanks)}</p><a class="text-link" href="${href('/')}">${e(u.backArchive)}</a></section>`;
@@ -123,8 +140,9 @@ export async function buildSite(options = {}) {
     const pageTitle=`${title} · PUNKCANVERSE`;
     const alternate=descriptor.alternates.map(lang=>`<link rel="alternate" hreflang="${HTML_LANG[lang]}" href="${SITE_URL}${publicPath(lang,route)}">`).join('\n  ')+`\n  <link rel="alternate" hreflang="x-default" href="${SITE_URL}${publicPath(descriptor.essay?.lang||'zh',route)}">`;
     const switcher=`<nav class="language-switch" aria-label="Language">${[['zh','中文'],['en','EN'],['ja','日本語']].map(([lang,label])=>`<a href="${switchHref(lang,route)}" data-language="${lang}"${lang===locale?' aria-current="page"':''} lang="${HTML_LANG[lang]}">${label}</a>`).join('')}</nav>`;
-    const clientKeys=['fullVersion','embedFailed','count','toastCopied','toastFailed','dataFailed','filterFailed','unknownFilters'];
+    const clientKeys=['fullVersion','embedFailed','count','toastCopied','toastFailed','dataFailed','filterFailed','unknownFilters','copyDone','copyRetry','expandPrompt','collapsePrompt','removeFilter','scrollTable','moreCount'];
     const client=Object.fromEntries(clientKeys.map(key=>[key,u[key]]));
+    const navCurrent = target => (target==='prompts' ? route.startsWith('/prompts/') : route.startsWith(target)) ? ' aria-current="page"' : '';
     let html=`<!doctype html>
 <html lang="${HTML_LANG[locale]}">
 <head>
@@ -145,13 +163,18 @@ ${alternate}
 <meta property="og:site_name" content="PUNKCANVERSE">
 <meta property="og:locale" content="${OG_LOCALE[locale]}">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="${SITE_URL}/img/site/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PUNKCANVERSE — prompts, workflows and personal work">
+<meta name="twitter:image" content="${SITE_URL}/img/site/share.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d94c2b'/%3E%3Ctext x='14' y='48' font-size='48' font-family='sans-serif' font-weight='bold' fill='white'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
 <script type="module" src="assets/app.mjs"></script>
 </head>
 <body data-locale="${locale}" data-messages="${e(JSON.stringify(client))}">
 <a class="skip-link" href="${e(path)}#main">${e(u.skip)}</a>
-<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}><a href="${href('/prompts/video/')}">${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${locale==='zh'?'tips.html':href('/tips')}">${e(u.navTips)}</a><a href="${publicHref('/tools')}">${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${locale==='zh'?'regions.html':href('/regions')}">${e(u.navRegions)}</a></nav></header>
+<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}><a href="${href('/prompts/video/')}"${navCurrent('prompts')}>${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${locale==='zh'?'tips.html':href('/tips')}"${navCurrent('/tips')}>${e(u.navTips)}</a><a href="${publicHref('/tools')}"${navCurrent('/tools')}>${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${locale==='zh'?'regions.html':href('/regions')}"${navCurrent('/regions')}>${e(u.navRegions)}</a></nav></header>
 <aside id="language-hint" class="language-hint" hidden><a data-preferred-language></a><button type="button" data-dismiss-language aria-label="${e(u.dismiss)}">×</button></aside>
 <main id="main">${body}</main>
 ${renderNewsletter(site)}${footer}
@@ -176,6 +199,8 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
     await mkdir(dirname(join(out,file)),{recursive:true});
     await copyFile(join(root,'web',file),join(out,file));
   }
+  await mkdir(join(out,'img/site'),{recursive:true});
+  await copyFile(join(root,'web/img/site/share.png'),join(out,'img/site/share.png'));
   // Existing build consumers use Chinese disk routes. All language descriptors are
   // exposed separately so they can inspect exact final URLs and fallback canonicals.
   return {pages:descriptors.filter(x=>x.locale==='zh').map(x=>x.disk),localizedPages:descriptors,sitemapUrls};

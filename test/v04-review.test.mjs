@@ -80,7 +80,7 @@ test('三语实际输出：模型选项保持原值、可见名翻译，中文�
     assert.ok(chinese.includes('AI 视频、图像、音乐的创作入口。<br>收藏提示词，拆解镜头，留下制作笔记。'));
     for(const fragment of ['PRODUCTION No. 003','COPY<br>003','EDITION 03','<span>TAKE</span><strong>03</strong>'])assert.ok(chinese.includes(fragment));
     for(const locale of ['en','ja']) {
-      const home=await readFile(join(out,locale,'index.html'),'utf8');
+      const home=await readFile(join(out,locale,'prompts/video/index.html'),'utf8');
       for(const model of ['可靈 Kling','海螺 Hailuo','Midjourney 影片'])assert.ok(home.includes(`value="${model}"><span>${translateModelName(model,locale)}</span>`));
       const detail=await readFile(join(out,locale,'prompts/video/1935098801410158601/index.html'),'utf8');
       assert.ok(detail.includes(`<dd>${translateModelName('海螺 Hailuo',locale)}</dd>`));

@@ -147,12 +147,16 @@ export function bindClickEmbeds({ window = globalThis.window, document = globalT
       error.textContent = errorText;
     } finally { button.removeAttribute('aria-busy'); }
   });
-  document.addEventListener('error', event => {
-    const img = event.target;
+  function showImageFallback(img) {
     if (img.tagName === 'IMG' && img.closest('.thumbnail-button')) {
       img.hidden = true;
       img.closest('.thumbnail-button').classList.add('image-failed');
     }
-  }, true);
+  }
+  document.addEventListener('error', event => showImageFallback(event.target), true);
+  // Cached failures can finish before the module installs its error listener.
+  for (const img of document.querySelectorAll?.('.thumbnail-button img') || []) {
+    if (img.complete && img.naturalWidth === 0) showImageFallback(img);
+  }
 }
 
