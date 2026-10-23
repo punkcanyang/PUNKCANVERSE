@@ -183,6 +183,8 @@
     "checked": "價格查於 {date}，以官網為準",
     "pricingLink": "官方定價頁",
     "viewTool": "看工具清单 →",
+    "viewDetails": "查看工具詳情",
+    "closeDetails": "關閉詳情",
     "viewAll": "查看完整工具清单"
   },
   "works": {

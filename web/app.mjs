@@ -76,6 +76,74 @@ for (const table of document.querySelectorAll('.table-scroll')) {
   table.before(hint);
 }
 
+// Keep complete tool content readable without JavaScript; enhance the summaries
+// into compact cards and move (never duplicate) their content into a native dialog.
+function initializeToolCards() {
+  const grid = document.querySelector('.tools-grid');
+  if (!grid || typeof HTMLDialogElement === 'undefined') return;
+  const dialog = document.createElement('dialog');
+  dialog.className = 'tool-dialog';
+  dialog.setAttribute('aria-labelledby', 'tool-dialog-title');
+  const header = document.createElement('header');
+  header.className = 'tool-dialog-header';
+  const title = document.createElement('h2');
+  title.id = 'tool-dialog-title';
+  const close = document.createElement('button');
+  close.type = 'button'; close.className = 'tool-dialog-close';
+  close.textContent = grid.dataset.closeLabel;
+  const content = document.createElement('div');
+  content.className = 'tool-dialog-content';
+  const intro = document.createElement('p');
+  intro.className = 'tool-dialog-intro'; content.append(intro);
+  header.append(title, close); dialog.append(header, content); document.body.append(dialog);
+  let activeCard;
+  function restore() {
+    if (!activeCard) return;
+    const card = activeCard; activeCard = null;
+    const body = content.querySelector('.tool-body');
+    body.hidden = true; card.append(body);
+    document.documentElement.classList.remove('tool-modal-open');
+    card.querySelector('[data-tool-open]').focus({preventScroll:true});
+  }
+  function open(card) {
+    if (activeCard === card && dialog.open) return;
+    if (activeCard) { dialog.close(); restore(); }
+    activeCard = card;
+    title.textContent = card.querySelector('h2').textContent;
+    intro.textContent = card.querySelector('[data-fact="summary"]').textContent;
+    const body = card.querySelector('.tool-body');
+    body.hidden = false; content.append(body);
+    dialog.showModal(); dialog.scrollTop = 0;
+    document.documentElement.classList.add('tool-modal-open');
+    close.focus({preventScroll:true});
+  }
+  close.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => { if (!dialog.open) restore(); });
+  dialog.addEventListener('click', event => {
+    const rect = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+  });
+  for (const card of grid.querySelectorAll('.tool-card')) {
+    const button = card.querySelector('[data-tool-open]');
+    button.hidden = false; button.setAttribute('aria-haspopup', 'dialog');
+    card.querySelector('.tool-body').hidden = true;
+    button.addEventListener('click', () => open(card));
+  }
+  grid.classList.add('is-enhanced');
+  function openHash() {
+    const card = [...grid.children].find(card => `#${card.id}` === location.hash);
+    if (card) open(card);
+  }
+  document.querySelector('.tools-jump')?.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    if (link.hash === location.hash) openHash();
+  });
+  window.addEventListener('hashchange', openHash);
+  openHash();
+}
+initializeToolCards();
+
 function initializeLibrary() {
   const form = document.querySelector('#filters');
   if (!form) return;

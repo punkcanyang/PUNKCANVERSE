@@ -81,6 +81,35 @@ try {
     await screenshot((lang||'/zh').slice(1)+'-card-mobile');
     const paths=[lang+'/tools',lang+'/tips',lang+'/works/',await evaluate(`document.querySelector('#prompt-grid h2 a').pathname`)];
     for(const path of paths){await navigate(path,390);assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true,path);}
+    for (const [width,columns] of [[390,1],[1024,2],[1440,3]]) {
+      await navigate(lang+'/tools',width);
+      await waitUntil(`Boolean(document.querySelector('.tools-grid.is-enhanced'))`);
+      assert.equal(await evaluate(`getComputedStyle(document.querySelector('.tools-grid')).gridTemplateColumns.split(' ').length`),columns);
+      assert.equal(await evaluate(`document.querySelectorAll('.tools-grid .tool-body[hidden]').length`),3);
+      await screenshot((lang||'/zh').slice(1)+`-tools-${width}`);
+      await evaluate(`document.querySelector('#magnific [data-tool-open]').focus()`);
+      await request('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
+      await request('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+      await waitUntil(`document.querySelector('.tool-dialog').open`);
+      assert.equal(await evaluate(`document.querySelector('.tool-dialog h2').textContent`),'Magnific');
+      assert.equal(await evaluate(`document.querySelectorAll('.tool-dialog .tool-prices tbody tr').length>0`),true);
+      assert.equal(await evaluate(`document.querySelectorAll('.affiliate-button').length`),3,'Moving content must not duplicate promotional links');
+      assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth && document.querySelector('.tool-dialog').scrollWidth<=document.querySelector('.tool-dialog').clientWidth`),true);
+      await screenshot((lang||'/zh').slice(1)+`-tool-dialog-${width}`);
+      await request('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+      await request('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+      await waitUntil(`!document.querySelector('.tool-dialog').open && document.activeElement.matches('#magnific [data-tool-open]') && Boolean(document.querySelector('#magnific .tool-body[hidden]'))`);
+      assert.equal(await evaluate(`Boolean(document.querySelector('#magnific .tool-body[hidden]'))`),true);
+      await evaluate(`document.querySelector('#pixverse [data-tool-open]').click();document.querySelector('.tool-dialog-close').click()`);
+      await waitUntil(`document.activeElement.matches('#pixverse [data-tool-open]') && Boolean(document.querySelector('#pixverse .tool-body[hidden]'))`);
+    }
+    await navigate(lang+'/tools#pixverse',1440);
+    await waitUntil(`document.querySelector('.tool-dialog')?.open`);
+    assert.equal(await evaluate(`document.querySelector('.tool-dialog h2').textContent`),'PixVerse');
+    await evaluate(`document.querySelector('.tool-dialog-close').click()`);
+    await waitUntil(`!document.querySelector('.tool-dialog').open`);
+    await evaluate(`document.querySelector('.tools-jump a[href$="#pixverse"]').click()`);
+    await waitUntil(`document.querySelector('.tool-dialog').open`);
     await navigate(lang+'/prompts/video/',1440);await waitUntil(`!document.querySelector('#prompt-search').disabled`);
     await screenshot((lang||'/zh').slice(1)+'-archive-desktop');
     assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true);
@@ -104,7 +133,7 @@ try {
   assert.equal(await evaluate(`document.querySelector('input[name="model"][value="Wan"]').checked`),true);
   assert.ok(!requests.includes('/catalog.json'),'No full catalog fetch for copy or filters');
   assert.deepEqual(errors,[]);
-  console.log('Offline browser interactions passed: three languages, copy with consent, search, zero results, tags, sort/history, progressive display, routes and legacy shared URLs; no catalog fetch.');
+  console.log('Offline browser interactions passed: three languages, copy with consent, search, zero results, tags, sort/history, progressive display, compact tool cards at 390/1024/1440, tool dialogs with keyboard and deep links, routes and legacy shared URLs; no catalog fetch.');
 } finally {
   if(chrome.exitCode===null&&chrome.signalCode===null){const stopped=new Promise(r=>chrome.once('exit',r));chrome.kill();await stopped;}
   await rm(temporary,{recursive:true,force:true,maxRetries:5,retryDelay:100});

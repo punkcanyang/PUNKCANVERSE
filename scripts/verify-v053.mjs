@@ -38,7 +38,7 @@ export function verifyToolCardHtml(html,id,data,affiliates,ui,locale) {
   assert.ok(html.includes(e(ui.tools.checked.replace('{date}',data.facts.checkedAt))));
   const pricing=[...html.matchAll(/<a\b[^>]*>/g)].map(m=>m[0]).find(a=>a.includes(`href="${e(p.pricingUrl.value)}"`));
   assert.ok(pricing,'Exact official pricing link');assert.match(pricing,/target="_blank"/);assert.match(pricing,/rel="noopener noreferrer"/);assert.ok(!pricing.includes('sponsored'));
-  const cta=html.match(/<div class="tool-cta">([\s\S]*?)<\/div><\/article>$/)?.[1];
+  const cta=html.match(/<div class="tool-cta">([\s\S]*?)<\/div><\/div><\/article>$/)?.[1];
   assert.ok(cta,'The affiliate component must be the last card element');
   const buttons=[...cta.matchAll(/<a\b[^>]*class="affiliate-button"[^>]*>/g)].map(m=>m[0]);
   assert.equal(buttons.length,1);assert.ok(buttons[0].includes(`href="${e(affiliates[id].url)}"`));

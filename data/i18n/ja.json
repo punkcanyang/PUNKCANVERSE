@@ -183,6 +183,8 @@
     "checked": "価格は{date}時点の確認です。最新情報は公式サイトをご確認ください。",
     "pricingLink": "公式の料金ページ",
     "viewTool": "ツールの紹介を見る →",
+    "viewDetails": "ツールの詳細を見る",
+    "closeDetails": "詳細を閉じる",
     "viewAll": "ツール一覧をすべて見る"
   },
   "works": {

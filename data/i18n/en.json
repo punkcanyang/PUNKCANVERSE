@@ -183,6 +183,8 @@
     "checked": "Prices checked on {date}; see the official site for current pricing.",
     "pricingLink": "Official pricing page",
     "viewTool": "About this tool →",
+    "viewDetails": "View tool details",
+    "closeDetails": "Close details",
     "viewAll": "View the full tool list"
   },
   "works": {
