@@ -1,0 +1,1307 @@
+{
+  "facts": {
+    "checkedAt": "2026-10-23",
+    "platforms": {
+      "higgsfield": {
+        "officialUrl": {
+          "value": "https://higgsfield.ai/",
+          "source": "https://higgsfield.ai/",
+          "note": "已實際打開官方首頁。"
+        },
+        "pricingUrl": {
+          "value": "https://higgsfield.ai/pricing",
+          "source": "https://higgsfield.ai/pricing",
+          "note": "官方定價頁；此次開啟僅取得導覽列，未取得方案卡片。"
+        },
+        "launch": {
+          "value": "2023",
+          "source": "https://www.linkedin.com/company/higgsfield",
+          "note": "公司成立年份。公司 LinkedIn 頁面明列 Founded 2023，未列月份；官網 About 所述 2025 是平台推出年份，兩者事件不同。"
+        },
+        "company": {
+          "value": {
+            "name": "Higgsfield, Inc.",
+            "headquarters": "美國加州舊金山"
+          },
+          "source": "https://higgsfield.ai/about",
+          "note": "About 頁明列總部在 San Francisco，頁尾列公司名稱及舊金山地址。"
+        },
+        "summary": {
+          "value": "整合影像與影片生成模型、電影鏡頭控制及創作工作流程的 AI 創作平台。",
+          "source": "https://higgsfield.ai/about",
+          "note": "依官方平台介紹概括。"
+        },
+        "features": [
+          {
+            "value": "在同一工作空間使用多種影片生成模型。",
+            "source": "https://higgsfield.ai/ai-video",
+            "note": "官網列出多模型整合。"
+          },
+          {
+            "value": "Cinema Studio 提供虛擬攝影機、鏡頭及焦距設定。",
+            "source": "https://higgsfield.ai/ai-video",
+            "note": "依官方 Cinema Studio 說明。"
+          },
+          {
+            "value": "以參考影片控制動作，並設定影片起始與結束影格。",
+            "source": "https://higgsfield.ai/ai-video",
+            "note": "依官方 Motion Control 與影格參考功能說明。"
+          },
+          {
+            "value": "上傳現有影片後修改風格、替換物件或調整細節。",
+            "source": "https://higgsfield.ai/ai-video",
+            "note": "依官方影片編輯說明。"
+          },
+          {
+            "value": "提供影像生成、角色一致性與分鏡工具。",
+            "source": "https://higgsfield.ai/about",
+            "note": "官網列出 Soul、Soul ID 及 Keyframes。"
+          }
+        ],
+        "freeTier": {
+          "value": "可免費使用少量指定模型，不含點數額度。",
+          "source": "https://higgsfield.ai/creator-hub/help-center/plans/how-do-higgsfield-plans-work",
+          "note": "官方明列免費使用不含 credits，亦表示沒有付費方案試用期；未確認固定每日免費生成次數。"
+        },
+        "plans": {
+          "value": "未公開",
+          "source": "https://higgsfield.ai/pricing",
+          "note": "此次實際打開定價頁及官方搜尋結果指向的定價頁變體，均僅取得導覽列。搜尋摘要出現不同方案名稱及價格，但無法在打開的當下頁面核對，因此不採用摘要、舊文章或記憶補列方案。此標記表示本次無法確認，不代表官方從未公布。"
+        },
+        "bestFor": {
+          "value": "需要鏡頭與動作控制的影片創作者、分鏡製作者及廣告創意團隊。",
+          "source": "https://higgsfield.ai/ai-video",
+          "note": "依多模型生成、Cinema Studio、參考動作與影片編輯功能推論。",
+          "inferred": true
+        }
+      },
+      "magnific": {
+        "officialUrl": {
+          "value": "https://www.magnific.com/",
+          "source": "https://www.magnific.com/",
+          "note": "此次打開 magnific.ai 首頁會轉至此站。官方遷移說明 https://www.magnific.com/magnific-ai 表示新用戶及新訂閱僅在 magnific.com 提供，舊服務供既有用戶繼續使用。"
+        },
+        "pricingUrl": {
+          "value": "https://www.magnific.com/pricing",
+          "source": "https://www.magnific.com/pricing",
+          "note": "官方定價頁，無推廣參數；此次英文頁顯示澳幣，因此美元價格另以實際打開的官方法文定價頁 https://www.magnific.com/fr/prix 核對。"
+        },
+        "launch": {
+          "value": "2023-11",
+          "source": "https://magnific.substack.com/p/finally-we-are-launching-magnific",
+          "note": "產品推出。Magnific 官方電子報於 2023-11-27 發布公開推出及註冊公告；此日期指原始 Magnific AI 產品。"
+        },
+        "company": {
+          "value": "未公開",
+          "source": "https://www.magnific.com/legal/terms-of-use",
+          "note": "2026 年 6 月條款列營運者為 Magnific AI, S.L.U.，註冊辦公室在西班牙 Málaga；但實際打開的首頁 https://www.magnific.com/ 頁尾仍列 Freepik Company S.L.U.。未找到足以確認兩名稱法人關係與現行總部的說明，依要求將此合併欄位標為未公開。"
+        },
+        "summary": {
+          "value": "由圖像放大工具擴展為整合影像、影片、音訊、3D、素材庫與協作流程的 AI 創作平台。",
+          "source": "https://www.magnific.com/",
+          "note": "目前首頁明列 Freepik is now Magnific；不再僅以原始圖像放大服務描述現況。"
+        },
+        "features": [
+          {
+            "value": "圖像放大與細節增強，官網標示最高可放大至 10K。",
+            "source": "https://www.magnific.com/",
+            "note": "依首頁 Image Upscaler 說明。"
+          },
+          {
+            "value": "AI 影像生成、修圖及背景移除。",
+            "source": "https://www.magnific.com/",
+            "note": "依首頁工具目錄。"
+          },
+          {
+            "value": "從文字或圖片生成影片，並提供影片編輯與放大工具。",
+            "source": "https://www.magnific.com/company/about-us",
+            "note": "依官方產品及常見問題說明。"
+          },
+          {
+            "value": "提供文字轉語音、音效與音樂生成。",
+            "source": "https://www.magnific.com/",
+            "note": "依官方音訊工具目錄。"
+          },
+          {
+            "value": "Spaces 提供以節點組合工具、比較版本及團隊協作的畫布。",
+            "source": "https://www.magnific.com/",
+            "note": "依首頁 Spaces 工作流程說明。"
+          }
+        ],
+        "freeTier": {
+          "value": "免費方案可使用自家模型每日生成最多 20 張 AI 圖像，不提供點數餘額。",
+          "source": "https://www.magnific.com/ai/docs/ai-credits-and-limits",
+          "note": "官方說明其他影片、音訊及進階編輯功能不開放或有較嚴格限制；此為目前 magnific.com 免費方案。"
+        },
+        "plans": [
+          {
+            "name": "Premium",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "每月 20,000 點",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing",
+            "note": "點數依官方方案文件；當下定價頁僅取得年繳狀態，無法確認月繳美元價格，不將劃線參考價視為月繳價。"
+          },
+          {
+            "name": "Premium",
+            "monthlyPriceUSD": 14.5,
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "每年 240,000 點",
+            "source": "https://www.magnific.com/fr/prix",
+            "note": "頁面明列美元及年繳；點數有效一年、無每月重置，不將年額度冒充每月發放額度。價格未含 VAT 及地方稅。"
+          },
+          {
+            "name": "Premium+",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "每月 45,000 點",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing",
+            "note": "月繳點數依官方方案文件；未能取得當下月繳美元價格。"
+          },
+          {
+            "name": "Premium+",
+            "monthlyPriceUSD": 33.75,
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "每年 600,000 點",
+            "source": "https://www.magnific.com/fr/prix",
+            "note": "官方美元年繳折算月費；點數有效一年、無每月重置。價格未含 VAT 及地方稅。"
+          },
+          {
+            "name": "Pro Starter",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "未公開",
+            "source": "https://www.magnific.com/fr/prix",
+            "note": "當下頁面僅取得年繳方案卡，無法確認此名稱對應的月繳價格及額度。"
+          },
+          {
+            "name": "Pro Starter",
+            "monthlyPriceUSD": 82.5,
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "每年 1,500,000 點",
+            "source": "https://www.magnific.com/fr/prix",
+            "note": "採頁面預設 Pro Starter 級距；另一個每年 4,000,000 點選項未顯示對應價格。價格未含 VAT 及地方稅。"
+          },
+          {
+            "name": "Pro",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "每月 300,000 點",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing",
+            "note": "此項為官方文件列出的 Pro 較高點數級距；未確認其當下月繳價格。"
+          },
+          {
+            "name": "Pro",
+            "monthlyPriceUSD": "未公開",
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "每年 4,000,000 點",
+            "source": "https://www.magnific.com/fr/prix",
+            "note": "定價頁列出此較高點數選項，但未取得切換後價格；不套用 Pro Starter 的價格。"
+          },
+          {
+            "name": "Business",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "每席每月 45,000 點，團隊共用",
+            "source": "https://www.magnific.com/business",
+            "note": "官方 Business 頁確認月額度，但本次未取得可核對的當下美元價格。"
+          },
+          {
+            "name": "Business",
+            "monthlyPriceUSD": "未公開",
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "未公開",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing",
+            "note": "未取得當下年繳美元價格；此文件列每席每年 540,000 點，但另一官方文件 https://www.magnific.com/ai/docs/ai-credits-and-limits 列 600,000 點，無法確認年繳額度。"
+          },
+          {
+            "name": "Enterprise",
+            "monthlyPriceUSD": "未公開",
+            "billing": "custom",
+            "credits": "未公開",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing",
+            "note": "官方表示價格與點數依合約客製，須洽業務，未提供固定公開數字。"
+          }
+        ],
+        "bestFor": {
+          "value": "需要圖像增強、跨媒體製作及共用創作流程的設計師、品牌與創意團隊。",
+          "source": "https://www.magnific.com/",
+          "note": "依圖像放大、多媒體工具與 Spaces 協作功能推論。",
+          "inferred": true
+        }
+      },
+      "pixverse": {
+        "officialUrl": {
+          "value": "https://pixverse.ai/",
+          "source": "https://pixverse.ai/",
+          "note": "已實際打開，轉至官方英文首頁 https://pixverse.ai/en。"
+        },
+        "pricingUrl": {
+          "value": "https://app.pixverse.ai/subscribe",
+          "source": "https://app.pixverse.ai/subscribe",
+          "note": "官方網頁版訂閱定價頁；API 計費另屬不同產品。"
+        },
+        "launch": {
+          "value": "2023",
+          "source": "https://pixverse.ai/en/blog/pixverse-introduces-r2-real-time-world-model",
+          "note": "公司成立年份。官方公告 About PixVerse 明列 founded in 2023，未提供月份。"
+        },
+        "company": {
+          "value": {
+            "name": "AIVORA PTE. LTD.",
+            "headquarters": "新加坡"
+          },
+          "source": "https://pixverse.ai/en/terms-of-service",
+          "note": "服務條款第 1 節列營運公司，第 2 節明列總部位於新加坡。"
+        },
+        "summary": {
+          "value": "以自研影片模型提供 AI 影片生成、編輯及創作工作流程的平台。",
+          "source": "https://pixverse.ai/en",
+          "note": "依官方首頁定位概括。"
+        },
+        "features": [
+          {
+            "value": "從文字或圖片生成影片。",
+            "source": "https://pixverse.ai/en",
+            "note": "依首頁 Text & Image to Video。"
+          },
+          {
+            "value": "提供創作模板、角色一致性及嘴型同步功能。",
+            "source": "https://pixverse.ai/en",
+            "note": "依首頁 Template、Character 與 Lip Sync。"
+          },
+          {
+            "value": "透過 Agent 以對話方式建立及調整影片。",
+            "source": "https://pixverse.ai/en",
+            "note": "依官方 Agent 說明。"
+          },
+          {
+            "value": "Canvas 以節點串接參考素材、提示、動作與輸出。",
+            "source": "https://pixverse.ai/en",
+            "note": "依官方 Canvas 說明。"
+          },
+          {
+            "value": "Marketing Hub 提供行銷影片製作流程。",
+            "source": "https://pixverse.ai/en",
+            "note": "依首頁行銷工具介紹。"
+          }
+        ],
+        "freeTier": {
+          "value": "Basic 免費方案：首次 60 點，每日 30 點。",
+          "source": "https://app.pixverse.ai/subscribe",
+          "note": "每日點數於 UTC 00:00 更新，當日未使用部分到期；免費方案最高 540p、同時生成 2 個任務。"
+        },
+        "plans": [
+          {
+            "name": "Standard",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "每 30 天 1,200 點，另每日 60 點",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "本次定價頁取得年繳狀態，無法直接核對當下月繳價格。官方 https://pixverse.ai/en/ai-info-page 的月繳表標註價格核對日為 2026-10-15，未當作 10-23 即時定價。"
+          },
+          {
+            "name": "Standard",
+            "monthlyPriceUSD": 8,
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "每 30 天 1,200 點，另每日 60 點",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "年繳 96 美元；訂閱點數每 30 天更新，未使用點數於下一週期到期。"
+          },
+          {
+            "name": "Pro",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "每 30 天 6,000 點，另每日 60 點",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "未取得當下月繳狀態；不將年繳卡片的劃線參考價視為已確認的月繳價。"
+          },
+          {
+            "name": "Pro",
+            "monthlyPriceUSD": 24,
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "每 30 天 6,000 點，另每日 60 點",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "年繳 288 美元。"
+          },
+          {
+            "name": "Premium",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "每 30 天 15,000 點，另每日 60 點",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "未取得當下月繳狀態；不採舊核對日價格補值。"
+          },
+          {
+            "name": "Premium",
+            "monthlyPriceUSD": 48,
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "每 30 天 15,000 點，另每日 60 點",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "年繳 576 美元。"
+          },
+          {
+            "name": "Ultra",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "每 30 天 25,000 點，另每日 60 點",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "未取得當下月繳狀態，無法確認促銷月繳價是否仍適用；不將年繳卡片所列 249 美元參考價當作實際月繳價。"
+          },
+          {
+            "name": "Ultra",
+            "monthlyPriceUSD": 149,
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "每 30 天 25,000 點，另每日 60 點",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "年繳 1,788 美元。"
+          },
+          {
+            "name": "Team Ultra",
+            "monthlyPriceUSD": "未公開",
+            "billing": "monthly",
+            "credits": "方案表列每 30 天 25,000 點，團隊共用點數池",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "未取得當下月繳狀態；定價按席計算。方案表未列每日點數，不套用個人付費方案的每日 60 點。"
+          },
+          {
+            "name": "Team Ultra",
+            "monthlyPriceUSD": 149,
+            "billing": "annual-billed-monthly-equivalent",
+            "credits": "方案表列每 30 天 25,000 點，團隊共用點數池",
+            "source": "https://app.pixverse.ai/subscribe",
+            "note": "每席折算月費；每席年繳 1,788 美元。此處保留頁面額度標示，不自行推算增加席位後的總點數。"
+          }
+        ],
+        "bestFor": {
+          "value": "需要從圖片或文字快速製作短片、角色內容與行銷素材的創作者及團隊。",
+          "source": "https://pixverse.ai/en",
+          "note": "依文字與圖片生成影片、角色工具、Agent、Canvas 及行銷流程推論。",
+          "inferred": true
+        }
+      }
+    },
+    "unpublished": [
+      "higgsfield.plans",
+      "magnific.company",
+      "magnific.plans[0].monthlyPriceUSD",
+      "magnific.plans[2].monthlyPriceUSD",
+      "magnific.plans[4].monthlyPriceUSD",
+      "magnific.plans[4].credits",
+      "magnific.plans[6].monthlyPriceUSD",
+      "magnific.plans[7].monthlyPriceUSD",
+      "magnific.plans[8].monthlyPriceUSD",
+      "magnific.plans[9].monthlyPriceUSD",
+      "magnific.plans[9].credits",
+      "magnific.plans[10].monthlyPriceUSD",
+      "magnific.plans[10].credits",
+      "pixverse.plans[0].monthlyPriceUSD",
+      "pixverse.plans[2].monthlyPriceUSD",
+      "pixverse.plans[4].monthlyPriceUSD",
+      "pixverse.plans[6].monthlyPriceUSD",
+      "pixverse.plans[8].monthlyPriceUSD"
+    ]
+  },
+  "content": {
+    "zh": {
+      "higgsfield": {
+        "summary": {
+          "value": "Higgsfield 把影像與影片生成模型放在同一平台。創作流程也涵蓋電影鏡頭控制。",
+          "fact": "summary",
+          "source": "https://higgsfield.ai/about"
+        },
+        "launch": {
+          "value": "2023 年公司成立。",
+          "fact": "launch",
+          "source": "https://www.linkedin.com/company/higgsfield"
+        },
+        "freeTier": {
+          "value": "可免費使用少量指定模型，不含點數額度。",
+          "fact": "freeTier",
+          "source": "https://higgsfield.ai/creator-hub/help-center/plans/how-do-higgsfield-plans-work"
+        },
+        "bestFor": {
+          "value": "需要鏡頭與動作控制的影片創作者、分鏡製作者及廣告創意團隊。",
+          "fact": "bestFor",
+          "source": "https://higgsfield.ai/ai-video"
+        },
+        "teaser": {
+          "value": "把多種影像與影片生成模型及鏡頭控制放在同一工作空間。",
+          "fact": "summary",
+          "source": "https://higgsfield.ai/about"
+        },
+        "features": [
+          {
+            "value": "在同一工作空間使用多種影片生成模型。",
+            "fact": "features.0",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "Cinema Studio 可設定虛擬攝影機、鏡頭與焦距。",
+            "fact": "features.1",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "用參考影片控制動作，並指定起始與結束影格。",
+            "fact": "features.2",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "修改既有影片的風格、物件與細節。",
+            "fact": "features.3",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "使用影像生成、角色一致性與分鏡工具。",
+            "fact": "features.4",
+            "source": "https://higgsfield.ai/about"
+          }
+        ],
+        "credits": [],
+        "pricingNotes": [
+          {
+            "value": "本次無法核對付費方案價格，因此列為未公開。",
+            "fact": "plans.note",
+            "source": "https://higgsfield.ai/pricing"
+          }
+        ]
+      },
+      "magnific": {
+        "summary": {
+          "value": "Magnific 從圖像放大工具擴展為跨媒體創作平台。現在也整合影像、影片、音訊、3D、素材庫與協作流程。",
+          "fact": "summary",
+          "source": "https://www.magnific.com/"
+        },
+        "launch": {
+          "value": "2023 年 11 月推出原始 Magnific AI 產品。",
+          "fact": "launch",
+          "source": "https://magnific.substack.com/p/finally-we-are-launching-magnific"
+        },
+        "freeTier": {
+          "value": "免費方案可用自家模型每日生成最多 20 張 AI 圖像，不提供點數餘額。",
+          "fact": "freeTier",
+          "source": "https://www.magnific.com/ai/docs/ai-credits-and-limits"
+        },
+        "bestFor": {
+          "value": "需要圖像增強、跨媒體製作及共用創作流程的設計師、品牌與創意團隊。",
+          "fact": "bestFor",
+          "source": "https://www.magnific.com/"
+        },
+        "teaser": {
+          "value": "從圖像放大延伸到影像、影片與協作流程的創作平台。",
+          "fact": "summary",
+          "source": "https://www.magnific.com/"
+        },
+        "features": [
+          {
+            "value": "放大圖像並增強細節，官網標示最高可至 10K。",
+            "fact": "features.0",
+            "source": "https://www.magnific.com/"
+          },
+          {
+            "value": "生成與編輯 AI 影像，也能移除背景。",
+            "fact": "features.1",
+            "source": "https://www.magnific.com/"
+          },
+          {
+            "value": "從文字或圖片生成影片，並提供影片編輯與放大。",
+            "fact": "features.2",
+            "source": "https://www.magnific.com/company/about-us"
+          },
+          {
+            "value": "提供文字轉語音、音效及音樂生成。",
+            "fact": "features.3",
+            "source": "https://www.magnific.com/"
+          },
+          {
+            "value": "在 Spaces 畫布串接工具、比較版本並協作。",
+            "fact": "features.4",
+            "source": "https://www.magnific.com/"
+          }
+        ],
+        "credits": [
+          {
+            "value": "每月 20,000 點",
+            "fact": "plans.0.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "每年 240,000 點",
+            "fact": "plans.1.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "每月 45,000 點",
+            "fact": "plans.2.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "每年 600,000 點",
+            "fact": "plans.3.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "未公開",
+            "fact": "plans.4.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "每年 1,500,000 點",
+            "fact": "plans.5.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "每月 300,000 點",
+            "fact": "plans.6.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "每年 4,000,000 點",
+            "fact": "plans.7.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "每席每月 45,000 點，團隊共用",
+            "fact": "plans.8.credits",
+            "source": "https://www.magnific.com/business"
+          },
+          {
+            "value": "未公開",
+            "fact": "plans.9.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "未公開",
+            "fact": "plans.10.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          }
+        ],
+        "pricingNotes": [
+          {
+            "value": "年繳點數有效一年，不按月重置；價格未含 VAT 與地方稅。",
+            "fact": "plans.1.note",
+            "source": "https://www.magnific.com/fr/prix"
+          }
+        ]
+      },
+      "pixverse": {
+        "summary": {
+          "value": "PixVerse 以自研影片模型提供 AI 影片生成與編輯。平台也把參考素材、提示與輸出整理成創作流程。",
+          "fact": "summary",
+          "source": "https://pixverse.ai/en"
+        },
+        "launch": {
+          "value": "2023 年公司成立。",
+          "fact": "launch",
+          "source": "https://pixverse.ai/en/blog/pixverse-introduces-r2-real-time-world-model"
+        },
+        "freeTier": {
+          "value": "Basic 免費方案首次提供 60 點，另有每日 30 點。",
+          "fact": "freeTier",
+          "source": "https://app.pixverse.ai/subscribe"
+        },
+        "bestFor": {
+          "value": "需要從圖片或文字製作短片、角色內容與行銷素材的創作者及團隊。",
+          "fact": "bestFor",
+          "source": "https://pixverse.ai/en"
+        },
+        "teaser": {
+          "value": "以自研影片模型提供從文字或圖片生成與編輯影片的工具。",
+          "fact": "summary",
+          "source": "https://pixverse.ai/en"
+        },
+        "features": [
+          {
+            "value": "從文字或圖片生成影片。",
+            "fact": "features.0",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "使用創作模板、角色一致性與嘴型同步功能。",
+            "fact": "features.1",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "透過 Agent 以對話方式建立及調整影片。",
+            "fact": "features.2",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "在 Canvas 串接參考素材、提示、動作與輸出。",
+            "fact": "features.3",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "Marketing Hub 提供行銷影片製作流程。",
+            "fact": "features.4",
+            "source": "https://pixverse.ai/en"
+          }
+        ],
+        "credits": [
+          {
+            "value": "每 30 天 1,200 點，另每日 60 點",
+            "fact": "plans.0.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "每 30 天 1,200 點，另每日 60 點",
+            "fact": "plans.1.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "每 30 天 6,000 點，另每日 60 點",
+            "fact": "plans.2.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "每 30 天 6,000 點，另每日 60 點",
+            "fact": "plans.3.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "每 30 天 15,000 點，另每日 60 點",
+            "fact": "plans.4.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "每 30 天 15,000 點，另每日 60 點",
+            "fact": "plans.5.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "每 30 天 25,000 點，另每日 60 點",
+            "fact": "plans.6.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "每 30 天 25,000 點，另每日 60 點",
+            "fact": "plans.7.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "方案表列每 30 天 25,000 點，團隊共用點數池",
+            "fact": "plans.8.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "方案表列每 30 天 25,000 點，團隊共用點數池",
+            "fact": "plans.9.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          }
+        ],
+        "pricingNotes": [
+          {
+            "value": "訂閱點數每 30 天更新，未使用部分於下一週期到期。",
+            "fact": "plans.1.note",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "Team Ultra 按席計費；額度保留官方標示，不推算團隊總點數。",
+            "fact": "plans.9.note",
+            "source": "https://app.pixverse.ai/subscribe"
+          }
+        ]
+      }
+    },
+    "en": {
+      "higgsfield": {
+        "summary": {
+          "value": "Higgsfield brings image and video generation models into one workspace. Its creative workflows also include cinematic camera controls.",
+          "fact": "summary",
+          "source": "https://higgsfield.ai/about"
+        },
+        "launch": {
+          "value": "Company founded in 2023.",
+          "fact": "launch",
+          "source": "https://www.linkedin.com/company/higgsfield"
+        },
+        "freeTier": {
+          "value": "Limited access to selected models is free, with no credit allowance.",
+          "fact": "freeTier",
+          "source": "https://higgsfield.ai/creator-hub/help-center/plans/how-do-higgsfield-plans-work"
+        },
+        "bestFor": {
+          "value": "Video creators, storyboard artists and advertising teams who need camera and motion controls.",
+          "fact": "bestFor",
+          "source": "https://higgsfield.ai/ai-video"
+        },
+        "teaser": {
+          "value": "Image and video generation models with camera controls in one workspace.",
+          "fact": "summary",
+          "source": "https://higgsfield.ai/about"
+        },
+        "features": [
+          {
+            "value": "Work with multiple video generation models in one workspace.",
+            "fact": "features.0",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "Set virtual cameras, lenses and focal lengths in Cinema Studio.",
+            "fact": "features.1",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "Guide motion with a reference video and set first and last frames.",
+            "fact": "features.2",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "Change the style, objects or details in an existing video.",
+            "fact": "features.3",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "Use image generation, character consistency and storyboard tools.",
+            "fact": "features.4",
+            "source": "https://higgsfield.ai/about"
+          }
+        ],
+        "credits": [],
+        "pricingNotes": [
+          {
+            "value": "Paid-plan prices could not be confirmed in this check and are listed as not disclosed.",
+            "fact": "plans.note",
+            "source": "https://higgsfield.ai/pricing"
+          }
+        ]
+      },
+      "magnific": {
+        "summary": {
+          "value": "Magnific has grown from an image upscaler into a broader creative platform. It now brings together images, video, audio, 3D, stock assets and collaborative workflows.",
+          "fact": "summary",
+          "source": "https://www.magnific.com/"
+        },
+        "launch": {
+          "value": "The original Magnific AI product launched in November 2023.",
+          "fact": "launch",
+          "source": "https://magnific.substack.com/p/finally-we-are-launching-magnific"
+        },
+        "freeTier": {
+          "value": "The free plan allows up to 20 AI images a day with in-house models and has no credit balance.",
+          "fact": "freeTier",
+          "source": "https://www.magnific.com/ai/docs/ai-credits-and-limits"
+        },
+        "bestFor": {
+          "value": "Designers, brands and creative teams working on image enhancement, multimedia production and shared workflows.",
+          "fact": "bestFor",
+          "source": "https://www.magnific.com/"
+        },
+        "teaser": {
+          "value": "A creative platform spanning image upscaling, video and collaborative workflows.",
+          "fact": "summary",
+          "source": "https://www.magnific.com/"
+        },
+        "features": [
+          {
+            "value": "Upscale images and enhance detail, with up to 10K stated on the official site.",
+            "fact": "features.0",
+            "source": "https://www.magnific.com/"
+          },
+          {
+            "value": "Generate and edit AI images, including background removal.",
+            "fact": "features.1",
+            "source": "https://www.magnific.com/"
+          },
+          {
+            "value": "Generate video from text or images, then use video editing and upscaling tools.",
+            "fact": "features.2",
+            "source": "https://www.magnific.com/company/about-us"
+          },
+          {
+            "value": "Create speech from text, sound effects and music.",
+            "fact": "features.3",
+            "source": "https://www.magnific.com/"
+          },
+          {
+            "value": "Connect tools, compare versions and collaborate on the Spaces canvas.",
+            "fact": "features.4",
+            "source": "https://www.magnific.com/"
+          }
+        ],
+        "credits": [
+          {
+            "value": "20,000 credits per month",
+            "fact": "plans.0.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "240,000 credits per year",
+            "fact": "plans.1.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "45,000 credits per month",
+            "fact": "plans.2.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "600,000 credits per year",
+            "fact": "plans.3.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "Not disclosed",
+            "fact": "plans.4.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "1,500,000 credits per year",
+            "fact": "plans.5.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "300,000 credits per month",
+            "fact": "plans.6.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "4,000,000 credits per year",
+            "fact": "plans.7.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "45,000 credits per seat per month, shared by the team",
+            "fact": "plans.8.credits",
+            "source": "https://www.magnific.com/business"
+          },
+          {
+            "value": "Not disclosed",
+            "fact": "plans.9.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "Not disclosed",
+            "fact": "plans.10.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          }
+        ],
+        "pricingNotes": [
+          {
+            "value": "Annual credits are valid for a year and do not reset monthly. Prices exclude VAT and local taxes.",
+            "fact": "plans.1.note",
+            "source": "https://www.magnific.com/fr/prix"
+          }
+        ]
+      },
+      "pixverse": {
+        "summary": {
+          "value": "PixVerse uses its own video models for AI video generation and editing. Its workflows connect reference material, prompts and outputs.",
+          "fact": "summary",
+          "source": "https://pixverse.ai/en"
+        },
+        "launch": {
+          "value": "Company founded in 2023.",
+          "fact": "launch",
+          "source": "https://pixverse.ai/en/blog/pixverse-introduces-r2-real-time-world-model"
+        },
+        "freeTier": {
+          "value": "The free Basic plan includes 60 initial credits and 30 daily credits.",
+          "fact": "freeTier",
+          "source": "https://app.pixverse.ai/subscribe"
+        },
+        "bestFor": {
+          "value": "Creators and teams making short videos, character content and marketing material from images or text.",
+          "fact": "bestFor",
+          "source": "https://pixverse.ai/en"
+        },
+        "teaser": {
+          "value": "Video generation and editing from text or images, powered by its own models.",
+          "fact": "summary",
+          "source": "https://pixverse.ai/en"
+        },
+        "features": [
+          {
+            "value": "Generate video from text or images.",
+            "fact": "features.0",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "Use creative templates, character consistency and lip sync.",
+            "fact": "features.1",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "Create and adjust videos through a conversation with Agent.",
+            "fact": "features.2",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "Connect references, prompts, motion and outputs in Canvas.",
+            "fact": "features.3",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "Use Marketing Hub for marketing video workflows.",
+            "fact": "features.4",
+            "source": "https://pixverse.ai/en"
+          }
+        ],
+        "credits": [
+          {
+            "value": "1,200 credits every 30 days, plus 60 daily credits",
+            "fact": "plans.0.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "1,200 credits every 30 days, plus 60 daily credits",
+            "fact": "plans.1.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "6,000 credits every 30 days, plus 60 daily credits",
+            "fact": "plans.2.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "6,000 credits every 30 days, plus 60 daily credits",
+            "fact": "plans.3.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "15,000 credits every 30 days, plus 60 daily credits",
+            "fact": "plans.4.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "15,000 credits every 30 days, plus 60 daily credits",
+            "fact": "plans.5.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "25,000 credits every 30 days, plus 60 daily credits",
+            "fact": "plans.6.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "25,000 credits every 30 days, plus 60 daily credits",
+            "fact": "plans.7.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "Published allowance: 25,000 credits every 30 days in a shared team pool",
+            "fact": "plans.8.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "Published allowance: 25,000 credits every 30 days in a shared team pool",
+            "fact": "plans.9.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          }
+        ],
+        "pricingNotes": [
+          {
+            "value": "Subscription credits renew every 30 days; unused credits expire at the next cycle.",
+            "fact": "plans.1.note",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "Team Ultra is priced per seat. Credit allowances follow the published table; no team total is calculated here.",
+            "fact": "plans.9.note",
+            "source": "https://app.pixverse.ai/subscribe"
+          }
+        ]
+      }
+    },
+    "ja": {
+      "higgsfield": {
+        "summary": {
+          "value": "Higgsfieldは、画像と動画の生成モデルを一つの作業環境にまとめたプラットフォームです。撮影時のカメラワークを設定しながら制作を進められます。",
+          "fact": "summary",
+          "source": "https://higgsfield.ai/about"
+        },
+        "launch": {
+          "value": "会社は2023年に設立されました。",
+          "fact": "launch",
+          "source": "https://www.linkedin.com/company/higgsfield"
+        },
+        "freeTier": {
+          "value": "一部の指定モデルを限られた範囲で無料利用できます。クレジットの付与はありません。",
+          "fact": "freeTier",
+          "source": "https://higgsfield.ai/creator-hub/help-center/plans/how-do-higgsfield-plans-work"
+        },
+        "bestFor": {
+          "value": "カメラワークや動きを指定したい動画制作者、絵コンテの制作者、広告のクリエイティブチーム向けです。",
+          "fact": "bestFor",
+          "source": "https://higgsfield.ai/ai-video"
+        },
+        "teaser": {
+          "value": "画像・動画の生成モデルとカメラワークの設定を一つの作業環境で使えます。",
+          "fact": "summary",
+          "source": "https://higgsfield.ai/about"
+        },
+        "features": [
+          {
+            "value": "一つの作業環境で複数の動画生成モデルを使えます。",
+            "fact": "features.0",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "Cinema Studioで仮想カメラ、レンズ、焦点距離を設定できます。",
+            "fact": "features.1",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "参照動画で動きを指定し、開始フレームと終了フレームを設定できます。",
+            "fact": "features.2",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "既存の動画のスタイルやオブジェクト、細部を編集できます。",
+            "fact": "features.3",
+            "source": "https://higgsfield.ai/ai-video"
+          },
+          {
+            "value": "画像生成、キャラクターの一貫性、絵コンテのためのツールを使えます。",
+            "fact": "features.4",
+            "source": "https://higgsfield.ai/about"
+          }
+        ],
+        "credits": [],
+        "pricingNotes": [
+          {
+            "value": "今回の確認では有料プランの価格を照合できなかったため、非公開と表記しています。",
+            "fact": "plans.note",
+            "source": "https://higgsfield.ai/pricing"
+          }
+        ]
+      },
+      "magnific": {
+        "summary": {
+          "value": "Magnificは、画像の拡大ツールから幅広い制作に対応するプラットフォームへと広がりました。現在は画像、動画、音声、3D、素材ライブラリ、共同作業の機能をまとめて提供しています。",
+          "fact": "summary",
+          "source": "https://www.magnific.com/"
+        },
+        "launch": {
+          "value": "元のMagnific AI製品は2023年11月に公開されました。",
+          "fact": "launch",
+          "source": "https://magnific.substack.com/p/finally-we-are-launching-magnific"
+        },
+        "freeTier": {
+          "value": "無料プランでは自社モデルで毎日最大20枚のAI画像を生成できます。クレジット残高の付与はありません。",
+          "fact": "freeTier",
+          "source": "https://www.magnific.com/ai/docs/ai-credits-and-limits"
+        },
+        "bestFor": {
+          "value": "画像の補正、複数メディアの制作、制作手順の共有を行うデザイナー、ブランド、クリエイティブチーム向けです。",
+          "fact": "bestFor",
+          "source": "https://www.magnific.com/"
+        },
+        "teaser": {
+          "value": "画像の拡大から動画制作、共同作業までを扱う制作プラットフォームです。",
+          "fact": "summary",
+          "source": "https://www.magnific.com/"
+        },
+        "features": [
+          {
+            "value": "画像の拡大と細部の補完に対応し、公式サイトでは最大10Kと案内されています。",
+            "fact": "features.0",
+            "source": "https://www.magnific.com/"
+          },
+          {
+            "value": "AI画像の生成や編集、背景の削除ができます。",
+            "fact": "features.1",
+            "source": "https://www.magnific.com/"
+          },
+          {
+            "value": "テキストや画像から動画を生成し、動画の編集や拡大も行えます。",
+            "fact": "features.2",
+            "source": "https://www.magnific.com/company/about-us"
+          },
+          {
+            "value": "テキストの音声化、効果音、音楽の生成に対応しています。",
+            "fact": "features.3",
+            "source": "https://www.magnific.com/"
+          },
+          {
+            "value": "Spacesのキャンバスでツールをつなぎ、バージョンを比較しながら共同作業できます。",
+            "fact": "features.4",
+            "source": "https://www.magnific.com/"
+          }
+        ],
+        "credits": [
+          {
+            "value": "毎月20,000クレジット",
+            "fact": "plans.0.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "年間240,000クレジット",
+            "fact": "plans.1.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "毎月45,000クレジット",
+            "fact": "plans.2.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "年間600,000クレジット",
+            "fact": "plans.3.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "非公開",
+            "fact": "plans.4.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "年間1,500,000クレジット",
+            "fact": "plans.5.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "毎月300,000クレジット",
+            "fact": "plans.6.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "年間4,000,000クレジット",
+            "fact": "plans.7.credits",
+            "source": "https://www.magnific.com/fr/prix"
+          },
+          {
+            "value": "各席に毎月45,000クレジットが付与され、チームで共有します。",
+            "fact": "plans.8.credits",
+            "source": "https://www.magnific.com/business"
+          },
+          {
+            "value": "非公開",
+            "fact": "plans.9.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          },
+          {
+            "value": "非公開",
+            "fact": "plans.10.credits",
+            "source": "https://www.magnific.com/ai/docs/plans-and-pricing"
+          }
+        ],
+        "pricingNotes": [
+          {
+            "value": "年払いのクレジットの有効期間は一年間で、毎月のリセットはありません。価格にはVATと地方税が含まれていません。",
+            "fact": "plans.1.note",
+            "source": "https://www.magnific.com/fr/prix"
+          }
+        ]
+      },
+      "pixverse": {
+        "summary": {
+          "value": "PixVerseは、自社の動画モデルを使ったAI動画の生成・編集プラットフォームです。参照素材やプロンプトから出力までをつなぐ制作機能も備えています。",
+          "fact": "summary",
+          "source": "https://pixverse.ai/en"
+        },
+        "launch": {
+          "value": "会社は2023年に設立されました。",
+          "fact": "launch",
+          "source": "https://pixverse.ai/en/blog/pixverse-introduces-r2-real-time-world-model"
+        },
+        "freeTier": {
+          "value": "無料のBasicプランでは初回に60クレジット、その後は毎日30クレジットが付与されます。",
+          "fact": "freeTier",
+          "source": "https://app.pixverse.ai/subscribe"
+        },
+        "bestFor": {
+          "value": "画像やテキストから短い動画、キャラクターのコンテンツ、マーケティング素材を作る制作者やチーム向けです。",
+          "fact": "bestFor",
+          "source": "https://pixverse.ai/en"
+        },
+        "teaser": {
+          "value": "自社モデルを使い、テキストや画像から動画を生成・編集できます。",
+          "fact": "summary",
+          "source": "https://pixverse.ai/en"
+        },
+        "features": [
+          {
+            "value": "テキストや画像から動画を生成できます。",
+            "fact": "features.0",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "テンプレート、キャラクターの一貫性、リップシンクの機能を使えます。",
+            "fact": "features.1",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "Agentとの対話を通じて動画を作成・調整できます。",
+            "fact": "features.2",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "Canvasで参照素材、プロンプト、動き、出力をつなげられます。",
+            "fact": "features.3",
+            "source": "https://pixverse.ai/en"
+          },
+          {
+            "value": "Marketing Hubでマーケティング動画の制作を進められます。",
+            "fact": "features.4",
+            "source": "https://pixverse.ai/en"
+          }
+        ],
+        "credits": [
+          {
+            "value": "30日ごとに1,200クレジット、別途毎日60クレジット",
+            "fact": "plans.0.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "30日ごとに1,200クレジット、別途毎日60クレジット",
+            "fact": "plans.1.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "30日ごとに6,000クレジット、別途毎日60クレジット",
+            "fact": "plans.2.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "30日ごとに6,000クレジット、別途毎日60クレジット",
+            "fact": "plans.3.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "30日ごとに15,000クレジット、別途毎日60クレジット",
+            "fact": "plans.4.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "30日ごとに15,000クレジット、別途毎日60クレジット",
+            "fact": "plans.5.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "30日ごとに25,000クレジット、別途毎日60クレジット",
+            "fact": "plans.6.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "30日ごとに25,000クレジット、別途毎日60クレジット",
+            "fact": "plans.7.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "公式表の表記は30日ごとに25,000クレジットで、チームの共通枠です。",
+            "fact": "plans.8.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "公式表の表記は30日ごとに25,000クレジットで、チームの共通枠です。",
+            "fact": "plans.9.credits",
+            "source": "https://app.pixverse.ai/subscribe"
+          }
+        ],
+        "pricingNotes": [
+          {
+            "value": "契約分のクレジットは30日ごとに更新され、未使用分は次の期間に失効します。",
+            "fact": "plans.1.note",
+            "source": "https://app.pixverse.ai/subscribe"
+          },
+          {
+            "value": "Team Ultraは席ごとの料金です。クレジットは公式の表記を掲載し、チーム全体の合計は算出していません。",
+            "fact": "plans.9.note",
+            "source": "https://app.pixverse.ai/subscribe"
+          }
+        ]
+      }
+    }
+  }
+}
