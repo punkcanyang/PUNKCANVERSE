@@ -86,6 +86,9 @@ try {
       await waitUntil(`Boolean(document.querySelector('.tools-grid.is-enhanced'))`);
       assert.equal(await evaluate(`getComputedStyle(document.querySelector('.tools-grid')).gridTemplateColumns.split(' ').length`),columns);
       assert.equal(await evaluate(`document.querySelectorAll('.tools-grid .tool-body[hidden]').length`),3);
+      assert.equal(await evaluate(`document.querySelector('.tools-jump')===null`),true);
+      assert.equal(await evaluate(`document.querySelectorAll('.tool-free-badge').length`),2);
+      assert.equal(await evaluate(`[...document.querySelectorAll('.tool-free-badge')].every(badge=>{const box=badge.getBoundingClientRect();return box.top<badge.parentElement.getBoundingClientRect().top && box.left>=0 && box.right<=innerWidth;})`),true);
       await screenshot((lang||'/zh').slice(1)+`-tools-${width}`);
       await evaluate(`document.querySelector('#magnific [data-tool-open]').focus()`);
       await request('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
@@ -108,7 +111,7 @@ try {
     assert.equal(await evaluate(`document.querySelector('.tool-dialog h2').textContent`),'PixVerse');
     await evaluate(`document.querySelector('.tool-dialog-close').click()`);
     await waitUntil(`!document.querySelector('.tool-dialog').open`);
-    await evaluate(`document.querySelector('.tools-jump a[href$="#pixverse"]').click()`);
+    await evaluate(`document.querySelector('#pixverse [data-tool-open]').click()`);
     await waitUntil(`document.querySelector('.tool-dialog').open`);
     await navigate(lang+'/prompts/video/',1440);await waitUntil(`!document.querySelector('#prompt-search').disabled`);
     await screenshot((lang||'/zh').slice(1)+'-archive-desktop');

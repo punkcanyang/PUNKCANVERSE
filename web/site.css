@@ -20,8 +20,8 @@ body{padding-bottom:var(--consent-space,0px)}.site-info-links{display:flex;align
 .official-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .official-frame-credit{overflow-wrap:anywhere}
 
-.tools-grid{max-width:1120px;margin:0 auto 4rem;display:grid;gap:2rem;min-width:0}
-.tool-card{min-width:0;padding:clamp(1rem,4vw,2.5rem);background:var(--panel,#17191a);border:1px solid #555;scroll-margin-top:1rem;overflow-wrap:anywhere}
+.tools-grid{padding-top:18px;max-width:1120px;margin:0 auto 4rem;display:grid;gap:2rem;min-width:0}
+.tool-card{position:relative;min-width:0;padding:clamp(1rem,4vw,2.5rem);background:var(--panel,#17191a);border:1px solid #555;scroll-margin-top:1rem;overflow-wrap:anywhere}
 .tool-card h2{font-size:28px;line-height:1.25;margin:.5rem 0 1rem}
 .tool-card h3{margin-top:1.8rem}.tool-card p,.tool-features{line-height:1.8}
 .tool-features{padding-left:1.5rem}.tool-prices{min-width:640px;width:100%}
@@ -99,8 +99,6 @@ select:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .prompt-text.is-expanded{max-height:none!important;max-block-size:none!important;overflow:visible}
 .prompt-toolbar,.code-toolbar{flex-wrap:wrap;gap:8px}.prompt-toolbar small{font-size:12px}
 .copy-button{min-width:80px}.prompt-text,.code-frame pre{line-height:1.85}
-.tools-jump{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
-.tools-jump a{display:flex;align-items:center;min-height:44px;padding:8px 16px;border:1px solid var(--muted);font-size:14px}
 .tool-card{scroll-margin-top:24px}.table-scroll-hint{font-size:13px;color:var(--muted);margin-top:16px}
 .tip-section{max-width:var(--reading-width)}.tip-section p,.tip-section li{line-height:1.9}
 .page-intro>p:last-child,.region-card>p{line-height:1.9}
@@ -120,13 +118,13 @@ select:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
   .full-prompt .prompt-text,.card-prompt .prompt-text,.code-frame pre{font-size:14px;padding:16px}
   .post-media figcaption,.site-footer>p{font-size:12px}.card-source{font-size:13px}
   .cookie-consent{padding:14px 16px}.cookie-consent p{font-size:13px}.toast{font-size:14px;line-height:1.5}
-  .tool-card{padding:20px 16px}.tools-jump{gap:8px}.tool-prices{font-size:14px}
+  .tool-card{padding:20px 16px}.tool-prices{font-size:14px}
 }
 
 .cinema-bottom .home-search p{font-size:13px;line-height:1.6;margin:8px 0 0}.home-picks .section-heading{padding-top:24px}
 
 /* Compact tool summaries; full facts and pricing open in a readable dialog. */
-.tools-grid.is-enhanced{grid-template-columns:minmax(0,1fr);gap:20px;align-items:stretch}
+.tools-grid.is-enhanced{grid-template-columns:minmax(0,1fr);gap:40px 20px;align-items:stretch}
 .tools-grid.is-enhanced .tool-card{padding:0;display:flex}
 .tools-grid.is-enhanced .tool-card>header{position:relative;width:100%;padding:24px 24px 88px}
 .tools-grid.is-enhanced .tool-card>header>p:not(.eyebrow){font-size:16px;line-height:1.8;color:var(--muted);margin:0}
@@ -145,3 +143,6 @@ select:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 @media(min-width:760px){.tools-grid.is-enhanced{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(min-width:1200px){.tools-grid.is-enhanced{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:650px){.tool-dialog{width:calc(100% - 24px);max-height:calc(100dvh - 24px)}.tool-dialog-header{padding:16px;gap:12px}.tool-dialog-header h2{font-size:24px}.tool-dialog-content{padding:0 16px 20px}.tools-grid.is-enhanced .tool-card>header{padding:20px 20px 80px}.tool-open{padding:20px}}
+
+/* Allowance labels sit outside the card border, above the summary and hit area. */
+.tool-free-badge{position:absolute;z-index:1;top:0;right:16px;transform:translateY(-50%);max-width:calc(100% - 32px);padding:4px 10px;border:1px solid var(--accent);background:var(--paper);color:var(--accent);font-size:12px;font-weight:600;line-height:1.5;pointer-events:none}
