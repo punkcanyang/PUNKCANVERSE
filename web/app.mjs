@@ -134,11 +134,6 @@ function initializeToolCards() {
     const card = [...grid.children].find(card => `#${card.id}` === location.hash);
     if (card) open(card);
   }
-  document.querySelector('.tools-jump')?.addEventListener('click', event => {
-    const link = event.target.closest('a');
-    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-    if (link.hash === location.hash) openHash();
-  });
   window.addEventListener('hashchange', openHash);
   openHash();
 }
