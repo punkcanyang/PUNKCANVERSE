@@ -1,5 +1,26 @@
 // Keep the fallback synchronous after Clipboard API failure, with focus restored.
-export async function copyText(text, { navigator = globalThis.navigator, document = globalThis.document } = {}) {
+// Pending text (a promise) is handed to a ClipboardItem first so Safari keeps the
+// click's user activation while the source text is still loading.
+export async function copyText(text, { navigator = globalThis.navigator, document = globalThis.document, ClipboardItem = globalThis.ClipboardItem } = {}) {
+  if (typeof text !== 'string') {
+    const pending = Promise.resolve(text);
+    if (navigator?.clipboard?.write && ClipboardItem) {
+      const blob = pending.then(value => {
+        if (typeof value !== 'string') throw new Error('Missing text');
+        return new Blob([value], { type: 'text/plain' });
+      });
+      // The browser may reject write() without reading the item; failure is reported below.
+      blob.catch(() => {});
+      try {
+        await navigator.clipboard.write([new ClipboardItem({ 'text/plain': blob })]);
+        return true;
+      } catch {
+        // Fall through to the string path once the text is available.
+      }
+    }
+    try { text = await pending; } catch { return false; }
+    if (typeof text !== 'string') return false;
+  }
   try {
     if (navigator?.clipboard?.writeText) {
       await navigator.clipboard.writeText(text);

@@ -29,7 +29,7 @@
   "mediaEmptyBody": "先看视频分页，新的创作笔记将在整理后发布。",
   "fieldNotes": "收藏笔记",
   "readPrompt": "阅读提示词与制作笔记 ↗",
-  "viewPrompt": "查看提示词 / 复制",
+  "readFullPrompt": "阅读全文 ↗",
   "originalPrompt": "原文提示词",
   "fullPrompt": "完整提示词",
   "excerpt": "提示词摘录",

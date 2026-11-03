@@ -47,3 +47,45 @@ test('execCommand 抛出错误时也清理临时节点', async () => {
   assert.equal(await copyText('text', { navigator: {}, document: fallback.document }), false);
   assert.deepEqual(fallback.calls.slice(-2), ['removed', 'restored focus']);
 });
+
+// List slim spec change (boss 2026-11-03): list cards copy text that is still loading.
+test('待载入原文先交给 ClipboardItem，保留点击的使用者启用状态', async () => {
+  const written = [];
+  class Item { constructor(data) { this.data = data; } }
+  const navigator = { clipboard: { async write(items) { written.push(await items[0].data['text/plain']); } } };
+  assert.equal(await copyText(Promise.resolve('完整原文'), { navigator, document: null, ClipboardItem: Item }), true);
+  assert.equal(await written[0].text(), '完整原文');
+});
+
+test('无 ClipboardItem 时等原文载入后复制；载入失败返回 false', async () => {
+  let copied;
+  const navigator = { clipboard: { async writeText(text) { copied = text; } } };
+  assert.equal(await copyText(Promise.resolve('full text'), { navigator, document: null, ClipboardItem: undefined }), true);
+  assert.equal(copied, 'full text');
+  assert.equal(await copyText(Promise.reject(new Error('offline')), { navigator, document: null, ClipboardItem: undefined }), false);
+  assert.equal(await copyText(Promise.resolve(undefined), { navigator, document: null, ClipboardItem: undefined }), false);
+});
+
+test('ClipboardItem 在原文载入前同步写入，保留点击授权', async () => {
+  let resolveText, writeCalledBeforeText = false, settled = false;
+  class Item { constructor(data) { this.data = data; } }
+  const navigator = { clipboard: { async write(items) { writeCalledBeforeText = !settled; await items[0].data['text/plain']; } } };
+  const pending = new Promise(resolve => { resolveText = resolve; });
+  const result = copyText(pending, { navigator, document: null, ClipboardItem: Item });
+  assert.equal(writeCalledBeforeText, true);
+  settled = true; resolveText('完整原文');
+  assert.equal(await result, true);
+});
+
+test('ClipboardItem 写入被拒时退回 writeText，只写入一次', async () => {
+  const copied = [];
+  class Item { constructor(data) { this.data = data; } }
+  const navigator = { clipboard: {
+    async write() { throw new Error('Document is not focused'); },
+    async writeText(text) { copied.push(text); },
+  } };
+  assert.equal(await copyText(Promise.resolve('full text'), { navigator, document: null, ClipboardItem: Item }), true);
+  assert.deepEqual(copied, ['full text']);
+  assert.equal(await copyText(Promise.reject(new Error('offline')), { navigator, document: null, ClipboardItem: Item }), false);
+  assert.deepEqual(copied, ['full text']);
+});

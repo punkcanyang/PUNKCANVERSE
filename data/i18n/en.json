@@ -29,7 +29,7 @@
   "mediaEmptyBody": "Start with the video archive. New notes will appear as they are ready.",
   "fieldNotes": "Collection notes",
   "readPrompt": "Read the prompt & notes ↗",
-  "viewPrompt": "View prompt / copy",
+  "readFullPrompt": "Read the full prompt ↗",
   "originalPrompt": "Original prompt",
   "fullPrompt": "Full prompt",
   "excerpt": "Prompt excerpt",

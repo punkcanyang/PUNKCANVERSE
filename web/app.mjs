@@ -22,18 +22,46 @@ function showToast(text) {
   }, 4000);
 }
 
-// Copy the exact source already present in the page. No catalog request is needed.
+// List cards show only an excerpt; their exact source text loads once, on demand,
+// from a small, content-hashed id → prompt map (never the full catalog). After a
+// failure, background loads wait before retrying; an explicit copy retries at once.
+const PROMPT_TEXT_RETRY_MS = 10000;
+let promptTextRequest, promptTextMap, promptTextFailedAt = -Infinity;
+function loadPromptText({ force = false } = {}) {
+  if (!promptTextRequest && !force && Date.now() - promptTextFailedAt < PROMPT_TEXT_RETRY_MS) return Promise.reject(new Error('Prompt text recently failed'));
+  promptTextRequest ||= fetch(document.body.dataset.promptText)
+    .then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
+    .then(map => (promptTextMap = map))
+    .catch(error => { promptTextRequest = null; promptTextFailedAt = Date.now(); throw error; });
+  return promptTextRequest;
+}
+const promptTextFor = id => {
+  const text = promptTextMap?.[id];
+  if (typeof text === 'string') return text;
+  return loadPromptText({ force: true }).then(map => {
+    if (typeof map[id] !== 'string') throw new Error(`Missing prompt text: ${id}`);
+    return map[id];
+  });
+};
+const prefetchPromptText = event => { if (event.target.closest?.('[data-copy-remote]')) loadPromptText().catch(() => {}); };
+document.addEventListener('pointerover', prefetchPromptText);
+document.addEventListener('focusin', prefetchPromptText);
+
+// Detail pages copy the exact source already present in the page.
 for (const button of document.querySelectorAll('[data-copy-entry]')) button.disabled = false;
 const copyTimers = new WeakMap();
 document.addEventListener('click', async event => {
   const button = event.target.closest('[data-copy-entry], [data-copy-code], [data-copy-block]');
   if (!button || button.disabled) return;
-  const text = button.hasAttribute('data-copy-block')
+  const id = button.dataset.copyEntry;
+  const text = button.hasAttribute('data-copy-remote')
+    ? promptTextFor(id)
+    : button.hasAttribute('data-copy-block')
     ? workflowCopyText(button.closest('[data-copy-scope]'))
     : button.hasAttribute('data-copy-code')
     ? button.closest('.code-frame').querySelector('pre code').textContent
     : button.closest('.prompt-box')?.querySelector('pre')?.textContent;
-  if (typeof text !== 'string') return;
+  if (typeof text !== 'string' && typeof text?.then !== 'function') return;
   clearTimeout(copyTimers.get(button));
   const label = button.dataset.copyLabel ||= button.textContent;
   button.disabled = true;
@@ -152,7 +180,8 @@ function initializeLibrary() {
   const chips = document.querySelector('#active-filters');
   const inputs = [...form.querySelectorAll('input[type="checkbox"], input[type="radio"]')];
   const pageSize = 12;
-  let displayed = pageSize, filters = parseFilters(location.search), searchTimer;
+  // Cards hold only excerpts; full source text joins the search after it loads.
+  let displayed = pageSize, filters = parseFilters(location.search), searchTimer, fullText = false;
   const known = {
     models: new Set(inputs.filter(input => input.name === 'model').map(input => input.value)),
     tags: new Set(inputs.filter(input => input.name === 'tag').map(input => input.value)),
@@ -194,6 +223,12 @@ function initializeLibrary() {
     const unknown = [...filters.models.filter(value=>!known.models.has(value)), ...filters.tags.filter(value=>!known.tags.has(value)), ...(filters.medium && !known.media.has(filters.medium)?[filters.medium]:[])];
     const notice=document.querySelector('#unknown-filters'); notice.hidden=unknown.length===0;
     notice.textContent=unknown.length?message('unknownFilters',{items:unknown.join(', ')}):'';
+    if (filters.q && !fullText) loadPromptText().then(map => {
+      if (fullText) return;
+      fullText = true;
+      for (const entry of entries) entry.searchText += ` ${map[entry.id] || ''}`;
+      render(false);
+    }).catch(() => {});
   }
   function update(next, replace=false) {
     clearTimeout(searchTimer); displayed=pageSize; filters=next;
@@ -202,6 +237,7 @@ function initializeLibrary() {
     render(!replace);
   }
   form.addEventListener('submit', event=>{event.preventDefault();update({...filters,q:search.value.trim(),sort:sort.value});});
+  search.addEventListener('focus',()=>loadPromptText().catch(()=>{}),{once:true});
   search.addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>update({...filters,q:search.value.trim()},true),180);});
   sort.addEventListener('change',()=>update({...filters,q:search.value.trim(),sort:sort.value}));
   form.addEventListener('change',event=>{

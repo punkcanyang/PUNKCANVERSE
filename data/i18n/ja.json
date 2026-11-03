@@ -29,7 +29,7 @@
   "mediaEmptyBody": "まずは動画のページをご覧ください。新しい制作ノートは準備ができ次第公開します。",
   "fieldNotes": "収集メモ",
   "readPrompt": "プロンプトと制作メモを読む ↗",
-  "viewPrompt": "プロンプトを見る・コピー",
+  "readFullPrompt": "全文を読む ↗",
   "originalPrompt": "原文プロンプト",
   "fullPrompt": "プロンプト全文",
   "excerpt": "プロンプトの抜粋",
