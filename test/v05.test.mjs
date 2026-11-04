@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { loadCatalog, mergePrompts, validateImportedPrompts } from '../lib/catalog.mjs';
 import { validateImportProvenance, sha256, ORIGINAL_PROMPTS_SHA256 } from '../lib/import-provenance.mjs';
 import { buildSite } from '../build.mjs';
-import { renderCard, renderPostMedia, renderPromptDetail, promptHtml } from '../lib/cards.mjs';
+import { renderCard, renderPostMedia, renderPromptDetail, promptHtml, promptPreview } from '../lib/cards.mjs';
 import { loadI18n, cardUI, localizeEntry, validateI18n } from '../lib/i18n.mjs';
 import { getCopyText, filterEntries } from '../lib/prompts.mjs';
 import { getEmbedUrl, getPostNotice } from '../lib/posts.mjs';
@@ -136,7 +136,8 @@ test('v0.5 三语官方占位无图片／X 模板／推广；原文保留，长�
         // v0.5.2 spec change (boss 2026-10-22): real official sample frames
         assert.ok(!/twitter-tweet|tweet-template|tweet-mount|data-play-embed|pbs\.twimg\.com|widgets\.js|platform\.twitter\.com|class="affiliate-button"/.test(html));
         // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
-        assert.ok(html.includes(promptHtml(entry)));
+        // List slim spec change (boss 2026-11-03): list cards show an excerpt; full text on detail pages and assets/prompt-text.json
+        assert.ok(html.includes(html===card?e(promptPreview(entry)):promptHtml(entry)));
       }
       assert.equal(getEmbedUrl(entry),null);
       // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page

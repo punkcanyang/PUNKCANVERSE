@@ -1,8 +1,9 @@
 import { selectHomeEntries } from '../lib/prompts.mjs';
-import { promptHtml } from '../lib/cards.mjs';
+import { promptHtml, promptPreview } from '../lib/cards.mjs';
 import { loadWorks } from '../lib/works.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { loadCatalog } from '../lib/catalog.mjs';
@@ -30,6 +31,14 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
   const published=await json('dist/catalog.json');
   assert.deepEqual(published.entries,entries);
   assert.deepEqual(await json('dist/data.json'),{entries:original.entries});
+  // List slim spec change (boss 2026-11-03): exact id → prompt map for on-demand copy and search
+  // List slim spec change (boss 2026-11-03): the map name carries its content hash and every page points to it.
+  const promptTextPath=(await read('dist/index.html')).match(/<body\b[^>]*data-prompt-text="(assets\/prompt-text\.([0-9a-f]{12})\.json)"/);
+  assert.ok(promptTextPath,'Pages must name the hashed prompt text map');
+  const promptTextRaw=await read(`dist/${promptTextPath[1]}`);
+  assert.equal(createHash('sha256').update(promptTextRaw).digest('hex').slice(0,12),promptTextPath[2]);
+  assert.deepEqual(JSON.parse(promptTextRaw),Object.fromEntries(entries.map(entry=>[entry.id,entry.prompt])));
+  for(const page of ['prompts/video/index.html','en/prompts/video/index.html','ja/prompts/fight/index.html','en/index.html'])assert.ok((await read(`dist/${page}`)).includes(`data-prompt-text="${promptTextPath[1]}"`),page);
   const i18n=await loadI18n(root);
   validateI18n(i18n,entries,(await json('data/workflows.json')).entries,await json('data/regions.json'));
   const thumbs=await json('data/thumbs.json');
@@ -58,7 +67,9 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
       assert.ok(locs.includes(url));
       assert.ok(detail.includes(`<link rel="canonical" href="${url}">`));
       // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
-      assert.ok(card.includes(`<pre class="prompt-text" tabindex="0">${promptHtml(entry)}</pre>`));
+      // List slim spec change (boss 2026-11-03): list cards show an excerpt; full text on detail pages and assets/prompt-text.json
+      assert.ok(card.includes(`<pre class="prompt-text prompt-preview">${e(promptPreview(entry))}</pre>`));
+      assert.ok(detail.includes(`<pre class="prompt-text" tabindex="0">${promptHtml(entry)}</pre>`));
       // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
       assert.equal(getCopyText(entry),entry.prompt);
       for(const html of [card,detail]) {

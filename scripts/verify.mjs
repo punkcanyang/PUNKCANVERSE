@@ -1,5 +1,5 @@
 import { loadWorks } from '../lib/works.mjs';
-import { promptHtml } from '../lib/cards.mjs';
+import { promptHtml, promptPreview } from '../lib/cards.mjs';
 import { isOfficialFramePath, withOfficialFrameBaseline } from '../lib/official-frames.mjs';
 import { verifyV052 } from './verify-v052.mjs';
 import { verifyV053 } from './verify-v053.mjs';
@@ -113,6 +113,8 @@ await check('每条必填字段完整，原帖只允许 X status 链接，无官
 // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
 await check('全部提示词有完整原文、精确长度与来源指纹，页面及复制均为全文', async () => {
   const home = await read(join(dist, 'prompts/video/index.html'));
+  const promptTextPath = (await read(join(dist, 'index.html'))).match(/data-prompt-text="([^"]+)"/)[1];
+  const promptText = JSON.parse(await read(join(dist, promptTextPath)));
   for (const entry of entries) {
     assert.ok(Number.isInteger(entry.promptLength) && entry.promptLength > 0, entry.id);
     assert.equal(entry.isLong, entry.promptLength > 1500, entry.id);
@@ -126,8 +128,11 @@ await check('全部提示词有完整原文、精确长度与来源指纹，页�
     assert.equal(getCopyText(entry), entry.prompt, entry.id);
     const source=fulltextManifest.entries.find(row=>row.id===entry.id);
     assert.equal(textSha256(entry.prompt),source.sha256,entry.id);
-    const visibleText = promptHtml(entry);
-    assert.ok(home.includes(`<pre class="prompt-text" tabindex="0">${visibleText}</pre>`), `${entry.id}: visible prompt differs`);
+    // List slim spec change (boss 2026-11-03): list cards show an excerpt; full text on detail pages and assets/prompt-text.json
+    assert.ok(home.includes(`<pre class="prompt-text prompt-preview">${escapeHtml(promptPreview(entry))}</pre>`), `${entry.id}: list excerpt differs`);
+    const detail = await read(join(dist, `prompts/${entry.medium || 'video'}/${entry.id}/index.html`));
+    assert.ok(detail.includes(`<pre class="prompt-text" tabindex="0">${promptHtml(entry)}</pre>`), `${entry.id}: visible prompt differs`);
+    assert.equal(promptText[entry.id], entry.prompt, `${entry.id}: prompt-text.json differs`);
   }
 });
 

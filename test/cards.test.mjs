@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { renderCard } from '../lib/cards.mjs';
+import { renderCard, renderPromptDetail, promptPreview } from '../lib/cards.mjs';
 import { getCopyText, filterEntries } from '../lib/prompts.mjs';
 import { escapeHtml } from '../lib/markdown.mjs';
 import { getEmbedUrl, validatePostMetadata } from '../lib/posts.mjs';
@@ -16,8 +16,10 @@ test('已删除原帖保留完整卡片、提示词、作者、复制和失效�
   assert.ok(!/tweet-template|twitter-tweet|tweet-mount|data-embed|watch-link/.test(html));
   assert.ok(html.includes(escapeHtml(removed.title)));
   assert.ok(html.includes(escapeHtml(removed.description)));
-  assert.ok(html.includes(`<pre class="prompt-text" tabindex="0">${escapeHtml(removed.prompt)}</pre>`));
-  assert.ok(html.includes(`data-copy-entry="${removed.id}"`));
+  // List slim spec change (boss 2026-11-03): list cards show an excerpt; full text on detail pages and assets/prompt-text.json
+  assert.ok(html.includes(`<pre class="prompt-text prompt-preview">${escapeHtml(promptPreview(removed))}</pre>`));
+  assert.ok(renderPromptDetail(removed, [removed], {}).includes(`<pre class="prompt-text" tabindex="0">${escapeHtml(removed.prompt)}</pre>`));
+  assert.ok(html.includes(`data-copy-entry="${removed.id}" data-copy-remote`));
   assert.ok(html.includes(`href="${removed.authorUrl}" target="_blank" rel="noopener noreferrer">${removed.author}</a>`));
   assert.ok(html.includes(`href="${removed.postUrl}" target="_blank" rel="noopener noreferrer">原帖（已失效）</a>`));
   assert.equal(getCopyText(removed), removed.prompt);
@@ -34,7 +36,8 @@ test('TechieBySA 嵌入使用同作者串首，原帖、全文入口和复制仍
   assert.ok(html.includes(`href="${embedUrl}" target="_blank" rel="noopener noreferrer" class="watch-link"`));
   assert.ok(html.includes('<p class="embed-note">影片取自同作者的串首帖</p>'));
   assert.ok(html.includes(`href="${techie.postUrl}" target="_blank" rel="noopener noreferrer">原帖 ↗</a>`));
-  assert.ok(html.includes(`href="${techie.postUrl}" target="_blank" rel="noopener noreferrer">查看完整提示词 ↗</a>`));
+  // List slim spec change (boss 2026-11-03): list cards show an excerpt; full text on detail pages and assets/prompt-text.json
+  assert.ok(renderPromptDetail(techie, [techie], {}).includes(`href="${techie.postUrl}" target="_blank" rel="noopener noreferrer">查看完整提示词 ↗</a>`));
   // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
   assert.equal(getCopyText(techie), techie.prompt);
 });

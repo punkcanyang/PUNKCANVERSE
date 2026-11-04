@@ -1,6 +1,7 @@
 import { selectHomeEntries } from './lib/prompts.mjs';
 import {loadCatalog} from './lib/catalog.mjs';
 import { readFile, mkdir, rm, writeFile, copyFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { join, dirname } from 'node:path';
 import { escapeHtml as e, externalLink, markdownToHtml } from './lib/markdown.mjs';
@@ -28,6 +29,10 @@ export async function buildSite(options = {}) {
   const out = options.out || join(root,'dist');
   const readJSON = async path => JSON.parse(await readFile(join(root,path),'utf8'));
   const {original,imported,entries} = await loadCatalog(root);
+  // Exact source text by id for list-card copy and full-text search, fetched on demand.
+  // The content hash in the name keeps every page paired with its own map after deploys.
+  const promptText=JSON.stringify(Object.fromEntries(entries.map(entry=>[entry.id,entry.prompt])));
+  const promptTextPath=`assets/prompt-text.${createHash('sha256').update(promptText).digest('hex').slice(0,12)}.json`;
   const affiliates = options.affiliates || await readJSON('data/affiliates.json');
   const workflows = options.workflows ?? (await readJSON('data/workflows.json')).entries;
   const thumbs = await readThumbs(options.thumbPath || join(root,'data/thumbs.json'),readFile);
@@ -172,7 +177,7 @@ ${alternate}
 <link rel="stylesheet" href="assets/site.css">
 <script type="module" src="assets/app.mjs"></script>
 </head>
-<body data-locale="${locale}" data-messages="${e(JSON.stringify(client))}">
+<body data-locale="${locale}" data-prompt-text="${promptTextPath}" data-messages="${e(JSON.stringify(client))}">
 <a class="skip-link" href="${e(path)}#main">${e(u.skip)}</a>
 <header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}><a href="${href('/prompts/video/')}"${navCurrent('prompts')}>${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${locale==='zh'?'tips.html':href('/tips')}"${navCurrent('/tips')}>${e(u.navTips)}</a><a href="${publicHref('/tools')}"${navCurrent('/tools')}>${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${locale==='zh'?'regions.html':href('/regions')}"${navCurrent('/regions')}>${e(u.navRegions)}</a></nav></header>
 <aside id="language-hint" class="language-hint" hidden><a data-preferred-language></a><button type="button" data-dismiss-language aria-label="${e(u.dismiss)}">×</button></aside>
@@ -192,6 +197,7 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
   await writeFile(join(out,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`);
   await writeFile(join(out,'data.json'),JSON.stringify({entries:original.entries}));
   await writeFile(join(out,'catalog.json'),JSON.stringify({entries}));
+  await writeFile(join(out,promptTextPath),promptText);
   for (const file of ['app.mjs','language.mjs','clipboard.mjs','embeds.mjs','consent.mjs','site.css']) await copyFile(join(root,'web',file),join(out,'assets',file));
   await copyFile(join(root,'lib/prompts.mjs'),join(out,'assets/prompts.mjs'));await copyFile(join(root,'_headers'),join(out,'_headers'));
   for (const entry of entries.filter(entry=>entry.source==='official' && entry.officialThumb)) {
@@ -203,7 +209,7 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
   await copyFile(join(root,'web/img/site/share.png'),join(out,'img/site/share.png'));
   // Existing build consumers use Chinese disk routes. All language descriptors are
   // exposed separately so they can inspect exact final URLs and fallback canonicals.
-  return {pages:descriptors.filter(x=>x.locale==='zh').map(x=>x.disk),localizedPages:descriptors,sitemapUrls};
+  return {promptTextPath,pages:descriptors.filter(x=>x.locale==='zh').map(x=>x.disk),localizedPages:descriptors,sitemapUrls};
 }
 if (process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href) {
   const result=await buildSite();console.log(`Built ${result.localizedPages.length} PUNKCANVERSE pages → dist/`);
