@@ -23,7 +23,7 @@ import { verifyV03 } from './verify-v03.mjs';
 import { GA_SCRIPT_URL, CONSENT_BOOTSTRAP, GA_CONFIG, verifyAnalyticsHtml } from '../lib/analytics.mjs';
 import { loadEssays } from '../lib/essays.mjs';
 import { listPages } from '../lib/routes.mjs';
-import { loadI18n } from '../lib/i18n.mjs';
+import { loadI18n, cardUI } from '../lib/i18n.mjs';
 import { verifyV04 } from './verify-v04.mjs';
 import { verifyV05 } from './verify-v05.mjs';
 import { verifyV051 } from './verify-v051.mjs';
@@ -112,7 +112,7 @@ await check('每条必填字段完整，原帖只允许 X status 链接，无官
 
 // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
 await check('全部提示词有完整原文、精确长度与来源指纹，页面及复制均为全文', async () => {
-  const home = await read(join(dist, 'prompts/video/index.html'));
+  const home = await read(join(dist, 'zh/prompts/video/index.html'));
   const promptTextPath = (await read(join(dist, 'index.html'))).match(/data-prompt-text="([^"]+)"/)[1];
   const promptText = JSON.parse(await read(join(dist, promptTextPath)));
   for (const entry of entries) {
@@ -147,11 +147,12 @@ await check('媒体仅限批准缩图与原创品牌分享图，无影片或禁�
 });
 
 await check('三个页面的页尾均含下架入口、48 小时、作者与版权说明，所有 X 外链均安全', async () => {
-  for (const page of ['index.html', 'tips.html', 'takedown.html']) {
+  // redesign spec change (2026-11-08): the Chinese footer lives under /zh/.
+  for (const page of ['zh/index.html', 'zh/tips.html', 'zh/takedown.html']) {
     const html = await read(join(dist, page));
     const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/)?.[1];
     assert.ok(footer, `${page}: footer`);
-    assert.match(footer, /href="takedown\.html"[^>]*>[^<]*48 小时内处理/);
+    assert.match(footer, /href="\/zh\/takedown\.html"[^>]*>[^<]*48 小时内处理/);
     assert.match(footer, /href="https:\/\/x\.com\/punkcan"[^>]*>作者：@punkcan/);
     assert.match(footer, /提示词版权归原作者/);
     assert.match(footer, /影片以 X 官方嵌入显示，不转存/);
@@ -183,7 +184,7 @@ await check('每页仅预载指定 GA4，内联脚本严格匹配同意模板，
     assert.ok(!/\son\w+\s*=/i.test(html), `${file}: inline event handler`);
   }
   assert.equal(externalScripts, distFiles.filter(path => extname(path) === '.html').length);
-  const home = await read(join(dist, 'prompts/video/index.html'));
+  const home = await read(join(dist, 'zh/prompts/video/index.html'));
   // v0.5 spec change (boss 2026-10-22): complete video archive has exactly 192 cards.
   assert.equal((home.match(/class="prompt-card"/g) || []).length, 192);
   // v0.5 spec change (boss 2026-10-22): count X templates across both video datasets; official examples never embed.
@@ -194,7 +195,7 @@ await check('每页仅预载指定 GA4，内联脚本严格匹配同意模板，
 });
 
 await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌入地址与来源说明', async () => {
-  const home = await read(join(dist, 'prompts/video/index.html'));
+  const home = await read(join(dist, 'zh/prompts/video/index.html'));
   const cards = new Map([...home.matchAll(/<article\b[^>]*data-entry-id="([^"]+)"[^>]*>[\s\S]*?<\/article>/g)].map(match => [match[1], match[0]]));
   // v0.5 spec change (boss 2026-10-22): original and imported cards are all present.
   assert.equal(cards.size, 192);
@@ -233,7 +234,7 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
 });
 
 await check('下架入口与 issue 模板齐全，原资料仅允许批准的 medium 迁移与嵌入信息', async () => {
-  const html = await read(join(dist, 'takedown.html'));
+  const html = await read(join(dist, 'zh/takedown.html'));
   assert.match(html, /无需先证明身份/);
   // v0.4 spec change (boss 2026-10-22): repo renamed fight-prompts -> PUNKCANVERSE
   assert.ok(html.includes('https://github.com/punkcanyang/PUNKCANVERSE/issues/new?template=takedown.md&amp;title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7'));
@@ -305,7 +306,7 @@ await check('dist 与 README 无旧 Pages 绝对网址，原资料在授权迁�
 
 await check('发布页面只保留 Impact 站点验证标签（老板要求不能删），无其他第三方验证标签', async () => {
   const impact = /<meta\b[^>]*\bname\s*=\s*["']impact-site-verification["'][^>]*\b(?:value|content)\s*=\s*["']15021707-94fc-4527-ab33-87c6066da7fd["'][^>]*>/i;
-  const index = await read(join(dist, 'index.html'));
+  const index = await read(join(dist, 'zh/index.html'));
   assert.match(index, impact, 'index.html must keep impact-site-verification meta');
   for (const file of distFiles.filter(path => extname(path) === '.html')) {
     const html = (await read(file)).replace(new RegExp(impact.source, 'gi'), '');
@@ -317,7 +318,7 @@ await check('v0.2 数据与页面齐全，medium 必填且限定三种类别', a
   for (const file of ['regions.html']) assert.ok((await stat(join(dist, file))).isFile(), file);
   validateMedia(entries);
   assert.ok(entries.every(entry => entry.medium === 'video'), 'The current 63 entries must all remain video');
-  const home = await read(join(dist, 'prompts/video/index.html'));
+  const home = await read(join(dist, 'zh/prompts/video/index.html'));
   if (availableMedia(entries).length <= 1) assert.ok(!home.includes('name="medium"'), 'Single-medium collection must not show a category switch');
 });
 
@@ -325,26 +326,30 @@ await check('推广平台映射完整、空网址无按钮，所有页面包含�
   validateAffiliates(affiliates);
   for (const key of ['hailuo', 'pixverse', 'higgsfield', 'magnific', 'kling']) assert.ok(affiliates[key], `Missing affiliate platform: ${key}`);
   for (const model of new Set(entries.flatMap(entry => entry.models))) assert.ok(Object.values(affiliates).some(platform => platform.models.includes(model)), `Missing platform for ${model}`);
-  const home = await read(join(dist, 'prompts/video/index.html'));
+  const home = await read(join(dist, 'zh/prompts/video/index.html'));
+  // redesign spec change (2026-11-08): Chinese cards render through the localized UI for /zh/ links.
+  const zhI18n = await loadI18n(root);
+  const zhAffiliateUI = cardUI('zh', zhI18n.ui.zh, zhI18n.content.zh).affiliate;
   for (const entry of entries) {
-    const expected = renderAffiliates(entry, affiliates);
+    const expected = renderAffiliates(entry, affiliates, zhAffiliateUI);
     if (expected) assert.ok(home.includes(expected), `${entry.id}: missing sponsored link`);
   }
   if (Object.values(affiliates).every(platform => !platform.url.trim())) assert.ok(!/class="affiliate-(?:links|item|button)"/.test(home), 'Empty affiliate URLs must leave no container or button');
   const translated=await loadI18n(root);
   for (const file of distFiles.filter(path => extname(path) === '.html')) {
-    const locale=relative(dist,file).startsWith('en/')?'en':relative(dist,file).startsWith('ja/')?'ja':'zh';
+    const locale=relative(dist,file).startsWith('zh/')?'zh':'en';
     const html = await read(file);
     const footer = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
     if(locale==='zh') {
     assert.ok(footer?.includes(AFFILIATE_DISCLOSURE), `${file}: missing disclosure`);
-    assert.ok(footer.includes('48 小时内处理') && footer.includes('href="takedown.html"') && footer.includes('https://x.com/punkcan'));
-    assert.ok(html.includes('href="regions.html"'), `${file}: missing regions navigation`);
+    // redesign spec change (2026-11-08): English at the root, Chinese under /zh/.
+    assert.ok(footer.includes('48 小时内处理') && footer.includes('href="/zh/takedown.html"') && footer.includes('https://x.com/punkcan'));
+    assert.ok(html.includes('href="/zh/regions.html"'), `${file}: missing regions navigation`);
     } else {
       const ui=translated.ui[locale];
       assert.ok(footer?.includes(escapeHtml(ui.affiliateDisclosure)), `${file}: missing localized disclosure`);
-      assert.ok(footer.includes(escapeHtml(ui.takedownFooter)) && footer.includes(`href="/${locale}/takedown.html"`) && footer.includes('https://x.com/punkcan'));
-      assert.ok(html.includes(`href="/${locale}/regions.html"`), `${file}: missing localized regions navigation`);
+      assert.ok(footer.includes(escapeHtml(ui.takedownFooter)) && footer.includes('href="/takedown.html"') && footer.includes('https://x.com/punkcan'));
+      assert.ok(html.includes('href="/regions.html"'), `${file}: missing localized regions navigation`);
     }
     for (const link of html.matchAll(/<a\b[^>]*class="affiliate-button"[^>]*>/g)) {
       assert.match(link[0], /rel="sponsored noopener noreferrer"/);
@@ -356,7 +361,7 @@ await check('推广平台映射完整、空网址无按钮，所有页面包含�
 
 await check('地区数据及整页 HTML 通过官方来源、字段、日期与禁词校验', async () => {
   validateRegions(regions, regionsRaw);
-  const html = await read(join(dist, 'regions.html'));
+  const html = await read(join(dist, 'zh/regions.html'));
   validateRegionText(html);
   assert.ok(html.includes(REGION_DISCLAIMER));
   assert.equal((html.match(/class="region-card"/g) || []).length, regions.entries.length);
@@ -366,8 +371,9 @@ await check('地区数据及整页 HTML 通过官方来源、字段、日期与�
     assert.ok(html.includes(`href="${escapeHtml(entry.officialUrl)}"`));
   }
   // v0.4 spec change (boss 2026-10-22): final region canonical/og URL has no extension.
-  assert.ok(html.includes('<link rel="canonical" href="https://punkcanverse.com/regions">'));
-  assert.ok(html.includes('<meta property="og:url" content="https://punkcanverse.com/regions">'));
+  // redesign spec change (2026-11-08): the Chinese regions page is /zh/regions.
+  assert.ok(html.includes('<link rel="canonical" href="https://punkcanverse.com/zh/regions">'));
+  assert.ok(html.includes('<meta property="og:url" content="https://punkcanverse.com/zh/regions">'));
 });
 
 await check('beehiiv 周报关闭或地址无效时无区块，有效地址才允许嵌入', async () => {

@@ -18,7 +18,8 @@ function checkAffiliateButtons(html, page) {
   // v0.5.3 spec change (boss 2026-10-23): tool list page
   for(const section of html.matchAll(/<section class="recommended-tools">[\s\S]*?<\/section>/g)) {
     assert.equal((section[0].match(/class="affiliate-button"/g)||[]).length,0);
-    const prefix=html.includes('<html lang="en"')?'/en':html.includes('<html lang="ja"')?'/ja':'';
+    // redesign spec change (2026-11-08): English at the root, Chinese under /zh/.
+    const prefix=html.includes('<html lang="zh-CN"')?'/zh':'';
     assert.deepEqual([...section[0].matchAll(/<a href="([^"]+)"/g)].map(m=>m[1]),[`${prefix}/tools#higgsfield`,`${prefix}/tools#magnific`,`${prefix}/tools#pixverse`,`${prefix}/tools`]);
   }
   const buttons = html.match(/<a\b[^>]*class="affiliate-button"[^>]*>/g) || [];
@@ -67,12 +68,12 @@ test('真实推广构建无空容器，推荐属性完整，下架与地区页�
   try {
     await buildSite({out});
     for (const page of ['index', 'tips', 'takedown', 'regions']) {
-      const html = await readFile(path.join(out, `${page}.html`), 'utf8');
+      const html = await readFile(path.join(out, 'zh', `${page}.html`), 'utf8');
       assert.ok(html.includes(AFFILIATE_DISCLOSURE));
       checkAffiliateButtons(html, page);
       if (['takedown', 'regions'].includes(page)) assert.ok(!/class="affiliate-(?:links|item|button)"/.test(html), `${page}: affiliate buttons forbidden`);
       assert.ok(!/class="newsletter"|id="newsletter-title"/.test(html));
-      assert.ok(html.includes('href="regions.html"'));
+      assert.ok(html.includes('href="/zh/regions.html"'));
       assert.ok(html.includes('https://x.com/punkcan'));
     }
     const pages = (await readdir(out, {recursive:true})).filter(file => file.endsWith('.html'));

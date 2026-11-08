@@ -18,7 +18,7 @@ import { loadEssays, renderEssay } from './lib/essays.mjs';
 import { renderAnalytics, renderConsentBanner } from './lib/analytics.mjs';
 import { SITE_PAGES, renderSiteLinks, renderLegalPage } from './lib/site-pages.mjs';
 import { loadI18n, validateI18n, formatText, localizeEntry, translateTag, translateModelName, cardUI, workflowCopy } from './lib/i18n.mjs';
-import { listPages, publicPath, switchHref, HTML_LANG, OG_LOCALE } from './lib/routes.mjs';
+import { listPages, publicPath, switchHref, localePrefix, HTML_LANG, OG_LOCALE, DEFAULT_LOCALE } from './lib/routes.mjs';
 import { validateWorkflows, renderWorkflowCard, renderWorkflowDetail, renderWorkflowEmpty } from './lib/workflows.mjs';
 
 import { loadWorks, publishedWorks, renderWorks, renderWork } from './lib/works.mjs';
@@ -59,8 +59,8 @@ export async function buildSite(options = {}) {
     const publicHref = route => publicPath(locale,route);
     const localized = entry => localizeEntry(entry,locale,content);
     const cUI = cardUI(locale,u,content);
-    // Keep the original Chinese renderer's exact copy for existing public pages.
-    const renderUI = locale === 'zh' ? undefined : cUI;
+    // Every card goes through the localized UI so links carry the /zh prefix.
+    const renderUI = cUI;
     const workflowText = workflow => workflowCopy(workflow,locale,content);
     const names = {video:u.video,image:u.image,music:u.music};
     const tabs = current => renderMediaTabs(entries,current,{names,ariaLabel:u.mediaAria,mediumHref:medium=>href(`/prompts/${medium}/`),workflow:{href:href('/prompts/workflow/'),label:u.workflow,count:workflows.length}});
@@ -137,14 +137,14 @@ export async function buildSite(options = {}) {
     } else {
       const legal=u.legal[route.slice(1,-1)];title=legal.title;description=legal.summary;
       // English legal prose is carried over verbatim, with only local links scoped.
-      const legalBody=legal.body.replace(/href="\/(?!\/)([^"]*)"/g,(_,tail)=>`href="${locale==='zh'?'':`/${locale}`}/${tail}"`);
+      const legalBody=legal.body.replace(/href="\/(?!\/)([^"]*)"/g,(_,tail)=>`href="${localePrefix(locale)}/${tail}"`);
       body=renderLegalPage({...legal,body:legalBody,updatedLabel:u.updated,updated:'2026-10-22',lang:HTML_LANG[locale]});
     }
-    const footer=`<footer class="site-footer"><div class="footer-top"><a class="wordmark" href="${locale==='zh'?'index.html':href('/')}">PUNKCANVERSE<small>DIRECTED & CURATED BY PUNKCAN</small></a><div class="footer-links"><a href="${locale==='zh'?'takedown.html':href('/takedown')}">${e(u.takedownFooter)}</a>${externalLink('https://x.com/punkcan',e(u.author))}</div></div>${renderSiteLinks({ariaLabel:u.siteInfo,cookieLabel:u.cookieSettings,hrefFor:page=>href(page.path),labelFor:page=>u.legal[page.path.slice(1,-1)].title})}<p>${e(u.copyright)}</p><p class="affiliate-disclosure"><a href="${href('/affiliate-disclosure/')}">${e(u.affiliateDisclosure)}</a></p></footer>`;
+    const footer=`<footer class="site-footer"><div class="footer-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE<small>DIRECTED & CURATED BY PUNKCAN</small></a><div class="footer-links"><a href="${href('/takedown')}">${e(u.takedownFooter)}</a>${externalLink('https://x.com/punkcan',e(u.author))}</div></div>${renderSiteLinks({ariaLabel:u.siteInfo,cookieLabel:u.cookieSettings,hrefFor:page=>href(page.path),labelFor:page=>u.legal[page.path.slice(1,-1)].title})}<p>${e(u.copyright)}</p><p class="affiliate-disclosure"><a href="${href('/affiliate-disclosure/')}">${e(u.affiliateDisclosure)}</a></p></footer>`;
     const canonical=SITE_URL+descriptor.canonical;
     const pageTitle=`${title} · PUNKCANVERSE`;
-    const alternate=descriptor.alternates.map(lang=>`<link rel="alternate" hreflang="${HTML_LANG[lang]}" href="${SITE_URL}${publicPath(lang,route)}">`).join('\n  ')+`\n  <link rel="alternate" hreflang="x-default" href="${SITE_URL}${publicPath(descriptor.essay?.lang||'zh',route)}">`;
-    const switcher=`<nav class="language-switch" aria-label="Language">${[['zh','中文'],['en','EN'],['ja','日本語']].map(([lang,label])=>`<a href="${switchHref(lang,route)}" data-language="${lang}"${lang===locale?' aria-current="page"':''} lang="${HTML_LANG[lang]}">${label}</a>`).join('')}</nav>`;
+    const alternate=descriptor.alternates.map(lang=>`<link rel="alternate" hreflang="${HTML_LANG[lang]}" href="${SITE_URL}${publicPath(lang,route)}">`).join('\n  ')+`\n  <link rel="alternate" hreflang="x-default" href="${SITE_URL}${publicPath(descriptor.alternates.includes(DEFAULT_LOCALE)?DEFAULT_LOCALE:descriptor.alternates[0],route)}">`;
+    const switcher=`<nav class="language-switch" aria-label="Language">${[['en','EN'],['zh','中文']].map(([lang,label])=>`<a href="${switchHref(lang,route)}" data-language="${lang}"${lang===locale?' aria-current="page"':''} lang="${HTML_LANG[lang]}">${label}</a>`).join('')}</nav>`;
     const clientKeys=['fullVersion','embedFailed','count','toastCopied','toastFailed','dataFailed','filterFailed','unknownFilters','copyDone','copyRetry','expandPrompt','collapsePrompt','removeFilter','scrollTable','moreCount'];
     const client=Object.fromEntries(clientKeys.map(key=>[key,u[key]]));
     const navCurrent = target => (target==='prompts' ? route.startsWith('/prompts/') : route.startsWith(target)) ? ' aria-current="page"' : '';
@@ -179,7 +179,7 @@ ${alternate}
 </head>
 <body data-locale="${locale}" data-prompt-text="${promptTextPath}" data-messages="${e(JSON.stringify(client))}">
 <a class="skip-link" href="${e(path)}#main">${e(u.skip)}</a>
-<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}><a href="${href('/prompts/video/')}"${navCurrent('prompts')}>${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${locale==='zh'?'tips.html':href('/tips')}"${navCurrent('/tips')}>${e(u.navTips)}</a><a href="${publicHref('/tools')}"${navCurrent('/tools')}>${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${locale==='zh'?'regions.html':href('/regions')}"${navCurrent('/regions')}>${e(u.navRegions)}</a></nav></header>
+<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}><a href="${href('/prompts/video/')}"${navCurrent('prompts')}>${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${href('/tips')}"${navCurrent('/tips')}>${e(u.navTips)}</a><a href="${publicHref('/tools')}"${navCurrent('/tools')}>${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${href('/regions')}"${navCurrent('/regions')}>${e(u.navRegions)}</a></nav></header>
 <aside id="language-hint" class="language-hint" hidden><a data-preferred-language></a><button type="button" data-dismiss-language aria-label="${e(u.dismiss)}">×</button></aside>
 <main id="main">${body}</main>
 ${renderNewsletter(site)}${footer}
@@ -207,9 +207,9 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
   }
   await mkdir(join(out,'img/site'),{recursive:true});
   await copyFile(join(root,'web/img/site/share.png'),join(out,'img/site/share.png'));
-  // Existing build consumers use Chinese disk routes. All language descriptors are
+  // `pages` lists the root-locale (English) disk routes. All language descriptors are
   // exposed separately so they can inspect exact final URLs and fallback canonicals.
-  return {promptTextPath,pages:descriptors.filter(x=>x.locale==='zh').map(x=>x.disk),localizedPages:descriptors,sitemapUrls};
+  return {promptTextPath,pages:descriptors.filter(x=>x.locale===DEFAULT_LOCALE).map(x=>x.disk),localizedPages:descriptors,sitemapUrls};
 }
 if (process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href) {
   const result=await buildSite();console.log(`Built ${result.localizedPages.length} PUNKCANVERSE pages → dist/`);

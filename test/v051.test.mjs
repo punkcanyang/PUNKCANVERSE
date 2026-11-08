@@ -99,16 +99,16 @@ test('v0.5.1 离线build全部576详情含完整pre；最长3条三语逐字比�
     assert.deepEqual(published,entries);
     const longest=[...entries].sort((a,b)=>b.promptLength-a.promptLength).slice(0,3);
     assert.deepEqual(longest.map(entry=>entry.id),['2092548780658708526','2105346237038043532','2101303256173650396']);
-    for(const entry of entries)for(const locale of ['zh','en','ja']) {
-      const html=await readFile(join(out,locale==='zh'?'':locale,`prompts/video/${entry.id}/index.html`),'utf8');
+    for(const entry of entries)for(const locale of ['zh','en']) {
+      const html=await readFile(join(out,locale==='en'?'':locale,`prompts/video/${entry.id}/index.html`),'utf8');
       const section=html.match(/<section class="full-prompt">([\s\S]*?)<\/section>/)?.[1];
       assert.ok(section?.includes(`<pre class="prompt-text" tabindex="0">${promptHtml(entry)}</pre>`));
       const markup=section.replace(/(<pre\b[^>]*>)[\s\S]*?(<\/pre>)/g,'$1$2');
       assert.ok(!/<details\b|\shidden\b|aria-hidden="true"|display\s*:\s*none/i.test(markup));
       assert.ok(!section.includes('class="excerpt-note"'));
     }
-    for(const entry of longest)for(const locale of ['zh','en','ja']) {
-      const html=await readFile(join(out,locale==='zh'?'':locale,`prompts/video/${entry.id}/index.html`),'utf8');
+    for(const entry of longest)for(const locale of ['zh','en']) {
+      const html=await readFile(join(out,locale==='en'?'':locale,`prompts/video/${entry.id}/index.html`),'utf8');
       assert.ok(html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').includes(promptHtml(entry)));
     }
     const css=await readFile(join(out,'assets/site.css'),'utf8');

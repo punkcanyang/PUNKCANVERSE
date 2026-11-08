@@ -81,9 +81,9 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
     });
     for(const mail of html.matchAll(/mailto:([^"'<>\s]+)/gi))assert.equal(mail[1],'hello@punkcanverse.com');
     const footer=html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/)?.[0];
-    if(locale==='zh') {
-      for(const info of SITE_PAGES)assert.ok(footer?.includes(`href="${info.path}"`));
-    } else for(const info of SITE_PAGES)assert.ok(footer?.includes(`href="/${locale}${info.path}"`));
+    // redesign spec change (2026-11-08): English at the root, Chinese under /zh/.
+    const localeRoot=locale==='en'?'':`/${locale}`;
+    for(const info of SITE_PAGES)assert.ok(footer?.includes(`href="${localeRoot}${info.path}"`));
     if(site.models?.enabled===false)assert.ok(!/白模|\/models\//.test(html),path);
     if(!site.newsletter.enabled)assert.ok(!/class="newsletter"|href="[^"]*newsletter/.test(html));
     for (const match of html.matchAll(/<img\b[^>]*>/g)) {
@@ -102,16 +102,12 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
         assert.match(match[0],/rel="sponsored noopener noreferrer"/);
       }
     }
-    if(locale==='zh') {
-      // v0.5.3 spec change (boss 2026-10-23): tool list page
-      if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),'tools.html','Magnific belongs only in its tool card');
-    } else {
-      // v0.5.3 spec change (boss 2026-10-23): tool list page
-      if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),`${locale}/tools.html`,'Magnific belongs only in its localized tool card');
-    }
+    // v0.5.3 spec change (boss 2026-10-23): tool list page
+    if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),`${locale==='en'?'':`${locale}/`}tools.html`,'Magnific belongs only in its localized tool card');
   }
+  // redesign spec change (2026-11-08): the Chinese checks read the /zh/ pages.
   for(const entry of entries) {
-    const html=await read(join(dist,promptPath(entry),'index.html'));
+    const html=await read(join(dist,'zh',promptPath(entry),'index.html'));
     assert.ok(html.includes(`data-copy-entry="${entry.id}"`));
     // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
     assert.ok(html.includes(promptHtml(entry)));
@@ -130,8 +126,8 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
     assert.equal(record.postId,entry.embedId||entry.id);
   }
   const regionData=JSON.parse(await read(join(root,'data/regions.json')));
-  validateRegions(regionData);validateRegionText(await read(join(dist,'regions.html')));
-  if(!works.length)assert.ok((await read(join(dist,'essays/index.html'))).includes('作品整理中'));
+  validateRegions(regionData);validateRegionText(await read(join(dist,'zh/regions.html')));
+  if(!works.length)assert.ok((await read(join(dist,'zh/essays/index.html'))).includes('作品整理中'));
   const script=await read(join(dist,'assets/embeds.mjs'));
   assert.ok(script.includes("script.src = 'https://platform.twitter.com/widgets.js'"));
   console.log(`✓ v0.3：${paths.length} 页、63 条详情、缩图、延迟嵌入、推广属性、sitemap 与内容边界校验通过`);

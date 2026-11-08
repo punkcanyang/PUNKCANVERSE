@@ -8,7 +8,7 @@ const root=fileURLToPath(new URL('..',import.meta.url));
 const read=async file=>readFile(new URL('../'+file,import.meta.url),'utf8');
 const json=async file=>JSON.parse(await read(file));
 const {entries}=await json('data/prompts-wan-minimax.json');
-const content=Object.fromEntries(await Promise.all(['zh','en','ja'].map(async locale=>[locale,await json(`data/i18n/content/${locale}.json`)])));
+const content=Object.fromEntries(await Promise.all(['zh','en'].map(async locale=>[locale,await json(`data/i18n/content/${locale}.json`)])));
 
 test('v0.5 复审：原只读路径仍覆盖两份提示词资料，不能排除新增档',async()=>{
   const source=await read('scripts/verify.mjs');
@@ -28,7 +28,6 @@ test('v0.5 复审：女孩保护泰迪熊，三语收藏笔记不颠倒保护关
   assert.equal(entry.description,'月光與床頭燈分出冷暖層次，再以女孩緊抱泰迪熊、輕聲安慰並說要保護它的動作與台詞承接氣氛。');
   assert.equal(content.zh.prompts[id].description,entry.description);
   assert.equal(content.en.prompts[id].description,'Cool moonlight and a warm bedside lamp frame a little girl hugging a teddy bear and whispering that she will protect it.');
-  assert.equal(content.ja.prompts[id].description,'月光と枕元の灯りで寒色と暖色を対比させ、テディベアを抱きしめて安心させようとする女の子の台詞と動きを描きます。');
 });
 
 test('v0.5 复审：去作者时保留皮克斯风、30秒一镜到底，来源快照同样精确',async()=>{
@@ -46,8 +45,7 @@ test('v0.5 复审：去作者时保留皮克斯风、30秒一镜到底，来源�
 });
 
 test('v0.5 复审：日文快剪与撤退路线自然表达，英文画幅修饰影片而非秒数',()=>{
-  assert.equal(content.ja.prompts['2095088320753893689'].title,'韓国風スタイルの女性と巡る東京の一日：テンポよくつなぐカット編集');
-  assert.equal(content.ja.prompts['2082770042630943156'].title,'撤退路の橋を守る無線通信員');
+  // redesign spec change (2026-11-08): Japanese copy retired; the English checks remain.
   const expected={
     '2097613778796126569':'Realistic performers and a neon stage combine with fighting-game aesthetics; the prompt requests a fifteen-second vertical video.',
     '2092476498125226127':'A thirty-second vertical video uses camera shake, exposure changes and casual talk to retain the imperfections of a friend’s phone footage.',

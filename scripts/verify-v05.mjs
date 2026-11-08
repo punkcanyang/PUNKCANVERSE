@@ -38,7 +38,8 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
   const promptTextRaw=await read(`dist/${promptTextPath[1]}`);
   assert.equal(createHash('sha256').update(promptTextRaw).digest('hex').slice(0,12),promptTextPath[2]);
   assert.deepEqual(JSON.parse(promptTextRaw),Object.fromEntries(entries.map(entry=>[entry.id,entry.prompt])));
-  for(const page of ['prompts/video/index.html','en/prompts/video/index.html','ja/prompts/fight/index.html','en/index.html'])assert.ok((await read(`dist/${page}`)).includes(`data-prompt-text="${promptTextPath[1]}"`),page);
+  // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
+  for(const page of ['prompts/video/index.html','zh/prompts/video/index.html','zh/prompts/fight/index.html','zh/index.html'])assert.ok((await read(`dist/${page}`)).includes(`data-prompt-text="${promptTextPath[1]}"`),page);
   const i18n=await loadI18n(root);
   validateI18n(i18n,entries,(await json('data/workflows.json')).entries,await json('data/regions.json'));
   const thumbs=await json('data/thumbs.json');
@@ -46,10 +47,10 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
   const sitemap=await read('dist/sitemap.xml');
   const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(row=>row[1]);
   // v0.5.3 spec change (boss 2026-10-23): tool list page
-  assert.equal(locs.length,633 + 3 * (await loadWorks(root)).length);
-  for(const locale of ['zh','en','ja']) {
-    const prefix=locale==='zh'?'':locale+'/';
-    const urlPrefix=locale==='zh'?'':`/${locale}`;
+  assert.equal(locs.length,422 + 2 * (await loadWorks(root)).length);
+  for(const locale of ['zh','en']) {
+    const prefix=locale==='en'?'':locale+'/';
+    const urlPrefix=locale==='en'?'':`/${locale}`;
     const home=await read(`dist/${prefix}index.html`);
     const listing=await read(`dist/${prefix}prompts/video/index.html`);
     const fight=await read(`dist/${prefix}prompts/fight/index.html`);

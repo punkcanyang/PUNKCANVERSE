@@ -9,7 +9,8 @@ test('阅读更新：三语精简首页、完整库、页面主标题、导航�
   const out=await mkdtemp(join(tmpdir(),'pcv-reading-'));
   try {
     await buildSite({out});
-    for(const lang of ['', 'en/', 'ja/']) {
+    // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
+    for(const lang of ['', 'zh/']) {
       const home=await readFile(join(out,lang,'index.html'),'utf8');
       const archive=await readFile(join(out,lang,'prompts/video/index.html'),'utf8');
       assert.equal((home.match(/class="prompt-card"/g)||[]).length,6);

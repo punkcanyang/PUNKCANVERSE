@@ -59,10 +59,10 @@ test('缩图脚本读取正式 entries 工作流，不漏抓或清除失败条�
 
 test('三语 UI 精确同键、非空、无占位，63 条提示/工作流/地区/标签完整且译文不照搬中文',()=>{
   assert.equal(validateI18n(i18n,entries,workflows,regions),undefined);
-  for(const mutate of [d=>delete d.ui.en.copy,d=>d.ui.ja.copy='',d=>d.ui.en.copy='TODO',d=>d.ui.en.copy=d.ui.zh.copy,d=>delete d.content.en.prompts[entries[0].id],d=>delete d.content.ja.workflows[sample.id].steps['1'],d=>delete d.content.en.regions[regions.entries[0].id],d=>delete d.content.ja.tags[entries[0].tags[0]]]) {
+  for(const mutate of [d=>delete d.ui.en.copy,d=>d.ui.zh.copy='',d=>d.ui.en.copy='TODO',d=>d.ui.en.copy=d.ui.zh.copy,d=>delete d.content.en.prompts[entries[0].id],d=>delete d.content.en.workflows[sample.id].steps['1'],d=>delete d.content.en.regions[regions.entries[0].id],d=>delete d.content.en.tags[entries[0].tags[0]]]) {
     const fixture=structuredClone(i18n);mutate(fixture);assert.throws(()=>validateI18n(fixture,entries,workflows,regions));
   }
-  for(const entry of entries)for(const locale of ['en','ja']) {
+  for(const entry of entries)for(const locale of ['en']) {
     const translated=localizeEntry(entry,locale,i18n.content[locale]);
     assert.equal(translated.prompt,entry.prompt);assert.equal(translated.promptExcerpt,entry.promptExcerpt);
   }
@@ -93,19 +93,20 @@ test('工作流坏 fixture：ID/作者/原帖/时间/步序/工具链/空内容/
 });
 
 test('英日每个新增禁词出现在翻译资料或 HTML 都失败；全站内容禁词也失败',()=>{
-  for(const locale of ['en','ja'])for(const word of [...REGION_BANNED_TERMS_EN,...REGION_BANNED_TERMS_JA]) {
+  for(const locale of ['en'])for(const word of [...REGION_BANNED_TERMS_EN,...REGION_BANNED_TERMS_JA]) {
     assert.throws(()=>validateRegionText(JSON.stringify({[locale]:{summary:`Official ${word}`}})));
     assert.throws(()=>validateRegionText(`<article lang="${locale}">${word}</article>`));
   }
   for(const word of ['Web3','crypto','NFT','token economy','token 經濟','トークン経済'])assert.throws(()=>validateSiteText(`<p>${word}</p>`));
-  for(const locale of ['en','ja']) assert.throws(()=>validateLocalizedHtml('<p>清除筛选</p>',locale,i18n.ui.zh,entries));
+  for(const locale of ['en']) assert.throws(()=>validateLocalizedHtml('<p>清除筛选</p>',locale,i18n.ui.zh,entries));
   assert.doesNotThrow(()=>validateLocalizedHtml(`<pre>清除筛选</pre><a>中文</a>`, 'en',i18n.ui.zh,entries));
   assert.throws(()=>validateLocalizedHtml('<button aria-label="清除筛选">Clear</button>','en',i18n.ui.zh,entries));
 });
 
 test('路由保持旧文件、canonical 最终路径，四分页面计数且只标记当前列表',()=>{
-  assert.equal(switchHref('zh','/tips'),'/tips.html');assert.equal(switchHref('en','/tips'),'/en/tips.html');
-  assert.equal(fileForPublic('/ja/regions'),'ja/regions.html');
+  // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
+  assert.equal(switchHref('en','/tips'),'/tips.html');assert.equal(switchHref('zh','/tips'),'/zh/tips.html');
+  assert.equal(fileForPublic('/zh/regions'),'zh/regions.html');assert.equal(fileForPublic('/regions'),'regions.html');
   const html=renderMediaTabs(entries,'/prompts/workflow/',{workflow:{href:'/prompts/workflow/',label:'工作流',count:5}});
   assert.ok(html.includes('工作流 <b>5</b>'));assert.ok(html.includes('href="/prompts/workflow/" aria-current="page"'));
   assert.equal((html.match(/aria-current/g)||[]).length,1);
@@ -118,19 +119,20 @@ test('离线三语 build：246 页、五工作流有图/VIDEO/片长/原文复�
     const result=await buildSite({out});
     // v0.5 spec change (boss 2026-10-22): 129 details plus a fight list in each locale add 390 pages.
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    assert.equal(result.localizedPages.length,642);
+    // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
+    assert.equal(result.localizedPages.length,428);
     const files=await readdir(out,{recursive:true});
     // v0.5 spec change (boss 2026-10-22): exact multilingual HTML file count is 636.
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    assert.equal(files.filter(x=>x.endsWith('.html')).length,642);
+    assert.equal(files.filter(x=>x.endsWith('.html')).length,428);
     for(const page of result.localizedPages) {
       const html=await readFile(join(out,page.file),'utf8');
       assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${page.canonical}">`));
       validateLocalizedHtml(html,page.locale,i18n.ui.zh,entries);validateSiteText(html);
-      const alternates=[...html.matchAll(/hreflang="([^"]+)"/g)].map(x=>x[1]);assert.deepEqual(alternates,['zh-CN','en','ja','x-default']);
+      const alternates=[...html.matchAll(/hreflang="([^"]+)"/g)].map(x=>x[1]);assert.deepEqual(alternates,['en','zh-CN','x-default']);
     }
-    for(const locale of ['zh','en','ja']) {
-      const prefix=locale==='zh'?'':locale+'/';const ui=i18n.ui[locale];
+    for(const locale of ['zh','en']) {
+      const prefix=locale==='en'?'':locale+'/';const ui=i18n.ui[locale];
       const listing=await readFile(join(out,prefix,'prompts/workflow/index.html'),'utf8');
       assert.equal((listing.match(/class="prompt-card workflow-card"/g)||[]).length,5);
       assert.equal((listing.match(/<img /g)||[]).length,5);
@@ -151,9 +153,9 @@ test('离线三语 build：246 页、五工作流有图/VIDEO/片长/原文复�
       assert.ok(tools.includes(`href="/${prefix}affiliate-disclosure/" class="affiliate-label"`));
       const tips=await readFile(join(out,prefix,'tips.html'),'utf8');assert.ok(!tips.includes('GMRPOCT43296'));assert.ok(!tips.includes('class="affiliate-button"'));
     }
-    const english=await readFile(join(out,'en/about/index.html'),'utf8');assert.ok(english.includes(i18n.ui.en.legal.about.body));
+    const english=await readFile(join(out,'about/index.html'),'utf8');assert.ok(english.includes(i18n.ui.en.legal.about.body));
     assert.ok(result.sitemapUrls.every(url=>!url.endsWith('.html')));
-    assert.equal(result.sitemapUrls.filter(url=>/\/prompts\/workflow\/\d+\/$/.test(url)).length,15);
+    assert.equal(result.sitemapUrls.filter(url=>/\/prompts\/workflow\/\d+\/$/.test(url)).length,10);
   } finally {globalThis.fetch=originalFetch;await rm(out,{recursive:true,force:true});}
 });
 
@@ -161,8 +163,8 @@ test('空工作流 fixture：三语仍有第4分页与0计数、即将推出说�
   const out=await mkdtemp(join(tmpdir(),'pcv-no-workflows-'));
   try {
     const result=await buildSite({out,workflows:[]});
-    for(const locale of ['zh','en','ja']) {
-      const prefix=locale==='zh'?'':locale+'/';
+    for(const locale of ['zh','en']) {
+      const prefix=locale==='en'?'':locale+'/';
       const html=await readFile(join(out,prefix,'prompts/workflow/index.html'),'utf8');
       assert.ok(html.includes(`${i18n.ui[locale].workflow} <b>0</b>`));assert.ok(html.includes(i18n.ui[locale].comingSoon));
       assert.ok(!html.includes('workflow-card'));
@@ -178,20 +180,20 @@ test('文章 fixture：翻译不额外变文章、缺译显示原文且 canonica
     await mkdir(content);await writeFile(join(content,'field.md'),essay('原文标题','原文内容。'));
     let essays=await loadEssays(pathToFileURL(content+'/'));assert.equal(essays.length,1);
     let result=await buildSite({out,essayDirectory:content});
-    let fallback=await readFile(join(out,'en/essays/field/index.html'),'utf8');
+    // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
+    let fallback=await readFile(join(out,'essays/field/index.html'),'utf8');
     assert.ok(fallback.includes(escapeHtml(i18n.ui.en.untranslated)));
-    assert.ok(fallback.includes('<link rel="canonical" href="https://punkcanverse.com/essays/field/">'));
-    assert.ok(!fallback.includes('hreflang="en"'));assert.ok(!result.sitemapUrls.includes('https://punkcanverse.com/en/essays/field/'));
+    assert.ok(fallback.includes('<link rel="canonical" href="https://punkcanverse.com/zh/essays/field/">'));
+    assert.ok(!fallback.includes('hreflang="en"'));assert.ok(!result.sitemapUrls.includes('https://punkcanverse.com/essays/field/'));
     await writeFile(join(content,'field.en.md'),essay('Field notes','The translated essay.','en'));
     essays=await loadEssays(pathToFileURL(content+'/'));assert.equal(essays.length,1);assert.equal(essays[0].translations.en.lang,'en');
     result=await buildSite({out,essayDirectory:content});
-    const english=await readFile(join(out,'en/essays/field/index.html'),'utf8');
+    const english=await readFile(join(out,'essays/field/index.html'),'utf8');
     assert.ok(english.includes('The translated essay.'));assert.ok(!english.includes('untranslated-notice'));
-    assert.ok(english.includes('<link rel="canonical" href="https://punkcanverse.com/en/essays/field/">'));
-    assert.ok(english.includes('hreflang="en"'));assert.ok(!english.includes('hreflang="ja"'));
-    assert.ok(result.sitemapUrls.includes('https://punkcanverse.com/en/essays/field/'));
-    fallback=await readFile(join(out,'ja/essays/field/index.html'),'utf8');assert.ok(fallback.includes(escapeHtml(i18n.ui.ja.untranslated)));
-    assert.ok(!result.sitemapUrls.includes('https://punkcanverse.com/ja/essays/field/'));
+    assert.ok(english.includes('<link rel="canonical" href="https://punkcanverse.com/essays/field/">'));
+    assert.ok(english.includes('hreflang="en"'));assert.ok(english.includes('hreflang="zh-CN"'));
+    assert.ok(result.sitemapUrls.includes('https://punkcanverse.com/essays/field/'));
+    assert.ok(result.sitemapUrls.includes('https://punkcanverse.com/zh/essays/field/'));
     const descriptors=listPages({entries,workflows,essays,sitePages:SITE_PAGES});
     assert.equal(descriptors.filter(x=>x.essay&&x.sitemap).length,2);
   } finally {await rm(dir,{recursive:true,force:true});}
@@ -211,9 +213,9 @@ test('缩图更新包含工作流，与影片共用 syndication、250ms 与失�
   } finally {await rm(dir,{recursive:true,force:true});}
 });
 
-function languageFixture(preferred,{throws=false,current='zh'}={}) {
+function languageFixture(preferred,{throws=false,current='en'}={}) {
   const handlers={},writes=[];const make=(locale,href)=>({dataset:{language:locale},href,addEventListener(type,fn){handlers[locale]=fn;}});
-  const links=[make('zh','/tips.html'),make('en','/en/tips.html'),make('ja','/ja/tips.html')];
+  const links=[make('en','/tips.html'),make('zh','/zh/tips.html')];
   const target={};const hint={hidden:true,querySelector:selector=>selector==='[data-preferred-language]'?target:{addEventListener(type,fn){handlers.dismiss=fn;}}};
   const document={body:{dataset:{locale:current}},querySelectorAll:()=>links,querySelector:()=>hint};
   const window={localStorage:{getItem(key){assert.equal(key,LANGUAGE_KEY);if(throws)throw Error();return preferred;},setItem(key,value){if(throws)throw Error();writes.push([key,value]);}}};
@@ -221,10 +223,11 @@ function languageFixture(preferred,{throws=false,current='zh'}={}) {
   initLanguage({window,document});return {handlers,writes,hint,target};
 }
 test('语言切换只存偏好，不自动转址；提示同页目标、可关闭、存储不可用也正常',()=>{
-  const f=languageFixture('ja');assert.equal(f.hint.hidden,false);assert.equal(f.target.href,'/ja/tips.html');assert.equal(f.target.textContent,'日本語版で見る →');
-  f.handlers.dismiss();assert.equal(f.hint.hidden,true);f.handlers.en();assert.deepEqual(f.writes,[[LANGUAGE_KEY,'en']]);
-  for(const preferred of ['zh','invalid',null])assert.equal(languageFixture(preferred).hint.hidden,true);
-  const blocked=languageFixture('ja',{throws:true});assert.equal(blocked.hint.hidden,true);assert.doesNotThrow(()=>blocked.handlers.en());
+  // redesign spec change (2026-11-08): English is the root page; Japanese is no longer offered.
+  const f=languageFixture('zh');assert.equal(f.hint.hidden,false);assert.equal(f.target.href,'/zh/tips.html');assert.equal(f.target.textContent,'查看中文版 →');
+  f.handlers.dismiss();assert.equal(f.hint.hidden,true);f.handlers.zh();assert.deepEqual(f.writes,[[LANGUAGE_KEY,'zh']]);
+  for(const preferred of ['en','ja','invalid',null])assert.equal(languageFixture(preferred).hint.hidden,true);
+  const blocked=languageFixture('zh',{throws:true});assert.equal(blocked.hint.hidden,true);assert.doesNotThrow(()=>blocked.handlers.zh());
 });
 
 test('步骤和代码复制原文；短/长提示词仅在链接前缀使用本语言',async()=>{
@@ -232,7 +235,7 @@ test('步骤和代码复制原文；短/长提示词仅在链接前缀使用本�
   const raw='Original 原文\n  keep spaces';
   assert.equal(workflowCopyText({querySelector:selector=>{assert.equal(selector,'pre');return {textContent:raw};}}),raw);
   const short=entries.find(x=>!x.isLong),long=entries.find(x=>x.isLong);
-  for(const locale of ['zh','en','ja']) {
+  for(const locale of ['zh','en']) {
     assert.equal(localizedCopyText(short,i18n.ui[locale].fullVersion),short.prompt);
     // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
     assert.equal(localizedCopyText(long,i18n.ui[locale].fullVersion),long.prompt);
@@ -242,7 +245,7 @@ test('步骤和代码复制原文；短/长提示词仅在链接前缀使用本�
 test('X 失败提示与 Markdown 工具列使用当前语言，保留手动观看与图片回退',async()=>{
   const {bindClickEmbeds}=await import('../web/embeds.mjs');
   const {markdownToHtml}=await import('../lib/markdown.mjs');
-  for(const locale of ['en','ja']) {
+  for(const locale of ['en']) {
     const ui=i18n.ui[locale],handlers={};let error;
     const mount={hidden:false,replaceChildren(){}};
     const slot={querySelector(selector){return selector==='.tweet-mount'?mount:selector==='.tweet-template'?{}:error;},append(node){error=node;}};
@@ -268,9 +271,9 @@ test('英文说明页只允许作品介绍迁移，其余法律正文保留原�
     await buildSite({out});
     for(const page of SITE_PAGES) {
       const legal=i18n.ui.en.legal[page.path.slice(1,-1)];
-      const html=await readFile(join(out,'en',page.path,'index.html'),'utf8');
-      const scoped=legal.body.replace(/href="\/(?!\/)([^"]*)"/g,'href="/en/$1"');
-      assert.ok(html.includes(scoped),page.path);
+      // redesign spec change (2026-11-08): English legal pages live at the root.
+      const html=await readFile(join(out,page.path,'index.html'),'utf8');
+      assert.ok(html.includes(legal.body),page.path);
     }
   } finally {await rm(out,{recursive:true,force:true});}
 });

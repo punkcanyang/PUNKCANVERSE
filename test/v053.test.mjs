@@ -30,13 +30,13 @@ test('v0.5.3 PixVerse配置逐字正确，192条无匹配模型故零按钮，Hi
 });
 
 test('v0.5.3 PixVerse模型fixture才出现三语按钮、标示和本语言揭露，wan-minimax仍禁止推广',()=>{
-  for(const locale of ['zh','en','ja']) {
+  for(const locale of ['zh','en']) {
     const ui=cardUI(locale,i18n.ui[locale],i18n.content[locale]);
     const fixture={models:['PixVerse']};
     const html=renderAffiliates(fixture,affiliates,ui.affiliate);
     assert.ok(html.includes(`href="${PIXVERSE_URL}" target="_blank" rel="sponsored noopener noreferrer"`));
     assert.ok(html.includes(`>${formatText(i18n.ui[locale].tryPlatform,{name:'PixVerse'})}</a>`));
-    assert.ok(html.includes(`<a href="${locale==='zh'?'':`/${locale}`}/affiliate-disclosure/" class="affiliate-label"><small>${i18n.ui[locale].promoLabel}</small></a>`));
+    assert.ok(html.includes(`<a href="${locale==='en'?'':`/${locale}`}/affiliate-disclosure/" class="affiliate-label"><small>${i18n.ui[locale].promoLabel}</small></a>`));
     assert.equal((html.match(/class="affiliate-button"/g)||[]).length,1);
     assert.ok(!html.includes('class="affiliate-code"'));
     assert.equal(renderAffiliates({models:['unmatched']},affiliates,ui.affiliate),'');
@@ -66,8 +66,8 @@ test('v0.5.3 离线构建三语工具卡各一推广、tips零推广，错属性
   globalThis.fetch=()=>{throw Error('Network forbidden');};
   try {
     await buildSite({out});await verifyV053(root,out);
-    for(const locale of ['zh','en','ja']) {
-      const prefix=locale==='zh'?'':`${locale}/`;
+    for(const locale of ['zh','en']) {
+      const prefix=locale==='en'?'':`${locale}/`;
       // v0.5.3 spec change (boss 2026-10-23): tool list page
       const html=(await readFile(join(out,prefix,'tools.html'),'utf8')).match(/<article class="tool-card" id="pixverse">[\s\S]*?<\/article>/)[0];
       for(const invalid of [
