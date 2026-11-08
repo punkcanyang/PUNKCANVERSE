@@ -1,8 +1,8 @@
 export const LANGUAGE_KEY = 'pcv-lang';
 export const LANGUAGE_HINT_DISMISS_KEY = 'pcv-lang-hint-dismissed';
-export const LANGUAGE_HINTS = {zh:'查看中文版 →',en:'Read this page in English →',ja:'日本語版で見る →'};
+export const LANGUAGE_HINTS = {zh:'查看中文版 →',en:'Read this page in English →'};
 export function initLanguage({window=globalThis.window,document=globalThis.document}={}) {
-  const current=document.body.dataset.locale || 'zh';
+  const current=document.body.dataset.locale || 'en';
   const links=[...document.querySelectorAll('[data-language]')];
   const hint=document.querySelector('#language-hint');
   const target=hint?.querySelector('[data-preferred-language]');

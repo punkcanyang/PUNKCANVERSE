@@ -39,8 +39,8 @@ try {
   const cmd=(method,params={})=>request(method,params,sessionId);
   await cmd('Page.enable');await cmd('Network.enable');await cmd('Network.setBlockedURLs',{urls:['http://*','https://*']});
   let checks=0;
-  for(const locale of ['zh','en','ja'])for(const file of samples) {
-    const prefix=locale==='zh'?'':`${locale}/`;
+  for(const locale of ['zh','en'])for(const file of samples) {
+    const prefix=locale==='en'?'':`${locale}/`;
     const raw=await readFile(join('dist',prefix,file),'utf8');
     const html=raw.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'').replace(/<img\b[^>]*>/gi,'').replace(/<base\b[^>]*>/gi,'').replace('</head>',`<style>${css}\nh1{font-family:"DejaVu Sans",sans-serif!important}</style></head>`);
     for(const width of [360,390,1440]) {
@@ -55,7 +55,7 @@ try {
       assert.equal(result.value.viewport,width,'Device viewport');assert.ok(result.value.width<=width,`${locale}/${file} at ${width}: document width ${result.value.width}`);checks++;
     }
   }
-  console.log(`${checks} offline layout checks passed (zh/en/ja × 360/390/1440).`);
+  console.log(`${checks} offline layout checks passed (en/zh × 360/390/1440).`);
 } finally {
   if(chrome && chrome.exitCode===null && chrome.signalCode===null) {
     const stopped=new Promise(resolve=>chrome.once('exit',resolve));

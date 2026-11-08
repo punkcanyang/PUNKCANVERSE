@@ -9,14 +9,14 @@ import { escapeHtml as e } from '../lib/markdown.mjs';
 import { validateTools } from '../lib/tools.mjs';
 
 export const PIXVERSE_URL='https://motivaiprivatelimited.sjv.io/qW3aLn';
-const TIP_FILES=['en/tips.html','ja/tips.html','tips.html'];
-const TOOL_FILES=['en/tools.html','ja/tools.html','tools.html'];
+const TIP_FILES=['tips.html','zh/tips.html'];
+const TOOL_FILES=['tools.html','zh/tools.html'];
 
 // v0.5.3 spec change (boss 2026-10-23): tool list page
 export function verifyRecommendedToolsHtml(html, affiliates, ui, locale) {
   const sections=[...html.matchAll(/<section class="recommended-tools">[\s\S]*?<\/section>/g)];
   assert.equal(sections.length,1,'Exactly one recommended-tools section');
-  const section=sections[0][0],prefix=locale==='zh'?'':`/${locale}`;
+  const section=sections[0][0],prefix=locale==='en'?'':`/${locale}`;
   assert.equal((section.match(/class="affiliate-button"/g)||[]).length,0,'Tips has no affiliate buttons');
   assert.ok(!section.includes('GMRPOCT43296'));
   for(const platform of Object.values(affiliates))if(platform.url)assert.ok(!section.includes(platform.url));
@@ -43,7 +43,7 @@ export function verifyToolCardHtml(html,id,data,affiliates,ui,locale) {
   const buttons=[...cta.matchAll(/<a\b[^>]*class="affiliate-button"[^>]*>/g)].map(m=>m[0]);
   assert.equal(buttons.length,1);assert.ok(buttons[0].includes(`href="${e(affiliates[id].url)}"`));
   assert.match(buttons[0],/target="_blank"/);assert.match(buttons[0],/rel="sponsored noopener noreferrer"/);
-  const disclosure=`${locale==='zh'?'':`/${locale}`}/affiliate-disclosure/`;
+  const disclosure=`${locale==='en'?'':`/${locale}`}/affiliate-disclosure/`;
   assert.ok(cta.includes(`>${e(formatText(ui.tryPlatform,{name:affiliates[id].name}))}</a>`),'Localized button text');
   assert.ok(cta.includes(`<a href="${disclosure}" class="affiliate-label"><small>${e(ui.promoLabel)}</small></a>`),'Localized disclosure link');
   if(id==='magnific')assert.ok(cta.includes(`<small class="affiliate-code">${e(ui.codeLabel)} GMRPOCT43296</small>`));
@@ -73,8 +73,8 @@ export async function verifyV053(root=fileURLToPath(new URL('..',import.meta.url
       const file=relative(dist,path),html=await readFile(path,'utf8');
       if(html.includes(PIXVERSE_URL))locations.push(file);
       if(html.includes(affiliates.magnific.url))magnificLocations.push(file);
-      const locale=file.startsWith('en/')?'en':file.startsWith('ja/')?'ja':'zh';
-      const prefix=locale==='zh'?'':`${locale}/`;
+      const locale=file.startsWith('zh/')?'zh':'en';
+      const prefix=locale==='en'?'':`${locale}/`;
       const nav=html.match(/<nav class="primary-nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
       assert.ok(nav?.includes(`href="/${prefix}tools"`),'Localized tools navigation');
       assert.equal((nav.match(/<a\b/g)||[]).length,5);
@@ -85,7 +85,7 @@ export async function verifyV053(root=fileURLToPath(new URL('..',import.meta.url
       assert.equal(html.split(affiliates.higgsfield.url).length-1,higgsCount,`${file}: original Higgsfield distribution plus one per tools page`);
       if(!TOOL_FILES.includes(file))assert.equal((html.match(/class="tool-about"/g)||[]).length,higgsCount);
       if(TIP_FILES.includes(file)) {
-        const locale=file.startsWith('en/')?'en':file.startsWith('ja/')?'ja':'zh';
+        const locale=file.startsWith('zh/')?'zh':'en';
         verifyRecommendedToolsHtml(html,affiliates,i18n.ui[locale],locale);
         // v0.5.3 spec change (boss 2026-10-23): tool list page
         assert.equal(html.split(PIXVERSE_URL).length-1,0,'No PixVerse URL on tips');

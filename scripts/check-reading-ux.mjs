@@ -54,8 +54,9 @@ try {
   // A fixed tail substring (any script, any spacing) that only full-text search can match.
   const tailQuery=Array.from(tailEntry[1].trim()).slice(-30).join('').trim();
   assert.ok(tailQuery.length>=10&&!Array.from(tailEntry[1]).slice(0,140).join('').includes(tailQuery),'Tail query must lie beyond the card excerpt');
-  for(const lang of ['', '/en', '/ja']) {
-    await navigate(lang+'/',390);await evaluate(`document.querySelector('[data-cookie-settings]').click()`);await screenshot((lang||'/zh').slice(1)+'-home-mobile');
+  // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
+  for(const lang of ['', '/zh']) {
+    await navigate(lang+'/',390);await evaluate(`document.querySelector('[data-cookie-settings]').click()`);await screenshot((lang||'/en').slice(1)+'-home-mobile');
     assert.equal(await evaluate(`document.querySelectorAll('.prompt-card').length`),6);
     const firstId=await evaluate(`document.querySelector('[data-copy-remote]').dataset.copyEntry`);
     await evaluate(`document.querySelector('[data-copy-remote]').click()`);
@@ -87,9 +88,9 @@ try {
     assert.equal(await evaluate(`(()=>{const dates=[...document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])')].map(x=>JSON.parse(x.dataset.filterEntry).date);return dates.every((x,i)=>!i||dates[i-1]>=x)})()`),true);
     await evaluate(`history.back()`);await waitUntil(`!new URLSearchParams(location.search).has('sort')`);
     await evaluate(`document.querySelector('#clear-filters').click();document.querySelector('[data-consent="denied"]').click()`);
-    await screenshot((lang||'/zh').slice(1)+'-archive-mobile');
+    await screenshot((lang||'/en').slice(1)+'-archive-mobile');
     await evaluate(`document.querySelector('#prompt-grid .prompt-card:not([hidden])').scrollIntoView()`);
-    await screenshot((lang||'/zh').slice(1)+'-card-mobile');
+    await screenshot((lang||'/en').slice(1)+'-card-mobile');
     const paths=[lang+'/tools',lang+'/tips',lang+'/works/',await evaluate(`document.querySelector('#prompt-grid h2 a').pathname`)];
     for(const path of paths){await navigate(path,390);assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true,path);}
     for (const [width,columns] of [[390,1],[1024,2],[1440,3]]) {
@@ -100,7 +101,7 @@ try {
       assert.equal(await evaluate(`document.querySelector('.tools-jump')===null`),true);
       assert.equal(await evaluate(`document.querySelectorAll('.tool-free-badge').length`),2);
       assert.equal(await evaluate(`[...document.querySelectorAll('.tool-free-badge')].every(badge=>{const box=badge.getBoundingClientRect();return box.top<badge.parentElement.getBoundingClientRect().top && box.left>=0 && box.right<=innerWidth;})`),true);
-      await screenshot((lang||'/zh').slice(1)+`-tools-${width}`);
+      await screenshot((lang||'/en').slice(1)+`-tools-${width}`);
       await evaluate(`document.querySelector('#magnific [data-tool-open]').focus()`);
       await request('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
       await request('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
@@ -109,7 +110,7 @@ try {
       assert.equal(await evaluate(`document.querySelectorAll('.tool-dialog .tool-prices tbody tr').length>0`),true);
       assert.equal(await evaluate(`document.querySelectorAll('.affiliate-button').length`),3,'Moving content must not duplicate promotional links');
       assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth && document.querySelector('.tool-dialog').scrollWidth<=document.querySelector('.tool-dialog').clientWidth`),true);
-      await screenshot((lang||'/zh').slice(1)+`-tool-dialog-${width}`);
+      await screenshot((lang||'/en').slice(1)+`-tool-dialog-${width}`);
       await request('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
       await request('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
       await waitUntil(`!document.querySelector('.tool-dialog').open && document.activeElement.matches('#magnific [data-tool-open]') && Boolean(document.querySelector('#magnific .tool-body[hidden]'))`);
@@ -125,9 +126,9 @@ try {
     await evaluate(`document.querySelector('#pixverse [data-tool-open]').click()`);
     await waitUntil(`document.querySelector('.tool-dialog').open`);
     await navigate(lang+'/prompts/video/',1440);await waitUntil(`!document.querySelector('#prompt-search').disabled`);
-    await screenshot((lang||'/zh').slice(1)+'-archive-desktop');
+    await screenshot((lang||'/en').slice(1)+'-archive-desktop');
     assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true);
-    await navigate(lang+'/',1440);await screenshot((lang||'/zh').slice(1)+'-home-desktop');
+    await navigate(lang+'/',1440);await screenshot((lang||'/en').slice(1)+'-home-desktop');
   }
   const catalog=JSON.parse(await readFile(join(dist,'catalog.json'),'utf8')).entries;
   const longest=[...catalog].sort((a,b)=>b.promptLength-a.promptLength)[0];
@@ -148,7 +149,7 @@ try {
   assert.ok(requests.includes(`/${promptTextPath}`),'Excerpt cards load source text on demand');
   assert.ok(!requests.includes('/catalog.json'),'No full catalog fetch for copy or filters');
   assert.deepEqual(errors,[]);
-  console.log('Offline browser interactions passed: three languages, copy with consent, search, zero results, tags, sort/history, progressive display, compact tool cards at 390/1024/1440, tool dialogs with keyboard and deep links, routes and legacy shared URLs; no catalog fetch.');
+  console.log('Offline browser interactions passed: two languages, copy with consent, search, zero results, tags, sort/history, progressive display, compact tool cards at 390/1024/1440, tool dialogs with keyboard and deep links, routes and legacy shared URLs; no catalog fetch.');
 } finally {
   if(chrome.exitCode===null&&chrome.signalCode===null){const stopped=new Promise(r=>chrome.once('exit',r));chrome.kill();await stopped;}
   await rm(temporary,{recursive:true,force:true,maxRetries:5,retryDelay:100});

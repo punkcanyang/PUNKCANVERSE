@@ -160,17 +160,18 @@ test('实际 build：四页均有揭露，空推广和关闭周报不留下容�
   const out = await mkdtemp(join(tmpdir(), 'pcv-empty-affiliates-'));
   try {
     await buildSite({out, affiliates});
+    // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
     for (const page of ['index', 'tips', 'takedown', 'regions']) {
-      const html = await readFile(join(out, `${page}.html`), 'utf8');
+      const html = await readFile(join(out, 'zh', `${page}.html`), 'utf8');
       assert.ok(html.includes(AFFILIATE_DISCLOSURE));
       assert.ok(!/class="affiliate-(?:links|item|button)"/.test(html));
       assert.ok(!/class="newsletter"|id="newsletter-title"/.test(html));
-      assert.ok(html.includes('href="regions.html"'));
+      assert.ok(html.includes('href="/zh/regions.html"'));
       assert.ok(html.includes('https://x.com/punkcan'));
     }
-    const home = await readFile(join(out, 'index.html'), 'utf8');
+    const home = await readFile(join(out, 'zh', 'index.html'), 'utf8');
     assert.ok(!home.includes('name="medium"'));
-    const regionsHtml = await readFile(join(out, 'regions.html'), 'utf8');
+    const regionsHtml = await readFile(join(out, 'zh', 'regions.html'), 'utf8');
     assert.doesNotThrow(() => validateRegionText(regionsHtml));
     assert.ok(regionsHtml.includes(REGION_DISCLAIMER));
   } finally { await rm(out, {recursive:true,force:true}); }

@@ -25,17 +25,17 @@ test('工具事实与逐值source固定对应批准来源，译文不增加价�
     d=>d.facts.platforms.pixverse.features[0].source='https://example.com/',
     d=>d.facts.checkedAt='2026-10-24',
     d=>d.content.en.magnific.credits[0].value='999 credits',
-    d=>d.content.ja.higgsfield.launch.value='2024年設立',
+    d=>d.content.zh.higgsfield.launch.value='2024年成立',
     d=>d.content.en.pixverse.features[0].source='https://example.com/',
     d=>d.content.en.pixverse.credits[0].fact='plans.1.credits',
-    d=>d.content.ja.magnific.credits[4].value='200クレジット',
+    d=>d.content.zh.magnific.credits[4].value='200 點數',
   ]){const fixture=structuredClone(data);mutate(fixture);assert.throws(()=>validateTools(fixture,i18n.ui));}
   assert.deepEqual(data.facts.platforms.higgsfield.plans.value,'未公開');
   for(const p of Object.values(data.facts.platforms))if(Array.isArray(p.plans))for(const plan of p.plans)assert.ok(typeof plan.monthlyPriceUSD==='number'||plan.monthlyPriceUSD==='未公開');
 });
 
 test('三语每张工具卡先介绍/时间/特色/价格/适合谁，最后是推广组件；官方价格链接无sponsored，年缴和每席不误写',()=>{
-  for(const locale of ['zh','en','ja'])for(const id of TOOL_IDS) {
+  for(const locale of ['zh','en'])for(const id of TOOL_IDS) {
     const ui=i18n.ui[locale],copy=cardUI(locale,ui,i18n.content[locale]);
     const html=renderToolCard(id,data,affiliates,locale,ui.tools,copy.affiliate);
     verifyToolCardHtml(html,id,data,affiliates,ui,locale);
@@ -57,15 +57,15 @@ test('离线build三语tools进入sitemap/导航/hreflang/GA，tips零推广，�
   const out=await mkdtemp(join(tmpdir(),'pcv-tools-'));const previous=globalThis.fetch;
   globalThis.fetch=()=>{throw Error('Network forbidden');};
   try {
-    const result=await buildSite({out});assert.equal(result.localizedPages.length,642);assert.equal(result.sitemapUrls.length,633);
+    const result=await buildSite({out});assert.equal(result.localizedPages.length,428);assert.equal(result.sitemapUrls.length,422);
     await verifyV053(root,out);
-    for(const locale of ['zh','en','ja']) {
-      const prefix=locale==='zh'?'':`/${locale}`;
+    for(const locale of ['zh','en']) {
+      const prefix=locale==='en'?'':`/${locale}`;
       const html=await readFile(join(out,prefix,'tools.html'),'utf8');
       assert.ok(result.sitemapUrls.includes(`https://punkcanverse.com${prefix}/tools`));
       assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${prefix}/tools">`));
       assert.ok(html.includes(`<meta property="og:url" content="https://punkcanverse.com${prefix}/tools">`));
-      for(const [lang,pre] of [['zh-CN',''],['en','/en'],['ja','/ja'],['x-default','']])assert.ok(html.includes(`<link rel="alternate" hreflang="${lang}" href="https://punkcanverse.com${pre}/tools">`));
+      for(const [lang,pre] of [['en',''],['zh-CN','/zh'],['x-default','']])assert.ok(html.includes(`<link rel="alternate" hreflang="${lang}" href="https://punkcanverse.com${pre}/tools">`));
       assert.equal(verifyAnalyticsHtml(html),true);assert.ok(html.includes('impact-site-verification'));
       const tips=await readFile(join(out,prefix,'tips.html'),'utf8');
       assert.ok(!tips.includes('class="affiliate-button"'));assert.ok(!tips.includes('GMRPOCT43296'));
@@ -81,7 +81,7 @@ test('离线build三语tools进入sitemap/导航/hreflang/GA，tips零推广，�
 });
 
 test('工具页沿用空值和危险网址不渲染推广组件的规则，既有推广码不凭空出现',()=>{
-  for(const locale of ['zh','en','ja'])for(const url of ['', 'javascript:alert(1)','data:text/html,no']) {
+  for(const locale of ['zh','en'])for(const url of ['', 'javascript:alert(1)','data:text/html,no']) {
     const fixture=structuredClone(affiliates);fixture.magnific.url=url;
     const html=renderToolCard('magnific',data,fixture,locale,i18n.ui[locale].tools,cardUI(locale,i18n.ui[locale],i18n.content[locale]).affiliate);
     assert.ok(!html.includes('class="affiliate-button"'));assert.ok(!html.includes('class="tool-cta"'));assert.ok(!html.includes('GMRPOCT43296'));

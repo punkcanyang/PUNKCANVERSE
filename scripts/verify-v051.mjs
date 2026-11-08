@@ -19,8 +19,8 @@ export async function verifyV051(root=fileURLToPath(new URL('..',import.meta.url
   for(const entry of published) {
     assert.equal(getCopyText(entry),entry.prompt);
     assert.equal(localizedCopyText(entry,'unused prefix'),entry.prompt);
-    for(const locale of ['zh','en','ja']) {
-      const prefix=locale==='zh'?'':`${locale}/`;
+    for(const locale of ['zh','en']) {
+      const prefix=locale==='en'?'':`${locale}/`;
       const html=await read(`dist/${prefix}prompts/video/${entry.id}/index.html`);
       const section=html.match(/<section class="full-prompt">([\s\S]*?)<\/section>/)?.[1];
       assert.ok(section,`${locale}/${entry.id}: full prompt section missing`);
@@ -31,6 +31,6 @@ export async function verifyV051(root=fileURLToPath(new URL('..',import.meta.url
       assert.ok(!section.includes('class="excerpt-note"'),'No excerpt-only warning');
     }
   }
-  console.log('✓ v0.5.1：192 条全文来源、精确元数据、576 个三语详情全文、完整复制与无 JS 阅读通过');
+  console.log('✓ v0.5.1：192 条全文来源、精确元数据、384 个双语详情全文、完整复制与无 JS 阅读通过');
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)await verifyV051();

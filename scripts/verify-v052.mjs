@@ -46,8 +46,8 @@ export async function verifyV052(root=fileURLToPath(new URL('..',import.meta.url
     assert.deepEqual(published,original,`${entry.id}: byte-for-byte asset copy`);
   }
   const i18n=await loadI18n(root);
-  for(const locale of ['zh','en','ja']) {
-    const prefix=locale==='zh'?'':`${locale}/`;
+  for(const locale of ['zh','en']) {
+    const prefix=locale==='en'?'':`${locale}/`;
     const listings=await Promise.all(['prompts/video/index.html'].map(file=>readFile(join(dist,prefix,file),'utf8')));
     for(const entry of entries) {
       const detail=await readFile(join(dist,prefix,'prompts/video',entry.id,'index.html'),'utf8');

@@ -57,10 +57,10 @@ export async function verifyV04(root=fileURLToPath(new URL('..',import.meta.url)
     assert.ok(html.includes(`<meta property="og:url" content="https://punkcanverse.com${page.canonical}">`));
     assert.ok(html.includes(`<meta property="og:locale" content="${OG_LOCALE[page.locale]}">`));
     const alternate=[...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/g)].map(x=>[x[1],x[2]]);
-    assert.deepEqual(alternate,[...page.alternates.map(locale=>[HTML_LANG[locale],'https://punkcanverse.com'+publicPath(locale,page.route)]),['x-default','https://punkcanverse.com'+publicPath(page.essay?.lang||'zh',page.route)]]);
+    assert.deepEqual(alternate,[...page.alternates.map(locale=>[HTML_LANG[locale],'https://punkcanverse.com'+publicPath(locale,page.route)]),['x-default','https://punkcanverse.com'+publicPath(page.alternates.includes('en')?'en':page.alternates[0],page.route)]]);
     assert.ok(canonicals.every(url=>!url.endsWith('.html')));
     const switcher=html.match(/<nav class="language-switch"[\s\S]*?<\/nav>/)?.[0];
-    for(const locale of ['zh','en','ja']) assert.ok(switcher?.includes(`href="${switchHref(locale,page.route)}" data-language="${locale}"${locale===page.locale?' aria-current="page"':''}`));
+    for(const locale of ['zh','en']) assert.ok(switcher?.includes(`href="${switchHref(locale,page.route)}" data-language="${locale}"${locale===page.locale?' aria-current="page"':''}`));
     assert.equal((switcher.match(/aria-current="page"/g)||[]).length,1);
     verifyAnalyticsHtml(html);validateSiteText(html);
     validateLocalizedHtml(html,page.locale,i18n.ui.zh,entries,{essayFallback:page.canonical!==page.path});
@@ -77,8 +77,8 @@ export async function verifyV04(root=fileURLToPath(new URL('..',import.meta.url)
   }
   for(const workflow of workflows) {
     assert.ok(normalizeThumb(thumbs.entries[workflow.id]),`Workflow requires cached thumbnail: ${workflow.id}`);
-    for(const locale of ['zh','en','ja']) {
-      const prefix=locale==='zh'?'':locale+'/';
+    for(const locale of ['zh','en']) {
+      const prefix=locale==='en'?'':locale+'/';
       const detail=await read(`dist/${prefix}prompts/workflow/${workflow.id}/index.html`);
       const listing=await read(`dist/${prefix}prompts/workflow/index.html`);
       assert.ok(detail.includes(`<img src="${e(thumbs.entries[workflow.id].thumb)}"`));
@@ -92,6 +92,6 @@ export async function verifyV04(root=fileURLToPath(new URL('..',import.meta.url)
   const sitemap=await read('dist/sitemap.xml');
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]),pages.filter(x=>x.sitemap).map(x=>'https://punkcanverse.com'+x.path));
   assert.ok(!/<loc>[^<]*\.html<\/loc>/.test(sitemap));
-  console.log(`✓ v0.4：${pages.length} 页、三语互指、${workflows.length} 个工作流、翻译完整性与内容边界通过`);
+  console.log(`✓ v0.4：${pages.length} 页、双语互指、${workflows.length} 个工作流、翻译完整性与内容边界通过`);
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)await verifyV04();

@@ -62,3 +62,23 @@ test('middleware 对 apex 与预览域名原样返回 next 的响应', async () 
     assert.equal(response.status, 200);
   }
 });
+
+// redesign spec change (2026-11-08): English moved from /en/ to the root and Japanese was retired.
+test('舊 /en 與 /ja 網址 301 到根網址的同一頁，保留 query；/zh 與相似路徑不轉址', () => {
+  const cases = [
+    ['https://punkcanverse.com/en', 'https://punkcanverse.com/'],
+    ['https://punkcanverse.com/en/', 'https://punkcanverse.com/'],
+    ['https://punkcanverse.com/en/tips.html?model=Wan&tag=%E5%86%B7', 'https://punkcanverse.com/tips.html?model=Wan&tag=%E5%86%B7'],
+    ['https://punkcanverse.com/ja/prompts/video/1/', 'https://punkcanverse.com/prompts/video/1/'],
+    ['http://punkcanverse.com/ja/regions', 'http://punkcanverse.com/regions'],
+    ['https://www.punkcanverse.com/ja/works/', 'https://punkcanverse.com/works/'],
+    ['https://fight-prompts.pages.dev/en/tools', 'https://punkcanverse.com/tools'],
+    ['https://abc123.fight-prompts.pages.dev/en/about/', 'https://abc123.fight-prompts.pages.dev/about/'],
+  ];
+  for (const [from, to] of cases) assert.equal(redirectTarget(from), to, from);
+  for (const path of ['/zh/', '/zh/tips.html', '/english/', '/enx', '/japan/', '/prompts/en/']) {
+    assert.equal(redirectTarget(`https://punkcanverse.com${path}`), null, path);
+  }
+  // A redirect target never redirects again.
+  for (const [, to] of cases) assert.equal(redirectTarget(to), null, to);
+});

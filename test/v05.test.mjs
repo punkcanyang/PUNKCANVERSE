@@ -118,7 +118,7 @@ test('v0.5 Kangaikroto 两段提示词独立 ID、同帖嵌入与链接；错 em
 });
 
 test('v0.5 三语官方占位无图片／X 模板／推广；原文保留，长文复制与阅读全文都指官方出处',()=>{
-  for(const locale of ['zh','en','ja']) {
+  for(const locale of ['zh','en']) {
     const ui=cardUI(locale,i18n.ui[locale],i18n.content[locale]);
     for(const entry of imported.entries.filter(row=>row.source==='official')) {
       const localized=localizeEntry(entry,locale,i18n.content[locale]);
@@ -157,7 +157,7 @@ test('v0.5 新资料一律零推广，即使 fixture 给 Wan/MiniMax 配网址�
 test('v0.5 三语完整覆盖 192、标签及新 UI；精选只标26条新卡，缺图照常占位',async()=>{
   validateI18n(i18n,entries,(await json('data/workflows.json')).entries,await json('data/regions.json'));
   validateSiteText(JSON.stringify(imported));
-  for(const locale of ['zh','en','ja']) {
+  for(const locale of ['zh','en']) {
     const ui=cardUI(locale,i18n.ui[locale],i18n.content[locale]);let featured=0;
     for(const entry of imported.entries) {
       const localized=localizeEntry(entry,locale,i18n.content[locale]);
@@ -239,7 +239,8 @@ test('v0.5 离线 build：636页／630 sitemap，首页精选6条与视频192、
   try {
     const result=await buildSite({out});
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    assert.equal(result.localizedPages.length,642);assert.equal(result.sitemapUrls.length,633);
+    // redesign spec change (2026-11-08): two locales (English root, Chinese /zh/) instead of three.
+    assert.equal(result.localizedPages.length,428);assert.equal(result.sitemapUrls.length,422);
     const {symlink}=await import('node:fs/promises');
     await symlink(out,join(fixtureRoot,'dist'));
     await symlink(join(root,'data'),join(fixtureRoot,'data'));
