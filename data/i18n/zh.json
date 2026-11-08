@@ -2,7 +2,7 @@
   "navPrompts": "提示詞庫",
   "navTips": "技術與資源",
   "navRegions": "地區與申訴",
-  "mainNav": "主導航",
+  "mainNav": "主選單",
   "skip": "跳到主要內容",
   "video": "影片",
   "image": "圖像",
@@ -138,7 +138,7 @@
     "affiliate-disclosure": {
       "title": "推廣揭露",
       "summary": "推廣連結如何支持 PUNKCANVERSE。",
-      "body": "<h2>推薦如何運作</h2><p>本站部分連結是推廣或推薦連結。透過它們註冊或購買時，本站可能獲得佣金，你不會因為使用本站連結而多付錢。</p><h2>清楚標示</h2><p>推廣按鈕旁標示「推廣連結」，並使用 sponsored 連結關係。有推廣碼時會顯示在推薦旁。標籤或連結不保證產品品質或使用結果。</p><h2>由你選擇</h2><p>是否點選推廣連結由你決定。目的地服務商管理價格、結賬、追蹤與條款。<a href=\"/privacy/\">隱私政策</a>說明推薦追蹤與第三方 Cookie 的作用。</p><p>有問題請聯絡 <a href=\"mailto:hello@punkcanverse.com\">hello@punkcanverse.com</a>。</p>"
+      "body": "<h2>推薦如何運作</h2><p>本站部分連結是推廣或推薦連結。透過它們註冊或購買時，本站可能獲得佣金，你不會因為使用本站連結而多付錢。</p><h2>清楚標示</h2><p>推廣按鈕旁標示「推廣連結」，並使用 sponsored 連結關係。有推廣碼時會顯示在推薦旁。標籤或連結不保證產品品質或使用結果。</p><h2>由你選擇</h2><p>是否點選推廣連結由你決定。目的地服務商管理價格、結帳、追蹤與條款。<a href=\"/privacy/\">隱私政策</a>說明推薦追蹤與第三方 Cookie 的作用。</p><p>有問題請聯絡 <a href=\"mailto:hello@punkcanverse.com\">hello@punkcanverse.com</a>。</p>"
     }
   },
   "tipArticles": {
@@ -202,7 +202,7 @@
   },
   "searchLabel": "搜尋提示詞",
   "searchPlaceholder": "標題、作者、模型或提示詞關鍵字",
-  "searchButton": "搜索",
+  "searchButton": "搜尋",
   "sortLabel": "排序",
   "sortDefault": "收錄順序",
   "sortFeatured": "精選優先",
