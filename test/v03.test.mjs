@@ -149,7 +149,7 @@ test('离线 build：63 条独立页、完整 sitemap、无示例文章或模型
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
     assert.ok((await readFile(join(dir,'zh/essays/index.html'),'utf8')).includes('作品整理中'));
     assert.equal(result.pages.filter(path=>path.startsWith('/essays/')).length,1);
-    assert.ok((await readFile(join(dir,'zh/prompts/image/index.html'),'utf8')).includes('图像提示词整理中'));
+    assert.ok((await readFile(join(dir,'zh/prompts/image/index.html'),'utf8')).includes('圖像提示詞整理中'));
     assert.ok(!result.sitemapUrls.some(url=>/\/models\/|\/prompts\/(image|music)\/$/.test(url)));
   } finally { globalThis.fetch=saved;await rm(dir,{recursive:true,force:true}); }
 });
@@ -171,7 +171,7 @@ test('thumbs 缺失、损坏、missing 记录都不阻止构建且输出占位�
     assert.ok(result.pages.includes('/essays/production-notes/'));
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
     assert.ok(result.sitemapUrls.includes('https://punkcanverse.com/zh/essays/production-notes/'));
-    const html=await readFile(join(out,'zh/essays/production-notes/index.html'),'utf8');assert.ok(html.includes('AI 辅助整理，作者审校'));assert.ok(html.includes('<link rel="canonical" href="https://punkcanverse.com/zh/essays/production-notes/">'));
+    const html=await readFile(join(out,'zh/essays/production-notes/index.html'),'utf8');assert.ok(html.includes('AI 輔助整理，作者審校'));assert.ok(html.includes('<link rel="canonical" href="https://punkcanverse.com/zh/essays/production-notes/">'));
   } finally { await rm(dir,{recursive:true,force:true}); }
 });
 

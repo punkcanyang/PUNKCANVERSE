@@ -77,7 +77,8 @@ test('三语实际输出：模型选项保持原值、可见名翻译，中文�
     }
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
     const chinese=await readFile(join(out,'zh/index.html'),'utf8');
-    assert.ok(chinese.includes('AI 视频、图像、音乐的创作入口。<br>收藏提示词，拆解镜头，留下制作笔记。'));
+    // redesign spec change (2026-11-08): Chinese pages use Traditional Chinese.
+    assert.ok(chinese.includes('AI 影片、圖像、音樂的創作入口。<br>收藏提示詞，拆解鏡頭，留下製作筆記。'));
     for(const fragment of ['PRODUCTION No. 003','COPY<br>003','EDITION 03','<span>TAKE</span><strong>03</strong>'])assert.ok(chinese.includes(fragment));
     for(const locale of ['en']) {
       const home=await readFile(join(out,'prompts/video/index.html'),'utf8');

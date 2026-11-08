@@ -152,10 +152,10 @@ await check('三个页面的页尾均含下架入口、48 小时、作者与版�
     const html = await read(join(dist, page));
     const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/)?.[1];
     assert.ok(footer, `${page}: footer`);
-    assert.match(footer, /href="\/zh\/takedown\.html"[^>]*>[^<]*48 小时内处理/);
+    assert.match(footer, /href="\/zh\/takedown\.html"[^>]*>[^<]*48 小時內處理/);
     assert.match(footer, /href="https:\/\/x\.com\/punkcan"[^>]*>作者：@punkcan/);
-    assert.match(footer, /提示词版权归原作者/);
-    assert.match(footer, /影片以 X 官方嵌入显示，不转存/);
+    assert.match(footer, /提示詞版權歸原作者/);
+    assert.match(footer, /影片以 X 官方嵌入顯示，不轉存/);
     for (const anchor of html.matchAll(/<a\b[^>]*href="https?:\/\/(?:www\.)?(?:x\.com|twitter\.com)(?:\/|"|\?)[^>]*>/gi)) {
       assert.match(anchor[0], /target="_blank"/);
       assert.match(anchor[0], /rel="noopener noreferrer"/);
@@ -211,7 +211,7 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
         assert.ok(card.includes(`<div class="post-unavailable"><p>原帖已删除或不可用（${entry.postCheckedAt} 检查），无法显示成片</p></div>`));
         assert.ok(card.includes(`${sourceLink}原帖（已失效）</a>`));
       } else {
-        assert.ok(card.includes('原帖含敏感内容，请到 X 观看'));
+        assert.ok(card.includes('原帖含敏感內容，請到 X 觀看'));
         assert.ok(card.includes(`${sourceLink}原帖 ↗</a>`));
         assert.ok(!card.includes('已失效'));
       }
@@ -223,7 +223,7 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
       assert.ok(card.includes(`<a href="${escapeHtml(embedUrl)}" target="_blank" rel="noopener noreferrer" class="watch-link">`));
       assert.ok(card.includes(`${sourceLink}原帖 ↗</a>`));
       if (entry.embedId) assert.ok(card.includes('<p class="embed-note">影片取自同作者的串首帖</p>'));
-      if (entry.replyNoVideo) assert.ok(card.includes('<p class="embed-note">此帖为回复，影片见原串</p>'));
+      if (entry.replyNoVideo) assert.ok(card.includes('<p class="embed-note">此帖為回覆，影片見原串</p>'));
     }
   }
   const techie = entries.find(entry => entry.id === '2086124547376341346');
@@ -235,7 +235,7 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
 
 await check('下架入口与 issue 模板齐全，原资料仅允许批准的 medium 迁移与嵌入信息', async () => {
   const html = await read(join(dist, 'zh/takedown.html'));
-  assert.match(html, /无需先证明身份/);
+  assert.match(html, /無需先證明身份/);
   // v0.4 spec change (boss 2026-10-22): repo renamed fight-prompts -> PUNKCANVERSE
   assert.ok(html.includes('https://github.com/punkcanyang/PUNKCANVERSE/issues/new?template=takedown.md&amp;title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7'));
   const template = await read(join(root, '.github/ISSUE_TEMPLATE/takedown.md'));
@@ -343,7 +343,7 @@ await check('推广平台映射完整、空网址无按钮，所有页面包含�
     if(locale==='zh') {
     assert.ok(footer?.includes(AFFILIATE_DISCLOSURE), `${file}: missing disclosure`);
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/.
-    assert.ok(footer.includes('48 小时内处理') && footer.includes('href="/zh/takedown.html"') && footer.includes('https://x.com/punkcan'));
+    assert.ok(footer.includes('48 小時內處理') && footer.includes('href="/zh/takedown.html"') && footer.includes('https://x.com/punkcan'));
     assert.ok(html.includes('href="/zh/regions.html"'), `${file}: missing regions navigation`);
     } else {
       const ui=translated.ui[locale];
@@ -365,8 +365,10 @@ await check('地区数据及整页 HTML 通过官方来源、字段、日期与�
   validateRegionText(html);
   assert.ok(html.includes(REGION_DISCLAIMER));
   assert.equal((html.match(/class="region-card"/g) || []).length, regions.entries.length);
+  // redesign spec change (2026-11-08): the Chinese page shows the Traditional copy from data/i18n/content/zh.json.
+  const zhRegions = (await loadI18n(root)).content.zh.regions;
   for (const entry of regions.entries) {
-    assert.ok(html.includes(escapeHtml(entry.summary)));
+    assert.ok(html.includes(escapeHtml(zhRegions[entry.id].summary)));
     assert.ok(html.includes(`href="${escapeHtml(entry.sourceUrl)}"`));
     assert.ok(html.includes(`href="${escapeHtml(entry.officialUrl)}"`));
   }

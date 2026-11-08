@@ -109,7 +109,7 @@ export async function buildSite(options = {}) {
     } else if (route==='/regions') {
       title=u.regionTitle;description=u.regionIntro;
       for (const item of Object.values(content.regions)) validateRegionText(JSON.stringify(item));
-      body=renderRegions(regionData,locale==='zh'?undefined:{eyebrow:'OFFICIAL POLICIES',title:u.regionTitle,disclaimer:u.regionDisclaimer,intro:u.regionIntro,checkedLabel:u.checkedLabel,sourceLabel:u.sourceLabel,officialLabel:u.officialLabel,entries:content.regions});
+      body=renderRegions(regionData,{eyebrow:'OFFICIAL POLICIES',title:u.regionTitle,disclaimer:u.regionDisclaimer,intro:u.regionIntro,checkedLabel:u.checkedLabel,sourceLabel:u.sourceLabel,officialLabel:u.officialLabel,entries:content.regions});
     } else if (route==='/prompts/workflow/') {
       title=u.workflow;description=u.workflowIntro;
       body=`<header class="page-intro"><p class="eyebrow">PROCESS / WORKFLOWS</p><h1>${e(title)}</h1><p>${e(description)}</p></header>${tabs(href(route))}${workflows.length?`<div class="prompt-grid workflow-grid">${workflows.map((w,i)=>renderWorkflowCard(w,i,workflowText(w),thumbs.entries?.[w.id],cUI)).join('')}</div>`:renderWorkflowEmpty(cUI)}`;

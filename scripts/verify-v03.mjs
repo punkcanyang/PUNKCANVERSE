@@ -61,7 +61,7 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
     assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'));
     if(locale==='zh') {
       assert.ok(html.includes('https://x.com/punkcan') && html.includes(AFFILIATE_DISCLOSURE));
-      assert.ok(html.includes('缩图同样直接引用 X 原图，不转存。'));
+      assert.ok(html.includes('縮圖同樣直接引用 X 原圖，不轉存。'));
     } else {
       assert.ok(html.includes('https://x.com/punkcan') && html.includes(escapeHtml(ui.affiliateDisclosure)));
       assert.ok(html.includes(escapeHtml(ui.copyright)));
@@ -112,10 +112,10 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
     // v0.5.1 spec change (boss 2026-10-22): full prompt text on every page
     assert.ok(html.includes(promptHtml(entry)));
     if(['removed','sensitive'].includes(entry.postStatus))assert.ok(!/tweet-template|twitter-tweet|tweet-mount|data-embed|watch-link/.test(html));
-    if(entry.postStatus==='sensitive')assert.ok(html.includes('原帖含敏感内容，请到 X 观看')&&!html.includes('已失效'));
-    assert.equal(html.includes('去 Higgsfield 试试'),entry.models.includes('Higgsfield（平台）'));
-    if(!entry.breakdown?.trim())assert.ok(!html.includes('原创拆解'));
-    if(!entry.notes?.trim())assert.ok(!html.includes('实测心得'));
+    if(entry.postStatus==='sensitive')assert.ok(html.includes('原帖含敏感內容，請到 X 觀看')&&!html.includes('已失效'));
+    assert.equal(html.includes('去 Higgsfield 試試'),entry.models.includes('Higgsfield（平台）'));
+    if(!entry.breakdown?.trim())assert.ok(!html.includes('原創拆解'));
+    if(!entry.notes?.trim())assert.ok(!html.includes('實測心得'));
     assert.equal((html.match(/<section class="related">[\s\S]*?<\/section>/)?.[0].match(/<a href=/g)||[]).length,3);
   }
   const cache=JSON.parse(await read(join(root,'data/thumbs.json')));

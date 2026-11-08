@@ -65,7 +65,7 @@ test('离线build三语tools进入sitemap/导航/hreflang/GA，tips零推广，�
       assert.ok(result.sitemapUrls.includes(`https://punkcanverse.com${prefix}/tools`));
       assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${prefix}/tools">`));
       assert.ok(html.includes(`<meta property="og:url" content="https://punkcanverse.com${prefix}/tools">`));
-      for(const [lang,pre] of [['en',''],['zh-CN','/zh'],['x-default','']])assert.ok(html.includes(`<link rel="alternate" hreflang="${lang}" href="https://punkcanverse.com${pre}/tools">`));
+      for(const [lang,pre] of [['en',''],['zh-Hant-TW','/zh'],['x-default','']])assert.ok(html.includes(`<link rel="alternate" hreflang="${lang}" href="https://punkcanverse.com${pre}/tools">`));
       assert.equal(verifyAnalyticsHtml(html),true);assert.ok(html.includes('impact-site-verification'));
       const tips=await readFile(join(out,prefix,'tips.html'),'utf8');
       assert.ok(!tips.includes('class="affiliate-button"'));assert.ok(!tips.includes('GMRPOCT43296'));

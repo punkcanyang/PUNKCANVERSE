@@ -13,7 +13,7 @@ export function initLanguage({window=globalThis.window,document=globalThis.docum
   try {dismissed=window.sessionStorage?.getItem(LANGUAGE_HINT_DISMISS_KEY);} catch {}
   const link=links.find(link=>link.dataset.language===preferred);
   if (hint && target && link && preferred!==current && dismissed!==preferred) {
-    target.href=link.href;target.textContent=LANGUAGE_HINTS[preferred];target.lang=preferred==='zh'?'zh-CN':preferred;
+    target.href=link.href;target.textContent=LANGUAGE_HINTS[preferred];target.lang=preferred==='zh'?'zh-Hant-TW':preferred;
     hint.hidden=false;
   }
   for (const link of links) link.addEventListener('click',()=>{
