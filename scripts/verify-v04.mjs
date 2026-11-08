@@ -1,4 +1,5 @@
 import { loadWorks } from '../lib/works.mjs';
+import { loadFilms } from '../lib/films.mjs';
 import {loadCatalog} from '../lib/catalog.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -32,7 +33,8 @@ export function validateLocalizedHtml(html, locale, uiZh, entries, {essayFallbac
   visible=visible.replace(/中文/g,'');
   const chinese=Object.entries(uiZh).filter(([key,value])=>typeof value==='string' && /[\u3400-\u9fff]/u.test(value) && value.length>=4 && !['languageHint','copyright'].includes(key)).map(([,value])=>value);
   // Include short, unambiguous UI terms and complete source titles/notes.
-  chinese.push('清除筛选','提示词库','复制失败','查看提示词','原文提示词','推广码','原帖含敏感内容',...entries.map(x=>x.title),...entries.flatMap(x=>x.models).filter(model=>/[\u3400-\u9fff]/u.test(model)),'可靈','海螺');
+  // redesign spec change (2026-11-08): Chinese UI is Traditional; check both scripts for residue.
+  chinese.push('清除筛选','提示词库','复制失败','查看提示词','原文提示词','推广码','原帖含敏感内容','清除篩選','提示詞庫','複製失敗','查看提示詞','原文提示詞','推廣碼','原帖含敏感內容',...entries.map(x=>x.title),...entries.flatMap(x=>x.models).filter(model=>/[\u3400-\u9fff]/u.test(model)),'可靈','海螺');
   for (const value of chinese) assert.ok(!visible.includes(e(value)),`${locale}: Chinese interface residue: ${value}`);
 }
 
@@ -46,7 +48,7 @@ export async function verifyV04(root=fileURLToPath(new URL('..',import.meta.url)
   const i18n=await loadI18n(root);
   validateI18n(i18n,entries,workflows,regions);validateWorkflows(workflows);
   const essays=await loadEssays(pathToFileURL(join(root,'content/essays')+'/'));
-  const pages=listPages({entries,workflows,essays,works:await loadWorks(root),sitePages:SITE_PAGES});
+  const pages=listPages({entries,workflows,essays,works:await loadWorks(root),films:await loadFilms(root),sitePages:SITE_PAGES});
   const allFiles=await readdir(join(root,'dist'),{recursive:true});
   assert.deepEqual(allFiles.filter(x=>x.endsWith('.html')).sort(),pages.map(x=>x.file).sort(),'Exact multilingual HTML files');
   for (const page of pages) {

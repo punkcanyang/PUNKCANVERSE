@@ -35,7 +35,7 @@ export async function copyText(text, { navigator = globalThis.navigator, documen
     textarea = document.createElement('textarea');
     textarea.value = text;
     textarea.setAttribute('readonly', '');
-    textarea.setAttribute('aria-label', '复制提示词');
+    textarea.setAttribute('aria-label', '複製提示詞');
     textarea.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none';
     document.body.append(textarea);
     textarea.focus({ preventScroll: true });

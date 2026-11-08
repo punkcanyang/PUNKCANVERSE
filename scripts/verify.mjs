@@ -24,6 +24,7 @@ import { GA_SCRIPT_URL, CONSENT_BOOTSTRAP, GA_CONFIG, verifyAnalyticsHtml } from
 import { loadEssays } from '../lib/essays.mjs';
 import { listPages } from '../lib/routes.mjs';
 import { loadI18n, cardUI } from '../lib/i18n.mjs';
+import { loadFilms, filmFiles } from '../lib/films.mjs';
 import { verifyV04 } from './verify-v04.mjs';
 import { verifyV05 } from './verify-v05.mjs';
 import { verifyV051 } from './verify-v051.mjs';
@@ -137,10 +138,13 @@ await check('全部提示词有完整原文、精确长度与来源指纹，页�
 });
 
 await check('媒体仅限批准缩图与原创品牌分享图，无影片或禁止域名', async () => {
+  // redesign spec change (2026-11-08): Punkcan's own film frames, exactly the files each film.json lists.
+  const filmMedia = new Set((await loadFilms(root)).flatMap(film => filmFiles(film).filter(file => file !== 'film.json')
+    .flatMap(file => [`web/img/films/${film.slug}/${file}`, `dist/img/films/${film.slug}/${file}`])));
   for (const path of new Set([...distFiles, ...repoPaths.map(path => join(root, path)), ...trackedPaths.map(path => join(root, path))])) {
     // v0.5.2 spec change (boss 2026-10-22): real official sample frames
     // Only the 22 pinned paths/bytes checked by verifyV052 are permitted.
-    assert.ok(!forbiddenMedia.has(extname(path).toLowerCase()) || isOfficialFramePath(relative(root,path)) || ['web/img/site/share.png','dist/img/site/share.png'].includes(relative(root,path)), `Forbidden media: ${relative(root, path)}`);
+    assert.ok(!forbiddenMedia.has(extname(path).toLowerCase()) || isOfficialFramePath(relative(root,path)) || filmMedia.has(relative(root,path)) || ['web/img/site/share.png','dist/img/site/share.png'].includes(relative(root,path)), `Forbidden media: ${relative(root, path)}`);
     const content = (await read(path)).toLowerCase();
     for (const domain of forbiddenDomains) assert.ok(!content.includes(domain), `Forbidden domain in ${relative(root, path)}`);
   }
@@ -152,10 +156,10 @@ await check('三个页面的页尾均含下架入口、48 小时、作者与版�
     const html = await read(join(dist, page));
     const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/)?.[1];
     assert.ok(footer, `${page}: footer`);
-    assert.match(footer, /href="\/zh\/takedown\.html"[^>]*>[^<]*48 小时内处理/);
+    assert.match(footer, /href="\/zh\/takedown\.html"[^>]*>[^<]*48 小時內處理/);
     assert.match(footer, /href="https:\/\/x\.com\/punkcan"[^>]*>作者：@punkcan/);
-    assert.match(footer, /提示词版权归原作者/);
-    assert.match(footer, /影片以 X 官方嵌入显示，不转存/);
+    assert.match(footer, /提示詞版權歸原作者/);
+    assert.match(footer, /影片以 X 官方嵌入顯示，不轉存/);
     for (const anchor of html.matchAll(/<a\b[^>]*href="https?:\/\/(?:www\.)?(?:x\.com|twitter\.com)(?:\/|"|\?)[^>]*>/gi)) {
       assert.match(anchor[0], /target="_blank"/);
       assert.match(anchor[0], /rel="noopener noreferrer"/);
@@ -211,7 +215,7 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
         assert.ok(card.includes(`<div class="post-unavailable"><p>原帖已删除或不可用（${entry.postCheckedAt} 检查），无法显示成片</p></div>`));
         assert.ok(card.includes(`${sourceLink}原帖（已失效）</a>`));
       } else {
-        assert.ok(card.includes('原帖含敏感内容，请到 X 观看'));
+        assert.ok(card.includes('原帖含敏感內容，請到 X 觀看'));
         assert.ok(card.includes(`${sourceLink}原帖 ↗</a>`));
         assert.ok(!card.includes('已失效'));
       }
@@ -223,7 +227,7 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
       assert.ok(card.includes(`<a href="${escapeHtml(embedUrl)}" target="_blank" rel="noopener noreferrer" class="watch-link">`));
       assert.ok(card.includes(`${sourceLink}原帖 ↗</a>`));
       if (entry.embedId) assert.ok(card.includes('<p class="embed-note">影片取自同作者的串首帖</p>'));
-      if (entry.replyNoVideo) assert.ok(card.includes('<p class="embed-note">此帖为回复，影片见原串</p>'));
+      if (entry.replyNoVideo) assert.ok(card.includes('<p class="embed-note">此帖為回覆，影片見原串</p>'));
     }
   }
   const techie = entries.find(entry => entry.id === '2086124547376341346');
@@ -235,7 +239,7 @@ await check('失效卡片无嵌入或空挂载点，其他卡片逐条校验嵌�
 
 await check('下架入口与 issue 模板齐全，原资料仅允许批准的 medium 迁移与嵌入信息', async () => {
   const html = await read(join(dist, 'zh/takedown.html'));
-  assert.match(html, /无需先证明身份/);
+  assert.match(html, /無需先證明身份/);
   // v0.4 spec change (boss 2026-10-22): repo renamed fight-prompts -> PUNKCANVERSE
   assert.ok(html.includes('https://github.com/punkcanyang/PUNKCANVERSE/issues/new?template=takedown.md&amp;title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7'));
   const template = await read(join(root, '.github/ISSUE_TEMPLATE/takedown.md'));
@@ -286,7 +290,7 @@ await check('sitemap 精确列出全部正式页面，robots 允许抓取并指�
   // v0.4 spec change (boss 2026-10-22): final URLs for every locale and workflow.
   const workflows=JSON.parse(await read(join(root,'data/workflows.json'))).entries;
   // v0.5 spec change (boss 2026-10-22): exact sitemap adds imported details and the original fight collection.
-  const expectedPaths=listPages({entries:catalogEntries,workflows,essays,works:await loadWorks(root),sitePages:SITE_PAGES}).filter(page=>page.sitemap).map(page=>page.path);
+  const expectedPaths=listPages({entries:catalogEntries,workflows,essays,works:await loadWorks(root),films:await loadFilms(root),sitePages:SITE_PAGES}).filter(page=>page.sitemap).map(page=>page.path);
   assert.equal((sitemap.match(/<url>/g) || []).length, expectedPaths.length);
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), expectedPaths.map(path => `https://punkcanverse.com${path}`));
   assert.equal(await read(join(dist, 'robots.txt')), 'User-agent: *\nAllow: /\nSitemap: https://punkcanverse.com/sitemap.xml\n');
@@ -343,13 +347,14 @@ await check('推广平台映射完整、空网址无按钮，所有页面包含�
     if(locale==='zh') {
     assert.ok(footer?.includes(AFFILIATE_DISCLOSURE), `${file}: missing disclosure`);
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/.
-    assert.ok(footer.includes('48 小时内处理') && footer.includes('href="/zh/takedown.html"') && footer.includes('https://x.com/punkcan'));
-    assert.ok(html.includes('href="/zh/regions.html"'), `${file}: missing regions navigation`);
+    assert.ok(footer.includes('48 小時內處理') && footer.includes('href="/zh/takedown.html"') && footer.includes('https://x.com/punkcan'));
+    if (!html.includes('class="film-layout"')) assert.ok(html.includes('href="/zh/regions.html"'), `${file}: missing regions navigation`);
     } else {
       const ui=translated.ui[locale];
       assert.ok(footer?.includes(escapeHtml(ui.affiliateDisclosure)), `${file}: missing localized disclosure`);
       assert.ok(footer.includes(escapeHtml(ui.takedownFooter)) && footer.includes('href="/takedown.html"') && footer.includes('https://x.com/punkcan'));
-      assert.ok(html.includes('href="/regions.html"'), `${file}: missing localized regions navigation`);
+      // redesign spec change (2026-11-08): film-layout pages link only Films and About.
+      if (!html.includes('class="film-layout"')) assert.ok(html.includes('href="/regions.html"'), `${file}: missing localized regions navigation`);
     }
     for (const link of html.matchAll(/<a\b[^>]*class="affiliate-button"[^>]*>/g)) {
       assert.match(link[0], /rel="sponsored noopener noreferrer"/);
@@ -365,8 +370,10 @@ await check('地区数据及整页 HTML 通过官方来源、字段、日期与�
   validateRegionText(html);
   assert.ok(html.includes(REGION_DISCLAIMER));
   assert.equal((html.match(/class="region-card"/g) || []).length, regions.entries.length);
+  // redesign spec change (2026-11-08): the Chinese page shows the Traditional copy from data/i18n/content/zh.json.
+  const zhRegions = (await loadI18n(root)).content.zh.regions;
   for (const entry of regions.entries) {
-    assert.ok(html.includes(escapeHtml(entry.summary)));
+    assert.ok(html.includes(escapeHtml(zhRegions[entry.id].summary)));
     assert.ok(html.includes(`href="${escapeHtml(entry.sourceUrl)}"`));
     assert.ok(html.includes(`href="${escapeHtml(entry.officialUrl)}"`));
   }

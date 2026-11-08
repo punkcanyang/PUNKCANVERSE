@@ -47,7 +47,7 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
   const sitemap=await read('dist/sitemap.xml');
   const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(row=>row[1]);
   // v0.5.3 spec change (boss 2026-10-23): tool list page
-  assert.equal(locs.length,422 + 2 * (await loadWorks(root)).length);
+  assert.equal(locs.length,426 + 2 * (await loadWorks(root)).length);
   for(const locale of ['zh','en']) {
     const prefix=locale==='en'?'':locale+'/';
     const urlPrefix=locale==='en'?'':`/${locale}`;
@@ -56,7 +56,8 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
     const fight=await read(`dist/${prefix}prompts/fight/index.html`);
     const getCards=html=>new Map([...html.matchAll(/<article class="prompt-card" data-entry-id="([^"]+)"[\s\S]*?<\/article>/g)].map(row=>[row[1],row[0]]));
     const cards=getCards(listing);
-    assert.deepEqual([...getCards(home).keys()],selectHomeEntries(entries).map(entry=>entry.id));
+    // redesign spec change (2026-11-08): the home page lists films, not prompt picks.
+    assert.equal(getCards(home).size,0);
     assert.equal(cards.size,192);
     assert.deepEqual([...getCards(listing).keys()],entries.map(entry=>entry.id));
     assert.deepEqual([...getCards(fight).keys()],original.entries.map(entry=>entry.id));

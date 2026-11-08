@@ -120,16 +120,17 @@ test('离线三语 build：246 页、五工作流有图/VIDEO/片长/原文复�
     // v0.5 spec change (boss 2026-10-22): 129 details plus a fight list in each locale add 390 pages.
     // v0.5.3 spec change (boss 2026-10-23): tool list page
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
-    assert.equal(result.localizedPages.length,428);
+    // redesign spec change (2026-11-08): two film pages per locale (4 more pages).
+    assert.equal(result.localizedPages.length,432);
     const files=await readdir(out,{recursive:true});
     // v0.5 spec change (boss 2026-10-22): exact multilingual HTML file count is 636.
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    assert.equal(files.filter(x=>x.endsWith('.html')).length,428);
+    assert.equal(files.filter(x=>x.endsWith('.html')).length,432);
     for(const page of result.localizedPages) {
       const html=await readFile(join(out,page.file),'utf8');
       assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${page.canonical}">`));
       validateLocalizedHtml(html,page.locale,i18n.ui.zh,entries);validateSiteText(html);
-      const alternates=[...html.matchAll(/hreflang="([^"]+)"/g)].map(x=>x[1]);assert.deepEqual(alternates,['en','zh-CN','x-default']);
+      const alternates=[...html.matchAll(/hreflang="([^"]+)"/g)].map(x=>x[1]);assert.deepEqual(alternates,['en','zh-Hant-TW','x-default']);
     }
     for(const locale of ['zh','en']) {
       const prefix=locale==='en'?'':locale+'/';const ui=i18n.ui[locale];
@@ -191,7 +192,7 @@ test('文章 fixture：翻译不额外变文章、缺译显示原文且 canonica
     const english=await readFile(join(out,'essays/field/index.html'),'utf8');
     assert.ok(english.includes('The translated essay.'));assert.ok(!english.includes('untranslated-notice'));
     assert.ok(english.includes('<link rel="canonical" href="https://punkcanverse.com/essays/field/">'));
-    assert.ok(english.includes('hreflang="en"'));assert.ok(english.includes('hreflang="zh-CN"'));
+    assert.ok(english.includes('hreflang="en"'));assert.ok(english.includes('hreflang="zh-Hant-TW"'));
     assert.ok(result.sitemapUrls.includes('https://punkcanverse.com/essays/field/'));
     assert.ok(result.sitemapUrls.includes('https://punkcanverse.com/zh/essays/field/'));
     const descriptors=listPages({entries,workflows,essays,sitePages:SITE_PAGES});

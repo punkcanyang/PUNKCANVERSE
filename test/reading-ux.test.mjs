@@ -13,16 +13,19 @@ test('阅读更新：三语精简首页、完整库、页面主标题、导航�
     for(const lang of ['', 'zh/']) {
       const home=await readFile(join(out,lang,'index.html'),'utf8');
       const archive=await readFile(join(out,lang,'prompts/video/index.html'),'utf8');
-      assert.equal((home.match(/class="prompt-card"/g)||[]).length,6);
-      assert.ok(Buffer.byteLength(home)<100000,'Home has a bounded six-entry payload');
+      // redesign spec change (2026-11-08): the home page lists films; the prompt archive is not linked from it.
+      assert.equal((home.match(/class="prompt-card"/g)||[]).length,0);
+      assert.equal((home.match(/<li class="film[ "]/g)||[]).length,2);
+      assert.ok(Buffer.byteLength(home)<100000,'Home has a bounded payload');
+      assert.doesNotMatch(home,/href="\/(?:zh\/)?prompts\//);
       assert.equal((archive.match(/class="prompt-card"/g)||[]).length,192);
-      assert.match(home,new RegExp(`action="/${lang}prompts/video/"`));
       assert.match(archive,/id="prompt-search"/);assert.match(archive,/id="prompt-sort"/);
       assert.equal((archive.match(/data-filter-entry=/g)||[]).length,192);
       for(const file of ['index.html','prompts/video/index.html','prompts/fight/index.html','prompts/image/index.html','prompts/music/index.html','tips.html','tools.html','regions.html','works/index.html']) {
         const html=await readFile(join(out,lang,file),'utf8');
         assert.equal((html.match(/<h1\b/g)||[]).length,1,`${lang}${file}: one page title`);
         assert.match(html,/<meta property="og:image" content="https:\/\/punkcanverse.com\/img\/site\/share.png">/);
+        if(file==='index.html'){assert.match(html,/<nav class="film-nav"[^>]*><a href="[^"]+" aria-current="page">/);continue;}
         const nav=html.match(/<nav class="primary-nav"[^>]*>[\s\S]*?<\/nav>/)[0];
         assert.equal((nav.match(/aria-current="page"/g)||[]).length,file==='index.html'?0:1);
         if(file==='tools.html')assert.ok(nav.includes(`href="/${lang}tools" aria-current="page"`));

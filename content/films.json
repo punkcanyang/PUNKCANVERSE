@@ -1,0 +1,96 @@
+{
+  "entries": [
+    {
+      "slug": "wind-of-cijin",
+      "year": 2026,
+      "poster": 10,
+      "title": { "zh": "旗津的風", "en": "The Wind of Cijin" },
+      "kind": {
+        "zh": "臺語 AI 音樂錄影帶。手作布偶與微縮場景。",
+        "en": "Music video, Taiwanese song. Handmade puppets and miniature sets."
+      },
+      "youtube": { "zh": "UnGmCoPDIn8", "en": "MtAeWTZZLWg" },
+      "credits": {
+        "zh": [
+          ["導演", "Punkcan"],
+          ["歌曲", "〈旗津的風〉詞 Punkcan，曲 Suno"],
+          ["圖片", "GPT Image"],
+          ["影片", "Wan 3.0"],
+          ["音樂", "Suno（商用授權）"],
+          ["分鏡、提示詞、剪輯", "Claude Opus 5.5"]
+        ],
+        "en": [
+          ["Directed by", "Punkcan"],
+          ["Song", "“The Wind of Cijin”, lyrics by Punkcan, music by Suno"],
+          ["Images", "GPT Image"],
+          ["Video", "Wan 3.0"],
+          ["Music", "Suno (commercial licence)"],
+          ["Storyboard, prompts and edit", "Claude Opus 5.5"]
+        ]
+      },
+      "notes": {
+        "zh": [
+          "旗津，是我媽媽的故鄉。",
+          "一顆海螺，從三百多年前漂到旗後沙洲的漁人手上開始，一代傳過一代：天后宮前的孩子、天還沒亮就坐頭班船去上工的阿母、看著沙洲被挖開成港口的一家人，一直到今天把海螺貼在耳邊的孫子。",
+          "這支片用手作布偶和微縮場景的質感，配上我寫詞的臺語歌〈旗津的風〉，把旗津從沙洲半島變成島、又被過港隧道連回高雄的這條路，重新走一遍。",
+          "把海螺貼在耳邊，聽見的不只是海。"
+        ],
+        "en": [
+          "Cijin is my mother's hometown.",
+          "A conch shell passes from hand to hand for more than three hundred years: from a fisherman blown ashore on the Cihou sandbar, to a child outside the Mazu temple, to a mother taking the first ferry across before dawn, to a family watching the sandbar dug open for a harbor, and finally to a grandchild holding it to his ear today.",
+          "Told with handmade puppets and miniature sets, and set to “The Wind of Cijin,” a Taiwanese song I wrote the lyrics for, the film walks again the road Cijin has travelled: from a sandbar peninsula, to an island, to being joined back to Kaohsiung by the Cross-Harbor Tunnel.",
+          "Hold a conch to your ear, and you hear more than the sea."
+        ]
+      }
+    },
+    {
+      "slug": "hongmaogang",
+      "year": 2026,
+      "poster": 13,
+      "title": { "zh": "紅毛港", "en": "Hongmaogang" },
+      "subtitle": { "zh": "一網撈起故鄉", "en": "One Net to Gather Home" },
+      "kind": { "zh": "AI 短片。紙藝。", "en": "Short film. Papercraft." },
+      "youtube": { "zh": "xKZYsFreCzI", "en": "KLyFVC-cuKc" },
+      "credits": {
+        "zh": [
+          ["導演", "Punkcan"],
+          ["歌曲", "〈網的這一頭〉"],
+          ["圖片", "GPT"],
+          ["影片", "Wan 3.0"],
+          ["音樂", "Suno 6"],
+          ["分鏡、剪輯", "Claude Opus 5.5"],
+          ["剪輯軟體", "Palmier"]
+        ],
+        "en": [
+          ["Directed by", "Punkcan"],
+          ["Song", "“This End of the Net”"],
+          ["Images", "GPT"],
+          ["Video", "Wan 3.0"],
+          ["Music", "Suno 6"],
+          ["Storyboard and edit", "Claude Opus 5.5"],
+          ["Edit software", "Palmier"]
+        ]
+      },
+      "notes": {
+        "zh": [
+          "紅毛港，跟旗津一樣都是我的故鄉，也是我童年的所在。",
+          "2007 年，延遲了三十幾年的紅毛港全村遷離，那片海岸成了貨櫃碼頭，小時候熟悉的巷子和海，從此只能在記憶裡找。",
+          "這也是我想做這支片的原因：既然回不去了，就用 AI 把它重新蓋起來。",
+          "選了紙藝的畫風，一摺一摺地，把烏魚季的海、門口補網的身影、越住越擠的老屋，一直到搬家的那一天，重新搭起來。",
+          "這也是我第一支完成度較高的 AI 影片。",
+          "從劇本、分鏡，到一鏡一鏡生成、剪接，再配上臺語歌〈網的這一頭〉和字幕，每個細節用我目前最初淺的AI影片技能去慢慢地磨琢。",
+          "那張補了又補、最後交到女兒手上的漁網，我想是有些東西還是會一代一代被接住。"
+        ],
+        "en": [
+          "Hongmaogang is my hometown, the place where I grew up.",
+          "In 2007, after more than thirty years of delay, the entire village of Hongmaogang was relocated, and its shoreline became a container terminal. The lanes and the sea I knew as a child now live only in memory.",
+          "That is why I made this film: if I can't go back, I can rebuild it with AI.",
+          "I chose a papercraft style, folding it back together piece by piece — the sea in mullet season, the figures mending nets at the door, the old houses growing ever more crowded, all the way to moving day.",
+          "This is my first fairly complete AI film.",
+          "From script and storyboard to generating and editing shot by shot, then adding the Taiwanese song “This End of the Net” and subtitles, I worked through every detail with the modest AI filmmaking skills I have so far.",
+          "The fishing net, mended again and again until it is finally handed to the daughter — I believe some things are still caught and carried on, generation after generation."
+        ]
+      }
+    }
+  ]
+}

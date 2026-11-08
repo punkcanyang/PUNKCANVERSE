@@ -45,7 +45,7 @@ test('works: empty production data, localized navigation, legacy aliases and no 
   try {
     const result=await buildSite({out});
     const i18n=await loadI18n(new URL('..',import.meta.url).pathname);
-    assert.equal(result.localizedPages.length,428);assert.equal(result.sitemapUrls.length,422);
+    assert.equal(result.localizedPages.length,432);assert.equal(result.sitemapUrls.length,426);
     for (const locale of ['zh','en']) {
       const prefix=locale==='en'?'':`${locale}/`,url=`/${prefix}works/`;
       const listing=await readFile(join(out,prefix,'works/index.html'),'utf8');
@@ -61,6 +61,8 @@ test('works: empty production data, localized navigation, legacy aliases and no 
     for (const file of (await readdir(out,{recursive:true})).filter(f=>f.endsWith('.html'))) {
       const html=await readFile(join(out,file),'utf8');
       assert.doesNotMatch(html,/AI 工作论|Working with AI|AIと働く|AIとの働き方/);
+      // redesign spec change (2026-11-08): the home page is the film layout, whose header links only Films and About.
+      if(html.includes('class="film-layout"')) {assert.doesNotMatch(html,/class="primary-nav"/);continue;}
       const nav=html.match(/<nav class="primary-nav"[^>]*>[\s\S]*?<\/nav>/)[0];
       assert.doesNotMatch(nav,/\/essays\//);assert.match(nav,/\/works\//);
     }
@@ -73,7 +75,7 @@ test('works: published cards/details render media and links; drafts never leave 
   try {
     const published=fixture(),draft={...fixture(),slug:'private-draft',published:false,privateNote:'NEVER_PUBLISH_THIS'};
     const result=await buildSite({out,works:[published,draft]});
-    assert.equal(result.localizedPages.length,430);assert.equal(result.sitemapUrls.length,424);
+    assert.equal(result.localizedPages.length,434);assert.equal(result.sitemapUrls.length,428);
     for (const locale of ['zh','en']) {
       const prefix=locale==='en'?'':`${locale}/`;
       const listing=await readFile(join(out,prefix,'works/index.html'),'utf8');

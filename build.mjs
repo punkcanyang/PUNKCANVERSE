@@ -22,6 +22,7 @@ import { listPages, publicPath, switchHref, localePrefix, HTML_LANG, OG_LOCALE, 
 import { validateWorkflows, renderWorkflowCard, renderWorkflowDetail, renderWorkflowEmpty } from './lib/workflows.mjs';
 
 import { loadWorks, publishedWorks, renderWorks, renderWork } from './lib/works.mjs';
+import { loadFilms, renderFilmsHome, renderFilmPage, filmFiles } from './lib/films.mjs';
 
 export const SITE_URL = 'https://punkcanverse.com';
 export async function buildSite(options = {}) {
@@ -38,6 +39,7 @@ export async function buildSite(options = {}) {
   const thumbs = await readThumbs(options.thumbPath || join(root,'data/thumbs.json'),readFile);
   const essays = await loadEssays(pathToFileURL((options.essayDirectory || join(root,'content/essays'))+'/'));
   const works = options.works === undefined ? await loadWorks(root) : publishedWorks({entries: options.works});
+  const films = options.films ?? await loadFilms(root);
   const site = await readJSON('data/site.json');
   const regionData = await readJSON('data/regions.json');
   const i18n = options.i18n || await loadI18n(root);
@@ -46,7 +48,7 @@ export async function buildSite(options = {}) {
   validateMedia(entries); entries.forEach(validatePostMetadata);
   validateAffiliates(affiliates); validateSite(site); validateRegions(regionData); validateWorkflows(workflows);
   validateI18n(i18n,entries,workflows,regionData);
-  const descriptors = listPages({entries,workflows,essays,works,sitePages:SITE_PAGES});
+  const descriptors = listPages({entries,workflows,essays,works,films,sitePages:SITE_PAGES});
   const models = [...new Set(entries.flatMap(x=>x.models))];
   const tags = [...new Set(entries.flatMap(x=>x.tags))];
   const pages = new Map();
@@ -89,7 +91,17 @@ export async function buildSite(options = {}) {
       return `<section class="home-picks" id="library" data-archive-url="${href('/prompts/video/')}"><div class="section-heading"><div><p class="eyebrow">01 / SELECTED PROMPTS</p><h2>${e(u.featuredTitle)}</h2><p>${e(u.featuredIntro)}</p></div><a class="text-link" href="${href('/prompts/workflow/')}">${e(u.workflow)} (${workflows.length}) ↗</a></div><div class="prompt-grid">${picks.map((entry,index)=>renderCard(localized(entry),index,affiliates,thumbs.entries?.[entry.id],entry.collection==='wan-minimax'?cUI:renderUI)).join('')}</div><a class="primary-button browse-all" href="${href('/prompts/video/')}">${e(t('browseAll',{n:entries.length}))} ↗</a></section>`;
     }
     let title,description,body;
-    if (route==='/') {
+    // Redesign: the home page and film pages use the film layout; other pages keep the archive layout.
+    const filmLayout = (route==='/' && films.length>0) || Boolean(descriptor.film);
+    if (route==='/' && films.length) {
+      title=u.films.homeTitle;description=u.films.homeDescription;
+      body=renderFilmsHome(films,locale,u.films,href);
+    } else if (descriptor.film) {
+      const film=descriptor.film;
+      title=film.subtitle?`${film.title[locale]}${locale==='en'?': ':'：'}${film.subtitle[locale]}`:film.title[locale];
+      description=`${film.kind[locale]} ${film.notes[locale][0]}`;
+      body=renderFilmPage(film,films,locale,u.films,href);
+    } else if (route==='/') {
       title='AI VIDEO / IMAGE / MUSIC';description=u.homeDescription;
       // The H film-slate artwork keeps its original 003 edition number.
       body=`<section class="cinema-hero"><div class="hero-topline"><span>AI VIDEO / IMAGE / MUSIC</span><span>PRODUCTION No. 003 — OCT. 2026</span></div><div class="cinema-title"><h1 aria-label="PUNKCANVERSE"><span>PUNKCAN</span><span><b class="cut-letter">V</b>ERSE<span class="title-dot">.</span></span></h1><aside class="copy-mark"><span>NIGHT SHIFT</span><strong>COPY<br>003</strong><svg class="safety-pin" viewBox="0 0 180 60" fill="none" aria-hidden="true"><path d="M33 16C10-1 0 32 19 42c10 6 19 1 20-9L145 8c18-4 27 7 20 20L53 49 33 16Z" stroke="currentColor" stroke-width="4"/></svg><small>notes from the set</small></aside><span class="vertical-caption">NOTES FROM BEHIND THE CAMERA</span></div><div class="cinema-bottom"><div><h2>${e(u.heroTitle)}</h2><p>${e(u.heroBody).replace(/\n/g,'<br>')}</p>${homeSearch()}<a class="text-link" href="${href('/prompts/video/')}">${e(t('browseAll',{n:entries.length}))} ↗</a></div><div class="hero-slate"><small>DIRECTED & CURATED BY</small><strong>PUNKCAN</strong><span>ARCHIVE ${entries.length} / EDITION 03</span></div><div class="hero-take"><span>TAKE</span><strong>03</strong></div></div><div class="film-strip" aria-hidden="true"></div><div class="reel-notes"><span>ORIGINAL POSTS / REAL PROMPTS</span><a href="${href('/works/')}">${e(u.works.title)} / Punkcan ↗</a></div></section>${homePicks()}<section class="home-works"><p class="eyebrow">02 / WORKS</p><h2><a href="${href('/works/')}">${e(u.works.title)} ↗</a></h2><p>${e(u.works.intro)}</p></section>`;
@@ -109,7 +121,7 @@ export async function buildSite(options = {}) {
     } else if (route==='/regions') {
       title=u.regionTitle;description=u.regionIntro;
       for (const item of Object.values(content.regions)) validateRegionText(JSON.stringify(item));
-      body=renderRegions(regionData,locale==='zh'?undefined:{eyebrow:'OFFICIAL POLICIES',title:u.regionTitle,disclaimer:u.regionDisclaimer,intro:u.regionIntro,checkedLabel:u.checkedLabel,sourceLabel:u.sourceLabel,officialLabel:u.officialLabel,entries:content.regions});
+      body=renderRegions(regionData,{eyebrow:'OFFICIAL POLICIES',title:u.regionTitle,disclaimer:u.regionDisclaimer,intro:u.regionIntro,checkedLabel:u.checkedLabel,sourceLabel:u.sourceLabel,officialLabel:u.officialLabel,entries:content.regions});
     } else if (route==='/prompts/workflow/') {
       title=u.workflow;description=u.workflowIntro;
       body=`<header class="page-intro"><p class="eyebrow">PROCESS / WORKFLOWS</p><h1>${e(title)}</h1><p>${e(description)}</p></header>${tabs(href(route))}${workflows.length?`<div class="prompt-grid workflow-grid">${workflows.map((w,i)=>renderWorkflowCard(w,i,workflowText(w),thumbs.entries?.[w.id],cUI)).join('')}</div>`:renderWorkflowEmpty(cUI)}`;
@@ -174,12 +186,12 @@ ${alternate}
 <meta property="og:image:alt" content="PUNKCANVERSE — prompts, workflows and personal work">
 <meta name="twitter:image" content="${SITE_URL}/img/site/share.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d94c2b'/%3E%3Ctext x='14' y='48' font-size='48' font-family='sans-serif' font-weight='bold' fill='white'%3EP%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/site.css">
-<script type="module" src="assets/app.mjs"></script>
+<link rel="stylesheet" href="assets/site.css">${filmLayout?'\n<link rel="stylesheet" href="assets/films.css">':''}
+<script type="module" src="assets/app.mjs"></script>${filmLayout?'\n<script type="module" src="assets/films.mjs"></script>':''}
 </head>
-<body data-locale="${locale}" data-prompt-text="${promptTextPath}" data-messages="${e(JSON.stringify(client))}">
+<body${filmLayout?' class="film-layout"':''} data-locale="${locale}" data-prompt-text="${promptTextPath}" data-messages="${e(JSON.stringify(client))}">
 <a class="skip-link" href="${e(path)}#main">${e(u.skip)}</a>
-<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}><a href="${href('/prompts/video/')}"${navCurrent('prompts')}>${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${href('/tips')}"${navCurrent('/tips')}>${e(u.navTips)}</a><a href="${publicHref('/tools')}"${navCurrent('/tools')}>${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${href('/regions')}"${navCurrent('/regions')}>${e(u.navRegions)}</a></nav></header>
+${filmLayout?`<header class="film-top"><a class="film-mark" href="${href('/')}">Punkcanverse</a><nav class="film-nav" aria-label="${e(u.mainNav)}"><a href="${href('/')}"${route==='/'||descriptor.film?' aria-current="page"':''}>${e(u.films.nav)}</a><a href="${href('/about/')}">${e(u.films.about)}</a></nav>${switcher}</header>`:`<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}><a href="${href('/prompts/video/')}"${navCurrent('prompts')}>${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${href('/tips')}"${navCurrent('/tips')}>${e(u.navTips)}</a><a href="${publicHref('/tools')}"${navCurrent('/tools')}>${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${href('/regions')}"${navCurrent('/regions')}>${e(u.navRegions)}</a></nav></header>`}
 <aside id="language-hint" class="language-hint" hidden><a data-preferred-language></a><button type="button" data-dismiss-language aria-label="${e(u.dismiss)}">×</button></aside>
 <main id="main">${body}</main>
 ${renderNewsletter(site)}${footer}
@@ -198,12 +210,16 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
   await writeFile(join(out,'data.json'),JSON.stringify({entries:original.entries}));
   await writeFile(join(out,'catalog.json'),JSON.stringify({entries}));
   await writeFile(join(out,promptTextPath),promptText);
-  for (const file of ['app.mjs','language.mjs','clipboard.mjs','embeds.mjs','consent.mjs','site.css']) await copyFile(join(root,'web',file),join(out,'assets',file));
+  for (const file of ['app.mjs','language.mjs','clipboard.mjs','embeds.mjs','consent.mjs','site.css','films.css','films.mjs']) await copyFile(join(root,'web',file),join(out,'assets',file));
   await copyFile(join(root,'lib/prompts.mjs'),join(out,'assets/prompts.mjs'));await copyFile(join(root,'_headers'),join(out,'_headers'));
   for (const entry of entries.filter(entry=>entry.source==='official' && entry.officialThumb)) {
     const file=entry.officialThumb.src.slice(1);
     await mkdir(dirname(join(out,file)),{recursive:true});
     await copyFile(join(root,'web',file),join(out,file));
+  }
+  for (const film of films) {
+    await mkdir(join(out,'img/films',film.slug),{recursive:true});
+    for (const file of filmFiles(film)) await copyFile(join(root,'web/img/films',film.slug,file),join(out,'img/films',film.slug,file));
   }
   await mkdir(join(out,'img/site'),{recursive:true});
   await copyFile(join(root,'web/img/site/share.png'),join(out,'img/site/share.png'));

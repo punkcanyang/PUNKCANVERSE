@@ -56,8 +56,23 @@ try {
   assert.ok(tailQuery.length>=10&&!Array.from(tailEntry[1]).slice(0,140).join('').includes(tailQuery),'Tail query must lie beyond the card excerpt');
   // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
   for(const lang of ['', '/zh']) {
-    await navigate(lang+'/',390);await evaluate(`document.querySelector('[data-cookie-settings]').click()`);await screenshot((lang||'/en').slice(1)+'-home-mobile');
-    assert.equal(await evaluate(`document.querySelectorAll('.prompt-card').length`),6);
+    // redesign spec change (2026-11-08): the home page is the film list; list copy is checked on the archive.
+    await navigate(lang+'/',390);await screenshot((lang||'/en').slice(1)+'-home-mobile');
+    assert.equal(await evaluate(`document.querySelectorAll('.film .bar').length`),2);
+    assert.equal(await evaluate(`document.querySelectorAll('.prompt-card').length`),0);
+    assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true);
+    await evaluate(`document.querySelector('.film .bar').focus()`);
+    await evaluate(`document.querySelector('.film .bar').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}))`);
+    assert.match(await evaluate(`document.querySelector('#tc b').textContent`),/^\d{2}:\d{2}$/);
+    await navigate(lang+'/films/wind-of-cijin/',390);
+    await evaluate(`document.querySelector('.scrub').focus()`);
+    await evaluate(`document.querySelector('.scrub').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}))`);
+    await evaluate(`document.querySelector('.scrub').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))`);
+    assert.match(await evaluate(`document.querySelector('[data-play]').textContent`),/\d{2}:\d{2}/,'Chosen start time shows on the play button');
+    assert.equal(await evaluate(`document.querySelectorAll('iframe').length`),0,'No third-party frame before play');
+    assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true);
+    await screenshot((lang||'/en').slice(1)+'-film-mobile');
+    await navigate(lang+'/prompts/video/',390);await evaluate(`document.querySelector('[data-cookie-settings]').click()`);
     const firstId=await evaluate(`document.querySelector('[data-copy-remote]').dataset.copyEntry`);
     await evaluate(`document.querySelector('[data-copy-remote]').click()`);
     await waitUntil(`window.__copied.length===1`);
