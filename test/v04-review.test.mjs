@@ -76,6 +76,8 @@ test('三语实际输出：模型选项保持原值、可见名翻译，中文�
       else validateLocalizedHtml(html,page.locale,i18n.ui.zh,entries);
     }
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
+    // The archive hero is now the home page only when no film is published, so check it with films:[].
+    await buildSite({out,films:[]});
     const chinese=await readFile(join(out,'zh/index.html'),'utf8');
     // redesign spec change (2026-11-08): Chinese pages use Traditional Chinese.
     assert.ok(chinese.includes('AI 影片、圖像、音樂的創作入口。<br>收藏提示詞，拆解鏡頭，留下製作筆記。'));
@@ -91,7 +93,7 @@ test('三语实际输出：模型选项保持原值、可见名翻译，中文�
       for(const item of ['61493863','HKD16.47','1000fps','480p','7724bart','550+'])assert.ok(tips.includes(item));
     }
     const fixture=structuredClone(i18n);fixture.ui.zh.heroBody='before<img src=x>\nafter';
-    await buildSite({out,i18n:fixture});
+    await buildSite({out,i18n:fixture,films:[]});
     const escaped=await readFile(join(out,'zh/index.html'),'utf8');
     assert.ok(escaped.includes(`<p>${escapeHtml('before<img src=x>')}<br>after</p>`));
     assert.ok(!escaped.includes('<img src=x>'));

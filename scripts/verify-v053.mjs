@@ -75,6 +75,12 @@ export async function verifyV053(root=fileURLToPath(new URL('..',import.meta.url
       if(html.includes(affiliates.magnific.url))magnificLocations.push(file);
       const locale=file.startsWith('zh/')?'zh':'en';
       const prefix=locale==='en'?'':`${locale}/`;
+      // redesign spec change (2026-11-08): film-layout pages (home, films) carry no tools, prompts or affiliates.
+      if(html.includes('class="film-layout"')) {
+        assert.ok(!/class="primary-nav"|class="affiliate-(?:links|item|button|label)"|class="tool-about"/.test(html),`${file}: film layout stays free of the archive`);
+        for(const url of [affiliates.higgsfield.url,affiliates.magnific.url,PIXVERSE_URL])assert.ok(!html.includes(url),`${file}: no affiliate links`);
+        continue;
+      }
       const nav=html.match(/<nav class="primary-nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
       assert.ok(nav?.includes(`href="/${prefix}tools"`),'Localized tools navigation');
       assert.equal((nav.match(/<a\b/g)||[]).length,5);

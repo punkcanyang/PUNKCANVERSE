@@ -221,5 +221,25 @@
   "quickNav": "Jump to",
   "homeSearchHint": "Search the full prompt archive",
   "moreCount": "Show more ({n} remaining)",
-  "archiveIntro": "Find prompts by model, topic or keyword. Read the complete original and its source."
+  "archiveIntro": "Find prompts by model, topic or keyword. Read the complete original and its source.",
+  "films": {
+    "nav": "Films",
+    "about": "About",
+    "homeTitle": "Films by Punkcan",
+    "homeDescription": "Films directed by Punkcan with generative image, video and music models.",
+    "listAria": "Films, newest first. Move across a bar to look through the film.",
+    "legend": "Each stripe is one shot: its width is how long the shot runs, its colour the shot’s average. A bar’s length is the film’s running time.",
+    "stillOf": "A frame from {title}",
+    "allFilms": "All films",
+    "play": "Play film",
+    "playFrom": "Play from {t}",
+    "scrubAria": "Start time",
+    "scrubHint": "Choose a moment on the bar to start the film there",
+    "startAt": "Start at {t}",
+    "credits": "Credits",
+    "note": "Director’s note",
+    "length": "Length",
+    "year": "Year",
+    "more": "More films"
+  }
 }

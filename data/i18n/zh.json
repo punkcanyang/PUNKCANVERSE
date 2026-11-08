@@ -221,5 +221,25 @@
   "quickNav": "快速跳轉",
   "homeSearchHint": "搜尋完整提示詞庫",
   "moreCount": "顯示更多（剩餘 {n} 條）",
-  "archiveIntro": "按模型、主題或關鍵字查詢提示詞，檢視完整原文與作者來源。"
+  "archiveIntro": "按模型、主題或關鍵字查詢提示詞，檢視完整原文與作者來源。",
+  "films": {
+    "nav": "作品",
+    "about": "關於",
+    "homeTitle": "Punkcan 的影片",
+    "homeDescription": "Punkcan 以生成式圖像、影片與音樂模型導演的影片。",
+    "listAria": "作品由新到舊。在色條上移動，就能逐格看片。",
+    "legend": "每一道豎線是一個鏡頭：寬度是鏡頭的長度，顏色是鏡頭的平均色。整條的長度就是片長。",
+    "stillOf": "《{title}》片中畫面",
+    "allFilms": "全部作品",
+    "play": "播放影片",
+    "playFrom": "從 {t} 開始播放",
+    "scrubAria": "起播時間",
+    "scrubHint": "在色條上點一個時間點，影片就從那裡開始",
+    "startAt": "從 {t} 開始",
+    "credits": "製作名單",
+    "note": "導演筆記",
+    "length": "片長",
+    "year": "年份",
+    "more": "其他作品"
+  }
 }
