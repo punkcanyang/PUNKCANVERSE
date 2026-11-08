@@ -228,7 +228,7 @@
     "homeTitle": "Films by Punkcan",
     "homeDescription": "Films directed by Punkcan with generative image, video and music models.",
     "listAria": "Films, newest first. Move across a bar to look through the film.",
-    "legend": "Each bar is a whole film, one sliver of colour per half second. Its length is the running time.",
+    "legend": "Each stripe is one shot: its width is how long the shot runs, its colour the shot’s average. A bar’s length is the film’s running time.",
     "stillOf": "A frame from {title}",
     "allFilms": "All films",
     "play": "Play film",

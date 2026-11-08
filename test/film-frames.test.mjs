@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseArgs, barcodePlan, frameTimes } from '../scripts/film-frames.mjs';
+import { parseArgs, barcodePlan, frameTimes, segmentShots } from '../scripts/film-frames.mjs';
 
 test('barcode samples twice a second and caps long films at 1200 columns', () => {
   assert.deepEqual(barcodePlan(24), { columns: 48, secondsPerColumn: 0.5 });
@@ -21,4 +21,16 @@ test('arguments are validated before any ffmpeg call', () => {
   assert.throws(() => parseArgs(['my-film']), /usage/);
   assert.throws(() => parseArgs(['my-film', 'a.mp4', '--frames', '2']), /--frames/);
   assert.throws(() => parseArgs(['my-film', 'a.mp4', '--width']), /needs a value/);
+});
+
+test('shots: a jump between samples is a cut; short flashes fold into the previous shot', () => {
+  const flat = (r, g, b) => Uint8Array.from({ length: 12 }, (_, i) => [r, g, b][i % 3]);
+  const red = flat(200, 20, 20), blue = flat(20, 20, 200), white = flat(255, 255, 255);
+  // 0.25 s per sample: 2 s red, 0.25 s white flash, 1 s red, 1.5 s blue
+  const samples = [...Array(8).fill(red), white, ...Array(4).fill(red), ...Array(6).fill(blue)];
+  const shots = segmentShots(samples, 0.25, 4.75);
+  assert.deepEqual(shots.map(s => [s.start, s.end]), [[0, 3.25], [3.25, 4.75]]);
+  assert.equal(shots[1].color, '#1414c8');
+  assert.equal(shots[0].start, 0);
+  assert.deepEqual(segmentShots([], 0.25, 0), []);
 });
