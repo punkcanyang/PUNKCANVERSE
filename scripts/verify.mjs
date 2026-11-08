@@ -24,6 +24,7 @@ import { GA_SCRIPT_URL, CONSENT_BOOTSTRAP, GA_CONFIG, verifyAnalyticsHtml } from
 import { loadEssays } from '../lib/essays.mjs';
 import { listPages } from '../lib/routes.mjs';
 import { loadI18n, cardUI } from '../lib/i18n.mjs';
+import { loadFilms, filmFiles } from '../lib/films.mjs';
 import { verifyV04 } from './verify-v04.mjs';
 import { verifyV05 } from './verify-v05.mjs';
 import { verifyV051 } from './verify-v051.mjs';
@@ -137,10 +138,13 @@ await check('全部提示词有完整原文、精确长度与来源指纹，页�
 });
 
 await check('媒体仅限批准缩图与原创品牌分享图，无影片或禁止域名', async () => {
+  // redesign spec change (2026-11-08): Punkcan's own film frames, exactly the files each film.json lists.
+  const filmMedia = new Set((await loadFilms(root)).flatMap(film => filmFiles(film).filter(file => file !== 'film.json')
+    .flatMap(file => [`web/img/films/${film.slug}/${file}`, `dist/img/films/${film.slug}/${file}`])));
   for (const path of new Set([...distFiles, ...repoPaths.map(path => join(root, path)), ...trackedPaths.map(path => join(root, path))])) {
     // v0.5.2 spec change (boss 2026-10-22): real official sample frames
     // Only the 22 pinned paths/bytes checked by verifyV052 are permitted.
-    assert.ok(!forbiddenMedia.has(extname(path).toLowerCase()) || isOfficialFramePath(relative(root,path)) || ['web/img/site/share.png','dist/img/site/share.png'].includes(relative(root,path)), `Forbidden media: ${relative(root, path)}`);
+    assert.ok(!forbiddenMedia.has(extname(path).toLowerCase()) || isOfficialFramePath(relative(root,path)) || filmMedia.has(relative(root,path)) || ['web/img/site/share.png','dist/img/site/share.png'].includes(relative(root,path)), `Forbidden media: ${relative(root, path)}`);
     const content = (await read(path)).toLowerCase();
     for (const domain of forbiddenDomains) assert.ok(!content.includes(domain), `Forbidden domain in ${relative(root, path)}`);
   }
@@ -286,7 +290,7 @@ await check('sitemap 精确列出全部正式页面，robots 允许抓取并指�
   // v0.4 spec change (boss 2026-10-22): final URLs for every locale and workflow.
   const workflows=JSON.parse(await read(join(root,'data/workflows.json'))).entries;
   // v0.5 spec change (boss 2026-10-22): exact sitemap adds imported details and the original fight collection.
-  const expectedPaths=listPages({entries:catalogEntries,workflows,essays,works:await loadWorks(root),sitePages:SITE_PAGES}).filter(page=>page.sitemap).map(page=>page.path);
+  const expectedPaths=listPages({entries:catalogEntries,workflows,essays,works:await loadWorks(root),films:await loadFilms(root),sitePages:SITE_PAGES}).filter(page=>page.sitemap).map(page=>page.path);
   assert.equal((sitemap.match(/<url>/g) || []).length, expectedPaths.length);
   assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]), expectedPaths.map(path => `https://punkcanverse.com${path}`));
   assert.equal(await read(join(dist, 'robots.txt')), 'User-agent: *\nAllow: /\nSitemap: https://punkcanverse.com/sitemap.xml\n');
@@ -344,12 +348,13 @@ await check('推广平台映射完整、空网址无按钮，所有页面包含�
     assert.ok(footer?.includes(AFFILIATE_DISCLOSURE), `${file}: missing disclosure`);
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/.
     assert.ok(footer.includes('48 小時內處理') && footer.includes('href="/zh/takedown.html"') && footer.includes('https://x.com/punkcan'));
-    assert.ok(html.includes('href="/zh/regions.html"'), `${file}: missing regions navigation`);
+    if (!html.includes('class="film-layout"')) assert.ok(html.includes('href="/zh/regions.html"'), `${file}: missing regions navigation`);
     } else {
       const ui=translated.ui[locale];
       assert.ok(footer?.includes(escapeHtml(ui.affiliateDisclosure)), `${file}: missing localized disclosure`);
       assert.ok(footer.includes(escapeHtml(ui.takedownFooter)) && footer.includes('href="/takedown.html"') && footer.includes('https://x.com/punkcan'));
-      assert.ok(html.includes('href="/regions.html"'), `${file}: missing localized regions navigation`);
+      // redesign spec change (2026-11-08): film-layout pages link only Films and About.
+      if (!html.includes('class="film-layout"')) assert.ok(html.includes('href="/regions.html"'), `${file}: missing localized regions navigation`);
     }
     for (const link of html.matchAll(/<a\b[^>]*class="affiliate-button"[^>]*>/g)) {
       assert.match(link[0], /rel="sponsored noopener noreferrer"/);

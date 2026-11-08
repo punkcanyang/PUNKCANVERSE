@@ -1,4 +1,5 @@
 import { loadWorks } from '../lib/works.mjs';
+import { loadFilms } from '../lib/films.mjs';
 import { promptHtml } from '../lib/cards.mjs';
 import { OFFICIAL_FRAMES } from '../lib/official-frames.mjs';
 import {loadCatalog} from '../lib/catalog.mjs';
@@ -30,7 +31,7 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
   // v0.4 spec change (boss 2026-10-22): exact final URLs, all three locales and workflows.
   // v0.5 spec change (boss 2026-10-22): page/sitemap counts cover the full 192-entry catalog; old data checks still cover the original 63.
   const {entries:catalogEntries}=await loadCatalog(root);
-  const descriptors=listPages({entries:catalogEntries,workflows,essays,works,sitePages:SITE_PAGES});
+  const descriptors=listPages({entries:catalogEntries,workflows,essays,works,films:await loadFilms(root),sitePages:SITE_PAGES});
   const expected=descriptors.filter(page=>page.sitemap).map(page=>page.path);
   const urls = [...(await read(join(dist,'sitemap.xml'))).matchAll(/<loc>([^<]+)<\/loc>/g)].map(match=>match[1]);
   assert.deepEqual(urls,expected.map(path=>'https://punkcanverse.com'+path),'Sitemap must list every real public page exactly once');
@@ -91,8 +92,11 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
       const src=match[0].match(/\bsrc="([^"]+)"/)?.[1];
       const pageWorks=descriptor.work?[descriptor.work]:descriptor.route==='/works/'?works:[];
       const workImages=pageWorks.flatMap(work=>work.media.flatMap(media=>media.type==='image'?[media.src]:media.poster?[media.poster]:[]));
-      assert.ok(/^https:\/\/pbs\.twimg\.com\//.test(src) || Object.values(OFFICIAL_FRAMES).some(frame=>frame && frame.src===src) || workImages.map(escapeHtml).includes(src), 'Images must be declared portfolio media, X originals or approved local frames');
-      for(const attribute of ['width="','height="','alt="','loading="lazy"','decoding="async"'])assert.ok(match[0].includes(attribute));
+      // redesign spec change (2026-11-08): film pages and the home page show the film's own generated frames.
+      const filmFrame=/^\/img\/films\/[a-z0-9-]+\/\d{2}\.(?:webp|jpg)$/.test(src);
+      assert.ok(/^https:\/\/pbs\.twimg\.com\//.test(src) || Object.values(OFFICIAL_FRAMES).some(frame=>frame && frame.src===src) || workImages.map(escapeHtml).includes(src) || filmFrame, 'Images must be declared portfolio media, X originals or approved local frames');
+      // The film still is the first-screen image, so it loads eagerly; every other rule still applies.
+      for(const attribute of ['width="','height="','alt="',...(filmFrame?[]:['loading="lazy"']),'decoding="async"'])assert.ok(match[0].includes(attribute));
     }
     for(const match of html.matchAll(/<a\b[^>]*>/g)) {
       const href=match[0].match(/href="([^"]+)"/)?.[1];

@@ -166,7 +166,8 @@ test('实际 build：四页均有揭露，空推广和关闭周报不留下容�
       assert.ok(html.includes(AFFILIATE_DISCLOSURE));
       assert.ok(!/class="affiliate-(?:links|item|button)"/.test(html));
       assert.ok(!/class="newsletter"|id="newsletter-title"/.test(html));
-      assert.ok(html.includes('href="/zh/regions.html"'));
+      // redesign spec change (2026-11-08): the home page is the film layout, whose header links only Films and About.
+      if (page !== 'index') assert.ok(html.includes('href="/zh/regions.html"'));
       assert.ok(html.includes('https://x.com/punkcan'));
     }
     const home = await readFile(join(out, 'zh', 'index.html'), 'utf8');
