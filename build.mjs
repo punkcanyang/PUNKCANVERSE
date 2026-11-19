@@ -150,7 +150,8 @@ export async function buildSite(options = {}) {
       const legal=u.legal[route.slice(1,-1)];title=legal.title;description=legal.summary;
       // English legal prose is carried over verbatim, with only local links scoped.
       const legalBody=legal.body.replace(/href="\/(?!\/)([^"]*)"/g,(_,tail)=>`href="${localePrefix(locale)}/${tail}"`);
-      body=renderLegalPage({...legal,body:legalBody,updatedLabel:u.updated,updated:'2026-10-22',lang:HTML_LANG[locale]});
+      const legalUpdated=route==='/contact/'?'2026-11-19':'2026-10-22';
+      body=renderLegalPage({...legal,body:legalBody,updatedLabel:u.updated,updated:legalUpdated,lang:HTML_LANG[locale]});
     }
     const footer=`<footer class="site-footer"><div class="footer-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE<small>DIRECTED & CURATED BY PUNKCAN</small></a><div class="footer-links"><a href="${href('/takedown')}">${e(u.takedownFooter)}</a>${externalLink('https://x.com/punkcan',e(u.author))}</div></div>${renderSiteLinks({ariaLabel:u.siteInfo,cookieLabel:u.cookieSettings,hrefFor:page=>href(page.path),labelFor:page=>u.legal[page.path.slice(1,-1)].title})}<p>${e(u.copyright)}</p><p class="affiliate-disclosure"><a href="${href('/affiliate-disclosure/')}">${e(u.affiliateDisclosure)}</a></p></footer>`;
     const canonical=SITE_URL+descriptor.canonical;
