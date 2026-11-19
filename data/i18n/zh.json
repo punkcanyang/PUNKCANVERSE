@@ -121,8 +121,8 @@
       "body": "<h2>個人創作收藏</h2><p>PUNKCANVERSE 是 Punkcan 的個人站，收錄精選 AI 影片、圖像與音樂提示詞，標明原作者與出處，提供創作拆解、技術資源與個人作品展示區。</p><p>作品區展示 Punkcan 的創作，提示詞收藏另列原作者與出處。有內容時才發布原創拆解與實測心得，不把空白欄位當成完成的評測。</p><h2>作者與來源</h2><p>提示詞版權歸原作者。每條資料附作者與原帖連結。影片使用 X 官方嵌入；縮圖直接引用 X 公開圖片網址，不轉存影片或圖片。</p><p>在 X 找 Punkcan：<a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a>。</p>"
     },
     "contact": {
-      "title": "聯絡本站",
-      "summary": "關於署名、內容更正與下架申請的聯絡方式。",
+      "title": "聯絡我們",
+      "summary": "來信或在 X 聯絡本站。",
       "body": "<h2>聯絡方式</h2><p>請寄信至 <a href=\"mailto:hello@punkcanverse.com\">hello@punkcanverse.com</a>，或在 X 聯絡 <a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a>。</p><h2>署名與下架</h2><p>作者可寄信要求下架作品或更正署名與來源。請附本站頁面、原帖與簡短說明，方便找到相關內容。</p><p>也可使用現有的<a href=\"/takedown.html\">下架頁面</a>。我們會爭取在 48 小時內處理。提出申請前無需先證明身份；有爭議時可能請你補充說明。</p>"
     },
     "privacy": {

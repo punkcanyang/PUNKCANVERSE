@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { runInNewContext } from 'node:vm';
-import { readFile, mkdtemp, rm } from 'node:fs/promises';
+import { access, readFile, mkdtemp, rm } from 'node:fs/promises';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { GA_ID, GA_SCRIPT_URL, CONSENT_BOOTSTRAP, GA_CONFIG, renderAnalytics, renderConsentBanner, verifyAnalyticsHtml } from '../lib/analytics.mjs';
@@ -104,7 +104,8 @@ test('离线 build：每页 GA4、五页 canonical/日期/sitemap、全站页脚
         assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${path}">`));
         // redesign spec change (2026-11-08): English legal prose now lives at the root.
         const english = await readFile(join(dir,path,'index.html'),'utf8');
-        assert.match(english,/Last updated: <time datetime="2026-10-22">2026-10-22<\/time>/);
+        const expectedDate=path==='/contact/'?'2026-11-19':'2026-10-22';
+        assert.match(english,new RegExp(`Last updated: <time datetime="${expectedDate}">${expectedDate}</time>`));
         assert.ok(html.includes('class="essay-body"'));
       }
       for(const mail of html.matchAll(/mailto:([^"'<>\s]+)/gi))assert.equal(mail[1],'hello@punkcanverse.com');
@@ -115,5 +116,21 @@ test('离线 build：每页 GA4、五页 canonical/日期/sitemap、全站页脚
     for(const text of ['Consent Mode v2','Resend','AdSense','X embeds','partner-sites','Cookie settings'])assert.ok(privacy.includes(text));
     const contact=await readFile(join(dir,'contact/index.html'),'utf8');
     assert.ok(contact.includes('href="mailto:hello@punkcanverse.com"'));
+    const contactZh=await readFile(join(dir,'zh/contact/index.html'),'utf8');
+    // 2026-11-17: general Contact us / 聯絡我們 only; no intake, pricing, or /work/.
+    assert.ok(contact.includes('<h1>Contact us</h1>'));
+    assert.ok(contact.includes('Email or contact PUNKCANVERSE on X.'));
+    assert.ok(!contact.includes('about attribution, corrections or removal requests'));
+    assert.ok(contactZh.includes('<h1>聯絡我們</h1>'));
+    assert.ok(contactZh.includes('來信或在 X 聯絡本站。'));
+    assert.ok(!contactZh.includes('關於署名、內容更正與下架申請的聯絡方式。'));
+    for (const html of [contact, contactZh]) {
+      assert.ok(html.includes('href="mailto:hello@punkcanverse.com"'));
+      assert.ok(html.includes('https://x.com/punkcan'));
+      assert.ok(html.includes('2026-11-19'));
+      assert.ok(!/價目|定价|pricing|hire me|commission rates/i.test(html));
+    }
+    await assert.rejects(()=>access(join(dir,'work/index.html')));
+    await assert.rejects(()=>access(join(dir,'zh/work/index.html')));
   } finally { globalThis.fetch=oldFetch;await rm(dir,{recursive:true,force:true}); }
 });

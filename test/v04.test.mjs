@@ -259,12 +259,17 @@ test('X 失败提示与 Markdown 工具列使用当前语言，保留手动观�
   }
 });
 
-test('英文说明页只允许作品介绍迁移，其余法律正文保留原指纹',async()=>{
+test('英文说明页只允许作品介绍迁移与联络页标题，其余法律正文保留原指纹',async()=>{
   const copy=structuredClone(SITE_PAGES.map(page=>i18n.ui.en.legal[page.path.slice(1,-1)]));
   // User-requested portfolio migration: reverse only the two approved About phrases.
   assert.ok(copy[0].body.includes('technical resources and Punkcan’s personal work'));
   copy[0].body=copy[0].body.replace('technical resources and Punkcan’s personal work','technical resources and Working with AI essays')
     .replace('The portfolio presents Punkcan’s work; collected prompts are credited separately to their original creators.','Notes and essays reflect the author’s observations.');
+  // User request 2026-11-17: add general Contact us, no intake page. Reverse title/summary only; body stays.
+  assert.equal(copy[1].title,'Contact us');
+  assert.equal(copy[1].summary,'Email or contact PUNKCANVERSE on X.');
+  copy[1].title='Contact';
+  copy[1].summary='Contact PUNKCANVERSE about attribution, corrections or removal requests.';
   // v0.4 spec change (商務拓展 2026-10-22): en legal text matches en UI labels
   assert.equal(createHash('sha256').update(JSON.stringify(copy)).digest('hex'),'1aed3f6580fec000f1a62ea1d6bef62f5c8f30a90445d92bb2679a29ecf74434');
   const out=await mkdtemp(join(tmpdir(),'pcv-legal-languages-'));

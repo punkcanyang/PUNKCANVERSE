@@ -121,8 +121,8 @@
       "body": "<h2>A personal creative archive</h2><p>PUNKCANVERSE is Punkcan’s personal site. It collects selected AI video, image and music prompts, credits their original creators, and provides a place for creative breakdowns, technical resources and Punkcan’s personal work.</p><p>The portfolio presents Punkcan’s work; collected prompts are credited separately to their original creators. Original breakdowns and first-hand test notes are published when available; an empty field is not presented as a completed review.</p><h2>Creators and sources</h2><p>Prompt copyright belongs to the original creators. Entries link to their authors and source posts. Videos appear through official X embeds. Thumbnails reference public X image URLs directly; we do not host copies of these videos or images.</p><p>Find Punkcan on X: <a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a>.</p>"
     },
     "contact": {
-      "title": "Contact",
-      "summary": "Contact PUNKCANVERSE about attribution, corrections or removal requests.",
+      "title": "Contact us",
+      "summary": "Email or contact PUNKCANVERSE on X.",
       "body": "<h2>Get in touch</h2><p>Email <a href=\"mailto:hello@punkcanverse.com\">hello@punkcanverse.com</a> or contact <a href=\"https://x.com/punkcan\" target=\"_blank\" rel=\"noopener noreferrer\">@punkcan</a> on X.</p><h2>Attribution and removal</h2><p>Creators may use this email to request removal of their work or a correction to a credit or source. Include the page address, the original post and a brief explanation so we can identify the material.</p><p>Removal requests may also use the existing <a href=\"/takedown.html\">takedown page</a>. We aim to process removal requests within 48 hours. You do not need to prove your identity before making a request; we may ask for clarification where necessary to resolve a disputed request.</p>"
     },
     "privacy": {
