@@ -51,8 +51,8 @@ test('books: every page shows how it was made, the sources, errata and what is s
       assert.equal((html.match(/<ul class="fixes">/g) || []).length, 1);
       for (const fix of book.fixes) assert.ok(html.includes(`<li>${escapeHtml(fix[locale])}</li>`), `${book.slug} fix`);
       for (const gap of book.gaps) assert.ok(html.includes(`<li>${escapeHtml(gap[locale])}</li>`), `${book.slug} gap`);
-      // The drafting tools are not named until Punkcan settles them: an obvious placeholder, never a guess.
-      assert.ok(html.includes(`<mark class="pending">${data.series.draftTools[locale]}</mark>`), `${book.slug} tools placeholder`);
+      // Punkcan decided (2026-11-22) not to name the drafting tools: no placeholder is left on the page.
+      assert.doesNotMatch(html, /\{tools\}|起草工具名稱|drafting tools to be added/);
       assert.doesNotMatch(html, /<script|<iframe/);
     }
   }
@@ -95,7 +95,7 @@ test('books: invalid records are rejected before the build', () => {
     const copy = structuredClone(book); change(copy);
     assert.throws(() => validateBook(copy, films));
   }
-  assert.throws(() => validateSeries({ ...data.series, draftTools: { zh: '', en: '' } }));
+  assert.throws(() => validateSeries({ ...data.series, made: { zh: [], en: [] } }));
 });
 
 test('books: built site has the book pages in both languages, in the nav and the sitemap', async () => {

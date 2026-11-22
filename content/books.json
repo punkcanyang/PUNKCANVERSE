@@ -16,12 +16,12 @@
     },
     "made": {
       "zh": [
-        "Punkcan 決定每本書寫什麼、找哪些資料、怎麼取捨。起草、改寫成英文與排版，用的是多個 AI 工具的組合，反覆來回修改，不是一次生成：{tools}。",
+        "Punkcan 決定每本書寫什麼、找哪些資料、怎麼取捨。起草、改寫成英文與排版，用的是多個 AI 工具的組合，反覆來回修改，不是一次生成。",
         "查證也有 AI 參與，各書做到的程度不同：有的逐一開啟線上來源比對，有的在寫英文版前重讀了媒體來源，也有來源擋自動連線或還沒取得。每本書的頁面寫明實際做了什麼、改過哪些錯、還有哪些沒查到。這五本都還沒有母語英文編輯審過。",
         "封面與插圖的做法各書不同，寫在各書的製作名單裡。"
       ],
       "en": [
-        "Punkcan decides what each book covers, which sources to gather and what to keep. Drafting, rewriting into English and layout were done with a combination of AI tools, revised back and forth rather than generated in one pass: {tools}.",
+        "Punkcan decides what each book covers, which sources to gather and what to keep. Drafting, rewriting into English and layout were done with a combination of AI tools, revised back and forth rather than generated in one pass.",
         "AI tools also took part in the checking, and how far it went differs from book to book: for some every online source was opened and compared, for one the press sources were re-read before the English edition, and some sources block automated access or have not been obtained. Each book page says what was actually done, which errors were corrected and what is still unverified. None of the five has been reviewed by a native English editor.",
         "Covers and illustrations were made differently for each book; the credits on each page say how."
       ]
@@ -39,10 +39,6 @@
         "He is a long-time researcher of liuyao (六爻) divination and a practicing tarot reader who has taught beginners for a decade. Waite Tarot: The Only Guide You Need came out of three years of card-by-card research, checking the Rider-Waite-Smith deck against Waite's own writings and the Golden Dawn papers. His other books include guides to language and symbolic systems.",
         "For Punkcan, making things is a way of questioning the world: take the visible world apart, translate it into abstract signal, and let it come back in another form through digital tools."
       ]
-    },
-    "draftTools": {
-      "zh": "〔起草工具名稱待 Punkcan 補上〕",
-      "en": "[names of the drafting tools to be added by Punkcan]"
     }
   },
   "entries": [
@@ -89,7 +85,7 @@
           ],
           [
             "起草、改寫與英譯",
-            "AI 工具組合，依作者指示反覆修改：{tools}"
+            "AI 工具組合，依作者指示反覆修改"
           ],
           [
             "示意圖",
@@ -111,7 +107,7 @@
           ],
           [
             "Drafting, rewriting and English translation",
-            "Several AI tools, revised back and forth at the author's direction: {tools}"
+            "Several AI tools, revised back and forth at the author's direction"
           ],
           [
             "Schematic illustrations",
@@ -225,7 +221,7 @@
           ],
           [
             "起草、改寫與英譯",
-            "AI 工具組合，依作者指示反覆修改：{tools}"
+            "AI 工具組合，依作者指示反覆修改"
           ],
           [
             "英文版",
@@ -243,7 +239,7 @@
           ],
           [
             "Drafting, rewriting and English translation",
-            "Several AI tools, revised back and forth at the author's direction: {tools}"
+            "Several AI tools, revised back and forth at the author's direction"
           ],
           [
             "English edition",
@@ -348,7 +344,7 @@
           ],
           [
             "起草、改寫與英譯",
-            "AI 工具組合，依作者指示反覆修改：{tools}"
+            "AI 工具組合，依作者指示反覆修改"
           ],
           [
             "英文版",
@@ -370,7 +366,7 @@
           ],
           [
             "Drafting, rewriting and English translation",
-            "Several AI tools, revised back and forth at the author's direction: {tools}"
+            "Several AI tools, revised back and forth at the author's direction"
           ],
           [
             "English edition",
@@ -482,7 +478,7 @@
           ],
           [
             "起草、改寫與英譯",
-            "AI 工具組合，依作者指示反覆修改：{tools}"
+            "AI 工具組合，依作者指示反覆修改"
           ],
           [
             "英文版",
@@ -500,7 +496,7 @@
           ],
           [
             "Drafting, rewriting and English translation",
-            "Several AI tools, revised back and forth at the author's direction: {tools}"
+            "Several AI tools, revised back and forth at the author's direction"
           ],
           [
             "English edition",
@@ -613,7 +609,7 @@
           ],
           [
             "起草、改寫與英譯",
-            "AI 工具組合，依作者指示反覆修改：{tools}"
+            "AI 工具組合，依作者指示反覆修改"
           ],
           [
             "英文版",
@@ -631,7 +627,7 @@
           ],
           [
             "Drafting, rewriting and English translation",
-            "Several AI tools, revised back and forth at the author's direction: {tools}"
+            "Several AI tools, revised back and forth at the author's direction"
           ],
           [
             "English edition",
