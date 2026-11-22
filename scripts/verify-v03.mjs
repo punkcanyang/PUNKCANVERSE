@@ -1,3 +1,4 @@
+import { comparisonFiles } from './verify-v053.mjs';
 import { loadWorks } from '../lib/works.mjs';
 import { loadFilms } from '../lib/films.mjs';
 import { promptHtml } from '../lib/cards.mjs';
@@ -25,13 +26,14 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
   const affiliates = JSON.parse(await read(join(root,'data/affiliates.json')));
   const site = JSON.parse(await read(join(root,'data/site.json')));
   const essays = await loadEssays(pathToFileURL(join(root,'content/essays')+'/'));
+  const notes = await loadEssays(pathToFileURL(join(root,'content/production-notes')+'/'));
   const works = await loadWorks(root);
   const workflows=JSON.parse(await read(join(root,'data/workflows.json'))).entries;
   const translations=await loadI18n(root);
   // v0.4 spec change (boss 2026-10-22): exact final URLs, all three locales and workflows.
   // v0.5 spec change (boss 2026-10-22): page/sitemap counts cover the full 192-entry catalog; old data checks still cover the original 63.
   const {entries:catalogEntries}=await loadCatalog(root);
-  const descriptors=listPages({entries:catalogEntries,workflows,essays,works,films:await loadFilms(root),sitePages:SITE_PAGES});
+  const descriptors=listPages({entries:catalogEntries,workflows,essays,notes,works,films:await loadFilms(root),sitePages:SITE_PAGES});
   const expected=descriptors.filter(page=>page.sitemap).map(page=>page.path);
   const urls = [...(await read(join(dist,'sitemap.xml'))).matchAll(/<loc>([^<]+)<\/loc>/g)].map(match=>match[1]);
   assert.deepEqual(urls,expected.map(path=>'https://punkcanverse.com'+path),'Sitemap must list every real public page exactly once');
@@ -107,7 +109,7 @@ export async function verifyV03(root = fileURLToPath(new URL('..', import.meta.u
       }
     }
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    if(html.includes(affiliates.magnific.url))assert.equal(relative(dist,file),`${locale==='en'?'':`${locale}/`}tools.html`,'Magnific belongs only in its localized tool card');
+    if(html.includes(affiliates.magnific.url))assert.ok([`${locale==='en'?'':`${locale}/`}tools.html`,...comparisonFiles].includes(relative(dist,file)));
   }
   // redesign spec change (2026-11-08): the Chinese checks read the /zh/ pages.
   for(const entry of entries) {

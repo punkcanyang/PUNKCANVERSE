@@ -1,8 +1,15 @@
 {
+  "type": "module",
+  "engines": {
+    "node": ">=22.8.0"
+  },
   "scripts": {
     "build": "node build.mjs",
     "test": "node --test --test-isolation=none",
     "verify": "node scripts/verify.mjs",
-    "deploy": "npx wrangler pages deploy dist --project-name fight-prompts"
+    "test:browser": "node scripts/check-browser.mjs",
+    "check": "npm run build && npm test && npm run verify && npm run test:browser",
+    "predeploy": "npm run check",
+    "deploy": "npx --yes wrangler@4.114.0 pages deploy dist --project-name fight-prompts --branch main"
   }
 }

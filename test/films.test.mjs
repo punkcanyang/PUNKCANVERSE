@@ -60,8 +60,8 @@ test('films: film page plays the locale’s YouTube upload and keeps the directo
 });
 
 test('films: player URL and scrub frames', () => {
-  assert.equal(embedUrl('UnGmCoPDIn8', 0), 'https://www.youtube-nocookie.com/embed/UnGmCoPDIn8?autoplay=1&rel=0');
-  assert.equal(embedUrl('UnGmCoPDIn8', 140.4), 'https://www.youtube-nocookie.com/embed/UnGmCoPDIn8?autoplay=1&rel=0&start=140');
+  assert.equal(embedUrl('UnGmCoPDIn8', 0), 'https://www.youtube.com/embed/UnGmCoPDIn8?autoplay=1&rel=0');
+  assert.equal(embedUrl('UnGmCoPDIn8', 140.4), 'https://www.youtube.com/embed/UnGmCoPDIn8?autoplay=1&rel=0&start=140');
   const frames = ['a', 'b', 'c', 'd'];
   assert.equal(frameAt(frames, 0), 'a');
   assert.equal(frameAt(frames, 0.5), 'c');

@@ -1,0 +1,698 @@
+{
+  "series": {
+    "title": {
+      "zh": "臺灣民間信仰書系",
+      "en": "Taiwanese Popular Religion"
+    },
+    "intro": {
+      "zh": [
+        "這個書系寫臺灣人日常會碰到的信仰：無人祭祀的亡魂怎麼成了守護者，到廟裡擲筊求籤怎麼問，鬼月與路邊紅包的禁忌從哪裡來，山裡的魔神仔，還有港邊的媽祖與王船。目前五本都是英文版，寫給讀不到中文研究的讀者。",
+        "書是在 AI 工具協助下寫成的。每一頁都寫明哪些工作由 AI 做、哪些由作者做，列出完整參考書目、查證時改過的錯、出版後的勘誤，以及還沒查到的部分。"
+      ],
+      "en": [
+        "This series is about the religion people in Taiwan meet in daily life: how the unattended dead became guardians, how to ask the gods with moon blocks and oracle lots, where the taboos of Ghost Month and the red envelope on the road come from, the mountain spirit called mo-sin-a, and the harbor gods and royal boats. All five books are English editions, written for readers who cannot read the Chinese scholarship.",
+        "The books were written with the help of AI tools. Each book page says which work the AI did and which the author did, and lists the full bibliography, the errors caught while checking, errata found after publication, and what has not been verified yet."
+      ]
+    },
+    "made": {
+      "zh": [
+        "Punkcan 決定每本書寫什麼、找哪些資料、怎麼取捨。起草、改寫成英文與排版，用的是多個 AI 工具的組合，反覆來回修改，不是一次生成：{tools}。",
+        "查證也有 AI 參與，各書做到的程度不同：有的逐一開啟線上來源比對，有的在寫英文版前重讀了媒體來源，也有來源擋自動連線或還沒取得。每本書的頁面寫明實際做了什麼、改過哪些錯、還有哪些沒查到。這五本都還沒有母語英文編輯審過。",
+        "封面與插圖的做法各書不同，寫在各書的製作名單裡。"
+      ],
+      "en": [
+        "Punkcan decides what each book covers, which sources to gather and what to keep. Drafting, rewriting into English and layout were done with a combination of AI tools, revised back and forth rather than generated in one pass: {tools}.",
+        "AI tools also took part in the checking, and how far it went differs from book to book: for some every online source was opened and compared, for one the press sources were re-read before the English edition, and some sources block automated access or have not been obtained. Each book page says what was actually done, which errors were corrected and what is still unverified. None of the five has been reviewed by a native English editor.",
+        "Covers and illustrations were made differently for each book; the credits on each page say how."
+      ]
+    },
+    "author": {
+      "zh": [
+        "楊琮閔，亦以 Punkcan 為名，是出生於台灣的寫作者與藝術家。他的創作橫跨攝影、聲音、生成式系統，以及他稱為 Digital Conjuration 的數位咒術。",
+        "他在 1990 年代後期接受海軍攝影與暗房訓練，之後參與勞工運動，並自 2003 年開始聲音藝術創作。他的寫作與作品關注感知改變、記憶、幻覺、技術，以及現實與意義之間不穩定的邊界。",
+        "在工作中接觸了資本交易市場以及數據分析，並投身加密貨幣產業建設多年，同時也是六爻及塔羅牌的資深研究者。",
+        "對 Punkcan 來說，創作是一種追問世界的方法：把可見的世界拆開，轉譯成抽象訊號，再透過數位工具，讓它以另一種形式重新出現。"
+      ],
+      "en": [
+        "Punkcan (Tsung Min Yang, 楊琮閔) is a writer and artist born in Taiwan. His work moves between photography, sound, generative systems and a practice he calls Digital Conjuration.",
+        "He trained in photography and darkroom work in the navy in the late 1990s, later took part in the labor movement, and has made sound art since 2003. His working life then took him into capital markets and data analysis, and he spent many years building in the cryptocurrency industry. That world is the setting of his novel Tengu Devours the Luna (吞月犬), which follows the Luna crash through a relay of characters, each one caught in someone else's bet.",
+        "He is a long-time researcher of liuyao (六爻) divination and a practicing tarot reader who has taught beginners for a decade. Waite Tarot: The Only Guide You Need came out of three years of card-by-card research, checking the Rider-Waite-Smith deck against Waite's own writings and the Golden Dawn papers. His other books include guides to language and symbolic systems.",
+        "For Punkcan, making things is a way of questioning the world: take the visible world apart, translate it into abstract signal, and let it come back in another form through digital tools."
+      ]
+    },
+    "draftTools": {
+      "zh": "〔起草工具名稱待 Punkcan 補上〕",
+      "en": "[names of the drafting tools to be added by Punkcan]"
+    }
+  },
+  "entries": [
+    {
+      "slug": "when-ghosts-become-guardians",
+      "year": 2026,
+      "pages": 124,
+      "title": {
+        "zh": "當鬼成為守護者",
+        "en": "When Ghosts Become Guardians"
+      },
+      "subtitle": {
+        "zh": "臺灣無祀死者的照顧與權柄",
+        "en": "Care, Authority, and the Unattended Dead in Taiwan"
+      },
+      "zhTitle": "當鬼成為守護者",
+      "formats": [
+        {
+          "format": "ebook",
+          "status": "live",
+          "asin": "B0HRWBQ756"
+        },
+        {
+          "format": "paperback",
+          "status": "live",
+          "asin": "B0HRVW4976"
+        }
+      ],
+      "intro": {
+        "zh": [
+          "臺灣各地有小祠、也有幾座大廟，專門供奉死後沒人祭祀的人：犁田時翻出的無名骨骸、早年分類械鬥的死者、被遺忘的戰役裡的兵勇。其中一些後來有了名字、神像、祭典，也有了差事。",
+          "常見的說法像一道梯子：孤魂受人供養，顯靈，一路升格成神。這本書拿八章的實例檢驗這個說法，發現它們排不成一條線。書裡有新莊替人寫狀子告到神明面前的廟、十年改名兩次的臺南小祠、每年輪給下一個姓氏宗親會主辦的基隆中元祭，以及新埔義民廟背後 1788 年的契約與 1911 年的預算。全書 88 條註釋，來源是學術研究、地契、日治檔案、文資登錄與廟方自己的沿革。"
+        ],
+        "en": [
+          "Across Taiwan, small shrines and a few large temples are kept for people who died with no one left to make offerings to them: bones turned up by a plough, the dead of old feuds between settler villages, soldiers of forgotten campaigns. Some of these dead were later given names, statues, festivals and work to do.",
+          "The usual account is a ladder: a neglected ghost is fed, proves its power and climbs into the ranks of the gods. This book tests that account against eight chapters of cases and finds they do not line up. It visits a Xinzhuang temple where scribes draft complaints to gods who judge, a Tainan shrine renamed twice in ten years, Keelung's festival for the dead handed each year to the next surname association, and the contract of 1788 and budget of 1911 behind the Yimin temple at Xinpu. Its 88 notes draw on scholarship, land contracts, colonial files, heritage registrations and the temples' own histories."
+        ]
+      },
+      "credits": {
+        "zh": [
+          [
+            "選題、研究方向與取捨",
+            "Punkcan 楊琮閔"
+          ],
+          [
+            "起草、改寫與英譯",
+            "AI 工具組合，依作者指示反覆修改：{tools}"
+          ],
+          [
+            "示意圖",
+            "AI 圖像模型 Codex（gpt-image-2），圖說標明"
+          ],
+          [
+            "圖表與封面",
+            "以程式繪製的 SVG，未用圖像模型"
+          ],
+          [
+            "照片",
+            "Wikimedia Commons 的 12 張照片，非 AI 生成"
+          ]
+        ],
+        "en": [
+          [
+            "Topic, research direction and choices",
+            "Punkcan Yang (楊琮閔)"
+          ],
+          [
+            "Drafting, rewriting and English translation",
+            "Several AI tools, revised back and forth at the author's direction: {tools}"
+          ],
+          [
+            "Schematic illustrations",
+            "AI image model Codex (gpt-image-2), labeled in the captions"
+          ],
+          [
+            "Diagrams and cover",
+            "SVG drawn in code, no image model"
+          ],
+          [
+            "Photographs",
+            "12 photographs from Wikimedia Commons, not AI-generated"
+          ]
+        ]
+      },
+      "made": {
+        "zh": [
+          "這本書依據已出版的研究、歷史文書的影像或釋文、文資登錄、廟方沿革與地方出版品寫成，沒有新的訪談或田野調查，作者也沒有到現場觀察。2026 年 11 月 13 日由 AI 工具完成第二輪檢查與修訂。英文版還沒經過母語編輯審讀。"
+        ],
+        "en": [
+          "The book rests on published scholarship, historical documents in published transcriptions or images, heritage registrations, temple histories and local publications. It draws on no new interviews or fieldwork, and the author did not visit the sites. A second round of checking and revision was done with AI tools on November 13, 2026. The English text has not been read by a native-speaker editor."
+        ]
+      },
+      "fixes": [
+        {
+          "zh": "初稿把 1788 年契約的四至寫成一條路、一道水圳、相鄰的田地與山頂。對照黃卓權 2008 年論文附件一的契文，四至其實是三戶具名人家的房屋，這段已改寫。",
+          "en": "An early draft gave the boundaries in the 1788 contract as a road, a canal, neighbouring fields and a hilltop. The contract text in Huang Cho-chuan's 2008 article (attachment 1) names the houses of three people instead; the passage was rewritten."
+        },
+        {
+          "zh": "一張六堆照片的圖說原寫出自 Davidson 的《The Island of Formosa》，但該書出版於 1903 年，照片約攝於 1908 年。依 Wikimedia Commons 檔案頁改為出自 1995 年《一百年前的台灣寫真》第 157 頁。",
+          "en": "A Liudui photograph was credited to Davidson's The Island of Formosa, but that book appeared in 1903 and the photograph dates from about 1908. Following the Wikimedia Commons file page, the credit now reads 一百年前的台灣寫真 (1995), p. 157."
+        },
+        {
+          "zh": "初稿引了一句六堆碑文「浩浩乾坤立豐碑」，查不到出處，已刪除。實際的碑立於 1957 年，照片上的碑文沒有提到朱一貴，相關段落照碑文改寫。",
+          "en": "A draft quoted a Liudui stele inscription that could not be traced to any source, and it was cut. The actual stele, dated 1957, does not mention Zhu Yigui in its photographed text, and the passage was rewritten to match it."
+        },
+        {
+          "zh": "初稿對 1911 年那份文件的描述與原件不符。重讀六張影像後確認它是總督府內部公文：10 月 25 日收文，10 月 30 日決行。",
+          "en": "The draft's account of the 1911 document did not match the original. A re-reading of its six images showed it is an internal Government-General file, received on October 25 and decided on October 30."
+        }
+      ],
+      "errataChecked": "2026-11-22",
+      "errata": [],
+      "gaps": [
+        {
+          "zh": "1873 年碑文的照片在玻璃後面，字跡無法判讀。",
+          "en": "The photograph of the 1873 inscription was taken through glass and cannot be read."
+        },
+        {
+          "zh": "新埔義民祠 1835 年規約的原件、新莊廟創建所引的 1916 年調查、1911 年新埔產業糾紛的原始報導、2005 年北港廟的修復報告，以及七賢祠興建當時的紀錄，都沒能取得。",
+          "en": "The original 1835 regulations of the Xinpu shrine, the 1916 survey cited for the founding of the Xinzhuang temple, the original 1911 reports on the Xinpu property dispute, a 2005 restoration report on the Beigang temple, and contemporary records of the building of the shrine at Qixian could not be obtained."
+        },
+        {
+          "zh": "鍾壬壽《六堆客家鄉土誌》、松崎的《嗚呼忠義亭》、《重修鳳山縣志》原本，以及施家順等 2008、陳麗華 2013、謝貴文 2015 等研究還沒有讀到。",
+          "en": "Zhong Renshou's history of the Liudui, Matsuzaki's 嗚呼忠義亭, the original 重修鳳山縣志, and studies including 施家順 et al. 2008, Chen Li-hua 2013 and 謝貴文 2015 have not been read."
+        },
+        {
+          "zh": "1911 年公文裡的草書段落，需要讀過日治公文書的人再核一次。",
+          "en": "The cursive passage in the 1911 file still needs checking by someone experienced with Japanese-period official documents."
+        },
+        {
+          "zh": "神號「戴府甫元玖公」中「甫」字的意思還沒確定。",
+          "en": "The meaning of the character 甫 in the deity name 戴府甫元玖公 is still unsettled."
+        },
+        {
+          "zh": "Harrell 1974 年的論文沒有取得全文；2010 年以後的英文研究沒有納入論證。",
+          "en": "The full text of Harrell's 1974 study was not obtained, and English-language studies after 2010 were not worked into the argument."
+        }
+      ]
+    },
+    {
+      "slug": "asking-the-gods",
+      "year": 2026,
+      "pages": 72,
+      "title": {
+        "zh": "問神",
+        "en": "Asking the Gods"
+      },
+      "subtitle": {
+        "zh": "筊杯與籤詩指南",
+        "en": "A Reader's Guide to Moon Blocks and Oracle Poems in Taiwan"
+      },
+      "zhTitle": "問神：筊杯與籤詩指南",
+      "formats": [
+        {
+          "format": "ebook",
+          "status": "live",
+          "asinPending": true
+        },
+        {
+          "format": "paperback",
+          "status": "live",
+          "asin": "B0HRJGFWQM"
+        }
+      ],
+      "intro": {
+        "zh": [
+          "在臺灣的廟裡，人用兩片月牙形的木塊和一筒編了號的竹籤向神明發問。規則看起來簡單，換一間廟就不太一樣。",
+          "這本書寫給不懂中文的讀者，把整套做法拆開來看：筊杯每一種落地的意思由哪份資料記載、求籤的四個步驟在五間廟裡怎麼各自處理、為什麼連三個聖筊大約八次才出現一次、怎麼分辨籤詩本身和印在旁邊的故事與解說，以及「國運籤」這個詞在 1991 到 2003 年間怎麼進入報紙。依據是 1865 年傳教士的記載、1910 與 1919 年的日治調查、廟方公告、博物館紀錄與近年的研究，全書 85 條註釋。"
+        ],
+        "en": [
+          "In temples across Taiwan, people put questions to the gods with two crescent-shaped pieces of wood and a tube of numbered bamboo sticks. The rules look simple, and they change from one temple to the next.",
+          "This guide takes the practice apart for readers who know no Chinese: which source records what each landing of the blocks means, how five temples handle the four stages of seeking a lot, why three affirmative casts in a row come up about one time in eight, how to tell the verse on a slip from the stories printed around it, and how the \"national fortune lot\" entered the newspapers between 1991 and 2003. It works from a missionary's account of 1865, the Japanese colonial surveys of 1910 and 1919, temple notices, museum records and recent scholarship, in 85 notes."
+        ]
+      },
+      "credits": {
+        "zh": [
+          [
+            "選題、研究方向與取捨",
+            "Punkcan 楊琮閔"
+          ],
+          [
+            "起草、改寫與英譯",
+            "AI 工具組合，依作者指示反覆修改：{tools}"
+          ],
+          [
+            "英文版",
+            "依中文版改寫，不是逐句翻譯"
+          ],
+          [
+            "圖表與封面",
+            "以程式繪製的 SVG，未用圖像模型"
+          ]
+        ],
+        "en": [
+          [
+            "Topic, research direction and choices",
+            "Punkcan Yang (楊琮閔)"
+          ],
+          [
+            "Drafting, rewriting and English translation",
+            "Several AI tools, revised back and forth at the author's direction: {tools}"
+          ],
+          [
+            "English edition",
+            "Adapted from the Chinese edition, not translated sentence by sentence"
+          ],
+          [
+            "Diagrams and cover",
+            "SVG drawn in code, no image model"
+          ]
+        ]
+      },
+      "made": {
+        "zh": [
+          "先完成中文版並查證，英文版再依中文版改寫。下面的錯都是在中文版查證時找到，改正後帶進英文版。英文版還沒經過母語編輯審讀。"
+        ],
+        "en": [
+          "The Chinese edition was written and checked first, and the English edition adapted from it. The errors below were found while checking the Chinese edition and corrected before the English adaptation. The English text has not been read by a native-speaker editor."
+        ]
+      },
+      "fixes": [
+        {
+          "zh": "「青氈」典故，舊稿寫小偷什麼也沒拿就慚愧離去。查《晉書》卷八十原文，是東西幾乎偷光，群偷才驚走，已改寫。",
+          "en": "An old draft retold the \"old blue felt\" story as a thief who took nothing and left ashamed. The Book of Jin, chapter 80, says the thieves carried off nearly everything before they fled in alarm; the passage was rewritten."
+        },
+        {
+          "zh": "Jordan 的研究原寫成「1980 年代的田野觀察」，經 Crossref 查證是 1982 年發表的文章，刊於 Journal for the Scientific Study of Religion 第 21 卷第 2 期。",
+          "en": "Jordan's study was described as \"fieldwork from the 1980s\". Crossref confirms it is an article published in 1982, in the Journal for the Scientific Study of Religion 21:2."
+        },
+        {
+          "zh": "Jordan 文中的表格寫 83.1，但用他自己的公式算出來是 73.7%。書中照印 83.1，並附上重算的數值。",
+          "en": "Jordan's table gives 83.1, but his own formula yields 73.7%. The book prints 83.1 as published and gives the recalculated figure beside it."
+        },
+        {
+          "zh": "藥籤一段曾寫成把籤支擱在手腕脈搏上，改回資料原文：三支香擱在手腕上「把脈」。",
+          "en": "The passage on prescription lots once said the lot stick was laid on the wrist's pulse. It was changed back to what the source says: three sticks of incense are laid on the wrist to \"take the pulse\"."
+        }
+      ],
+      "errataChecked": "2026-11-22",
+      "errata": [],
+      "gaps": [
+        {
+          "zh": "書中四間廟目前的求籤流程，出書當年要再實地或向廟方確認一次。",
+          "en": "The current procedure at four of the temples in the book needs checking again, in person or with the temples, in the year of publication."
+        },
+        {
+          "zh": "新竹 29 籤、龍山寺 18 籤、六十甲子 29 籤的紙本底本還沒取得。",
+          "en": "Paper copies of lot 29 at Hsinchu, lot 18 at Longshan Temple and lot 29 of the Sixty Jiazi set have not been obtained."
+        },
+        {
+          "zh": "秦美珊 2023、Bikir 2023、宋亞莉 2016、筑波大學 2020、顏美智與蘇奕彰、劉玉龍 2006 這六筆只從別人的書目得知，沒有讀到原文。",
+          "en": "Six sources are known only from other bibliographies and have not been read: 秦美珊 2023, Bikir 2023, Song Yali 2016, the University of Tsukuba's 2020 reconstruction, Yan Meizhi and Su Yizhang, and Liu Yulong 2006."
+        },
+        {
+          "zh": "雲林縣政府、自由時報東石報導與 Morgan 1998 年論文的 DOI 頁面擋自動連線，這三處沒有逐一開啟核對。",
+          "en": "Three web pages block automated access and were not opened for checking: a Yunlin County Government page, a Liberty Times report from Dongshi, and the DOI page of Morgan 1998."
+        },
+        {
+          "zh": "在世學者慣用的英文拼法沒有逐一查證。",
+          "en": "The spellings that living scholars use for their own names were not checked one by one."
+        }
+      ]
+    },
+    {
+      "slug": "taiwanese-taboos",
+      "year": 2026,
+      "pages": 82,
+      "title": {
+        "zh": "台灣人的禁忌：從鬼月到撿紅包",
+        "en": "Don't Pick Up the Red Envelope"
+      },
+      "subtitle": {
+        "zh": "台灣日常規矩的查證手冊",
+        "en": "Taiwanese Taboos and Where They Come From"
+      },
+      "zhTitle": "台灣人的禁忌：從鬼月到撿紅包",
+      "formats": [
+        {
+          "format": "ebook",
+          "status": "live",
+          "asin": "B0HSC2D2TY"
+        },
+        {
+          "format": "paperback",
+          "status": "soon"
+        }
+      ],
+      "intro": {
+        "zh": [
+          "在臺灣，筷子不插在白飯上，農曆七月晚上不吹口哨，時鐘不能拿來送人。規矩人人都知道，說得出出處的人少得多。",
+          "這本書把臺灣的日常禁忌一條一條拿出來，追到來源：誰寫下來的、哪一年、還有幾個人說過同樣的話。政府公告、期刊論文、田野訪談和命理師的說法分開標示證據等級，找不到來源的就直說找不到。內容包括鬼月禁忌和三個政府機關怎麼說、冥婚與路邊紅包、餐桌上的規矩、送禮與數字的諧音、隨日子在孕婦房裡移動的胎神，以及流行病學數據裡鬼月溺水減少、手術延後的現象。全書 70 條註釋。"
+        ],
+        "en": [
+          "In Taiwan, chopsticks never stand upright in a bowl of rice, nobody whistles at night in the seventh lunar month, and a clock is a terrible present. Everyone knows the rules. Far fewer people can say where they come from.",
+          "This book takes the everyday taboos of Taiwan one at a time and traces each to a source: who wrote it down, in which year, and how many others have said the same. Government notices, journal articles, field interviews and fortune-tellers' claims are graded and labeled, and where no source could be found the book says so. It covers Ghost Month and what three government agencies have said about it, ghost marriage and the red envelope on the road, table rules, gift and number puns, the god of the womb who moves around a pregnant woman's room by the calendar, and what epidemiology shows about drownings and postponed operations in Ghost Month. There are 70 source notes."
+        ]
+      },
+      "credits": {
+        "zh": [
+          [
+            "選題、研究方向與取捨",
+            "Punkcan 楊琮閔"
+          ],
+          [
+            "起草、改寫與英譯",
+            "AI 工具組合，依作者指示反覆修改：{tools}"
+          ],
+          [
+            "英文版",
+            "依中文版改編"
+          ],
+          [
+            "七張章首插畫",
+            "AI 圖像模型 Z-Image-Turbo，在作者電腦上以 ComfyUI 執行；只表現各章的比喻，不當作紀錄"
+          ],
+          [
+            "封面",
+            "以程式排版的色塊與文字，未用圖像模型"
+          ]
+        ],
+        "en": [
+          [
+            "Topic, research direction and choices",
+            "Punkcan Yang (楊琮閔)"
+          ],
+          [
+            "Drafting, rewriting and English translation",
+            "Several AI tools, revised back and forth at the author's direction: {tools}"
+          ],
+          [
+            "English edition",
+            "Adapted from the Chinese edition"
+          ],
+          [
+            "Seven chapter illustrations",
+            "AI image model Z-Image-Turbo, run in ComfyUI on the author's computer; they picture each chapter's metaphor and document nothing"
+          ],
+          [
+            "Cover",
+            "Blocks of colour and type set in code, no image model"
+          ]
+        ]
+      },
+      "made": {
+        "zh": [
+          "中文研究分三條線進行，林荷鈞 2020、劉淑貞的論文與宋國用 2023 讀過全文。動筆寫英文版前重讀媒體來源，又改正了中文定稿十餘處，書末附錄三逐條列出。作者還沒有通讀英文版，也還沒經過母語編輯審讀。"
+        ],
+        "en": [
+          "The Chinese research followed three lines of inquiry, and three works were read in full: Lin Hejun 2020, Liu Shuzhen's thesis and Song Guoyong 2023. Re-reading the press sources before the English adaptation led to more than ten corrections in the Chinese final text, all listed in the book's Appendix 3. The author has not yet read the English edition through, and no native-speaker editor has reviewed it."
+        ]
+      },
+      "fixes": [
+        {
+          "zh": "送鐘一節原寫克雷默送的是「手錶」，依 BBC 報導改為懷錶。",
+          "en": "In the section on clocks as gifts, the gift Susan Kramer gave was first called a wristwatch. The BBC report shows it was a pocket watch."
+        },
+        {
+          "zh": "引林茂賢談香蕉的說法，意思寫反了。依傳藝中心刊物的訪談，香蕉、李子、梨子是拜好兄弟時近年忌用的水果。",
+          "en": "A statement attributed to Lin Maoxian about bananas had its meaning reversed. In his interview with the National Center for Traditional Arts' magazine, bananas, plums and pears are fruit to keep off the table when feeding the Good Brothers."
+        },
+        {
+          "zh": "大林慈濟頭頸癌數據的年份原寫 1989 到 1999 年，實為民國 89 到 99 年，即 2000 到 2010 年。",
+          "en": "Head-and-neck cancer figures from Dalin Tzu Chi Hospital were dated 1989–1999. The source uses the Minguo calendar: years 89–99, that is, 2000–2010."
+        },
+        {
+          "zh": "Langer 1975 年的實驗原寫成擲骰子，實際用的是彩券。",
+          "en": "Langer's 1975 experiment was described as using dice. It used lottery tickets."
+        },
+        {
+          "zh": "新竹詐騙案原寫取貨 22 次、付了 46 萬元，依刑事局資料改為貨款 41 萬元加匯款 5 萬元。",
+          "en": "A Hsinchu fraud case was said to involve 22 pickups and NT$460,000 paid. The Criminal Investigation Bureau's account gives NT$410,000 for twenty-two parcels plus NT$50,000 wired."
+        }
+      ],
+      "errataChecked": "2026-11-22",
+      "errata": [],
+      "gaps": [
+        {
+          "zh": "拍賣車牌分級收費規定的條文，以及提到數字禁忌的行政法院判決，還沒有取得。",
+          "en": "The text of the fee regulation that grades auctioned license plates, and the administrative court judgment that mentions number taboos, have not been obtained."
+        },
+        {
+          "zh": "喪事毛巾說法的書面來源、胎神方位與紙本通書的對照、紙本的媽祖調查報告，都還沒找到或還沒對照。",
+          "en": "A written source for the funeral-towel explanation, a check of Taishen's positions against a printed almanac, and the paper copy of the Matsu survey report are still missing."
+        },
+        {
+          "zh": "曾亮 2016 年數據與大林慈濟統計背後的原始出版品還沒讀到，書中是依期刊紀錄與新聞報導引用。",
+          "en": "The original publications behind Zeng Liang's 2016 figures and the Dalin Tzu Chi statistics have not been read; the book cites them from the journal's record and a press report."
+        },
+        {
+          "zh": "魚不翻面還缺臺灣的官方或學術來源；梨、刀、茶壺嘴與喪事單數金額還缺可靠來源；忌搬家一條還缺第二個來源。",
+          "en": "The unflipped fish still lacks an official or scholarly Taiwanese source; pears, knives, the teapot spout and odd sums at funerals lack firm sources; the ban on moving house lacks a second source."
+        },
+        {
+          "zh": "三則自由時報報導擋自動連線，只對照了搜尋引擎摘要；康健、聯合新聞網、三立、實事日報等報導與陳奕民研究的摘要，寫英文版前沒能重新找到。",
+          "en": "Three Liberty Times reports block automated access and were compared with search-engine summaries only; reports from CommonHealth, UDN, SET News and the Shishi Daily, and the digest of Chen Yimin's study, could not be located again before the English edition."
+        }
+      ]
+    },
+    {
+      "slug": "mo-sin-a",
+      "year": 2026,
+      "pages": 90,
+      "title": {
+        "zh": "魔神仔",
+        "en": "Led Away by the Mo-sin-a"
+      },
+      "subtitle": {
+        "zh": "台灣山裡的怪談　一個百年詞彙的查證圖鑑",
+        "en": "Taiwan's Mountain Spirit and a Century of Disappearances"
+      },
+      "zhTitle": "魔神仔：台灣山裡的怪談",
+      "formats": [
+        {
+          "format": "ebook",
+          "status": "soon"
+        },
+        {
+          "format": "paperback",
+          "status": "soon"
+        }
+      ],
+      "intro": {
+        "zh": [
+          "魔神仔是臺灣山野裡的小精怪。據說它會「牽人」：走了多年的路忽然迷失，被找到時滿嘴牛糞，卻堅稱剛吃了一盤雞腿。民俗學者說它不是鬼，報紙已經報導它一百二十多年。",
+          "這本書檢查關於魔神仔的種種說法，每一句事實陳述都附來源和證據等級，資料互相矛盾時就把矛盾留在書頁上。內容包括同一個口語詞的十幾種漢字寫法、紅帽子和孩童臉孔的形象、一百年間 47 起事件與 74 則新聞報導、精神科醫師與宗教學者各自的解釋、日本的神隱與原住民的小矮人傳說，以及從民間怪談到恐怖片《紅衣小女孩》的過程。全書 155 條註釋，最後列出 14 個資料還無法回答的問題。"
+        ],
+        "en": [
+          "The mo-sin-a is a small spirit of Taiwan's hills and fields. People say it \"leads you away\": you lose yourself on a path you have walked for years, and when you are found your mouth is full of dung and you insist you have just eaten a plate of chicken legs. Folklorists say it is not a ghost. Newspapers have reported it for more than a hundred and twenty years.",
+          "This book checks what has been said about it. Every statement of fact carries a source and a grade, and where sources disagree the disagreement stays on the page. It covers more than a dozen ways of writing one spoken word in Chinese characters, the red cap and the child's face, 47 incidents and 74 news reports across a century, what psychiatrists and scholars of religion each say, Japan's kamikakushi and indigenous little-people legends, and the road from folk tale to the horror film The Tag-Along. It has 155 source notes and ends with fourteen questions the sources could not settle."
+        ]
+      },
+      "credits": {
+        "zh": [
+          [
+            "選題、研究方向與取捨",
+            "Punkcan 楊琮閔"
+          ],
+          [
+            "起草、改寫與英譯",
+            "AI 工具組合，依作者指示反覆修改：{tools}"
+          ],
+          [
+            "英文版",
+            "依中文 v1.2 譯寫"
+          ],
+          [
+            "封面底圖",
+            "AI 圖像模型 Z-Image-Turbo（在作者電腦上以 ComfyUI 執行），經 RealESRGAN 放大；封面文字以程式排版"
+          ]
+        ],
+        "en": [
+          [
+            "Topic, research direction and choices",
+            "Punkcan Yang (楊琮閔)"
+          ],
+          [
+            "Drafting, rewriting and English translation",
+            "Several AI tools, revised back and forth at the author's direction: {tools}"
+          ],
+          [
+            "English edition",
+            "Translated from Chinese version 1.2"
+          ],
+          [
+            "Cover image",
+            "AI image model Z-Image-Turbo (run in ComfyUI on the author's computer), enlarged with RealESRGAN; cover type set in code"
+          ]
+        ]
+      },
+      "made": {
+        "zh": [
+          "研究資料由作者整理並讀過。第二輪核對對照李家愷 2010 年碩士論文全文與附錄二，並逐一開啟線上來源；這一輪找到的錯，多數是起草時加進去的。作者還要通讀中英兩版，英文版也還沒經過母語編輯審讀。書還沒上架。"
+        ],
+        "en": [
+          "The author gathered and read the research material. A second round of checking went through the full text of Li Chia-kai's 2010 master's thesis and its Appendix 2 and opened every online source; most of the errors it found had been introduced during drafting. The author has still to read both the Chinese and English versions through, and no native-speaker editor has reviewed the English. The book is not yet on sale."
+        ]
+      },
+      "fixes": [
+        {
+          "zh": "初稿說 1899 年已有「魔神作祟」的報導，其實混了兩則：1899 年 10 月 4 日的是〈咄咄怪事〉，〈魔神作祟〉刊於 1909 年 7 月 25 日。導論後來就用這個例子說明查證方式。",
+          "en": "The draft said a report of \"mo-sin mischief\" already appeared in 1899. It had merged two items: the 1899 report of October 4 is a different story, and the article with that headline ran on July 25, 1909. The introduction now uses this mix-up to show how the checking works."
+        },
+        {
+          "zh": "彰化事件的年份誤寫為 1982 年，報導實為 2008 年 11 月 22 日。",
+          "en": "A Changhua incident was dated 1982 by a slip. The report is from November 22, 2008."
+        },
+        {
+          "zh": "安平案原註為《自由時報》，實為《蘋果日報》2008 年 11 月 6 日的報導。",
+          "en": "An Anping case was credited to the Liberty Times. The report is from Apple Daily, November 6, 2008."
+        },
+        {
+          "zh": "1995 年一案原寫在苗栗獅潭，依論文附錄二改為新竹寶山。",
+          "en": "A 1995 case was placed in Shitan, Miaoli (獅潭). The thesis appendix places it in Baoshan, Hsinchu."
+        },
+        {
+          "zh": "起草時編出來的內容已刪除，例如把池田敏雄寫成東京帝大出身的數學家，以及一個查無此物的「Pagaj 矮人目擊紀錄」。",
+          "en": "Details invented during drafting were deleted, among them a description of Ikeda Toshio as a mathematician from Tokyo Imperial University and a named \"Pagaj\" little-people sighting record that does not exist."
+        }
+      ],
+      "errataChecked": "2026-11-22",
+      "errata": [],
+      "gaps": [
+        {
+          "zh": "書末列出 14 個資料無法回答的問題，下面幾項是其中的例子。",
+          "en": "The book ends with fourteen open questions; the items below are among them."
+        },
+        {
+          "zh": "林美容與李家愷 2014 年的專書還沒有完整讀過。",
+          "en": "The 2014 monograph by Lin Mei-rong and Li Chia-kai has not been read in full."
+        },
+        {
+          "zh": "日治時期報紙的頁碼，要等看到微縮膠卷才能確認。",
+          "en": "Page numbers for the colonial-era newspapers can only be confirmed from microfilm."
+        },
+        {
+          "zh": "林田山一案各版本說法不一致的問題還沒解決。",
+          "en": "The discrepancy between versions of the Lintianshan case is unresolved."
+        },
+        {
+          "zh": "論文頁碼是從 PDF 轉文字的行號推算的，《新訂日臺大辭典》第 440 頁也還沒對照原書。",
+          "en": "Thesis page numbers were estimated from line numbers in a PDF-to-text conversion, and p. 440 of the Japanese-Taiwanese dictionary has not been checked against the printed book."
+        },
+        {
+          "zh": "台語拼音還沒請母語者確認；1899 與 1908 年兩則文言報導的英譯還沒有人工複核。",
+          "en": "The Taiwanese romanization has not been confirmed with a native speaker, and the English translations of the 1899 and 1908 classical-Chinese reports have not been reviewed by a person."
+        }
+      ]
+    },
+    {
+      "slug": "gods-on-the-sea-routes",
+      "year": 2026,
+      "pages": 110,
+      "title": {
+        "zh": "神在海路上",
+        "en": "The Boat That Never Sails"
+      },
+      "subtitle": {
+        "zh": "從高雄港口到環台海的海港信仰",
+        "en": "Mazu, Plague Gods and the Harbor Temples of Taiwan"
+      },
+      "zhTitle": "神在海路上",
+      "formats": [
+        {
+          "format": "ebook",
+          "status": "soon"
+        },
+        {
+          "format": "paperback",
+          "status": "soon"
+        }
+      ],
+      "film": "wind-of-cijin",
+      "intro": {
+        "zh": [
+          "高雄港邊一座媽祖廟的側殿裡，停著一艘木造王船。這種船本來是要燒掉或放流出海，把瘟疫送走的；這一艘卻留在室內，登錄、修復，還點著燈。",
+          "臺灣的海港信仰常被講成一串神蹟：漂上岸的神像、被風吹到沙洲上蓋起廟的漁民。這本書改從文書讀起：1691 年的墾約、1822 年要向媽祖繳香油銀的蚵埕契、1919 年同一個港口媽祖廟冷清而王爺廟擠滿人的觀察、2007 年底拆除的十三座廟到 2014 年最後一尊神明安座，以及 1903 年從泉州漂來、請拾到的人回信的紙船。每一個說法都附來源與 A 到 D 的證據等級，廟方沿革和文書不一致時兩邊都印出來。全書 96 條章注。"
+        ],
+        "en": [
+          "In a side chamber of a Mazu temple on Kaohsiung harbor stands a wooden royal boat. Boats like it are built to be burned or set adrift, carrying plague out to sea. This one stays indoors: registered, restored and lit.",
+          "Taiwan's harbor religion is usually told as a string of miracles: a statue washed ashore, a fisherman blown onto an empty sandbar who built a temple there. This book reads it through its paperwork instead: a land compact of 1691, an oyster-bed deed of 1822 that owed incense-oil silver to Mazu, a 1919 observation of the same port's Mazu temple deserted while the plague lords' temple was packed, thirteen temples taken down by the end of 2007 and the last god reinstalled in 2014, and a paper boat from Quanzhou in 1903 carrying a letter that asks the finder to write back. Every claim carries a source and a grade from A to D, and where a temple's own history and the documents disagree, both are printed. There are 96 source notes."
+        ]
+      },
+      "credits": {
+        "zh": [
+          [
+            "選題、研究方向與取捨",
+            "Punkcan 楊琮閔"
+          ],
+          [
+            "起草、改寫與英譯",
+            "AI 工具組合，依作者指示反覆修改：{tools}"
+          ],
+          [
+            "英文版",
+            "依 2026 年 11 月 13 日中文定稿譯寫，逐句對讀修訂；清代與日治引文的英譯，作者 2026 年 11 月 16 日複核"
+          ],
+          [
+            "封面底圖",
+            "AI 圖像模型 Z-Image-Turbo（在作者電腦上以 ComfyUI 執行），經 RealESRGAN 放大；封面文字以程式排版。內頁沒有圖"
+          ]
+        ],
+        "en": [
+          [
+            "Topic, research direction and choices",
+            "Punkcan Yang (楊琮閔)"
+          ],
+          [
+            "Drafting, rewriting and English translation",
+            "Several AI tools, revised back and forth at the author's direction: {tools}"
+          ],
+          [
+            "English edition",
+            "Translated from the Chinese final text of November 13, 2026 and compared sentence by sentence; the author reviewed the translations of Qing and Japanese-period quotations on November 16, 2026"
+          ],
+          [
+            "Cover image",
+            "AI image model Z-Image-Turbo (run in ComfyUI on the author's computer), enlarged with RealESRGAN; cover type set in code. The book has no other images"
+          ]
+        ]
+      },
+      "made": {
+        "zh": [
+          "書名、結構上的取捨和中文稿裡三處存疑的地方，都由作者決定。英文版整理時又查出幾處錯，中英兩稿一起改正。英文版還沒經過母語編輯審讀。書還沒上架。"
+        ],
+        "en": [
+          "The title, the structural choices and three doubtful points in the Chinese text were decided by the author. Preparing the English edition turned up further errors, corrected in both the Chinese and English texts. No native-speaker editor has reviewed the English. The book is not yet on sale."
+        ]
+      },
+      "fixes": [
+        {
+          "zh": "UNESCO 列名日期原寫 12 月 19 日。依 UNESCO 的項目頁與決議頁、會期日期和中國非遺中心的新聞稿，查證為 12 月 17 日。",
+          "en": "The UNESCO inscription date was given as December 19. The UNESCO element and decision pages, the session dates and the China Intangible Cultural Heritage Center's release show it was December 17."
+        },
+        {
+          "zh": "第三章注 17 把禁止王船的官員寫成鄭祖琛，照李豐楙 2020 年原文改為遲惟城、王慎寨、左宗棠。",
+          "en": "Chapter 3, note 17 named 鄭祖琛 as the official who banned the royal boats. Following Li Feng-mao's 2020 text, it now names Chi Weicheng, Wang Shenzhai and Zuo Zongtang."
+        },
+        {
+          "zh": "第一章注 10 把 1934 年《南部臺灣誌》的編者寫成鈴村讓，但他 1930 年已過世。依日本國立國會圖書館目錄改為臺南州共榮會。",
+          "en": "Chapter 1, note 10 gave the editor of the 1934 Nanbu Taiwan shi as Suzumura Yuzuru, who died in 1930. The National Diet Library catalogue lists the Tainan Prefecture Kyōeikai as editor."
+        },
+        {
+          "zh": "第九章原有一個申遺提交日期，查不到出處，已刪去。",
+          "en": "A date for the submission of the UNESCO nomination in Chapter 9 could not be traced to a source and was deleted."
+        }
+      ],
+      "errataChecked": "2026-11-22",
+      "errata": [],
+      "gaps": [
+        {
+          "zh": "清代方志的校勘沒有做完。",
+          "en": "The collation of the Qing gazetteers was not finished."
+        },
+        {
+          "zh": "1691 年墾約的原件或拓本、《鳳山縣采訪冊》的手稿本都還沒看到。",
+          "en": "Neither the original nor a rubbing of the 1691 land compact, nor the manuscript of the Fengshan xian caifang ce, has been seen."
+        },
+        {
+          "zh": "王船修復前的照片和兩份修復報告的紙本還沒取得，碑文也還沒對照原刻。",
+          "en": "Photographs of the royal boat before restoration and the printed copies of the two restoration reports have not been obtained, and the stele texts have not been checked against the original carvings."
+        },
+        {
+          "zh": "1913 與 1927 年《臺灣日日新報》的兩則報導沒有讀到原文。",
+          "en": "Two Taiwan Nichinichi Shinpō reports, from 1913 and 1927, were not read in the original."
+        },
+        {
+          "zh": "清代實錄、則例與諭旨沒有查閱；富美宮 1903 年的原件停在 B、C 等級；書中沒有廣東與浙江的第一手案例。",
+          "en": "The Qing Veritable Records, statutes and edicts were not consulted, the 1903 Fumei documents stand at grades B and C, and there are no firsthand cases from Guangdong or Zhejiang."
+        }
+      ]
+    }
+  ]
+}

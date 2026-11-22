@@ -91,7 +91,7 @@ test('离线 build：每页 GA4、五页 canonical/日期/sitemap、全站页脚
   const dir=await mkdtemp(join(tmpdir(),'pcv-consent-'));
   const oldFetch=globalThis.fetch;globalThis.fetch=()=>assert.fail('Build must not use network');
   try {
-    const result=await buildSite({out:dir});
+    const result=await buildSite({publishKnowledgeBase:true,out:dir});
     assert.equal(SITE_PAGES.length,5);
     for(const path of result.pages) {
       const file=join(dir,path.endsWith('.html')?path.slice(1):path.slice(1)+'index.html');

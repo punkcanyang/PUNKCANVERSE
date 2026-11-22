@@ -1,192 +1,58 @@
-# PUNKCANVERSE v0.5.2
+# PUNKCANVERSE
 
-AI VIDEO / IMAGE / MUSIC。Punkcan 的提示词收藏与制作笔记，正式网址 https://punkcanverse.com。视觉采用「深夜片场 · 影印批注」：暗色片场海报、局部黑红黄剪字与网点；正文与长文使用实色背景，优先阅读。
+Punkcan 的 AI 影像作品集。首頁以每部片的鏡頭色條呈現片單，可沿著色條預覽劇照，再進入作品頁觀看全片、閱讀導演筆記與製作名單。目前放映《旗津的風》與《紅毛港：一網撈起故鄉》。[英文首頁](https://punkcanverse.com/) · [繁中首頁](https://punkcanverse.com/zh/)
 
-无框架、无 npm 依赖、无外部字体。Node 内建模块生成静态页面；唯一 Pages Function 是保留 path/query 的 301 middleware。本版按补充需求加入 GA4 和 Consent Mode v2；X 官方 widgets.js 仍仅在用户点击播放后加载，不播放或转存 mp4，也不安装广告脚本。
+## 網站導覽
 
-## 页面结构
+英文使用根路徑，繁體中文使用 `/zh/`。舊英文 `/en/…` 與日文 `/ja/…` 網址會以 301 轉到對應的英文頁，保留查詢參數。下表列英文路徑，繁中路徑在前面加上 `/zh`。
 
-- `/`：片场首页、六条跨模型精选、全库搜索入口与工作流／作品入口。完整 192 条内容在 `/prompts/video/`；启用 JavaScript 后桌面与手机均先显示 12 条，点击「显示更多」继续。完整库卡片只附原文开头约 140 字预览与字数，全文在每条详情页；无 JavaScript 时全部卡片、预览与详情全文仍可访问。
-- `/prompts/fight/`：FIGHT/PROMPTS 打斗与械斗专栏，严格只列原来的 63 条；新收录不进入这个专栏。
-- `/prompts/video/`、`/prompts/image/`、`/prompts/music/`：独立媒介分页面。空分页有说明与视频入口；空分页不进入 sitemap。
-- `/prompts/<medium>/<id>/`：每条提示词的独立页，包括原作者、原帖、方法、模型版本、画幅、提示词、复制、推荐链接和 3 条相关提示词。
-- `/tips.html`：技术与资源，保留三份写法要点，以及推荐工具区。
-- `/regions.html`：AI 工具各地区使用与申诉。
-- `/takedown.html`：下架申请，48 小时内处理，无需先证明身份。
-- `/works/`、`/works/<slug>/`：个人作品列表与详情，支持图片、视频、简介及外链，三语同构。当前没有公开作品，显示空状态。旧 `/essays/` 三语入口保留为作品列表别名。
-- `/about/`、`/contact/`、`/privacy/`、`/terms/`、`/affiliate-disclosure/`：中文说明与政策，英文原文在 `/en/`，日文在 `/ja/`，更新日期为 2026-10-22。五页均进入 sitemap，页脚连到当前语言。唯一确认的联系邮箱为 hello@punkcanverse.com。
+| 路徑 | 內容 |
+| --- | --- |
+| `/`、`/films/<slug>/` | 電影片單與作品頁。播放時才載入該語言版本的 YouTube 播放器。 |
+| `/books/`、`/books/<slug>/` | 臺灣民間信仰書系五本書的介紹、製作揭露、參考書目、勘誤與還沒查到的部分。[書區規劃](docs/books-plan.md) |
+| `/creators/` | 「創作筆記」目錄，通往工作筆記、創作者合作計畫及比賽與徵件。 |
+| `/creators/production-notes/` | 雙語工作筆記。文章放在 `content/production-notes/`。 |
+| `/cpp/`、`/competitions/` | 創作者合作計畫、比賽與影展，沿用原網址。以首次收錄日由新到舊排列，同日依英文名稱排序。 |
+| `/works/`、`/essays/` | 既有的一般作品列表及其舊網址，目前列表為空。電影作品另見首頁。 |
+| `/about/`、`/contact/`、`/privacy/`、`/terms/`、`/affiliate-disclosure/`、`/takedown` | 網站介紹、聯絡、隱私、使用條款、推廣揭露與下架申請。 |
 
-所有页面输出 PUNKCANVERSE 标题、canonical、Open Graph 和 twitter:card。sitemap 精确列出首页、有内容的媒介列表、192 条详情、原 63 条专栏、技术与资源、地区、下架与个人作品；有公开作品时加入详情，旧文章详情仍兼容。robots 允许抓取并指向正式 sitemap。
+清單的英文與繁中共用 [公開資料檔](content/opportunities.json)。新增時只採用 Notion 已核實官方頁的項目，保留首次收錄日，更新雙語說明、官方連結、費用與各階段期限，再更新清單整理日期。建置與讀者瀏覽皆不需連線 Notion。
 
-## 三语与最终网址
+未來的教學區只刊登 Punkcan 自己撰寫或製作的原創教學，目前仍在規劃中。[教學區規劃](docs/redesign-plan.md)
 
-中文网址保持原样，英文与日文分别加 `/en`、`/ja` 前缀。`data/i18n/{zh,en,ja}.json` 存界面、法律页与技术资料译文；`data/i18n/content/{zh,en,ja}.json` 按 id 存标题、收藏笔记、工作流步骤说明、地区摘要与标签对照。提示词及工作流的 prompt/settings 原文不翻，放在标为原文的 pre 中。技术资料按中文逐段翻译，保留所有出处、数字、表格与原文范例；构建时检查段落结构与内容完整性，中文原始 Markdown 保持只读。
+原有知識庫的提示詞、工作流程、技巧、工具與地區資訊已暫停公開，舊網址回應 404。原始資料與測試保存在儲存庫。`publishKnowledgeBase` 控制這五個區塊的發布，日後上架原創教學時可維持 `false`。[站台設定](data/site.json)
 
-同页语言切换无需 JavaScript；启用后只在 `pcv-lang` 储存偏好，永不自动转址。偏好不同于当前页面时显示可关闭提示；关闭状态保存在当前分页的 sessionStorage，跨页有效，主动选择语言后重置。Cookie 同意仍共用 `pcv-consent`，每种语言都有完整 GA4 默认拒绝、同意与撤回控制。英文法律正文沿用 v0.3，并保留 v0.4 核准的三处英文界面引用修正。
+## 本機建置與檢查
 
-canonical、og:url、hreflang 与 sitemap 均用最终路径 `/tips`、`/regions`、`/takedown`，含所有语言对应网址；旧 `.html` 文件继续产出，导航仍可使用旧连结。其余目录路由不变，三语 hreflang 互指，x-default 指中文。构建 API 保留 `pages` 中文磁盘路由，并新增 `localizedPages` 完整三语描述清单，`sitemapUrls` 为全部最终网址。
-
-## 工作流
-
-第四个分页为 `/prompts/workflow/`，详情为 `/prompts/workflow/<id>/`，两者都有 en/ja 版本。`data/workflows.json` 使用 `{ "entries": [...] }` 外层结构，与提示词资料和外部 gate 的读取约定一致。只收指定的五条公开来源：作者、原帖、依序工具链、至少两个连续编号步骤、原文提示或设置、标签与收藏笔记。原文 prompt/settings 与 sourcePost 的来源指纹由测试锁定；不把工作流作为 medium 值，也不改旧类别筛选与 validateMedia。工作流一律无推广按钮。
-
-`validateWorkflows` 检查作者与网址对应、编号、工具链、内容完整性，以及中文、英文、日文禁词。缺公开提示的步骤明确说明，并保留作者的设置原文；原文块可复制。空资料 fixture 保留分页与零计数，并显示即将推出，不生成空详情页。
-
-缩图脚本现在合并提示词与工作流 id，仍使用同一套 250ms 间隔与失败保留旧值规则。五条初始缓存来自指定来源文件的公开预览地址与片长（source 为 provided-preview）；本环境实际请求失败，保留这些值并记录 stale。图片仍直接引用 pbs.twimg.com，不下载图片或影片。外部可再次运行抓取脚本更新快取。
-
-## 提示词资料与版权
-
-`data/prompts.json` 保持原有 63 条来源，v0.5.1 仅恢复其中 20 条的全文与清空摘录字段；其他字段及另外 43 条保持原样。`medium` 必填且只允许 video／image／music，当前全部为 video。新媒介分页组件为 `lib/media-tabs.mjs`；v0.2 的 `renderMediumFilter` 保持不变，仍只在至少两类有内容时输出旧筛选控件。首页路径不变。
-
-192 条提示词均保存并复制完整原文；每条三语独立页的 HTML 都包含完整 `<pre>`，无 JavaScript 也能阅读。长文使用可聚焦的垂直滚动区域和强制换行，复制不附加原帖网址。列表卡片以「提示词摘录」标示原文开头约 140 字（`promptPreview`），并列全文字数与「阅读全文」入口；卡片上的复制按钮带 `data-copy-remote`，点击时从 `assets/prompt-text.<hash>.json`（id → 原文）取完整原文，悬停或聚焦按钮时预先载入，Safari 等浏览器以 ClipboardItem 保留点击授权。提示词版权归原作者，每条必附作者与原帖；v0.5 另收 23 条经核对的阿里云官方文字范例，独立标示出处，不冒充 X 帖或生成假影片。成片用 X 官方嵌入显示，缩图直接引用 X 原图，两者均不转存到仓库或 dist。
-
-`postStatus: "removed"` 显示检查日期和失效说明，不创建嵌入。`postStatus: "sensitive"` 显示「原帖含敏感内容，请到 X 观看」，保留缓存缩图，点击外开原帖，不嵌入。1949860456958398844 已纠正为 sensitive。
-
-只有 `embedId` 存在时才用同作者串首嵌入，注明「影片取自同作者的串首帖」，原帖链接及复制内容仍指向原回复。上层不是同作者时标记 `replyNoVideo: true`，保留原回复并说明「此帖为回复，影片见原串」，不替换为其他作者的嵌入。
-
-可在提示词记录增加可选 Markdown 字符串 `breakdown`（原创拆解）与 `notes`（实测心得）。有内容才渲染，署名 Punkcan；无内容不输出空标题。本版未为收录条目编造拆解或实测。
-
-作者可经[下架入口](https://punkcanverse.com/takedown.html)或[GitHub issue](https://github.com/punkcanyang/PUNKCANVERSE/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7)申请下架。
-
-## v0.5 Wan 3.0 / MiniMax H3 收录
-
-新增 `data/prompts-wan-minimax.json`，独立保存指定来源的 129 条：Wan 3.0 系 113 条（含 5 条 Prime）、MiniMax H3 16 条；其中 106 条来自 X，23 条为阿里云官方范例。原库的 20 条长提示词在 v0.5.1 补回全文，另外 43 条及全部原有元数据不变，工作流仍为 5 条。构建按「原 63 条 → 新 129 条」稳定合并；`dist/catalog.json` 和 `dist/data.json` 保留完整库与原 63 条兼容资料。浏览器直接使用页面中的筛选元数据、可见译文及完整提示词，不再请求 catalog.json；详情页复制直接读取原文 pre；列表卡片复制与原文搜索按需读取 `assets/prompt-text.<hash>.json`，仍不请求 catalog.json。
-
-模型筛选使用 `Wan` / `MiniMax` 原始键，显示 Wan / Wan 3.0、MiniMax H3，Prime 的版本文字仍单独保留。新条目有三语标题、收藏笔记、标签及独立网址；原始提示不翻译；v0.5.1 起每条均完整发布，取消摘录限制。v0.5 交付时三语共 636 个 HTML、630 个最终 sitemap 网址，不含空图像／音乐分页面；目前数量见「个人作品」与下方检查记录。
-
-X 来源严格检查作者 handle、原帖 ID 和网址对应。Kangaikroto 两段使用 `2104507931337400770` / `2104507931337400770-2`，`embedId` 和 postUrl 都指同一帖；仅允许数字后接合法段号（从 2 起，无前导零），并要求存在同作者的第一段。官方资料走独立分支：`source: "official"`、`aliyun-wan3-<slug>`、固定署名、HTTPS `help.aliyun.com`；不得带 postUrl、authorHandle 或 embedId。官方卡片与详情不请求 X 嵌入或 X 图片；原文链接指官方文档。
-
-v0.5.2 为其中 22 条官方范例加入已核对的示例影片画面，原始 WebP 保存在 `web/img/official/`，build 原样复制到 `dist/img/official/`。每条 `officialThumb` 包含本地路径、原始尺寸及来源影片 URL；`lib/official-frames.json` 固定对应文档、尺寸、路径、字节数与 SHA-256，校验不允许其他图片或影片混入。三语列表与详情均使用固定 16:9 框、lazy/async 图片及官方文档来源链接；第 20 条直式画面置中裁切，第 17 条没有示例媒体，继续使用文字占位。仅这 22 张经批准的官方影片截图随站发布，X 图片与任何影片仍不转存；`data/thumbs.json` 不变。
-
-指定来源的 featured / featuredLive 合并为 featured，26 条新收录显示三语精选标记。所有新条目明确禁止推广按钮，原 Higgsfield 四条与 Magnific 推荐工具区不变。来源快照仅保存来源指纹和必要出处，用于离线测试核对完整原文、日期与作者；不收来源页面附件。
-
-缩图脚本合并两档的 X 条目与工作流，官方范例完全排除。PixelAigc 的 `2110747397441917172` 主帖无媒体，显示现有占位；其他抓取失败也安全回到占位，保留既有快取，不使用别帖缩图。实际网络抓取与人工验收状态见复核记录；build/test/verify 始终离线。
-
-## v0.5.1 全文保存
-
-按已核对的本地全文来源，恢复原库 20 条及 Wan / MiniMax 库 74 条长提示词。所有记录的 `prompt` 为完整非空原文、`promptLength === prompt.length`、`promptExcerpt: null`；`isLong` 只保留 `>1500` 的版面标记，不再限制显示或复制。两档旧的 lengthThreshold / excerptLength 元数据为兼容而保留，没有截断功能。
-
-`test/fixtures/v051-source-manifest.json` 保存全部 192 条来源全文与原元数据的 SHA256，正文未改写。短条目原文保持不变。`withFullPromptBaseline` 以 HEAD 构造精确的授权迁移预期，只允许原本 null 的长条目补回匹配来源的全文并清空摘录；其他字段继续深度比较。protectedDataPaths 完整保留，不排除任何新增资料。缩图缓存、工作流、推广配置与 middleware 均未改。
-
-长文 HTML 按文本节点安全转义 `&` / `<` / `>`，引号保持文字；短提示原有 HTML 表示不变。页面不再提示到原帖才能读全文，作者和来源连结仍保留。三语页面原文一致，未新增翻译或外部脚本。
-
-新增 `test/v051.test.mjs` 七项离线测试及 `scripts/verify-v051.mjs`：核对 192 条来源、576 个详情页、最长三条三语 HTML、全文复制、无 JS 可读、HTML 安全与精确迁移的负面 fixture。第 4 节每处旧断言变更及验证结果见 [v0.5.1 复核记录](docs/v051-review.md)。
-
-## 缩图抓取与缓存
-
-`data/thumbs.json` 只保存公开图片地址、媒体类型、片长、尺寸与抓取状态，不含作者账户字段或密钥。初始 63 条记录来自已核对的旧缓存；敏感条目依赖这份缓存，不能因再次抓取失败而清掉。
-
-手动或在构建前单独运行：
+使用 Node.js 22.8 以上版本，在專案根目錄執行。建置使用 Node.js 內建模組，不需安裝 npm 套件。
 
 ```sh
-node scripts/fetch-thumbs.mjs
-# 仅补缺图，保留已有有效快取（包含工作流）
-node scripts/fetch-thumbs.mjs --missing-only
+npm run build
+npm test
+npm run verify
 ```
 
-未设置 token 时使用公共 syndication 接口，token 参数为 a，请求间隔至少 250ms。已在执行环境安全配置 `X_BEARER_TOKEN` 时使用 X API v2，单批不超过 100 个 id；读取视频 preview_image_url、照片 url 以及尺寸与片长。请求 id 为 `embedId || id`。本版没有开通或调用付费 X API；测试只用假 fetch。
-
-每条失败（网络、非 200、tombstone、无媒体）都沿用该条旧 thumb、状态、尺寸与片长，增加过期标记；没有旧值才记 missing。全部失败仍正常结束并打印统计，不写入空缓存。旧缓存损坏时保留原文件，不冒险覆盖。更新通过临时文件和 rename 写入，避免半写入。
-
-build 只读缓存，不抓网络。缓存缺失、损坏或缺某条时，页面输出片场场记板占位。浏览器图片加载失败也回到相同占位。图片使用 pbs.twimg.com 公共原址、固定比例及 width/height，配合 lazy/async 加载；片长以 m:ss 显示。
-
-## 个人作品
-
-作品数据在 `content/works.json`，当前为 `{ "entries": [] }`。主入口 `/works/`，三语导航、首页与介绍文案同步更新。旧 `/essays/` 三语入口继续可读，canonical 与语言切换指向 `/works/`，别名不进入 sitemap；保留既有文章详情读取以兼容历史链接。
-
-作品支持三语标题、简介、说明、图片／视频直链及外链，只有明确 `published: true` 的条目进入输出。无封面不造图，无作品不生成假卡片或详情。媒体不随构建下载，不新增服务或费用。字段说明与发布步骤见 [个人作品维护](docs/works.md)。
-
-当前空数据输出 642 个 HTML、633 个最终 sitemap URL；每件公开作品增加三语详情。旧版交付数量见历史复核记录。
-
-## 推广链接与推荐工具
-
-`data/affiliates.json` 按平台配置 name、url、models，models 使用原始模型名。空网址或非 HTTP(S) 不输出按钮或空容器。对应模型出现「去 XX 试试」及「推广连结」标签；所有推广链接均使用 target="_blank" rel="sponsored noopener noreferrer"。
-
-本版仅启用已批准的 Higgsfield、Magnific 与 PixVerse 链接：Higgsfield 出现在其对应 4 条卡片及详情页；三语工具清单 `/tools`、`/en/tools`、`/ja/tools` 依序介绍 Higgsfield、Magnific、PixVerse，说明与价格之后才放推广按钮。技术与资源页只保留介绍及工具清单入口，不含推广网址或推广码。当前 192 条提示词没有 PixVerse 模型，因此卡片与详情都不显示 PixVerse 按钮；不修改模型标签来增加推广。平台有 code 字段时显示「推广码 xxx」，无 code 不输出；Magnific 的推广码为 GMRPOCT43296，PixVerse 没有推广码。其他平台网址保持空字符串。
-
-所有页尾保留揭露：「本站部分按钮为推广连结，通过它们注册或购买，本站可能获得佣金，不影响你的价格。」按钮旁标签及页尾揭露均链接到 `/affiliate-disclosure/`。不添加推广平台自己的追踪脚本。
-
-## Google Analytics 与 Cookie 选择
-
-每个 HTML 的 head 都加载指定 GA4 `G-NPK7CFCCT0`，先将 Consent Mode v2 的 analytics_storage、ad_storage、ad_user_data、ad_personalization 四项设为 denied，再按已保存的接受选择恢复 granted，最后执行 Google tag config。只有批准的两段内联模板与精确 Google tag 地址通过脚本白名单；Impact 验证保持不动。
-
-Cookie 横条提供「接受／拒绝」，选择保存为 `localStorage['pcv-consent']` 的 granted 或 denied，已选择时不再出现。底部条通过测量自身高度为 body 留出空间，宽度改变时重新测量，手机上不会压住页尾内容。所有操作为原生按钮，可键盘使用。
-
-页脚及 Privacy Policy 的「Cookie 设置」会清除选择、立即将四项更新为 denied，并重新打开横条。跨标签页修改会同步；存储被浏览器禁止时当前选择仍生效，但下次访问可能再次询问。Google tag 在 denied 状态也会加载，可能发送无 Cookie 的测量信号，不宣称拒绝后没有任何请求；浏览器可清理既有 Cookie。隐私说明另列 X 嵌入与推广方的独立处理、未来 AdSense 和 Resend 计划，未安装这些未来服务。
-
-实现依据：[Google Consent Mode 官方说明](https://developers.google.com/tag-platform/security/guides/consent)、[Google 合作网站信息使用说明](https://policies.google.com/technologies/partner-sites)。verify 与测试完全离线，不加载实际 Google 或 X 脚本。
-
-## 隐藏栏目与订阅
-
-`data/site.json` 的 models.enabled 为 false。所有对外 HTML、导航与 sitemap 都不出现该资源入口；verify 检查相关路径和文字。
-
-newsletter 保持 enabled:false、provider:beehiiv、embedUrl:""，逻辑沿用 v0.2，整块隐藏，导航不加电子报入口。将来启用仅接受 HTTPS 且精确域名为 beehiiv.com 或 embeds.beehiiv.com 的嵌入地址；为空、无效或关闭时均不输出空框。本版不创建账户或订阅。
-
-## 地区与申诉栏目
-
-地区数据、官方来源、2026-10-21 检查日期与中文免责声明沿用 v0.2。摘要与界面三语；原禁词清单不改，并新增英文与日文禁词。仅整理官方政策与申诉管道，不提供也不推荐任何绕过地区限制的方法。`lib/regions.mjs` 的禁词常数对完整 JSON 和整页 HTML 执行校验；verify 不发网络请求。原始参考文字不进入仓库。
-
-## 构建、测试与部署
-
-Node.js 22.8 或更新版本，无需 npm install。
+建置結果位於 `dist/`。若要預覽首頁與作品頁，可執行以下指令，再開啟 `http://127.0.0.1:8766/zh/`。正式站的 301 轉址由 Cloudflare Pages Functions 處理。
 
 ```sh
-npm run build && npm test && npm run verify
+python3 -m http.server 8766 --bind 127.0.0.1 --directory dist
 ```
 
-本版新增离线测试可单独运行：
+2026-11-09 核對時，GitHub 的 `main` 位於 `8323f6d`。上述三個指令可在該版本使用。**本機工作區另有尚未提交的檢查流程**，可執行 `npm run check`，依序建置、測試、驗證產物，再以 Chrome 檢查版面與互動。兩個版本的部署指令行為有差異，執行前請核對所在版本。[部署流程與最近驗證結果](docs/deployment-checks.md)
 
-```sh
-node --test --test-isolation=none test/v03.test.mjs
-node scripts/verify-v03.mjs
-node --test --test-isolation=none test/v04.test.mjs
-node scripts/verify-v04.mjs
-```
+## 維護入口
 
-v0.5 专项测试：
+| 要調整的內容 | 從哪裡開始 |
+| --- | --- |
+| 新增電影、更換封面或分語言影片 | [作品維護指南](docs/works.md)、[電影片單](content/films.json) |
+| 調整片單與作品頁的版型、互動 | [電影頁產生器](lib/films.mjs)、[樣式](web/films.css)、[瀏覽器互動](web/films.mjs) |
+| 維護提示詞、來源與縮圖 | [原始收藏](data/prompts.json)、[Wan 與 MiniMax 收藏](data/prompts-wan-minimax.json)、[完整原文核對紀錄](docs/v051-review.md)。建置只讀縮圖快取；手動補缺圖用 `node scripts/fetch-thumbs.mjs --missing-only`。 |
+| 修改工具資料或推廣連結 | [工具資料](data/tools.json)、[推廣設定](data/affiliates.json)、[工具清單審查紀錄](docs/v053-tools-review.md) |
+| 調整翻譯、網址或轉址 | [雙語資料](data/i18n/)、[頁面路徑](lib/routes.mjs)、[轉址規則](lib/redirect.mjs) |
+| 查閱改版決定與待辦 | [改版紀錄](docs/redesign-plan.md)，含學習區入口與短片色條的待決事項。 |
 
-```sh
-node --test --test-isolation=none test/v05.test.mjs
-node scripts/verify-v05.mjs
-```
+提示詞著作權歸原作者，提示詞原文與介面譯文分開維護。網站使用 GA4 與 Consent Mode v2，預設拒絕儲存；讀者可從頁尾調整 Cookie 設定。[下架申請](https://punkcanverse.com/zh/takedown) · [隱私政策](https://punkcanverse.com/zh/privacy/)
 
-测试覆盖假 X API 分批、syndication 解析和间隔、失败保留旧缓存、missing 与坏缓存占位、敏感内容、片长、三媒介分页、192 条详情与 sitemap、原 63 条专栏、23 条官方范例与 26 条新精选、可选原创笔记、文章 fixture、推广属性、延迟加载 widgets 和图片失败回退。build/test/verify 不访问网络；只有手动运行 fetch-thumbs 会请求网络，不下载任何媒体文件。
+## 歷史紀錄
 
-v0.2 的两段空推广配置测试已按复审要求使用 `test/fixtures/affiliates-empty.json`，原断言逐项保留；构建测试输出到临时目录，不改真实配置或正式 dist。真实 Higgsfield／Magnific 配置及 sponsored 属性单独验证，下架页与地区页仍严格断言零推广按钮。verify 的站名、完整 sitemap 与脚本精确白名单按 v0.3 及 GA4 补充需求校验，保留 Impact、内容、来源、媒体文件和推广安全检查。新增测试另覆盖 GA4 默认值顺序、已同意恢复、接受／拒绝／撤回、存储不可用、缺 ID 失败，以及五页 canonical、日期、sitemap、全站页脚入口与披露链接。
-
-部署由外部负责，在项目根目录运行：
-
-```sh
-npx wrangler pages deploy dist --project-name fight-prompts
-```
-
-Wrangler 会自动带上根目录 functions/。middleware 仅将 www.punkcanverse.com 与旧正式 Pages host 301 到 HTTPS apex，保留 path/query；预览子域名和 apex 调用 next()。旧 tips.html、regions.html、takedown.html 文件保留；安全标头与 Impact 站点验证保持不动。
-
-.env* 已忽略。密钥只从执行环境读取，不写入文件、不打印 token，不保存真实对话、未确认的联系方式或账户资料。所有实际 X 播放、图片加载、移动端视觉与推广落地页需要在浏览器中人工验收。
-
-可选离线排版检查（需要已有 Chrome，无需安装套件）：
-
-```sh
-node scripts/check-layout.mjs
-```
-
-它用本地 dist 去除远端资源，阻断 HTTP(S)，检查三语代表页在 360／390／1440 的 document 宽度，含后备字体与 Cookie 条。本轮在允许启动 Chromium 的环境通过 144 项离线宽度检查，另新增 `CHROME_BIN=/usr/bin/chromium node scripts/check-reading-ux.mjs` 验证真实模块的三语搜索、复制、排序、历史与显示更多。此脚本通过请求拦截加载 dist，所有外部请求均阻断；真实 X 播放与外链仍需联网验收。v0.5 交付记录、精确数量断言变更与三语各十句抽样见 [v0.5 复核记录](docs/v05-review.md)。历史记录见 [v0.4 复核记录](docs/v04-review.md)。
-
-作者：[@punkcan](https://x.com/punkcan)
-
-## 工具清单与资料来源
-
-`data/tools.json` 保留 2026-10-23 核准 facts 的全部值与 source，以及逐项附 fact 路径和 source 的三语文案。建置会校验原始资料指纹与译文数字来源，价格直接取 facts，未公开的值明确显示「未公開／Not disclosed／非公開」。2023 年对 Higgsfield、PixVerse 表示公司成立，Magnific 为 2023 年 11 月产品推出；年缴折算月费、点数发放周期与每席计价独立标示，不补推测价格。
-
-三语输出 `tools.html`，canonical 与 sitemap 使用不带 .html 的最终网址。官方定价页是普通外连，只有三个推广按钮使用 sponsored；Magnific 的推广码仅在工具清单出现。原四条 Higgsfield 提示词的按钮不变，旁边新增本语言的工具介绍入口。新增功能与逐项断言变更见 [v0.5.3 工具清单交付记录](docs/v053-tools-review.md)。
-
-
-## 阅读与查找体验更新（2026-10-23）
-
-沿用现有黑／橙／黄视觉。功能元数据提升至 12–13px，原文与操作约 14px，主要正文 16px；手机导航换行，各栏目按路由高亮。列表页有独立一级标题，详情页超过 1000 字的原文提供展开／收起（列表卡片只显示预览），复制状态同时显示在按钮旁与 Cookie 条上方。
-
-提示词库搜索标题、作者、模型、标签、笔记及原文；多关键词取交集，支持全角规范化与大小写不敏感。模型／标签仍保留原有同类 OR、跨类 AND 规则。排序支持收录顺序、精选优先、最新发布；同值保持原顺序。URL 使用 `q`、`sort`、`model`、`tag`，清除时保留无关参数，旧首页筛选 URL 转到同语言完整库。排序移动现有卡片节点，不重建提示词或已加载的嵌入。
-
-首页使用已有 featured 标记选择六条，优先覆盖不同模型，不新增精选事实，也不展示敏感／失效帖。首页中文 HTML 由约 1.10 MB 降到约 47 KB（未压缩）；2026-11-03 完整库瘦身：列表卡片改为原文预览，`/prompts/video/` 中文 HTML 由约 1.19 MB 降到约 720 KB（gzip 约 294 KB → 96 KB）。搜索先比对卡片可见文字（标题、作者、模型、标签、笔记、预览），在聚焦搜索框或带 `q` 时载入 `assets/prompt-text.<hash>.json`（约 490 KB，gzip 约 200 KB）后加入完整原文再重新筛选；载入失败时保留可见文字搜索，背景载入 10 秒内不重试，点击复制则立即重试。文件名带内容 SHA-256 前 12 码，页面以 `body[data-prompt-text]` 指向同版本文件，部署后不会出现新页面配旧原文；找不到对应 id 时复制明确显示失败。
-
-分享封面为本站原创品牌图 `web/img/site/share.png`，构建复制到 `/img/site/share.png`；它与作者媒体无关，来源和推广资料不变。新增验证见 `test/reading-ux.test.mjs`、`scripts/check-reading-ux.mjs`，历史断言迁移原因见 [阅读体验复核](docs/reading-ux.md)。
+三語版本的頁數、來源校驗、舊版首頁與歷次審查保留在原始提交與各版紀錄中。[改版前的 README 紀錄](https://github.com/punkcanyang/PUNKCANVERSE/blob/8323f6d5a021468965d528ed779da176f4a1c6b3/README.md) · [v0.4](docs/v04-review.md) · [v0.5](docs/v05-review.md) · [v0.5.1](docs/v051-review.md) · [v0.5.2](docs/v052-review.md) · [v0.5.3](docs/v053-tools-review.md) · [閱讀與搜尋體驗](docs/reading-ux.md)

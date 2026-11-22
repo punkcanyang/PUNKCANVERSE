@@ -8,7 +8,7 @@ import {buildSite} from '../build.mjs';
 test('阅读更新：三语精简首页、完整库、页面主标题、导航状态与分享图片',async()=>{
   const out=await mkdtemp(join(tmpdir(),'pcv-reading-'));
   try {
-    await buildSite({out});
+    await buildSite({publishKnowledgeBase:true,out});
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
     for(const lang of ['', 'zh/']) {
       const home=await readFile(join(out,lang,'index.html'),'utf8');

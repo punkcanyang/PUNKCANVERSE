@@ -1,0 +1,2464 @@
+{
+  "reviewed": {
+    "cpp": "2026-11-20",
+    "competitions": "2026-11-20"
+  },
+  "entries": [
+    {
+      "section": "cpp",
+      "added": "2026-11-20",
+      "source": "https://flick.art/creative-partners",
+      "host": "Flick",
+      "deadlines": [],
+      "zh": {
+        "name": "Flick 創作者合作計畫",
+        "summary": "每月至少分享 2 篇短片、工作流程或案例，並參與合作創作者 Discord 的回饋討論。",
+        "reward": "免費創作點數、新功能搶先體驗、專屬支援及曝光；推薦付費方案可獲 30% 佣金。",
+        "details": "持續招募，須分享個人合作連結。官方未公布固定點數額度、最低追蹤人數或地區限制；申請方式請向官方確認。"
+      },
+      "en": {
+        "name": "Flick Creative Partner Program",
+        "summary": "Share at least two films, workflow posts or case studies each month and join feedback discussions in the partner Discord.",
+        "reward": "Free credits, early access, dedicated support and exposure; 30% commission on referred paid plans.",
+        "details": "Ongoing recruitment requires sharing your partner link. No fixed credit allowance, follower minimum or regional eligibility is published; confirm the application route with Flick."
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-20",
+      "source": "https://creator.renoise.ai/",
+      "host": "Renoise",
+      "deadlines": [],
+      "zh": {
+        "name": "Renoise 創作者合作計畫",
+        "summary": "附公開作品與社群帳號申請，沒有最低追蹤人數。三個層級每期至少完成 1、2 或 4 支影片。",
+        "reward": "Rising 每期 1,200 點、Pro 3,600 點、Featured 14,000 點；最高層級另有 7 天影片無限生成。",
+        "details": "續期依當期交件與審核結果；進階須達作品數並通過品質審查。互動點數、教學現金與 Skill 獎勵各有核算規則，不是加入後固定領取的月薪。"
+      },
+      "en": {
+        "name": "Renoise Creator Partner Program",
+        "summary": "Apply with public work and social profiles; no follower minimum. The three tiers require at least one, two or four videos per cycle.",
+        "reward": "Rising: 1,200 credits; Pro: 3,600; Featured: 14,000 plus seven days of unlimited video generation per cycle.",
+        "details": "Renewal depends on approved work; advancement also involves quality review. Engagement credits, tutorial cash and Skill rewards have separate performance rules and are not a guaranteed monthly salary."
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-20",
+      "source": "https://pollo.ai/creative-partner-program",
+      "host": "Pollo AI",
+      "deadlines": [],
+      "zh": {
+        "name": "Pollo AI 創作者合作計畫",
+        "summary": "適合持續創作並公開分享的 AI 影像創作者，申請時附作品集與社群資料。",
+        "reward": "每月 2,000 點、新模型搶先體驗、官方曝光與優先合作機會；推薦分潤最高 30%。",
+        "details": "沒有硬性發文數，標註品牌屬鼓勵而非強制。官網未列最低追蹤人數；作品集與持續經營的公開帳號仍是申請條件。"
+      },
+      "en": {
+        "name": "Pollo AI Creative Partner Program",
+        "summary": "For active AI image and video creators. Apply with a portfolio and public social profiles showing regular creation and sharing.",
+        "reward": "2,000 monthly credits, early access, official exposure and priority collaboration; affiliate commissions up to 30%.",
+        "details": "No rigid posting quota; attribution is encouraged rather than mandatory. No numerical follower minimum is listed, but a portfolio and an active public presence are required."
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-20",
+      "source": "https://docs.google.com/forms/d/e/1FAIpQLSdSxWFQMKnIK_9NbiRe9kmdw3nDbmgqFQ-FGmQHPkMcN3PG1A/viewform",
+      "host": "Kling AI",
+      "deadlines": [],
+      "zh": {
+        "name": "可靈 AI Elite Creators 菁英創作者計畫",
+        "summary": "不以影響力或資歷設門檻，適合願意公開分享可靈作品、提供產品回饋的創作者。",
+        "reward": "每月免費 Pro 方案或 3,000 點、新功能測試、團隊支援及平台徽章。",
+        "details": "申請須填可靈 ID、作品連結與社群資料。已有付費方案者可選 3,000 點加值；未訂閱者可選含點數的 Pro。此計畫與 NextGen 創投分開。"
+      },
+      "en": {
+        "name": "Kling AI Elite Creators Program",
+        "summary": "For creators who share Kling work publicly and offer product feedback, regardless of audience size or credentials.",
+        "reward": "Monthly Pro plan or 3,000 credits, early features, team support and an Elite Creator badge.",
+        "details": "Provide your Kling ID, a Kling-made work and social profiles. Existing subscribers can choose the credit top-up; others can choose Pro with credits. This is separate from NextGen funding."
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-20",
+      "source": "https://www.domoai.app/en/cpp",
+      "host": "DomoAI",
+      "deadlines": [],
+      "zh": {
+        "name": "DomoAI 創作者合作計畫",
+        "summary": "每月分享 2 至 5 篇使用 DomoAI 的作品、幕後或教學，並標註品牌；不要求大量追蹤者。",
+        "reward": "一般夥伴先獲 1 個月 Pro；進階 Elite 可獲 3 個月 Pro、每篇合格貼文 50 美元及觀看獎勵。",
+        "details": "每篇 50 美元屬 Elite 層級，須經官方審核，並非所有申請者都有。現金只經 PayPal 結算；續約依三個月內的貢獻審核。"
+      },
+      "en": {
+        "name": "DomoAI Creative Partner Program",
+        "summary": "Publish two to five DomoAI works, behind-the-scenes posts or tutorials monthly with attribution; a large following is not required.",
+        "reward": "Entry partners receive one month of Pro. Elite partners can receive three months of Pro, US$50 per approved post and view-based bonuses.",
+        "details": "The US$50 posting payment is an Elite benefit, not an automatic reward for applicants. Only staff-approved posts qualify. Cash is paid through PayPal; renewal follows a three-month contribution review."
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-20",
+      "source": "https://www.hedra.com/docs/pages/app/account/creator-program",
+      "host": "Hedra",
+      "deadlines": [],
+      "zh": {
+        "name": "Hedra 創作者大使計畫",
+        "summary": "開放內容創作者與合作夥伴透過官方文件連結的 Dub 表單申請。",
+        "reward": "免費方案與點數、推薦佣金、新功能搶先體驗、官方社群曝光及團隊合作。",
+        "details": "官方預估審核約 1 至 2 週。文件未列固定點數、佣金比例、追蹤人數門檻或交件配額，詳細條件須以錄取通知確認。"
+      },
+      "en": {
+        "name": "Hedra Ambassador Program",
+        "summary": "Creators and partners can apply through the Dub application linked in Hedra’s official documentation.",
+        "reward": "Free plans and credits, affiliate commissions, early access, official social features and team collaboration.",
+        "details": "Review is estimated at one to two weeks. Fixed credit grants, commission rates, follower thresholds and delivery quotas are not specified in the documentation; confirm them upon acceptance."
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-20",
+      "source": "https://az8.art/ja/event/az8-cpp-season-2",
+      "host": "AZ8",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-14T19:00:00+09:00"
+        }
+      ],
+      "zh": {
+        "name": "AZ8 第二期創作者合作計畫",
+        "summary": "招募日本與歐美地區創作者，為期兩個月。Pro 每月至少 1 支 60 秒 Seedance 影片，Partners 至少 2 支 30 秒影片；Zumi 組分享 Agent 使用流程。",
+        "reward": "三組每月分別 100,000、38,000、15,000 點，沒有現金或舊制 Ultra 會員。",
+        "details": "第二個月點數須通過首月交件審核。申請後須引用轉發官方招募貼文；作品同步發至 AZ8 社群及公開社群，影片加官方浮水印。台灣等未列地區資格待確認。"
+      },
+      "en": {
+        "name": "AZ8 Creator Program · Season 2",
+        "summary": "A two-month call for Japan and Western regions. Pro requires one 60-second Seedance film monthly; Partners two 30-second films; Zumi applicants share Agent workflows.",
+        "reward": "Monthly grants: 100,000, 38,000 or 15,000 credits by track. No cash or legacy Ultra membership.",
+        "details": "Month two requires approval of month-one work. Quote-repost the recruitment post after applying, publish in AZ8 Community and public social media, and watermark videos. Eligibility outside the named regions, including Taiwan, is unconfirmed."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-20",
+      "source": "https://adarena.app/challenges/guardio",
+      "host": "AdArena / Guardio",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-03T22:00:00+02:00"
+        }
+      ],
+      "zh": {
+        "name": "Guardio × AdArena AI 廣告競賽",
+        "summary": "為手機安全服務 Guardio 製作 25 至 55 秒直式廣告，使用美式英文，受眾為美國 35 至 55 歲觀眾；每人最多 3 件。",
+        "reward": "60 個名額，總值 12,500 美元包含 8,500 美元現金及 4,000 美元 Kolbo 點數；首獎 2,000 美元。",
+        "details": "影片須公開發布並附連結。Instagram 另須邀官方帳號協作。頁面稱 IST，結構化期限確認為 UTC+2。商業使用權依現行投稿協議及付費交易處理。",
+        "fee": "官方頁面未列報名費。"
+      },
+      "en": {
+        "name": "Guardio × AdArena AI Ad Competition",
+        "summary": "Make a 25–55-second vertical phone-security ad in US English for a US audience aged 35–55. Up to three entries per creator.",
+        "reward": "60 places: US$8,500 cash plus US$4,000 in Kolbo credits, for US$12,500 total value. First prize: US$2,000.",
+        "details": "Publish publicly and submit the link; Instagram posts require collaborator invitations. The page labels the timezone IST; structured data confirms UTC+2. Commercial brand rights require the paid transaction under the current submission agreement.",
+        "fee": "Not stated on the official page."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-20",
+      "source": "https://hyderabadaifilmfestival.com/",
+      "host": "CINIC / Hyderabad AI Film Festival",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-28"
+        }
+      ],
+      "zh": {
+        "name": "2026 海德拉巴 AI 影展（HAIFF）",
+        "summary": "徵集 3 至 15 分鐘 AI 短片，或最長 30 秒、虛構品牌的 AI 廣告。畫面與音訊皆須由 AI 生成，附英文字幕。",
+        "reward": "六項獎金合計 375,000 印度盧比；短片首獎 100,000，廣告首獎 75,000。",
+        "details": "透過 CINIC 報名，可提交多件原創作品。影展於 12 月 9 日舉行；官方僅列 11 月 28 日截止，未列截止時刻與時區。",
+        "fee": "官網未列明，請核對報名頁。"
+      },
+      "en": {
+        "name": "Hyderabad AI Film Festival 2026 (HAIFF)",
+        "summary": "Submit a 3–15-minute AI short or an AI ad of up to 30 seconds for a fictional brand. Both visuals and audio must be AI-generated, with English subtitles.",
+        "reward": "Six awards total INR 375,000; first prizes are INR 100,000 for shorts and INR 75,000 for ads.",
+        "details": "Apply through CINIC; multiple original entries are allowed. The festival takes place December 9. The November 28 deadline has no published cutoff time or timezone.",
+        "fee": "Not stated on the festival site; check the registration page."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-20",
+      "source": "https://albrechtdurer.co.kr/en/contest",
+      "host": "Albrecht Dürer",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-31T18:00:00+09:00"
+        }
+      ],
+      "zh": {
+        "name": "Albrecht Dürer AI 影像獎",
+        "summary": "以 AI 影像重新詮釋品牌的鑽石眼鏡，不限年齡、國籍或專業領域。",
+        "reward": "首獎 3,130,000 韓元及 FORGED 鑽石眼鏡；二、三獎分別 1,000,000 與 500,000 韓元。",
+        "details": "英文官方頁確認截止為韓國時間 18:00。透過品牌私訊或電子郵件投稿；片長、檔案規格、授權及海外領獎方式尚未詳列。",
+        "fee": "官方頁面未列報名費。"
+      },
+      "en": {
+        "name": "Albrecht Dürer AI Video Prize",
+        "summary": "Reinterpret the brand’s diamond eyewear through AI video. Open to all ages, nationalities and disciplines.",
+        "reward": "First: KRW 3,130,000 and FORGED eyewear; second: KRW 1,000,000; third: KRW 500,000.",
+        "details": "The English official page specifies 18:00 KST. Enter by private chat or email. Runtime, file specifications, licensing and overseas prize delivery are not detailed.",
+        "fee": "Not stated on the official page."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-20",
+      "source": "https://www.bifu.co/blog/bifu-ai-video-contest-round-1",
+      "host": "BiFu",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-04"
+        }
+      ],
+      "zh": {
+        "name": "BiFu AI 創意影片大賽第一季",
+        "summary": "製作以 BiFu Wealth 產品為主題的 AI 影片，公開發布並完成報名；官網規定至少 20 秒。",
+        "reward": "首獎 18,888 美元須達 98 分，其他獎項亦有最低分；500,000 美元為八季合計，非本季獎池。",
+        "details": "11 月 23 日至 12 月 4 日宣傳期仍可報名，未列截止時刻與時區。評審占 60%、傳播占 40%，可缺獎；參加抽獎給的是試用金。投稿含宣傳及廣告使用授權，帳號與地區資格須核對報名條件。",
+        "fee": "官方公告未列報名費。"
+      },
+      "en": {
+        "name": "BiFu AI Creative Video Contest · Season 1",
+        "summary": "Create a public AI video about BiFu Wealth and complete registration. The official article requires at least 20 seconds.",
+        "reward": "The US$18,888 top award requires 98 points; other awards also have thresholds. US$500,000 covers eight seasons, not this round.",
+        "details": "Registration continues through the November 23–December 4 promotion phase; no cutoff time or timezone is listed. Judging is 60% jury and 40% engagement; awards can remain vacant. Participation draws offer trial credits. Entries grant advertising use; confirm account and regional eligibility.",
+        "fee": "Not stated in the official announcement."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-20",
+      "source": "https://www.wfcmw.cn/334165/2026/11/45559397.html",
+      "host": "Weifang Municipal Media Center / Bank of Weifang",
+      "deadlines": [],
+      "zh": {
+        "name": "「用 AI 講好濰坊故事」AIGC 創意影片大賽",
+        "summary": "以濰坊城市文化為主題，提交 30 至 180 秒、16:9、至少 1080p 的原創未公開 AI 影片，每人或團隊最多 3 件。徵集至 2026 年 12 月底。",
+        "reward": "一至三等獎設現金、證書與獎盃，金額未公布；另有創意、傳播及組織獎。",
+        "details": "官方未列確切截止日期、時刻或時區。須附 AI 創作說明，禁止重複參賽及參賽期間自行公開；主辦方有公益使用授權，得獎作品再授權、商用或另投比賽須書面許可。",
+        "fee": "免費"
+      },
+      "en": {
+        "name": "Telling Weifang Stories with AI · AIGC Video Competition",
+        "summary": "Create an original, unreleased 30–180-second film about Weifang in 16:9 at 1080p or higher. Up to three entries per creator or team. Submissions run until the end of December 2026.",
+        "reward": "Cash, certificates and trophies for the top three tiers; amounts unpublished. Additional creative, publicity and organisation awards.",
+        "details": "No exact deadline date, time or timezone is published. Include an AI process statement. Concurrent competition entries and public release during the contest are prohibited. Public-interest use is licensed; award-winning works need written permission for further licensing, commercial use or competitions.",
+        "fee": "Free"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-20",
+      "source": "https://item.btime.com/f6o27us4cb28ojbjbgs330pntse",
+      "host": "Daxing District Publicity Department / Btime",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-31"
+        }
+      ],
+      "zh": {
+        "name": "「興光 AIGC」南海子短影音大賽",
+        "summary": "以南海子歷史、文化或生態為題，提交 60 至 300 秒 AI 短片，附中文字幕及橫、直兩款封面，作品須未公開。",
+        "reward": "稅前總獎金人民幣 100,000 元；一等獎 30,000，二等獎 2 名各 20,000，三等獎 3 名各 10,000。",
+        "details": "至少 1080p、MP4 或 MOV，須有 AI 標示並附創作說明與版權承諾。主辦方可公開播映及無償宣傳使用；商業開發另約。簡章截止日為 12 月 31 日，未列時區。",
+        "fee": "官方簡章未列報名費。"
+      },
+      "en": {
+        "name": "Xingguang AIGC · Nanhaizi Short Video Competition",
+        "summary": "Create a previously unpublished 60–300-second AI film about Nanhaizi’s history, culture or ecology, with Chinese subtitles and both landscape and portrait covers.",
+        "reward": "RMB 100,000 before tax: first prize 30,000; two second prizes of 20,000; three third prizes of 10,000.",
+        "details": "Submit MP4 or MOV at 1080p or higher with AI labels, a process statement and rights declaration. Organisers may screen and promote entries without payment; commercial development requires a separate agreement. Rules give December 31 without a timezone.",
+        "fee": "Not stated in the official rules."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-20",
+      "source": "https://forms.gle/ncmpvXnUdYYBiXcX9",
+      "host": "Myongji College / Seoul Local Brand AI Content Marketing",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-04"
+        }
+      ],
+      "zh": {
+        "name": "首爾在地品牌 AI 內容行銷競賽",
+        "summary": "使用官方商品素材，為 Ooznary 噴霧或 TOOLIF 髮捲製作 15 至 60 秒直式廣告；至少一道製作流程使用生成式 AI。",
+        "reward": "共 7 組、總獎金 2,000,000 韓元，首獎 1,000,000 韓元。",
+        "details": "提交 9:16、1080×1920 MP4，公開上傳 Reels 或 Shorts 並加指定標籤。表單列 12 月 4 日上午 11:00，未明寫時區。表單接受學生與一般人士；海外資格待確認。作品可用於主辦方與品牌宣傳。",
+        "fee": "官方表單未列報名費。"
+      },
+      "en": {
+        "name": "Seoul Local Brand AI Content Marketing Competition",
+        "summary": "Use supplied product assets to make a 15–60-second vertical ad for Ooznary mist or TOOLIF hair rollers. Use generative AI in at least one production step.",
+        "reward": "Seven awards total KRW 2,000,000; first prize KRW 1,000,000.",
+        "details": "Submit a 9:16, 1080×1920 MP4 and a public Reels or Shorts post with required hashtags. The form specifies December 4 at 11:00 a.m. without a timezone. Students and the general public may apply; overseas eligibility is unconfirmed. Organisers and brands may use entries for promotion.",
+        "fee": "Not stated in the official form."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-20",
+      "source": "https://aigc.sutisport.com/",
+      "host": "Gulou District Nanjing / Jiangsu Sports Industry Group / ByteDance Jiangsu",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-15"
+        }
+      ],
+      "zh": {
+        "name": "江蘇省城市足球聯賽 AIGC 創作大賽",
+        "summary": "以「蘇超」為題，設 IP 形象、原創歌曲、AI 短影音及 AI 短漫劇四類，可依資格選個人／團隊、企業或家庭組。",
+        "reward": "官方公告列總獎金人民幣 180,000 元；家庭組為非競技組別，只頒證書、不發獎金。",
+        "details": "官方活動資料確認報名至 12 月 15 日 23:59:59，但未附時區。需手機驗證註冊；個人表單接受護照與港澳台證件，企業另交資格文件。素材下載須登入，作品規格依組別確認。",
+        "fee": "官方公開資料未列報名費。"
+      },
+      "en": {
+        "name": "Jiangsu City Football League AIGC Competition",
+        "summary": "Create IP designs, original songs, AI short videos or AI short dramas about the Jiangsu football league. Individual/team, enterprise and family groups are offered.",
+        "reward": "RMB 180,000 announced. The non-competitive family group receives certificates, not cash prizes.",
+        "details": "Official data gives December 15 at 23:59:59 without a timezone. SMS registration is required. Individual forms accept passports and Hong Kong, Macao or Taiwan documents; enterprises provide credentials. Assets require login; confirm specifications for your group.",
+        "fee": "Not stated in the public official information."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-20",
+      "source": "https://www.memeaigc.cn/race/oct",
+      "host": "MemeAIGC / Origin Cup",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-24T23:59:59+08:00"
+        }
+      ],
+      "zh": {
+        "name": "第二屆原點杯・十月賽季「上場，就現在」",
+        "summary": "以運動與健康為題，設 AI 影片、音樂及圖片三類。影片至少 1 分鐘、1080p，AI 內容至少 70%，不限工具。",
+        "reward": "本季三類合計獎池人民幣 90,000 元，各獎項依賽道規則。",
+        "details": "提交 MP4 或 MOV 與 300 字內創作說明，入圍複賽須答辯。官方期限為 UTC+8。聲明含作品提交後視為進入公共領域的條款；曾獲其他同類賽事重要獎項的作品須申報並另審資格。",
+        "fee": "公開簡章未明列，請確認報名頁。"
+      },
+      "en": {
+        "name": "Origin Cup · October Season: Step Up Now",
+        "summary": "A sports-and-health theme across AI video, music and images. Videos must run at least one minute at 1080p, with at least 70% AI content; any tool is allowed.",
+        "reward": "RMB 90,000 across the season’s three tracks; awards follow track rules.",
+        "details": "Submit MP4 or MOV and a process statement within 300 Chinese characters; shortlisted entrants must present their process. Official data confirms UTC+8. The declaration says entries enter the public domain. Previous major awards in similar competitions require disclosure and eligibility review.",
+        "fee": "Not explicit in the public rules; confirm on registration."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-18",
+      "source": "https://zopia.ai/zh/creator-challenge",
+      "host": "Zopia / Vidu",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-07T18:00:00+08:00"
+        }
+      ],
+      "zh": {
+        "name": "Zopia × Vidu 第二屆創作大賽",
+        "summary": "徵求 30 至 60 秒的原創 AI 影片，主要生成工作須在 Zopia 使用 Vidu 完成，後製可用其他工具。",
+        "reward": "五個獎項各頒 100 美元與 6,000 Vidu 點數，每人最多獲一獎。報名審核通過可領 200 Zopia 通用點數及 300 Vidu 點數。",
+        "details": "全球創作者皆可參加，可投多部作品。公開發片時標註 Zopia、Vidu，加入 #ZopiaViduChallenge 與 #Zopia第二届创作大赛，再填官方投稿表。評審期間須保持公開。",
+        "fee": "公告未列報名費，生成所需點數依平台計費"
+      },
+      "en": {
+        "name": "Zopia × Vidu Cinematic Creation Challenge · 2nd edition",
+        "summary": "Create an original AI video of 30–60 seconds, with the core generation done in Vidu on Zopia. Other tools may be used for post-production.",
+        "reward": "Five awards of US$100 plus 6,000 Vidu credits, with one award per creator. Approved registrations receive 200 general Zopia credits and 300 Vidu credits.",
+        "details": "Open worldwide, with multiple entries allowed. Publish publicly, tag Zopia and Vidu, add #ZopiaViduChallenge and #Zopia第二届创作大赛, then complete the official submission form. Posts must stay public during judging.",
+        "fee": "No entry fee stated. Generation uses platform credits."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-18",
+      "source": "https://aiart.gbgs.art/guide",
+      "host": "Gyeongsan City / Gyeongbuk Institute of IT Convergence Industry Technology",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-23T23:59:00+09:00"
+        }
+      ],
+      "zh": {
+        "name": "2026 慶山市 AI 媒體內容徵件",
+        "summary": "從慶山風景與人物、未來城市、地方特色影像、AI 改變的街區或與 AI 共度一天等五個主題選一，製作最長 90 秒的橫式影片。",
+        "reward": "共 24 個獎項，創作獎助金總額 3,200 萬韓元，綜合大獎 500 萬韓元。地方優秀獎另限具慶山居住、就學或任職資格者。",
+        "details": "個人或團隊皆可，須為未公開、未在其他比賽得獎的新作，每人限參與一件。上傳 16:9、FHD 至 4K 的 MP4 H.264，並附 AI 工具、使用方式與提示詞紀錄。青少年組由監護人帳號報名；時間按韓國標準時間換算。",
+        "fee": "簡章未列報名費"
+      },
+      "en": {
+        "name": "Gyeongsan AI Media Content Competition 2026",
+        "summary": "Make a landscape video of up to 90 seconds on one of five themes: Gyeongsan places and people, its future, local visual identity, AI changing a neighbourhood, or a day with AI.",
+        "reward": "KRW32 million across 24 awards, including a KRW5 million grand prize. Local excellence awards require a Gyeongsan residence, school or workplace connection.",
+        "details": "Individuals and teams may enter an unpublished original that has not won another competition. Each person may participate in one entry only. Upload a 16:9 FHD–4K MP4 in H.264, with AI-tool usage and prompt records. Youth entries use a guardian’s account. Times are interpreted as Korea Standard Time.",
+        "fee": "No entry fee stated in the guidelines"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-18",
+      "source": "https://feng.ifeng.com/c/8y6gFob7Lit",
+      "host": "防城港市融媒體中心 / Fangchenggang Media Center",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-30"
+        }
+      ],
+      "zh": {
+        "name": "2026 防城港馬拉松 AI 短影片徵件",
+        "summary": "結合防城港馬拉松與當地風景、人文、美食或民俗，製作 90 秒以內的 AI 短影片。開放個人、團體與東協創作者參加。",
+        "reward": "首獎人民幣 1,200 元，二獎 3 名各 500 元，三獎 6 名各 300 元，另有證書與官方展播。",
+        "details": "須為投稿前未公開、未在其他賽事得獎的原創作品。以至少 1080p、16:9 或 9:16 投稿，附 AI 使用說明及報名表寄至公告信箱；同時在抖音或微信影片號發布，加入指定標籤並標註主辦方。來源為市融媒體中心公告的轉載，原文寫 11 月 30 日 24:00，未列時區。",
+        "fee": "免費"
+      },
+      "en": {
+        "name": "Fangchenggang Marathon AI Short Video Competition 2026",
+        "summary": "Create an AI video of up to 90 seconds connecting the Fangchenggang Marathon with local landscapes, culture, food or traditions. Individuals, teams and ASEAN creators may participate.",
+        "reward": "CNY1,200 for first place, three awards of CNY500 and six of CNY300, plus certificates and official screenings.",
+        "details": "Entries must be original, unpublished before entry and not previously awarded elsewhere. Submit at least 1080p in 16:9 or 9:16, with an AI-use description and entry form, to the listed email. Also post on Douyin or WeChat Channels with the required tag and organiser mention. The linked republication credits the city media centre. Its deadline is November 30 at 24:00, with no timezone stated.",
+        "fee": "Free"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-18",
+      "source": "https://x.com/SaiDotFun/status/2121988707444277447",
+      "host": "Sai",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-23T23:59:00-08:00"
+        }
+      ],
+      "zh": {
+        "name": "Sai AI Video Contest",
+        "summary": "用交易元素編一個故事，喜劇、恐怖或動畫皆可。限為本次活動製作的新片，片長 15 秒至 2 分鐘，須加官方片尾卡。",
+        "reward": "前三名分別獲價值 500、250、100 美元的 USDC 交易點數。",
+        "details": "官方已將期限從 11 月 16 日延至 11 月 23 日 23:59 PT。加入 Sai Discord，將作品發到 X、Instagram 和 TikTok，標註 Sai、三位朋友與 #SaiAIVideoContest，再把三個連結提交至 Discord。完整參賽條件見官方公告串與 Discord。",
+        "fee": "公告未載明"
+      },
+      "en": {
+        "name": "Sai AI Video Contest",
+        "summary": "Tell a story involving trading, in any genre. Submit a new video made for this contest, 15 seconds to two minutes long, ending with the official Sai end card.",
+        "reward": "USDC trading credits worth US$500, US$250 and US$100 for the top three entries.",
+        "details": "The organiser extended the deadline from November 16 to November 23 at 11:59 PM Pacific Time. Join Sai Discord, post on X, Instagram and TikTok, tag Sai and three friends with #SaiAIVideoContest, then submit all three links in Discord. Full participation rules are in the official thread and Discord.",
+        "fee": "Not stated"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-17",
+      "source": "https://www.nadou.ai/cpp",
+      "host": "NadouPro / iQIYI",
+      "deadlines": [],
+      "zh": {
+        "name": "NadouPro 創作者合作計畫",
+        "summary": "每期 31 天，Lv.1 至 Lv.3 分別須提交至少 1、2、3 件審核通過的作品。至少 80% 內容須在 NadouPro 生成，並公開發到指定社群。",
+        "reward": "依等級每期最高 5,000、10,000 或 30,000 點。入選作品可獲 100 至 1,000 美元，CPP 每期現金獎勵上限為 2,000 至 4,000 美元，依作品表現評定。",
+        "details": "發文後 7 天內提交，註明使用 NadouPro、加 #NadouPro 並標註官方帳號。作品授予平台永久、全球、免授權費的使用許可。獎勵提領須提供銀行資料、身分文件與已簽署發票。官方未列固定申請截止日。"
+      },
+      "en": {
+        "name": "NadouPro Creator Partner Program",
+        "summary": "Each period lasts 31 days. Levels 1–3 require at least one, two or three approved works respectively. At least 80% of each work must be generated in NadouPro and published on a supported social platform.",
+        "reward": "Up to 5,000, 10,000 or 30,000 credits per period, depending on level. Selected works may earn US$100–1,000 each, with CPP cash caps of US$2,000–4,000 per period based on performance.",
+        "details": "Submit within seven days of posting, credit NadouPro, use #NadouPro and tag its official account. Participation grants a perpetual, worldwide, royalty-free licence to use the work. Withdrawals require bank details, identity documents and a signed invoice. No fixed application deadline is listed."
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-17",
+      "source": "https://join.elevenlabs.io/year-of-more",
+      "host": "ElevenLabs",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-30T23:59:00-05:00"
+        }
+      ],
+      "zh": {
+        "name": "ElevenCreative 影片徵件「The Year of More」",
+        "summary": "用 ElevenCreative 剪出一支 30 秒至 5 分鐘的多鏡頭影片，呈現配音以外的創作用法。可個人或組隊參加。",
+        "reward": "15 個每日獎，各 1 萬美元。主辦方再從每日得主選出一位加頒 5 萬美元，總獎金 20 萬美元。",
+        "details": "加上活動浮水印，依官網指定的標籤與帳號，在至少兩個指定社群平台公開發片，再送出報名表。",
+        "fee": "免費"
+      },
+      "en": {
+        "name": "ElevenCreative · The Year of More",
+        "summary": "Edit a multi-shot video in ElevenCreative, 30 seconds to five minutes long, using more than its voice tools. Individuals and teams can enter.",
+        "reward": "Fifteen daily awards of US$10,000 each. One daily winner receives an additional US$50,000, for US$200,000 in total.",
+        "details": "Add the competition watermark, publish on at least two of the listed social platforms with the required hashtags and mentions, then complete the entry form.",
+        "fee": "Free"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-17",
+      "source": "https://www.encodeclub.com/programmes/bfl-flux-in-production",
+      "host": "Black Forest Labs / Encode Club",
+      "deadlines": [],
+      "zh": {
+        "name": "FLUX: In Production · AI 電影徵件",
+        "summary": "依 RTL、Nura Studios 或 Studio Babelsberg 提供的創作題目製作影片。線上活動期間為 11 月 30 日至 12 月 13 日。",
+        "reward": "主辦方公布獎項總值至少 2.5 萬美元，尚未列出各獎分配。",
+        "details": "11 月 20 日重查時，官方活動頁未能完整載入，正式交件期限待確認。先前公告的 12 月 13 日是活動最後一天，不再當成已確認的投稿截止日；12 月 3 日另有舊金山實作活動。",
+        "fee": "公告未載明"
+      },
+      "en": {
+        "name": "FLUX: In Production",
+        "summary": "Make a film to a brief from RTL, Nura Studios or Studio Babelsberg. The online programme runs from November 30 to December 13.",
+        "reward": "At least US$25,000 in prizes announced. The allocation has yet to be specified.",
+        "details": "The official event page did not fully load on November 20; the submission deadline remains unconfirmed. December 13 in the earlier announcement is the programme end date and is no longer treated as a verified submission cutoff. A San Francisco build night is scheduled for December 3.",
+        "fee": "Not specified"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-13",
+      "source": "https://vast.ai/showcase",
+      "host": "Vast.ai",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-29T23:59:00-08:00"
+        }
+      ],
+      "zh": {
+        "name": "Vast.ai 秋季 GPU 作品徵集",
+        "summary": "接受影片、圖像及其他 GPU 專案。作品須於 11 月 4 日起開始製作，並在參賽者自己的 Vast.ai 帳號累計實際使用至少一個 GPU 小時。",
+        "reward": "前三名現金依序為 1,000、500、200 美元，每人另有 100 美元平台點數。",
+        "details": "限年滿 18 歲的個人。截止前須完成報名，並在 X、官方 Discord 或 r/vastai 公開貼出作品，附指定標記；貼文須保留至 12 月 4 日。",
+        "fee": "須使用 Vast GPU，運算可能產生費用"
+      },
+      "en": {
+        "name": "Vast.ai Fall 2026 Showcase",
+        "summary": "Enter a video, image or other GPU project started on or after November 4. Log at least one GPU-hour of actual work on the project using your own Vast.ai account.",
+        "reward": "The top three receive US$1,000, US$500 and US$200 respectively, plus US$100 in Vast credits each.",
+        "details": "For individuals aged 18 or over. Register and share the work on X, the official Discord or r/vastai with the required tags by the deadline. Keep the post public through December 4.",
+        "fee": "Vast GPU use is required and may incur rental costs"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-12",
+      "source": "https://x.com/JoyfulAICreate/status/2120641036452077655",
+      "host": "SYSTEM Network × ImagineArt",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-16T23:59:00-05:00"
+        }
+      ],
+      "zh": {
+        "name": "SYSTEM × ImagineArt「A Thousand Little Moments」",
+        "summary": "用 5 至 30 秒的 AI 影片，拍出不同片段或事物如何聚在一起。可使用任一影片生成工具。",
+        "reward": "隨機抽出一位，贈送一個月 ImagineArt Ultimate 會員。",
+        "details": "每人限一件。直接回覆主辦方原貼文，附活動標籤 #SYSTEMxImagineArt，並標記貼文指定的兩個帳號。",
+        "fee": "公告未載明"
+      },
+      "en": {
+        "name": "SYSTEM × ImagineArt · A Thousand Little Moments",
+        "summary": "Make a 5–30 second AI video in which separate elements come together through motion. Any video generator is eligible.",
+        "reward": "One randomly drawn entrant receives a month of ImagineArt Ultimate membership.",
+        "details": "One entry per person. Reply to the original post with the video, the #SYSTEMxImagineArt hashtag and the two accounts named in the announcement.",
+        "fee": "Not specified"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-11",
+      "source": "https://www.reddit.com/r/runwayml/comments/1xsxcfe/weekly_challenge_4_out_of_place/",
+      "host": "Runway / r/runwayml",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-16T12:00:00-05:00"
+        }
+      ],
+      "zh": {
+        "name": "Runway 每週挑戰 #4「Out of Place」",
+        "summary": "把人物或物件放進與它格格不入的環境，用 Runway 拍一支 15 至 30 秒短片。",
+        "reward": "按社群票選結果，前三名分別可得 25,000、15,000、10,000 點 Runway 點數。",
+        "details": "每人限一支，須在 r/runwayml 依指定標題與分類發文。投稿已截止，投票至台灣時間 11 月 21 日凌晨 1 點。",
+        "fee": "公告未載明"
+      },
+      "en": {
+        "name": "Runway Weekly Challenge #4 · Out of Place",
+        "summary": "Use Runway to make a 15–30 second video about a person or object in a setting where it does not belong.",
+        "reward": "The top three community picks receive 25,000, 15,000 and 10,000 Runway credits.",
+        "details": "One entry per person, posted to r/runwayml with the specified title format and flair. Submissions have closed. Voting ends November 20 at noon EST.",
+        "fee": "Not specified"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-05",
+      "source": "https://higgsfield.ai/contests/wcc-the-place-you-know",
+      "host": "Higgsfield",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-04T17:00:00+00:00"
+        }
+      ],
+      "zh": {
+        "name": "Higgsfield 每週挑戰 #2「The Place You Know」",
+        "summary": "選一個自己熟悉的地方，把它拍成一支 120 秒的恐怖短片。",
+        "reward": "前三名分別可得 30,000、20,000、10,000 點 Higgsfield 點數。",
+        "details": "在該輪比賽專案生成 AI 素材，從專案頁交片，每人限一部。獎勵點數有效期為 90 天。",
+        "fee": "免費帳號可參加"
+      },
+      "en": {
+        "name": "Higgsfield Weekly Challenge #2 · The Place You Know",
+        "summary": "Turn a location you know into the setting of a 120-second horror film.",
+        "reward": "The top three receive 30,000, 20,000 and 10,000 Higgsfield credits.",
+        "details": "Generate the AI material in the project for this round and submit from its project page. One film per entrant. Prize credits are valid for 90 days.",
+        "fee": "Free accounts are eligible"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-06",
+      "source": "https://higgsfield.ai/contests/wcc-the-whole-scene",
+      "host": "Higgsfield",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-11T17:00:00+00:00"
+        }
+      ],
+      "zh": {
+        "name": "Higgsfield 每週挑戰 #3「The Whole Scene」",
+        "summary": "從一個主鏡頭出發，用至少 12 個機位拍同一場戲，剪成 120 秒。",
+        "reward": "前三名各得 50,000、30,000、15,000 點，風格獎另有 5,000 點。",
+        "details": "在該輪比賽專案生成 AI 素材，從專案頁交片，每人限一部。獎勵點數有效期為 90 天。",
+        "fee": "免費帳號可參加"
+      },
+      "en": {
+        "name": "Higgsfield Weekly Challenge #3 · The Whole Scene",
+        "summary": "Start with one master take and cover a single scene from at least twelve camera positions in 120 seconds.",
+        "reward": "The top three earn 50,000, 30,000 and 15,000 credits, with a further 5,000 for the Style Champion.",
+        "details": "Generate the AI material in the project for this round and submit from its project page. One film per entrant. Prize credits are valid for 90 days.",
+        "fee": "Free accounts are eligible"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-16",
+      "source": "https://higgsfield.ai/contests/wcc-without-a-word",
+      "host": "Higgsfield",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-18T17:00:00+00:00"
+        }
+      ],
+      "zh": {
+        "name": "Higgsfield 每週挑戰 #4「Without a Word」",
+        "summary": "用 120 秒動畫講完一個故事。可用音樂和音效，不能靠對白、旁白、歌詞或畫面文字解釋劇情。",
+        "reward": "前三名各得 50,000、30,000、15,000 點，風格獎另有 5,000 點。",
+        "details": "在該輪比賽專案生成 AI 素材，從專案頁交片，每人限一部。獎勵點數有效期為 90 天。",
+        "fee": "免費帳號可參加"
+      },
+      "en": {
+        "name": "Higgsfield Weekly Challenge #4 · Without a Word",
+        "summary": "Tell a complete story in a 120-second animated film. Music and sound effects are allowed. Dialogue, narration, lyrics and explanatory text are excluded.",
+        "reward": "The top three earn 50,000, 30,000 and 15,000 credits, with a further 5,000 for the Style Champion.",
+        "details": "Generate the AI material in the project for this round and submit from its project page. One film per entrant. Prize credits are valid for 90 days.",
+        "fee": "Free accounts are eligible"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-17",
+      "source": "https://sina.cn/news/detail/5359032514645022.html",
+      "host": "Tencent Video",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-17T23:59:00+08:00"
+        }
+      ],
+      "en": {
+        "name": "Tencent Video Huolong AIGC Hackathon",
+        "summary": "Apply in teams of two to four. The 36 selected teams will meet in Hangzhou on December 5–7 and have 48 hours to make a film from a brief revealed on site.",
+        "reward": "RMB 1.2 million in total, with up to RMB 200,000 for a single award. Winners may qualify for an annual partnership with Tencent Video.",
+        "details": "November 17 is the team registration deadline. Tencent plans to announce the shortlist on November 28. Its official post links to registration.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "騰訊視頻「火龍」AIGC 黑客松",
+        "summary": "以 2 至 4 人組隊報名。入圍的 36 隊須在 12 月 5 至 7 日到杭州，依現場命題，在 48 小時內完成一部 AI 影片。",
+        "reward": "總獎金人民幣 120 萬元，單項最高 20 萬元。獲獎團隊另有機會與騰訊視頻簽年度合作。",
+        "details": "11 月 17 日截止的是組隊報名。入圍名單預定 11 月 28 日公布，報名入口見騰訊視頻官方貼文。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-17",
+      "source": "https://wgxj.linyi.gov.cn/info/1005/79787.htm",
+      "host": "Shandong Department of Culture and Tourism, Shandong Big Data Bureau & Shandong Youth Federation",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-21T00:00:00+08:00"
+        }
+      ],
+      "en": {
+        "name": "Shandong Culture and Tourism AIGC Video Competition",
+        "summary": "Individuals and teams can submit AI shorts about Shandong. The six themes cover local culture, historical figures, landscapes, crafts, food and new ways to explore the province.",
+        "reward": "RMB 50,000 in total. Winners can join the province’s tourism creator roster.",
+        "details": "Registration and uploads close at the end of November 20, China Standard Time. Label AI-generated content. The tourism bureau’s notice links to the entry site.",
+        "fee": "Not specified in the official notice"
+      },
+      "zh": {
+        "name": "「齊風魯韻・AI 煥新」山東文旅 AIGC 影片創作大賽",
+        "summary": "個人或團隊皆可投稿，用 AI 拍一支介紹山東的短片。六個方向涵蓋地方文化、歷史人物、山海景觀、傳統工藝、美食及旅遊新玩法。",
+        "reward": "總獎金人民幣 5 萬元。獲獎者可列入「好客山東」AI 創作人才庫。",
+        "details": "報名及交片均於 11 月 20 日 24 時截止。作品須標示 AI 生成內容，報名平台連結見文旅局公告。",
+        "fee": "官方公告未載明"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-17",
+      "source": "https://www.hlj.chinanews.com.cn/hljnews/2026/1029/163368.html",
+      "host": "Fenglin County publicity and tourism authorities & China News Service, Heilongjiang",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-30"
+        }
+      ],
+      "en": {
+        "name": "Fenglin Winter Tourism AI Video Competition",
+        "summary": "Make a one- to ten-minute short about winter in Fenglin County, Yichun. Subjects include frost-covered forests, winter sports and local festivities. At least 70% of the finished film must be AI-generated.",
+        "reward": "First prize is RMB 30,000. Additional prizes include cash for second and third places and local gift packages.",
+        "details": "One entry per person, including team members. Create an unpublished film during the call and submit production notes and a signed originality statement. Contact the organisers listed in the notice for the form.",
+        "fee": "Not specified in the official notice"
+      },
+      "zh": {
+        "name": "伊春市豐林縣首屆 AI 創意影片大賽",
+        "summary": "拍一支 1 至 10 分鐘的豐林冬季旅遊短片，可從霧凇、林海、冰雪運動或地方年俗取材。AI 生成畫面須占成片至少 70%。",
+        "reward": "首獎人民幣 3 萬元，另設二、三等獎及地方特產獎。",
+        "details": "每人限投一件，團隊成員也計入。須在徵件期間新作且尚未公開，附創作說明與原創承諾書。請依公告聯絡組委會索取報名表。",
+        "fee": "官方公告未載明"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-17",
+      "source": "https://vigloostudio.com/en/contests/2026-short-drama-festival-2/rules",
+      "host": "Vigloo Studio / Spoonlabs",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-07T15:00:00+09:00"
+        }
+      ],
+      "en": {
+        "name": "Vigloo Short Drama Festival 2",
+        "summary": "Create a 9:16 episode in Vigloo Studio, running 2:30 to 3:00, with entirely AI-generated footage. Include an English synopsis covering the first five episodes.",
+        "reward": "Five films share US$20,000 in cash, including a US$10,000 grand prize.",
+        "details": "Submit English subtitles as an SRT file, a poster and a link to a public social post. Keep the post public until the winners are announced. Submissions close at 3 p.m. in Korea on December 7.",
+        "fee": "A paid plan is optional. Production may use credits."
+      },
+      "zh": {
+        "name": "Vigloo 第二屆直式短劇影展",
+        "summary": "用 Vigloo Studio 製作一集 2 分 30 秒至 3 分鐘的 9:16 直式短劇。畫面須全部由 AI 生成，另交第 1 至 5 集的英文故事大綱。",
+        "reward": "總獎金 2 萬美元，由五部作品分享，首獎 1 萬美元。",
+        "details": "須附英文字幕檔、海報及公開社群貼文連結。貼文要保留至得獎名單公布。台灣時間 12 月 7 日下午 2 點截止。",
+        "fee": "可用免費帳號參賽，製作影片可能耗用點數"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-16",
+      "source": "https://www.aki.com.cn/szstory2026",
+      "host": "「學習強國」深圳學習平台 / Shenzhen Learning Platform",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-06"
+        }
+      ],
+      "en": {
+        "name": "This Is Shenzhen · Season 3, AI Video",
+        "summary": "Tell a Shenzhen or Greater Bay Area story in 30 seconds to 5 minutes. AI-generated content must cover at least half the runtime.",
+        "reward": "RMB 74,000 across both tracks. Each track awards RMB 10,000 for first place, before tax.",
+        "details": "Disclose the AI tools used and label the footage. Selection grants the organiser a long-term, exclusive, royalty-free licence as set out in the entry agreement.",
+        "fee": "Not specified"
+      },
+      "zh": {
+        "name": "「這就是深圳」第三季 · AI 生成影片組",
+        "summary": "用 30 秒至 5 分鐘說一個深圳或粵港澳大灣區的故事，AI 生成內容須占片長至少一半。",
+        "reward": "兩組合計人民幣 74,000 元，各組首獎 10,000 元，金額均為稅前。",
+        "details": "須在畫面標示 AI 生成並申報使用工具。作品獲選後，須依投稿授權書提供主辦方長期、獨家、無償授權。",
+        "fee": "未載明"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-16",
+      "source": "https://www.microdra.ma/pilotrush",
+      "host": "microdra.ma × AdArena",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-19T22:00:00+02:00"
+        }
+      ],
+      "en": {
+        "name": "PilotRush · AI Microdrama Pilot Competition",
+        "summary": "Submit the first episode of an original AI microdrama in 9:16, running 50–80 seconds.",
+        "reward": "US$3,500 in cash and US$1,500 in creative credits across 40 places.",
+        "details": "Submit through AdArena. Non-English dialogue needs English subtitles. Selected pilots may be considered for a separate season production agreement.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "PilotRush AI 直式短劇首集徵件",
+        "summary": "徵求原創 AI 微短劇的第一集，限 9:16 直式、片長 50 至 80 秒。",
+        "reward": "共 40 個獎額，分配現金 3,500 美元及價值 1,500 美元的創作點數。",
+        "details": "透過 AdArena 投稿，非英語對白須附英文字幕。主辦方可能另邀入選者洽談整季製作合約。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-15",
+      "source": "https://www.lyaiff.com/submissions",
+      "host": "NYAIFF",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-31"
+        },
+        {
+          "stage": "deadline",
+          "at": "2027-02-01"
+        },
+        {
+          "stage": "final",
+          "at": "2027-04-01"
+        }
+      ],
+      "en": {
+        "name": "NYAIFF · Youth AI Film Festival",
+        "summary": "Open to filmmakers aged 18–35 worldwide. Films run 1–40 minutes, with a separate category for vertical films and shorts up to 60 seconds.",
+        "reward": "Festival laurels, certificates, trophies and screening opportunities.",
+        "details": "Disclose the AI tools and their contribution. Include Chinese or English subtitles. The first two submission rounds close on December 31 and February 1.",
+        "fee": "RMB 169 standard entry"
+      },
+      "zh": {
+        "name": "新野青年 AI 影展",
+        "summary": "全球 18 至 35 歲創作者可報名。一般作品片長 1 至 40 分鐘，直式與超短片單元限 60 秒以內。",
+        "reward": "依入選、提名及得獎結果頒發影展標章、證書或獎盃，並提供展映機會。",
+        "details": "須說明使用哪些 AI 工具及使用比例，並附中文或英文字幕。第一、二階段分別於 12 月 31 日及 2 月 1 日截止。",
+        "fee": "一般報名費為人民幣 169 元"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-15",
+      "source": "https://aiff-dev.hkust.edu.hk/",
+      "host": "Hong Kong University of Science and Technology",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2027-02-28"
+        }
+      ],
+      "en": {
+        "name": "HKUST AI Film Festival · Pulsant",
+        "summary": "The main competition accepts horizontal films over 3 minutes. Student films must run over 1 minute.",
+        "reward": "Selected films may screen at HKUST. No cash amount is listed for this edition.",
+        "details": "Submit through FilmFreeway with a PDF explaining the AI tools and production process. Include English subtitles for non-English dialogue.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "第三屆香港科大 AI 電影節 · Pulsant",
+        "summary": "主競賽收橫式影片，片長須超過 3 分鐘。學生組片長須超過 1 分鐘。",
+        "reward": "入選作品有機會在香港科大放映。本屆未公布現金獎額。",
+        "details": "透過 FilmFreeway 報名，附 PDF 說明 AI 工具及製作過程。非英語對白須附英文字幕。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-15",
+      "source": "https://www.cnaiff.com/en/submit.html",
+      "host": "CNAIFF",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2027-01-25T23:59:00+08:00"
+        }
+      ],
+      "en": {
+        "name": "CNAIFF · New-Vision AI Film Week",
+        "summary": "Submit a film of 15 seconds to 12 minutes to one of seven categories. Each film may enter only one category.",
+        "reward": "Selection, nomination and award laurels, online screenings and a festival archive.",
+        "details": "Describe where and how much AI was used and list the tools. A guardian must submit on behalf of entrants under 18.",
+        "fee": "RMB 199 via Alipay or US$29.90 via PayPal per film"
+      },
+      "zh": {
+        "name": "新視野 AI 電影週（CNAIFF）",
+        "summary": "片長 15 秒至 12 分鐘，七個單元擇一報名，每部作品限投一個單元。",
+        "reward": "依評選結果頒發入選、提名或得獎標章，另有線上展映與影展典藏。",
+        "details": "須說明 AI 使用環節、工具及比例。未滿 18 歲者須由監護人代為投稿。",
+        "fee": "每部人民幣 199 元（支付寶）或 29.90 美元（PayPal）"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-14",
+      "source": "https://everyframe.studio/contests/wildlife/",
+      "host": "EveryFrame Studio",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-27T12:00:00+00:00"
+        }
+      ],
+      "en": {
+        "name": "EveryFrame AI Film Contest No. 01 · Wildlife Documentary",
+        "summary": "Make a roughly two-minute narrated wildlife documentary. Generate every shot on EveryFrame.",
+        "reward": "One winner receives US$1,500 worth of SN117 alpha and US$3,500 worth of SN117 Gamma.",
+        "details": "One film per person. Quote the contest announcement on X with your film and submit it on the contest page. The community votes for the winner.",
+        "fee": "No entry fee listed. Generation uses EveryFrame credits."
+      },
+      "zh": {
+        "name": "EveryFrame 首屆 AI 影片比賽 · 野生動物紀錄片",
+        "summary": "製作一部約 2 分鐘、有旁白的野生動物紀錄片，每個鏡頭都須用 EveryFrame 生成。",
+        "reward": "由一位得主獲得等值 1,500 美元的 SN117 alpha 與等值 3,500 美元的 SN117 Gamma。",
+        "details": "每人限投一部。在 X 引用官方公告並附上影片，再到活動頁投稿，由社群投票選出得主。",
+        "fee": "未列報名費，生成影片會使用平台點數。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-13",
+      "source": "https://www.liblib.tv/activity/73",
+      "host": "LibTV",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-22T23:59:59+08:00"
+        }
+      ],
+      "en": {
+        "name": "LibTV · Featured Canvas Open Call",
+        "summary": "Publish a new original film and its public LibTV canvas during the call. At least 80% of the finished footage must be generated on LibTV.",
+        "reward": "RMB 50,000 divided equally among qualifying new canvases. A separate RMB 18,000 pool rewards previously featured canvases.",
+        "details": "Include more than ten storyboard shots and more than ten video generations, with prompts and parameters. Submit the film and canvas links via the event form.",
+        "fee": "Not specified"
+      },
+      "zh": {
+        "name": "LibTV 寶藏畫布發現計畫",
+        "summary": "活動期間在 LibTV 首次發布原創影片並公開畫布，成片至少 80% 的畫面須由 LibTV 生成。",
+        "reward": "合格新作畫布均分人民幣 5 萬元，另有 1.8 萬元供經典精選畫布競逐。",
+        "details": "須保留超過 10 個分鏡、超過 10 筆影片生成結果，以及提示詞和參數。用活動表單提交影片與畫布連結。",
+        "fee": "未載明"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-12",
+      "source": "https://kreatorflow.ai/creator-program",
+      "host": "KreatorFlow",
+      "deadlines": [],
+      "en": {
+        "name": "KreatorFlow Creator Partners",
+        "summary": "Open to creators of any audience size. Publish posts made with KreatorFlow and keep them live for at least 30 days.",
+        "reward": "Monthly credit tiers based on follower count, up to 50,000 credits, plus a 10% commission on referred customers’ first payments.",
+        "details": "Add the partner credit to your profile, use #KreatorFlowPartner and submit screenshots of the post and its views for review."
+      },
+      "zh": {
+        "name": "KreatorFlow 創作者合作計畫",
+        "summary": "不限追蹤人數。用 KreatorFlow 製作內容並公開發文，貼文至少保留 30 天。",
+        "reward": "依追蹤人數分級，每月最高 50,000 點。透過專屬連結帶來的首次付款可獲 10% 佣金。",
+        "details": "在個人簡介標示合作身分，發文加上 #KreatorFlowPartner，並提交貼文與觀看數截圖供審核。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-12",
+      "source": "https://www.heygen.com/blog/video-contest",
+      "host": "HeyGen",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-01T23:59:59-08:00"
+        }
+      ],
+      "en": {
+        "name": "HeyGen Video Contest",
+        "summary": "Create an unpublished film with at least 70% of its footage generated with Video 1.0 through HeyGen’s official MCP during the contest. Other AI video models are ineligible.",
+        "reward": "US$3,500 grand prize. The cinematography award grants US$5,000 in MiniMax API credits.",
+        "details": "Post on public X with #HeyGenVideoContest on the first line, tag and follow @HeyGenMCP, then submit the entry form. Up to three entries per person.",
+        "fee": "Free under the official rules"
+      },
+      "zh": {
+        "name": "HeyGen 影片創作大賽",
+        "summary": "徵求未發表的新作。至少 70% 畫面須在活動期間透過 HeyGen 官方 MCP 以 Video 1.0 生成，不得混用其他 AI 影片模型。",
+        "reward": "首獎為現金 3,500 美元，電影感鏡頭獎提供價值 5,000 美元的 MiniMax API 點數。",
+        "details": "在公開 X 帳號發文，首行加上 #HeyGenVideoContest，標註並追蹤 @HeyGenMCP，再填投稿表。每人最多三件。",
+        "fee": "依正式規章免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-11",
+      "source": "https://maiff.com.au/",
+      "host": "Melbourne AI Film Festival",
+      "deadlines": [
+        {
+          "stage": "early",
+          "at": "2026-09-27"
+        },
+        {
+          "stage": "regular",
+          "at": "2026-11-08"
+        },
+        {
+          "stage": "late",
+          "at": "2026-11-29"
+        }
+      ],
+      "en": {
+        "name": "Melbourne AI Film Festival 2026",
+        "summary": "Open worldwide to filmmakers aged 18 or older. Submit a 1–12 minute film incorporating AI-generated elements, with English subtitles for non-English dialogue.",
+        "reward": "Jury awards for Australian and international work. The Melbourne screening is scheduled for December 12.",
+        "details": "Send the finished film, credits and poster via FilmFreeway. The festival website lists November 29 as the late deadline, while FilmFreeway lists December 3.",
+        "fee": "Late entry: US$25 Australian, US$30 international, US$15 student"
+      },
+      "zh": {
+        "name": "2026 墨爾本 AI 電影節",
+        "summary": "全球年滿 18 歲的創作者可報名。影片須含 AI 生成內容，片長 1 至 12 分鐘，非英語對白須附英文字幕。",
+        "reward": "設澳洲與國際作品評審獎，預定 12 月 12 日在墨爾本放映。",
+        "details": "透過 FilmFreeway 提交成片、完整名單與海報。影展官網列 11 月 29 日為晚鳥截止，FilmFreeway 報名頁列 12 月 3 日。",
+        "fee": "晚鳥一般報名費為澳洲組 25 美元、國際組 30 美元，學生 15 美元"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://higgsfield.ai/contests/talent-contest",
+      "host": "Higgsfield",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-26T19:00:00+00:00"
+        }
+      ],
+      "en": {
+        "name": "Higgsfield Talent Contest",
+        "summary": "Create an original 3–7 minute film in a dedicated Higgsfield contest project during the creation window. Individuals and teams of up to four may enter.",
+        "reward": "US$1 million in cash across 20 awards, including US$200,000 for first place.",
+        "details": "Keep the Higgsfield watermark and end card. At the deadline, submitted projects become public, including prompts, generation history and uploaded assets.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "Higgsfield Talent Contest AI 電影大賽",
+        "summary": "在活動期間於 Higgsfield 比賽專案製作 3 至 7 分鐘的原創影片，可個人參賽或由最多四人組隊。",
+        "reward": "20 個獎項共頒發現金 100 萬美元，首獎為 20 萬美元。",
+        "details": "須保留 Higgsfield 浮水印與片尾標誌。截止時，參賽專案連同提示詞、生成紀錄及上傳素材皆會公開。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://beeble.ai/creator-program",
+      "host": "Beeble",
+      "deadlines": [],
+      "en": {
+        "name": "Beeble Creative Partner Program",
+        "summary": "5,000+ public followers on a major platform; publish and credit SwitchX monthly.",
+        "reward": "2,400 initial credits; qualifying paid referrals earn 20% for up to 12 months.",
+        "details": "Use the cloud tools SwitchX or Canvas and credit Beeble in the description."
+      },
+      "zh": {
+        "name": "Beeble Creative Partner Program",
+        "summary": "主要平台公開追蹤者達 5,000 人，每月發布作品並標註 SwitchX。",
+        "reward": "初次提供 2,400 點。合格付費推薦可在 12 個月內獲得 20% 佣金。",
+        "details": "適用於雲端 SwitchX 或 Canvas，影片說明須註明 Beeble。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://wj.byteoversea.com/q/82561/5885MMdi/af54/",
+      "host": "Dreamina",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-31"
+        }
+      ],
+      "en": {
+        "name": "Dreamina CPP · H2 2026",
+        "summary": "Apply with your creator role and Dreamina profile.",
+        "reward": "The application form does not specify a cash amount or credit allowance.",
+        "details": "The form lists a response within 14 business days."
+      },
+      "zh": {
+        "name": "Dreamina 2026 下半年創作者合作計畫",
+        "summary": "申請時提供創作者身分與 Dreamina 個人頁。",
+        "reward": "申請表未載明現金或點數額度。",
+        "details": "官方表單載明 14 個工作天內以電子郵件回覆。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://www.filmyai.net/contest",
+      "host": "FilmyAI",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-22T23:59:00+05:30"
+        }
+      ],
+      "en": {
+        "name": "FilmyAI AI Film Challenge",
+        "summary": "AI films from individuals or teams.",
+        "reward": "₹25,000 cash prize.",
+        "details": "Sign in to register and upload your film. Results are scheduled for December 5.",
+        "fee": "₹999"
+      },
+      "zh": {
+        "name": "FilmyAI AI 電影挑戰賽",
+        "summary": "個人或團隊皆可提交 AI 電影。",
+        "reward": "現金獎 25,000 印度盧比。",
+        "details": "登入後報名並上傳作品，預定 12 月 5 日公布結果。",
+        "fee": "999 印度盧比"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://www.indianpixels.com/ai-film-festival",
+      "host": "Indian Pixels",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2027-01-15T23:59:00+05:30"
+        }
+      ],
+      "en": {
+        "name": "Indian Pixels AI Film Festival 2026–27",
+        "summary": "Indian residents only. Submit a new 1–3 minute film on Stories of India.",
+        "reward": "₹230,000 total before tax; Best Film receives ₹100,000.",
+        "details": "Up to three entries. Submit a YouTube link; the platform-specific award requires footage made primarily in Indian Pixels.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "Indian Pixels AI 電影節 2026–27",
+        "summary": "限印度居民，以「印度的故事」為題製作 1 至 3 分鐘新片。",
+        "reward": "稅前總獎金 23 萬印度盧比，最佳影片獎 10 萬。",
+        "details": "每人最多 3 件，以 YouTube 連結投稿。競逐平台專項獎須主要以 Indian Pixels 製作。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://www.krea.ai/community/creative-partners-program",
+      "host": "Krea",
+      "deadlines": [],
+      "en": {
+        "name": "Krea Creator Program",
+        "summary": "For artists, filmmakers and educators who share work publicly. Share Krea work and use your creator link.",
+        "reward": "Compute units, early access, revenue-sharing opportunities and editorial features.",
+        "details": "A large audience or prior use of Krea is not required."
+      },
+      "zh": {
+        "name": "Krea Creator Program",
+        "summary": "適合公開分享作品的藝術家、影像創作者與教育者。入選後分享 Krea 作品並使用專屬連結。",
+        "reward": "算力點數、功能搶先體驗、分潤與作品曝光機會。",
+        "details": "可憑作品申請，無須大量追蹤者或既有 Krea 使用經驗。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://www.magnific.com/ai/partners",
+      "host": "Magnific / Freepik",
+      "deadlines": [],
+      "en": {
+        "name": "Magnific Creative Partners Program",
+        "summary": "For visual storytellers, designers, animators and VFX artists.",
+        "reward": "Credits, selected Premium features, beta access and referral opportunities.",
+        "details": "Partners are encouraged to share work and product feedback. Applications are reviewed individually."
+      },
+      "zh": {
+        "name": "Magnific Creative Partners Program",
+        "summary": "開放影像敘事、設計、動畫與視覺特效創作者申請。",
+        "reward": "點數、部分 Premium 功能、測試版與分潤機會。",
+        "details": "逐件審核，鼓勵入選者分享作品並提供產品回饋。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://www.napoliaifilmfestival.com/competition/",
+      "host": "Napoli AI Film Festival",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2027-01-10"
+        }
+      ],
+      "en": {
+        "name": "Napoli AI Film Festival 2027",
+        "summary": "Narrative shorts, commercials, music videos and Naples-inspired shorts with a meaningful generative AI contribution.",
+        "reward": "Festival screenings, certificates and promotion.",
+        "details": "Describe the tools and workflow. Non-English dialogue needs English subtitles. Apply via the festival’s FilmFreeway listing.",
+        "fee": "See the current FilmFreeway rate."
+      },
+      "zh": {
+        "name": "2027 拿坡里 AI 電影節",
+        "summary": "徵集敘事短片、廣告、音樂錄影帶與拿坡里主題短片，生成式 AI 須實際參與創作。",
+        "reward": "影展放映、獲獎證書與官方推廣。",
+        "details": "須說明工具與流程，非英語對白附英文字幕。由影展的 FilmFreeway 頁投稿。",
+        "fee": "依 FilmFreeway 當期費率。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://www.omnitokyo.com/2027/",
+      "host": "OMNI TOKYO",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-23T23:59:00+09:00"
+        }
+      ],
+      "en": {
+        "name": "OMNI TOKYO 2027",
+        "summary": "Shorts and animation: 1–10 minutes. Ads: 30 seconds, with a one-second tolerance.",
+        "reward": "Tokyo screening and potential further festival screenings; no cash prize.",
+        "details": "Submissions expected from mid-November. International individuals and teams may enter; disclose AI use and subtitle dialogue in English.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "OMNI TOKYO 2027 東京 AI 影展",
+        "summary": "短片與動畫為 1 至 10 分鐘。廣告為 30 秒，容許前後 1 秒。",
+        "reward": "東京放映與後續影展放映機會，無現金獎。",
+        "details": "預定 11 月中旬開放，全球個人或團隊可報。須揭露 AI 使用方式，對白或旁白附英文字幕。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://openart.ai/programs/cpp",
+      "host": "OpenArt",
+      "deadlines": [],
+      "en": {
+        "name": "OpenArt Creative Partner Program",
+        "summary": "For creators and educators sharing tutorials, reactions or original work.",
+        "reward": "Credits, early access, features and priority consideration for paid collaborations.",
+        "details": "Partners are encouraged to credit OpenArt and include a platform or referral link when posting."
+      },
+      "zh": {
+        "name": "OpenArt Creative Partner Program",
+        "summary": "開放以教學、評論或作品展示分享創作的創作者與教育者申請。",
+        "reward": "點數、搶先體驗、作品曝光與付費合作優先邀請。",
+        "details": "發布作品時，官方建議標註 OpenArt 並附上官網或分潤連結。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://www.pixmax.ai/creator-partnership-program/",
+      "host": "Pixmax",
+      "deadlines": [],
+      "en": {
+        "name": "Pixmax Creator Partnership Program",
+        "summary": "Submit original or licensed video work made substantially with Pixmax.",
+        "reward": "Approved workflows: 1,500–5,000 credits. Featured case studies: 10,000–30,000 credits.",
+        "details": "Referral payments have a 14-day validation period and a US$100 payout threshold. The Chinese recruitment campaign has its own schedule."
+      },
+      "zh": {
+        "name": "Pixmax Creator Partnership Program",
+        "summary": "作品須原創或取得授權，並有相當比例使用 Pixmax 製作。",
+        "reward": "通過審核的工作流程可得 1,500 至 5,000 點，官方專題案例可得 1 萬至 3 萬點。",
+        "details": "推薦佣金有 14 天驗證期，滿 100 美元才撥款。中文招募活動另有時程。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://pixo.video/creator-program",
+      "host": "Pixo",
+      "deadlines": [],
+      "en": {
+        "name": "Pixo Creator Partnership Program",
+        "summary": "Advanced creators publish two videos per month, each over a minute and made mainly with Pixo, and cross-post externally.",
+        "reward": "Selected creators receive monthly Pro membership and opportunities for official features.",
+        "details": "Use the official watermark or end card. At least 80% of runtime must be AI-generated. Commercial commissions require a separate agreement."
+      },
+      "zh": {
+        "name": "Pixo Creator Partnership Program",
+        "summary": "進階創作者每月發布 2 支超過 1 分鐘的影片，以 Pixo 為主要工具，並同步發到外部社群。",
+        "reward": "入選者獲每月 Pro 會員與官方曝光機會。",
+        "details": "須加官方浮水印或片尾卡，AI 生成內容至少占片長 80%。商業合作另行簽約。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://runway.com/rewards",
+      "host": "Runway",
+      "deadlines": [],
+      "en": {
+        "name": "Runway Rewards",
+        "summary": "Referral program for creators with a Runway account and a public channel. No posting quota.",
+        "reward": "US$15 per referred paying subscriber. Active partners can receive Max with 9,500 monthly credits.",
+        "details": "Starts with a three-month pilot. Payouts use Stripe; provide the country of your bank when applying."
+      },
+      "zh": {
+        "name": "Runway Rewards 推薦計畫",
+        "summary": "有 Runway 帳號與公開頻道即可申請推薦分潤，沒有發文配額。",
+        "reward": "每推薦一名付費訂戶可得 15 美元，活躍夥伴可獲 Max 方案與每月 9,500 點。",
+        "details": "先以三個月試行。款項經 Stripe 結算，申請時須提供銀行所在國家。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://showvy.app/next",
+      "host": "SHOWVY",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-25"
+        }
+      ],
+      "en": {
+        "name": "SHOWVY NEXT",
+        "summary": "Members aged 18+ can upload AI drama episodes up to three minutes each.",
+        "reward": "Top three receive a year of Higgsfield and six months of tiered revenue sharing.",
+        "details": "Entries need a vertical thumbnail. Viewers vote after watching; the license is non-exclusive.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "SHOWVY NEXT AI 短劇比賽",
+        "summary": "年滿 18 歲的會員可上傳 AI 短劇，每集最長 3 分鐘。",
+        "reward": "前三名可得一年 Higgsfield 訂閱，以及六個月依名次計算的分潤。",
+        "details": "投稿須附直式縮圖，由符合觀看條件的觀眾票選，採非專屬授權。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://www.topview.ai/creator-partnership-program",
+      "host": "Topview AI",
+      "deadlines": [],
+      "en": {
+        "name": "Topview AI Creator Partnership Program",
+        "summary": "Apply with work samples, social profiles and a project idea. Publish original videos made primarily with Topview.",
+        "reward": "Tier-based membership and monthly credits; reviewed work may qualify for cash or credits.",
+        "details": "Detailed terms follow selection and a non-disclosure agreement. Creators retain ownership."
+      },
+      "zh": {
+        "name": "Topview AI Creator Partnership Program",
+        "summary": "附作品、社群資料與企劃申請，入選後以 Topview 製作主要內容並發布。",
+        "reward": "依等級提供會員與每月點數，作品經審核可獲現金或點數。",
+        "details": "詳細條件於錄取並簽保密協議後確認，作品所有權歸創作者。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://www.vivid.ing/support/notice/68",
+      "host": "VIVID",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-13"
+        }
+      ],
+      "en": {
+        "name": "VIVID RE:PLAY",
+        "summary": "Use VIVID to create a video for one of six licensed IP briefs. Award-eligible length: 30–120 seconds.",
+        "reward": "₩20 million total; first prize ₩5 million.",
+        "details": "Submit in 16:9 at 720p or higher. Individual and team entries are accepted.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "第二屆 VIVID RE:PLAY AI 影像徵件",
+        "summary": "使用 VIVID 依六個指定 IP 命題製作影片。具得獎資格的片長為 30 至 120 秒。",
+        "reward": "總獎金 2,000 萬韓元，首獎 500 萬韓元。",
+        "details": "個人或團隊皆可，須以 16:9、至少 720p 投稿。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://www.creators-wonderland.com/robot-carnival/index.html",
+      "host": "Creators’ Wonderland / AiHUB",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-30T23:59:00+09:00"
+        }
+      ],
+      "en": {
+        "name": "Robot Carnival AI Film Contest",
+        "summary": "Original science fiction about robots. Shorts up to 90 seconds; long category up to 20 minutes.",
+        "reward": "Top awards: ¥500,000 in the long category and ¥200,000 for shorts.",
+        "details": "Open to ages 13+. Human editing or creative input is required; material from the 1987 film is excluded.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "《機器人嘉年華》AI 影片競賽",
+        "summary": "徵集以機器人為題的原創科幻片，短片最長 90 秒，長片組最長 20 分鐘。",
+        "reward": "長片組首獎 50 萬日圓，短片組首獎 20 萬日圓。",
+        "details": "年滿 13 歲可參加，須有人為剪輯或創作貢獻，不可使用 1987 年原電影素材。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://kyototext.jimdofree.com/",
+      "host": "KYOTO TEXT",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-30T23:59:00+09:00"
+        }
+      ],
+      "en": {
+        "name": "Kyoto AI Film Festival 2026",
+        "summary": "Films about real or imagined Kyoto, approximately five minutes or less. Use generative AI in at least one creative element.",
+        "reward": "Online showcase, audience vote and virtual screening. One grand prize selection.",
+        "details": "Up to two films per person or team. Previously released works qualify; submit a public or unlisted YouTube link.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "2026 京都 AI 電影節",
+        "summary": "以真實或想像的京都為題，片長約 5 分鐘以內，至少一項創作環節使用生成式 AI。",
+        "reward": "合格作品可參與網站展示、觀眾票選與虛擬放映，選出大獎 1 部。",
+        "details": "每人或每組最多 2 部，已發表作品可參加。以公開或不公開列出的 YouTube 連結投稿。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-10",
+      "source": "https://klingai.com/nextgen",
+      "host": "Kling AI",
+      "deadlines": [],
+      "en": {
+        "name": "Kling AI NextGen",
+        "summary": "For projects in development or production, with at least half the running time made with AI and Kling as the primary tool.",
+        "reward": "Chinese program: up to RMB 6 million in full funding, RMB 2 million in partial funding, or 1 million credits in technical support.",
+        "details": "Previously released projects are ineligible. The Chinese and international calls have different funding and language terms."
+      },
+      "zh": {
+        "name": "可靈 AI NextGen 新影像創投計畫",
+        "summary": "開放開發或製作中的計畫。AI 內容至少占片長一半，且以可靈為主要生成工具。",
+        "reward": "中文方案全額出品最高人民幣 600 萬元，部分投資最高 200 萬元，技術支持最高 100 萬點。",
+        "details": "已發行作品不符資格。中文與國際方案的金額、提案語言及配音要求不同。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://www.aimk.ai/",
+      "host": "Maeil Business Media",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-30"
+        }
+      ],
+      "en": {
+        "name": "Maeil Business AI Advertising Awards · 3rd edition",
+        "summary": "Ages 14+. Create an ad or vertical short for one of 14 brand briefs, with AI central to production.",
+        "reward": "₩53 million total; grand prize ₩5 million.",
+        "details": "Previously published or entered work is excluded. The FAQ and rules differ on ownership of winning work; check both before submitting. The organiser describes the cut-off as midnight in Korea; confirm the exact hour.",
+        "fee": "Free for students and general entrants; ₩200,000 for corporate entries."
+      },
+      "zh": {
+        "name": "第三屆每日經濟 AI 廣告大獎",
+        "summary": "年滿 14 歲，依 14 個品牌命題之一製作廣告或直式短片，以 AI 為主要創作方式。",
+        "reward": "總獎金 5,300 萬韓元，大獎 500 萬韓元。",
+        "details": "已發表或投過其他比賽的作品無法參加。簡章與常見問題對得獎作品權利有不同說明，投稿前請核對。 主辦方稱韓國時間午夜截止，確切時刻請先確認。",
+        "fee": "學生組與一般組免費，企業組 20 萬韓元。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-10",
+      "source": "https://jingrui-ai-competition.youku.com/",
+      "host": "Youku / Hujing Entertainment",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-22T23:59:00+08:00"
+        }
+      ],
+      "en": {
+        "name": "Jingrui AI Creation Competition 2026",
+        "summary": "Original narrative films of at least 10 minutes. A valid Chinese resident ID and a mainland +86 mobile number are required.",
+        "reward": "RMB 10 million total before tax; top talent prize RMB 2 million.",
+        "details": "Submit a 16:9 film at 1080p or higher plus a story statement. Festival premiere and award-specific exhibition terms apply.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "2026 鯨銳 AI 創作大賽",
+        "summary": "徵集至少 10 分鐘的原創敘事片，須備有效中國居民身分證與中國大陸手機號碼。",
+        "reward": "稅前總獎金人民幣 1,000 萬元，人才獎首獎 200 萬元。",
+        "details": "須交 16:9、至少 1080p 的影片與故事闡述，另有首發要求及得獎作品的展映條款。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-08",
+      "source": "https://nextale.com/nextale-award",
+      "host": "NEXTALE",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-14"
+        }
+      ],
+      "en": {
+        "name": "NEXTALE Award",
+        "summary": "Submit an AI drama series of at least 20 episodes in any language.",
+        "reward": "Best series: US$2,000. The first ten completed series receive US$100 each.",
+        "details": "Upload to NEXTALE Studio. Authors keep their IP and receive all paid-view revenue for the first six months.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "NEXTALE AI 短劇獎",
+        "summary": "徵集至少 20 集的 AI 短劇，不限語言。",
+        "reward": "最佳短劇獎金 2,000 美元；前十部完成的影集各獲 100 美元。",
+        "details": "上傳至 NEXTALE Studio。作者保有智慧財產權，上架後前六個月的付費觀看收入全歸作者。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-08",
+      "source": "https://pindow.ai/ambassador-program",
+      "host": "Pindow",
+      "deadlines": [],
+      "en": {
+        "name": "Pindow Ambassador Program",
+        "summary": "Apply with a film, reel or portfolio and a short introduction. Individuals and studios can apply.",
+        "reward": "Monthly credits, early access and possible commissions on studio referrals.",
+        "details": "Applications are reviewed on a rolling basis. Monthly screenings and optional creative briefs are part of the program."
+      },
+      "zh": {
+        "name": "Pindow 創作者大使計畫",
+        "summary": "個人或工作室皆可申請，附上一部影片、精華剪輯或作品集，以及簡短自介。",
+        "reward": "每月創作點數、新模型搶先體驗，以及推薦工作室訂閱的佣金。",
+        "details": "持續審核申請。計畫包含每月放映會，創作者也可自選是否參加每月命題。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-08",
+      "source": "https://kaifilm.org/siama",
+      "host": "Korean AI Film Institute",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-06T23:59:00+09:00"
+        }
+      ],
+      "en": {
+        "name": "Seoul International AI Media Awards 2026",
+        "summary": "Films up to 30 minutes in five categories, including animation, music videos and advertising.",
+        "reward": "Digital laurels and certificates; selected films screen in Seoul. No cash prize.",
+        "details": "Submit through FilmFreeway and explain how AI was used. Include English subtitles unless the film is in Korean or English. First-place trophies are optional and cost US$200.",
+        "fee": "US$30 per film per category."
+      },
+      "zh": {
+        "name": "2026 首爾國際 AI 媒體獎",
+        "summary": "徵集 30 分鐘以內作品，共五類，包含動畫、音樂錄影帶與廣告。",
+        "reward": "提供數位桂冠與證書；入選作品於首爾放映，無現金獎。",
+        "details": "透過 FilmFreeway 投稿並說明 AI 用法；非韓語或英語作品須附英文字幕。第一名可自費 200 美元訂購獎座。",
+        "fee": "每部、每組別 30 美元。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-08",
+      "source": "https://oneeyeland.com/top-10/photo-contest/ai/index.php",
+      "host": "One Eyeland",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-19"
+        }
+      ],
+      "en": {
+        "name": "World’s Top 10 AI Artists 2026",
+        "summary": "AI still images. Enter at least two images to qualify for the ranking; up to ten count.",
+        "reward": "World No. 1: US$2,000 plus US$500; second and third: US$500 each.",
+        "details": "Ages 18+. Submit sRGB JPEGs, 2,000 pixels on the long edge, without watermarks. Previously awarded images are eligible.",
+        "fee": "US$24.99 per image at the listed offer price; US$14.99 per additional category."
+      },
+      "zh": {
+        "name": "One Eyeland 2026 全球十大 AI 藝術家",
+        "summary": "徵集 AI 靜態影像。至少兩張才列入排名，最多採計十張。",
+        "reward": "世界第一名可獲 2,000 美元及額外 500 美元，第二、三名各 500 美元。",
+        "details": "年滿 18 歲；交 sRGB JPEG，長邊 2,000 像素，不加浮水印。曾獲獎作品也可投稿。",
+        "fee": "收錄時優惠價每張 24.99 美元，同圖加報類別 14.99 美元。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-08",
+      "source": "https://xbrush.ai/en/cpp",
+      "host": "XBRUSH",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-16T23:59:00+09:00"
+        }
+      ],
+      "en": {
+        "name": "XBRUSH CPP · Season 2",
+        "summary": "For creators developing a series. Selected artists open a creator channel; no upload quota is specified.",
+        "reward": "From 12,000 credits per month for at least three months; early access and event invitations.",
+        "details": "Apply via the program form. Results are scheduled for November 19; extensions are monthly after the initial term."
+      },
+      "zh": {
+        "name": "XBRUSH 第二季創作者合作計畫",
+        "summary": "本季徵集系列作品。入選後可開設創作者頻道，未指定上傳數量。",
+        "reward": "至少三個月、每月 12,000 點起，另有新功能搶先體驗與活動邀請。",
+        "details": "透過官方表單申請，預定 11 月 19 日通知；首期結束後可按月續約。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-07",
+      "source": "https://akool.com/creator-partner-program",
+      "host": "AKOOL",
+      "deadlines": [],
+      "en": {
+        "name": "AKOOL AI Creator Partner Program",
+        "summary": "Regularly make and share work using AKOOL. No follower minimum or exclusivity requirement.",
+        "reward": "Monthly plan and credits, early access and possible paid collaborations.",
+        "details": "Applications are reviewed throughout the year. This program is separate from the AKOOL film competition."
+      },
+      "zh": {
+        "name": "AKOOL AI Creator Partner Program",
+        "summary": "定期使用 AKOOL 創作並分享作品，沒有最低追蹤人數或獨家合作要求。",
+        "reward": "每月方案與點數、新功能搶先體驗；部分創作者可獲付費合作機會。",
+        "details": "全年受理申請，與 AKOOL 電影比賽分開辦理。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-07",
+      "source": "https://luma.com/fig-knsb",
+      "host": "FIG Studio / Pika / Storyverse",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-11"
+        }
+      ],
+      "en": {
+        "name": "Fig AI Design Makeathon 2026 · AI Video",
+        "summary": "Make an AI video in a five-day online event, individually or in a team of two to five.",
+        "reward": "Pika credits valued at US$1,000, US$750 and US$250. The winner enters the Storyverse incubator.",
+        "details": "The video track focuses on storytelling. The San Francisco showcase on November 16 is optional.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "2026 Fig AI 設計創作松：AI 影片組",
+        "summary": "五天線上創作活動，個人或二至五人團隊皆可參加 AI 影片組。",
+        "reward": "前三名可獲等值 1,000、750、250 美元的 Pika 點數，冠軍可參加 Storyverse 培育計畫。",
+        "details": "影片組以敘事為主，可自行選擇是否參加 11 月 16 日的舊金山展示活動。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-07",
+      "source": "https://hailuo-creative-fest.space.minimax.io/",
+      "host": "HailuoAI / MiniMax",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-30"
+        }
+      ],
+      "en": {
+        "name": "Hailuo Creative Fest · Horror Film Contest",
+        "summary": "Make a horror short primarily with HailuoAI. Suggested length: 10 seconds to two minutes.",
+        "reward": "Platform credits only: 20,000 per gold award, 8,500 silver, 3,500 bronze and 500 spotlight.",
+        "details": "Keep the official watermark. Post publicly with #HailuoHorror and @HailuoAI, then submit the link.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "海螺創作祭：恐怖短片競賽",
+        "summary": "以海螺 AI 為主要工具製作恐怖短片，建議片長 10 秒至 2 分鐘。",
+        "reward": "獎項均為平台點數：金獎每件 20,000 點、銀獎 8,500 點、銅獎 3,500 點、焦點獎 500 點。",
+        "details": "保留官方浮水印。公開發文加上 #HailuoHorror 並標記 @HailuoAI，再提交連結。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-07",
+      "source": "https://runway.com/studios",
+      "host": "Runway Studios",
+      "deadlines": [],
+      "en": {
+        "name": "Runway Hundred Film Fund",
+        "summary": "Runway’s AI film fund, launched in 2024, originally invited features, shorts, documentaries and other projects in pre- or post-production.",
+        "reward": "The original announcement offered US$5,000 to over US$1 million per project, plus Runway credits. Current grant amounts and application terms await confirmation.",
+        "details": "Checked November 18, 2026. The former application URL now redirects to Runway Studios, which offers a project contact route. A dedicated fund application form could not be located, so current intake status is unconfirmed."
+      },
+      "zh": {
+        "name": "Runway 百部電影基金",
+        "summary": "Runway 於 2024 年推出的 AI 電影補助計畫，原先徵求前製或後製中的長片、短片、紀錄片等作品。",
+        "reward": "原公告補助每案 5,000 美元至 100 萬美元以上，另提供 Runway 點數。現行補助額度與申請條件待確認。",
+        "details": "2026 年 11 月 18 日查核時，原申請網址已轉至 Runway Studios。該頁提供專案聯絡入口，目前未找到基金專用申請表，受理狀態待確認。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-07",
+      "source": "https://www.vidu.com/vidu-earn",
+      "host": "Vidu",
+      "deadlines": [],
+      "en": {
+        "name": "Vidu Earn Creator Program",
+        "summary": "Choose the Rookie, Showcase or CPP tier and submit your portfolio and social profiles.",
+        "reward": "Community rewards; Showcase and CPP participants may earn cash and credits on creative assignments.",
+        "details": "Register a Vidu account before applying. Awards vary by assignment."
+      },
+      "zh": {
+        "name": "Vidu Earn Creator Program",
+        "summary": "依創作經歷選擇 Rookie、Showcase 或 CPP，附上作品集與社群帳號。",
+        "reward": "可參加社群獎勵活動；Showcase 與 CPP 創作者有機會透過合作任務取得現金與點數。",
+        "details": "申請前須註冊 Vidu 帳號，各項合作任務的回饋不同。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-07",
+      "source": "https://www.wandura.ai/contests/film-weekly-challenges/the-knock",
+      "host": "Wandura",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-10T23:59:00+00:00"
+        }
+      ],
+      "en": {
+        "name": "Wandura Weekly Challenge · The Knock",
+        "summary": "Make a 25–35 second vertical horror film about a knock using Seedance 2.0 Fast in Wandura.",
+        "reward": "Top three: 10,000, 8,000 and 5,000 bonus credits plus a month of Growth each. No cash prize.",
+        "details": "Ages 18+. Ideas were due November 7. Publish the finished film on TikTok with the official watermark, then submit the link.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "Wandura 每週挑戰：敲門聲",
+        "summary": "以敲門聲為題，在 Wandura 用 Seedance 2.0 Fast 製作 25 至 35 秒直式恐怖片。",
+        "reward": "前三名各得 10,000、8,000、5,000 點，另各含一個月 Growth 方案；無現金獎。",
+        "details": "年滿 18 歲，提案階段於 11 月 7 日截止。成片須保留官方浮水印，公開發到 TikTok 後提交連結。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-07",
+      "source": "https://www.liblib.tv/hiiff-aifilmseason",
+      "host": "HIIFF / LibTV",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-15"
+        }
+      ],
+      "en": {
+        "name": "Hainan Island International Film Festival · AI Film Showcase",
+        "summary": "Four sections: features, series, shorts and experimental moving images. Enter one main section per work.",
+        "reward": "RMB 100,000 in total: ten selections receive RMB 10,000 each before tax, plus screenings in Sanya.",
+        "details": "Apply through LibTV. Features must run at least 40 minutes; shorts run from one minute to under 40 minutes.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "第八屆海南島國際電影節：AI 電影展",
+        "summary": "分長片、影集、短片與實驗影像四個單元，每部作品只能選一個主要單元。",
+        "reward": "總獎金人民幣 10 萬元。十部年度之選各獲稅前 1 萬元，另於三亞放映。",
+        "details": "經 LibTV 投稿。長片至少 40 分鐘；短片至少 1 分鐘、未滿 40 分鐘。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-07",
+      "source": "https://aigc.wsbqt.com/",
+      "host": "Hangzhou Qiantang",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-09T23:59:00+08:00"
+        }
+      ],
+      "en": {
+        "name": "Qiantang Cup AIGC Competition",
+        "summary": "Submit an AI web drama or microdrama of at least one minute in one of four themes.",
+        "reward": "Grand prize RMB 200,000; gold RMB 80,000, silver RMB 30,000 and bronze RMB 10,000 per award.",
+        "details": "Submit the finished film, a rights declaration and a description of the AI production process.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "錢塘盃 AIGC 創作大賽",
+        "summary": "從四項命題選一，提交至少 1 分鐘的 AI 網路劇或微短劇。",
+        "reward": "特等獎人民幣 20 萬元；金、銀、銅獎每件分別為 8 萬、3 萬及 1 萬元。",
+        "details": "須提交成片、著作權承諾書及 AI 製作說明。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-06",
+      "source": "https://aifilmfest.net/",
+      "host": "AI Filmfest",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-01"
+        }
+      ],
+      "en": {
+        "name": "AI Filmfest Málaga 2027",
+        "summary": "Fiction, documentary, experimental films and music videos for a Málaga screening in April 2027.",
+        "reward": "Audience tips via Bitcoin Lightning contribute to filmmaker payouts and a shared prize pool. No fixed cash prize.",
+        "details": "The free submission route is through IndeeHub. A separate paid FilmFreeway route is available.",
+        "fee": "Free on IndeeHub; €21 via FilmFreeway."
+      },
+      "zh": {
+        "name": "2027 馬拉加 AI 電影節",
+        "summary": "徵集劇情片、紀錄片、實驗片及音樂錄影帶，預定 2027 年 4 月在馬拉加放映。",
+        "reward": "觀眾透過比特幣閃電網路打賞，分配給創作者及獎池，沒有固定獎金。",
+        "details": "經 IndeeHub 可免費投稿；FilmFreeway 另有付費管道。",
+        "fee": "IndeeHub 免費；FilmFreeway 管道為 21 歐元。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-06",
+      "source": "https://artefact-ai-film-festival.com/",
+      "host": "Artefact / mk2",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-02"
+        }
+      ],
+      "en": {
+        "name": "Artefact AI Film Festival · 3rd edition",
+        "summary": "A film of up to 314 seconds on the theme (Dis)Connection.",
+        "reward": "Grand prize €10,000 plus a week of cinema screenings for a 30-second cut. Three further prizes of €1,000.",
+        "details": "Use generative AI in preproduction, production and postproduction. Include a production log and a public YouTube or Vimeo link.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "第三屆 Artefact AI 電影節",
+        "summary": "以「(Dis)Connection」為題，片長最多 314 秒。",
+        "reward": "大獎 1 萬歐元，30 秒剪輯版另可於戲院放映一週；另有三項各 1,000 歐元的獎項。",
+        "details": "前期、拍攝製作及後期各須使用生成式 AI；附製作紀錄與公開的 YouTube 或 Vimeo 連結。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-06",
+      "source": "https://fairground.tv/creator/fairground-animation-imagination",
+      "host": "Fairground / CapCut",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-01T23:59:00-08:00"
+        }
+      ],
+      "en": {
+        "name": "Fairground × CapCut · Animation Imagination",
+        "summary": "Original animation made with CapCut. A running time of at least three minutes is recommended.",
+        "reward": "US$15,000 cash pool across four awards; participants can also claim 10,000 CapCut credits.",
+        "details": "Keep proof of your CapCut workflow. Submit through the Fairground Portal; third-party IP requires permission.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "Fairground × CapCut 動畫創作競賽",
+        "summary": "使用 CapCut 製作原創動畫，建議片長至少 3 分鐘。",
+        "reward": "四個獎項共 15,000 美元現金，參賽者另可領取 10,000 點 CapCut 點數。",
+        "details": "保留 CapCut 製作證明，透過 Fairground 平台投稿；使用第三方素材須取得授權。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-06",
+      "source": "https://flick.art/festival",
+      "host": "Flick",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-15T23:59:00-08:00"
+        }
+      ],
+      "en": {
+        "name": "Flick AI Film Festival",
+        "summary": "AI shorts from one to 20 minutes, with English subtitles. Previously released films may qualify.",
+        "reward": "Best Film: US$10,000, a year of Flick Pro and a residency invitation. Other awards range from US$2,000 to US$5,000.",
+        "details": "Films must have been completed after March 1, 2026. Add the official watermark and publish the required social post.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "Flick AI 電影節",
+        "summary": "徵集 1 至 20 分鐘的 AI 短片，須附英文字幕，已發表作品也可參加。",
+        "reward": "最佳影片獲 1 萬美元、一年 Flick Pro 及駐地邀請。其他獎項為 2,000 至 5,000 美元。",
+        "details": "作品須於 2026 年 3 月 1 日後完成，並加上官方浮水印、公開發文。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-06",
+      "source": "https://hollywoodaishorts.com/",
+      "host": "Hollywood AI Short Film Awards",
+      "deadlines": [
+        {
+          "stage": "late",
+          "at": "2026-12-15"
+        },
+        {
+          "stage": "final",
+          "at": "2027-01-11"
+        }
+      ],
+      "en": {
+        "name": "Hollywood AI Short Film Awards 2027",
+        "summary": "Short films up to 22 minutes, including credits, that make meaningful use of AI.",
+        "reward": "US$2,750 in total; Best Picture receives US$750. Winning films screen in West Hollywood.",
+        "details": "Films must have been completed after January 1, 2024. Submit through FilmFreeway; only winners are invited to screen.",
+        "fee": "Late: US$45; final: US$55."
+      },
+      "zh": {
+        "name": "2027 好萊塢 AI 短片獎",
+        "summary": "片長含片尾最多 22 分鐘，AI 須實際參與創作。",
+        "reward": "總獎金 2,750 美元，最佳影片獲 750 美元。得獎作品可在西好萊塢放映。",
+        "details": "限 2024 年 1 月 1 日後完成的作品，透過 FilmFreeway 投稿。僅得獎片受邀放映。",
+        "fee": "晚鳥 45 美元；最終梯次 55 美元。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-06",
+      "source": "https://zencreator.pro/events/contests/jade-lens-awards",
+      "host": "ZenCreator / Seedance",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-03"
+        }
+      ],
+      "en": {
+        "name": "Jade Lens Awards",
+        "summary": "Ages 18+. Make a film of up to 30 seconds inspired by Asian art or legends. Submissions open November 13.",
+        "reward": "US$3,500 worth of ZenCreator credits across three awards; no cash prize.",
+        "details": "Generate images with Seedream and video with Seedance inside ZenCreator. One entry per creator.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "Jade Lens Awards：亞洲藝術與傳說",
+        "summary": "年滿 18 歲，以亞洲藝術或傳說為題，製作最長 30 秒的影片；11 月 13 日開始收件。",
+        "reward": "三項獎項共分等值 3,500 美元的 ZenCreator 點數，無現金獎。",
+        "details": "須在 ZenCreator 內以 Seedream 出圖、以 Seedance 製作影片，每人限投一件。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-06",
+      "source": "https://lumalabs.ai/creative-partner-program",
+      "host": "Luma AI",
+      "deadlines": [],
+      "en": {
+        "name": "Luma AI Creative Partner Program",
+        "summary": "Around 5,000 engaged followers or a comparable audience. Share two or three Luma works per month.",
+        "reward": "Monthly credits, early access, collaborations and possible travel or speaking opportunities.",
+        "details": "Credit the work with “Created with Luma.” The program also includes meetings every two weeks."
+      },
+      "zh": {
+        "name": "Luma AI Creative Partner Program",
+        "summary": "約 5,000 位活躍追蹤者或相當規模的受眾，每月分享二至三件 Luma 作品。",
+        "reward": "每月點數、新功能搶先體驗，以及合作、差旅或演講機會。",
+        "details": "作品須註明「Created with Luma」，計畫另有每兩週一次的聚會。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-06",
+      "source": "https://www.maifestival.org/",
+      "host": "M.AI Festival",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-20"
+        }
+      ],
+      "en": {
+        "name": "M.AI International AI Short Film Festival",
+        "summary": "Short films generally up to 20 minutes, with AI playing a creative role. Live action can be combined with AI.",
+        "reward": "€5,750 in total, including a €1,500 grand prize. The top three categories include travel and lodging for one.",
+        "details": "Submit on FilmFreeway with English subtitles and an AI statement. Films must have been completed after January 1, 2024.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "M.AI 國際 AI 短片影展",
+        "summary": "短片原則上限 20 分鐘，AI 須參與創作，可結合實拍。",
+        "reward": "總獎金 5,750 歐元，大獎為 1,500 歐元；前三項獎項另含一人交通及住宿。",
+        "details": "經 FilmFreeway 投稿，附英文字幕及 AI 使用聲明。作品須於 2024 年 1 月 1 日後完成。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-06",
+      "source": "https://runway.com/creative-partners-program",
+      "host": "Runway",
+      "deadlines": [],
+      "en": {
+        "name": "Runway Creative Partners Program",
+        "summary": "Runway selects creative partners. No public minimum follower count or fixed hours are listed.",
+        "reward": "Complimentary Max plan, collaboration and event opportunities.",
+        "details": "The creative partnership is separate from Runway Rewards and the Hundred Film Fund."
+      },
+      "zh": {
+        "name": "Runway Creative Partners Program",
+        "summary": "由 Runway 團隊遴選創作者，未公布最低追蹤人數或固定工時。",
+        "reward": "提供 Max 方案，以及合作和參與活動的機會。",
+        "details": "此合作計畫與 Runway Rewards 推薦佣金及 Hundred Film Fund 電影補助分開辦理。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-06",
+      "source": "https://korea.svaiff.com/",
+      "host": "SVAIFF Korea",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-25T23:59:59+09:00"
+        }
+      ],
+      "en": {
+        "name": "Silicon Valley AI Film Festival Korea 2026",
+        "summary": "Narrative and animated films up to 20 minutes. At least half of the visuals or core story elements must use AI.",
+        "reward": "₩30 million in total; grand prize ₩10 million, with 19 cash awards across 12 categories.",
+        "details": "Upload an MP4 on the festival site and declare AI use in the credits. Use of a real person’s face or voice requires permission.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "2026 矽谷 AI 電影節韓國站",
+        "summary": "劇情片及動畫最長 20 分鐘，畫面或核心故事元素至少一半須使用 AI。",
+        "reward": "總獎金 3,000 萬韓元，大獎 1,000 萬韓元；十二個類別共十九個獎金名額。",
+        "details": "至影展官網上傳 MP4，於片頭或片尾標示 AI 使用情形。使用真人肖像或聲音須經授權。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-05",
+      "source": "https://cuefilmfest.com/",
+      "host": "Cue Film Fest / AFRO TV",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-20T23:59:00-05:00"
+        }
+      ],
+      "en": {
+        "name": "Cue Xmas ’26",
+        "summary": "Christmas-themed AI shorts or music videos, two to six minutes, with multiple shots and a human-made final edit.",
+        "reward": "Four cash awards; amounts unspecified. Ten finalists receive TV and streaming exposure.",
+        "details": "Ages 18+. Submit a 16:9 1080p MP4, poster and process notes. Entries grant a two-year nonexclusive broadcast licence.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "Cue Xmas ’26 聖誕短片競賽",
+        "summary": "聖誕主題的 AI 短片或音樂錄影帶，片長 2 至 6 分鐘，須有多個鏡頭，由人完成最終剪輯。",
+        "reward": "四項現金獎未公布金額；十部入圍作品可於電視及串流播映。",
+        "details": "年滿 18 歲，提交 16:9、1080p 的 MP4、海報與製作說明。須同意兩年非獨家播映授權。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-05",
+      "source": "https://filmfights.ai/",
+      "host": "FilmFights.AI",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-20T23:59:00-06:00"
+        }
+      ],
+      "en": {
+        "name": "FilmFights.AI · GTA VI Cheat Code Montage",
+        "summary": "Invent a GTA VI cheat code and show what happens when it is activated in a new film of up to 60 seconds.",
+        "reward": "Jury prize US$500 cash. The audience award is a badge only.",
+        "details": "Any tool may be used. A free platform account is required.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "FilmFights.AI：GTA VI 秘技蒙太奇",
+        "summary": "自創一個 GTA VI 秘技，用最長 60 秒的新作演出啟動後的效果。",
+        "reward": "評審獎為 500 美元現金，觀眾獎為徽章。",
+        "details": "不限製作工具，投稿須註冊免費帳號。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-05",
+      "source": "https://www.outronox.com/festival/",
+      "host": "Outronox",
+      "deadlines": [
+        {
+          "stage": "early",
+          "at": "2026-12-31"
+        },
+        {
+          "stage": "regular",
+          "at": "2027-04-30"
+        },
+        {
+          "stage": "final",
+          "at": "2027-09-25"
+        }
+      ],
+      "en": {
+        "name": "Outronox Horror Film Festival 2027",
+        "summary": "Horror festival in Lecce, Italy. The short-film category accepts films under 40 minutes, including AI and hybrid work.",
+        "reward": "Trophies and opportunities for theatrical or digital distribution; no cash amount listed.",
+        "details": "The paid exhibition-only option lets entrants retain digital distribution rights. Selection announcements are scheduled for October 15, 2027.",
+        "fee": "Shorts: €13 early, €16 regular, €20 final. Free with nonexclusive Outronox Play digital distribution rights."
+      },
+      "zh": {
+        "name": "2027 Outronox 恐怖電影節",
+        "summary": "義大利萊切的恐怖影展。短片組限未滿 40 分鐘的作品，全 AI 或混合製作皆可。",
+        "reward": "實體獎座及院線或數位發行機會，未列現金獎。",
+        "details": "可選擇付費只參展，保留數位發行權。預定 2027 年 10 月 15 日公布入選名單。",
+        "fee": "短片組早鳥 13 歐元、一般 16 歐元、最終梯次 20 歐元；同意 Outronox Play 非獨家數位發行則免費。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-05",
+      "source": "https://ai-arts.org/competitions/5th-ai-arts-competition-2026",
+      "host": "AI-ARTS",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-15T23:59:00+00:00"
+        }
+      ],
+      "en": {
+        "name": "Reimagine · 5th AI-ARTS Competition 2026",
+        "summary": "Still images and series, or moving image, sound and mixed media. Enter up to five works per group.",
+        "reward": "Selected works are exhibited and recognised; no cash amount is listed.",
+        "details": "Describe how AI was used. Public voting contributes to the moving-image score; results are scheduled for February 15, 2027.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "Reimagine：第五屆 AI-ARTS 藝術競賽",
+        "summary": "靜態圖像與系列作品一組，動態影像、聲音與混合媒材一組；每組最多五件。",
+        "reward": "入選作品可獲展示與表揚，未列現金獎。",
+        "details": "須說明 AI 工具與用法。動態影像組採計公開票選，預定 2027 年 2 月 15 日公布結果。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-04",
+      "source": "https://ai-zone.net/festival/",
+      "host": "AI Zone",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-30"
+        }
+      ],
+      "en": {
+        "name": "AI ZONE International AI Film Festival 2026",
+        "summary": "Online festival with genre awards including horror, science fiction and drama.",
+        "reward": "US$500 grand prize, conditional on nonexclusive release on AI Zone; jury awards and laurels.",
+        "details": "Submit via FilmFreeway. The festival page does not specify a maximum running time.",
+        "fee": "Not specified in the listed rules."
+      },
+      "zh": {
+        "name": "2026 AI ZONE 國際 AI 電影節",
+        "summary": "線上影展，設有恐怖、科幻及劇情等類型獎。",
+        "reward": "大獎為 500 美元，須同意於 AI Zone 非獨家發布；另有評審獎及入選桂冠。",
+        "details": "透過 FilmFreeway 投稿，影展頁面未列片長上限。",
+        "fee": "收錄的簡章未載明。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-04",
+      "source": "https://akool.com/aifilmchallenge",
+      "host": "AKOOL",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-20"
+        }
+      ],
+      "en": {
+        "name": "AKOOL AI Film Challenge",
+        "summary": "For the Coming Never category, make a fictional trailer longer than 30 seconds and no longer than 90 seconds.",
+        "reward": "Top prize US$50,000; total advertised prize pool up to US$500,000.",
+        "details": "Ages 18+. Use AKOOL in production, include its logo and publish on YouTube, TikTok or Instagram with the required hashtag before submitting.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "AKOOL AI 電影挑戰賽",
+        "summary": "「Coming Never」組徵集虛構電影預告片，須超過 30 秒且不超過 90 秒。",
+        "reward": "首獎 5 萬美元，公布的獎金池最高為 50 萬美元。",
+        "details": "年滿 18 歲。須實際使用 AKOOL 製作、加上標誌，並在 YouTube、TikTok 或 Instagram 公開發布、加上指定標籤後投稿。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-04",
+      "source": "https://www.capcut.com/newsroom/capcut-creative-partner-program",
+      "host": "CapCut",
+      "deadlines": [],
+      "en": {
+        "name": "CapCut AI Creative Partner Program",
+        "summary": "Applications are reviewed on portfolio quality and social reach.",
+        "reward": "Monthly AI credits, CapCut Pro, discount codes, content rewards and event invitations.",
+        "details": "Applications are ongoing. The program asks applicants to treat no response within seven business days as an unsuccessful application."
+      },
+      "zh": {
+        "name": "CapCut AI Creative Partner Program",
+        "summary": "依作品集及社群影響力審核申請。",
+        "reward": "每月 AI 點數、CapCut Pro、折扣碼、作品獎勵及活動邀請。",
+        "details": "持續受理申請。依計畫說明，七個工作天內未收到回覆即代表這次未入選。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-04",
+      "source": "https://cascadestudio.ai/competition",
+      "host": "Cascade Studio / BytePlus",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-15T23:59:00+04:00"
+        }
+      ],
+      "en": {
+        "name": "Cascade Greenlight Competition",
+        "summary": "A one- to five-minute trailer or pilot in 16:9; every shot must be generated in Cascade. Mainland China residents are ineligible.",
+        "reward": "US$65,000 in cash across four awards, plus production credits. First prize US$30,000.",
+        "details": "Use English or English subtitles, official opening and closing cards, and publish with #CascadeGreenlight before submitting.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "Cascade Greenlight 影片徵件",
+        "summary": "徵集 1 至 5 分鐘、16:9 的預告片或試播集，每個鏡頭都須在 Cascade 生成。中國大陸居民不符資格。",
+        "reward": "四個獎項共 65,000 美元現金，另有製作點數；首獎 3 萬美元。",
+        "details": "使用英語或附英文字幕，加上官方片頭、片尾，並在投稿前以 #CascadeGreenlight 公開發文。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-04",
+      "source": "https://chromaawards.com/",
+      "host": "ElevenLabs",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2027-01-07T23:45:00-08:00"
+        }
+      ],
+      "en": {
+        "name": "Chroma Awards · Season 2",
+        "summary": "Includes a behind-the-scenes category for the creative process. A work can also enter a vendor award.",
+        "reward": "Cash prize pool above US$450,000, including US$17,000 in the behind-the-scenes category.",
+        "details": "Ages 18+; eligibility exclusions apply. Provide a public embeddable link, download link and thumbnail. Non-music entries need English audio or subtitles.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "第二季 Chroma Awards",
+        "summary": "設有分享創作過程的幕後製作組，同一作品也可參加廠商專項獎。",
+        "reward": "現金獎池超過 45 萬美元，其中幕後製作組共 17,000 美元。",
+        "details": "年滿 18 歲，另有地區及身分限制。須附公開可嵌入連結、下載連結與縮圖；非音樂類作品須有英語配音或英文字幕。",
+        "fee": "免費"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-04",
+      "source": "https://www.cineprague.com/indexen.php",
+      "host": "Cine Prague",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-11-18"
+        }
+      ],
+      "en": {
+        "name": "Cine Prague · AI Short Film Edition 2026",
+        "summary": "Films up to five minutes in all categories. English subtitles required.",
+        "reward": "Grand Prix US$1,000 cash and a trophy; category winners receive crystal trophies.",
+        "details": "The festival site lists November 18 while FilmFreeway lists November 28. The earlier date is shown; confirm with the organiser before entering.",
+        "fee": "Extended rate: US$50 for AI Short Film; other sections around US$24."
+      },
+      "zh": {
+        "name": "Cine Prague 2026 布拉格 AI 短片單元",
+        "summary": "各組均限 5 分鐘以內，須附英文字幕。",
+        "reward": "大獎為 1,000 美元現金與獎座，各組得主可獲水晶獎座。",
+        "details": "影展官網列 11 月 18 日，FilmFreeway 列 11 月 28 日。此處採較早日期，投稿前請向主辦方確認。",
+        "fee": "延長收件期間，AI 短片組 50 美元，其他組別約 24 美元。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-04",
+      "source": "https://www.showrunnerstudio.com/gossip-goblin",
+      "host": "Showrunner Studio",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-15"
+        }
+      ],
+      "en": {
+        "name": "Gossip Goblin × Showrunner Competition",
+        "summary": "Make a two- to 20-minute film in Showrunner Studio featuring Ripper Doc in the Gossip Goblin universe.",
+        "reward": "US$20,000 in total, including US$15,000 for Best Film.",
+        "details": "Start with a client in the operating chair, keep the official watermark and do not post publicly before submitting.",
+        "fee": "Free entry; creation requires a paid Showrunner Studio subscription."
+      },
+      "zh": {
+        "name": "Gossip Goblin × Showrunner 影片競賽",
+        "summary": "在 Showrunner Studio 製作 2 至 20 分鐘影片，使用 Gossip Goblin 的世界觀及 Ripper Doc 角色。",
+        "reward": "總獎金 2 萬美元，最佳影片獎 15,000 美元。",
+        "details": "故事從客人坐上手術椅開始，須保留官方浮水印，投稿前不可公開發布。",
+        "fee": "報名免費；製作須付費訂閱 Showrunner Studio。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-04",
+      "source": "https://higgsfield.ai/creator-partnership-program",
+      "host": "Higgsfield",
+      "deadlines": [],
+      "en": {
+        "name": "Higgsfield Creator Partnership Program",
+        "summary": "For creators whose main focus is AI content. No follower minimum.",
+        "reward": "Monthly Higgsfield plan, extra production credits, early model access and official features.",
+        "details": "Free to apply. The program says every applicant receives a response."
+      },
+      "zh": {
+        "name": "Higgsfield Creator Partnership Program",
+        "summary": "適合以 AI 內容為主要創作方向的人，沒有最低追蹤人數。",
+        "reward": "每月 Higgsfield 方案、額外製作點數、新模型搶先體驗與官方曝光。",
+        "details": "免費申請。計畫說明載明每位申請者都會收到回覆。"
+      }
+    },
+    {
+      "section": "cpp",
+      "added": "2026-11-04",
+      "source": "https://pixverse.ai/en/blog/join-pixverse-creator-partnership-program",
+      "host": "PixVerse",
+      "deadlines": [],
+      "en": {
+        "name": "PixVerse Creative Partner Program",
+        "summary": "At least 1,000 followers on one major social platform.",
+        "reward": "Partner: Pro with 6,000 monthly credits; Pro Partner adds 10,000 bonus credits. Premier: Premium with 15,000 credits plus 20,000 bonus credits. Membership credits expire each cycle; bonus credits do not.",
+        "details": "New Partners receive an initial three months of support, with renewal reviewed for activity. No fixed weekly quota, but benefits may pause after over three months without public PixVerse work. Rolling applications; selected applicants usually hear within 30 days. Tier upgrades and weekly rewards have separate reviews."
+      },
+      "zh": {
+        "name": "PixVerse Creative Partner Program",
+        "summary": "至少一個主要社群平台達 1,000 位追蹤者。",
+        "reward": "Partner：Pro 及每月 6,000 點；Pro Partner 另加 10,000 點；Premier：Premium、15,000 點及另加 20,000 點。會員點數每期到期，額外點數不過期。",
+        "details": "新 Partner 首期支援 3 個月，後續依活躍程度審核。沒有每週固定發文數，但超過 3 個月未公開 PixVerse 作品，回饋可能暫停。持續招募，入選者通常 30 日內收到通知；升級與每週獎勵另有審核。"
+      }
+    },
+    {
+      "section": "competitions",
+      "added": "2026-11-04",
+      "source": "https://www.1billionsummit.com/ai-award-2027",
+      "host": "1 Billion Followers Summit / TikTok / Seedance",
+      "deadlines": [
+        {
+          "stage": "deadline",
+          "at": "2026-12-05"
+        }
+      ],
+      "en": {
+        "name": "1 Billion AI Film Award",
+        "summary": "A new, unpublished film of five to seven minutes excluding credits. At least 70% must be generated with Seedance.",
+        "reward": "US$1 million cash first prize. No other cash amounts are specified.",
+        "details": "The November 19 terms extend submissions to December 5; no cutoff time is given. Ages 18+, one of five themes, 16:9 at 1080p, English subtitles and the official intro. Seedance through third-party platforms is allowed; disclose tools and retain process evidence for 24 months. Creators keep their rights but grant a perpetual, non-exclusive promotional licence and must observe release holdbacks.",
+        "fee": "Free"
+      },
+      "zh": {
+        "name": "TikTok × Seedance 百萬美元 AI 電影獎",
+        "summary": "徵集未公開的新片，片長 5 至 7 分鐘，不含片頭片尾；至少 70% 須用 Seedance 生成。",
+        "reward": "首獎為 100 萬美元現金，其他名次未公布獎金。",
+        "details": "11 月 19 日新版條款已延至 12 月 5 日，未列截止時刻。年滿 18 歲，五個主題選一，交 16:9、1080p 影片、英文字幕及官方片頭。可透過第三方平台使用 Seedance，須揭露工具並保留製程紀錄 24 個月。作者保有權利，但授予永久、非獨家宣傳等使用授權，另有公開發行限制。",
+        "fee": "免費"
+      }
+    }
+  ]
+}

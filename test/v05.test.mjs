@@ -237,11 +237,12 @@ test('v0.5 离线 build：636页／630 sitemap，首页精选6条与视频192、
   const originalFetch=globalThis.fetch;
   globalThis.fetch=()=>assert.fail('Build and verify must not make network requests');
   try {
-    const result=await buildSite({out});
+    const result=await buildSite({publishKnowledgeBase:true,out});
     // v0.5.3 spec change (boss 2026-10-23): tool list page
     // redesign spec change (2026-11-08): two locales (English root, Chinese /zh/) instead of three.
     // redesign spec change (2026-11-08): two film pages per locale (4 more pages).
-    assert.equal(result.localizedPages.length,432);assert.equal(result.sitemapUrls.length,426);
+    // books spec change (2026-11-22): the Taiwanese Popular Religion series adds 12 pages (index + 5 books, in two languages).
+    assert.equal(result.localizedPages.length,456);assert.equal(result.sitemapUrls.length,450);
     const {symlink}=await import('node:fs/promises');
     await symlink(out,join(fixtureRoot,'dist'));
     await symlink(join(root,'data'),join(fixtureRoot,'data'));

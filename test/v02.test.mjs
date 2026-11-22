@@ -159,7 +159,7 @@ test('地区资料不足五条、重复 id、缺字段、非 HTTPS 或未授权�
 test('实际 build：四页均有揭露，空推广和关闭周报不留下容器，单类不显示切换', async () => {
   const out = await mkdtemp(join(tmpdir(), 'pcv-empty-affiliates-'));
   try {
-    await buildSite({out, affiliates});
+    await buildSite({publishKnowledgeBase:true,out, affiliates});
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
     for (const page of ['index', 'tips', 'takedown', 'regions']) {
       const html = await readFile(join(out, 'zh', `${page}.html`), 'utf8');

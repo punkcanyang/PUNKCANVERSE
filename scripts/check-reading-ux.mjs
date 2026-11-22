@@ -47,15 +47,34 @@ try {
   });
   await request('Fetch.enable',{patterns:[{urlPattern:'*'}]});
   await request('Page.addScriptToEvaluateOnNewDocument',{source:`window.__copied=[];Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.__copied.push(text)}}});`});
-  // List slim spec change (boss 2026-11-03): cards show an excerpt; copy and full-text search load assets/prompt-text.json on demand.
-  const promptTextPath=(await readFile(join(dist,'index.html'),'utf8')).match(/data-prompt-text="([^"]+)"/)[1];
-  const promptText=JSON.parse(await readFile(join(dist,promptTextPath),'utf8'));
-  const tailEntry=Object.entries(promptText).sort((a,b)=>b[1].length-a[1].length)[0];
-  // A fixed tail substring (any script, any spacing) that only full-text search can match.
-  const tailQuery=Array.from(tailEntry[1].trim()).slice(-30).join('').trim();
-  assert.ok(tailQuery.length>=10&&!Array.from(tailEntry[1]).slice(0,140).join('').includes(tailQuery),'Tail query must lie beyond the card excerpt');
-  // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
-  for(const lang of ['', '/zh']) {
+  const site = JSON.parse(await readFile('data/site.json','utf8'));
+  for (const lang of ['', '/zh']) {
+    const reviewsPath = lang + '/creators/production-notes/ai-platform-reviews/';
+    await navigate(reviewsPath);
+    assert.equal(await evaluate("document.querySelectorAll('.platform-review').length"), 36);
+    assert.equal(await evaluate("document.querySelector('#platform-36').parentElement.querySelector('h3').firstChild.textContent"), 'YouArt');
+    assert.equal(await evaluate("document.querySelectorAll('.platform-review[open]').length"), 0);
+    const heights = await evaluate(`(() => {
+      const article = document.querySelector('.production-note');
+      const reviews = article.querySelectorAll('.platform-review');
+      const compact = article.offsetHeight;
+      for (const review of reviews) review.open = true;
+      const expanded = article.offsetHeight;
+      for (const review of reviews) review.open = false;
+      return { compact, expanded };
+    })()`);
+    assert.ok(heights.compact < heights.expanded / 2, 'Collapsed directory should halve the reading distance on mobile');
+    console.log(`Platform reviews (${lang || '/en'}, 390px): ${heights.compact}px collapsed, ${heights.expanded}px expanded.`);
+    await evaluate("document.querySelector('.platform-review summary').focus()");
+    await request('Input.dispatchKeyEvent', {type:'keyDown', key:'Enter', code:'Enter', text:'\r', windowsVirtualKeyCode:13});
+    await request('Input.dispatchKeyEvent', {type:'keyUp', key:'Enter', code:'Enter', windowsVirtualKeyCode:13});
+    await waitUntil("document.querySelector('#platform-1').checkVisibility() && document.querySelector('.platform-review').open");
+    await evaluate("document.querySelector('.note-index summary').click()");
+    await evaluate("document.querySelector('.note-index a[href$=\"#platform-35\"]').click()");
+    await waitUntil("location.hash === '#platform-35' && document.querySelector('#platform-35').parentElement.open");
+    await navigate(lang + '/');
+    await navigate(reviewsPath + '#platform-22');
+    await waitUntil("document.querySelector('#platform-22').parentElement.open");
     // redesign spec change (2026-11-08): the home page is the film list; list copy is checked on the archive.
     await navigate(lang+'/',390);await screenshot((lang||'/en').slice(1)+'-home-mobile');
     assert.equal(await evaluate(`document.querySelectorAll('.film .bar').length`),2);
@@ -72,99 +91,120 @@ try {
     assert.equal(await evaluate(`document.querySelectorAll('iframe').length`),0,'No third-party frame before play');
     assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true);
     await screenshot((lang||'/en').slice(1)+'-film-mobile');
-    await navigate(lang+'/prompts/video/',390);await evaluate(`document.querySelector('[data-cookie-settings]').click()`);
-    const firstId=await evaluate(`document.querySelector('[data-copy-remote]').dataset.copyEntry`);
-    await evaluate(`document.querySelector('[data-copy-remote]').click()`);
-    await waitUntil(`window.__copied.length===1`);
-    assert.equal(await evaluate(`window.__copied[0]`),promptText[firstId],'List copy must be the exact full source, not the excerpt');
-    const geometry=await evaluate(`({lang:document.documentElement.lang,toast:document.querySelector('#toast').getBoundingClientRect().toJSON(),banner:document.querySelector('#cookie-consent').getBoundingClientRect().toJSON(),hidden:document.querySelector('#cookie-consent').hidden,space:document.body.style.getPropertyValue('--consent-space'),bottom:getComputedStyle(document.querySelector('#toast')).bottom})`);
-    assert.ok(geometry.toast.bottom<=geometry.banner.top,JSON.stringify(geometry));
-    await navigate(lang+'/prompts/video/',390);
-    await waitUntil(`!document.querySelector('#prompt-search').disabled`);
-    assert.equal(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length`),12);
-    await evaluate(`document.querySelector('#show-more').click()`);
-    assert.equal(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length`),24);
-    const keyword=await evaluate(`document.querySelector('.card-source small').textContent`);
-    await evaluate(`document.querySelector('#prompt-search').value=${JSON.stringify(keyword)};document.querySelector('#prompt-search').dispatchEvent(new Event('input',{bubbles:true}))`);
-    await waitUntil(`new URLSearchParams(location.search).get('q')===${JSON.stringify(keyword)}`);
-    assert.ok(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length>0`));
-    await evaluate(`document.querySelector('#prompt-search').value=${JSON.stringify(tailQuery)};document.querySelector('#prompt-search').dispatchEvent(new Event('input',{bubbles:true}))`);
-    await waitUntil(`!document.querySelector('#prompt-grid>[data-entry-id="${tailEntry[0]}"]').hidden`);
-    assert.equal(await evaluate(`document.querySelector('#prompt-grid>[data-entry-id="${tailEntry[0]}"] .prompt-preview').textContent.includes(${JSON.stringify(tailQuery)})`),false);
-    await evaluate(`document.querySelector('#prompt-search').value='zzzz-unmatched-123';document.querySelector('#prompt-search').dispatchEvent(new Event('input',{bubbles:true}))`);
-    await waitUntil(`!document.querySelector('#empty-state').hidden`);
-    await evaluate(`document.querySelector('[data-clear-filters]').click()`);
-    assert.equal(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length`),12);
-    await evaluate(`document.querySelector('[data-filter-tag]').click()`);
-    assert.equal(await evaluate(`document.querySelectorAll('#active-filters button').length`),1);
-    await evaluate(`document.querySelector('#active-filters button').click()`);
-    assert.equal(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length`),12);
-    await evaluate(`document.querySelector('#prompt-sort').value='latest';document.querySelector('#prompt-sort').dispatchEvent(new Event('change',{bubbles:true}))`);
-    assert.equal(await evaluate(`(()=>{const dates=[...document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])')].map(x=>JSON.parse(x.dataset.filterEntry).date);return dates.every((x,i)=>!i||dates[i-1]>=x)})()`),true);
-    await evaluate(`history.back()`);await waitUntil(`!new URLSearchParams(location.search).has('sort')`);
-    await evaluate(`document.querySelector('#clear-filters').click();document.querySelector('[data-consent="denied"]').click()`);
-    await screenshot((lang||'/en').slice(1)+'-archive-mobile');
-    await evaluate(`document.querySelector('#prompt-grid .prompt-card:not([hidden])').scrollIntoView()`);
-    await screenshot((lang||'/en').slice(1)+'-card-mobile');
-    const paths=[lang+'/tools',lang+'/tips',lang+'/works/',await evaluate(`document.querySelector('#prompt-grid h2 a').pathname`)];
-    for(const path of paths){await navigate(path,390);assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true,path);}
-    for (const [width,columns] of [[390,1],[1024,2],[1440,3]]) {
-      await navigate(lang+'/tools',width);
-      await waitUntil(`Boolean(document.querySelector('.tools-grid.is-enhanced'))`);
-      assert.equal(await evaluate(`getComputedStyle(document.querySelector('.tools-grid')).gridTemplateColumns.split(' ').length`),columns);
-      assert.equal(await evaluate(`document.querySelectorAll('.tools-grid .tool-body[hidden]').length`),3);
-      assert.equal(await evaluate(`document.querySelector('.tools-jump')===null`),true);
-      assert.equal(await evaluate(`document.querySelectorAll('.tool-free-badge').length`),2);
-      assert.equal(await evaluate(`[...document.querySelectorAll('.tool-free-badge')].every(badge=>{const box=badge.getBoundingClientRect();return box.top<badge.parentElement.getBoundingClientRect().top && box.left>=0 && box.right<=innerWidth;})`),true);
-      await screenshot((lang||'/en').slice(1)+`-tools-${width}`);
-      await evaluate(`document.querySelector('#magnific [data-tool-open]').focus()`);
-      await request('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
-      await request('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
-      await waitUntil(`document.querySelector('.tool-dialog').open`);
-      assert.equal(await evaluate(`document.querySelector('.tool-dialog h2').textContent`),'Magnific');
-      assert.equal(await evaluate(`document.querySelectorAll('.tool-dialog .tool-prices tbody tr').length>0`),true);
-      assert.equal(await evaluate(`document.querySelectorAll('.affiliate-button').length`),3,'Moving content must not duplicate promotional links');
-      assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth && document.querySelector('.tool-dialog').scrollWidth<=document.querySelector('.tool-dialog').clientWidth`),true);
-      await screenshot((lang||'/en').slice(1)+`-tool-dialog-${width}`);
-      await request('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
-      await request('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
-      await waitUntil(`!document.querySelector('.tool-dialog').open && document.activeElement.matches('#magnific [data-tool-open]') && Boolean(document.querySelector('#magnific .tool-body[hidden]'))`);
-      assert.equal(await evaluate(`Boolean(document.querySelector('#magnific .tool-body[hidden]'))`),true);
-      await evaluate(`document.querySelector('#pixverse [data-tool-open]').click();document.querySelector('.tool-dialog-close').click()`);
-      await waitUntil(`document.activeElement.matches('#pixverse [data-tool-open]') && Boolean(document.querySelector('#pixverse .tool-body[hidden]'))`);
+    if (!site.publishKnowledgeBase) {
+      await navigate(lang+'/?model=Wan',1440);
+      assert.equal(await evaluate('location.pathname'),lang+'/');
+      await navigate(lang+'/about/',390);
+      await evaluate("document.querySelector('[data-cookie-settings]').click()");
+      assert.equal(await evaluate("document.querySelector('#cookie-consent').hidden"),false);
     }
-    await navigate(lang+'/tools#pixverse',1440);
-    await waitUntil(`document.querySelector('.tool-dialog')?.open`);
-    assert.equal(await evaluate(`document.querySelector('.tool-dialog h2').textContent`),'PixVerse');
-    await evaluate(`document.querySelector('.tool-dialog-close').click()`);
-    await waitUntil(`!document.querySelector('.tool-dialog').open`);
-    await evaluate(`document.querySelector('#pixverse [data-tool-open]').click()`);
-    await waitUntil(`document.querySelector('.tool-dialog').open`);
-    await navigate(lang+'/prompts/video/',1440);await waitUntil(`!document.querySelector('#prompt-search').disabled`);
-    await screenshot((lang||'/en').slice(1)+'-archive-desktop');
-    assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true);
-    await navigate(lang+'/',1440);await screenshot((lang||'/en').slice(1)+'-home-desktop');
   }
-  const catalog=JSON.parse(await readFile(join(dist,'catalog.json'),'utf8')).entries;
-  const longest=[...catalog].sort((a,b)=>b.promptLength-a.promptLength)[0];
-  await navigate(`/prompts/video/${longest.id}/`);
-  await waitUntil(`Boolean(document.querySelector('.expand-prompt'))`);
-  await evaluate(`document.querySelector('.expand-prompt').click()`);
-  assert.equal(await evaluate(`getComputedStyle(document.querySelector('.full-prompt pre')).maxBlockSize`),'none');
-  await evaluate(`document.querySelector('[data-copy-entry]').click()`);await waitUntil(`window.__copied.length===1`);
-  assert.equal(await evaluate(`window.__copied[0]`),longest.prompt);
-  await evaluate(`navigator.clipboard.writeText=async()=>{throw Error('Clipboard denied')};document.execCommand=()=>false;document.querySelector('[data-copy-entry]').click()`);
-  await waitUntil(`document.querySelector('[data-copy-entry]').textContent===JSON.parse(document.body.dataset.messages).copyRetry`);
-  assert.equal(await evaluate(`document.querySelector('[data-copy-entry]').disabled`),false);
-  // Direct shared URLs, unknown filters, reload and legacy homepage bookmarks.
-  await navigate('/prompts/video/?model=not-a-model&q=camera&sort=featured');await waitUntil(`!document.querySelector('#prompt-search').disabled`);
-  assert.equal(await evaluate(`!document.querySelector('#unknown-filters').hidden && !document.querySelector('#empty-state').hidden`),true);
-  await navigate('/?model=Wan');await waitUntil(`location.pathname==='/prompts/video/' && !document.querySelector('#prompt-search').disabled`);
-  assert.equal(await evaluate(`document.querySelector('input[name="model"][value="Wan"]').checked`),true);
-  assert.ok(requests.includes(`/${promptTextPath}`),'Excerpt cards load source text on demand');
-  assert.ok(!requests.includes('/catalog.json'),'No full catalog fetch for copy or filters');
-  assert.deepEqual(errors,[]);
-  console.log('Offline browser interactions passed: two languages, copy with consent, search, zero results, tags, sort/history, progressive display, compact tool cards at 390/1024/1440, tool dialogs with keyboard and deep links, routes and legacy shared URLs; no catalog fetch.');
+  if (site.publishKnowledgeBase) {
+    // List slim spec change (boss 2026-11-03): cards show an excerpt; copy and full-text search load assets/prompt-text.json on demand.
+    const promptTextPath=(await readFile(join(dist,'index.html'),'utf8')).match(/data-prompt-text="([^"]+)"/)[1];
+    const promptText=JSON.parse(await readFile(join(dist,promptTextPath),'utf8'));
+    const tailEntry=Object.entries(promptText).sort((a,b)=>b[1].length-a[1].length)[0];
+    // A fixed tail substring (any script, any spacing) that only full-text search can match.
+    const tailQuery=Array.from(tailEntry[1].trim()).slice(-30).join('').trim();
+    assert.ok(tailQuery.length>=10&&!Array.from(tailEntry[1]).slice(0,140).join('').includes(tailQuery),'Tail query must lie beyond the card excerpt');
+    for (const lang of ['', '/zh']) {
+      await navigate(lang+'/prompts/video/',390);await evaluate(`document.querySelector('[data-cookie-settings]').click()`);
+      const firstId=await evaluate(`document.querySelector('[data-copy-remote]').dataset.copyEntry`);
+      await evaluate(`document.querySelector('[data-copy-remote]').click()`);
+      await waitUntil(`window.__copied.length===1`);
+      assert.equal(await evaluate(`window.__copied[0]`),promptText[firstId],'List copy must be the exact full source, not the excerpt');
+      const geometry=await evaluate(`({lang:document.documentElement.lang,toast:document.querySelector('#toast').getBoundingClientRect().toJSON(),banner:document.querySelector('#cookie-consent').getBoundingClientRect().toJSON(),hidden:document.querySelector('#cookie-consent').hidden,space:document.body.style.getPropertyValue('--consent-space'),bottom:getComputedStyle(document.querySelector('#toast')).bottom})`);
+      assert.ok(geometry.toast.bottom<=geometry.banner.top,JSON.stringify(geometry));
+      await navigate(lang+'/prompts/video/',390);
+      await waitUntil(`!document.querySelector('#prompt-search').disabled`);
+      assert.equal(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length`),12);
+      await evaluate(`document.querySelector('#show-more').click()`);
+      assert.equal(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length`),24);
+      const keyword=await evaluate(`document.querySelector('.card-source small').textContent`);
+      await evaluate(`document.querySelector('#prompt-search').value=${JSON.stringify(keyword)};document.querySelector('#prompt-search').dispatchEvent(new Event('input',{bubbles:true}))`);
+      await waitUntil(`new URLSearchParams(location.search).get('q')===${JSON.stringify(keyword)}`);
+      assert.ok(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length>0`));
+      await evaluate(`document.querySelector('#prompt-search').value=${JSON.stringify(tailQuery)};document.querySelector('#prompt-search').dispatchEvent(new Event('input',{bubbles:true}))`);
+      await waitUntil(`!document.querySelector('#prompt-grid>[data-entry-id="${tailEntry[0]}"]').hidden`);
+      assert.equal(await evaluate(`document.querySelector('#prompt-grid>[data-entry-id="${tailEntry[0]}"] .prompt-preview').textContent.includes(${JSON.stringify(tailQuery)})`),false);
+      await evaluate(`document.querySelector('#prompt-search').value='zzzz-unmatched-123';document.querySelector('#prompt-search').dispatchEvent(new Event('input',{bubbles:true}))`);
+      await waitUntil(`!document.querySelector('#empty-state').hidden`);
+      await evaluate(`document.querySelector('[data-clear-filters]').click()`);
+      assert.equal(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length`),12);
+      await evaluate(`document.querySelector('[data-filter-tag]').click()`);
+      assert.equal(await evaluate(`document.querySelectorAll('#active-filters button').length`),1);
+      await evaluate(`document.querySelector('#active-filters button').click()`);
+      assert.equal(await evaluate(`document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])').length`),12);
+      await evaluate(`document.querySelector('#prompt-sort').value='latest';document.querySelector('#prompt-sort').dispatchEvent(new Event('change',{bubbles:true}))`);
+      assert.equal(await evaluate(`(()=>{const dates=[...document.querySelectorAll('#prompt-grid>.prompt-card:not([hidden])')].map(x=>JSON.parse(x.dataset.filterEntry).date);return dates.every((x,i)=>!i||dates[i-1]>=x)})()`),true);
+      await evaluate(`history.back()`);await waitUntil(`!new URLSearchParams(location.search).has('sort')`);
+      await evaluate(`document.querySelector('#clear-filters').click();document.querySelector('[data-consent="denied"]').click()`);
+      await screenshot((lang||'/en').slice(1)+'-archive-mobile');
+      await evaluate(`document.querySelector('#prompt-grid .prompt-card:not([hidden])').scrollIntoView()`);
+      await screenshot((lang||'/en').slice(1)+'-card-mobile');
+      const paths=[lang+'/tools',lang+'/tips',lang+'/works/',await evaluate(`document.querySelector('#prompt-grid h2 a').pathname`)];
+      for(const path of paths){await navigate(path,390);assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true,path);}
+      for (const [width,columns] of [[390,1],[1024,2],[1440,3]]) {
+        await navigate(lang+'/tools',width);
+        await waitUntil(`Boolean(document.querySelector('.tools-grid.is-enhanced'))`);
+        assert.equal(await evaluate(`getComputedStyle(document.querySelector('.tools-grid')).gridTemplateColumns.split(' ').length`),columns);
+        assert.equal(await evaluate(`document.querySelectorAll('.tools-grid .tool-body[hidden]').length`),3);
+        assert.equal(await evaluate(`document.querySelector('.tools-jump')===null`),true);
+        assert.equal(await evaluate(`document.querySelectorAll('.tool-free-badge').length`),2);
+        assert.equal(await evaluate(`[...document.querySelectorAll('.tool-free-badge')].every(badge=>{const box=badge.getBoundingClientRect();return box.top<badge.parentElement.getBoundingClientRect().top && box.left>=0 && box.right<=innerWidth;})`),true);
+        await screenshot((lang||'/en').slice(1)+`-tools-${width}`);
+        await evaluate(`document.querySelector('#magnific [data-tool-open]').focus()`);
+        await request('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13});
+        await request('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+        await waitUntil(`document.querySelector('.tool-dialog').open`);
+        assert.equal(await evaluate(`document.querySelector('.tool-dialog h2').textContent`),'Magnific');
+        assert.equal(await evaluate(`document.querySelectorAll('.tool-dialog .tool-prices tbody tr').length>0`),true);
+        assert.equal(await evaluate(`document.querySelectorAll('.affiliate-button').length`),3,'Moving content must not duplicate promotional links');
+        assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth && document.querySelector('.tool-dialog').scrollWidth<=document.querySelector('.tool-dialog').clientWidth`),true);
+        await screenshot((lang||'/en').slice(1)+`-tool-dialog-${width}`);
+        await request('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+        await request('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+        await waitUntil(`!document.querySelector('.tool-dialog').open && document.activeElement.matches('#magnific [data-tool-open]') && Boolean(document.querySelector('#magnific .tool-body[hidden]'))`);
+        assert.equal(await evaluate(`Boolean(document.querySelector('#magnific .tool-body[hidden]'))`),true);
+        await evaluate(`document.querySelector('#pixverse [data-tool-open]').click();document.querySelector('.tool-dialog-close').click()`);
+        await waitUntil(`document.activeElement.matches('#pixverse [data-tool-open]') && Boolean(document.querySelector('#pixverse .tool-body[hidden]'))`);
+      }
+      await navigate(lang+'/tools#pixverse',1440);
+      await waitUntil(`document.querySelector('.tool-dialog')?.open`);
+      assert.equal(await evaluate(`document.querySelector('.tool-dialog h2').textContent`),'PixVerse');
+      await evaluate(`document.querySelector('.tool-dialog-close').click()`);
+      await waitUntil(`!document.querySelector('.tool-dialog').open`);
+      await evaluate(`document.querySelector('#pixverse [data-tool-open]').click()`);
+      await waitUntil(`document.querySelector('.tool-dialog').open`);
+      await navigate(lang+'/prompts/video/',1440);await waitUntil(`!document.querySelector('#prompt-search').disabled`);
+      await screenshot((lang||'/en').slice(1)+'-archive-desktop');
+      assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth`),true);
+      await navigate(lang+'/',1440);await screenshot((lang||'/en').slice(1)+'-home-desktop');
+    }
+    const catalog=JSON.parse(await readFile(join(dist,'catalog.json'),'utf8')).entries;
+    const longest=[...catalog].sort((a,b)=>b.promptLength-a.promptLength)[0];
+    await navigate(`/prompts/video/${longest.id}/`);
+    await waitUntil(`Boolean(document.querySelector('.expand-prompt'))`);
+    await evaluate(`document.querySelector('.expand-prompt').click()`);
+    assert.equal(await evaluate(`getComputedStyle(document.querySelector('.full-prompt pre')).maxBlockSize`),'none');
+    await evaluate(`document.querySelector('[data-copy-entry]').click()`);await waitUntil(`window.__copied.length===1`);
+    assert.equal(await evaluate(`window.__copied[0]`),longest.prompt);
+    await evaluate(`navigator.clipboard.writeText=async()=>{throw Error('Clipboard denied')};document.execCommand=()=>false;document.querySelector('[data-copy-entry]').click()`);
+    await waitUntil(`document.querySelector('[data-copy-entry]').textContent===JSON.parse(document.body.dataset.messages).copyRetry`);
+    assert.equal(await evaluate(`document.querySelector('[data-copy-entry]').disabled`),false);
+    // Direct shared URLs, unknown filters, reload and legacy homepage bookmarks.
+    await navigate('/prompts/video/?model=not-a-model&q=camera&sort=featured');await waitUntil(`!document.querySelector('#prompt-search').disabled`);
+    assert.equal(await evaluate(`!document.querySelector('#unknown-filters').hidden && !document.querySelector('#empty-state').hidden`),true);
+    await navigate('/?model=Wan');await waitUntil(`location.pathname==='/prompts/video/' && !document.querySelector('#prompt-search').disabled`);
+    assert.equal(await evaluate(`document.querySelector('input[name="model"][value="Wan"]').checked`),true);
+    assert.ok(requests.includes(`/${promptTextPath}`),'Excerpt cards load source text on demand');
+    assert.ok(!requests.includes('/catalog.json'),'No full catalog fetch for copy or filters');
+    assert.deepEqual(errors,[]);
+    console.log('Offline browser interactions passed: two languages, copy with consent, search, zero results, tags, sort/history, progressive display, compact tool cards at 390/1024/1440, tool dialogs with keyboard and deep links, routes and legacy shared URLs; no catalog fetch.');
+  } else {
+    assert.deepEqual(errors, []);
+    console.log('Offline portfolio interactions passed in both languages: film previews, start time, old search URLs and Cookie settings.');
+  }
 } finally {
   if(chrome.exitCode===null&&chrome.signalCode===null){const stopped=new Promise(r=>chrome.once('exit',r));chrome.kill();await stopped;}
   await rm(temporary,{recursive:true,force:true,maxRetries:5,retryDelay:100});

@@ -1,4 +1,11 @@
 {
+  "flick": {
+    "name": "Flick",
+    "url": "https://flick.art/?via=punkcan",
+    "models": [
+      "Flick"
+    ]
+  },
   "hailuo": {
     "name": "海螺 Hailuo",
     "url": "",
