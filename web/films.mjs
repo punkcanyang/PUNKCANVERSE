@@ -41,7 +41,7 @@ function initReel(document) {
 }
 
 export function embedUrl(id, start) {
-  const url = new URL(`https://www.youtube-nocookie.com/embed/${id}`);
+  const url = new URL(`https://www.youtube.com/embed/${id}`);
   url.searchParams.set('autoplay', '1');
   url.searchParams.set('rel', '0');
   if (start > 0) url.searchParams.set('start', String(Math.round(start)));

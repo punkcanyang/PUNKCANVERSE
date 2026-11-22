@@ -47,7 +47,9 @@ export async function verifyV05(root=fileURLToPath(new URL('..',import.meta.url)
   const sitemap=await read('dist/sitemap.xml');
   const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(row=>row[1]);
   // v0.5.3 spec change (boss 2026-10-23): tool list page
-  assert.equal(locs.length,426 + 2 * (await loadWorks(root)).length);
+  // books spec change (2026-11-22): the series index and each book page, in both languages.
+  const books=JSON.parse(await read('content/books.json')).entries;
+  assert.equal(locs.length,438 + 2 * (await loadWorks(root)).length + 2 * (books.length + 1));
   for(const locale of ['zh','en']) {
     const prefix=locale==='en'?'':locale+'/';
     const urlPrefix=locale==='en'?'':`/${locale}`;

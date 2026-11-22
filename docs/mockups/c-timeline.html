@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup C · Timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#e9eae6;   /* cool studio grey, the edit-suite desk */
+  --panel:#dcddd8;
+  --ink:#121417;
+  --soft:#5d6168;
+  --rule:#c4c6c0;
+  --head:#1f3bff;    /* playhead blue */
+  --audio:#2f9e6e;
+  --f:"Archivo","PingFang TC","Noto Sans TC",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--f);font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--head);outline-offset:3px}
+.note{font-size:12px;text-align:center;padding:7px 16px;background:var(--ink);color:var(--paper)}
+
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 28px}
+.mark{font-weight:800;font-size:20px;font-variation-settings:"wdth" 125;letter-spacing:-.01em;text-decoration:none}
+.top nav{display:flex;gap:24px;font-size:15px}
+.top nav a{text-decoration:none;color:var(--soft)}
+.top nav a[aria-current]{color:var(--ink)}
+
+/* program monitor */
+.monitor{margin:0 28px;position:relative;background:#000;aspect-ratio:16/8;max-height:70vh;width:calc(100% - 56px);overflow:hidden}
+.monitor img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s}
+.monitor .over{position:absolute;inset:auto 0 0 0;padding:28px 32px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  background:linear-gradient(0deg,rgba(0,0,0,.6),rgba(0,0,0,0));color:#fff}
+.monitor h1{font-weight:850;font-variation-settings:"wdth" 62;font-size:clamp(48px,9vw,148px);line-height:.86;letter-spacing:-.01em;max-width:10ch}
+.monitor .info{text-align:right;font-size:15px;line-height:1.5;font-variant-numeric:tabular-nums}
+.monitor .info a{display:inline-block;margin-top:10px;color:#fff;font-weight:600;text-decoration:none;border-bottom:2px solid #fff}
+.tc{position:absolute;top:18px;right:22px;color:#fff;font-size:15px;font-variant-numeric:tabular-nums;font-variation-settings:"wdth" 85;opacity:.9}
+
+/* timeline */
+.edit{margin:14px 28px 0;background:var(--panel);padding:10px 0 14px;position:relative;overflow-x:auto;overscroll-behavior-x:contain}
+.track-wrap{position:relative;min-width:980px;padding:0 16px 0 72px}
+.ruler{height:26px;position:relative;border-bottom:1px solid var(--rule);
+  background:repeating-linear-gradient(90deg,var(--soft) 0 1px,transparent 1px 2%) bottom/100% 7px no-repeat}
+.ruler span{position:absolute;top:2px;font-size:11px;color:var(--soft);font-variant-numeric:tabular-nums;transform:translateX(-50%)}
+.row{display:flex;gap:3px;height:74px;margin-top:8px;position:relative}
+.row.a{height:34px}
+.row .lab{position:absolute;left:-60px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:700;color:var(--soft);width:48px}
+.clip{position:relative;height:100%;border:0;padding:0;cursor:pointer;overflow:hidden;background:#000;text-decoration:none;color:#fff;display:block}
+.clip .strip{position:absolute;inset:0;background-size:auto 100%;background-repeat:repeat-x;opacity:.85}
+.clip span{position:absolute;left:8px;top:6px;font-size:12px;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,.6);white-space:nowrap}
+.clip.on{outline:2px solid var(--head);outline-offset:-2px}
+.clip.on .strip{opacity:1}
+.gap{height:100%}
+.aclip{height:100%;background:var(--audio);position:relative;overflow:hidden}
+.aclip svg{position:absolute;inset:0;width:100%;height:100%}
+.aclip span{position:absolute;left:8px;top:2px;font-size:11px;color:#eafff4;font-weight:600}
+.playhead{position:absolute;top:0;bottom:-14px;width:2px;background:var(--head);pointer-events:none;transition:left .4s cubic-bezier(.3,.7,.2,1);z-index:3}
+.playhead::before{content:"";position:absolute;top:0;left:-6px;border:7px solid transparent;border-top:9px solid var(--head)}
+
+/* index */
+.index{padding:88px 28px 40px;display:grid;grid-template-columns:1fr 2.2fr;gap:48px}
+.index h2{font-weight:800;font-variation-settings:"wdth" 62;font-size:56px;line-height:.9}
+.index p.lede{margin-top:18px;color:var(--soft);font-size:17px;line-height:1.55;max-width:30ch}
+.list{list-style:none;border-top:2px solid var(--ink)}
+.list a{display:grid;grid-template-columns:3fr 2fr 1fr 1fr;gap:16px;padding:16px 4px;border-bottom:1px solid var(--rule);text-decoration:none;font-size:17px;align-items:baseline}
+.list a:hover{background:var(--panel)}
+.list b{font-weight:650;font-variation-settings:"wdth" 90;font-size:22px}
+.list i{font-style:normal;color:var(--soft);font-variant-numeric:tabular-nums}
+
+/* detail */
+.detail{padding:96px 28px 120px;border-top:1px solid var(--rule);margin-top:72px}
+.detail .kind{color:var(--soft);font-size:15px;margin-bottom:12px}
+.detail h2{font-weight:850;font-variation-settings:"wdth" 62;font-size:clamp(56px,10vw,160px);line-height:.85;margin-bottom:36px}
+.player{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+.player img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.player button{position:absolute;left:32px;bottom:28px;font:inherit;font-weight:700;font-size:17px;background:#fff;color:var(--ink);border:0;padding:14px 22px 14px 18px;display:flex;gap:10px;align-items:center;cursor:pointer}
+.player button::before{content:"";border-left:13px solid var(--head);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.cols{display:grid;grid-template-columns:1.3fr 1fr;gap:72px;margin-top:48px}
+.cols p{font-size:19px;line-height:1.7;max-width:58ch;margin-bottom:18px}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;padding:16px 0;border-top:1px solid var(--rule);font-size:16px;line-height:1.5}
+.steps li::before{content:counter(s);font-weight:800;font-variation-settings:"wdth" 62;font-size:30px;line-height:1;color:var(--head)}
+.steps strong{display:block;font-weight:650}
+.steps small{color:var(--soft);font-size:14px}
+.cols h3{font-size:15px;color:var(--soft);font-weight:500;margin-bottom:10px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;margin-top:36px;font-size:15px}
+.facts dt{color:var(--soft)}
+
+footer{padding:28px;display:flex;justify-content:space-between;color:var(--soft);font-size:14px;border-top:1px solid var(--rule)}
+
+@media (max-width:820px){
+  .top{padding:14px 16px}
+  .mark{font-size:16px;font-variation-settings:"wdth" 100}
+  .top nav{gap:14px;font-size:14px}
+  .monitor{margin:0 16px;width:calc(100% - 32px);aspect-ratio:4/5;max-height:none}
+  .monitor .over{flex-direction:column;align-items:flex-start;padding:20px}
+  .monitor .info{text-align:left}
+  .edit{margin:12px 16px 0}
+  .index{grid-template-columns:1fr;padding:64px 16px 24px;gap:28px}
+  .list a{grid-template-columns:1fr auto;row-gap:2px}
+  .list a i:nth-of-type(2),.list a i:nth-of-type(1){display:none}
+  .detail{padding:64px 16px 80px}
+  .cols{grid-template-columns:1fr;gap:40px}
+  .player button{left:16px;bottom:16px}
+  footer{padding:24px 16px;flex-direction:column;gap:6px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="note">Mockup C, edit timeline. Frames are stand-ins from the Wan 3.0 docs, not Punkcan works.</div>
+
+<header class="top">
+  <a class="mark" href="#">PUNKCANVERSE</a>
+  <nav><a href="#" aria-current="page">Work</a><a href="#">About</a><a href="#" lang="zh-Hant">中文</a></nav>
+</header>
+
+<section class="monitor" aria-live="polite">
+  <img id="mon" src="../../web/img/official/aliyun-wan3-example-07.webp" alt="">
+  <div class="tc" id="tc">00:00:00:00</div>
+  <div class="over">
+    <h1 id="title">Retreat at Dawn</h1>
+    <div class="info"><span id="meta">Short film, 2026</span><br><span id="len">2 min 14 s</span><br><a href="#detail">Watch the film</a></div>
+  </div>
+</section>
+
+<section class="edit" aria-label="Works on the timeline. Hover or focus a clip to preview it.">
+  <div class="track-wrap" id="tw">
+    <div class="ruler" id="ruler"></div>
+    <div class="row" id="v1"><span class="lab">V1</span></div>
+    <div class="row a" id="a1"><span class="lab">A1</span></div>
+    <div class="playhead" id="ph"></div>
+  </div>
+</section>
+
+<section class="index">
+  <div>
+    <h2>Every piece, in order</h2>
+    <p class="lede">Films, music videos and image series made with generative models. Each one comes with notes on how it was put together.</p>
+  </div>
+  <ul class="list" id="list"></ul>
+</section>
+
+<section class="detail" id="detail">
+  <p class="kind">Short film, 2026</p>
+  <h2>Retreat at Dawn</h2>
+  <figure class="player"><img src="../../web/img/official/aliyun-wan3-example-07.webp" alt="Soldiers running through a canyon"><button>Play on YouTube</button></figure>
+  <div class="cols">
+    <div>
+      <p>Placeholder description. Two or three sentences on what the piece is about and why it was made, written in plain language.</p>
+      <p>The reading column stays under 60 characters a line so long notes are easy to follow.</p>
+      <dl class="facts"><dt>Length</dt><dd>2 min 14 s</dd><dt>Models</dt><dd>Wan 3.0, Suno v5</dd><dt>Also on</dt><dd><a href="#">YouTube</a>, <a href="#">X</a></dd></dl>
+    </div>
+    <div>
+      <h3>How it was made</h3>
+      <ol class="steps">
+        <li><div><strong>Storyboard</strong><small>24 key frames drawn with GPT Image</small></div></li>
+        <li><div><strong>Shots</strong><small>Image-to-video in Wan 3.0, 5 s each, 3 takes per shot</small></div></li>
+        <li><div><strong>Score</strong><small>Suno, cut to the edit in DaVinci Resolve</small></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer><span>Punkcan, 2026</span><a href="mailto:hello@punkcanverse.com">hello@punkcanverse.com</a></footer>
+
+<script>
+const IMG = n => `../../web/img/official/aliyun-wan3-example-${n}.webp`;
+const works = [
+  {t:"Retreat at Dawn", k:"Short film", y:2026, s:134, img:"07", alt:"Soldiers running through a canyon"},
+  {t:"Gate of Snow", k:"Image series", y:2026, s:40, img:"03", alt:"Temple gate in snow"},
+  {t:"Last Station", k:"Short film", y:2026, s:96, img:"22", alt:"Gas station in the desert"},
+  {t:"One Drop", k:"Experiment", y:2025, s:22, img:"19", alt:"Water drop on a lake"},
+  {t:"Ink Walker", k:"Music video", y:2025, s:70, img:"20", alt:"Ink figure in bamboo"},
+  {t:"Felt Pilots", k:"Animation test", y:2025, s:48, img:"23", alt:"Felt animals at a control panel"},
+];
+const total = works.reduce((a,w)=>a+w.s,0) + (works.length-1)*4;
+const tc = s => { const m=Math.floor(s/60), r=s%60; return `00:${String(m).padStart(2,'0')}:${String(r).padStart(2,'0')}:00`; };
+const dur = s => s>=60 ? `${Math.floor(s/60)} min ${s%60} s` : `${s} s`;
+
+const v1=document.getElementById('v1'), a1=document.getElementById('a1'), ruler=document.getElementById('ruler');
+for(let i=0;i<=6;i++){ const sp=document.createElement('span'); sp.style.left=(i/6*100)+'%'; sp.textContent=tc(Math.round(total*i/6)).slice(3,8); ruler.appendChild(sp); }
+
+let start=0; const starts=[];
+works.forEach((w,i)=>{
+  starts.push(start);
+  const pct = w.s/total*100;
+  const a=document.createElement('a'); a.className='clip'; a.href='#detail'; a.style.width=pct+'%';
+  a.innerHTML=`<div class="strip" style="background-image:url(${IMG(w.img)})"></div><span>${w.t}</span>`;
+  a.addEventListener('mouseenter',()=>show(i)); a.addEventListener('focus',()=>show(i));
+  v1.appendChild(a);
+  const au=document.createElement('div'); au.className='aclip'; au.style.width=pct+'%';
+  let d='M0 17'; for(let x=0;x<=200;x+=2){ const h=4+Math.abs(Math.sin(x*.37+i)*Math.cos(x*.11))*12; d+=` L${x} ${17-h} L${x+1} ${17+h}`; }
+  au.innerHTML=`<svg viewBox="0 0 200 34" preserveAspectRatio="none"><path d="${d}" stroke="#bff0d8" stroke-width=".8" fill="none"/></svg><span>${w.k==='Music video'?'Track':'Score'}</span>`;
+  a1.appendChild(au);
+  if(i<works.length-1){ [v1,a1].forEach(r=>{const g=document.createElement('div'); g.className='gap'; g.style.width=(4/total*100)+'%'; r.appendChild(g);}); }
+  start += w.s + 4;
+  const li=document.createElement('li');
+  li.innerHTML=`<a href="#detail"><b>${w.t}</b><i>${w.k}</i><i>${dur(w.s)}</i><i>${w.y}</i></a>`;
+  document.getElementById('list').appendChild(li);
+});
+
+const ph=document.getElementById('ph'), tw=document.getElementById('tw');
+function show(i){
+  const w=works[i];
+  document.querySelectorAll('.clip').forEach((c,j)=>c.classList.toggle('on',j===i));
+  const mon=document.getElementById('mon');
+  if(!mon.src.endsWith(IMG(w.img).slice(5))){
+    mon.style.opacity=0;
+    setTimeout(()=>{ mon.src=IMG(w.img); mon.alt=w.alt; mon.style.opacity=1; },150);
+  }
+  document.getElementById('title').textContent=w.t;
+  document.getElementById('meta').textContent=`${w.k}, ${w.y}`;
+  document.getElementById('len').textContent=dur(w.s);
+  document.getElementById('tc').textContent=tc(starts[i]);
+  const inner = tw.clientWidth - 72 - 16;
+  ph.style.left = (72 + starts[i]/total*inner) + 'px';
+}
+show(0);
+addEventListener('resize',()=>show([...document.querySelectorAll('.clip')].findIndex(c=>c.classList.contains('on'))));
+</script>
+</body>
+</html>

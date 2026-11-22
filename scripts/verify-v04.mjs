@@ -27,6 +27,8 @@ export function validateLocalizedHtml(html, locale, uiZh, entries, {essayFallbac
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'')
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,'');
   if (essayFallback) visible=visible.replace(/<article class="essay-page">[\s\S]*?<\/article>/,'');
+  // books spec change (2026-11-22): Chinese book titles and the source list copied from each manuscript are originals, not interface text.
+  visible=visible.replace(/<section id="sources">[\s\S]*?<\/section>/,'').replace(/<span lang="zh-Hant-TW">[^<]*<\/span>/g,'');
   const accessible=[...visible.matchAll(/\b(?:aria-label|alt|title|placeholder)="([^"]*)"/g)].map(match=>match[1]).join(' ');
   visible=visible.replace(/<[^>]+>/g,' ')+' '+accessible;
   for (const entry of entries) visible=visible.split(e(entry.author)).join('');
@@ -48,7 +50,8 @@ export async function verifyV04(root=fileURLToPath(new URL('..',import.meta.url)
   const i18n=await loadI18n(root);
   validateI18n(i18n,entries,workflows,regions);validateWorkflows(workflows);
   const essays=await loadEssays(pathToFileURL(join(root,'content/essays')+'/'));
-  const pages=listPages({entries,workflows,essays,works:await loadWorks(root),films:await loadFilms(root),sitePages:SITE_PAGES});
+  const notes=await loadEssays(pathToFileURL(join(root,'content/production-notes')+'/'));
+  const pages=listPages({entries,workflows,essays,notes,works:await loadWorks(root),films:await loadFilms(root),sitePages:SITE_PAGES});
   const allFiles=await readdir(join(root,'dist'),{recursive:true});
   assert.deepEqual(allFiles.filter(x=>x.endsWith('.html')).sort(),pages.map(x=>x.file).sort(),'Exact multilingual HTML files');
   for (const page of pages) {

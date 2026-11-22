@@ -116,16 +116,18 @@ test('离线三语 build：246 页、五工作流有图/VIDEO/片长/原文复�
   const out=await mkdtemp(join(tmpdir(),'pcv-v04-'));const originalFetch=globalThis.fetch;
   globalThis.fetch=()=>assert.fail('No network in build/test');
   try {
-    const result=await buildSite({out});
+    const result=await buildSite({publishKnowledgeBase:true,out});
     // v0.5 spec change (boss 2026-10-22): 129 details plus a fight list in each locale add 390 pages.
     // v0.5.3 spec change (boss 2026-10-23): tool list page
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
     // redesign spec change (2026-11-08): two film pages per locale (4 more pages).
-    assert.equal(result.localizedPages.length,432);
+    // books spec change (2026-11-22): the Taiwanese Popular Religion series adds 12 pages (index + 5 books, in two languages).
+    assert.equal(result.localizedPages.length,456);
     const files=await readdir(out,{recursive:true});
     // v0.5 spec change (boss 2026-10-22): exact multilingual HTML file count is 636.
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    assert.equal(files.filter(x=>x.endsWith('.html')).length,432);
+    // books spec change (2026-11-22): the Taiwanese Popular Religion series adds 12 pages (index + 5 books, in two languages).
+    assert.equal(files.filter(x=>x.endsWith('.html')).length,456);
     for(const page of result.localizedPages) {
       const html=await readFile(join(out,page.file),'utf8');
       assert.ok(html.includes(`<link rel="canonical" href="https://punkcanverse.com${page.canonical}">`));
@@ -163,7 +165,7 @@ test('离线三语 build：246 页、五工作流有图/VIDEO/片长/原文复�
 test('空工作流 fixture：三语仍有第4分页与0计数、即将推出说明、无空卡片和详情 sitemap',async()=>{
   const out=await mkdtemp(join(tmpdir(),'pcv-no-workflows-'));
   try {
-    const result=await buildSite({out,workflows:[]});
+    const result=await buildSite({publishKnowledgeBase:true,out,workflows:[]});
     for(const locale of ['zh','en']) {
       const prefix=locale==='en'?'':locale+'/';
       const html=await readFile(join(out,prefix,'prompts/workflow/index.html'),'utf8');
@@ -180,7 +182,7 @@ test('文章 fixture：翻译不额外变文章、缺译显示原文且 canonica
   try {
     await mkdir(content);await writeFile(join(content,'field.md'),essay('原文标题','原文内容。'));
     let essays=await loadEssays(pathToFileURL(content+'/'));assert.equal(essays.length,1);
-    let result=await buildSite({out,essayDirectory:content});
+    let result=await buildSite({publishKnowledgeBase:true,out,essayDirectory:content});
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
     let fallback=await readFile(join(out,'essays/field/index.html'),'utf8');
     assert.ok(fallback.includes(escapeHtml(i18n.ui.en.untranslated)));
@@ -188,7 +190,7 @@ test('文章 fixture：翻译不额外变文章、缺译显示原文且 canonica
     assert.ok(!fallback.includes('hreflang="en"'));assert.ok(!result.sitemapUrls.includes('https://punkcanverse.com/essays/field/'));
     await writeFile(join(content,'field.en.md'),essay('Field notes','The translated essay.','en'));
     essays=await loadEssays(pathToFileURL(content+'/'));assert.equal(essays.length,1);assert.equal(essays[0].translations.en.lang,'en');
-    result=await buildSite({out,essayDirectory:content});
+    result=await buildSite({publishKnowledgeBase:true,out,essayDirectory:content});
     const english=await readFile(join(out,'essays/field/index.html'),'utf8');
     assert.ok(english.includes('The translated essay.'));assert.ok(!english.includes('untranslated-notice'));
     assert.ok(english.includes('<link rel="canonical" href="https://punkcanverse.com/essays/field/">'));
@@ -269,7 +271,7 @@ test('英文说明页只允许作品介绍迁移，其余法律正文保留原�
   assert.equal(createHash('sha256').update(JSON.stringify(copy)).digest('hex'),'1aed3f6580fec000f1a62ea1d6bef62f5c8f30a90445d92bb2679a29ecf74434');
   const out=await mkdtemp(join(tmpdir(),'pcv-legal-languages-'));
   try {
-    await buildSite({out});
+    await buildSite({publishKnowledgeBase:true,out});
     for(const page of SITE_PAGES) {
       const legal=i18n.ui.en.legal[page.path.slice(1,-1)];
       // redesign spec change (2026-11-08): English legal pages live at the root.

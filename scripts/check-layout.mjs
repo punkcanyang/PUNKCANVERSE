@@ -10,15 +10,26 @@ const temporary=await mkdtemp(join(tmpdir(),'pcv-layout-'));
 let chrome;
 try {
   const css=await readFile('dist/assets/site.css','utf8');
-  const {entries:workflows}=JSON.parse(await readFile('data/workflows.json','utf8'));
-  const {entries}=JSON.parse(await readFile('data/prompts.json','utf8'));
-  const samples=['index.html','tips.html','tools.html','regions.html','privacy/index.html','works/index.html','essays/index.html','prompts/workflow/index.html',`prompts/workflow/${workflows[0].id}/index.html`,`prompts/video/${entries[0].id}/index.html`];
-  const { imported } = await loadCatalog(process.cwd());
-  samples.push('prompts/fight/index.html',
-    `prompts/video/${imported.entries.find(entry=>entry.source==='official').id}/index.html`,
-    `prompts/video/${imported.entries.find(entry=>entry.source==='x'&&entry.isLong).id}/index.html`);
-  samples.push(...[...entries,...imported.entries].sort((a,b)=>b.promptLength-a.promptLength).slice(0,3)
-    .map(entry=>`prompts/video/${entry.id}/index.html`));
+  const site = JSON.parse(await readFile('data/site.json', 'utf8'));
+  const films = JSON.parse(await readFile('content/films.json', 'utf8')).entries;
+  const samples = ['index.html','cpp/index.html','competitions/index.html','creators/index.html',
+    'creators/production-notes/index.html','creators/production-notes/ai-video-platform-costs/index.html','creators/production-notes/ai-platform-reviews/index.html'];
+  if (site.publishKnowledgeBase) {
+    const {entries:workflows}=JSON.parse(await readFile('data/workflows.json','utf8'));
+    const {entries}=JSON.parse(await readFile('data/prompts.json','utf8'));
+    samples.push('tips.html','tools.html','regions.html','privacy/index.html','works/index.html','essays/index.html','prompts/workflow/index.html',`prompts/workflow/${workflows[0].id}/index.html`,`prompts/video/${entries[0].id}/index.html`);
+    const { imported } = await loadCatalog(process.cwd());
+    samples.push('prompts/fight/index.html',
+      `prompts/video/${imported.entries.find(entry=>entry.source==='official').id}/index.html`,
+      `prompts/video/${imported.entries.find(entry=>entry.source==='x'&&entry.isLong).id}/index.html`);
+    samples.push(...[...entries,...imported.entries].sort((a,b)=>b.promptLength-a.promptLength).slice(0,3)
+      .map(entry=>`prompts/video/${entry.id}/index.html`));
+  } else {
+    const books = JSON.parse(await readFile('content/books.json', 'utf8')).entries;
+    samples.push('privacy/index.html', 'works/index.html', 'about/index.html', ...films.map(film => `films/${film.slug}/index.html`),
+      'books/index.html', ...books.map(book => `books/${book.slug}/index.html`));
+  }
+  const filmCss = await readFile('dist/assets/films.css', 'utf8');
   chrome=spawn(process.env.CHROME_BIN||'google-chrome',['--headless','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-background-networking','--disable-component-update','--disable-extensions','--disable-sync','--no-first-run',`--user-data-dir=${join(temporary,'profile')}`,'--remote-debugging-pipe','about:blank'],{stdio:['ignore','ignore','pipe','pipe','pipe']});
   let id=0,buffer='',exitError;const pending=new Map();const events=new Map();let stderr='';
   chrome.stderr.on('data',chunk=>{stderr=(stderr+chunk.toString()).slice(-2000);});
@@ -42,7 +53,7 @@ try {
   for(const locale of ['zh','en'])for(const file of samples) {
     const prefix=locale==='en'?'':`${locale}/`;
     const raw=await readFile(join('dist',prefix,file),'utf8');
-    const html=raw.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'').replace(/<img\b[^>]*>/gi,'').replace(/<base\b[^>]*>/gi,'').replace('</head>',`<style>${css}\nh1{font-family:"DejaVu Sans",sans-serif!important}</style></head>`);
+    const html=raw.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'').replace(/<img\b[^>]*>/gi,'').replace(/<base\b[^>]*>/gi,'').replace('</head>',`<style>${css}\n${raw.includes('class="film-layout"') ? filmCss : ''}\nh1{font-family:"DejaVu Sans",sans-serif!important}</style></head>`);
     for(const width of [360,390,1440]) {
       await cmd('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<500});
       // Send the document over CDP, also supported by browsers isolated from local /tmp.

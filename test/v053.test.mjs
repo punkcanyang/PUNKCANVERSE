@@ -65,7 +65,7 @@ test('v0.5.3 离线构建三语工具卡各一推广、tips零推广，错属性
   const out=await mkdtemp(join(tmpdir(),'pcv-pixverse-'));const previous=globalThis.fetch;
   globalThis.fetch=()=>{throw Error('Network forbidden');};
   try {
-    await buildSite({out});await verifyV053(root,out);
+    await buildSite({publishKnowledgeBase:true,out});await verifyV053(root,out);
     for(const locale of ['zh','en']) {
       const prefix=locale==='en'?'':`${locale}/`;
       // v0.5.3 spec change (boss 2026-10-23): tool list page
@@ -85,6 +85,6 @@ test('v0.5.3 离线构建三语工具卡各一推广、tips零推广，错属性
     const detail=join(out,`prompts/video/${entries[0].id}/index.html`);
     await writeFile(detail,(await readFile(detail,'utf8'))+PIXVERSE_URL);
     // v0.5.3 spec change (boss 2026-10-23): tool list page
-    await assert.rejects(()=>verifyV053(root,out),/PixVerse must appear only on the three tools pages/);
+    await assert.rejects(()=>verifyV053(root,out),/Unexpected PixVerse placement/);
   }finally{globalThis.fetch=previous;await rm(out,{recursive:true,force:true});}
 });

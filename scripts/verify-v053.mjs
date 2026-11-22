@@ -9,6 +9,9 @@ import { escapeHtml as e } from '../lib/markdown.mjs';
 import { validateTools } from '../lib/tools.mjs';
 
 export const PIXVERSE_URL='https://motivaiprivatelimited.sjv.io/qW3aLn';
+export const comparisonFiles = ['', 'zh/'].flatMap(prefix =>
+  ['ai-video-platform-costs','ai-platform-reviews'].map(slug => prefix + 'creators/production-notes/' + slug + '/index.html')
+);
 const TIP_FILES=['tips.html','zh/tips.html'];
 const TOOL_FILES=['tools.html','zh/tools.html'];
 
@@ -55,6 +58,7 @@ export async function verifyV053(root=fileURLToPath(new URL('..',import.meta.url
   assert.deepEqual(affiliates.pixverse,{name:'PixVerse',url:PIXVERSE_URL,models:['PixVerse']});
   assert.equal(affiliates.magnific.code,'GMRPOCT43296');
   assert.deepEqual(Object.values(affiliates).map(platform=>platform.url).filter(Boolean).sort(),[
+    'https://flick.art/?via=punkcan',
     'https://higgsfield.ai?fpr=tsungmin-dab6c3',PIXVERSE_URL,'https://referral.magnific.com/mzYHTuc',
   ]);
   const {entries}=await loadCatalog(root);
@@ -77,8 +81,16 @@ export async function verifyV053(root=fileURLToPath(new URL('..',import.meta.url
       const prefix=locale==='en'?'':`${locale}/`;
       // redesign spec change (2026-11-08): film-layout pages (home, films) carry no tools, prompts or affiliates.
       if(html.includes('class="film-layout"')) {
-        assert.ok(!/class="primary-nav"|class="affiliate-(?:links|item|button|label)"|class="tool-about"/.test(html),`${file}: film layout stays free of the archive`);
-        for(const url of [affiliates.higgsfield.url,affiliates.magnific.url,PIXVERSE_URL])assert.ok(!html.includes(url),`${file}: no affiliate links`);
+        if (comparisonFiles.includes(file)) {
+          for (const platform of [affiliates.higgsfield, affiliates.magnific, affiliates.pixverse]) {
+            assert.equal(html.split(platform.url).length - 1, 1, file);
+            assert.ok(html.includes(`href="${platform.url}" target="_blank" rel="sponsored noopener noreferrer"`),file);
+          }
+          assert.equal(html.split('GMRPOCT43296').length - 1,1,file);
+        } else {
+          assert.ok(!/class="primary-nav"|class="affiliate-(?:links|item|button|label)"|class="tool-about"/.test(html),file);
+          for(const platform of Object.values(affiliates))if(platform.url)assert.ok(!html.includes(platform.url),file);
+        }
         continue;
       }
       const nav=html.match(/<nav class="primary-nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
@@ -110,8 +122,8 @@ export async function verifyV053(root=fileURLToPath(new URL('..',import.meta.url
   }
   await walk(dist);
   // v0.5.3 spec change (boss 2026-10-23): tool list page
-  assert.deepEqual(locations.sort(),TOOL_FILES,'PixVerse must appear only on the three tools pages; no prompt or workflow buttons');
-  assert.deepEqual(magnificLocations.sort(),TOOL_FILES,'Magnific belongs only on the three tools pages');
+  assert.deepEqual(locations.sort(),[...TOOL_FILES,...comparisonFiles].sort(),'Unexpected PixVerse placement');
+  assert.deepEqual(magnificLocations.sort(),[...TOOL_FILES,...comparisonFiles].sort());
   console.log('✓ v0.5.3：三语工具清单、逐项来源与价格、tips 零推广、三家精确分布及 Higgsfield 说明链接通过');
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)await verifyV053();

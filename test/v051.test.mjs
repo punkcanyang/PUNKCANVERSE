@@ -94,7 +94,7 @@ test('v0.5.1 离线build全部576详情含完整pre；最长3条三语逐字比�
   const out=await mkdtemp(join(tmpdir(),'pcv-v051-'));const saved=globalThis.fetch;
   globalThis.fetch=()=>assert.fail('No network in build or verification');
   try {
-    await buildSite({out});
+    await buildSite({publishKnowledgeBase:true,out});
     const {entries:published}=JSON.parse(await readFile(join(out,'catalog.json'),'utf8'));
     assert.deepEqual(published,entries);
     const longest=[...entries].sort((a,b)=>b.promptLength-a.promptLength).slice(0,3);

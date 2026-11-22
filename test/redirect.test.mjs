@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import site from '../data/site.json' with { type: 'json' };
 import { redirectTarget } from '../lib/redirect.mjs';
 import { onRequest } from '../functions/_middleware.js';
 
@@ -56,7 +57,7 @@ test('middleware 对 apex 与预览域名原样返回 next 的响应', async () 
   for (const host of ['punkcanverse.com', 'abc123.fight-prompts.pages.dev', 'fix-dead-post.fight-prompts.pages.dev']) {
     const expected = new Response('static content', { headers: { 'x-test-static': 'yes' } });
     let calls = 0;
-    const response = await onRequest({ request: new Request(`https://${host}/tips.html?from=nav`), next() { calls++; return Promise.resolve(expected); } });
+    const response = await onRequest({ request: new Request(`https://${host}/about/?from=nav`), next() { calls++; return Promise.resolve(expected); } });
     assert.equal(calls, 1);
     assert.equal(response, expected);
     assert.equal(response.status, 200);
@@ -81,4 +82,23 @@ test('舊 /en 與 /ja 網址 301 到根網址的同一頁，保留 query；/zh �
   }
   // A redirect target never redirects again.
   for (const [, to] of cases) assert.equal(redirectTarget(to), null, to);
+});
+
+
+test('the publication setting controls cached archive URLs, including HEAD requests', async () => {
+  for (const path of ['/prompts/video/1/', '/zh/prompts/workflow/', '/tips', '/zh/tools.html', '/regions/', '/catalog.json', '/data.json', '/assets/prompt-text.123abc.json', '/img/official/example.webp']) {
+    for (const method of ['GET', 'HEAD']) {
+      let servedAsset = false;
+      const response = await onRequest({
+        request: new Request('https://punkcanverse.com'+path+'?q=old', {method}),
+        next() { servedAsset = true; return new Response(null); },
+      });
+      assert.equal(servedAsset, site.publishKnowledgeBase, path);
+      assert.equal(response.status, site.publishKnowledgeBase ? 200 : 404);
+      if (!site.publishKnowledgeBase) {
+        assert.equal(response.headers.get('cache-control'), 'no-store');
+        assert.equal((await response.text()).includes('Page not found'), method === 'GET');
+      }
+    }
+  }
 });

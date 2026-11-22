@@ -68,7 +68,7 @@ test('v0.5.2 离线构建：22张在三语视频列表/详情都有本地原图�
   const out=await mkdtemp(join(tmpdir(),'pcv-frames-'));const saved=globalThis.fetch;
   globalThis.fetch=()=>{throw Error('Network forbidden');};
   try {
-    await buildSite({out});await verifyV052(root,out);
+    await buildSite({publishKnowledgeBase:true,out});await verifyV052(root,out);
     const frame=OFFICIAL_FRAMES[sample.id],path=join(out,frame.src);
     const original=await readFile(path);await writeFile(path,Buffer.concat([original,Buffer.from('changed')]));
     await assert.rejects(()=>verifyV052(root,out),/byte length/);

@@ -43,9 +43,10 @@ test('works: empty production data, localized navigation, legacy aliases and no 
   const out=await mkdtemp(join(tmpdir(),'pcv-works-empty-'));
   const saved=globalThis.fetch;globalThis.fetch=()=>assert.fail('Offline build only');
   try {
-    const result=await buildSite({out});
+    const result=await buildSite({publishKnowledgeBase:true,out});
     const i18n=await loadI18n(new URL('..',import.meta.url).pathname);
-    assert.equal(result.localizedPages.length,432);assert.equal(result.sitemapUrls.length,426);
+    // books spec change (2026-11-22): the Taiwanese Popular Religion series adds 12 pages (index + 5 books, in two languages).
+    assert.equal(result.localizedPages.length,456);assert.equal(result.sitemapUrls.length,450);
     for (const locale of ['zh','en']) {
       const prefix=locale==='en'?'':`${locale}/`,url=`/${prefix}works/`;
       const listing=await readFile(join(out,prefix,'works/index.html'),'utf8');
@@ -74,8 +75,9 @@ test('works: published cards/details render media and links; drafts never leave 
   const saved=globalThis.fetch;globalThis.fetch=()=>assert.fail('Offline build only');
   try {
     const published=fixture(),draft={...fixture(),slug:'private-draft',published:false,privateNote:'NEVER_PUBLISH_THIS'};
-    const result=await buildSite({out,works:[published,draft]});
-    assert.equal(result.localizedPages.length,434);assert.equal(result.sitemapUrls.length,428);
+    const result=await buildSite({publishKnowledgeBase:true,out,works:[published,draft]});
+    // books spec change (2026-11-22): the Taiwanese Popular Religion series adds 12 pages (index + 5 books, in two languages).
+    assert.equal(result.localizedPages.length,458);assert.equal(result.sitemapUrls.length,452);
     for (const locale of ['zh','en']) {
       const prefix=locale==='en'?'':`${locale}/`;
       const listing=await readFile(join(out,prefix,'works/index.html'),'utf8');
@@ -95,7 +97,7 @@ test('works: published cards/details render media and links; drafts never leave 
     }
     // A video-only project without a supplied poster has no invented cover.
     const videoOnly=fixture();videoOnly.media=videoOnly.media.filter(m=>m.type==='video');
-    await buildSite({out,works:[videoOnly]});
+    await buildSite({publishKnowledgeBase:true,out,works:[videoOnly]});
     assert.doesNotMatch(await readFile(join(out,'works/index.html'),'utf8'),/<img\b/);
   } finally {globalThis.fetch=saved;await rm(out,{recursive:true,force:true});}
 });

@@ -1,4 +1,5 @@
 {
+  "publishKnowledgeBase": false,
   "newsletter": {
     "enabled": false,
     "provider": "beehiiv",

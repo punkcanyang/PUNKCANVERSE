@@ -32,8 +32,7 @@ function checkAffiliateButtons(html, page) {
   return buttons.length;
 }
 test('真实推广配置只启用指定平台，按模型输出 sponsored 按钮', () => {
-  // v0.5.3 spec change (boss 2026-10-23): PixVerse affiliate approved
-  assert.deepEqual([...liveAffiliateUrls].sort(), ['https://higgsfield.ai?fpr=tsungmin-dab6c3', 'https://motivaiprivatelimited.sjv.io/qW3aLn', 'https://referral.magnific.com/mzYHTuc']);
+  assert.deepEqual([...liveAffiliateUrls].sort(), ['https://flick.art/?via=punkcan', 'https://higgsfield.ai?fpr=tsungmin-dab6c3', 'https://motivaiprivatelimited.sjv.io/qW3aLn', 'https://referral.magnific.com/mzYHTuc']);
   for (const platform of Object.values(affiliates)) assert.equal(typeof platform.url, 'string');
   let emptyOnly = 0;
   let withLive = 0;
@@ -66,7 +65,7 @@ test('真实推广配置只启用指定平台，按模型输出 sponsored 按钮
 test('真实推广构建无空容器，推荐属性完整，下架与地区页保持零推广按钮', async () => {
   const out = await mkdtemp(path.join(tmpdir(), 'pcv-live-affiliates-'));
   try {
-    await buildSite({out});
+    await buildSite({publishKnowledgeBase:true,out});
     for (const page of ['index', 'tips', 'takedown', 'regions']) {
       const html = await readFile(path.join(out, 'zh', `${page}.html`), 'utf8');
       assert.ok(html.includes(AFFILIATE_DISCLOSURE));

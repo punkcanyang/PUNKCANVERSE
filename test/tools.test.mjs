@@ -57,7 +57,7 @@ test('离线build三语tools进入sitemap/导航/hreflang/GA，tips零推广，�
   const out=await mkdtemp(join(tmpdir(),'pcv-tools-'));const previous=globalThis.fetch;
   globalThis.fetch=()=>{throw Error('Network forbidden');};
   try {
-    const result=await buildSite({out});assert.equal(result.localizedPages.length,432);assert.equal(result.sitemapUrls.length,426);
+    const result=await buildSite({publishKnowledgeBase:true,out});assert.equal(result.localizedPages.length,456);assert.equal(result.sitemapUrls.length,450);
     await verifyV053(root,out);
     for(const locale of ['zh','en']) {
       const prefix=locale==='en'?'':`/${locale}`;

@@ -11,7 +11,7 @@ const {entries}=await json('data/prompts-wan-minimax.json');
 const content=Object.fromEntries(await Promise.all(['zh','en'].map(async locale=>[locale,await json(`data/i18n/content/${locale}.json`)])));
 
 test('v0.5 复审：原只读路径仍覆盖两份提示词资料，不能排除新增档',async()=>{
-  const source=await read('scripts/verify.mjs');
+  const source=await read('scripts/verify-archive.mjs');
   const literal=source.match(/^const protectedDataPaths = (\[[^\n]+\]);$/m)?.[1];
   assert.ok(literal);
   const paths=JSON.parse(literal.replace(/'/g,'"'));

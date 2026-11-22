@@ -136,7 +136,7 @@ test('离线 build：63 条独立页、完整 sitemap、无示例文章或模型
   const dir=await mkdtemp(join(tmpdir(),'punkcan-build-'));const saved=globalThis.fetch;
   globalThis.fetch=()=>assert.fail('Build must not use the network');
   try {
-    const result=await buildSite({out:dir});
+    const result=await buildSite({publishKnowledgeBase:true,out:dir});
     for (const entry of prompts.entries) {
       const path=`/prompts/${entry.medium}/${entry.id}/`;
       assert.ok(result.pages.includes(path));assert.ok(result.sitemapUrls.includes('https://punkcanverse.com'+path));
@@ -160,14 +160,14 @@ test('thumbs 缺失、损坏、missing 记录都不阻止构建且输出占位�
     const cache=join(dir,'cache.json');const out=join(dir,'out');
     for (const value of [null,'broken',JSON.stringify({entries:{[sample.id]:{status:'missing'}}})]) {
       if (value!==null) await writeFile(cache,value);
-      await buildSite({out,thumbPath:cache});
+      await buildSite({publishKnowledgeBase:true,out,thumbPath:cache});
       const html=await readFile(join(out,'prompts/video/index.html'),'utf8');
       // v0.5.2 spec change (boss 2026-10-22): real official sample frames
       const images=[...html.matchAll(/<img\b[^>]*src="([^"]+)"/g)].map(match=>match[1]);
       assert.deepEqual(images,Array.from({length:23},(_,i)=>i+1).filter(n=>n!==17).map(n=>`/img/official/aliyun-wan3-example-${String(n).padStart(2,'0')}.webp`));
       assert.ok(html.includes('thumbnail-placeholder'));
     }
-    const result=await buildSite({out,essayDirectory:fileURLToPath(new URL('fixtures/essays/',import.meta.url))});
+    const result=await buildSite({publishKnowledgeBase:true,out,essayDirectory:fileURLToPath(new URL('fixtures/essays/',import.meta.url))});
     assert.ok(result.pages.includes('/essays/production-notes/'));
     // redesign spec change (2026-11-08): English at the root, Chinese under /zh/, Japanese retired.
     assert.ok(result.sitemapUrls.includes('https://punkcanverse.com/zh/essays/production-notes/'));

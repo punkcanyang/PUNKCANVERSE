@@ -1,43 +1,38 @@
-# 个人作品维护
+# 作品維護指南
 
-主入口为 `/works/`、`/en/works/`、`/ja/works/`；详情为各语言的 `/works/<slug>/`。
-旧 `/essays/` 三语入口保留为作品列表别名，canonical 和语言切换均指向作品区；别名不进入 sitemap。
-旧文章详情的读取能力保留用于兼容，但不再作为导航或首页主入口。
+| 想讓作品出現在哪裡 | 資料來源 | 公開方式 |
+| --- | --- | --- |
+| 首頁片單、雙語電影頁 | [content/films.json](../content/films.json) | 建置時輸出片單中的每一筆電影 |
+| 一般作品列表 `/works/`、`/zh/works/` | [content/works.json](../content/works.json) | 只輸出標為 `published: true` 的作品 |
 
-## 发布流程
+## 維護首頁電影
 
-编辑 `content/works.json` 的 `entries` 数组。当前为空，没有示例作品或获准公开的媒体。
-数组顺序就是展示顺序。每条必须有唯一的小写英文／数字／短横线 `slug` 和布尔值 `published`。
-只有 `published: true` 的条目进入页面及 sitemap；草稿不输出，源 JSON 也不会复制到 dist。
-不要将私有素材、密钥、临时签名地址写入仓库，即使条目标为草稿。
+1. 依照片單裡的現有作品新增一筆 `entries`，或編輯要更新的作品。陣列順序就是首頁片序。每部電影使用唯一的 `slug`（小寫英數字，以連字號分詞）及整數 `year`。電影片單沒有草稿開關，加入的項目會進入下次建置。
+2. 填寫 `zh` 與 `en` 兩套資料。`title` 是片名，`kind` 是作品類型說明，`youtube` 存各語言的 11 碼影片 ID，`credits` 每一列為一組職務與姓名，`notes` 每一項是一段導演筆記。有副標時，`subtitle` 也要填兩種語言。
+3. 從本機影片產生劇照與鏡頭資料，寫入 `web/img/films/<slug>/`。下例的片名代號與影片路徑請換成實際值。需要 ffmpeg 與 ffprobe；使用 cwebp 時會輸出 WebP。既有兩部作品各使用 24 張劇照。
 
-新增作品先使用最小草稿：
+   ```sh
+   node scripts/film-frames.mjs your-film "/path/to/film.mp4" --frames 24
+   ```
+4. 從產生的劇照中選一張，把編號填入 `poster`，從 1 開始。例如 `poster: 10` 代表第 10 張。首頁與電影頁使用同一張封面。頁面上每一道色帶的顏色與寬度取自 `film.json` 裡的鏡頭平均色與長度。影片原檔留在本機。
+5. 完成本機建置、測試與產物驗證後，開啟 `/films/<slug>/`、`/zh/films/<slug>/`，確認兩種語言的片名、製作名單、封面與播放版本。離線測試可檢查選取起播時間的操作，實際影音播放需連線核對。[檢查指令](../README.md)
+
+更換 YouTube 上的字幕版或放映版本時，修改對應的 `youtube.en` 或 `youtube.zh`。如果重新剪輯造成片長或鏡頭順序改變，也要從新版本重建劇照與鏡頭資料，再確認封面編號。[電影欄位驗證](../lib/films.mjs) · [素材產生腳本](../scripts/film-frames.mjs)
+
+## 維護一般作品列表
+
+`content/works.json` 目前為空。`/essays/` 和 `/zh/essays/` 保留為同語言作品列表的別名。新增一般作品時，可先用以下兩個欄位建立草稿。
 
 ```json
 { "slug": "your-project", "published": false }
 ```
 
-得到作者发布确认后，补齐以下字段再将 `published` 改为 `true`：
+草稿不輸出到網站，儲存庫本身是公開的。請只提交可公開的資料。作者確認發布後，補齊下列欄位，再將 `published` 設為 `true`。
 
-| 字段 | 内容 |
+| 欄位 | 填寫方式 |
 | --- | --- |
-| `copy.zh`、`copy.en`、`copy.ja` | 各语言的 `title`、`summary`，可选 `description`（纯文本，保留换行） |
-| `media` | 图片／视频对象数组，可为空；不从提示词原作者的媒体自动取图 |
-| `media[].type` | `image` 或 `video` |
-| `media[].src` | 获准公开的 HTTPS 图片或视频文件直链；构建不下载媒体 |
-| `media[].width`、`height` | 媒体的实际宽高，正整数 |
-| `media[].alt` | `{ "zh": "中文说明", "en": "English description", "ja": "日本語の説明" }` |
-| `media[].poster` | 可选，仅视频使用，必须是获准公开的真实封面 HTTPS 地址 |
-| `links` | 外链数组，可为空；每项含 HTTPS `url` 和三语 `label` 对象 |
+| `copy.zh`、`copy.en` | 各自包含 `title`、`summary`，可另填純文字 `description`。 |
+| `media` | 陣列，可留空。每項提供 `type`（`image` 或 `video`）、公開 HTTPS 媒體直連、正整數 `width` 與 `height`，以及含 `zh`、`en` 的 `alt`。媒體網址填入 `src`；影片另可填 `poster`。 |
+| `links` | 陣列，可留空。每項提供 HTTPS `url` 及含 `zh`、`en` 的 `label`。YouTube 觀看頁等外部網頁放在這裡。 |
 
-视频使用浏览器原生控件，不自动播放，`preload="none"`，并保留文件外链。
-X、YouTube 等帖子／观看页面放入 `links`，不要当成视频文件直链。
-卡片使用第一张图片或明确提供的视频封面；没有封面时只显示文字，不伪造缩略图。
-三语缺字、重复 slug、非 HTTPS／带账号密码的 URL 或无效媒体尺寸会使构建失败。
-媒体文件可用性与发布权需在加入具体作品时核对；本次没有请求或发布任何作品媒体。
-
-## 本地验证
-
-`npm run build`、`npm test`、`npm run verify`。测试作品仅在临时目录生成并清理，不进入正式 dist。
-新增作品测试覆盖三语导航、旧路由、canonical、sitemap、空状态、媒体与外链、转义及草稿隔离。
-当前空数据构建为 642 个 HTML、633 个 sitemap URL；每件公开作品增加三语各一个详情页。
+建置後，已公開作品各有英文與繁中詳情頁，並列入 sitemap。一般作品的影片使用瀏覽器原生播放器，圖片與影片直接讀取所填的公開網址。[一般作品欄位與輸出規則](../lib/works.mjs)

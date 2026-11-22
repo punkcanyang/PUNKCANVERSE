@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup E · Director</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500&display=swap&text=%E6%97%97%E6%B4%A5%E7%9A%84%E9%A2%A8%E7%B4%85%E6%AF%9B%E6%B8%AF%E4%B8%80%E7%B6%B2%E6%92%88%E8%B5%B7%E6%95%85%E9%84%89%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~" rel="stylesheet">
+<style>
+:root{
+  /* The site has no brand colour. Black is the screening room; every colour on the page comes from the films. */
+  --screen:#000;
+  --ink:#ececea;
+  --dim:#8e8e89;
+  --faint:#4a4a47;
+  --line:#262624;
+  --sans:"IBM Plex Sans","PingFang TC","Noto Sans TC",system-ui,sans-serif;
+  --title:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --gx:clamp(16px,3vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--screen)}
+body{background:var(--screen);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block}
+:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+.num{font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--dim);text-align:center;padding:8px var(--gx);border-bottom:1px solid var(--line)}
+
+.top{display:flex;justify-content:space-between;align-items:baseline;padding:22px var(--gx)}
+.mark{font-weight:500;letter-spacing:.01em}
+.top nav{display:flex;gap:28px;color:var(--dim)}
+.top nav a:hover,.top nav a[aria-current]{color:var(--ink)}
+
+/* ---------- projection: the frame under the cursor ---------- */
+/* The stage sticks while the film list scrolls beneath it, so the frame and the bar you are on stay in view together. */
+.stage{position:sticky;top:0;z-index:2;background:var(--screen);padding-bottom:22px}
+/* Sized so the frame, the slate and the first bars share the first screen. */
+.proj{margin:0 var(--gx);height:min(calc((100vw - 2 * var(--gx)) * .5625),max(240px,calc(100svh - 330px)));background:#0a0a0a;overflow:hidden}
+.proj img{width:100%;height:100%;object-fit:cover}
+.slate{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:18px var(--gx) 0}
+.lock{display:flex;align-items:baseline;gap:14px;font-family:var(--title)}
+.lock .zh{font-size:30px;font-weight:500;letter-spacing:.08em}
+.lock .en{font-size:18px;font-weight:300;color:var(--dim)}
+.slate .tc{color:var(--dim)}
+.slate .tc b{color:var(--ink);font-weight:400}
+
+/* ---------- films: one bar each, length = running time ---------- */
+.films{list-style:none;padding:26px var(--gx) 40px;display:grid;gap:18px}
+.film{display:grid;grid-template-columns:1fr 300px 52px 52px;gap:24px;align-items:center}
+.bar{position:relative;height:48px;touch-action:pan-y;cursor:pointer;display:block}
+.bar i{position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--img) 0 0/100% 100% no-repeat;image-rendering:pixelated}
+.bar .ph{position:absolute;top:-6px;bottom:-6px;width:1px;background:var(--ink);left:0;opacity:0}
+.film.on .bar .ph{opacity:1}
+.film .t{font-family:var(--title);display:flex;gap:12px;align-items:baseline;white-space:nowrap}
+.film .t .zh{font-size:19px;font-weight:500;letter-spacing:.06em}
+.film .t .en{font-size:15px;font-weight:300;color:var(--dim)}
+.film .y,.film .d{color:var(--dim);text-align:right}
+.film.on .t .en,.film.on .y,.film.on .d{color:var(--ink)}
+.legend{padding:0 var(--gx);color:var(--faint);font-size:13px}
+
+@media (prefers-reduced-motion:no-preference){
+  .bar i{clip-path:inset(0 100% 0 0);animation:run .9s cubic-bezier(.6,0,.2,1) forwards;animation-delay:calc(var(--k) * 90ms + 200ms)}
+  @keyframes run{to{clip-path:inset(0 0 0 0)}}
+}
+
+/* ---------- film page ---------- */
+.page{border-top:1px solid var(--line);margin-top:120px;padding:96px var(--gx) 120px}
+.page .tag{color:var(--faint);font-size:13px;margin-bottom:48px}
+.big{font-family:var(--title);margin-bottom:56px}
+.big .zh{display:block;font-size:clamp(64px,11vw,168px);font-weight:300;letter-spacing:.12em;line-height:1}
+.big .zh2{display:block;font-size:clamp(26px,3.2vw,46px);font-weight:300;letter-spacing:.2em;margin-top:22px}
+.big .en{display:block;font-size:clamp(20px,2.2vw,30px);font-weight:300;color:var(--dim);margin-top:18px}
+.kind{color:var(--dim);margin:-36px 0 40px}
+.player{position:relative;aspect-ratio:16/9;background:#0a0a0a;overflow:hidden}
+.player img,.player iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.player button{position:absolute;left:24px;bottom:24px;font:inherit;font-size:15px;background:var(--ink);color:#000;border:0;padding:12px 20px;cursor:pointer}
+.scrub{position:relative;height:28px;margin-top:10px;cursor:pointer;touch-action:pan-y}
+.scrub i{position:absolute;inset:0;background:var(--img) 0 0/100% 100% no-repeat;image-rendering:pixelated}
+.scrub .ph{position:absolute;top:-4px;bottom:-4px;width:1px;background:var(--ink);opacity:0}
+.scrub:hover .ph,.scrub.set .ph{opacity:1}
+.scrub-tip{display:flex;justify-content:space-between;color:var(--faint);font-size:13px;margin-top:8px}
+
+.body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(40px,7vw,120px);margin-top:88px}
+.credits{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;align-content:start}
+.credits dt{color:var(--dim);text-align:right}
+.text h3{font-size:15px;font-weight:500;margin-bottom:14px}
+.text p{font-size:17px;line-height:1.75;color:#cfcfcb;max-width:34em;margin-bottom:16px}
+.text p:last-child{color:var(--ink)}
+
+footer{display:flex;justify-content:space-between;gap:16px;padding:28px var(--gx) 44px;border-top:1px solid var(--line);color:var(--dim);font-size:14px}
+footer a:hover{color:var(--ink)}
+
+@media (max-width:820px){
+  .top nav{gap:18px}
+  .proj{height:auto;aspect-ratio:16/9}
+  .stage{padding-bottom:14px}
+  .slate{gap:12px;padding-top:12px}
+  .lock .zh{font-size:22px}
+  .lock .en{font-size:15px}
+  .films{padding-top:48px;gap:26px}
+  .film{grid-template-columns:1fr auto auto;row-gap:10px;gap:10px 14px}
+  .film .bar{grid-column:1 / -1;grid-row:2;height:40px}
+  .film .t{grid-row:1;flex-wrap:wrap;row-gap:0;white-space:normal}
+  .page{padding-top:64px;margin-top:72px}
+  .big .zh{letter-spacing:.06em}
+  .body{grid-template-columns:1fr;margin-top:56px}
+  .credits dt{text-align:left}
+  footer{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<p class="note">樣板 E。片子是真的：色條與逐格畫面由原檔計算；全部從 YouTube 播放，英文頁播英文字幕版，中文頁播中文版。</p>
+
+<header class="top">
+  <a class="mark" href="#">Punkcanverse</a>
+  <nav><a href="#" aria-current="page">Films</a><a href="#">About</a><a href="#" lang="zh-Hant">中文</a></nav>
+</header>
+
+<section class="reel">
+  <div class="stage">
+    <figure class="proj"><img id="proj" src="../../web/img/films/wind-of-cijin/10.webp" alt=""></figure>
+    <div class="slate">
+      <div class="lock" id="lock"></div>
+      <div class="tc num" id="tc"></div>
+    </div>
+  </div>
+  <ol class="films" id="films" aria-label="Films, newest first. Move across a bar to look through the film."></ol>
+  <p class="legend">Each bar is a whole film, one sliver per half second. Its length is the running time.</p>
+</section>
+
+<section class="page" id="film">
+  <p class="tag">Film page</p>
+  <h2 class="big" id="big"></h2>
+  <p class="kind" id="kind"></p>
+  <figure class="player" id="player"><img id="pimg" alt=""><button id="play">Play film</button></figure>
+  <div class="scrub" id="scrub"><i></i><span class="ph" id="sph"></span></div>
+  <div class="scrub-tip num"><span id="stip">Choose a moment on the bar to start the film there</span><span id="slen"></span></div>
+  <div class="body">
+    <dl class="credits" id="credits"></dl>
+    <div class="text" id="notes"></div>
+  </div>
+</section>
+
+<footer>
+  <span>Punkcan / Tsung-min Yang</span>
+  <span><a href="https://punkcan.art">Art archive at punkcan.art</a>&ensp;&ensp;<a href="mailto:hello@punkcanverse.com">hello@punkcanverse.com</a></span>
+</footer>
+
+<script>
+// Text below is Punkcan's own, from the Vimeo descriptions. Nothing is invented.
+const FILMS = [
+  {
+    slug: "wind-of-cijin", zh: "旗津的風", en: "The Wind of Cijin", year: 2026,
+    kind: "Music video, Taiwanese song. Handmade puppets and miniature sets.",
+    youtubeEn: "MtAeWTZZLWg", youtube: "UnGmCoPDIn8",
+    credits: [
+      ["Directed by", "Punkcan"],
+      ["Song", "“The Wind of Cijin”, lyrics by Punkcan, music by Suno"],
+      ["Images", "GPT Image"],
+      ["Video", "Wan 3.0"],
+      ["Music", "Suno (commercial licence)"],
+      ["Storyboard, prompts and edit", "Claude Opus 5.5"],
+    ],
+    notes: [
+      "Cijin is my mother's hometown.",
+      "A conch shell passes from hand to hand for more than three hundred years: from a fisherman blown ashore on the Cihou sandbar, to a child outside the Mazu temple, to a mother taking the first ferry across before dawn, to a family watching the sandbar dug open for a harbor, and finally to a grandchild holding it to his ear today.",
+      "Told with handmade puppets and miniature sets, and set to “The Wind of Cijin,” a Taiwanese song I wrote the lyrics for, the film walks again the road Cijin has travelled: from a sandbar peninsula, to an island, to being joined back to Kaohsiung by the Cross-Harbor Tunnel.",
+      "Hold a conch to your ear, and you hear more than the sea.",
+    ],
+  },
+  {
+    slug: "hongmaogang", zh: "紅毛港", zh2: "一網撈起故鄉", en: "Hongmaogang: One Net to Gather Home", short: "Hongmaogang", year: 2026,
+    kind: "Short film. Papercraft.",
+    youtubeEn: "KLyFVC-cuKc", youtube: "xKZYsFreCzI",
+    credits: [
+      ["Directed by", "Punkcan"],
+      ["Song", "“This End of the Net”"],
+      ["Images", "GPT"],
+      ["Video", "Wan 3.0"],
+      ["Music", "Suno 6"],
+      ["Storyboard and edit", "Claude Opus 5.5"],
+      ["Edit software", "Palmier"],
+    ],
+    notes: [
+      "Hongmaogang is my hometown, the place where I grew up.",
+      "In 2007, after more than thirty years of delay, the entire village of Hongmaogang was relocated, and its shoreline became a container terminal. The lanes and the sea I knew as a child now live only in memory.",
+      "That is why I made this film: if I can't go back, I can rebuild it with AI.",
+      "I chose a papercraft style, folding it back together piece by piece — the sea in mullet season, the figures mending nets at the door, the old houses growing ever more crowded, all the way to moving day.",
+      "This is my first fairly complete AI film.",
+      "From script and storyboard to generating and editing shot by shot, then adding the Taiwanese song “This End of the Net” and subtitles, I worked through every detail with the modest AI filmmaking skills I have so far.",
+      "The fishing net, mended again and again until it is finally handed to the daughter — I believe some things are still caught and carried on, generation after generation.",
+    ],
+  },
+];
+
+const ROOT = '../../web/img/films';
+const mmss = s => `${String(Math.floor(s/60)).padStart(2,'0')}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+const frameAt = (f, p) => `${ROOT}/${f.slug}/${f.data.frames[Math.min(f.data.frames.length - 1, Math.floor(p * f.data.frames.length))].src}`;
+const zhSpan = (t, cls = 'zh') => `<span class="${cls}" lang="zh-Hant">${t}</span>`;
+const clamp = p => Math.max(0, Math.min(.999, p));
+
+const list = document.getElementById('films'), proj = document.getElementById('proj');
+const lock = document.getElementById('lock'), tc = document.getElementById('tc');
+
+function stage(f, p) {
+  proj.src = frameAt(f, p);
+  lock.innerHTML = `${zhSpan(f.zh)}<span class="en">${f.short || f.en}</span>`;
+  tc.innerHTML = `<b>${mmss(p * f.data.duration)}</b> / ${mmss(f.data.duration)}`;
+}
+
+function buildList() {
+  const max = Math.max(...FILMS.map(f => f.data.duration));
+  FILMS.forEach((f, k) => {
+    const li = document.createElement('li'); li.className = 'film';
+    li.innerHTML = `<a class="bar" href="#film" style="--w:${f.data.duration / max * 100}%;--img:url(${ROOT}/${f.slug}/barcode.png);--k:${k}" aria-label="${f.en}, ${mmss(f.data.duration)}"><i></i><span class="ph"></span></a>
+      <a class="t" href="#film">${zhSpan(f.zh)}<span class="en">${f.short || f.en}</span></a>
+      <span class="y num">${f.year}</span><span class="d num">${mmss(f.data.duration)}</span>`;
+    list.appendChild(li);
+    const bar = li.querySelector('.bar'), ph = li.querySelector('.ph');
+    let p = .4;
+    const show = () => {
+      document.querySelectorAll('.film').forEach(x => x.classList.toggle('on', x === li));
+      ph.style.left = (p * bar.clientWidth * f.data.duration / max) + 'px';
+      stage(f, p);
+    };
+    bar.addEventListener('pointermove', e => {
+      const r = bar.getBoundingClientRect();
+      p = clamp((e.clientX - r.left) / (r.width * f.data.duration / max)); show();
+    });
+    li.querySelector('.t').addEventListener('pointerenter', show);
+    bar.addEventListener('focus', show);
+    bar.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault(); p = clamp(p + (e.key === 'ArrowRight' ? .02 : -.02)); show();
+    });
+    li.querySelectorAll('a').forEach(a => a.addEventListener('click', () => openFilm(f)));
+    if (k === 0) show();
+  });
+}
+
+// ---------- film page ----------
+const scrub = document.getElementById('scrub'), sph = document.getElementById('sph');
+const stip = document.getElementById('stip'), player = document.getElementById('player');
+let current, start = 0;
+
+function openFilm(f) {
+  current = f; start = 0;
+  document.getElementById('big').innerHTML = zhSpan(f.zh) + (f.zh2 ? zhSpan(f.zh2, 'zh2') : '') + `<span class="en">${f.en}</span>`;
+  document.getElementById('kind').textContent = `${f.year}, ${mmss(f.data.duration)}. ${f.kind}`;
+  player.innerHTML = `<img id="pimg" src="${frameAt(f, .4)}" alt=""><button id="play">Play film</button>`;
+  player.querySelector('#play').addEventListener('click', play);
+  scrub.style.setProperty('--img', `url(${ROOT}/${f.slug}/barcode.png)`);
+  scrub.classList.remove('set');
+  stip.textContent = 'Choose a moment on the bar to start the film there';
+  document.getElementById('slen').textContent = mmss(f.data.duration);
+  document.getElementById('credits').innerHTML = f.credits.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')
+    + `<dt>Length</dt><dd class="num">${mmss(f.data.duration)}</dd><dt>Also on</dt><dd><a href="https://www.youtube.com/watch?v=${f.youtubeEn}">YouTube</a>, <a href="https://www.youtube.com/watch?v=${f.youtube}">Chinese version</a></dd>`;
+  document.getElementById('notes').innerHTML = '<h3>Director’s note</h3>' + f.notes.map(t => `<p>${t}</p>`).join('');
+}
+
+// Everything plays from YouTube: the English site uses the English-subtitled upload, the Chinese site the Chinese one.
+function play() {
+  player.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${current.youtubeEn}?autoplay=1&rel=0&start=${start}" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" title="${current.en}"></iframe>`;
+}
+
+scrub.addEventListener('pointermove', e => {
+  if (scrub.classList.contains('set')) return;
+  const r = scrub.getBoundingClientRect(), p = clamp((e.clientX - r.left) / r.width);
+  sph.style.left = (p * r.width) + 'px';
+  stip.textContent = `Start at ${mmss(p * current.data.duration)}`;
+  const img = player.querySelector('img'); if (img) img.src = frameAt(current, p);
+  scrub.dataset.p = p;
+});
+scrub.addEventListener('pointerleave', () => scrub.classList.remove('set'));
+scrub.addEventListener('click', () => {
+  start = Math.round(+scrub.dataset.p * current.data.duration);
+  scrub.classList.add('set');
+  const b = player.querySelector('button');
+  if (b) b.textContent = `Play film from ${mmss(start)}`; else play();
+});
+
+Promise.all(FILMS.map(f => fetch(`${ROOT}/${f.slug}/film.json`).then(r => r.json()).then(d => { f.data = d; })))
+  .then(() => { buildList(); openFilm(FILMS[0]); });
+</script>
+</body>
+</html>

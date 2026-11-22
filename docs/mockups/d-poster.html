@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup D · Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2a2ad6;   /* ultramarine field, the poster paper */
+  --deep:#16168a;
+  --white:#f7f7ff;
+  --pink:#ff4fa3;   /* fluoro ink for marks and stickers */
+  --yellow:#ffe14a;
+  --d:"Anybody","PingFang TC","Noto Sans TC",sans-serif;
+  --b:"Hanken Grotesk","PingFang TC","Noto Sans TC",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--blue)}
+body{background:var(--blue);color:var(--white);font-family:var(--b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
+.note{font-size:12px;text-align:center;padding:7px 16px;background:var(--yellow);color:var(--deep)}
+
+.top{display:flex;justify-content:space-between;align-items:center;padding:20px 32px;font-size:15px}
+.top nav{display:flex;gap:22px}
+.top nav a{text-decoration:none;opacity:.7}
+.top nav a[aria-current]{opacity:1}
+.top .who{font-weight:700}
+
+/* the wordmark is the hero: letters cut out of the work itself */
+.hero{padding:2vw 2vw 0;position:relative}
+.word{font-family:var(--d);font-weight:900;line-height:.78;letter-spacing:-.02em;text-transform:uppercase;
+  background-size:cover;background-position:center;-webkit-background-clip:text;background-clip:text;color:transparent;
+  transition:background-image .6s}
+.word .l1{display:block;font-size:20.5vw;font-variation-settings:"wdth" 50}
+.word .l2{display:block;font-size:24.6vw;font-variation-settings:"wdth" 120;margin-top:-.5vw}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:22px 30px 0}
+.hero-foot p{font-size:clamp(18px,2vw,26px);line-height:1.3;max-width:24ch;font-weight:500}
+.now{font-size:15px;text-align:right;line-height:1.5}
+.now b{display:block;font-family:var(--d);font-size:22px;font-variation-settings:"wdth" 80;font-weight:800}
+.now a{color:var(--yellow)}
+
+/* prints pinned to the wall */
+.wall{position:relative;padding:120px 4vw 80px;display:grid;grid-template-columns:repeat(12,1fr);gap:0 2vw;align-items:start}
+.print{position:relative;background:var(--white);padding:12px 12px 0;color:var(--deep);text-decoration:none;
+  box-shadow:0 18px 30px -18px rgba(5,5,60,.55);transform:rotate(var(--r,0deg));transition:transform .35s cubic-bezier(.3,.7,.2,1)}
+.print:hover,.print:focus-visible{transform:rotate(0) scale(1.015);z-index:2}
+.print img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:contrast(1.05)}
+.print.v img{aspect-ratio:9/14}
+.print .cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 2px 14px}
+.print .cap b{font-family:var(--d);font-weight:800;font-variation-settings:"wdth" 75;font-size:clamp(20px,2.2vw,30px);line-height:1}
+.print .cap span{font-size:13px;white-space:nowrap;opacity:.75}
+.tape{position:absolute;top:-14px;left:50%;width:110px;height:28px;margin-left:-55px;background:rgba(255,225,74,.75);transform:rotate(-4deg)}
+.sticker{position:absolute;right:-18px;top:-22px;width:86px;height:86px;border-radius:50%;background:var(--pink);color:var(--white);
+  display:grid;place-items:center;text-align:center;font-family:var(--d);font-weight:900;font-variation-settings:"wdth" 60;font-size:19px;line-height:.9;transform:rotate(12deg)}
+.p1{grid-column:1 / 8;--r:-1.6deg}
+.p2{grid-column:8 / 12;--r:2.2deg;margin-top:140px}
+.p3{grid-column:2 / 6;--r:1.4deg;margin-top:-40px}
+.p4{grid-column:6 / 13;--r:-1deg;margin-top:60px}
+.p5{grid-column:1 / 7;--r:.8deg;margin-top:70px}
+.p6{grid-column:8 / 12;--r:-2.4deg;margin-top:20px}
+
+.shout{font-family:var(--d);font-weight:900;font-variation-settings:"wdth" 50;text-transform:uppercase;font-size:clamp(64px,13vw,220px);line-height:.8;
+  padding:40px 2vw 0;color:var(--blue);-webkit-text-stroke:2px var(--white)}
+
+/* detail */
+.detail{background:var(--white);color:var(--deep);padding:80px 4vw 110px;margin-top:80px}
+.detail h2{font-family:var(--d);font-weight:900;font-variation-settings:"wdth" 50;text-transform:uppercase;font-size:clamp(64px,12vw,190px);line-height:.8;color:var(--blue)}
+.detail .sub{font-size:18px;margin:18px 0 40px}
+.player{position:relative;background:#000}
+.player img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.player button{position:absolute;inset:auto auto 24px 24px;font:inherit;font-weight:700;font-size:17px;background:var(--pink);color:var(--white);border:0;border-radius:999px;padding:14px 26px;cursor:pointer}
+.cols{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;margin-top:48px}
+.cols p{font-size:19px;line-height:1.7;max-width:56ch;margin-bottom:16px}
+.cols h3{font-family:var(--d);font-variation-settings:"wdth" 75;font-weight:800;font-size:28px;margin-bottom:16px}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:14px 0 14px 54px;border-top:2px solid var(--blue);font-size:16px;line-height:1.5}
+.steps li::before{content:counter(s);position:absolute;left:0;top:10px;width:36px;height:36px;border-radius:50%;background:var(--blue);color:var(--white);display:grid;place-items:center;font-weight:700}
+.steps b{display:block}
+
+footer{display:flex;justify-content:space-between;padding:28px 32px;font-size:14px;background:var(--deep)}
+
+@media (max-width:820px){
+  .top{padding:14px 16px}
+  .hero{padding:16px 12px 0}
+  .hero-foot{flex-direction:column;padding:18px 4px 0}
+  .now{text-align:left}
+  .wall{display:flex;flex-direction:column;gap:56px;padding:72px 22px 40px}
+  .print{margin:0!important}
+  .sticker{right:-8px;width:70px;height:70px;font-size:16px}
+  .detail{padding:56px 16px 80px}
+  .cols{grid-template-columns:1fr;gap:40px}
+  footer{padding:24px 16px;flex-direction:column;gap:6px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="note">Mockup D, punk poster. Frames are stand-ins from the Wan 3.0 docs, not Punkcan works.</div>
+
+<header class="top">
+  <span class="who">Punkcan</span>
+  <nav><a href="#" aria-current="page">Work</a><a href="#">About</a><a href="#" lang="zh-Hant">中文</a></nav>
+</header>
+
+<section class="hero">
+  <h1 class="word" id="word" aria-label="Punkcanverse"><span class="l1">Punkcan</span><span class="l2">verse</span></h1>
+  <div class="hero-foot">
+    <p>Films, music videos and images, made with AI by Punkcan.</p>
+    <div class="now">Showing through the letters<b id="now">Retreat at Dawn</b><a href="#detail">Watch it</a></div>
+  </div>
+</section>
+
+<section class="wall">
+  <a class="print p1" href="#detail"><span class="tape"></span><span class="sticker">New</span>
+    <img src="../../web/img/official/aliyun-wan3-example-07.webp" alt="Soldiers running through a canyon">
+    <div class="cap"><b>Retreat at Dawn</b><span>Short film, 2:14</span></div></a>
+  <a class="print p2 v" href="#detail"><span class="tape"></span>
+    <img src="../../web/img/official/aliyun-wan3-example-20.webp" alt="Ink figure walking through bamboo">
+    <div class="cap"><b>Ink Walker</b><span>Music video</span></div></a>
+  <a class="print p3" href="#detail">
+    <img src="../../web/img/official/aliyun-wan3-example-19.webp" alt="A water drop falling onto a lake">
+    <div class="cap"><b>One Drop</b><span>Experiment</span></div></a>
+  <a class="print p4" href="#detail"><span class="tape"></span>
+    <img src="../../web/img/official/aliyun-wan3-example-22.webp" alt="Gas station alone in the desert">
+    <div class="cap"><b>Last Station</b><span>Short film, 1:36</span></div></a>
+  <a class="print p5" href="#detail">
+    <img src="../../web/img/official/aliyun-wan3-example-23.webp" alt="Felt animals at a control panel">
+    <div class="cap"><b>Felt Pilots</b><span>Animation test</span></div></a>
+  <a class="print p6" href="#detail"><span class="tape"></span>
+    <img src="../../web/img/official/aliyun-wan3-example-03.webp" alt="Temple gate in snow">
+    <div class="cap"><b>Gate of Snow</b><span>Image series</span></div></a>
+</section>
+
+<p class="shout" aria-hidden="true">Made, not found</p>
+
+<section class="detail" id="detail">
+  <h2>Retreat at Dawn</h2>
+  <p class="sub">Short film, 2026, 2 min 14 s</p>
+  <figure class="player"><img src="../../web/img/official/aliyun-wan3-example-07.webp" alt="Soldiers running through a canyon"><button>Play on YouTube</button></figure>
+  <div class="cols">
+    <div>
+      <p>Placeholder description. Two or three sentences on what the piece is about and why it was made, written in plain language.</p>
+      <p>The reading column stays narrow on the white sheet so long notes stay easy to follow.</p>
+    </div>
+    <div>
+      <h3>How it was made</h3>
+      <ol class="steps">
+        <li><b>Storyboard</b>24 key frames drawn with GPT Image</li>
+        <li><b>Shots</b>Image-to-video in Wan 3.0, 5 s each, 3 takes per shot</li>
+        <li><b>Score</b>Suno, cut to the edit in DaVinci Resolve</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer><span>Punkcan, 2026</span><a href="mailto:hello@punkcanverse.com">hello@punkcanverse.com</a></footer>
+
+<script>
+// One orchestrated motion: the work showing through the wordmark changes every few seconds.
+const shots=[["07","Retreat at Dawn"],["20","Ink Walker"],["22","Last Station"],["19","One Drop"],["23","Felt Pilots"],["03","Gate of Snow"]];
+const word=document.getElementById('word'), now=document.getElementById('now');
+let i=0;
+const set=()=>{ word.style.backgroundImage=`url(../../web/img/official/aliyun-wan3-example-${shots[i][0]}.webp)`; now.textContent=shots[i][1]; };
+set();
+// Fit each line of the wordmark to the full width.
+const fit=()=>{ const W=word.clientWidth; word.querySelectorAll('span').forEach(s=>{ s.style.fontSize='100px'; s.style.display='inline-block'; const w=s.getBoundingClientRect().width; s.style.fontSize=(100*W/w)+'px'; s.style.display='block'; }); };
+document.fonts.ready.then(fit); addEventListener('resize',fit);
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(()=>{ i=(i+1)%shots.length; set(); },3200);
+</script>
+</body>
+</html>

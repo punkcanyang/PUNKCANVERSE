@@ -1,3 +1,4 @@
+import { notFoundHtml } from './lib/not-found.mjs';
 import { selectHomeEntries } from './lib/prompts.mjs';
 import {loadCatalog} from './lib/catalog.mjs';
 import { readFile, mkdir, rm, writeFile, copyFile } from 'node:fs/promises';
@@ -22,7 +23,11 @@ import { listPages, publicPath, switchHref, localePrefix, HTML_LANG, OG_LOCALE, 
 import { validateWorkflows, renderWorkflowCard, renderWorkflowDetail, renderWorkflowEmpty } from './lib/workflows.mjs';
 
 import { loadWorks, publishedWorks, renderWorks, renderWork } from './lib/works.mjs';
-import { loadFilms, renderFilmsHome, renderFilmPage, filmFiles } from './lib/films.mjs';
+import { creatorCopy, creatorPath, notesPath, creatorLevels, creatorTrail, renderCreatorPage } from './lib/creator-pages.mjs';
+import { validateOpportunities, renderOpportunities } from './lib/opportunities.mjs';
+import { loadFilms, renderFilmsHome, renderFilmPage, filmFiles, filmAsset, filmPath, posterFrame } from './lib/films.mjs';
+import { jsonLd, homeGraph, aboutGraph, filmGraph, bookGraph, breadcrumbList, noteArticle, firstSentence } from './lib/seo.mjs';
+import { loadBooks, renderBooksIndex, renderBookPage, bookPath, bookCover, booksPath, COVER, AUTHOR } from './lib/books.mjs';
 
 export const SITE_URL = 'https://punkcanverse.com';
 export async function buildSite(options = {}) {
@@ -39,8 +44,15 @@ export async function buildSite(options = {}) {
   const thumbs = await readThumbs(options.thumbPath || join(root,'data/thumbs.json'),readFile);
   const essays = await loadEssays(pathToFileURL((options.essayDirectory || join(root,'content/essays'))+'/'));
   const works = options.works === undefined ? await loadWorks(root) : publishedWorks({entries: options.works});
+  const notes = await loadEssays(pathToFileURL(join(root, 'content/production-notes') + '/'));
+  const opportunities = await readJSON('content/opportunities.json');
+  validateOpportunities(opportunities);
   const films = options.films ?? await loadFilms(root);
+  const bookData = options.books ?? await loadBooks(root, films);
+  const books = bookData.books;
+  if (/待|to be added/i.test(Object.values(bookData.series.draftTools).join(' '))) console.warn(`books: the drafting tools are still a placeholder (${bookData.series.draftTools.zh}) in content/books.json`);
   const site = await readJSON('data/site.json');
+  const publishKnowledgeBase = options.publishKnowledgeBase ?? site.publishKnowledgeBase;
   const regionData = await readJSON('data/regions.json');
   const i18n = options.i18n || await loadI18n(root);
   const toolsData = await readJSON('data/tools.json');
@@ -48,10 +60,12 @@ export async function buildSite(options = {}) {
   validateMedia(entries); entries.forEach(validatePostMetadata);
   validateAffiliates(affiliates); validateSite(site); validateRegions(regionData); validateWorkflows(workflows);
   validateI18n(i18n,entries,workflows,regionData);
-  const descriptors = listPages({entries,workflows,essays,works,films,sitePages:SITE_PAGES});
+  const descriptors = listPages({entries,workflows,essays,works,films,books,notes,sitePages:SITE_PAGES,publishKnowledgeBase});
   const models = [...new Set(entries.flatMap(x=>x.models))];
   const tags = [...new Set(entries.flatMap(x=>x.tags))];
   const pages = new Map();
+  const lastmod = new Map();
+  const filmDates = films.map(film => film.published).filter(Boolean).sort();
   const takedownUrl = 'https://github.com/punkcanyang/PUNKCANVERSE/issues/new?template=takedown.md&title=%E4%B8%8B%E6%9E%B6%E7%94%B3%E8%AF%B7';
   for (const descriptor of descriptors) {
     const {locale,route,path} = descriptor;
@@ -91,16 +105,74 @@ export async function buildSite(options = {}) {
       return `<section class="home-picks" id="library" data-archive-url="${href('/prompts/video/')}"><div class="section-heading"><div><p class="eyebrow">01 / SELECTED PROMPTS</p><h2>${e(u.featuredTitle)}</h2><p>${e(u.featuredIntro)}</p></div><a class="text-link" href="${href('/prompts/workflow/')}">${e(u.workflow)} (${workflows.length}) ↗</a></div><div class="prompt-grid">${picks.map((entry,index)=>renderCard(localized(entry),index,affiliates,thumbs.entries?.[entry.id],entry.collection==='wan-minimax'?cUI:renderUI)).join('')}</div><a class="primary-button browse-all" href="${href('/prompts/video/')}">${e(t('browseAll',{n:entries.length}))} ↗</a></section>`;
     }
     let title,description,body;
+    // Search and sharing defaults; film pages replace them with their own frame and data.
+    let pageTitle,graph=null,ogType='website';
+    let share={src:'/img/site/share.png',width:1200,height:630,alt:publishKnowledgeBase ? 'PUNKCANVERSE — prompts, workflows and personal work' : u.films.homeTitle};
+    const canonical=SITE_URL+descriptor.canonical;
     // Redesign: the home page and film pages use the film layout; other pages keep the archive layout.
-    const filmLayout = (route==='/' && films.length>0) || Boolean(descriptor.film);
-    if (route==='/' && films.length) {
+    const opportunity = route === '/cpp/' || route === '/competitions/';
+    const creatorPage = route === creatorPath || route.startsWith(notesPath);
+    const creator = creatorCopy[locale];
+    const filmPages = (route==='/' && films.length>0) || Boolean(descriptor.film);
+    // With the archive unpublished, every page shares the film layout so the site reads as one place.
+    const bookPages = descriptor.bookIndex || Boolean(descriptor.book);
+    const filmLayout = !publishKnowledgeBase || opportunity || creatorPage || filmPages || bookPages;
+    if (opportunity || creatorPage) {
+      const note = descriptor.note;
+      const localNote = note && (note.lang === locale ? note : note.translations[locale]);
+      const levels = creatorLevels(locale, route, localNote?.title);
+      const trail = levels.length > 1 ? creatorTrail(locale, href, levels) : '';
+      if (levels.length > 1) {
+        graph = [breadcrumbList(levels.map(([path, name]) => [SITE_URL + publicHref(path), name]))];
+      }
+      if (opportunity) {
+        ({title, description, body} = renderOpportunities(opportunities, route.slice(1,-1), locale));
+        body = trail + body;
+        lastmod.set(path, opportunities.reviewed[route.slice(1,-1)]);
+      } else {
+        const creator = renderCreatorPage({ route, locale, href, notes, note, affiliates, affiliateUI: cUI.affiliate, trail });
+        ({title, description, body} = creator);
+        lastmod.set(path, creator.lastModified);
+        if (note) {
+          ogType = 'article';
+          graph.push(noteArticle({ url: canonical, lang: HTML_LANG[locale], title, description,
+            date: note.date, author: note.editorialCredit, site: SITE_URL }));
+        }
+      }
+    } else if (route==='/' && films.length) {
       title=u.films.homeTitle;description=u.films.homeDescription;
-      body=renderFilmsHome(films,locale,u.films,href);
+      body=renderFilmsHome(films,locale,u.films,href,publishKnowledgeBase ? href('/prompts/video/') : null);
+      graph=homeGraph({site:SITE_URL,url:canonical,lang:HTML_LANG[locale],description,films:films.map(film=>({name:film.title[locale],url:SITE_URL+publicPath(locale,filmPath(film))}))});
+      if (filmDates.length) lastmod.set(descriptor.path, filmDates.at(-1));
+    } else if (descriptor.bookIndex) {
+      title=bookData.series.title[locale];description=bookData.series.intro[locale][0];
+      pageTitle=`${title} · ${AUTHOR} · PUNKCANVERSE`;
+      body=renderBooksIndex(bookData,locale,u.books,href);
+      graph=[breadcrumbList([[SITE_URL+publicPath(locale,'/'),u.films.nav],[canonical,title]]),{'@type':'ItemList',url:canonical,itemListElement:books.map((book,i)=>({'@type':'ListItem',position:i+1,name:book.title.en,url:SITE_URL+publicPath(locale,bookPath(book))}))}];
+    } else if (descriptor.book) {
+      const book=descriptor.book;
+      title=`${book.title.en}: ${book.subtitle.en}`;description=book.intro[locale][0];
+      pageTitle=`${book.title.en} · ${AUTHOR} · ${bookData.series.title[locale]}`;
+      ogType='book';
+      share={src:bookCover(book),width:COVER.width,height:COVER.height,alt:u.books.coverOf.replace('{title}',book.title.en)};
+      graph=bookGraph({site:SITE_URL,url:canonical,series:{name:bookData.series.title[locale],url:SITE_URL+publicPath(locale,booksPath)},name:book.title.en,subtitle:book.subtitle.en,description,image:SITE_URL+share.src,year:book.year,pages:book.pages,formats:book.formats});
+      body=renderBookPage(book,bookData,locale,u.books,href,films);
     } else if (descriptor.film) {
       const film=descriptor.film;
       title=film.subtitle?`${film.title[locale]}${locale==='en'?': ':'：'}${film.subtitle[locale]}`:film.title[locale];
       description=`${film.kind[locale]} ${film.notes[locale][0]}`;
-      body=renderFilmPage(film,films,locale,u.films,href);
+      // Title, what it is, who made it: the three things someone searching for the film types.
+      pageTitle=`${title} · ${firstSentence(film.kind[locale])} · Punkcan`;
+      const poster=posterFrame(film);
+      ogType='video.other';
+      share={src:filmAsset(film,poster.src),width:film.data.width,height:film.data.height,alt:u.films.stillOf.replace('{title}',film.title[locale])};
+      graph=filmGraph({site:SITE_URL,url:canonical,home:SITE_URL+publicPath(locale,'/'),homeName:u.films.nav,lang:HTML_LANG[locale],name:title,description,image:SITE_URL+share.src,duration:film.data.duration,youtube:film.youtube[locale],published:film.published});
+      if (film.published) lastmod.set(descriptor.path, film.published);
+      const related=books.filter(book=>book.film===film.slug).map(book=>({href:href(bookPath(book)),title:book.title.en}));
+      body=renderFilmPage(film,films,locale,u.films,href,related,u.books.relatedBook);
+    } else if (route==='/' && !publishKnowledgeBase) {
+      title=u.films.homeTitle;description=u.films.homeDescription;
+      body=`<h1>${e(title)}</h1>`;
     } else if (route==='/') {
       title='AI VIDEO / IMAGE / MUSIC';description=u.homeDescription;
       // The H film-slate artwork keeps its original 003 edition number.
@@ -117,7 +189,7 @@ export async function buildSite(options = {}) {
       body=renderToolsPage(toolsData,affiliates,locale,{...u.tools,quickNav:u.quickNav},cUI.affiliate);
     } else if (route==='/takedown') {
       title=u.takedownTitle;description=u.takedownLead;
-      body=`<section class="takedown-content"><p class="eyebrow">RESPECT THE CREATORS</p><h1>${e(u.takedownHeading)}</h1><p class="takedown-lead">${e(u.takedownLead)}</p><div class="takedown-steps"><span>01</span><p>${e(u.takedownStep)}</p><span>02</span><p>${e(u.takedownFooter)}</p></div>${externalLink(takedownUrl,e(u.takedownButton),'primary-button')}<p class="takedown-note">${e(u.takedownThanks)}</p><a class="text-link" href="${href('/')}">${e(u.backArchive)}</a></section>`;
+      body=`<section class="takedown-content"><p class="eyebrow">RESPECT THE CREATORS</p><h1>${e(u.takedownHeading)}</h1><p class="takedown-lead">${e(u.takedownLead)}</p><div class="takedown-steps"><span>01</span><p>${e(u.takedownStep)}</p><span>02</span><p>${e(u.takedownFooter)}</p></div>${externalLink(takedownUrl,e(u.takedownButton),'primary-button')}<p class="takedown-note">${e(u.takedownThanks)}</p><a class="text-link" href="${href('/')}">${e(publishKnowledgeBase ? u.backArchive : u.films.allFilms)}</a></section>`;
     } else if (route==='/regions') {
       title=u.regionTitle;description=u.regionIntro;
       for (const item of Object.values(content.regions)) validateRegionText(JSON.stringify(item));
@@ -138,7 +210,7 @@ export async function buildSite(options = {}) {
       body=renderPromptDetail(localized(entry),entries,affiliates,thumbs.entries?.[entry.id],entry.collection==='wan-minimax'?cUI:renderUI);
     } else if (route==='/works/') {
       title=u.works.title;description=u.works.intro;
-      body=renderWorks(works,locale,u.works,href);
+      body=renderWorks(works,locale,u.works,href,publishKnowledgeBase ? undefined : {path:'/',label:u.films.allFilms});
     } else if (descriptor.work) {
       title=descriptor.work.copy[locale].title;description=descriptor.work.copy[locale].summary;
       body=renderWork(descriptor.work,locale,u.works,href);
@@ -149,17 +221,23 @@ export async function buildSite(options = {}) {
     } else {
       const legal=u.legal[route.slice(1,-1)];title=legal.title;description=legal.summary;
       // English legal prose is carried over verbatim, with only local links scoped.
-      const legalBody=legal.body.replace(/href="\/(?!\/)([^"]*)"/g,(_,tail)=>`href="${localePrefix(locale)}/${tail}"`);
-      body=renderLegalPage({...legal,body:legalBody,updatedLabel:u.updated,updated:'2026-10-22',lang:HTML_LANG[locale]});
+      // Links here are written without a language prefix; the rewrite below adds it.
+      const articleBody = !publishKnowledgeBase && route === '/about/'
+        ? `<p>${e(u.films.homeDescription)}</p><h2>${e(u.films.nav)}</h2><ul class="plain-list">${films.map(film=>`<li><a href="${filmPath(film)}">${e(film.title[locale])}</a> <span>${film.year} · ${e(firstSentence(film.kind[locale]))}</span></li>`).join('')}</ul><h2>${e(u.films.elsewhere)}</h2><ul class="plain-list"><li>${externalLink('https://x.com/punkcan','X @punkcan')}</li><li>${externalLink('https://punkcan.art/','punkcan.art')} <span>${e(u.films.artArchive)}</span></li><li><a href="mailto:hello@punkcanverse.com">hello@punkcanverse.com</a></li></ul>`
+        : legal.body;
+      if (!publishKnowledgeBase && route === '/about/') graph=aboutGraph({site:SITE_URL,url:canonical,lang:HTML_LANG[locale]});
+      const legalBody=articleBody.replace(/href="\/(?!\/)([^"]*)"/g,(_,tail)=>`href="${localePrefix(locale)}/${tail}"`);
+      body=renderLegalPage({...legal,body:legalBody,updatedLabel:u.updated,updated:!publishKnowledgeBase && route==='/about/' ? '2026-11-09' : '2026-10-22',lang:HTML_LANG[locale]});
     }
-    const footer=`<footer class="site-footer"><div class="footer-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE<small>DIRECTED & CURATED BY PUNKCAN</small></a><div class="footer-links"><a href="${href('/takedown')}">${e(u.takedownFooter)}</a>${externalLink('https://x.com/punkcan',e(u.author))}</div></div>${renderSiteLinks({ariaLabel:u.siteInfo,cookieLabel:u.cookieSettings,hrefFor:page=>href(page.path),labelFor:page=>u.legal[page.path.slice(1,-1)].title})}<p>${e(u.copyright)}</p><p class="affiliate-disclosure"><a href="${href('/affiliate-disclosure/')}">${e(u.affiliateDisclosure)}</a></p></footer>`;
-    const canonical=SITE_URL+descriptor.canonical;
-    const pageTitle=`${title} · PUNKCANVERSE`;
+    const footer=`<footer class="site-footer"><div class="footer-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE<small>DIRECTED & CURATED BY PUNKCAN</small></a><div class="footer-links"><a href="${href('/takedown')}">${e(u.takedownFooter)}</a>${externalLink('https://x.com/punkcan',e(u.author))}</div></div>${renderSiteLinks({ariaLabel:u.siteInfo,cookieLabel:u.cookieSettings,hrefFor:page=>href(page.path),labelFor:page=>u.legal[page.path.slice(1,-1)].title})}${publishKnowledgeBase ? `<p>${e(u.copyright)}</p>` : ''}${publishKnowledgeBase ? `<p class="affiliate-disclosure"><a href="${href('/affiliate-disclosure/')}">${e(u.affiliateDisclosure)}</a></p>` : ''}</footer>`;
+    pageTitle??=`${title} · PUNKCANVERSE`;
     const alternate=descriptor.alternates.map(lang=>`<link rel="alternate" hreflang="${HTML_LANG[lang]}" href="${SITE_URL}${publicPath(lang,route)}">`).join('\n  ')+`\n  <link rel="alternate" hreflang="x-default" href="${SITE_URL}${publicPath(descriptor.alternates.includes(DEFAULT_LOCALE)?DEFAULT_LOCALE:descriptor.alternates[0],route)}">`;
-    const switcher=`<nav class="language-switch" aria-label="Language">${[['en','EN'],['zh','中文']].map(([lang,label])=>`<a href="${switchHref(lang,route)}" data-language="${lang}"${lang===locale?' aria-current="page"':''} lang="${HTML_LANG[lang]}">${label}</a>`).join('')}</nav>`;
+    const switcher=`<nav class="language-switch" aria-label="Language">${[['en','EN'],['zh','中文']].filter(([lang])=>!descriptor.note || descriptor.alternates.includes(lang)).map(([lang,label])=>`<a href="${switchHref(lang,route)}" data-language="${lang}"${lang===locale?' aria-current="page"':''} lang="${HTML_LANG[lang]}">${label}</a>`).join('')}</nav>`;
     const clientKeys=['fullVersion','embedFailed','count','toastCopied','toastFailed','dataFailed','filterFailed','unknownFilters','copyDone','copyRetry','expandPrompt','collapsePrompt','removeFilter','scrollTable','moreCount'];
     const client=Object.fromEntries(clientKeys.map(key=>[key,u[key]]));
     const navCurrent = target => (target==='prompts' ? route.startsWith('/prompts/') : route.startsWith(target)) ? ' aria-current="page"' : '';
+    const creatorCurrent = route === creatorPath ? ' aria-current="page"' : creatorPage || opportunity ? ' aria-current="location"' : '';
+    const creatorNav = `<a href="${href(creatorPath)}"${creatorCurrent}>${e(creator.hub)}</a>`;
     let html=`<!doctype html>
 <html lang="${HTML_LANG[locale]}">
 <head>
@@ -171,30 +249,30 @@ ${renderAnalytics()}
 <base href="/">
 <title>${e(pageTitle)}</title>
 <meta name="description" content="${e(description)}">
-<link rel="canonical" href="${e(canonical)}">
+<link rel="canonical" href="${e(canonical)}">${descriptor.noindex?'\n<meta name="robots" content="noindex">':''}
 ${alternate}
 <meta property="og:url" content="${e(canonical)}">
 <meta property="og:title" content="${e(pageTitle)}">
 <meta property="og:description" content="${e(description)}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="PUNKCANVERSE">
 <meta property="og:locale" content="${OG_LOCALE[locale]}">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="${SITE_URL}/img/site/share.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="PUNKCANVERSE — prompts, workflows and personal work">
-<meta name="twitter:image" content="${SITE_URL}/img/site/share.png">
+<meta property="og:image" content="${SITE_URL}${share.src}">
+<meta property="og:image:width" content="${share.width}">
+<meta property="og:image:height" content="${share.height}">
+<meta property="og:image:alt" content="${e(share.alt)}">
+<meta name="twitter:image" content="${SITE_URL}${share.src}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d94c2b'/%3E%3Ctext x='14' y='48' font-size='48' font-family='sans-serif' font-weight='bold' fill='white'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">${filmLayout?'\n<link rel="stylesheet" href="assets/films.css">':''}
-<script type="module" src="assets/app.mjs"></script>${filmLayout?'\n<script type="module" src="assets/films.mjs"></script>':''}
+<script type="module" src="assets/${publishKnowledgeBase ? 'app' : 'portfolio'}.mjs"></script>${opportunity?'\n<script type="module" src="assets/opportunity-status.mjs"></script>':filmPages?'\n<script type="module" src="assets/films.mjs"></script>':''}
 </head>
-<body${filmLayout?' class="film-layout"':''} data-locale="${locale}" data-prompt-text="${promptTextPath}" data-messages="${e(JSON.stringify(client))}">
+<body${filmLayout?' class="film-layout"':''} data-locale="${locale}" ${publishKnowledgeBase ? `data-prompt-text="${promptTextPath}"` : ''} data-messages="${e(JSON.stringify(client))}">
 <a class="skip-link" href="${e(path)}#main">${e(u.skip)}</a>
-${filmLayout?`<header class="film-top"><a class="film-mark" href="${href('/')}">Punkcanverse</a><nav class="film-nav" aria-label="${e(u.mainNav)}"><a href="${href('/')}"${route==='/'||descriptor.film?' aria-current="page"':''}>${e(u.films.nav)}</a><a href="${href('/about/')}">${e(u.films.about)}</a></nav>${switcher}</header>`:`<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}><a href="${href('/prompts/video/')}"${navCurrent('prompts')}>${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${href('/tips')}"${navCurrent('/tips')}>${e(u.navTips)}</a><a href="${publicHref('/tools')}"${navCurrent('/tools')}>${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${href('/regions')}"${navCurrent('/regions')}>${e(u.navRegions)}</a></nav></header>`}
+${filmLayout?`<header class="film-top"><a class="film-mark" href="${href('/')}">Punkcanverse</a><nav class="film-nav" aria-label="${e(u.mainNav)}"><a href="${href('/')}"${route==='/'||descriptor.film?' aria-current="page"':''}>${e(u.films.nav)}</a>${books.length?`<a href="${href(booksPath)}"${descriptor.bookIndex?' aria-current="page"':descriptor.book?' aria-current="location"':''}>${e(u.books.nav)}</a>`:''}${works.length?`<a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)}</a>`:''}${creatorNav}<a href="${href('/about/')}"${route==='/about/'?' aria-current="page"':''}>${e(u.films.about)}</a></nav>${switcher}</header>`:`<header class="site-header"><div class="mast-top"><a class="wordmark" href="${href('/')}">PUNKCANVERSE</a><span class="issue">AN INDEPENDENT CREATIVE PRODUCTION / 2026</span>${switcher}${externalLink('https://x.com/punkcan','@punkcan ↗','author-link')}</div><nav class="primary-nav" aria-label="${e(u.mainNav)}"${route.startsWith('/works/')?' data-section="works"':''}>${publishKnowledgeBase ? `<a href="${href('/prompts/video/')}"${navCurrent('prompts')}>${e(u.navPrompts)} <small>VIDEO / IMAGE / MUSIC</small></a><a href="${href('/tips')}"${navCurrent('/tips')}>${e(u.navTips)}</a><a href="${publicHref('/tools')}"${navCurrent('/tools')}>${e(u.navTools)}</a><a href="${href('/works/')}"${route.startsWith('/works/')?' aria-current="page"':''}>${e(u.works.title)} <small>BY PUNKCAN</small></a><a href="${href('/regions')}"${navCurrent('/regions')}>${e(u.navRegions)}</a>` : `<a href="${href('/')}">${e(u.films.nav)}</a><a href="${href('/works/')}">${e(u.works.title)}</a>${creatorNav}<a href="${href('/about/')}">${e(u.films.about)}</a>`}</nav></header>`}
 <aside id="language-hint" class="language-hint" hidden><a data-preferred-language></a><button type="button" data-dismiss-language aria-label="${e(u.dismiss)}">×</button></aside>
-<main id="main">${body}</main>
-${renderNewsletter(site)}${footer}
+<main id="main">${body}</main>${graph?'\n'+jsonLd(graph):''}
+${publishKnowledgeBase ? renderNewsletter(site) : ''}${footer}
 ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBody,privacy:u.privacyLabel,privacyHref:href('/privacy/'),accept:u.accept,reject:u.reject})}
 <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 </body>
@@ -205,14 +283,22 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
   await rm(out,{recursive:true,force:true});await mkdir(join(out,'assets'),{recursive:true});
   for (const [file,html] of pages) {await mkdir(dirname(join(out,file)),{recursive:true});await writeFile(join(out,file),html);}
   const sitemapUrls=descriptors.filter(x=>x.sitemap).map(x=>SITE_URL+x.path);
-  await writeFile(join(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(url=>`  <url><loc>${e(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
+  await writeFile(join(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${descriptors.filter(x=>x.sitemap).map(x=>`  <url><loc>${e(SITE_URL+x.path)}</loc>${lastmod.has(x.path)?`<lastmod>${lastmod.get(x.path)}</lastmod>`:''}</url>`).join('\n')}\n</urlset>\n`);
   await writeFile(join(out,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-  await writeFile(join(out,'data.json'),JSON.stringify({entries:original.entries}));
-  await writeFile(join(out,'catalog.json'),JSON.stringify({entries}));
-  await writeFile(join(out,promptTextPath),promptText);
-  for (const file of ['app.mjs','language.mjs','clipboard.mjs','embeds.mjs','consent.mjs','site.css','films.css','films.mjs']) await copyFile(join(root,'web',file),join(out,'assets',file));
-  await copyFile(join(root,'lib/prompts.mjs'),join(out,'assets/prompts.mjs'));await copyFile(join(root,'_headers'),join(out,'_headers'));
-  for (const entry of entries.filter(entry=>entry.source==='official' && entry.officialThumb)) {
+  if (publishKnowledgeBase) {
+    await writeFile(join(out,'data.json'),JSON.stringify({entries:original.entries}));
+    await writeFile(join(out,'catalog.json'),JSON.stringify({entries}));
+    await writeFile(join(out,promptTextPath),promptText);
+  } else {
+    await writeFile(join(out,'404.html'),notFoundHtml);
+  }
+  const clientFiles = ['language.mjs','consent.mjs','site.css','films.css','films.mjs','opportunity-status.mjs'];
+  if (publishKnowledgeBase) clientFiles.push('app.mjs','clipboard.mjs','embeds.mjs');
+  else clientFiles.push('portfolio.mjs');
+  for (const file of clientFiles) await copyFile(join(root,'web',file),join(out,'assets',file));
+  if (publishKnowledgeBase) await copyFile(join(root,'lib/prompts.mjs'),join(out,'assets/prompts.mjs'));
+  await copyFile(join(root,'_headers'),join(out,'_headers'));
+  for (const entry of entries.filter(entry=>publishKnowledgeBase && entry.source==='official' && entry.officialThumb)) {
     const file=entry.officialThumb.src.slice(1);
     await mkdir(dirname(join(out,file)),{recursive:true});
     await copyFile(join(root,'web',file),join(out,file));
@@ -221,11 +307,15 @@ ${renderConsentBanner({aria:u.consentAria,title:u.consentTitle,body:u.consentBod
     await mkdir(join(out,'img/films',film.slug),{recursive:true});
     for (const file of filmFiles(film)) await copyFile(join(root,'web/img/films',film.slug,file),join(out,'img/films',film.slug,file));
   }
+  for (const book of books) {
+    await mkdir(join(out,'img/books',book.slug),{recursive:true});
+    await copyFile(join(root,'web/img/books',book.slug,'cover.webp'),join(out,'img/books',book.slug,'cover.webp'));
+  }
   await mkdir(join(out,'img/site'),{recursive:true});
   await copyFile(join(root,'web/img/site/share.png'),join(out,'img/site/share.png'));
   // `pages` lists the root-locale (English) disk routes. All language descriptors are
   // exposed separately so they can inspect exact final URLs and fallback canonicals.
-  return {promptTextPath,pages:descriptors.filter(x=>x.locale===DEFAULT_LOCALE).map(x=>x.disk),localizedPages:descriptors,sitemapUrls};
+  return {promptTextPath:publishKnowledgeBase ? promptTextPath : null,pages:descriptors.filter(x=>x.locale===DEFAULT_LOCALE).map(x=>x.disk),localizedPages:descriptors,sitemapUrls};
 }
 if (process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href) {
   const result=await buildSite();console.log(`Built ${result.localizedPages.length} PUNKCANVERSE pages → dist/`);
