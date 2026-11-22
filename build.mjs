@@ -50,7 +50,6 @@ export async function buildSite(options = {}) {
   const films = options.films ?? await loadFilms(root);
   const bookData = options.books ?? await loadBooks(root, films);
   const books = bookData.books;
-  if (/待|to be added/i.test(Object.values(bookData.series.draftTools).join(' '))) console.warn(`books: the drafting tools are still a placeholder (${bookData.series.draftTools.zh}) in content/books.json`);
   const site = await readJSON('data/site.json');
   const publishKnowledgeBase = options.publishKnowledgeBase ?? site.publishKnowledgeBase;
   const regionData = await readJSON('data/regions.json');
